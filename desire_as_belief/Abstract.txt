@@ -1,0 +1,109 @@
+Abstract
+
+- A puzzle within moral uncertaintism.
+- Different answers to the puzzle reject different premises of Desire as Belief
+- Upshot 1: An interesting new puzzle
+- Upshot 2: The argument against Desire as Belief fails
+
+The Puzzle
+
+- Morrigan faces a moral dilemma, but can copy a moral expert. She should copy.
+- Morrigan faces a moral dilemma, but knows she is a moral expert. Should she be happy either way?
+- Morrigan faces a moral dilemma, is a part-time moral expert.
+- Two options: do the act with highest prior probability of morality, or the act with the highest posterior probability of morality.
+- This is like Newcomb's Puzzle, and the moves are a bit similar, but not entirely similar.
+
+Refining the Puzzle
+
+- Morrigan can prevent a catastrophe in two ways: A or B.
+- Not preventing would be horrible.
+- No welfare difference between A and B.
+- A might be a property rights violation.
+- B might be a privacy rights violation.
+- They aren't huge violations, but Morrigan would rather not violate rights.
+- Right now 70% likely that A is ok, 50% likely that B is ok.
+- But Morrigan knows that in practice she's much more sensitive to privacy than property. So if she does B, that will make it 90% likely it is ok.
+- Doing A won't change the probability it is ok.
+- Which should she do?
+
+Tickle Defence
+
+- Maybe she should imagine really hard, and see.
+- Yes - she should do that! This is really good advice in pretty much all practical cases.
+- But it doesn't solve the problem.
+- Morrigan's morality might come out in practice, not in theory.
+- When discussing suitable punishments for the wicked with her friends, she indulges in all sorts of revenge fantasies. And she means them.
+- But if push comes to shove, she wouldn't carry them out. When friends say "You'd never do that", they reveal that they know her better than she knows herself.
+- This is rare but possible
+- And all I need for the example is that it is possible.
+
+Reverse Tickle Defence
+
+- Could this work even if Morrigan chooses for just this reason?
+- Feels reminiscent of James's worry about Pascal's Wager
+- Definitely a concern here, but two ways around
+- First, at cost of some realism, we can give Morrigan inductive evidence
+- Second, we can say that Morrigan should try, and see if her equivalent of Socrates's voice prevents her (but this is slipping back into Tickle Defence)
+- Third, we can say that moral uncertaintism is a criteria of rightness, not a decision rule.
+- After all, a decision rule requires a clear solution to problem of inter-theoretic value comparisons, and that ain't on the table.
+- I think the last is probably the best way to go.
+
+Is This Just Newcomb?
+
+- No; the motivations are different
+- It's not orthogonal - but three options are available
+- Using only prior probabilities is easy to defend (modulo being a 2-boxer)
+- Using only posterior probabilities is easy to defend (modulo being a 1-boxer)
+- Using posteriors for Newcomb and priors here is hard to defend. I'd like to know a good story for this but don't have one.
+- But using priors for Newcomb and posteriors here feels easier to defend
+- The essence of causal decision theory is rationalizability
+- And here, both decisions are rationalizable
+- Note that we are here just using formal rationalizability, not substantive
+- Formal rat: There's a Pr over states such that X is expected utility maximising given that Pr
+- Substantive rat: That, plus the Pr is rational to hold while doing X.
+
+Digression on Rationalizability
+
+- Small history lesson
+- Equivalence to immunity to dominance by mixed strategies
+- Philosophers have a tendency to think that mixed strategies are weird, or can somehow be put off the table
+- I think that's a mistake; inability to mix is a practical irrationality
+- You need something like that if you want to have substantive rat be a necessary condition in Death in Damascus.
+- But ultimately it doesn't matter, formal rationalizability is really at the heart of the two-boxers approach; it is the real way to express non-dominance. And both A and B satisfy it.
+
+A Model for The Posterior View
+
+- Something something from the notes
+- Violations of conditionalization
+- But maybe that's ok; it's kind of like self-locating belief
+
+Desire as Belief
+
+- Set out the four premise approach
+
+Two Responses
+
+- The 'prior' theorist rejects premise 2
+- The 'posterior' theorist rejects premise 3 (or whatever)
+- Neither of these are new; the latter goes back to Broome/Price etc
+- The former is similar in spirit to Collins
+- What's new is the argument that Lewis's argument shouldn't convince anyone
+- Whatever you think about Morrigan's puzzle, you should think Lewis's argument fails
+
+Weirdness of Lewis's Argument
+
+- Autobiographical note: Hoped to use this puzzle, and Lewis's argument, against moral uncertaintism
+- The puzzle use fails: Both answers are fairly plausible
+- And I ended up convincing myself that Lewis was mistaken
+- But should be able to do that anyway
+- Lewis's argument seems to be an argument that any kind of one-dimensional value function will lead to paradox
+- Now I'm a value pluralist, so I like that conclusion too
+- But it's absurd to think you could get it this way. We aren't going to be able to use decision theory to argue that someone who wants to maximise profit and nothing but profit is incoherent.
+
+Conclusion
+
+- I hope to have put a new puzzle into a stock of puzzles
+- I really don't know what the answer to it is
+- Personally I think it's ill formed: Morrigan should not want to do good, but to preserve rights
+- But I suspect a version of the view will come up for the kind of value pluralism I favor, so I'd still like to know the answer
+- And I don't think DaB will help us out; it's premises are if not inconsistent (and actually I think they might be inconsistent) then incoherent.

@@ -1,0 +1,29 @@
+---
+title: "Insulting Orders: Reply to Mandelkern"
+author: "Anon"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    keep_tex: yes
+    fig_caption: no
+    number_sections: true
+    extra_dependencies: 
+      mathastext: ["italic"]
+mainfont: Merriweather
+mainfontoptions: Scale=MatchLowercase
+geometry: margin=1.38in
+linestretch: 1.1
+bibliography: ../rBib.bib
+fontsize: 12pt
+link-citations: yes
+---
+
+Matthew Mandelkern notes that there is is a puzzle about the following kinds of sentences.
+
+(@)    Clean your room! I doubt you'll clean your room.
+
+More examples
+
+(@)    You must clean your room! I doubt you'll clean your room.

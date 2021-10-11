@@ -1,0 +1,182 @@
+\documentclass[11pt,]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{1.1}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmainfont[]{Lato}
+    \setmathfont(Digits,Latin,Greek)[]{Fira Math}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1.35in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Against Tournament Decision Theory},
+            pdfauthor={Brian Weatherson},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+% grffile has become a legacy package: https://ctan.org/pkg/grffile
+\IfFileExists{grffile.sty}{%
+\usepackage{grffile}
+}{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Against Tournament Decision Theory}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Brian Weatherson}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-11-02}
+
+\hypersetup{hidelinks}
+\usepackage{nicefrac}
+\usepackage[italic]{mathastext}
+
+\begin{document}
+\maketitle
+
+Abelard Podgorski (2020) argues in favour of what he calls Tournament Decision Theory. The core idea is that rather than assigning each option a value, and then choosing the option with the greatest value, we devise a formula for making binary comparisons between options. Podgorski notes there are a few things that you can do with these binary comparisons, but a minimal commitment of his theory is that if an option is better than each alternative by the lights of the preferred pairwise comparison, then it does best. We'll show that this leads to implausible results - in particular it leads to choosing dominated options.
+
+To set out his theory we need one bit of familiar conceptual machinery. Let \(V_A(B)\) be what value the decider expects \(B\) would have were they to choose \(A\). So in a case where we expect a demon to predict our decision, this is the value in the cell of the table where \(B\) is chosen and \(A\) is predicted. Then say that \(X\) is pairwise better than \(Y\) in case:
+
+\[
+V_X(X) + V_Y(X) > V_X(Y) + V_Y(Y)
+\]
+
+And, as noted in the first paragraph, a sufficient condition for an option being best is that it does better than any other option in any pairwise comparison. That's enough to get a counterexample to the theory.
+
+Our agent has three choices, and if they choose any one of them with certainty, they are very confident that a demon will correctly predict their choice. And the payoffs for each choice/prediction pair are given by the following table.
+
+\begin{longtable}[]{@{}rccc@{}}
+\toprule
+& \(A\) predicted & \(B\) predicted & \(C\) predicted\tabularnewline
+\midrule
+\endhead
+\(A\) chosen & 0 & 3 & 5\tabularnewline
+\(B\) chosen & 2 & 2 & 2\tabularnewline
+\(C\) chosen & 5 & 3 & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+The first thing to say about this example is that \(B\) is the worst thing to choose. Here are two reasons to think it is wrong, or at least what looks like two reasons.
+
+First, it is dominated by the mixed strategy of playing \(A\) with probability 0.5 and \(C\) with probability 0.5. And one should never play dominated strategies, even if what does the dominating is a mixed strategy.
+
+Second, there is no credence distribution over the Demon's predictions that makes \(B\) the choice with maximal expected utility. In the terminology of game theorists, \(B\) is not a Best Response - it doesn't maximise expected utility no matter what one's beliefs. Agents should have probabilistically coherent credences, and maximise expected utility given their beliefs, and no agent that satisfies both conditions chooses \(B\).
+
+Now I've said these are two reasons to not choose \(B\), and they appeal to different conceptual tools - the first appeals to anti-dominance reasoning, the second to utility maximisation. But there is a sense in which they are the same reason. As Pearce (1984) shows, a strategy is undominated (in the sense I'm using here) just in case there is some credence distribution that makes it a utility maximising choice. It would take us too far afield to work through whether this means the `two' reasons from the last two paragraphs are really the same reason. Despite their mathematical equivalence, I suspect they are convincing to different theorists, so I've included both. And they point to the same conclusion: \(B\) is a uniquely bad choice.
+
+The second thing to say about this example is that Podgorski's theory says that \(B\) is the unique rational choice. This can be seen simply applying the above formula to confirm that the theory judges \(B\) to be better than \(A\) and better than \(C\). But it is useful to abstract to see just what has gone wrong here. Replace the values in the above table with variables as follows:
+
+\begin{longtable}[]{@{}rccc@{}}
+\toprule
+& \(A\) predicted & \(B\) predicted & \(C\) predicted\tabularnewline
+\midrule
+\endhead
+\(A\) chosen & \(v_{11}\) & \(v_{12}\) & \(v_{13}\)\tabularnewline
+\(B\) chosen & \(v_{21}\) & \(v_{22}\) & \(v_{23}\)\tabularnewline
+\(C\) chosen & \(v_{31}\) & \(v_{32}\) & \(v_{33}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+The condition for \(B\) beating \(A\) in the pairwise comparison is that \(v_{21} + v_{22} > v_{11} + v_{12}\). The condition for \(B\) beating \(C\) in the pairwise comparison is that \(v_{22} + v_{23} > v_{32} + v_{33}\). And that's satisfied in our example in both cases, since \(2 + 2 > 0 + 3\). But the more important thing to note is what's not there. The sufficient condition Podgorski gives does not even mention \(v_{13}\) or \(v_{31}\). It is very implausible for anyone except a dedicated Evidential Decision Theorist to think that the values of \(v_{13}\) or \(v_{31}\) are irrelevant to a sufficient condition for choosing \(B\).
+
+The general lesson here is I think a quite general one. As William Harper (1986) showed, most of the problems that decision theorists worry about are basically games where the Demon's utility function is left implicit. The Demon wants to make a correct prediction, so we can turn an example into a game by just saying that the Demon's payoff is 1 if the prediction is correct, and 0 otherwise. Here's how the example I described above looks if we do this.
+
+\begin{longtable}[]{@{}rccc@{}}
+\toprule
+& \(A\) predicted & \(B\) predicted & \(C\) predicted\tabularnewline
+\midrule
+\endhead
+\(A\) chosen & 0, 1 & 3, 0 & 5, 0\tabularnewline
+\(B\) chosen & 2, 0 & 2, 1 & 2, 0\tabularnewline
+\(C\) chosen & 5, 0 & 3, 0 & 0, 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+Now it is a matter of some dispute among game theorists just what either player should do in this game. But one very plausible minimal condition is that each player should choose a strategy that is rationalisable in the sense of Bernheim (1984) and Pearce (1984).\footnote{A strategy is rationalisable if it survives the following process of iterated deletion. At each stage delete a strategy unless there is some probability distrbution over the strategies of other players such that the expected utility of the strategy is maximal given that probability distribution.} Since any (reasonable) game has Nash equilibria, and all Nash equilibria are n-tuples of rationalisable strategies, this is guaranteed to not rule out all strategies.\footnote{This is a respect in which this requirement, which looks a lot like the admonition to choose ratifiable strategies, is in fact much more plausible than a ratifiability requirement.} And it's hard to see why it could be ever be good to choose a non-rationalisable strategy, since it is hard to see what coherent mental state could issue in such a choice.
+
+There is an even weaker constraint that we could impose: only choose Best Responses. That is, we could require that choosers have probabilistically coherent credences over the possible states of the world, and that they maximise expected utility given those credences. Since all rationalisable strategies are Best Responses, but not vice versa, this is a strictly weaker requirement. But choosing \(B\) violates even this requirement.
+
+Saying that one should only choose Best Responses, or even that one should only choose rationalisable strategies, isn't the end of the story. Nothing I've said here suggests an answer to the question of whether there is a further constraint beyond the constraint that one choose rationalisable strategies. And if there are such constraints, it doesn't suggest anything about what they should be. It is easy enough to see what some constraints could be. For example, we get interesting variants of CDT by requiring that players adopt strategies that are parts of Nash equilibria, or are evolutionarily stable. These variants resemble, though they aren't quite identical to, the view that Podgorski calls Deliberational CDT. Given the huge range of solution concepts that have been developed by game theorists over the past 40 years, Harper's idea of thinking of decisions as games suggests rather a lot of possible decision theories. But all of them should start from the basic idea that only rationalisable strategies are permissible, and that rules out Tournament Decision Theory.
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Bernheim1984}{}%
+Bernheim, B. Douglas. 1984. ``Rationalizable Strategic Behavior.'' \emph{Econometrica} 52 (4): 1007--28. \url{https://doi.org/10.2307/1911196}.
+
+\leavevmode\hypertarget{ref-Harper1986}{}%
+Harper, William. 1986. ``Mixed Strategies and Ratifiability in Causal Decision Theory.'' \emph{Erkenntnis} 24 (1): 25--36. \url{https://doi.org/10.1007/BF00183199}.
+
+\leavevmode\hypertarget{ref-Pearce1984}{}%
+Pearce, David G. 1984. ``Rationalizable Strategic Behavior and the Problem of Perfection.'' \emph{Econometrica} 52 (4): 1029--50. \url{https://doi.org/10.2307/1911197}.
+
+\leavevmode\hypertarget{ref-Podgorski2020}{}%
+Podgorski, Aberlard. 2020. ``Tournament Decision Theory.'' \emph{Noûs} tbc (tbc): xx--xx. \url{https://doi.org/10.1111/nous.12353}.
+
+
+\end{document}

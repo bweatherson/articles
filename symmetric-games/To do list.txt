@@ -1,0 +1,22 @@
+* Note Nash 1951 - Nash, J.F. (1951), Non-cooperative games, Annals of Mathematics 54, 286-295.
+* Why does this only fail in infinite games - over-generation argument
+* Correct beliefs - Perea 2012 - why have correct beliefs?
+
+
+TO DO
+
+1. Add reference to Nash 1951 at start of infinite games section
+2. Add whole section on finite games/correct beliefs. The common thread is an over-generation point.
+3. Fix the unclear sentences.
+4. Move this all into new articles job
+
+
+Unclear sentences
+
+
+(a) Page 1, line 4: ì... if permissivism is false.îWhat does it mean? Please explain.
+(b) Page 1, lines 7 and 8: ì... if permissivism is false there is no rational way to play the game, although intuitively the game could be rationally played.î I donít understand what this means. Please elaborate.
+(c) Page 1, line 5 of second paragraph: ì... there are two possible rational attitutes.îWhy two? Please explain.
+(d) Page 8, lines 4 and 5: ìIf the players ... Uniqueness.î Why is this? Please clarify.
+4. Page 3, last line: ìa symmetric equilibriaîshould be ìasymmetric equi- libria in mixed strategiesî.
+5. Page 7, Footnote, last line: I think that ì... is a Nash equilibriumîshould be ì... is a symmetric Nash equilibriumî. Is this right?

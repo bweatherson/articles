@@ -1,0 +1,376 @@
+---
+title: "Desire as Belief and Moral Newcomb Problems"
+author: Brian Weatherson
+date: March, 2019
+output:
+  revealjs::revealjs_presentation: 
+    theme: serif
+    highlight: haddock
+    center: true
+    transition: fade
+    css: reveal.css
+    self_contained: true
+    reveal_options:
+      slideNumber: true
+---
+
+# Background
+
+## Two Kinds of Uncertainty
+
+> - Good people act in ways that is sensitive to uncertainty about the physical facts.
+
+> - Do they also act in ways that are sensitive to uncertainty about the moral facts in just the same ways?
+
+## Moral Uncertaintism
+
+> - I'll say that **moral uncertaintism** is the view that the answer to this question is yes.
+> - So it is wrong to take excessive moral risks, it might be best to do something that is not morally optimal, and so on.
+
+## Moral Uncertaintism
+
+![Lots of papers](Phil-Papers-Moral-Uncertainty.png)
+
+## Motivations for Moral Uncertaintism
+
+> 1. There is a duty to obey one's conscience.
+> 2. Intuitively all uncertainty should be treated alike.
+> 3. If uncertaintism is wrong, then morality can't be guiding.
+
+## Practical Consequences of Moral Uncertaintism
+
+If moral uncertaintism is correct, then the following argument form is sound.
+
+> 1. I have a choice between X and Y, and I would rather do X.
+> 2. But Y is at worst a little less morally good than X.
+> 3. And X has a non-trivial probability of being a moral catastrophe.
+> 4. So I should do X.
+
+####### You can run instances of this as either an anti-meat eating argument or as an anti-abortion argument. {.fragment}
+
+## Theoretical Consequences of Moral Uncertaintism
+
+> - What one should do is solely a function of one's **beliefs**.
+> - On standard formulations, if you fix the agent's non-moral credences, and fix their moral credences, that settles what to do.
+> - E.g., they might say that one should maximise the expected moral value of one's  action.
+> - I'll mostly work with this model in what follows, because it is simple and popular.
+
+## Philosophical Arguments for Doxastic Views
+
+> - There is a line of argument running from Kant through Sartre that only control by belief is compatible with freedom.
+> - And there is a contemporary analytic variant of that line which says that only control by belief is compatible with actions being properly reasons-responsive.
+
+## Philosophical Replies to These Arguments
+
+> - Too self-centered
+> - Too focussed on thin moral properties
+> - Too prone to fanaticism
+> - Prone to regresses
+> - Unmotivated
+
+####### It's not the paper I have the knowledge or skill to present today, but there's an interesting paper to be written about how the picture I'm attacking, and these attacks on it, relate to the picture Murdoch attacks at the start of _The Sovereignty of Good_, and the arguments she makes against it. {.fragment}
+
+## For More Information
+
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("NE-Cover.png")
+```
+
+## Technical Arguments for Anti-Doxastic Views
+
+> - David Lewis's argument that 'Desire as Belief' views are incoherent.
+> - Plan for today - set out Lewis's argument, show that it really does threaten moral uncertaintism, and also show that the threat doesn't materialise.
+> - On the way, we find an interesting choice point within moral uncertaintism.
+
+## Overview
+
+> 1. Discuss Lewis's argument that desires and beliefs must be distinct, suggest it is a prima facie problem for moral uncertaintism.
+> 2. Set out the difference between 'evidentialist' and 'causal' versions of moral uncertaintism, and note a plausible case where they come apart.
+> 3. Show that Lewis's argument relies on being a causalist at one point, and an evidentialist at another point, and so isn't persuasive.
+> 4. Describe two models for 'worlds' in the moral uncertaintist framework, and discuss the strengths and weaknesses of each.
+
+# Lewis's Argument
+
+## Lewis's Target
+
+Lewis really had two targets that he didn't distinguish very carefully.
+
+> - There is a single state, e.g., a judgment that X is good, that is both a belief and a desire. This (allegedly) violates the Humean principle: _No necessary connection between distinct existences_. 
+> - Having some belief, e.g., a belief that X is good, makes it rationally mandatory to have some desire, e.g., a desire to do X. This violates the Humean principle: _Reason is the slave of the passions_.  
+
+####### I'm primarily interested in the second. {.fragment}
+
+## Assumptions
+
+> - Assume we have a class of factual descriptive propositions.
+> - For any factual proposition $A$, let $A°$ be the proposition that $A$ is good. 
+> - Assume for now that we know everything is either Good or Bad, and all Good things are equally good, and all Bad things are equally bad. (Obviously a simplifying assumption.)
+> - So we can set the value of Good things to 1, and the value of Bad things to 0.  
+
+## The Equation
+
+Our assumptions make this equation plausible.
+
+$$
+V(A) = \Pr(A°)
+$$
+
+## Worlds
+
+> - A world $w$ specifies the truth value of any truth-apt claim that is relevant to a current decision.
+> - Assume in a given decision there are finitely many of these. This is a bit idealising, but actually plausible.
+> - And assume that claims about goodness are truth-apt, as the moral uncertaintist sort of needs.
+> - So worlds will contain specification of whether things are Good or Bad.
+> - So half of the worlds will be metaphysically impossible, but that's ok.
+
+## Assumptions in Lewis's Proof
+
+Restricted Invariance
+:    $V_A(w) = V(w)$
+
+> - What this means is that learning that a proposition is true doesn't change the value of a world.
+
+> - Intuitively, that's because worlds are (relatively) complete; they contain all the information that is relevant to their value, so learning something can't change that.
+
+## Assumptions in Lewis's Proof
+
+Additivity
+:    $V(A) = \sum_w V(w)\Pr(w | A)$
+
+> - This is just the standard way we evaluate propositions in (evidential) decision theory.
+
+> - The value of some proposition being true is just the (weighted) average of the worlds that make it true.
+
+## Assumptions in Lewis's Proof
+
+Restricted Conditionalisation
+:    $\Pr_A(B) = \Pr(B | A)$
+
+> - If one learns a factual proposition $A$, the new probability of $B$ is the old conditional probability of $B$ given $A$.
+
+> - It has been objected that this isn't very plausible for learning moral propositions, but we're only ever going to use it for factual propositions.
+
+> - Though note that $B$ might be moral, even if $A$ is factual.
+
+## Independence Proof
+
+$$
+\begin{align}
+\Pr(A°) &= V(A) \\
+        &= \sum_w V(w) \Pr(w | A) && \text{(Additivity)} \\
+        &= \sum_w V_A(w) \Pr(w | A) && \text{(Restricted Invariance)} \\
+        &= \sum_w V_A(w) \Pr{}_A(w | A) && \text{(Restricted Conditionalisation)} \\
+        &= V_A(A) && \text{(Additivity), applied to updated values} \\
+        &= \Pr{}_A(A°) \\
+        &= \Pr(A° | A) && \text{(Restricted Conditionalisation)} 
+\end{align}
+$$
+
+## Absurdity
+
+> - This is absurd, I say.
+> - If $A$ is that a person we have a high moral opinion of takes a particular decision, then $A$ and $A°$ are evidence for each other, so they shouldn't be independent.
+> - Lewis himself gives a longer, and less plausible, argument that this is an absurd result.
+> - But it relies on **unrestricted** conditionalisation, and I think that's not something his opponents should be sad to reject.
+
+## Lewis Exegesis
+
+> - Lewis thought that this was a refutation of a certain kind of anti-Humean view.
+> - Saying just which kind would be at least another paper; it's very hard to make sense of some of Lewis's dialectical moves.
+> - In part that's because figuring out who could (a) plausibly be who Lewis is talking about, and (b) plausibly accepts something like $V(A) = \Pr(A°)$ is not obvious.
+
+## A Target!
+
+> - But the uncertaintists do accept $V(A) = \Pr(A°)$.
+> - So if Lewis's argument shows that any view that accepts $V(A) = \Pr(A°)$ is mistaken, it shows that uncertaintism is mistaken.
+
+## An Initial Concern
+
+> - Imagine a Humean agent - one who really is moved by beliefs and desires - with one special feature.
+> - They just have one desire: that they act in a way approved of by God.
+> - If we interpret $A°$ as _God approves of A_, this person will satisfy $V(A) = \Pr(A°)$.
+> - But it's really implausible that this kind of technical argument can refute the idea that a rational person might only have one value.
+
+# Two Kinds of Moral Uncertaintism
+
+## A Puzzle Case
+
+> - Hero faces a choice between $A, B$ and some less attractive options.
+> - Right now, we think $A°$ has probability 0.5, and $B°$ has probability 0.9.
+> - But we know Hero is very good at making $A$-type actions. If she does $A$, we will be certain it is Good. That is $\Pr(A° | A) = 1$. But we don't think she's any kind of expert about $B$-type actions. So $\Pr(B° | B) = \Pr(B°) = 0.9$.
+
+## Two Questions
+
+> - What should we hope Hero does?
+> - Separately, if Hero knows all this, what would we advise her to do, and what, from an uncertaintist perspective, should she do?
+
+## Option A and Hope
+
+> - If Hero does $A$, then we'll be sure that she does something Good.
+> - That's a nice feature of her action to have.
+> - Indeed, it's the best case scenario.
+> - So I think it's what we should hope happens.  
+> - Of course, I'm speaking for the uncertaintist here; I think what we should hope depends on what's really Good.
+
+## Option B and Deliberation
+
+> - Hero starts out thinking $B$ is more likely Good.
+> - It would be very weird to choose $A$ on the grounds that her choosing it would be evidence that it is Good.
+> - After all, if she chooses it on those grounds, then it is hard to see how she is any kind of expert.
+> - And if she's not an expert, she shouldn't change her credence in $A°$.
+> - So maybe there is a case here for option B.
+
+## Newcomb's Problem
+
+> - This feels to me like a Newcomb's problem.
+> - We should hope Hero does A - like we should hope our friend takes one box.  
+> - But the reasons we should hope this are not necessarily reasons that can be used in deliberation.
+> - Arguably from the deliberative perspective, our friend should take both boxes.  
+> - You can say all that and still think it is hard philosophical question about what should be done. The evaluative perspective is distinct from the perspective of hope, and the deliberative perspective.
+
+## Two Options
+
+Evidential Moral Uncertaintism
+:    Hero should choose option A. In general, people should maximise $\Pr(A° | A)$.
+
+Causal Moral Uncertaintism
+:    Hero should choose option B. In general, people should maximise $\Pr(A°)$.  
+
+## My Take
+
+- I think the evidential version is better, but I'm not an uncertaintist, so I doubt my intuitions count for much here. 
+-  Also, whether this is exactly the right way to formulate the causal view turns on some tricky questions about the way to think about utilitarianism under moral uncertainties. 
+- Maybe we can talk about this in questions.
+
+## An Argument I Reject
+
+> - You could try to argue this way.
+> - Both forms of uncertaintism are implausible for one reason or another.
+> - So uncertaintism fails.
+> - That is really not my aim here.
+> - I think it's just kind of interesting to see a new choice point in developing a (false) theory.
+
+# Responding To Lewis
+
+## Quick Version
+
+> - Evidential versions of moral uncertaintism reject $V(A) = \Pr(A°)$. Instead they accept $V(A) = \Pr(A° | A)$. So the argument is a reductio of a position they do not hold.  
+> - Causal versions of moral uncertaintism reject the addition postulate. It's the rule, as Lewis himself says, for evidential decision theory.  
+> - So really no one accepts the argument.
+
+## Evidential Version
+
+> - This is actually really easy to see.
+> - $V(A) = \Pr(A°)$ implies that option B is better than option A in the worked example.
+> - But the evidential theorist doesn't want B over A.
+> - So Lewis's argument is a reductio of an equation they have independent reason to reject.
+
+## Causal Version
+
+> - This is a little trickier to see, because it depends on precisely how we understand $A°$ in a causal model.
+> - And to be honest, I haven't worked out a good way to do that yet.
+> - But however you do it, if you multiply world values by the probability of that world conditional on an act, you'll get that conditional probabilities of goodness, not unconditional probabilities of goodness, matter.
+> - And that's not what the causalist wants.
+
+# What are Worlds
+
+## Overview
+
+> - I'm going to work through a puzzle for the evidentialist version of moral uncertaintism.
+> - It's a puzzle - that's not a coy way of saying it's an objection or a refutation.
+> - I don't mean this to be an argument for either anti-uncertaintism (my view), or causal uncertaintism (which might be no one's view); but it's an interesting puzzle.
+
+## Worlds
+
+> - Worlds in this context are nothing like Lewisian concreta.
+> - They are what determine the truth value of relevant truth-apt claims, and they are what rational credences are defined over.
+> - They are more coarse-grained than Lewisian concreta in that they don't determine the truth-value of irrelevant claims.
+> - And they are more fine-grained than Lewisian concreta in that some of them, the ones involving false moral theories, are metaphysically impossible.
+
+## A Minimal Requirement
+
+At the very least, worlds should do two things:
+
+1. Set the truth value of those descriptive propositions that are relevant.
+2. Set the moral value of that set of descriptive truths.
+
+## Minimal Worlds
+
+So first hypothesis.
+
+> - Worlds are ordered pairs.
+> - The first member of the pair is a set $d$ of descriptive facts.
+> - The second member is a number (either 0 or 1 in the simple context we're discussing) that sets the value of $d$.
+> - So a world is $\langle d, m \rangle$, and $V(\langle d, m \rangle) = m$.
+
+## A Simple Example
+
+> - The good news is that there is simple proof that this model is non-trivial.
+> - I won't go through the proof here (in interests of time), but it's I think the first time in the literature on Lewis's arguments that someone has constructed a counter-model that's proven to be non-trivial.
+> - But the model has a weird feature.
+
+## A Simple Example
+
+> - There is just one descriptive proposition that we care about.
+> - So the description will be that that proposition is true or false.
+> - Notate these as **T** and **F**.
+> - So there are four worlds: $\langle \textbf{T}, 1 \rangle$, $\langle \textbf{T}, 0 \rangle$, $\langle \textbf{F}, 1 \rangle$, and $\langle \textbf{F}, 0 \rangle$.
+> - Let's assume to start that each of these are equally likely, i.e., our Hero has credence $\frac{1}{4}$ in each.
+
+## Learning
+
+> - Then our Hero hears a little argument by analogy that convinces them that it would be Good if the proposition in question were True.
+> - That is, they rule out $\langle \textbf{T}, 0 \rangle$.
+> - What should happen next?
+
+## Conditionalisation
+
+> - If they update by conditionalisation, then they will change their credence in $\langle \textbf{T}, 0 \rangle$ to 0, and their credences in the other three worlds to $\frac{1}{3}$.
+> - So their credence that the proposition is True will fall from 0.5 to $\frac{1}{3}$.
+> - That doesn't seem right.
+
+## Against Conditionalisation
+
+> - One response is to say that learning moral propositions does not involve updating by conditionalisation.
+> - This somewhat undermines the idea that the distribution over $\langle d, m \rangle$ is really a belief.
+> - Remember we could construct it out of a belief-desire pair, and maybe the fact that it doesn't update by conditionalisation is evidence it's really a hybrid, not actual beliefs.
+> - But this is a weak reason; we don't update de se attitudes by conditionalisation either, and we think they are beliefs.
+
+## Complicated Worlds
+
+> - Another possible response is to say that worlds are not minimal.
+> - Take the $m$ in $\langle d, m\rangle$ to not be a constant, but a function from possible values of $d$ to possible moral values.
+> - So $m$ says whether each $d$ is Good or Bad.
+> - Now there will be a **lot** of worlds.
+
+## A Bonus, and A Cost
+
+> - The upside is that we can once again update by conditionalisation.
+> - The downside is that our representation includes (somewhat essentially) differences in mental representation that make no difference to behavioural dispositions.
+> - This might upset some people (like me) with functionalist leanings.
+> - Another potential cost, though this turns on questions that are left open, is that there is no extant way to model this theory in the classical theory in any dynamically consistent way.
+
+## Two Choices
+
+There are other options, but I think these are the most natural.
+
+> - Worlds, on the uncertaintist picture, say how things are, and how good things are.
+> - The 'how good things are' can either tell us just how good the things are in that very world, or in all worlds.
+> - If we just say that it is things in that world, then we have to abandon conditionalisation.
+> - If we say it is things in all worlds, then we have to abandon functionalism.
+> - This is an objection to evidential versions of uncertaintism iff you are committed to conditionalisation and functionalism, but that's a very strong pair of commitments.
+
+# Wrapping Up
+
+## Humeanism and Moral Uncertaintism
+
+> - Moral uncertaintism is committed to many things; one of them is that beliefs should drive action, with desires playing a subsidiary role.
+> - So it's interesting to see how they handle Lewis's argument which purports to establish an essential role for desire.
+> - When I started this project, I hoped to turn Lewis's argument into a technical refutation of uncertaintism.
+> - It ended up the other way around; thinking about uncertaintism shows us just how Lewis's argument fails.
+
+## What We've Learned
+
+> - Every technical problem has a technical solution.
+> - It isn't easy to put moral values in as "extra facts" in an orthodox decision-theoretic model, but there are ways to do it.
+> - That there are *ways* to do it, rather than one obvious way, suggests some unexplored choice-points for theorising about moral uncertainty.

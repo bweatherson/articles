@@ -1,0 +1,284 @@
+
+
+---
+title: "Desire as Belief and Moral Newcomb Problems"
+author: Brian Weatherson
+date: May 14, 2019
+output:
+  revealjs::revealjs_presentation: 
+    theme: serif
+    highlight: haddock
+    center: true
+    transition: fade
+    css: reveal.css
+    self_contained: true
+    reveal_options:
+      slideNumber: true
+---
+
+# Background
+
+## Rationality
+
+- In formal theories of decision, we spend a lot of time talking about the rationality of the decisions themselves.
+
+> - And we spend a lot of time talking about the rationality of credences.
+> - But we don't spend so much time on talking about the rationality of the values.
+
+## A Simple Proposal to Fix That
+
+- We have credences about how good things are.
+
+> - Our values track those credences.
+> - This will have two big philosophical payoffs.
+
+## Why Worry About Transformative Experience?
+
+- What's wrong with just having an arbitrary value for some transformative act, like say having absinthe in a dodgy bar?
+
+> - Answer: That's having an arbitrary belief in the proposition _This is good_.
+> - And that's like having an arbitrary belief about what will happen if you perform an act (like say _pressing this button_), and arbitrary beliefs are irrational.
+> - They might be consistent, but they do not satisfy even minimally substantive constraints on rationality.
+
+## Authenticity
+
+- A lot of theories of authenticity, from Kant to Sartre and beyond, have thought that believing what you are doing is good is at least necessary for authentic action.
+
+> - And so our connection between value (whatever is measured by $V$ in decision theory) and belief about the good, will connect to an important strand within theories about transformative experience - namely whether authentic action is even possible in some cases.
+
+## My View
+
+I don't like the idea that values should follow beliefs about the good for a somewhat independent reason.
+
+> - What should happen when someone gets misleading evidence about value?
+> - I think they should change their beliefs about value, but not their moral values.
+> - But that's mostly a story for another day.
+
+## For More Information
+
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("NE-Cover.png")
+```
+
+## Guise of the Good
+
+More broadly, what matters here are debates about what ethicists call **The Guise of the Good Thesis**.
+
+- To (rationally) desire X one must (rationally) present X as being good.
+
+Lots of ethicists do think this, and think it because it is thought to be necessary for rational action to be rational.
+
+####### But lots do not. And I am on their team. {.fragment}
+
+## Assigning Value
+
+When we talk about what is necessary to (rationally) assign a (subjective) value  to some kind of experience, are we asking about what is necessary to (rationally) form a belief or a desire?
+
+> - Why not both?
+
+## Lewis
+
+I used to think that some work by David Lewis could be used to back up my view.
+
+> - Lewis argued that equating values with beliefs about the good led to a kind of incoherence.
+> - The plan for today is to defuse that argument.
+> - This is sad for my broad project, but relevant I think to the broader issue about the significance of the transformative.
+
+# Lewis's Argument
+
+## Descriptive and Evaluative
+
+- Assume we have a class of factual descriptive propositions.
+
+> - For any factual proposition $A$, let $A°$ be the proposition that $A$ is good. 
+
+## The Morally Simple World
+
+- And assume we know that we live in a morally simple world.
+
+> - Everything is Good or Bad.
+> - All Good things are equally good; all Bad things are equally bad.
+> - This is obviously absurd.
+> - But it could be locally true; we could face a token decision where that's approximately right over the range of realistic outcomes.
+> - So any theory, like the theory that value equals believed good, that is true should still be coherent in this world.
+
+## The Equation
+
+In the morally simple world, this equation is plausibly the right way to cash out the value equals believed goodness thesis.
+
+$$
+V(A) = \Pr(A°)
+$$
+
+## Generalising
+
+In general, the equation it seems should be something like this.
+
+$$
+V(A) = \sum_v v \cdot \Pr(G(A) = v)
+$$
+
+####### The equation is the case where the values for $v$ are 0 and 1, and $A°$ is $G(A) = 1$ {.fragment}
+
+## Worlds
+
+- A world $w$ specifies the truth value of any truth-apt claim that is relevant to a current decision. These are small worlds, like Evan and Ted were talking about yesterday.
+
+> - But these worlds tell us not just what happens, but how good it is that these things happen.
+> - Rough idea: worlds are pairs $\langle d, v \rangle$ where $d$ is a description and $v$ is a value. Then descriptive propositions are those that do not separate any pairs $\langle d, v_1 \rangle$ and $\langle d, v_2 \rangle$.
+
+## Possible Worlds
+
+- Worlds have to be epistemically possible, but not metaphysically possible. Indeed, most worlds in our models will be metaphysically impossible.
+
+> - Since worlds only specify relevant truths, we can assume there are **finitely** many worlds.
+
+## Assumptions in Lewis's Proof
+
+Restricted Invariance
+:    $V_A(w) = V(w)$
+
+> - What this means is that learning that a proposition is true doesn't change the value of a world.
+
+> - Intuitively, that's because worlds are (relatively) complete; they contain all the information that is relevant to their value, so learning something can't change that.
+
+## Assumptions in Lewis's Proof
+
+Additivity
+:    $V(A) = \sum_w V(w)\Pr(w | A)$
+
+> - This is just the standard way we evaluate propositions in (evidential) decision theory.
+
+> - The value of some proposition being true is just the (weighted) average of the worlds that make it true.
+
+## Assumptions in Lewis's Proof
+
+Restricted Conditionalisation
+:    $\Pr_A(B) = \Pr(B | A)$
+
+> - If one learns a factual proposition $A$, the new probability of $B$ is the old conditional probability of $B$ given $A$.
+
+> - It has been objected that this isn't very plausible for learning moral propositions, but we're only ever going to use it for factual propositions.
+
+> - Though note that $B$ might be moral, even if $A$ is factual.
+
+## Independence Proof
+
+$$
+\begin{align}
+\Pr(A°) &= V(A) \\
+        &= \sum_w V(w) \Pr(w | A) && \text{(Additivity)} \\
+        &= \sum_w V_A(w) \Pr(w | A) && \text{(Restricted Invariance)} \\
+        &= \sum_w V_A(w) \Pr{}_A(w | A) && \text{(Restricted Conditionalisation)} \\
+        &= V_A(A) && \text{(Additivity), applied to updated values} \\
+        &= \Pr{}_A(A°) \\
+        &= \Pr(A° | A) && \text{(Restricted Conditionalisation)} 
+\end{align}
+$$
+
+## Absurdity
+
+- This is absurd, I say.
+- If $A$ is that a person we have a high moral opinion of takes a particular decision, then $A$ and $A°$ are evidence for each other, so they shouldn't be independent.
+
+> - Lewis himself gives a longer, and less plausible, argument that this is an absurd result.
+> - But it relies on **unrestricted** conditionalisation, and I think that's not something his opponents should be sad to reject.
+
+# A Puzzle
+
+## Basic Setup
+
+Hero faces a choice between options $A$ and $B$.
+
+- $B$ is simple - it has value 3.
+- $A$ has an upside with value 5.
+- It also has a downside, and the downside might have value -5, or value -1.
+- So the overall value of $A$ is 4 or 0.
+
+## Hero's limitations
+
+Hero can tell all these things.
+
+- In particular, Hero can recognise that there is a downside to $A$.
+- But Hero isn't very good at telling whether it is a big downside (-5) or a small downside (-1).
+- Their gut feeling is that it is small. But because they are more emotionally invested in the upside than the downside, this is quite unreliable.
+
+## Hero's Track Record
+
+On the face of it, their track record isn't promising.
+
+- In cases like this, when they have a gut feeling that it's a small downside, they have only been right half the time.
+- So plausibly, given they now have a gut feeling that it's a small downside, they should think it's 50/50 whether it's a small or big downside.
+
+## Hero's Track Record in Action
+
+But there's a twist.
+
+> - In cases like this one where they have actually taken the morally risky action (like $A$), the downside has been small 100% of the time.
+> - Although they aren't great at judging whether it's a small or large downside, it seems they only bring themselves to take the moral risk when it's actually small.
+
+####### So what should Hero do, assuming they are trying to be rational and authentic in the senses described earlier? {.fragment}
+
+## Argument One
+
+Hero should do the thing that right now has highest expected goodness.
+
+- The expected goodness of $B$ is 3.
+- The expected goodness of $A$ is 2, since it's 50/50 whether it's goodness is 4 or 0.
+- So Hero should do $B$.
+
+####### This reasoning is, in effect, like the reasoning the causal decision theorist makes in Newcomb's Problem. {.fragment}
+
+## Argument Two
+
+Hero should do the thing such that, if done, it has the highest expected goodness.
+
+- This doesn't change the expected goodness of $B$. It stays at 3.
+- But conditional on their performing $A$, the expected goodness of $A$ is 4.
+- That's because conditional on their performing $A$, the probability that $A$ has a small downside is 1.
+
+####### This reasoning is, in effect, like the reasoning the evidential decision theorist makes in Newcomb's Problem. {.fragment}
+
+####### The extreme probabilities here are obviously silly, but the same point can be made with more realistic models. {.fragment}
+
+## My Argument
+
+I have no clue which of these is right - perhaps in part because I don't believe in authenticity.
+
+> - But whichever of them is right, one or other step in Lewis's argument fails.
+> - And I'm pretty sure one of them is right, so Lewis's argument fails.
+
+# Back to Lewis
+
+## Causal Authenticity Theory
+
+If you liked the first argument (the one for option B), you should reject **Additivity**.
+
+- As Lewis himself says, this is the decision rule for evidential decision theory.
+- You shouldn't think that probabilities conditional on $A$ play that central a role.
+
+## Evidential Authenticity Theory
+
+If you liked the second argument (the one for option A), then you should reject the claim that the equation captures your philosophical view.
+
+- You think $V(A) = \Pr(A° | A)$, not $V(A) = \Pr(A°)$.
+
+## Connecting to the Literature
+
+It's not new to say that the right formalisation here is $V(A) = \Pr(A° | A)$, not $V(A) = \Pr(A°)$.
+
+- John Broome and Huw Price suggested that in response to Lewis very early on.
+- What's new in my argument is the thought that there is a choice-point, and one choice leads to Broome and Price's familiar objection, and another leads to a distinct objection, and either way Lewis's argument doesn't go through.
+
+## What We've Learned
+
+> - Every technical problem has a technical solution.
+> - It isn't easy to put moral values in as "extra facts" in an orthodox decision-theoretic model, but there are ways to do it.
+> - That there are *ways* to do it, rather than one obvious way, suggests some unexplored choice-points for theorising about unknown values.
+
+## Future Work
+
+- Moral and/or psychological objections to desire as belief.
+- Whether the 'causal' or 'evidential' approach is better.
+- How to update on moral (or more broadly on non-descriptive) evidence.
+- What kind of thing the $v$ in $\langle d, v\rangle$ should be.

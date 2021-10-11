@@ -1,0 +1,146 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[Scale=MatchLowercase]{Fira Sans}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={How Not to Manage the News},
+  pdfauthor={Anon},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1.4in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable} 
+\usepackage{threeparttablex} 
+\usepackage[normalem]{ulem} 
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{ulem}
+
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0.08ex}
+
+\aboverulesep=0ex
+\belowrulesep=0ex
+\renewcommand{\arraystretch}{1.2}
+\hypersetup{hidelinks}
+
+\renewcommand\refname{References}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{How Not to Manage the News}
+\author{Anon}
+\date{2020-12-21}
+
+\begin{document}
+\maketitle
+
+\setstretch{1.1}
+J. Dmitri Gallow (2020) proposed an adjustment to causal decision theory
+to handle cases like Death in Damascus. The adjustment is ingenious, but
+it creates problems that are bigger than those it aimed to solve.
+
+Gallow's theory has two main parts, the first dealing with choice
+between two options, and the second extending the theory to choice
+between more than two options.
+
+The part of the theory dealing with binary choice is easiest to
+understand in terms of regret.\footnote{I'm simplifying a bit here; see
+  section 2 of Gallow's paper for a more detailed presentation.} \(A\)
+is preferable to \(B\) iff the chooser regrets choosing \(B\) when they
+could have chosen \(A\) more than they regret choosing \(A\) when they
+could have chosen \(B\). More formally, let \(I\) be an
+\emph{improvement} function, in the following sense. (`Improvement' here
+is basically the converse of regret.) \(I_C(A, B)\) is the weighted
+average of \(D(AK) - D(BK)\), where \(K\) is a possible state of the
+world that's causally independent of the choice, \(D\) measures the
+desirability of choice-state pairs, and the weights are given by
+\(\Pr(K | C)\). That is, the weights are conditional probabilities of
+states given choices. Very very roughly, \(I_C(A, B)\) measures how much
+better off you would have been choosing \(A\) rather than \(B\),
+assuming you did actually choose \(C\). Gallow is primarily interested
+in the special case where \(A = C\); only that special case will play a
+role in what follows. The news value \(N\) of \(A\) over \(B\) is
+defined as \(I_A(A, B) - I_B(B, A)\). In the case where there are only
+two options, \(A\) is strictly preferred to \(B\) iff \(N(A, B) > 0\).
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Gallow2020}{}%
+Gallow, J. Dmitri. 2020. ``The Causal Decision Theorist's Gudie to
+Managing the News.'' \emph{The Journal of Philosophy} 117 (3): 117--49.
+
+\end{document}

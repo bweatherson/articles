@@ -1,0 +1,29 @@
+---
+title: "The Halo of Uncertainty"
+subtitle: "Desire, Belief and Moral Newcomb Problems"
+mainfont: Adobe Caslon Pro
+documentclass: book
+output: 
+  bookdown::pdf_book:
+    md_extensions: +example_lists+fancy_lists+startnum
+    citation_package: natbib
+    keep_tex: yes
+    latex_engine: xelatex
+    number_sections: yes
+    toc: true
+    includes:
+        in_header: dab-book-style.tex
+fontsize: 11pt
+indent: true
+bibliography: "../OldPapers/CollBib"
+biblio-style: philreview
+geometry: "left=1.95in,right=1.95in,top=1.78in,bottom=1.78in"
+author: Brian Weatherson
+date: \today
+---
+
+```{r child='01-Lewis.md'}
+```
+
+```{r child='02-Uncertaintism.md'}
+```

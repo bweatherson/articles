@@ -1,0 +1,117 @@
+\newcommand{\SortNoop}[1]{}
+\begin{thebibliography}{16}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Arl{\'o}~Costa et~al.(1995)Arl{\'o}~Costa, Collins, and
+  Levi}]{ArloCostaEtAl1995}
+Arl{\'o}~Costa, Horatio, Collins, Jessica, and Levi, Isaac. 1995.
+\newblock \enquote{Desire-as-belief implies opinionation or indifference.}
+\newblock \emph{Analysis} 55: 2-5,
+  \href{http://dx.doi.org/10.1093/analys/55.1.2}%
+{doi:10.1093/analys/55.1.2}.
+
+\bibitem[{Brown(2011)}]{Brown2011-BROCT}
+Brown, Campbell. 2011.
+\newblock \enquote{Consequentialize This.}
+\newblock \emph{Ethics} 121: 749-771, \href{http://dx.doi.org/10.1086/660696}%
+{doi:10.1086/660696}.
+
+\bibitem[{Collins(2015)}]{Collins2015}
+Collins, Jessica. 2015.
+\newblock \enquote{Decision Theory After Lewis.}
+\newblock In Barry Loewer and Jonathan Schaffer (eds.), \emph{A Companion to
+  David Lewis}, 446--458. John Wiley and Sons.
+
+\bibitem[{Harman(2015)}]{Harman2013}
+Harman, Elizabeth. 2015.
+\newblock \enquote{The Irrelevance of Moral Uncertainty.}
+\newblock \emph{Oxford Studies in Metaethics} 10: 53-79,
+  \href{http://dx.doi.org/10.1093/acprof:oso/9780198738695.003.0003}%
+{doi:10.1093/acprof:oso/9780198738695.003.0003}.
+
+\bibitem[{Joyce(1999)}]{Joyce1999}
+Joyce, James~M. 1999.
+\newblock \emph{The Foundations of Causal Decision Theory}.
+\newblock Cambridge: Cambridge University Press.
+
+\bibitem[{Lewis(1976)}]{Lewis1976b}
+Lewis, David. 1976.
+\newblock \enquote{Probabilities of Conditionals and Conditional
+  Probabilities.}
+\newblock \emph{Philosophical Review} 85: 297-315,
+  \href{http://dx.doi.org/10.2307/2184045}%
+{doi:10.2307/2184045}.
+\newblock \PPII 133-152.
+
+\bibitem[{Lewis(1986)}]{Lewis1986h}
+---. 1986.
+\newblock \enquote{Probabilities of Conditionals and Conditional Probabilities
+  {II}.}
+\newblock \emph{Philosophical Review} 95: 581-589,
+  \href{http://dx.doi.org/10.2307/2185051}%
+{doi:10.2307/2185051}.
+\newblock \PPL 57-65.
+
+\bibitem[{Lewis(1988)}]{Lewis1988}
+---. 1988.
+\newblock \enquote{Desire as Belief.}
+\newblock \emph{Mind} 97: 323-332,
+  \href{http://dx.doi.org/10.1093/mind/xcvii.387.323}%
+{doi:10.1093/mind/xcvii.387.323}.
+
+\bibitem[{Lewis(1996)}]{Lewis1996}
+---. 1996.
+\newblock \enquote{Desire as Belief {II}.}
+\newblock \emph{Mind} 105: 303-313,
+  \href{http://dx.doi.org/10.1093/mind/105.418.303}%
+{doi:10.1093/mind/105.418.303}.
+
+\bibitem[{Moore(1903)}]{Moore1903}
+Moore, G.~E. 1903.
+\newblock \emph{Principia Ethica}.
+\newblock Cambridge: Cambridge University Press.
+
+\bibitem[{Nissan{-}Rozen(2015)}]{Nissan-Rozen2015-NISATR}
+Nissan{-}Rozen, Ittay. 2015.
+\newblock \enquote{A Triviality Result for the \textquotedblleft Desire by
+  Necessity\textquotedblright Thesis.}
+\newblock \emph{Synthese} 192: 2535--2556.
+
+\bibitem[{Rousseli{\`e}re(2018)}]{Rousselire2018}
+Rousseli{\`e}re, Genevi{\`e}ve. 2018.
+\newblock \enquote{On political responsibility in post-revolutionary times:
+  Kant and Constant's debate on lying.}
+\newblock \emph{European Journal of Political Theory} 17: 214-232,
+  \href{http://dx.doi.org/10.1177/1474885115588100}%
+{doi:10.1177/1474885115588100}.
+
+\bibitem[{Russell and Hawthorne(2016)}]{RussellHawthorne2016}
+Russell, Jeffrey~Sanford and Hawthorne, John. 2016.
+\newblock \enquote{General Dynamic Triviality Theorems.}
+\newblock \emph{Philosophical Review} 125: 307-339,
+  \href{http://dx.doi.org/10.1215/00318108-3516936}%
+{doi:10.1215/00318108-3516936}.
+
+\bibitem[{Savage(1954)}]{Savage1954}
+Savage, Leonard. 1954.
+\newblock \emph{The Foundations of Statistics}.
+\newblock New York: John Wiley.
+
+\bibitem[{Weatherson(2019)}]{Weatherson2019}
+Weatherson, Brian. 2019.
+\newblock \emph{Normative Externalism}.
+\newblock Oxford: Oxford University Press.
+
+\bibitem[{Weirich(2012)}]{Weyrich2012}
+Weirich, Paul. 2012.
+\newblock \enquote{Causal Decision Theory.}
+\newblock In Edward~N. Zalta (ed.), \emph{The Stanford Encyclopedia of
+  Philosophy}. Metaphysics Research Lab, Stanford University, winter 2012
+  edition.
+
+\end{thebibliography}

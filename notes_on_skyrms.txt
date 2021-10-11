@@ -1,0 +1,10 @@
+pd_payoff <- c(4, 0, 5, 1)
+stag_payoff <- c(15, 40, 0, 50)
+
+One round of PD then one round of stag
+
+Delete the 16 duplicate strategies (note that duplication requires same row and same column)
+Delete the 8 non-equilibria
+Maybe, maybe, delete the 3 weakly dominated
+8, 12, 17 and 21 are all available equilibria under some update rules
+But no update rule I know of gets G is one round stag hunt, and DGGGG even permissible in strategic game.
