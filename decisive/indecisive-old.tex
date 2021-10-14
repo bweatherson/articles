@@ -1,0 +1,2079 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[Scale=MatchLowercase]{Merriweather}
+  \setmathfont[Scale=MatchUppercase]{STIX Two Math}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Indecisive Decision Theory},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1.38in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage[italic]{mathastext}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\title{Indecisive Decision Theory}
+\author{Brian Weatherson}
+\date{2021-10-13}
+
+\begin{document}
+\maketitle
+
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0.08ex}
+
+\aboverulesep=0ex
+\belowrulesep=0ex
+\renewcommand{\arraystretch}{1.2}
+\hypersetup{hidelinks}
+
+\renewcommand\refname{References}
+
+\captionsetup{labelformat=empty, font = small, font = bf, position = below}
+
+\setstretch{1.05}
+\hypertarget{decisiveness}{%
+\section{Decisiveness}\label{decisiveness}}
+
+Say a decision theory is \textbf{decisive} iff for any decision problem,
+it says either:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  There is a uniquely best choice, and rationality requires choosing
+  it.; or
+\item
+  There is a non-singleton set of choices each of which is tied for
+  being best, and each of which can be permissibly chosen.
+\end{enumerate}
+
+A decision theory is \textbf{decisive over binary choices} iff it
+satisfies this condition for all decision problems where there are just
+two choices. Most decision theories in the literature are decisive, and
+of those that are not, most of them are at least decisive over binary
+choices. I'm going to argue that the correct decision theory, whatever
+it is, is indecisive. It is not, I'll argue, even decisive over binary
+choices.
+
+My argument will focus on the following kind of problem. Player has a
+binary choice. There is a Demon who is very good, arbitrarily good, at
+predicting choices, and has already made a prediction about what Player
+will choose. Player's payoff is a function of what they choose, and what
+the Demon predicts. I'll use capital letters for Player's choices, and
+matching lower case letters for the Demon's predictions. Here is one
+very familiar example of the kind of case I have in mind.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-2}Demonic Prisoners' Dilemma}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{c} & \textbf{d}\\
+\midrule
+\textbf{C} & 4 & 0\\
+\textbf{D} & 5 & 1\\
+
+\end{tabular}
+\end{table}
+
+I've called this \textbf{Demonic Prisoners' Dilemma}. It's
+\emph{Demonic} because there's a demon. And it's Prisoners' Dilemma
+because Player's payouts are taken from the payout table for Prisoners'
+Dilemma. I'll come back in the next section to the general strategy I'm
+using for generating puzzles like this. If you're a philosopher reading
+this, you're probably used to thinking of Demonic Prisoners' Dilemma as
+Newcomb's Problem, but I want to use a productive naming convention, so
+I'm calling it Demonic Prisoners' Dilemma.
+
+Here is another decision problem of the same broad kind.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-3}Demonic Stag Hunt}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{g} & \textbf{h}\\
+\midrule
+\textbf{G} & 15 & 40\\
+\textbf{H} & 0 & 50\\
+
+\end{tabular}
+\end{table}
+
+It's called Demonic Stag Hunt because it's got a Demon, and Player's
+payouts are like in a Stag Hunt.
+
+The main decision problem I'm interested has the following structure:
+Player plays Demonic Prisoners' Dilemma, then Demonic Stag Hunt, and
+gets the sum of the payouts across the two games. More precisely, the
+following six things happen in this order.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Demon predicts what Player will do in Demonic Prisoners' Dilemma.
+\item
+  Player makes a choice in Demonic Prisoners' Dilemma.
+\item
+  Demon's prediction and Player's choices are revealed (to both Demon
+  and Player), and Player receives their first payout.
+\item
+  Demon predicts what Player will do in Demonic Stag Hunt.
+\item
+  Player makes a choice in Demonic Stag Hunt.
+\item
+  Demon's prediction and Player's choices are revealed (to both Demon
+  and Player), and Player receives their second payout.
+\end{enumerate}
+
+I'm going to argue for the following claims.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  If a decisive decision theory is correct, Player's choices at stages 2
+  and 5 should be exactly the choices they would make if they were
+  playing these games as one-shot games, independent of any other
+  interaction with the Demon.
+\item
+  Player's choice dispositions over the two games should be consistent
+  with the choice they would make if they were choosing a
+  \textbf{strategy} for playing the two games. I'm going to call this
+  constraint Backwards Dynamic Consistency.
+\item
+  If 1 is true, then all existing decisive decision theories either
+  violate Backwards Dynamic Consistency, or are independently
+  objectionable.
+\end{enumerate}
+
+So that's the plan, but before we start there are two pieces of
+important housekeeping.
+
+First, the definition of decisiveness referred to options being tied.
+For the definition to be interesting, it can't just be that options are
+tied if each is rationally permissible. Then a decisive theory would
+just be one that either says one option is mandatory or many options are
+permissible. To solve this problem, I'll borrow a technique from Ruth
+\protect\hyperlink{ref-Chang2002}{Chang}
+(\protect\hyperlink{ref-Chang2002}{2002}). Some options are
+\textbf{tied} iff either is permissible, but this permissibility is
+sensitive to sweetening. That is, if options \(X\) and \(Y\) are tied,
+then for any positive \(\varepsilon\), the agent prefers
+\(X + \varepsilon\) to \(Y\). If either choice is permissible even if
+\(X\) is `sweetened,' i.e.., replaced in the list of choices by
+\(X + \varepsilon\), we'll say they aren't tied. My thesis then is that
+the correct decision theory says that sometimes there are multiple
+permissible options, and each of them would still be permissible if one
+of them was sweetened. Indeed, the argument will be that the very first
+decision problem I've stated is like that.
+
+Second, there is an important term in the definition of decisiveness
+that I haven't clarified: \textbf{decision problem}. Informally, the
+argument assumes that in setting out Demonic Prisoners' Dilemma (aka
+Newcomb's Problem) and Demonic Stag Hunt I've described two decision
+problems. More formally, I'm assuming it suffices to specify a decision
+problem to describe the following four values.
+
+\begin{itemize}
+\tightlist
+\item
+  What choices the Player has;
+\item
+  What possible states of the world there are (where it is understood
+  that the choices of Player make no causal impact on which state is
+  actual)\footnote{My personal preference is to understand states
+    historically. For any proposition relevant to the decision, a state
+    determines its truth value if it is about the past, or its chance at
+    the start of deliberation if it is about the future. And then causal
+    independence comes in from a separate presupposition that there is
+    no backwards causation. But I definitely won't assume this picture
+    of states here.};
+\item
+  What the probability is of being in any state conditional on making
+  each choice; and
+\item
+  What return Player gets for each choice-state pair.
+\end{itemize}
+
+Most recent papers on decision theory do not precisely specify what they
+count as a decision problem, but they seem to implicitly share this
+assumption, since they will often describe a vignette that settles
+nothing beyond these four things as a decision problem. And that's what
+I did as well! And you should understand this as being part of the
+definition of decisiveness. And this implies that there are two ways to
+reject decisiveness.
+
+First, say that these four conditions underspecify a real decision
+problem. In any real situation, decision theory has a decisive verdict,
+but it rests on information above and beyond the setting of these four
+values. Some versions of Causal Decision Theory go this route, though as
+we'll see not all do. So on this model, for any person playing Demonic
+Stag Hunt there is a decision theoretically correct thing for them to do
+(or the options are tied), but it's potentially a different thing for
+different people
+
+Second, say that no matter how much one adds to the specification, there
+will be cases where the correct decision theory is indecisive. This is
+the view I ultimately want to defend, and this paper is a part of the
+defence. But it's a proper part. In particular, it says nothing against
+the theories that say that once a problem like Demonic Stag Hunt is
+fully specified, there is a single correct option. That's an argument
+for another day. Today, we have enough to be getting on with.
+
+\hypertarget{demonic-games}{%
+\section{Demonic Games}\label{demonic-games}}
+
+Here is a general recipe for generating a philosophically interesting
+decision problem. Take an interesting game, and replace one of the
+players with a demon. A demon, in the relevant context, can be defined
+in one of two more or less equivalent ways. One way is to say that the
+demon's payouts are 1 if in some sense they make the `same' play as the
+other player, and 0 otherwise. Another is to say that each of their
+moves are predictions of what the other player will do, and conditional
+on any choice that player makes, the conditional probability of the
+demon making a correct prediction is arbitrarily high.
+
+Let's illustrate this with a familiar game, Prisoners' Dilemma. I'm
+going to use slightly different payouts from those that
+\protect\hyperlink{ref-Axelrod1984}{Axelrod}
+(\protect\hyperlink{ref-Axelrod1984}{1984}) uses in his classic
+discussion, but not so different as to make the example unfamiliar.
+First, here is the game version.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-4}Prisoners' Dilemma}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{c} & \textbf{d}\\
+\midrule
+\textbf{C} & 4, 4 & 0, 5\\
+\textbf{D} & 5, 0 & 1,1\\
+
+\end{tabular}
+\end{table}
+
+Now here's what happen if we demonize the payouts for column.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-5}Prisoners' Dilemma with a Demon}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{c} & \textbf{d}\\
+\midrule
+\textbf{C} & 4, 1 & 0, 0\\
+\textbf{D} & 5, 0 & 1,1\\
+
+\end{tabular}
+\end{table}
+
+And here is what happens if we remove the demon altogether.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-6}Demonic Prisoners' Dilemma}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{c} & \textbf{d}\\
+\midrule
+\textbf{C} & 4 & 0\\
+\textbf{D} & 5 & 1\\
+
+\end{tabular}
+\end{table}
+
+And that's both Newcomb's Problem, and what I was calling Demonic
+Prisoners' Dilemma.
+
+It isn't only Newcomb's Problem that can be generated in this way.
+Demonic Matching Pennies\footnote{You can see examples of all these
+  games, and all the game theoretic machinery I use throughout this
+  paper, in any standard game theory textbook. My favorite such textbook
+  is \protect\hyperlink{ref-Bonanno2018}{Bonanno}
+  (\protect\hyperlink{ref-Bonanno2018}{2018}), which has the two
+  advantages of being philosophically sophisticated and open access. I'm
+  not going to include citations for every bit of textbook game theory I
+  use; that seems about as appropriate as citing an undergrad logic
+  textbook every time I use logic. But if you want more details on
+  anything unfamiliar in this paper, that's where to look.} is Death in
+Damascus (\protect\hyperlink{ref-GibbardHarper1978}{Gibbard and Harper
+1978}). Demonic Battle of the Sexes is Asymmetric Death in Damascus
+(\protect\hyperlink{ref-Richter1984}{Richter 1984}). Demonic Chicken is
+Egan's Psychopath Button example
+(\protect\hyperlink{ref-Egan2007-EGASCT}{Egan 2007}). A lot of the most
+notable examples in modern decision theory are Demonic versions of
+famous games.
+
+When I'm introducing games in classes, I usually walk through five
+instances of two player, two options each, games. Four of them have
+already been mentioned in this section: Prisoners' Dilemma, Matching
+Pennies, Battle of the Sexes, and Chicken. But the fifth is probably the
+most interesting of the lot: Stag Hunt. Brian Sykrms has written
+extensively on why Stag Hunt is philosophically important
+(\protect\hyperlink{ref-Skyrms2001}{Skyrms 2001},
+\protect\hyperlink{ref-Skyrms2004}{2004}). I'll really just focus on one
+reason.
+
+Here is an abstract form of a Stag Hunt game, where the options are G/g
+for Gather or H/h for Hunt. Actually, this is a table for a generic
+symmetric game; what makes it a Stag Hunt are the four constraints
+listed below.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-7}Generic Stag Hunt}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{g} & \textbf{h}\\
+\midrule
+\textbf{G} & $x, x$ & $y, z$\\
+\textbf{H} & $z, y$ & $w, w$\\
+
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  \(x > z\)
+\item
+  \(w > y\)
+\item
+  \(w > x\)
+\item
+  \(x + y > z + w\)
+\end{itemize}
+
+The first two constraints imply that \(\langle G, g \rangle\) and
+\(\langle H, h \rangle\) are both equilibria. This isn't like Prisoners'
+Dilemma, that only has one equilibrium. But it is like Prisoners'
+Dilemma in that there is a cooperative solution, in this case
+\(\langle H, h \rangle\), but it isn't always easy to get to it. It
+isn't easy because there are at least two kinds of reasons to play
+\(G\).
+
+First, one might play \(G\) because one wants to minimise regret. Each
+play is a guess that the other player will do the same thing. If one
+plays \(G\) and guesses wrong, one loses \(w - y\) compared to what one
+could have received. If one plays \(H\) and guesses wrong, one loses
+\(x - z\). And the last constraint entails that \(x - z > w - y\). So
+playing \(G\) minimises possible regret.
+
+Second, one might want to maximise expected utility, given uncertainty
+about what the other player will do. Since one has no reason to think
+the other player will prefer \(g\) to \(h\) or vice versa - both are
+equilibria - maybe one should give each of them equal probability. And
+then it will turn out that \(G\) is the option with highest expected
+utility. Intuitively, \(H\) is a risky option and \(G\) is a safe
+option, and when in doubt, perhaps one should go for the safe option.
+
+To be clear, I am not endorsing either of these arguments. I think both
+\(G\) and \(H\) are permissible moves in any version of Demonic Stag
+Hunt. Since all instances of Demonic Stag Hunt stay being instances of
+Demonic Stag Hunt under mild enough sweetening, just saying this about
+Demonic Stag Hunt is enough to make a theory indecisive. So Demonic Stag
+Hunt plays a few different roles in this story.
+
+The arguments are distinct, even though in the two option game they are
+basically both consequences of \(x + y > z + w\). In Stag Hunt type
+games with 3 or more options, the regret based approaches and the
+indifference over equilibria based approaches can lead to different
+choices. And there are ways of mixing and matching these two principles
+to get any number of other alternatives. In general, there are a lot of
+ways to motivate \(G\), and these are not just conceptually distinct but
+lead to distinct recommendations in more complex games. But the
+arguments for choosing \(H\) all basically come down to \emph{Better
+outcomes are better. Rocket emoji!}. So in this paper I'll spend a lot
+more time on decisive theories that recommend \(G\) than on decisive
+theories that recommend \(H\). This isn't because these theories are
+necessarily better; just that they are more numerous.
+
+\hypertarget{two-round-demonic-games}{%
+\section{Two Round Demonic Games}\label{two-round-demonic-games}}
+
+In a two round Demonic Game, Player plays one Demonic Game, the outcome
+of that game is revealed to both Player and the Demon, then Player plays
+another Demonic Game. Player's ultimate payout is the sum of their
+payouts in the two individual games.
+
+In all Demonic Games, we assume that the Demon is very reliable at
+predicting Player's choices, perhaps arbitrarily reliable. In a two
+round Demonic Game, we assume this, and we also assume that the Demon's
+errors, as few as they are, are randomly distributed. By that I mean
+that the Demon's probabilities of making a correct prediction in each of
+the two games are independent of each other. What could count as good
+evidence that the Demon's error probabilities are independent in this
+way is a tricky question, but presumably some evidence could do it. And
+we assume that Player has exactly that evidence.
+
+This independence of the error probabilities has consequences for what
+recommendations decisive theories make in two round games. In general,
+one might not want to do the same thing in a two round game as one does
+in the two games taken individually. But for that to be the case, one of
+two things must happen.
+
+One possibility is that there is a strategic benefit from some otherwise
+sub-optimal play in the first round. If a decision problem is defined
+the way we've defined it here, the only way that there could be such a
+strategic benefit is if the conditional probability of states (i.e.,
+predictions) given choices could change depending on what one did in the
+first round. (The other three aspects of the second game clearly
+couldn't change, so if there is some change it must be here.) But the
+independence stipulation rules that out.
+
+Another possibility is that something one learned from the first round
+could provide a reason to do something different in the second round.
+Call this an informational reason to change one's play in round two. But
+just like the strategic reason for changing one's play in round one,
+this could only happen if the conditional probability of states (i.e.,
+predictions) given choices could change depending on what one did in the
+first round. And independence once again rules that out.
+
+Note that this argument does not carry across to indecisive theories.
+One way to be indecisive is to think that there is some further
+information, behind the four things we've taken to describe a game here,
+that affect what choices one should make. And it is possible that there
+could be causal or evidential links between what one does in round one,
+and that `further information' in round two. So given indecisiveness, it
+is possible there are strategic reasons for doing something in round 1
+that one would not do in a one round game, or informational reasons for
+doing something in round 2 that one would not do in a one round game.
+And in fact I think that is the case - but it is something that only
+indecisive theories can accept.
+
+We are going to be interested primarily in the following two round game:
+Demonic Prisoners' Dilemma plus Demonic Stag Hunt. And to make things
+concrete, I'll use the following payouts for the two games. First,
+Demonic Prisoners' Dilemma.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-8}Demonic Prisoners' Dilemma}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{c} & \textbf{d}\\
+\midrule
+\textbf{C} & 4 & 0\\
+\textbf{D} & 5 & 1\\
+
+\end{tabular}
+\end{table}
+
+Second, Demonic Stag Hunt.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-9}Demonic Stag Hunt}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{g} & \textbf{h}\\
+\midrule
+\textbf{G} & 15 & 40\\
+\textbf{H} & 0 & 50\\
+
+\end{tabular}
+\end{table}
+
+As you can see, I've made the stakes much higher in Demonic Stag Hunt
+than in Demonic Prisoners' Dilemma. Whether Player can cause the Demon
+to play \(h\) in round 2 is much more significant than whether they play
+\(C\) or \(D\) in round 1.
+
+There are 16 possible outcomes to this game, depending on what Player
+and Demon do. They are given in this table.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-10}Possible Outcomes of DPD+DSH}
+\centering
+\begin{tabular}[t]{>{}r|cccc}
+
+\textbf{} & \textbf{cg} & \textbf{ch} & \textbf{dg} & \textbf{dh}\\
+\midrule
+\textbf{CG} & 19 & 44 & 15 & 40\\
+\textbf{CH} & 4 & 54 & 0 & 50\\
+\textbf{DG} & 20 & 45 & 16 & 41\\
+\textbf{DH} & 5 & 55 & 1 & 51\\
+
+\end{tabular}
+\end{table}
+
+But note that Player doesn't choose one of these four rows. In fact, it
+is wrong twice over to think that Player just makes one of these four
+choices. Player makes choices at two times, not at one. And if we want
+to model Player's choice at one time, we should model Player as choosing
+a strategy, not just a pair of moves.
+
+\hypertarget{strategies}{%
+\section{Strategies}\label{strategies}}
+
+So what are strategies? In general, a strategy is a plan for playing a
+game that takes place over time. In the standard textbook treatment of
+strategies, the specify a choice for every node that might be reached in
+a game. And this turns out require a lot of information, since nodes in
+games are individuated by their history.\footnote{To be more precise, a
+  strategy specifies what to do at each information set, and information
+  sets are individuated by the learning history of the player making the
+  choice. The game we are playing is sort of a full information game, so
+  this complication won't bother us.} This means there are many more
+nodes than you might expect.
+
+So think about a strategy for playing chess. There are two intuitive but
+mistaken ways to think about what a strategy, in this textbook sense,
+says a chess strategy does.
+
+First, you might think that for any state of the board, it should
+specify a move. But in fact strategies must do more than that; they have
+to specify a move for each state of the board and each way of getting to
+that state. So a strategy should have separate entries for what to do
+after 1. e4, Nc6; 2. Nf3, e5 and what to do after 1. e4, e5; 2. Nf3,
+Nc6.
+
+Second, you might think that a strategy for white specifies what to do
+from the initial position, then a strategy for how to respond to each
+move black might make, then a further strategy for how to respond to
+each subsequent move black might make, and so on until the game ends.
+And that kind of strategy would be unimaginably large, and a tiny
+fraction of what a real strategy does. A real strategy specifies what to
+do at every possible state of the game, including what to do in states
+that are excluded by earlier moves in this strategy. So if the strategy
+says to play e4 at move 1, it doesn't just say what to do at move 2
+after \ldots e5, it says what to do at move 2 if the game starts 1. d4,
+d5.
+
+In two stage Demonic Games, this means that a strategy has to specify
+five binary choices, so there are \(2^5 = 32\) possible strategies. In
+the game we're primarily interested in, a strategy has to specify
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What to do in Demonic Prisoners' Dilemma;
+\item
+  What to do in Demonic Stag Hunt if the first game ends
+  \(\langle C, c \rangle\).
+\item
+  What to do in Demonic Stag Hunt if the first game ends
+  \(\langle C, d \rangle\).
+\item
+  What to do in Demonic Stag Hunt if the first game ends
+  \(\langle D, c \rangle\).
+\item
+  What to do in Demonic Stag Hunt if the first game ends
+  \(\langle D, d \rangle\).
+\end{enumerate}
+
+I'm generally going to write strategies as a string of five letters,
+which answer each of these five questions in order. So \(CGHHG\) is the
+strategy which plays \(C\) in the first game, then plays \(G\) in the
+second game if the Demon's prediction was correct in the first game, and
+\(H\) if it is was incorrect.
+
+Why do we want to specify strategies so finely? It turns out there are
+two reasons, one relatively obvious, one less obvious.
+
+The obvious reason is that in round 2, Player has information about what
+the Demon has done in round 1, and we should at least in principle allow
+them to use it. Decisive theories say that there is nothing you can
+learn in round 1 that matters to round 2, but whether Decisive theories
+are correct is part of what's at issue here. So let's leave that as an
+open question.
+
+The less obvious reason concerns off-path choices, i.e., what the
+strategy says to do if you didn't do the thing you planned to do at move
+1. It turns out that different predictions the Demon makes about one's
+strategy can affect one's payout, even if those predictions only differ
+in off-path choices. So imagine one's strategy is \(DGGGG\), i.e.,
+Defect in Round 1, then Gather in Round 2 whatever happens in Round 1.
+And compare the payout one gets if the Demon predicts one is playing
+\(CGGGG\), to if the Demon predicts one is playing \(CGGHG\). In the
+first case, one gets 20 (5 in round 1, 15 in round 2). In the second
+case, the Demon predicts that one will play \(H\) in round 2, so trying
+to make a correct prediction, they will play \(h\)h. And now the payout
+will be 45.
+
+If you think the Demon has probability 1 of making a correct prediction,
+and to make the math easier that is what I'm going to assume from now
+on, then it turns out that the strategies fall into 16 pairs. Within
+each pair, the two strategies have the same payouts no matter what the
+Demon does, and each other strategy has the same payout no matter which
+of the pair the Demon predicts one will play. So there isn't any
+practical difference between \(Cx_1x_2x_3G\) and \(Cx_1x_2x_3H\), or
+between \(DGx_1x_2x_3\) and \(DHx_1x_2x_3\), for any \(x_1, x_2, x_3\).
+For some purposes I'll treat these pairs as the `same' strategy, but
+I'll make it clear when I'm doing this if anything at all turns on it.
+
+To foreshadow a little bit, I'm going to be particularly interested in
+this strategy: \(CHGGG\). This strategy Cooperates in round 1, then
+Hunts in round 2 if Demon correctly predicted Cooperation, and Gathers
+otherwise. This is a fairly interesting strategy for a few reasons. It
+has a very good return - 54 when the highest is 55. And even though
+\(C\) is strongly dominated by \(D\), this strategy is not dominated by
+anything. Indeed, \(\langle CHGGG, chggg \rangle\) is Nash equilibrium
+of the strategic form of the game. (And it's a subgame perfect
+equilibrium and a perfect Bayesian equilibrium, and satisfies any number
+of other solution concepts.) I'm not a Decisive decision theorist, so I
+don't want to say it's the one and only correct play in Demonic
+Prisoners' Dilemma followed by Demonic Stag Hunt. But I do think it's
+what I personally would play if forced to choose. And I think it's a
+rationally permissible choice. But no plausible decisive theory can find
+it as the correct choice.
+
+Now I'm not going to argue from the intuitive plausibility of \(CHGGG\)
+to Indecisiveness. Instead, I'm going to use \(CHGGG\), and occasionally
+\(DGGGH\), to argue that a huge range of Decisive theories are
+dynamically inconsistent. And they are dynamically inconsistent in a
+systematic enough way that we should be very sceptical that there is any
+dynamically consistent Decisive theory. But this style of argument
+raises an obvious question: what is dynamic consistency, and why should
+we care about it?
+
+\hypertarget{dynamic-consistency}{%
+\section{Dynamic Consistency}\label{dynamic-consistency}}
+
+Think about the following two ways to get to the end of a two round
+Demonic Game. The natural way is that Player makes one choice, sees the
+outcome of that choice, then makes another choice. I'll say that when
+Player does this, they choose a *sequence* of moves. The less natural
+way is that Player is asked in advance what strategy they want to play,
+and then that strategy is carried out over the course of the game. I'll
+call this choosing a *strategy*. The two seem closely related, close
+enough that each of the following principles seem plausible.
+
+\begin{description}
+\tightlist
+\item[\textbf{Backwards Dynamic Consistency}]
+Any sequence that Player can rationally choose is part of some strategy
+that they can rationally choose.
+\item[\textbf{Forwards Dynamic Consistency}]
+Any strategy that Player can rationally choose is such that choosing a
+sequence by doing what that strategy requires is rational.
+\end{description}
+
+The dynamic consistency argument I'm going to use in this paper relies
+on Backwards Dynamic Consistency. The argument is neutral on whether
+Forwards Dynamic Consistency is a true principle. Personally, I think
+it's false, and I'll say why in a bit. But the argument does not assume
+that it's false. (Actually, the argument would probably be strengthened
+if it were true - saying it is false is somewhat of a statement against
+interests here.)
+
+I think Backwards Dynamic Consistency is more intuitive than any
+argument I could give for it, and certainly more intuitive than the
+intuitions about cases that usually ground arguments in decision theory.
+But there is one nice argument for Backwards Dynamic Consistency that
+has some persuasive force, and helps explain what it says, and even
+helps explain why it is a bit more plausible than Forwards Dynamic
+Consistency. So that argument is worth working through.
+
+One way to get Player to choose a strategy is to show them all the
+possible strategies and ask them to pick one. But the forms you need to
+use for that kind of questionnaire grow really quickly. A better way is
+to ask Player several questions, the answers to which will collectively
+determine a strategy. So we could tell Player Demonic Prisoners' Dilemma
+plus Demonic Stag Hunt will be played tomorrow, but unfortunately they
+won't be able to make choices in real time. So they now have to make
+some choices that determine their strategy. In particular, they have to
+fill out this form.
+
+\begin{longtable}[]{@{}lcc@{}}
+\caption{Form for choosing a strategy in DPD+DSH}\tabularnewline
+\toprule
+What will you do in & & \\
+\midrule
+\endfirsthead
+\toprule
+What will you do in & & \\
+\midrule
+\endhead
+Round 1 & C \(\square\) & D \(\square\) \\
+Round 2 if R1 ends \(Cc\) & G \(\square\) & H \(\square\) \\
+Round 2 if R1 ends \(Cd\) & G \(\square\) & H \(\square\) \\
+Round 2 if R1 ends \(Dc\) & G \(\square\) & H \(\square\) \\
+Round 2 if R1 ends \(DD\) & G \(\square\) & H \(\square\) \\
+\bottomrule
+\end{longtable}
+
+Here's what it would take for Backwards Dynamic Consistency to fail. All
+the following would have to be true together.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Player rationally makes move \(M_1\) in round 1.
+\item
+  Player rationally makes move \(M_2\) in round 2 after seeing how round
+  1 ends.
+\item
+  There is no way to rationally fill in that form that includes saying
+  \(M_1\) to the first question, and \(M_2\) to the conditional question
+  that corresponds to how the game actually went in round 1.
+\end{enumerate}
+
+But it is implausible this is true. In some good sense, the questions
+that we ask Player when we are finding what strategy they want just are
+the questions we ask them when the game is being played. To reject
+Backwards Dynamic Consistency is to say that there could be a situation
+\emph{S} such that these two questions have different answers.
+
+\begin{description}
+\tightlist
+\item[\textbf{Question S1}]
+What instruction would you like carried out if \emph{S} happens?
+\item[\textbf{Question S2}]
+You're in \emph{S}. What instruction would you like carried out?
+\end{description}
+
+But this way of putting it, that these two questions are basically the
+same question, makes it sound like both Forwards and Backwards Dynamic
+Consistency should be true. Now as I noted, I'm not assuming Forwards
+Dynamic Consistency is false. But I'm also not assuming that it is true.
+How is this viable given how similar the tasks of choosing a strategy
+and choosing a sequence look like?
+
+Well, imagine that Player thinks that there is some situation that has
+probability 0 of arising. To be concrete, let's say it is that the first
+game ends \(Cd\). And they also believe that were the first game to end
+\(Cd\), then \(G\) would have higher expected utility than \(H\). How
+should Player answer the third question, what to do if the first game
+ends \(Cd\) in the little survey above?
+
+There are two arguments here that both seem plausible, but which point
+in opposite directions. The first says that since each answer to the
+survey is alike in expected utility, Player can choose whimsically. They
+are alike in expected utility because what one does at probability 0
+events cannot make a difference to the expected utility of one's plan.
+The second argument says that choosing \(G\) here could be better - if
+the first game does actually end \(Cd\) - and couldn't be worse, so
+there is a weak dominance argument for choosing \(G\) that Player should
+follow. Personally, I think the expected utility consideration is
+stronger, but nothing in this paper turns on this particular question.
+
+So there is a somewhat plausible argument that says there could be a
+situation where Question S1 is answered whimsically, although Question
+S2 has a uniquely correct answer. So maybe there is a permissible answer
+to Question S1 which is not a permissible answer to Question S2. But the
+theorist who denies Backwards Dynamic Consistency says that there is a
+permissible answer to Question S2 which is not even a permissible answer
+to Question S1. And there is no good reason to think that could be
+possible. So Backwards Dynamic Consistency is correct. Whatever sequence
+of moves you could rationally do, you could rationally give as part of
+your answers to the survey, and then rationally complete the rest of the
+survey.
+
+But it turns out that a quite surprising variety of attempts to provide
+a decisive decision theory end up violating Backwards Dynamic
+Consistency. I'm going to go through a lot of examples in what follows.
+I'm not going to prove there is no decisive theory that is plausible and
+which doesn't violate Backwards Dynamic Consistency. But I hope you'll
+agree by the end that we have strong inductive evidence that no such
+theory exists.
+
+At some level of generality, the argument I'm giving here is a variant
+on the argument against ``Single Valued Solution Concepts'' that David
+Pearce made in an old unpublished manuscript
+(\protect\hyperlink{ref-Pearce1983}{Pearce 1983}). The manuscript is
+cited in the paper where Pearce introduced the concept of a
+rationalizable strategy (\protect\hyperlink{ref-Pearce1984}{Pearce
+1984}). The argument I'm giving grew out of an attempt to simply
+translate the argument of Pearce's manuscript into the language of
+decision theory. And it is part of a larger project of applying the
+lesson's of Pearce's famous paper to decision theory. But that larger
+project will have to be carried out elsewhere; this paper is long enough
+as it is. Instead, let's turn to seeing the conflict between various
+decision theories and Backwards Dynamic Consistency.
+
+\hypertarget{evidential-decision-theory-is-dynamically-inconsistent}{%
+\section{Evidential Decision Theory is Dynamically
+Inconsistent}\label{evidential-decision-theory-is-dynamically-inconsistent}}
+
+As an illustration of these dynamic consistency principles, it's worth
+walking through an argument that traditional Evidential Decision Theory
+(Evidential Decision Theory) violates Backwards Dynamic Consistency.
+This is not a new point. It is made in
+\protect\hyperlink{ref-GibbardHarper1978}{Gibbard and Harper}
+(\protect\hyperlink{ref-GibbardHarper1978}{1978}) using a variant of
+Newcomb's Problem where the player has a chance to change their choice
+(for a small fee) after the demon's predictions are announced. So I'm
+not offering a new argument against Evidential Decision Theory. Instead,
+I'm presenting this case because I find it helpful to see what the
+Dynamic Consistency Principles say by first starting with a relatively
+simple case.
+
+Player A has the following interaction with a demon. Tomorrow, A will be
+asked to choose the Left or Right box. The demon wants to predict A's
+choice. The demon will put \$1000 into whatever box they predict A will
+choose. And, A will be shown the contents of the boxes before they make
+their choice. This seems like an easy game - every decision theorist I
+know says that A should take the money. (And the demon will get their
+wish of correctly predicting A's choice.)
+
+Player B has an interaction like Player A's, but with the following
+difference. The demon has the option of \emph{passing}, and not
+predicting what choice B will make. The demon would prefer correct
+prediction to passing, and passing to incorrect prediction. If the demon
+passes, B will get \$2000, not just \$1000. But still, B will be shown
+how much is in each box. So almost all theorists will say that B should
+take the money, and since the demon knows this, the demon shouldn't
+pass. (I'll come back to theories that say B should pass up the money in
+the penultimate section of the paper.)
+
+Player C is like Player B, except they will be at work all day tomorrow,
+and unable to make a choice. So they are asked to record in advance
+their strategy,. Now things get interesting. C has four options to
+choose between - since they have to announce left or right for each
+possible revelation of where the money is. And the demon has three
+choices, left, right or pass. So here's the game table, with Player C as
+Row and Demon as Column. (I'll write X-Y to mean for C to mean Do X if
+the money is in the left box, and Do Y if the money is in the right box.
+And I'll assume each \$1000 is worth 1 util to C.)
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-11}Threat Game}
+\centering
+\begin{tabular}[t]{>{}r|ccc}
+
+\textbf{} & \textbf{Left} & \textbf{Right} & \textbf{Pass}\\
+\midrule
+\textbf{Left-Left} & 1, 1 & 0, 0 & 2, 0.5\\
+\textbf{Left-Right} & 1, 1 & 1, 1 & 2, 0.5\\
+\textbf{Right-Left} & 0, 0 & 0, 0 & 2, 0.5\\
+\textbf{Right-Right} & 0, 0 & 1, 1 & 2, 0.5\\
+
+\end{tabular}
+\end{table}
+
+From what we've said about the demon, we can deduce the following
+conditional probabilities for predictions given strategies. (The second
+line is because the value for \(x\) is undetermined, but it's not going
+to matter given what comes next.)
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-12}Probabilities in Threat Game}
+\centering
+\begin{tabular}[t]{>{}r|ccc}
+
+\textbf{} & \textbf{Left} & \textbf{Right} & \textbf{Pass}\\
+\midrule
+\textbf{Left-Left} & 1 & 0 & 0\\
+\textbf{Left-Right} & $x$ & $1-x$ & 0\\
+\textbf{Right-Left} & 0 & 0 & 1\\
+\textbf{Right-Right} & 0 & 1 & 0\\
+
+\end{tabular}
+\end{table}
+
+So the expected value of Right-Left is 2 and the expected value of the
+other three options is 1. So Evidential Decision Theory says that Player
+C should choose Right-Left.
+
+And that's to say that the only rational strategy for Player B is
+Right-Left. But that's clearly not a rational sequence of moves, by the
+lights of Evidential Decision Theory, for Player B. The sequence that is
+rational at each time it is made is Left-Right.
+
+So Evidential Decision Theory violates both Forwards and Backwards
+Dynamic Consistency. It violates Backwards Dynamic Consistency because
+it says the only sequence that is rational is Left-Right, but it does
+not say this is one of the rational strategies. And it violates Forwards
+Dynamic Consistency because it says that Right-Left is among the
+rational strategies, but it is not among the rational sequences.
+
+And these violations seem like bad news for Evidential Decision Theory.
+If you ask the evidential decision theorist to compile a strategy by
+answering conditional questions, they will say they will turn the money
+down whatever the demon does. But if you ask them what to do once they
+see where the money is, they will take it. This looks like a bad
+combination of attitudes to have.
+
+Now as I said at the start of this section, this point was made about
+Evidential Decision Theory over 40 years ago, and it clearly hasn't
+convinced everyone. So I don't expect this re-presentation will change
+many more minds. But I hope it's a helpful guide to what violations of
+Backwards (and Forwards) Dynamic Consistency look like, and why they
+look, at least to many of us, to be problems.
+
+\hypertarget{regret-based-strategies}{%
+\section{Regret Based Strategies}\label{regret-based-strategies}}
+
+In this section I'll argue that two recent attempts to land between
+Evidential and Causal Decision Theory are dynamically inconsistent.
+These are the theories developed by Ralph
+\protect\hyperlink{ref-Wedgwood2013}{Wedgwood}
+(\protect\hyperlink{ref-Wedgwood2013}{2013}) and Dmitri
+\protect\hyperlink{ref-Gallow2020}{Gallow}
+(\protect\hyperlink{ref-Gallow2020}{2020}). Both theories handle two
+option Demonic cases the same way, so let's start with what they have in
+common.
+
+For any options \(X, Y\), let \(V_Y(X)\) be the (evidentially) expected
+value of \(X\), on the assumption that the demon will act as if one has
+chosen \(Y\). So \(V_X(Y) - V_X(X)\) will be how much one subsequently
+regrets not choosing \(Y\), when one actually chose \(X\). In the two
+option case, but Wedgwood and Gallow say that one should choose \(X\)
+over \(Y\) so as to minimise expected regret. So one should choose \(X\)
+over \(Y\) if \(V_Y(X) - V_Y(Y) > V_X(Y) - V_X(X)\), and be indifferent
+between the two options if they are equal. But the theories differ about
+what to do when there are more than two options.
+
+Wedgwood says that one should evaluate each option \(X\) by comparing
+\(V_X(X)\) to the set of values \(\{V_X(Y): Y \in O\}\), where \(O\) is
+the set of options. There are a few different comparisons one could make
+here - how does \(V_X(X)\) compare to the maximum value of that set, or
+the minimum value, or the mean value, or the median value? It turns out
+it won't matter for our purposes what choice you make here. The general
+picture is that one wants to maximise
+\(V_X(X) - f(\{V_X(Y): Y \in O\})\), for one particular function \(f\).
+Given a choice of \(f\), Wedgwood calls \(f(\{V_X(Y): Y \in O\})\) the
+\textbf{benchmark} for \(X\), and the aim is to maximise the surplus
+value of choosing \(X\) over its own benchmark. For simplicity, we'll
+say the benchmark is the mean value, but actually it doesn't matter
+which choice we make for what follows.
+
+Given this setup, one should choose \(D\) in Demonic Prisoners' Dilemma,
+and \(G\) in Stag Hunt. But if you built the 32-by-32 strategy table for
+Demonic Prisoners' Dilemma plus Demonic Stag Hunt, the strategies with
+the highest surplus value over their own benchmark are \(DGGGH\) and
+\(DGGHH\). Just behind them are \(CHGGG\) and \(CHHGG\). And all the
+other strategies are, by the lights of Wedgwood's theories, much worse.
+So this theory violates Backwards Dynamic Consistency. If one is filling
+in the form, saying what one plans to do in various situations, one must
+say that one plans to play \(H\) in the situation one expects to find
+oneself in. But one must not play \(H\) when that situation arises.
+
+Gallow's theory takes off from the two option case in a separate
+direction. Say that the measure
+\((V_X(X) - V_X(Y)) - (V_Y(Y) - V_Y(X))\) is a measure of the prima
+facie preferability of \(X\) over \(Y\). As we saw above, this will be
+positive if \(X\) is strictly preferred to \(Y\) in the two option case;
+we won't be interested in the case where it is negative.
+
+Now a simple theory would be to say that in general, whether \(X\) is
+preferred to \(Y\) is determined by whether this value is positive or
+negative. But as Gallow notes, this will lead to intransitivities. It is
+easy to come up with three option cases where, by this measure, \(X\) is
+preferred to \(Y\), \(Y\) is preferred to \(Z\), and \(Z\) is preferred
+to \(X\). So Gallow offers a more sophisticated theory of all things
+considered preferability.
+
+Here is Gallow's recipe for constructing a rank ordering of options. I'm
+going to simplify a bit and ignore how he handles ties, which require
+careful attention, but what I say about how to handle non-ties will be
+enough to give you the spirit of the theory. If we are trying to
+construct a rank ordering of all options, we just need to construct a
+set of binary rankings \(X > Y\) that satisfies transitivity. Gallow
+gives us a procedure for finding all those pairs. Start by taking all
+the pairs of options \(\langle X, Y \rangle\) and rank them from highest
+to lowest by \((V_X(X) - V_X(Y)) - (V_Y(Y) - V_Y(X))\). Then work in
+steps down the list. At every step, find the pair
+\(\langle X, Y \rangle\) with the highest such value you haven't
+processed. Add \(X > Y\) to the master list of rankings. Then take the
+transitive closure of the list; if there are some options
+\(X_1, \dots X_n\) such that the list contains \(X_1 > X_2\) and
+\(\dots\) and \(X_{n-1} > X_n\), add \(X_1 > X_n\) to the list. And if
+\(X_n > X_1\) was on the list of prime facie preferences, delete it from
+that list. Now return to the (possibly) modified list of prima facie
+preferences, find the highest ranking preference that is neither added
+to the master list, nor deleted by this deletion procedure, add it to
+the master list, and continue. Eventually, one will have either
+\(X > Y\) or \(Y > X\) on the master list for all \(X, Y\), and by
+construction the master list will be transitive.
+
+I'm not going to work through here how this works for the 32-by-32
+strategy game. But it turns out that the best option is \(DGGGH\). And
+just behind is \(CHGGG\). But when you apply the strategy to the two
+games individually, you get the clear verdicts that one should choose
+\(D\) in Demonic Prisoners' Dilemma, and \(G\) in Stag Hunt. So the
+theory is dynamically inconsistent in just the same way that Wedgwood's
+theory is. When filling in the form, one must say that one plans to play
+\(H\) in the situation one expects to find oneself in at the second
+game. But one must not play \(H\) when that situation arises.
+
+\hypertarget{deliberational-strategies}{%
+\section{Deliberational Strategies}\label{deliberational-strategies}}
+
+So far I've argued, following
+\protect\hyperlink{ref-GibbardHarper1978}{Gibbard and Harper}
+(\protect\hyperlink{ref-GibbardHarper1978}{1978}), that evidential
+decision theory is dynamically inconsistent, and that two recent
+attempts to steer a middle path between evidential and causal decision
+theory are dynamically inconsistent. It's time to turn to causal
+decision theory.
+
+At first glance, causal decision theories look like they can't pose a
+problem to my thesis that the correct theory is indecisive. That's
+because causal decision theories often take something beyond the acts,
+the states, the payouts, and the conditional probabilities of the states
+given the acts, to be crucial. This is even assuming that, as causal
+decision theorists insist, that the problem requires a specification
+that the states are causally independent of the acts. A lot of causal
+decision theories will insist that we also need the unconditional
+probabilities of the states in order to make a decision. And those
+theories will be, in my technical sense, indecisive. But some broadly
+causal theories do not require this. I'll look at two classes of such
+theories, one in this section and one in the next section.
+
+Theories from the class I'm going to discuss in this section are not, to
+the best of my knowledge, actually defended anywhere in the literature.
+But the point of this paper is not to argue that other philosophers are
+mistaken, but to argue that there is no plausible decisive decision
+theory. And to my mind, the biggest challenge to that conclusion comes
+from theories in this class. So I'm going to spent more time on them
+than on other theories. In this respect I'm following
+\protect\hyperlink{ref-Gallow2020}{Gallow}
+(\protect\hyperlink{ref-Gallow2020}{2020}), who also spends a fair bit
+of time arguing against this version of causal decision theory. (And
+indeed I'll appropriate one of Gallow's arguments in what follows.)
+
+The theories I have in mind start with the important work of Brian
+\protect\hyperlink{ref-Skyrms1990}{Skyrms}
+(\protect\hyperlink{ref-Skyrms1990}{1990}) on the dynamics of
+deliberation. The resulting view is not going to be Skyrms's own view.
+Skyrms favors an indecisive view, and I'm not going to object to his
+positive view.\footnote{It is an interesting question whether Skyrms's
+  view is sufficiently indecisive, or whether it is too restrictive.
+  That's a question for another, longer, paper.} But I will be
+interested in how a decisive theorist might appropriate Skyrms's
+machinery.
+
+The part of that machinery we're going to focus on concerns updating
+one's credences during deliberation. There is a huge literature on
+updating credences during investigation. But that's not what we're
+interested in. Think about the process a good detective goes through. (A
+somewhat realistic one, not the idealizations of formal confirmation
+theory.) They investigate, and during the investigation gather a bunch
+of evidence. Then they reflect, and ask how the evidence fits together,
+and what conclusions it supports. Most work on credal updating has
+focussed on modeling the first step, the investigation. Skyrms is
+interested in modeling the second step, the deliberation. Now we're not
+doing detective stories here; we're trying to win money not solve a
+crime. But the same basic idea holds. Given what one knows about the
+case, one should reflect in a way that brings one's cognitive state into
+a kind of equilibrium.
+
+Here is how Skyrms thinks we reach that equilibrium. I'll illustrate
+using Demonic Stag Hunt. (The one round game that is; I'll come back to
+the two round game very soon.) Imagine Player starts out thinking that
+it's 50/50 whether they'll Gather or Hunt. Since Player believes that
+Demon will do whatever they do, Player also thinks it's 50/50 whether
+Demon will play gather or hunt. Given that, the expected value to Player
+of Gather is 27.5, and the expected value of Hunt is 25, and Player's
+expected return is 26.25.
+
+Now here's the crucial step. Since Gather has a return above
+expectations, and Hunt has a return below expectations, Player should
+adjust their credences about what they'll end up playing in the
+direction of the more successful strategy. They should ``seek the
+good.'' There are a lot of ways to do this; here's one that Skyrms
+particularly likes.
+
+For any strategy whose expected value is higher than Player's overall
+expected value, say that its \textbf{covetability} is the difference
+between those two expectations. For any other strategy, the covetability
+is 0. So in this situation, Gather has a covetability of 1.25, and Hunt
+has a covetability of 0. Now assume Player updates their credences using
+the following rule. In this rule, \(O\) is an arbitrary strategy,
+\(p_i\) is Player's probability at time \(t_i\) about what they'll play,
+\(c_i\) is the function from strategies to covetabilities at \(t_i\),
+the sum in the denominator ranges over all strategies, and \(r\) is a
+measure of caution, that I'll say more about in a bit.
+
+\[
+p_{i+1}(O) = \frac{rp_i(O) + c_i(O)}{r + \sum c(X)}
+\]
+
+Let's set \(r\) to 2.5 to make the arithmetic easier. Then if \(p_0\) of
+both Gather and Hunt was 0.5, we'll have \(p_1(G) = frac{2}{3}\), and
+\(p_1(H) = \frac{1}{3}\). So at \(t_1\) Player will have credence
+\(\frac{2}{3}\) than demon will play gather. So the expected return of
+Gather will be \(\frac{70}{3}\), the expected return of Hunt will be
+\(\frac{50}{3}\), and the overall expected return will be
+\(\frac{190}{9}\). So at \(t_2\) the probability of Gather will rise a
+little more, the probability of Hunt will go down a little more, and
+this will continue until the Player is certain they will Gather.
+
+This is what happens if Player is originally 50/50 about what they will
+do. But it's very dependent on that initial assumption. If Player had
+started off fairly confident that they would Hunt, and hence that demon
+would play hunt, then the resulting equilibrium would have been that
+they were certain they would Hunt. More precisely, that would happen if
+they started off with credence greater than 0.6 that they would Hunt. If
+they started off with credence exactly 0.6 that they would Hunt, they
+would be in an equilibrium already, and their credences would never
+change.
+
+This is all well and good, but it doesn't feel like a decision theory
+yet. But there are a few simple ways to turn it into one. For example we
+could say (and Skyrms more or less does say) that any of these
+equilibrium states are rational, and so could ground rational choices.
+So in Demonic Stag Hunt, it's rational to Gather, rational to Hunt, and
+rational to play the mixed strategy Gather with probability 0.4, Hunt
+with probability 0.6. This last one is weird in a few ways; let's look
+at one of these.
+
+Although there are three equilibria, they are not symmetric. They have
+different outcomes - one has an expectation of 50, one of 15, and the
+mixed strategy has an expectation of 40. We'll come back to theories
+that expectations to choose between the equilibria in the next section.
+For now, focus on what starting points get to those equilibria. Each
+equilibria has a `basin of attraction': a set of initial probabilities
+that (given a choice of update function) lead to that equilibria. And
+these basins are of different sizes. Using a natural measure on the
+space of probability functions, the basin that leads to Gathering has
+measure 0.6, the basin that leads to Hunting has measure 0.4, and the
+basin that leads to the mixed strategy has measure 0. It's rather
+tempting to exclude equilibria whose basin has measure 0 from the set of
+permissible strategies. But ignore that for now, and focus on the pure
+strategy equilibria. The basin that leads to Gather has two salient
+features that the basin that leads to Hunt lacks.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  It is larger.
+\item
+  It includes the mid-point.
+\end{enumerate}
+
+In two option choices these features usually go together, though not
+always, and they often come apart when there are more than two options.
+Either of these could be used to generate a decisive decision theory.
+That is, the following two Skyrms inspired theories are both broadly
+causal decision theories, and are both decisive in my sense.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  In any decision problem, the rational choice is the equilibrium with
+  the largest basin of attraction.
+\item
+  In any decision problem, the rational choice is the equilibrium whose
+  basin of attraction includes the mid-point.
+\end{enumerate}
+
+Like Gallow, I'm going to largely focus on the second of these, though
+I'll make some notes about the first from time to time. I'll call the
+second theory, the one I'm focussing on, the \textbf{midpoint theory}.
+
+Let's bring this back to our two round game, Demonic Prisoners' Dilemma
+plus Demonic Stag Hunt. Midpoint theory says that one should Defect in
+Demonic Prisoners' Dilemma, and Gather in Demonic Stag Hunt. What does
+it say about the two stage game? Well, to answer that we need to
+precisify midpoint theory further. In particular, we need to answer two
+questions.
+
+\begin{itemize}
+\tightlist
+\item
+  What update function should we use?
+\end{itemize}
+
+It turns out this doesn't matter too much, as long as the function is
+sufficiently cautious. That is, the rule described above is fine as long
+as \(r\) is high enough. (A low value of \(r\) means that, at least for
+some games, one ends up oscillating between states rather than reaching
+equilibria; you need \(r\) low enough to make oscillations impossible.)
+The biggest question is this one.
+
+\begin{itemize}
+\tightlist
+\item
+  What strategies should we take seriously enough to give any positive
+  probability to?
+\end{itemize}
+
+You might be interested in this question for boringly pragmatic reasons.
+The space of probability functions is an \(n-1\) dimension simplex,
+where \(n\) is the number of strategies taken seriously. So if there are
+32 strategies, and you're trying to find the one with the largest basin
+of attraction, one needs to muck about with 31-dimensional geometry. And
+that is non-trivial.
+
+But you might be interested in it for more philosophical reasons. If one
+can see that a strategy is sub-optimal, perhaps because it is dominated,
+or because it is not a possible equilibrium, it seems odd to even start
+the reflective process by having some probability one will end up there.
+So let's say that midpoint theory will involve starting with probability
+\(\frac{1}{n}\) in each of the \(n\) sensible strategies. And the theory
+can be precisified in a few ways depending on what one counts as
+sensible.
+
+For any natural choice of update function, and of sensible strategies,
+the resulting theory is dynamically inconsistent. There are a lot of
+choices for each of these questions, and I'm not going to go through how
+they play out one by one. But there is a pattern. In the strategic form
+of the two round game, the resulting equilibrium is either \(CHGGG\) or
+\(DGGGH\). That is, in the strategic form of the game, rationality
+according to the midpoint theory requires one to Hunt in round two (or
+at least to expect to Hunt with probability 1). But if one plays the
+game in real time according to the midpoint theory, one must Gather in
+round 2. This is dynamically inconsistent, and tells against midpoint
+theory.\footnote{I would have liked to have a theory about just which
+  combinations of update rule and sensible strategies led to \(CHGGG\)
+  and which led to \(DGGGH\), but I couldn't see any pattern to them. I
+  suspect there is something useful to say here, but I don't know what
+  it is.}
+
+But there is a loophole here; there is one way to make the midpoint
+theory dynamically consistent. And it's a simple one. If we start by
+saying every theory is `sensible,' that at \(t_0\) each theory has
+probability \(\frac{1}{32}\) in being played, the midpoint theory says
+that the rational choice in the strategic form of the game is \(DGGGG\).
+(Assuming an appropriate choice of update function. But in fact given
+this starting point, lots of update functions will do.) That's
+dynamically consistent. And it's the first dynamically consistent
+decisive theory we've seen. So is this the theory a philosopher who
+wants a decisive theory should approve of?
+
+There are three reasons for thinking this theory - midpoint theory that
+starts with every strategy having equal probability no matter how absurd
+the strategy is - can't be right. As you can possibly tell from the fact
+that I'm going to offer three reasons, I'm not sure any one of them on
+their own is decisive. And even after these reasons, I still think this
+theory is the best decisive theory on offer. But I think it's flawed for
+these three reasons.
+
+The first reason is one that \protect\hyperlink{ref-Gallow2020}{Gallow}
+(\protect\hyperlink{ref-Gallow2020}{2020}) offers as a criticism. The
+theory handles clone options very badly. Imagine Player is a bit
+ambidextrous; they are right handed, but they can draw straight lines
+with their left hand. They can't, however, draw curves. And they have to
+write `G' or `H' to play (one round) Demonic Stag Hunt. So now they have
+three options in Demonic Stag Hunt.
+
+\begin{itemize}
+\tightlist
+\item
+  Write `G' with their right hand.
+\item
+  Write `H' with their left hand.
+\item
+  Write `H' with their right hand.
+\end{itemize}
+
+Midpoint theory says that in this game, Player should play one of the
+latter two options. Roughly, that's because they will start with a
+probability of \(\frac{2}{3}\) that they will play `H' one way or the
+other, and as long as they start with a probability greater than 0.6
+that they'll play `H,' that's what they should end up with. But it's
+absurd that `cloning' one of the choices should change what they play.
+
+The second reason relates to my term `sensible.' Think about what the
+midpoint theory, with no restrictions on initial strategies, is saying.
+It says one should start with this ludicrous probability, where one
+thinks it is somewhat likely that one will play a strictly dominated
+strategy, then advance from there by steps that are each sensible
+movements from where one is. But there is nothing philosophically
+significant about the fact that a certain state is the endpoint of
+applying a rational process from an irrational starting point. It's like
+saying I should believe the sky is green because this follows by the
+rational rule of and-elimination from the starting point `grass is blue
+and the sky is green.' So even if this theory is dynamically consistent,
+it is not philosophically coherent.
+
+Now I should note at this point that Skyrms himself is not particularly
+sympathetic to this line of reasoning. He thinks it is fine (at least
+for some purposes) to include some absurdities in the initial state.
+After all, the point of the dynamic deliberative process is to weed out
+absurdities. And he does have a point; there is some amount of
+redundancy in the view that one should first delete the obviously bad
+strategies, then go through some process to delete the less obviously
+bad strategies. Why not just trust the process?
+
+So let's turn to the third reason, which is that midpoint theory is also
+arguably dynamically inconsistent in a different case. I say `arguably'
+because the case involves mixed strategies, and just how to understand
+dynamic consistency when mixed strategies are around is a tricky
+question.
+
+The example involves playing the following two Demonic Anti-Coordination
+games in order, with the results of the first game being revealed to
+Player and demon before the second game is played.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-13}First Anti-Coordination Game}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{u} & \textbf{d}\\
+\midrule
+\textbf{U} & 0 & 9\\
+\textbf{D} & 1 & 0\\
+
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-14}Second Anti-Coordination Game}
+\centering
+\begin{tabular}[t]{>{}r|cc}
+
+\textbf{} & \textbf{u} & \textbf{d}\\
+\midrule
+\textbf{U} & 0 & 4\\
+\textbf{D} & 1 & 0\\
+
+\end{tabular}
+\end{table}
+
+Read \(U\) as Up and \(D\) as Down. Each game on its own has a unique
+Skyrms equilibrium. We don't need to worry about update rules or basins
+or anything - the approach of seeking the good will end in the first
+game with having probability 0.9 of playing Up, and in the second game
+with having probability 0.8 of playing Up. So the strategic form of the
+game should have an equilibrium that consists of playing Up with
+probability 0.9 then, whatever happens in the first game, playing Up
+with probability 0.8 in the second game.
+
+And that is one of the equilibria in the 32 strategy strategic form of
+the game. But it isn't the only equilibrium. There is another
+equilibrium that looks like this. (I'll use the same convention as above
+for describing strategies, so the 2nd through 5th letters describe what
+to do after the first game ends \(Uu\), \(Ud\), \(Du\) and \(Dd\)
+respectively.)
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{A mixed strategy for the two round anti-coordination
+game}\tabularnewline
+\toprule
+Strategies & Probability \\
+\midrule
+\endfirsthead
+\toprule
+Strategies & Probability \\
+\midrule
+\endhead
+\(UUUUU\), \(UUUUD\), \(UUUDU\), \(UUUDD\) & \(\frac{51}{310}\) \\
+\(UUDUU\), \(UUDUD\), \(UUDDU\), \(UUDDD\) & \(0\) \\
+\(UDUUU\), \(UDUUD\), \(UDDDU\), \(UDUDD\) & \(\frac{51}{1240}\) \\
+\(UDDUU\), \(UDDUD\), \(UDDDU\), \(UDDDD\) & \(0\) \\
+\(DUUUU\), \(DUDUU\), \(DDUUU\), \(DDDUU\) & \(\frac{11}{310}\) \\
+\(DUUUD\), \(DUDUD\), \(DDUUD\), \(DDDUD\) & \(0\) \\
+\(DUUDU\), \(DUDDU\), \(DDUDU\), \(DDDDU\) & \(\frac{11}{1240}\) \\
+\(DUUDD\), \(DUDDD\), \(DDUDD\), \(DDDDD\) & \(0\) \\
+\bottomrule
+\end{longtable}
+
+In words, here's what this strategy does.
+
+\begin{itemize}
+\tightlist
+\item
+  In round 1, play Up with probability \(\frac{51}{62}\).
+\item
+  If one gets a positive return in round 1, in round 2 play Up with
+  probability 0.8.
+\item
+  If one gets a zero return, in round 2 always play Up.
+\end{itemize}
+
+It isn't that hard to verify that this is an equilibrium. If one has
+this probability function over the demon's choices, then each strategy
+with positive probability has an expected return of \(\frac{809}{310}\),
+and the strategies with probability 0 have lower expected return. (Note
+this is a marginally higher expected return than playing the equilibrium
+mixed strategy each round, which returns 2.6, or \(\frac{806}{310}\).)
+
+What's surprising is that this equilibrium is the one that midpoint
+theory recommends in the strategic form of the game. Or, at least, if
+\(r\) is low enough for an equilibrium to be found, it recommends this
+equilibrium. (If \(r\) is too high, the process never reaches
+equilibrium, and instead oscillates between two somewhat strange
+strategies.) So midpoint theory says this is the one and only right
+strategy in the game.\footnote{The basin of attraction for this
+  equilibrium is very large, but I'm not quite sure how large. I think
+  it has measure 1, but I haven't found a proof of this yet. If it does
+  have measure 1, this has consequences for the view that says
+  strategies with measure 0 are not rationally playable.}
+
+But this seems to make midpoint theory dynamically inconsistent.
+According to the strategic form of the game, midpoint theory says the
+one and only rational play in the first round is to play Up with
+probability \(\frac{51}{62}\). But when the game is being played in real
+time, midpoint theory says the one and only rational play in the first
+round is to play Up with probability 0.9. In the strategic form of the
+game, midpoint theory says that it is never permissible to play Down in
+round 2 after getting a zero return in round 1. But it also says that in
+the real time version of the game, one should play Down in round 2 with
+probability 0.2, whatever happens in round 1. Now it isn't perfectly
+clear exactly how one should understand dynamic consistency when mixed
+strategies are being considered. But one way or the other, these results
+feel like they show midpoint theory is dynamically inconsistent.
+
+So I don't think there is a way of converting the Skyrms dynamics to a
+plausible and consistent decisive theory by looking at basins of
+attractions. But obviously I haven't surveyed all of the ways that one
+could build a dynamic theory this way. Perhaps some future decisive
+theorist will find a way through the gaps in the argument above. And
+there are meant to be gaps. The argument here is essentially inductive -
+all these approaches fail, and that's probably because there isn't a
+successful approach to be found. But rather than try and shore up this
+inductive inference yet further, I'll turn to a different way that it
+has been suggested we use the Skyrms approach to develop a decisive
+theory - one that recommends Hunting in the one round Demonic Stag Hunt.
+
+\hypertarget{choose-the-best-equilibrium}{%
+\section{Choose the Best
+Equilibrium}\label{choose-the-best-equilibrium}}
+
+So far I've spent most of the time considering solutions to Demonic Stag
+Hunt that recommend Gathering. It turns out we have to spend much less
+time on solutions that recommend Hunting. As I noted earlier, that's
+because the different approaches to getting to Hunting all have quite a
+bit in common.
+
+One way to motivate Hunting starts with Jeffrey's version of a broadly
+evidential decision theory. As he noted in the second edition of
+\emph{The Logic of Decision}
+(\protect\hyperlink{ref-Jeffrey1983}{Jeffrey 1983}), to handle real life
+Newcomb problems, it is natural to add side-constraints to evidential
+decision theory. Those constraints will rule out one-boxing, and the
+equivalent of one-boxing in various real life situations. Call such a
+view evidential decision theory plus side constraints. It won't matter
+for our purposes what the side constraints are, just that they don't
+rule out anything in Stag Hunt. So the view recommends Hunting.
+
+Or alternatively, one could start with the Skyrms approach to dynamic
+deliberation that was the focus of the last section. But instead of
+choosing between multiple equilibria by looking at properties of basins,
+as midpoint theory did, one could just choose the equilibria with the
+highest expected return. That's the broadly causal theory that Frank
+\protect\hyperlink{ref-Arntzenius2008}{Arntzenius}
+(\protect\hyperlink{ref-Arntzenius2008}{2008}) recommends. And it too
+recommends Hunting.
+
+In a lot of cases, these two approaches will recommend very similar
+choices. That might be surprising if you think of one of them as broadly
+evidential and one as broadly causal. But a better way to think about
+them, I think, is to see them as reaching a natural compromise point
+between the two big approaches (evidential and causal) from different
+directions. And it's a good-making feature of a compromise that it can
+be reached by multiple paths in this way. Unfortunately, the resulting
+theory is dynamically inconsistent.
+
+Go back to the two stage game, and consider the strategy \(CHGGG\). If
+Player plays this strategy, and Demon predicts this, Player does very
+well. They get 54, which is almost the highest return in the game. And
+given Demon's prediction, they can't do better. Also, they can't do
+better in any circumstance where Demon predicts correctly. So this is an
+equilibrium, in Skyrms's sense, and ratifiable, in Jeffrey's sense. More
+generally, it satisfies any plausible side constraints one could add on
+to evidential decision theory. And it is the choice that evidential
+decision theory recommends. So it is the strategy any such theory should
+recommend. Strictly speaking, the theory says one should be indifferent
+between \(CHGGG\) and \(CHGGH\); I won't fuss over this because what is
+going to matter is what one does at the very first step.
+
+These decision theories recommend the strategy \(CHGGG\). But they do
+not recommend choosing \(C\) in round 1 of a real life Demonic
+Prisoners' Dilemma plus Demonic Stag Hunt. They recommend choosing \(D\)
+in a stand alone version of Demonic Prisoners' Dilemma. Indeed, they are
+designed to give that recommendation. So they could only recommend
+playing \(C\) in round 1 of the two round game if there was a strategic
+benefit to playing \(C\). But there is no strategic benefit. Playing
+\(C\) does not cause a change in any of the parameters that are relevant
+to the game in round 2. Indeed, it doesn't even provide evidence that
+changes one's best estimates of those parameters. (Here it is crucial
+that we said the Demon's errors are probabilistically independent of
+each other.) So the theories say, inconsistently, to mark \(C\) when
+filling in the form, but to answer \(D\) when asked how one wants to
+play round 1. So they too are dynamically inconsistent.
+
+It's possibly a failure of imagination on my part, but I really can't
+see any other motivation for Hunting than the fact that the Both Hunt
+equilibrium has a higher payout than the Both Gather. I'm not saying
+that's a bad motivation. If I personally was playing Demonic Stag Hunt,
+I'd probably Hunt, and for just this reason. What I am saying is that we
+can't, on pain of contradiction, say that it is a decisive reason to
+Hunt. The approach to decision theory that says it is a decisive reason
+offers inconsistent advice in the two stage game, and so is wrong. What
+we should say, and what indecisive theories do say, is that it's
+rationally permissible to Hunt for this reason, but it is also
+rationally permissible to Gather because Gathering reduces regret, or
+because Gathering has a larger Skyrmsian basin of attraction, or for any
+number of other reasons.
+
+\hypertarget{existentialist-decision-theory}{%
+\section{Existentialist Decision
+Theory}\label{existentialist-decision-theory}}
+
+So far I've argued that decisive decision theories are dynamically
+incoherent. In this section I want to note one assumption that I've been
+making so far, and look at what happens if we drop that assumption. I
+call the assumption \emph{existentialism}, but it takes a bit of
+explaining to see why that's a good name.
+
+An existentialist decision theory says that each choice should be judged
+on its own, rather than as the contribution it makes to a strategy. Now
+a decision should be sensitive to the evidence; sometimes \(X\) is a
+better decision than \(Y\) because of what's happened earlier in the
+game. And a decision should be sensitive to long-run consequences;
+sometimes \(X\) is a better decision than \(Y\) because even though
+\(Y\) would have better short run consequences, \(X\) will promote
+valuable cooperation in the short run. But still, each decision should
+be made, and be judged, on its own, and not as part of a larger
+strategy.
+
+The contrast to existentialism is what I'll call intellectualism. The
+intellectualist says that what makes a decision rational is that it is a
+manifestation of a rational long run strategy. The
+existentialism/intellectualism debate is orthogonal to the debate
+between evidential and causal decision theory, but it's very striking to
+see how it plays out if you assume evidential decision theory. The
+combination of intellectualism plus evidential decision theory says that
+in the cases that show evidential decision theory is dynamically
+inconsistent, one should take the choice that involves taking less
+money. And that's true even though at the time of the choice, one knows
+precisely how much one will get from each choice. That seems bad, and I
+think it's a decisive reason to reject such theories.\footnote{I think
+  that intellectualism plus evidential decision theory is what
+  \protect\hyperlink{ref-LevinsteinSoares2020}{Levinstein and Soares}
+  (\protect\hyperlink{ref-LevinsteinSoares2020}{2020}) call
+  `functionalist decision theory.' I think, that is, that what they call
+  choosing an algorithm is what I call choosing a strategy. But I'm not
+  sure about this, since intellectualism plus evidential decision theory
+  is a very strange theory. Note that it is strictly speaking indecisive
+  in my sense. You can't tell what to do in such a theory given the
+  setup of any decision problem. For any decision problem you like,
+  including the one where the chooser simply has to choose more money
+  rather than less, there is some possible pre-history of the problem
+  where different choices will be rational. So if my interpretation is
+  right, everything Levinstein and Soares say about what their theory
+  recommends in one or another case is only correct given some
+  substantive but unstated assumptions about the pre-history of the
+  cases. That said, the broad approach they take does seem to be as
+  anti-existentialist, in the ordinary sense of `existentialist,' as it
+  is possible to be. That is some evidence I guess in favor of this
+  reading.}
+
+It's helpful to think of a strategy, a plan for what to do in all
+situations, as the essence of the chooser. And the sequence of choices
+the chooser makes in real time is their existence. So the
+intellectualist thinks that essence precedes existence; a choice is made
+good by its position in a grand strategy. And the existentialist denies
+this. They think that existence precedes essence, or at least that it
+does not proceed from essence.
+
+The intellectualist position, whatever first order theory it is mixed
+with, immediately entails Backwards Dynamic Consistency and Forwards
+Dynamic Consistency. If what it is for a sequence of choices to be
+rational just is for it to be a manifestation of a rational strategy,
+then obviously there will be tight connections between rational
+sequences and rational strategies. But the reverse entailment is not
+true; the consistency norms do not entail intellectualism. One could, as
+I'll argue in a minute, hold on to the norms within a thoroughly
+existentialist framework.
+
+At first glance, existentialism looks hostile to the very idea of
+inter-temporal norms on agency. And there is a super strong form of
+existentialism that denies all such norms. But there are three natural
+ways to moderate one's existentialism to allow for the possibility of
+such norms.
+
+First, one could think that individual humans choose the units of time
+over which their choices will be assessed. Intellectualism is the view
+that the relevant unit is a life. The alternative to that need not be
+that each instant is to be assessed anew. So the existentialist can
+agree with \protect\hyperlink{ref-Holton2009}{Holton}
+(\protect\hyperlink{ref-Holton2009}{2009}) that it is good to make
+plans, that once a plan is made it is typically good to carry through
+with it, and even that if one chooses a plan, that plan should be
+assessed as a unit, instead of assessing the individual actions that
+make up a plan. Existentialism, in the sense I'm using (or co-opting)
+the expression, simply denies that planning in this sense is rationally
+mandatory, and in particular that there need to be life-plans.
+
+Second, one could think that there are norms about the appropriate
+amount of fickleness in one's values and choices. It's consistent to say
+that each choice should be assessed on its own merits, but that a choice
+is bad in virtue of being excessively fickle. In that case one must say
+that it is the second choice of the fickle pair that's the bad one; that
+the chooser will later have different views is not a bad making feature
+of a particular choice. An advantage of this approach over
+intellectualism is that it allows that both stubbornness and fickleness
+are vices. The intellectualist thinks that the ideal agent has one grand
+plan and sticks to it through thick and thin. This doesn't sound great,
+and the existentialist is not committed to it.
+
+Third, and most importantly, one could think that failures of dynamic
+consistency are not bad in themselves, but that they are evidence that
+one of the individual choices within them is bad. (I'm borrowing ideas
+from \protect\hyperlink{ref-Christensen1996}{Christensen}
+(\protect\hyperlink{ref-Christensen1996}{1996}) and
+\protect\hyperlink{ref-Kolodny2005}{Kolodny}
+(\protect\hyperlink{ref-Kolodny2005}{2005}) here.) If you know a person
+believes \(p\) and believes \(\neg p\), you know they've made a mistake,
+even if you don't know when or where. And the mistake isn't (just) that
+they are incoherent; one of these two beliefs was ill-formed. This is
+the role that dynamic consistency norms play in the argument of this
+paper. We can see that a view is wrong by seeing that it is dynamically
+inconsistent. But the dynamic inconsistency is not constitutive of the
+wrongness; it is just how we see that the view is wrong.
+
+That's the position I'm adopting here. The problem with the decisive
+views I've criticized is not that they are existentialist. Good theories
+are existentialist. It's that when you ask them the same question in two
+different guises, they give different answers. That's bad, and it's bad
+even if one thinks that good choosers do not need an essence, or a
+strategy, before they interact with the world.
+
+\hypertarget{conclusions-and-further-research}{%
+\section{Conclusions and Further
+Research}\label{conclusions-and-further-research}}
+
+I've argued that a whole bunch of decisive theories fail, in systematic
+ways, to be dynamically consistent. I haven't offered anything like a
+proof that there could not be a plausible theory that is both decisive
+and dynamically consistent. Since some intellectualist theories are
+decisive and dynamically consistent, maybe there is a way to make one of
+them plausible. But by now the prospects should look grim.
+
+So if decisive theories are bad, what should a good indecisive theory
+look like? We've already seen one plausible indecisive theory: the
+theory that says all Skyrms equilibria can be rationally chosen. But is
+it the only plausible indecisive theory? Is it ultimately plausible at
+all?
+
+I think the way to finding a plausible indecisive theory goes via
+answering the following five questions.
+
+First, does decision theory start with what the chooser believes, or
+with what they should believe? If Player is certain that the red box has
+more money, but they have conclusive evidence that the blue box has more
+money, which box does decision theory say that they should choose? David
+\protect\hyperlink{ref-Lewis-Mellor-14101981}{Lewis}
+(\protect\hyperlink{ref-Lewis-Mellor-14101981}{2020a}) says that the
+answer is `the red box'; it is just the theory about how to turn beliefs
+and desires into action. I'm more sympathetic to the arguments that Nomy
+\protect\hyperlink{ref-Arpaly2003}{Arpaly}
+(\protect\hyperlink{ref-Arpaly2003}{2003}) makes that the theory of
+rational choice should not pay any special attention to the chooser's
+beliefs. What's rational to choose in a situation is a function of
+what's rational to believe in that situation, not what one actually
+believes.
+
+Second, in a given situation, how many different beliefs are rational?
+The Uniqueness thesis says the answer is one. Permissivism says that
+Uniquenes is false, and for some propositions in some situations, there
+are multiple rational attitudes to have. See
+\protect\hyperlink{ref-KopecTitelbaum2016}{Kopec and Titelbaum}
+(\protect\hyperlink{ref-KopecTitelbaum2016}{2016}) for a good survey of
+the issues, \protect\hyperlink{ref-Schultheis2018}{Schultheis}
+(\protect\hyperlink{ref-Schultheis2018}{2018}) for a recent argument for
+Uniqueness, and \protect\hyperlink{ref-Callahan2021}{Callahan}
+(\protect\hyperlink{ref-Callahan2021}{2021}) for a recent argument for
+Permissivism.\footnote{Interestingly, Callahan connects Permissivism to
+  existentialism. I suspect there are deep and unexplored connections
+  between the issues raised in the previous section and the
+  Uniqueness/Permissivism debate.} I'm on the Permissivist side of this
+debate.
+
+Now if you think decision theory should be sensitive to rational beliefs
+rather than actual beliefs, and you think Permissivism is true, you're
+committed to indecisiveness. You won't even need demons. After all, any
+situation where any credence in \(p\) between \(x\) and \(y\) is
+permissible will mean there are multiple bets at distinct odds on \(p\)
+that rationality neither requires taking nor requires passing. I think
+this is a perfectly sound argument for indecisiveness, but I didn't lean
+on it here because the premises are considerably less secure than
+Backwards Dynamic Consistency.
+
+But there is a third question that needs answering before we can offer a
+plausible indecisive theory: what is a mixed strategy? Relatedly, what
+role do mixed strategies have in the correct decision theory? This is a
+rather vexed question, and an important one. Almost all recent arguments
+against causal decision theory seem, to my eyes at least, to turn on
+attributing a bad theory of mixed strategies to the causal decision
+theorist. But that's a topic for another paper.\footnote{I haven't given
+  a positive theory here because it's a big question, but I think the
+  story must include the following two factors. First, playing a mixed
+  strategy is just what
+  \protect\hyperlink{ref-Lewis-Kavka-10071979}{Lewis}
+  (\protect\hyperlink{ref-Lewis-Kavka-10071979}{2020b}) calls using a
+  tie-breaking procedure. Second, the output of such a tie-breaking
+  procedure is in principle unpredictable by anything that doesn't time
+  travel.}
+
+Note one thing I haven't said so far, and won't say in what follows. I
+don't say that the way to find the correct indecisive theory is to come
+up with a bunch of cases, consult our intuitions about them, and then
+see which theory can match at least 80\% of those intuitions. (Or
+whatever percentage we are working with this week.) That is a dubious
+approach in general, but around here it is close to incoherent.
+
+Most contemporary work in decision theory starts with the assumption
+that when there are no demons around (or anything else vaguely demonic),
+expected utility maximisation is the correct decision theory. And then
+theorists will start rolling out fantastic cases involving demons or
+predictors or lesions or genes or twins or triplets or whatever is in
+fashion. And they will ask what extension of expected utility theory
+best tracks intuitions about these cases. But this seems like a very
+dubious strategy, since intuitions about cases will not lead one to
+expected utility theory in the first place. Trying to match intuitions
+about cases like the Allais or Ellsberg paradoxes will lead one to
+prefer some non-standard theory like the one developed by John
+\protect\hyperlink{ref-Quiggin1982}{Quiggin}
+(\protect\hyperlink{ref-Quiggin1982}{1982}) or Lara
+\protect\hyperlink{ref-BuchakRisk}{Buchak}
+(\protect\hyperlink{ref-BuchakRisk}{2013}). It seems very unlikely that
+the best way to extend a counterintuitive theory like expected utility
+maximisation is by consulting intuitions about puzzle cases. It is much
+better to ask what principles we want our theory to endorse, and work
+towards a theory that satisfies those principles. And that is the
+methodology I have adopted here.
+
+I've relied heavily in this paper on one such principle: Backwards
+Dynamic Consistency. I'll end by describing one more principle, and
+noting two questions it raises. The principle is that a decider should
+be a probabilist, and that they should maximise expected utility. More
+precisely, it says that if the states are \(\{S_1, \dots, S_m\}\), and
+the choices are \(\{O_1, \dots, O_n\}\), then \(O_i\) is a permissible
+choice just in case there is some probability function \(Pr\) such that
+
+\[
+\sum_{k = 1}^m V(S_k \wedge O_i)Pr(S_k) \geq \sum_{k = 1}^m V(S_k \wedge O_j)Pr(S_k)
+\]
+
+for all \(j \in \{1, \dots, n\}\). Even if the subjective probability of
+the state is affected by the choice one makes, there should be some
+probability function that the chooser ends up with, and their choice
+should make sense by the lights of that probability function. Note that
+if we assume that the chooser can select any mixed strategy from among
+their choices, there is guaranteed to be at least one strategy that
+satisfies this requirement, even if one thinks the states are choices of
+a demon who can predict one's strategy.\footnote{If the demon can
+  predict what one will do on a given occasion while playing a mixed
+  strategy, this guarantee may fail. But assuming what I said in the
+  last footnote about mixed strategies, that would mean we're in the
+  realm of backwards causation, and the states are not causally
+  independent of the actions.}
+
+So that seems to me like a minimal constraint on choices. As
+\protect\hyperlink{ref-Pearce1984}{Pearce}
+(\protect\hyperlink{ref-Pearce1984}{1984}) shows, it is equivalent to
+the requirement that one not make a choice that is strictly dominated by
+some other choice, or by some mixture of other choices. (This result is
+hardly obvious, but it turns out to be a reasonably straightforward
+consequence of the existence of Nash equilibria for all finite zero-sum
+games.) That's hardly an uncontroversial principle, but it is also one
+I'm happy to adopt. If you're still on board, there are two more
+questions that we need to answer before we finish our decision theory.
+
+Are all further constraints on rational decisions representable as
+constraints on the \(Pr\) in this principle? There surely are some
+further constraints on rational decisions. If you're offered a bet at
+even money on whether I will become Canadian President next week, the
+only rational thing to do is to decline it. And that's true even though
+there is a \(Pr\) such that taking the bet maximises expected utility.
+But that \(Pr\) is completely irrational given your evidence. So
+\emph{Do something that maximises expected utility given some
+probability} is too liberal a rule; we need to say something about the
+\(Pr\). Do we need to say more than that? My answer is no, though I'm
+not even going to start defending that here.\footnote{Note that if you
+  say no to this question, and you think that probabilities have to be
+  real-valued, then you're committed to weak dominance not having a role
+  to play in decision theory. So this is a non-trivial question.}
+
+The Canadian Presidency examples suggests that there are constraints on
+\(Pr\) that are external to decision theory. You shouldn't take that bet
+because you shouldn't have probability above 0.5 that I'll become
+Canadian President next week. The order of explanation runs from the
+(ir)rationality of the credal state to the (ir)rationality of the
+decision. Our fifth and final question is, are there any cases where the
+order of explanation goes the other way?
+\protect\hyperlink{ref-Arntzenius2008}{Arntzenius}
+(\protect\hyperlink{ref-Arntzenius2008}{2008}) argued that one should
+have credences such that the highest value equilibrium was also the
+choice that maximised expected utility. That's an example of a
+constraint on \(Pr\) where the order of explanation runs from decisions
+to beliefs. I argued against that principle, but not because of a
+systematic reason to think that the order of explanation can't run that
+way. Instead I argued that this particular principle was dynamically
+incoherent. That leaves open the general question of whether any such
+principles, where constraints on decisions explain constraints on
+belief, are right.
+
+The long term goal of the project behind this paper is to argue that
+there are no such principles. The only constraints on rational decision
+are that one should maximise expected utility given some \(Pr\), and
+this \(Pr\) should satisfy independently motivated epistemic
+requirements. Now I haven't come close to arguing for that here, and
+it's a very strong claim. Given everything else I've said, it basically
+amounts to the claim that the theory of equilibrium selection has no
+role to play in normative decision theory. It may have a central role to
+play in descriptive decision theory, in explaining why people end up at
+a certain equilibrium. But it can't justify that equilibrium, since any
+equilibrium could be rationally justified.
+
+But all of this is for future work. The aim of this paper has been to
+open up the possibility of an indecisive, i.e., permissive, decision
+theory. Decisive decision theories have to take a stand on Demonic Stag
+Hunt, but it seems surprisingly hard to find a plausible way to take a
+stand on it in a dynamically coherent way. All the decisive theories
+I've considered across a wide range of traditions, have ended up saying
+that there is a clearly right thing do if \(p\) is correct, but it's not
+the thing they will say if you tell them \(p\) is true and ask them what
+to do. That's incoherent, so those theories are incorrect. The best
+explanation of this range of indecisive theories being incorrect, I
+suggest, is that no decisive theory is correct. The correct decision
+theory is indecisive.
+
+\newpage
+
+\hypertarget{references}{%
+\subsection*{References}\label{references}}
+\addcontentsline{toc}{subsection}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-Arntzenius2008}{}%
+Arntzenius, Frank. 2008. {``No Regrets; or, Edith Piaf Revamps Decision
+Theory.''} \emph{Erkenntnis} 68 (2): 277--97.
+\url{https://doi.org/10.1007/s10670-007-9084-8}.
+
+\leavevmode\hypertarget{ref-Arpaly2003}{}%
+Arpaly, Nomy. 2003. \emph{Unprincipled Virtue}. Oxford: Oxford
+University Press.
+
+\leavevmode\hypertarget{ref-Axelrod1984}{}%
+Axelrod, Robert. 1984. \emph{The Evolution of Cooperation}. New York:
+Basic Books.
+
+\leavevmode\hypertarget{ref-Bonanno2018}{}%
+Bonanno, Giacomo. 2018. {``Game Theory.''} Davis, CA: CreateSpace
+Independent Publishing Platform. 2018.
+\url{http://faculty.econ.ucdavis.edu/faculty/bonanno/GT_Book.html}.
+
+\leavevmode\hypertarget{ref-BuchakRisk}{}%
+Buchak, Lara. 2013. \emph{Risk and Rationality}. Oxford: Oxford
+University Press.
+
+\leavevmode\hypertarget{ref-Callahan2021}{}%
+Callahan, Laura Frances. 2021. {``Epistemic Existentialism.''}
+\emph{Episteme}. \url{https://doi.org/10.1017/epi.2019.25}.
+
+\leavevmode\hypertarget{ref-Chang2002}{}%
+Chang, Ruth. 2002. {``The Possibility of Parity.''} \emph{Ethics} 112
+(4): 659--88. \url{https://doi.org/10.1086/339673}.
+
+\leavevmode\hypertarget{ref-Christensen1996}{}%
+Christensen, David. 1996. {``Dutch-Book Arguments {D}e-Pragmatized:
+Epistemic Consistency for Partial Believers.''} \emph{Journal of
+Philosophy} 93 (9): 450--79. \url{https://doi.org/10.2307/2940893}.
+
+\leavevmode\hypertarget{ref-Egan2007-EGASCT}{}%
+Egan, Andy. 2007. {``{Some Counterexamples to Causal Decision
+Theory}.''} \emph{Philosophical Review} 116 (1): 93--114.
+\url{https://doi.org/10.1215/00318108-2006-023}.
+
+\leavevmode\hypertarget{ref-Gallow2020}{}%
+Gallow, J. Dmitri. 2020. {``The Causal Decision Theorist's Gudie to
+Managing the News.''} \emph{The Journal of Philosophy} 117 (3): 117--49.
+
+\leavevmode\hypertarget{ref-GibbardHarper1978}{}%
+Gibbard, Allan, and William Harper. 1978. {``Counterfactuals and Two
+Kinds of Expected Utility.''} In \emph{Foundations and Applications of
+Decision Theory}, edited by C. A. Hooker, J. J. Leach, and E. F.
+McClennen, 125--62. Dordrecht: Reidel.
+
+\leavevmode\hypertarget{ref-Holton2009}{}%
+Holton, Richard. 2009. \emph{Willing, Wanting, Waiting}. Oxford: Oxford
+University Press.
+
+\leavevmode\hypertarget{ref-Jeffrey1983}{}%
+Jeffrey, Richard. 1983. {``Bayesianism with a Human Face.''} In
+\emph{Testing Scientific Theories}, edited by J. Earman (ed.).
+Minneapolis: University of Minnesota Press.
+
+\leavevmode\hypertarget{ref-Kolodny2005}{}%
+Kolodny, Niko. 2005. {``Why Be Rational?''} \emph{Mind} 114 (455):
+509--63. \url{https://doi.org/10.1093/mind/fzi509}.
+
+\leavevmode\hypertarget{ref-KopecTitelbaum2016}{}%
+Kopec, Matthew, and Michael G. Titelbaum. 2016. {``The Uniqueness
+Thesis.''} \emph{Philosophy Compass} 11 (4): 189--200.
+\url{https://doi.org/10.1111/phc3.12318}.
+
+\leavevmode\hypertarget{ref-LevinsteinSoares2020}{}%
+Levinstein, Benjamin Anders, and Nate Soares. 2020. {``Cheating Death in
+Damascus.''} \emph{Journal of Philosophy} 117 (5): 237--66.
+\url{https://doi.org/10.5840/jphil2020117516}.
+
+\leavevmode\hypertarget{ref-Lewis-Mellor-14101981}{}%
+Lewis, David. 2020a. {``Letter to {D}. H. Mellor, 14 October 1981.''} In
+\emph{Philosophical Letters of David {K}. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:432--34. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Lewis-Kavka-10071979}{}%
+---------. 2020b. {``Letter to Gregory Kavka, 10 July 1979.''} In
+\emph{Philosophical Letters of David {K}. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:423--24. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Pearce1983}{}%
+Pearce, David G. 1983. {``A Problem with Single Valued Solution
+Concepts.''} 1983.
+\url{https://sites.google.com/a/nyu.edu/davidpearce/}.
+
+\leavevmode\hypertarget{ref-Pearce1984}{}%
+---------. 1984. {``Rationalizable Strategic Behavior and the Problem of
+Perfection.''} \emph{Econometrica} 52 (4): 1029--50.
+\url{https://doi.org/10.2307/1911197}.
+
+\leavevmode\hypertarget{ref-Quiggin1982}{}%
+Quiggin, John. 1982. {``A Theory of Anticipated Utility.''}
+\emph{Journal of Economic Behavior \& Organization} 3 (4): 323--43.
+\url{https://doi.org/10.1016/0167-2681(82)90008-7}.
+
+\leavevmode\hypertarget{ref-Richter1984}{}%
+Richter, Reed. 1984. {``Rationality Revisited.''} \emph{Australasian
+Journal of Philosophy} 62 (4): 393--404.
+\url{https://doi.org/10.1080/00048408412341601}.
+
+\leavevmode\hypertarget{ref-Schultheis2018}{}%
+Schultheis, Ginger. 2018. {``Living on the Edge: Against Epistemic
+Permissivism.''} \emph{Mind} 127 (507): 863--79.
+\url{https://doi.org/10.1093/mind/fzw065}.
+
+\leavevmode\hypertarget{ref-Skyrms1990}{}%
+Skyrms, Brian. 1990. \emph{The Dynamics of Rational Deliberation}.
+Cambridge, MA: Harvard University Press.
+
+\leavevmode\hypertarget{ref-Skyrms2001}{}%
+---------. 2001. {``The Stag Hunt.''} \emph{Proceedings and Addresses of
+the American Philosophical Association} 75 (2): 31--41.
+\url{https://doi.org/10.2307/3218711}.
+
+\leavevmode\hypertarget{ref-Skyrms2004}{}%
+---------. 2004. \emph{The Stag Hunt and the Evolution of Social
+Structure}. Cambridge: {C}ambridge {U}niversity {P}ress.
+
+\leavevmode\hypertarget{ref-Wedgwood2013}{}%
+Wedgwood, Ralph. 2013. {``A Priori Bootstrapping.''} In \emph{The a
+Priori in Philosophy}, edited by Albert Casullo and Joshua C. Thurow,
+225--46. Oxford: Oxford University Press.
+
+\end{CSLReferences}
+
+\end{document}
