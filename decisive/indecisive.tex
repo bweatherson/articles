@@ -115,7 +115,7 @@
 
 \title{Indecisive Decision Theory}
 \author{Brian Weatherson}
-\date{2021-10-13}
+\date{2021-10-14}
 
 \begin{document}
 \maketitle
@@ -163,32 +163,20 @@ choices. I'm going to argue that the correct decision theory, whatever
 it is, is indecisive. It is not, I'll argue, even decisive over binary
 choices.
 
-The argument is going to be broadly abductive. I'm going to look at a
-lot of existing decision theories, and argue that each of them fails.
-Indeed, I'm going to argue that each of them can be refuted by the very
-same argument. I'll suggest that the source of the problem is what those
-theories have in common, namely their decisiveness. To be clear, that
-last suggestion is going to be little more than a suggestion. I think
-you'll find it pretty plausible once you see the range of theories that
-fail, and how easy it is to generate problem cases for new kinds of
-decisive theories. But it's certainly possible that one consequence of
-this paper is that someone will devise a new decisive decision theory
-that avoids the problem. That would be a pleasing kind of progress.
-
-The argument I referred to in the last paragraph turns on a pair of very
-similar decision problems. Each problem has the following structure.
-There is a human Player, and a predictor, who I'll call Doctor. Doctor
-is very good, as good as the demon in Newcomb's problem, at predicting
-Player's behavior. Doctor will make two decisions. First, they will
-opt-in (which I'll write as I for In), or opt-out (which I'll write as O
-for out). If they opt-out, Doctor gets \$1, and Player gets \$100.
-(Assume both Doctor and Player prefer more money to less, and indeed
-that over these small sums there is more or less no declining marginal
-utility of money.) If they opt-in, this will be publicly announced, an
-another game will be played. Each of Doctor and Player will
-(independently) pick a letter: A or B. Doctor will aim to predict
-Player's choice, and will be rewarded iff that prediction is correct.
-Here is the payout table for the possible outcomes of this game.
+The argument turns on a pair of very similar decision problems. Each
+problem has the following structure. There is a human Player, and a
+predictor, who I'll call Doctor. Doctor is very good, as good as the
+demon in Newcomb's problem, at predicting Player's behavior. Doctor will
+make two decisions. First, they will opt-in (which I'll write as I for
+In), or opt-out (which I'll write as O for out). If they opt-out, Doctor
+gets \$1, and Player gets \$100. (Assume both Doctor and Player prefer
+more money to less, and indeed that over these small sums there is more
+or less no declining marginal utility of money.) If they opt-in, this
+will be publicly announced, an another game will be played. Each of
+Doctor and Player will (independently) pick a letter: A or B. Doctor
+will aim to predict Player's choice, and will be rewarded iff that
+prediction is correct. Here is the payout table for the possible
+outcomes of this game.
 
 \begin{longtable}[]{@{}cccc@{}}
 \toprule
@@ -259,14 +247,15 @@ other obliged to choose B.
 I'm calling \textbf{The Core Premise} a premise, though in the next
 section I'll offer a few arguments for it, in case you don't think it is
 obviously correct. (I sort of think it is obviously correct, but I'm
-really not going to rely on you sharing that intuition.) And it turns
-out that a huge number of theories violate this. Some of them say taht
-Amsterdam should choose A and Brussels should choose B, but a few say
-the reverse. Either way, I think the pair of recommendations each theory
-offers is incoherent, so those decisive theories are mistaken. And I
-suspect any other plausible decisive theory will make an incoherent pair
-of recommendations in either this case, or one very similar to it. So I
-suspect that all decisive theories are mistaken.
+really not going to rely on you sharing that intuition.) And I'll argue
+that any decisive theory (that meets minimal coherence standards) has to
+violate this constraint. Some decisive theories say Amsterdam should
+choose A and Brussels should choose B, but a few say the reverse. And a
+few (otherwise implausible) decisive theories say that Amsterdam and
+Brussels should do the same thing in this game, but different things in
+games with the same structure but slightly different payouts. In every
+case, a decisive theory will make some incoherent pair of
+recommendations, and so is mistaken.
 
 \textbf{The Core Premise} is a conditional, but any decisive theory that
 denies that the choices are tied will meet the condition. So from now on
@@ -276,7 +265,7 @@ same choice. The main thing to check for is that a theory doesn't say
 the choices are tied. None of the theories I'll look at will say that,
 but it's an important thing to check.
 
-Before we start there are three pieces of important housekeeping.
+Before we start there are four pieces of important housekeeping.
 
 First, the definition of decisiveness referred to options being tied.
 For the definition to be interesting, it can't just be that options are
@@ -365,6 +354,18 @@ the predictive player, Doctor, has a utility function with slightly more
 structure. But if we think decision theory should apply in cases where
 there is a predictor around, it should still apply when that predictor
 has preferences with slightly more structure.
+
+Fourth, this project was inspired by reading David Pearce's argument
+against `Single Solution Concepts'
+(\protect\hyperlink{ref-Pearce1983}{Pearce 1983}). My initial plan was
+to simply translate his argument into decision theoretic terms and use
+it as an argument for indecisiveness. I ended up with a somewhat
+different argument to his, one that draws heavily on Brian Skyrms's work
+on Stag Hunts (\protect\hyperlink{ref-Skyrms1990}{Skyrms 1990},
+\protect\hyperlink{ref-Skyrms2001}{2001},
+\protect\hyperlink{ref-Skyrms2004}{2004}). But the project started out
+from an idea of Pearce's. And as you'll see in the conclusion, it will
+end with a related idea of is.
 
 \hypertarget{defending-the-core-premise}{%
 \section{Defending The Core Premise}\label{defending-the-core-premise}}
@@ -638,7 +639,7 @@ listed below.\footnote{I've listed the constraints as strict
 \item
   \(w > x\)
 \item
-  \(\frac{x + y}{2} > \frac{z + w}{2}\)
+  \(x + y > z + w\)
 \end{itemize}
 
 The first two constraints imply that \(\langle G, g \rangle\) and
@@ -742,7 +743,7 @@ What about views that deny that all Stag Decisions should be treated
 alike? As I've said, I don't think any such view is in the literature,
 but it's good to think about other views. Let's drop the assumption that
 we're even looking at a Stag Decision (though it will turn out that we
-are), and think about what to in general in cases where there are two
+are), and think about what to do in general in cases where there are two
 strict equilibria. That is, think about what our imaginary decisive
 decision theory will say about the following case, where we just have
 the constraints \(x > z\) and \(w > y\), and again \(PX\) means the
@@ -869,13 +870,212 @@ should choose A.\footnote{More slowly, we can use the formula to work
 So any decisive theory will violate \textbf{The Core Premise} for some
 choice pair or other. Hence all decisive theories are mistaken.
 
-\begin{itemize}
-\tightlist
-\item
-  Insert Existentialist Decision Theory section, with some edits
-\item
-  Insert Conclusions , with some edits
-\end{itemize}
+\hypertarget{where-to-next}{%
+\subsection{Where To Next?}\label{where-to-next}}
+
+Decision theory cannot be everything that some of its proponents want it
+to be. It cannot be a guide that tells us what to do in every situation,
+even if we allow it to sometimes say that options are tied. So what can
+decision theory be? A natural answer is that it can tell us which
+options are rationally permissible, knowing that there will often be a
+plurality of options that are permissible. I think the way to finding a
+plausible indecisive theory goes via answering the following three
+questions.
+
+First, does decision theory start with what the chooser believes, or
+with what they should believe? If Player is certain that the red box has
+more money, but they have conclusive evidence that the blue box has more
+money, which box does decision theory say that they should choose? If
+decision theory is the theory of which actions ``most effectively serve
+one's desires according to one's beliefs''
+(\protect\hyperlink{ref-Lewis-Price-17051988}{Lewis 2020c, 465}), then
+it is the red box. If it is the theory of which choices are rational,
+then it is the blue box. I'm sympathetic to the arguments that Nomy
+\protect\hyperlink{ref-Arpaly2002}{Arpaly}
+(\protect\hyperlink{ref-Arpaly2002}{2002}) makes that the theory of
+rational choice should not pay any special attention to the agent's
+beliefs. What's rational to choose in a situation is a function of
+what's rational to believe in that situation, not what one actually
+believes.\footnote{See also
+  \protect\hyperlink{ref-Lewis-Mellor-14101981}{Lewis}
+  (\protect\hyperlink{ref-Lewis-Mellor-14101981}{2020a}) where Lewis
+  sketches a view that would say that each choice is rational in a way,
+  and there need not be anything more to say about which is rational
+  all-things-considered. I take it he means decision theory is the
+  theory of the part of rationality that the red box chooser does well
+  on. A similar point is suggested in
+  \protect\hyperlink{ref-Lewis-Talbott-22061984}{Lewis}
+  (\protect\hyperlink{ref-Lewis-Talbott-22061984}{2020d}).}
+
+Second, in a given situation, how many different beliefs are rational?
+The Uniqueness thesis says the answer is one. Permissivism says that
+Uniquenes is false, and for some propositions in some situations, there
+are multiple rational attitudes to have. See
+\protect\hyperlink{ref-KopecTitelbaum2016}{Kopec and Titelbaum}
+(\protect\hyperlink{ref-KopecTitelbaum2016}{2016}) for a good survey of
+the issues, \protect\hyperlink{ref-Schultheis2018}{Schultheis}
+(\protect\hyperlink{ref-Schultheis2018}{2018}) for a recent argument for
+Uniqueness, and \protect\hyperlink{ref-Callahan2021}{Callahan}
+(\protect\hyperlink{ref-Callahan2021}{2021}) for a recent argument for
+Permissivism.\footnote{Interestingly, Callahan connects Permissivism to
+  existentialism. I suspect there are deep and unexplored connections
+  between existentialism and decision theory, especially concerning the
+  questions about the priority of strategies or individual choices. But
+  that's for another paper.} I'm on the Permissivist side of this
+debate.
+
+Now if you think decision theory should be sensitive to rational beliefs
+rather than actual beliefs, and you think Permissivism is true, you're
+committed to indecisiveness. You won't even need demons. After all, any
+situation where any credence in \(p\) between \(x\) and \(y\) is
+permissible will mean there are multiple bets at distinct odds on \(p\)
+that rationality neither requires taking nor requires passing. I think
+this is a perfectly sound argument for indecisiveness, but I didn't lean
+on it here because the premises are considerably less secure than the
+ones I've appealed to.
+
+But there is a third question that needs answering before we can offer a
+plausible indecisive theory: what is a mixed strategy? Relatedly, what
+role do mixed strategies have in the correct decision theory? This is a
+rather vexed question, and an important one. Almost all recent arguments
+against causal decision theory seem, to my eyes at least, to turn on
+attributing a bad theory of mixed strategies to the causal decision
+theorist. You can see this from the fact that almost all recent papers
+on decision theory involve problems that, when converted into games,
+have no pure strategy equilibria, but do have mixed strategy equilibria.
+We can't offer a full decision theory, even an indecisive one, without
+resolving these problems, and that means having a theory of mixed
+strategies. And that's very much a theory for another paper.\footnote{For
+  what it's worth, I think that theory must include the following two
+  factors. First, playing a mixed strategy is just what
+  \protect\hyperlink{ref-Lewis-Kavka-10071979}{Lewis}
+  (\protect\hyperlink{ref-Lewis-Kavka-10071979}{2020b}) calls using a
+  tie-breaking procedure. Second, the output of such a tie-breaking
+  procedure is in principle unpredictable by anything that doesn't time
+  travel.}
+
+Note one thing I haven't said so far, and won't say in what follows. I
+don't say that the way to find the correct indecisive theory is to come
+up with a bunch of cases, consult our intuitions about them, and then
+see which theory can match at least 80\% of those intuitions. (Or
+whatever percentage we are working with this week.) That is a dubious
+approach in general, but around here it is close to incoherent.
+
+Most contemporary work in decision theory starts with the assumption
+that when there are no demons around (or anything else vaguely demonic),
+expected utility maximisation is the correct decision theory. And then
+theorists will start rolling out fantastic cases involving demons or
+predictors or lesions or genes or twins or triplets or whatever is in
+fashion. And they will ask what extension of expected utility theory
+best tracks intuitions about these cases. But this seems like a very
+dubious strategy, since intuitions about cases will not lead one to
+expected utility theory in the first place. Trying to match intuitions
+about cases like the Allais or Ellsberg paradoxes will lead one to
+prefer some non-standard theory like the one developed by John
+\protect\hyperlink{ref-Quiggin1982}{Quiggin}
+(\protect\hyperlink{ref-Quiggin1982}{1982}) or Lara
+\protect\hyperlink{ref-BuchakRisk}{Buchak}
+(\protect\hyperlink{ref-BuchakRisk}{2013}). It seems very unlikely that
+the best way to extend a counterintuitive theory like expected utility
+maximisation is by consulting intuitions about puzzle cases. It is much
+better to ask what principles we want our theory to endorse, and work
+towards a theory that satisfies those principles. And that is the
+methodology I have adopted here.
+
+I've relied heavily in this paper on two such principles: The Sure Thing
+principle, and the principle that information has non-negative value.
+I'll end by describing one more principle, and noting two questions it
+raises. The principle is that a decider should be a probabilist, and
+that they should maximise expected utility. More precisely, it says that
+if the states are \(\{S_1, \dots, S_m\}\), and the choices are
+\(\{O_1, \dots, O_n\}\), then \(O_i\) is a permissible choice just in
+case there is some probability function \(Pr\) such that
+
+\[
+\sum_{k = 1}^m V(S_k \wedge O_i)Pr(S_k) \geq \sum_{k = 1}^m V(S_k \wedge O_j)Pr(S_k)
+\]
+
+for all \(j \in \{1, \dots, n\}\). Even if the subjective probability of
+the state is affected by the choice one makes, there should be some
+probability function that the chooser ends up with, and their choice
+should make sense by the lights of that probability function. Note that
+if we assume that the chooser can select any mixed strategy from among
+their choices, there is guaranteed to be at least one strategy that
+satisfies this requirement, even if one thinks the states are choices of
+a demon who can predict one's strategy.\footnote{If the demon can
+  predict what one will do on a given occasion while playing a mixed
+  strategy, this guarantee may fail. But assuming what I said in the
+  last footnote about mixed strategies, that would mean we're in the
+  realm of backwards causation, and the states are not causally
+  independent of the actions.}
+
+So that seems to me like a minimal constraint on choices. As
+\protect\hyperlink{ref-Pearce1984}{Pearce}
+(\protect\hyperlink{ref-Pearce1984}{1984}) shows, it is equivalent to
+the requirement that one not make a choice that is strictly dominated by
+some other choice, or by some mixture of other choices. (This result is
+hardly obvious, but it turns out to be a reasonably straightforward
+consequence of the existence of Nash equilibria for all finite zero-sum
+games.) That's hardly an uncontroversial principle, but it is also one
+I'm happy to adopt. If you're still on board, there are two more
+questions that we need to answer before we finish our decision theory.
+
+Are all further constraints on rational decisions representable as
+constraints on the \(Pr\) in this principle? There surely are some
+further constraints on rational decisions. If you're offered a bet at
+even money on whether I will become Canadian President next week, the
+only rational thing to do is to decline it. And that's true even though
+there is a \(Pr\) such that taking the bet maximises expected utility.
+But that \(Pr\) is completely irrational given your evidence. So
+\emph{Do something that maximises expected utility given some
+probability} is too liberal a rule; we need to say something about the
+\(Pr\). Do we need to say more than that? My answer is no, though I'm
+not even going to start defending that here.\footnote{Note that if you
+  say no to this question, and you think that probabilities have to be
+  real-valued, then you're committed to weak dominance not having a role
+  to play in decision theory. So this is a non-trivial question.}
+
+The Canadian Presidency examples suggests that there are constraints on
+\(Pr\) that are external to decision theory. You shouldn't take that bet
+because you shouldn't have probability above 0.5 that I'll become
+Canadian President next week. The order of explanation runs from the
+(ir)rationality of the credal state to the (ir)rationality of the
+decision. Our fifth and final question is, are there any cases where the
+order of explanation goes the other way?
+\protect\hyperlink{ref-Arntzenius2008}{Arntzenius}
+(\protect\hyperlink{ref-Arntzenius2008}{2008}) argued that one should
+have credences such that the highest value equilibrium was also the
+choice that maximised expected utility. That's an example of a
+constraint on \(Pr\) where the order of explanation runs from decisions
+to beliefs. I argued against that principle, but not because of a
+systematic reason to think that the order of explanation can't run that
+way. Instead I argued that this particular principle was dynamically
+incoherent. That leaves open the general question of whether any such
+principles, where constraints on decisions explain constraints on
+belief, are right.
+
+The long term goal of the project behind this paper is to argue that
+there are no such principles. The only constraints on rational decision
+are that one should maximise expected utility given some \(Pr\), and
+this \(Pr\) should satisfy independently motivated epistemic
+requirements. Now I haven't come close to arguing for that here, and
+it's a very strong claim. Given everything else I've said, it basically
+amounts to the claim that the theory of equilibrium selection has no
+role to play in normative decision theory. It may have a central role to
+play in descriptive decision theory, in explaining why people end up at
+a certain equilibrium. But it can't justify that equilibrium, since any
+equilibrium could be rationally justified.\footnote{But note here that
+  what I'm calling an equilibrium is just a coherent set of beliefs that
+  is grounded in the evidence. It doesn't include the requirement,
+  typical in game-theory, that the chooser has true beliefs about some
+  aspect of the world around them.}
+
+But all of this is for future work. The aim of this paper has been to
+open up the possibility of an indecisive, i.e., permissive, decision
+theory. Decisive decision theories have to take a stand on Stag
+Decisions, and there is no coherent way for them to do that. So no
+decisive theory is correct, and the correct decision theory is
+indecisive.
 
 \hypertarget{references}{%
 \subsection*{References}\label{references}}
@@ -888,6 +1088,10 @@ Arntzenius, Frank. 2008. {``No Regrets; or, Edith Piaf Revamps Decision
 Theory.''} \emph{Erkenntnis} 68 (2): 277--97.
 \url{https://doi.org/10.1007/s10670-007-9084-8}.
 
+\leavevmode\hypertarget{ref-Arpaly2002}{}%
+Arpaly, Nomy. 2002. {``Moral Worth.''} \emph{Journal of Philosophy} 99
+(5): 223--45. \url{https://doi.org/10.2307/3655647}.
+
 \leavevmode\hypertarget{ref-Bonanno2018}{}%
 Bonanno, Giacomo. 2018. {``Game Theory.''} Davis, CA: CreateSpace
 Independent Publishing Platform. 2018.
@@ -896,6 +1100,10 @@ Independent Publishing Platform. 2018.
 \leavevmode\hypertarget{ref-BuchakRisk}{}%
 Buchak, Lara. 2013. \emph{Risk and Rationality}. Oxford: Oxford
 University Press.
+
+\leavevmode\hypertarget{ref-Callahan2021}{}%
+Callahan, Laura Frances. 2021. {``Epistemic Existentialism.''}
+\emph{Episteme}. \url{https://doi.org/10.1017/epi.2019.25}.
 
 \leavevmode\hypertarget{ref-Chang2002}{}%
 Chang, Ruth. 2002. {``The Possibility of Parity.''} \emph{Ethics} 112
@@ -934,9 +1142,44 @@ Jeffrey, Richard. 1983. {``Bayesianism with a Human Face.''} In
 \emph{Testing Scientific Theories}, edited by J. Earman (ed.).
 Minneapolis: University of Minnesota Press.
 
+\leavevmode\hypertarget{ref-KopecTitelbaum2016}{}%
+Kopec, Matthew, and Michael G. Titelbaum. 2016. {``The Uniqueness
+Thesis.''} \emph{Philosophy Compass} 11 (4): 189--200.
+\url{https://doi.org/10.1111/phc3.12318}.
+
 \leavevmode\hypertarget{ref-Lewis1979e}{}%
 Lewis, David. 1979. {``Prisoners' Dilemma Is a {N}ewcomb Problem.''}
 \emph{Philosophy and Public Affairs} 8 (3): 235--40.
+
+\leavevmode\hypertarget{ref-Lewis-Mellor-14101981}{}%
+---------. 2020a. {``Letter to {D}. H. Mellor, 14 October 1981.''} In
+\emph{Philosophical Letters of David {K}. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:432--34. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Lewis-Kavka-10071979}{}%
+---------. 2020b. {``Letter to Gregory Kavka, 10 July 1979.''} In
+\emph{Philosophical Letters of David {K}. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:423--24. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Lewis-Price-17051988}{}%
+---------. 2020c. {``Letter to Huw Price, 17 May 1988.''} In
+\emph{Philosophical Letters of David k. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:464--66. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Lewis-Talbott-22061984}{}%
+---------. 2020d. {``Letter to William j. Talbott, 22 June 1984.''} In
+\emph{Philosophical Letters of David k. Lewis}, edited by Helen Beebee
+and A. R. J. Fisher, 2:448--49. Oxford: Oxford University Press.
+
+\leavevmode\hypertarget{ref-Pearce1983}{}%
+Pearce, David G. 1983. {``A Problem with Single Valued Solution
+Concepts.''} 1983.
+\url{https://sites.google.com/a/nyu.edu/davidpearce/}.
+
+\leavevmode\hypertarget{ref-Pearce1984}{}%
+---------. 1984. {``Rationalizable Strategic Behavior and the Problem of
+Perfection.''} \emph{Econometrica} 52 (4): 1029--50.
+\url{https://doi.org/10.2307/1911197}.
 
 \leavevmode\hypertarget{ref-Podgorski2022}{}%
 Podgorski, Aberlard. forthcoming. {``Tournament Decision Theory.''}
@@ -951,6 +1194,24 @@ Quiggin, John. 1982. {``A Theory of Anticipated Utility.''}
 Richter, Reed. 1984. {``Rationality Revisited.''} \emph{Australasian
 Journal of Philosophy} 62 (4): 393--404.
 \url{https://doi.org/10.1080/00048408412341601}.
+
+\leavevmode\hypertarget{ref-Schultheis2018}{}%
+Schultheis, Ginger. 2018. {``Living on the Edge: Against Epistemic
+Permissivism.''} \emph{Mind} 127 (507): 863--79.
+\url{https://doi.org/10.1093/mind/fzw065}.
+
+\leavevmode\hypertarget{ref-Skyrms1990}{}%
+Skyrms, Brian. 1990. \emph{The Dynamics of Rational Deliberation}.
+Cambridge, MA: Harvard University Press.
+
+\leavevmode\hypertarget{ref-Skyrms2001}{}%
+---------. 2001. {``The Stag Hunt.''} \emph{Proceedings and Addresses of
+the American Philosophical Association} 75 (2): 31--41.
+\url{https://doi.org/10.2307/3218711}.
+
+\leavevmode\hypertarget{ref-Skyrms2004}{}%
+---------. 2004. \emph{The Stag Hunt and the Evolution of Social
+Structure}. Cambridge: {C}ambridge {U}niversity {P}ress.
 
 \leavevmode\hypertarget{ref-Wedgwood2013}{}%
 Wedgwood, Ralph. 2013. {``A Priori Bootstrapping.''} In \emph{The a

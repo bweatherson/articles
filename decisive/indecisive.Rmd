@@ -3,6 +3,8 @@ title: "Indecisive Decision Theory"
 author: "Brian Weatherson"
 date: "`r Sys.Date()`"
 output:
+  word_document:
+    reference_docx: "../custom-reference.docx"
   pdf_document:
     latex_engine: xelatex
     toc: no
@@ -15,7 +17,6 @@ output:
     extra_dependencies: 
       mathastext: ["italic"]
       caption: null
-  word_document:
 mainfont: Merriweather
 mainfontoptions: Scale=MatchLowercase
 mathfont: STIX Two Math
@@ -40,18 +41,18 @@ knitr::opts_chunk$set(echo = FALSE, results = "asis")
 
 gameformat <- function(game, caption){
   #### Latex version for PDF
-  kbl(game,
-      booktabs = T,
-      escape = FALSE,
-      align = paste0("r",strrep("c", ncol(game)-1)),
-      linesep = "") %>%
-    column_spec(1,
-                border_right = T,
-                bold = T) %>%
-    row_spec(0, bold = T) %>%
-    kable_styling(latex_options = "HOLD_position") %>%
-    sub("\\\\toprule", "", .) %>%
-    sub("\\\\bottomrule", "", .)
+  # kbl(game,
+  #     booktabs = T,
+  #     escape = FALSE,
+  #     align = paste0("r",strrep("c", ncol(game)-1)),
+  #     linesep = "") %>%
+  #   column_spec(1,
+  #               border_right = T,
+  #               bold = T) %>%
+  #   row_spec(0, bold = T) %>%
+  #   kable_styling(latex_options = "HOLD_position") %>%
+  #   sub("\\\\toprule", "", .) %>%
+  #   sub("\\\\bottomrule", "", .)
   #### Huxtable version for HTML
   # as_hux(game) %>%
   #   # set_markdown_contents(1, 1, "") %>%
@@ -65,14 +66,15 @@ gameformat <- function(game, caption){
   #   set_top_padding(1, everywhere, 0) %>%
   #   set_bottom_padding(1, everywhere, 6)
   #### Flextable version for Word
-  # Note have to include " " for first column, not ""
-  # flextable(game) %>% 
-  #   colformat_md() %>% 
-  #   border_remove() %>% 
-  #   hline(part = "header") %>% 
-  #   vline(j = 1) %>% 
-  #   align(align = "center") %>% 
-  #   align(align = "center", part = "header")
+  #### Note have to include " " for first column, not ""
+  #### Remember to include References line iff in Word (gotta be a way to automate this)
+  flextable(game) %>%
+    colformat_md() %>%
+    border_remove() %>%
+    hline(part = "header") %>%
+    vline(j = 1) %>%
+    align(align = "center") %>%
+    align(align = "center", part = "header")
 }
 
 game_display_caption <- function(game, caption){
@@ -96,10 +98,6 @@ game_display_caption <- function(game, caption){
 # Decisiveness
 
 Say a decision theory is **decisive** iff for any decision problem, it says either:
-
-<aside>
-Picture is "Study for 'The Bear Hunt' (for the Alcázar, Madrid)" by Peter Paul Rubens via [Cleveland Museum of Art](https://www.clevelandart.org/art/1983.69).
-</aside>
 
 1. There is a uniquely best choice, and rationality requires choosing it.; or
 2. There is a non-singleton set of choices each of which is tied for being best, and each of which can be permissibly chosen.
@@ -140,7 +138,7 @@ I'm calling **The Core Premise** a premise, though in the next section I'll offe
 
 **The Core Premise** is a conditional, but any decisive theory that denies that the choices are tied will meet the condition. So from now on in arguing against decisive theories I'll mostly just interpret **The Core Premise** as saying Amsterdam and Brussels must make the same choice. The main thing to check for is that a theory doesn't say the choices are tied. None of the theories I'll look at will say that, but it's an important thing to check.
 
-Before we start there are three pieces of important housekeeping.
+Before we start there are four pieces of important housekeeping.
 
 First, the definition of decisiveness referred to options being tied. For the definition to be interesting, it can't just be that options are tied if each is rationally permissible. Then a decisive theory would just be one that either says one option is mandatory or many options are permissible. To solve this problem, I'll borrow a technique from Ruth @Chang2002. Some options are **tied** iff either is permissible, but this permissibility is sensitive to sweetening. That is, if options $X$ and $Y$ are tied, then for any positive $\varepsilon$, the agent prefers $X + \varepsilon$ to $Y$. If either choice is permissible even if $X$ is 'sweetened', i.e.., replaced in the list of choices by $X + \varepsilon$, we'll say they aren't tied. My thesis then is that the correct decision theory says that sometimes there are multiple permissible options, and each of them would still be permissible if one of them was sweetened.
 
@@ -158,6 +156,8 @@ First, a theory could say that these four conditions underspecify a real decisio
 Second, a theory could say that no matter how much one adds to the specification, there will be cases where the correct decision theory does not issue a verdict. Such a theory is not _intrapersonally_ decisive. There is nothing you could add about the person to the specification of a decision problem which decides what they should do, or even which options are tied. I want to ultimately defend such a view,  and this paper is a part of the defence. But it's a proper part. Nothing I say here rules out mere interpersonal indecisiveness. That's an argument for another day. Today, we have enough to be getting on with.
 
 Third, I have set up this problem quite explicitly as a game, with another player - Doctor. I don't think this is particularly big deal, though I gather not everyone agrees. In this respect (among others) I'm following William @Harper1986, who recommended treating Newcomb's Problem as a game. It's not clear why it wouldn't be a game. The Newcomb demon makes a choice, and if you assume the demon gets utility 1 from correct predictions and utility 0 from incorrect predictions, they make the choice that maximises their return given their beliefs about what the other (human) player will do. So game theoretic techniques can and should apply. I think any problem with a predictive demon is best thought of as a game where the demonic player gets utility 1 or 0 depending on whether their prediction is right. Here the predictive player, Doctor, has a utility function with slightly more structure. But if we think decision theory should apply in cases where there is a predictor around, it should still apply when that predictor has preferences with slightly more structure.
+
+Fourth, this project was inspired by reading David Pearce's argument against 'Single Solution Concepts' [@Pearce1983]. My initial plan was to simply translate his argument into decision theoretic terms and use it as an argument for indecisiveness. I ended up with a somewhat different argument to his, one that draws heavily on Brian Skyrms's work on Stag Hunts [@Skyrms1990; @Skyrms2001; @Skyrms2004]. But the project started out from an idea of Pearce's. And as you'll see in the conclusion, it will end with a related idea of is.
 
 # Defending The Core Premise
 
@@ -319,35 +319,38 @@ Since in this game Player gets nothing if Doctor opts-out, and there is a 50/50 
 
 So any decisive theory will violate **The Core Premise** for some choice pair or other. Hence all decisive theories are mistaken.
 
-## Existentialist Decision Theory
+# Where To Next?
 
-I've argued that decisive decision theories violate **The Core Premise** and hence are mistaken. But **The Core Premise** is a dynamic principle: it says the 'early decision' and the 'late decision' should be decided the same way. In this section I want to note one assumption about dynamic princples that I've been implicitly making so far, and look at what happens if we drop it. I call the assumption _existentialism_, but it takes a bit of explaining to see why that's a good name.
+Decision theory cannot be everything that some of its proponents want it to be. It cannot be a guide that tells us what to do in every situation, even if we allow it to sometimes say that options are tied. So what can decision theory be? A natural answer is that it can tell us which options are rationally permissible, knowing that there will often be a plurality of options that are permissible. I think the way to finding a plausible indecisive theory goes via answering the following three questions.
 
-An existentialist decision theory says that each choice should be judged on its own, rather than as the contribution it makes to a strategy. Now a decision should be sensitive to the evidence; sometimes $X$ has a higher expected return than $Y$ in virtue of evidence we received from earlier in the game. And a decision should be sensitive to long-run consequences; sometimes $X$ is a better decision than $Y$ because even though $Y$ would have better short run consequences, $X$ will promote valuable cooperation in the short run. But still, each decision should be made, and be judged on its own, and not as part of a larger strategy.
+First, does decision theory start with what the chooser believes, or with what they should believe? If Player is certain that the red box has more money, but they have conclusive evidence that the blue box has more money, which box does decision theory say that they should choose? If decision theory is the theory of which actions "most effectively serve one's desires according to one's beliefs" [@Lewis-Price-17051988, 465], then it is the red box. If it is the theory of which choices are rational, then it is the blue box. I'm  sympathetic to the arguments that Nomy @Arpaly2002 makes that the theory of rational choice should not pay any special attention to the agent's beliefs. What's rational to choose in a situation is a function of what's rational to believe in that situation, not what one actually believes.^[See also @Lewis-Mellor-14101981 where Lewis sketches a view that would say that each choice is rational in a way, and there need not be anything more to say about which is rational all-things-considered. I take it he means decision theory is the theory of the part of rationality that the red box chooser does well on. A similar point is suggested in @Lewis-Talbott-22061984.]
 
-In game theoretic terms, Amsterdam is playing the extensive form version of the game with Doctor, and Brussels is playing the strategic form. In general it's easy to tell the difference between the extensive form and the strategic form. You play the extensive form of chess by sitting down at a board and moving pieces around. You play the strategic form of chess by programming a chess computer. Now in games where you will have at most one move to make, the difference between these two forms is a little harder to understand. It's getting close to the metaphysical mysteries concerning the relationship between a singleton and its only member. But we've seen here that according to all decisive theories, it makes a difference.
+Second, in a given situation, how many different beliefs are rational? The Uniqueness thesis says the answer is one. Permissivism says that Uniquenes is false, and for some propositions in some situations, there are multiple rational attitudes to have. See @KopecTitelbaum2016 for a good survey of the issues, @Schultheis2018 for a recent argument for Uniqueness, and @Callahan2021 for a recent argument for Permissivism.^[Interestingly, Callahan connects Permissivism to existentialism. I suspect there are deep and unexplored connections between existentialism and decision theory, especially concerning the questions about the priority of strategies or individual choices. But that's for another paper.] I'm on the Permissivist side of this debate.
 
-What I'm calling existentialism is the view that when evaluating a decision in an extensive game, you evaluate it on its own merits, not in terms of its place in a strategy. The obvious contrast then to existentialism is what I'll call intellectualism. The intellectualist says that what makes a decision rational is that it is a manifestation of a rational long run strategy. (This is a contrast, not a negation - there are views between existentialism and intellectualism, and I'll come back to them.) The existentialism/intellectualism debate is orthogonal to the debate between Evidential and Causal Decision Theory, but it's very striking to see how it plays out if you assume Evidential Decision Theory. The combination of intellectualism plus Evidential Decision Theory says that you should choose one box in Newcomb's Problem, even if you get shown what is in both boxes before you decide. After all, the Evidential Decision Theorist will say that in the strategic form of this game, and remember a strategy is chosen before the first move, so before the Predictor predicts, the optimal strategy is to choose one box. So when it comes time to act, this theory says you should carry out the optimal strategy, and hence choose one box. The familiar Evidential Decision Theorist, who is an existentialist, says that being shown what's in the boxes should make you change from one box to two, but the intellectualist version says you should pick one box whether the main box is closed or open. 
+Now if you think decision theory should be sensitive to rational beliefs rather than actual beliefs, and you think Permissivism is true, you're committed to indecisiveness. You won't even need demons. After all, any situation where any credence in $p$ between $x$ and $y$ is permissible will mean there are multiple bets at distinct odds on $p$ that rationality neither requires taking nor requires passing. I think this is a perfectly sound argument for indecisiveness, but I didn't lean on it here because the premises are considerably less secure than the ones I've appealed to. 
 
-I think that intellectualism plus evidential decision theory is what @LevinsteinSoares2021 call 'functionalist decision theory'. I think, that is, that what they call choosing an algorithm is what I call choosing a strategy. But I'm not sure about this, since intellectualism plus Evidential Decision Theory is a very strange theory. One strange thing about it is that it recommends choosing less money rather than more, even when you know precisely what each choice will deliver. The other strange thing is that what the theory says to do in any case depends on what history you are taking the case to be a part of. For this reason, the theory is strictly speaking indecisive in my sense. You can't tell what to do in such a theory given the setup of any decision problem. For any decision problem you like, including the one where the chooser simply has to choose more money or less, there is some possible pre-history of the problem where different choices will be rational. So if my interpretation is right, everything Levinstein and Soares say about what their theory recommends in one or another case is only correct given some substantive but unstated assumptions about the pre-history of the cases. That said, the broad approach they take does seem to be as anti-existentialist, in the ordinary sense of 'existentialist', as it is possible to be, so I think it's not too far fetched to describe them as intellectualist Evidential Decision Theorists.
+But there is a third question that needs answering before we can offer a plausible indecisive theory: what is a mixed strategy? Relatedly, what role do mixed strategies have in the correct decision theory? This is a rather vexed question, and an important one. Almost all recent arguments against causal decision theory seem, to my eyes at least, to turn on attributing a bad theory of mixed strategies to the causal decision theorist. You can see this from the fact that almost all recent papers on decision theory involve problems that, when converted into games, have no pure strategy equilibria, but do have mixed strategy equilibria. We can't offer a full decision theory, even an indecisive one, without resolving these problems, and that means having a theory of mixed strategies. And that's very much a theory for another paper.^[For what it's worth, I think that theory must include the following two factors. First, playing a mixed strategy is just what @Lewis-Kavka-10071979 calls using a tie-breaking procedure. Second, the output of such a tie-breaking procedure is in principle unpredictable by anything that doesn't time travel.]
 
-- Something about money burning and why it can't be existentialist or intellectualist
+Note one thing I haven't said so far, and won't say in what follows. I don't say that the way to find the correct indecisive theory is to come up with a bunch of cases, consult our intuitions about them, and then see which theory can match at least 80% of those intuitions. (Or whatever percentage we are working with this week.) That is a dubious approach in general, but around here it is close to incoherent.
 
-So why do I call the assumption I'm making 'existentialism'. Well, it's helpful to think of a strategy, a plan for what to do in all situations, as the essence of the chooser. And the sequence of choices the chooser makes in real time is their existence. So the intellectualist thinks that essence precedes existence; a choice is made good by its position in a grand strategy. And the existentialist denies this. They think that existence precedes essence, or at least that it does not proceed from essence.
+Most contemporary work in decision theory starts with the assumption that when there are no demons around (or anything else vaguely demonic), expected utility maximisation is the correct decision theory. And then theorists will start rolling out fantastic cases involving demons or predictors or lesions or genes or twins or triplets or whatever is in fashion. And they will ask what extension of expected utility theory best tracks intuitions about these cases. But this seems like a very dubious strategy, since intuitions about cases will not lead one to expected utility theory in the first place. Trying to match intuitions about cases like the Allais or Ellsberg paradoxes will lead one to prefer some non-standard theory like the one developed by John @Quiggin1982 or Lara @BuchakRisk. It seems very unlikely that the best way to extend a counterintuitive theory like expected utility maximisation is by consulting intuitions about puzzle cases. It is much better to ask what principles we want our theory to endorse, and work towards a theory that satisfies those principles. And that is the methodology I have adopted here.
 
-The intellectualist position, whatever first order theory it is mixed with, immediately entails **The Core Premise**. If what it is for Amsterdam's choice to be rational just is for it to be a manifestation of a rational strategy, and Brussels should choose the (one and only) rational strategy, then if they are rational they have to make the same choice. If I'm assuming that theories even could violate **The Core Premise**, I'm assuming that intellectualism is false. And indeed I'm making a stronger assumption than that. I've assumed throughout that what a theory says Amsterdam should go is just what they think a Player who is faced with the embedded game on its own, without any opt-ins or opt-outs, should do. I think that's got to be right; Amsterdam has this choice in front of them, and all they learn about Doctor from the opt-in is captured in the conditional probabilities of Doctor's predicting certain decisions conditional on Amsterdam making them.
+I've relied heavily in this paper on two such principles: The Sure Thing principle, and the principle that information has non-negative value. I'll end by describing one more principle, and noting two questions it raises. The principle is that a decider should be a probabilist, and that they should maximise expected utility. More precisely, it says that if the states are $\{S_1, \dots, S_m\}$, and the choices are $\{O_1, \dots, O_n\}$, then $O_i$ is a permissible choice just in case there is some probability function $Pr$ such that
 
-But I wanted to highlight this assumption because you might think that there is something inappropriate about being an existentialist and insisting on principles of dynamic consistency like **The Core Premise**. You might think existentialism entails, or at least supports the possibility of, the non-existence of genuinely dynamic norms.  So I want to end by noting three reasons that someone could think that every decision in an extensive game should be assessed on its own merits, and still think there are inter-temporal norms on rational decision like that expressed by **The Core Premise**.
+$$
+\sum_{k = 1}^m V(S_k \wedge O_i)Pr(S_k) \geq \sum_{k = 1}^m V(S_k \wedge O_j)Pr(S_k)
+$$
 
-First, one could think that individual humans choose the units of time over which their choices will be assessed. Intellectualism is the view that the relevant unit is a life. The alternative to that need not be that each instant is to be assessed anew. So the existentialist can agree with @Holton2009 that it is good to make plans, that once a plan is made it is typically good to carry through with it, and even that if one chooses a plan, that plan should be assessed as a unit, instead of assessing the individual actions that make up a plan. Existentialism, in the sense I'm using (or co-opting) the expression, simply denies that planning in this sense is rationally mandatory, and in particular that there need to be life-plans.
+for all $j \in \{1, \dots, n\}$. Even if the subjective probability of the state is affected by the choice one makes, there should be some probability function that the chooser ends up with, and their choice should make sense by the lights of that probability function. Note that if we assume that the chooser can select any mixed strategy from among their choices, there is guaranteed to be at least one strategy that satisfies this requirement, even if one thinks the states are choices of a demon who can predict one's strategy.^[If the demon can predict what one will do on a given occasion while playing a mixed strategy, this guarantee may fail. But assuming what I said in the last footnote about mixed strategies, that would mean we're in the realm of backwards causation, and the states are not causally independent of the actions.]
 
-Second, one could think that there are norms about the appropriate amount of fickleness in one's values and choices. It's consistent to say that each choice should be assessed on its own merits, but that a choice is bad in virtue of being excessively fickle [@Woodard2022]. In that case one must say that it is the second choice of the fickle pair that's the bad one; that the chooser will later have different views is not a bad making feature of a particular choice. An advantage of this approach over intellectualism is that it allows that both stubbornness and fickleness are vices. The intellectualist thinks that the ideal agent has one grand plan and sticks to it through thick and thin. This doesn't sound great, and the existentialist is not committed to it.
+So that seems to me like a minimal constraint on choices. As @Pearce1984 shows, it is equivalent to the requirement that one not make a choice that is strictly dominated by some other choice, or by some mixture of other choices. (This result is hardly obvious, but it turns out to be a reasonably straightforward consequence of the existence of Nash equilibria for all finite zero-sum games.) That's hardly an uncontroversial principle, but it is also one I'm happy to adopt. If you're still on board, there are two more questions that we need to answer before we finish our decision theory.
 
-Third, and most importantly, one could think that failures of dynamic consistency are not bad in themselves, but that they are evidence that one of the individual choices within them is bad. (I'm borrowing ideas from David @Christensen2004 and Nico @Kolodny2005 here.) If you know a person believes $p$ and believes $\neg p$, you know they've made a mistake, even if you don't know when or where. And the mistake isn't (just) that they are incoherent; one of these two beliefs was ill-formed. This is the role that dynamic norms play in the argument of this paper. We can see that a view is wrong by seeing that it is dynamically incoherent. But the dynamic incoherence is not constitutive of the wrongness; it is just how we see that the view is wrong.
+Are all further constraints on rational decisions representable as constraints on the $Pr$ in this principle? There surely are some further constraints on rational decisions. If you're offered a bet at even money on whether I will become Canadian President next week, the only rational thing to do is to decline it. And that's true even though there is a $Pr$ such that taking the bet maximises expected utility. But that $Pr$ is completely irrational given your evidence. So _Do something that maximises expected utility given some probability_ is too liberal a rule; we need to say something about the $Pr$. Do we need to say more than that? My answer is no, though I'm not even going to start defending that here.^[Note that if you say no to this question, and you think that probabilities have to be real-valued, then you're committed to weak dominance not having a role to play in decision theory. So this is a non-trivial question.]
 
-That's the position I'm adopting here. The problem with the decisive views I've criticized is _not_ that they are existentialist. I think the right view is more or less existentialist. It's that when you ask them the same question in two different guises, they give different answers. That's bad, and it's bad even if one thinks that good choosers do not need an essence, or a strategy, before they interact with the world.
+The Canadian Presidency examples suggests that there are constraints on $Pr$ that are external to decision theory. You shouldn't take that bet because you shouldn't have probability above 0.5 that I'll become Canadian President next week. The order of explanation runs from the (ir)rationality of the credal state to the (ir)rationality of the decision. Our fifth and final question is, are there any cases where the order of explanation goes the other way? @Arntzenius2008 argued that one should have credences such that the highest value equilibrium was also the choice that maximised expected utility. That's an example of a constraint on $Pr$ where the order of explanation runs from decisions to beliefs. I argued against that principle, but not because of a systematic reason to think that the order of explanation can't run that way. Instead I argued that this particular principle was dynamically incoherent. That leaves open the general question of whether any such principles, where constraints on decisions explain constraints on belief, are right.
 
+The long term goal of the project behind this paper is to argue that there are no such principles. The only constraints on rational decision are that one should maximise expected utility given some $Pr$, and this $Pr$ should satisfy independently motivated epistemic requirements. Now I haven't come close to arguing for that here, and it's a very strong claim. Given everything else I've said, it basically amounts to the claim that the theory of equilibrium selection has no role to play in normative decision theory. It may have a central role to play in descriptive decision theory, in explaining why people end up at a certain equilibrium. But it can't justify that equilibrium, since any equilibrium could be rationally justified.^[But note here that what I'm calling an equilibrium is just a coherent set of beliefs that is grounded in the evidence. It doesn't include the requirement, typical in game-theory, that the chooser has true beliefs about some aspect of the world around them.]
 
-* Insert Conclusions , with some edits
+But all of this is for future work. The aim of this paper has been to open up the possibility of an indecisive, i.e., permissive, decision theory. Decisive decision theories have to take a stand on Stag Decisions, and there is no coherent way for them to do that. So no decisive theory is correct, and the correct decision theory is indecisive.
 
-## References{-}
+#### References{-}
