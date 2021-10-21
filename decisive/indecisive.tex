@@ -115,7 +115,7 @@
 
 \title{Indecisive Decision Theory}
 \author{Brian Weatherson}
-\date{2021-10-14}
+\date{2021-10-15}
 
 \begin{document}
 \maketitle
@@ -138,11 +138,6 @@
 
 Say a decision theory is \textbf{decisive} iff for any decision problem,
 it says either:
-
-Picture is ``Study for `The Bear Hunt' (for the Alcázar, Madrid)'' by
-Peter Paul Rubens via
-\href{https://www.clevelandart.org/art/1983.69}{Cleveland Museum of
-Art}.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -719,11 +714,11 @@ For very different reasons, this kind of view is endorsed by Ralph
 \protect\hyperlink{ref-Gallow2020}{Gallow}
 (\protect\hyperlink{ref-Gallow2020}{2020}) and Abelard
 \protect\hyperlink{ref-Podgorski2022}{Podgorski}
-(\protect\hyperlink{ref-Podgorski2022}{forthcoming}). These three views
-differ from each other in how they motivate Gathering, and in how they
-extend the view to other choices, but they all agree that one should
-Gather in any Stag Decision. And this leads to the reverse problem to
-that facing the always Hunt view.
+(\protect\hyperlink{ref-Podgorski2022}{2022}). These three views differ
+from each other in how they motivate Gathering, and in how they extend
+the view to other choices, but they all agree that one should Gather in
+any Stag Decision. And this leads to the reverse problem to that facing
+the always Hunt view.
 
 Both Amsterdam and Brussels are facing Stag Decisions. But for
 Amsterdam, choosing A is Hunting and choosing B is Gathering, while for
@@ -810,7 +805,7 @@ Human Pick & Doctor Pick & Human Reward & Doctor Reward \\
 None & Opt-out & 0 & 1 \\
 A & A & 4 & 4 \\
 A & B & 0 & 0 \\
-B & A & 2+\(\frac{1}{m}\) & 0 \\
+B & A & 3 & 0 \\
 B & B & 2 & 1 \\
 \bottomrule
 \end{longtable}
@@ -824,21 +819,14 @@ Then the `late game' that Amsterdam faces will look like this:
 \textbf{ } & \textbf{PA} & \textbf{PB}\\
 \midrule
 \textbf{A} & 4 & 0\\
-\textbf{B} & $2+1/m$ & 2\\
+\textbf{B} & 3 & 2\\
 
 \end{tabular}
 \end{table}
 
-Since \(2 + m(2+\frac{1}{m}) > 4 + 0m\) for any value of \(m\)
-satisfying \(\frac{2}{3} \leq m \leq \frac{46}{47}\), the theory will
-say Amsterdam should choose B.\footnote{More slowly, we can use the
-  formula to work out the score of each option. The score of A is the
-  value in the top-left, 4, plus \(m\) times the value in the top-right,
-  0. And that's 4, no matter the value of \(m\). The score of B is the
-  value in the bottom-left, 2, plus \(m\) times the value in the
-  bottom-left, \(2 + \frac{1}{m}\). That is, the score is
-  \(2 + (1 + 2m) = 3 + 2m\). Since \(m > \frac{1}{2}\), this value is
-  greater than 4, which was the score of A.}
+Since \(2 + 3m > 4 + 0m\) for any value of \(m\) satisfying
+\(\frac{2}{3} \leq m \leq \frac{46}{47}\), the theory will say Amsterdam
+should choose B.
 
 The `early game' that Brussels faces will look like this:
 
@@ -849,7 +837,7 @@ The `early game' that Brussels faces will look like this:
 \textbf{ } & \textbf{PA} & \textbf{PB}\\
 \midrule
 \textbf{A} & 4 & 0\\
-\textbf{B} & $2+1/m$ & 1\\
+\textbf{B} & 3 & 1\\
 
 \end{tabular}
 \end{table}
@@ -857,21 +845,15 @@ The `early game' that Brussels faces will look like this:
 Since in this game Player gets nothing if Doctor opts-out, and there is
 a 50/50 chance the Doctor will opt-out if they predict B, the returns in
 the right-hand column are half what they are in the late game. Since
-\(4 + 0m > 1 + m(2+\frac{1}{m})\) for any value of \(m\) satisfying
+\(4 + 0m > 1 + 3m\) for any value of \(m\) satisfying
 \(\frac{2}{3} \leq m \leq \frac{46}{47}\), the theory will say Brussels
-should choose A.\footnote{More slowly, we can use the formula to work
-  out the score of each option. The score of A is the value in the
-  top-left, 4, plus \(m\) times the value in the top-right, 0. And
-  that's 4, no matter the value of \(m\). The score of B is the value in
-  the bottom-left, 1, plus \(m\) times the value in the bottom-left,
-  \(2 + \frac{1}{m}\). That is, the score is \(1 + (1 + 2m) = 2 + 2m\).
-  Since \(m < 1\), this value is less than 4, which was the score of A.}
+should choose A.
 
 So any decisive theory will violate \textbf{The Core Premise} for some
 choice pair or other. Hence all decisive theories are mistaken.
 
 \hypertarget{where-to-next}{%
-\subsection{Where To Next?}\label{where-to-next}}
+\section{Where To Next?}\label{where-to-next}}
 
 Decision theory cannot be everything that some of its proponents want it
 to be. It cannot be a guide that tells us what to do in every situation,
@@ -879,7 +861,7 @@ even if we allow it to sometimes say that options are tied. So what can
 decision theory be? A natural answer is that it can tell us which
 options are rationally permissible, knowing that there will often be a
 plurality of options that are permissible. I think the way to finding a
-plausible indecisive theory goes via answering the following three
+plausible indecisive theory goes via answering the following five
 questions.
 
 First, does decision theory start with what the chooser believes, or
@@ -1182,8 +1164,8 @@ Perfection.''} \emph{Econometrica} 52 (4): 1029--50.
 \url{https://doi.org/10.2307/1911197}.
 
 \leavevmode\hypertarget{ref-Podgorski2022}{}%
-Podgorski, Aberlard. forthcoming. {``Tournament Decision Theory.''}
-\emph{No{û}s}, forthcoming. \url{https://doi.org/10.1111/nous.12353}.
+Podgorski, Aberlard. 2022. {``Tournament Decision Theory.''}
+\emph{No{û}s}. \url{https://doi.org/10.1111/nous.12353}.
 
 \leavevmode\hypertarget{ref-Quiggin1982}{}%
 Quiggin, John. 1982. {``A Theory of Anticipated Utility.''}

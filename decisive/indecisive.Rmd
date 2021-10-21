@@ -3,8 +3,6 @@ title: "Indecisive Decision Theory"
 author: "Brian Weatherson"
 date: "`r Sys.Date()`"
 output:
-  word_document:
-    reference_docx: "../custom-reference.docx"
   pdf_document:
     latex_engine: xelatex
     toc: no
@@ -17,6 +15,8 @@ output:
     extra_dependencies: 
       mathastext: ["italic"]
       caption: null
+  word_document:
+    reference_docx: "../custom-reference.docx"
 mainfont: Merriweather
 mainfontoptions: Scale=MatchLowercase
 mathfont: STIX Two Math
@@ -41,18 +41,18 @@ knitr::opts_chunk$set(echo = FALSE, results = "asis")
 
 gameformat <- function(game, caption){
   #### Latex version for PDF
-  # kbl(game,
-  #     booktabs = T,
-  #     escape = FALSE,
-  #     align = paste0("r",strrep("c", ncol(game)-1)),
-  #     linesep = "") %>%
-  #   column_spec(1,
-  #               border_right = T,
-  #               bold = T) %>%
-  #   row_spec(0, bold = T) %>%
-  #   kable_styling(latex_options = "HOLD_position") %>%
-  #   sub("\\\\toprule", "", .) %>%
-  #   sub("\\\\bottomrule", "", .)
+  kbl(game,
+      booktabs = T,
+      escape = FALSE,
+      align = paste0("r",strrep("c", ncol(game)-1)),
+      linesep = "") %>%
+    column_spec(1,
+                border_right = T,
+                bold = T) %>%
+    row_spec(0, bold = T) %>%
+    kable_styling(latex_options = "HOLD_position") %>%
+    sub("\\\\toprule", "", .) %>%
+    sub("\\\\bottomrule", "", .)
   #### Huxtable version for HTML
   # as_hux(game) %>%
   #   # set_markdown_contents(1, 1, "") %>%
@@ -68,13 +68,13 @@ gameformat <- function(game, caption){
   #### Flextable version for Word
   #### Note have to include " " for first column, not ""
   #### Remember to include References line iff in Word (gotta be a way to automate this)
-  flextable(game) %>%
-    colformat_md() %>%
-    border_remove() %>%
-    hline(part = "header") %>%
-    vline(j = 1) %>%
-    align(align = "center") %>%
-    align(align = "center", part = "header")
+  # flextable(game) %>%
+  #   colformat_md() %>%
+  #   border_remove() %>%
+  #   hline(part = "header") %>%
+  #   vline(j = 1) %>%
+  #   align(align = "center") %>%
+  #   align(align = "center", part = "header")
 }
 
 game_display_caption <- function(game, caption){
@@ -288,7 +288,7 @@ Human Pick   Doctor Pick   Human Reward               Doctor Reward
   None        Opt-out           0                         1
      A           A              4                         4
      A           B              0                         0
-     B           A              2+$\frac{1}{m}$           0
+     B           A              3                         0
      B           B              2                         1
 
 Then the 'late game' that Amsterdam faces will look like this:
@@ -297,12 +297,12 @@ Then the 'late game' that Amsterdam faces will look like this:
 general_late_game <- tribble(
   ~" ",       ~PA, ~PB,
   "A",      "4", "0",
-  "B",    "$2+1/m$", "2"
+  "B",    "3", "2"
 )
 gameformat(general_late_game, "")
 ```
 
-Since $2 + m(2+\frac{1}{m}) > 4 + 0m$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Amsterdam should choose B.^[More slowly, we can use the formula to work out the score of each option. The score of A is the value in the top-left, 4, plus $m$ times the value in the top-right, 0. And that's 4, no matter the value of $m$. The score of B is the value in the bottom-left, 2, plus $m$ times the value in the bottom-left, $2 + \frac{1}{m}$. That is, the score is $2 + (1 + 2m) = 3 + 2m$. Since $m > \frac{1}{2}$, this value is greater than 4, which was the score of A.]
+Since $2 + 3m > 4 + 0m$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Amsterdam should choose B.
 
 The 'early game' that Brussels faces will look like this:
  
@@ -310,18 +310,18 @@ The 'early game' that Brussels faces will look like this:
 general_early_game <- tribble(
   ~" ",       ~PA, ~PB,
   "A",      "4", "0",
-  "B",    "$2+1/m$", "1"
+  "B",    "3", "1"
 )
 gameformat(general_early_game, "")
 ```
 
-Since in this game Player gets nothing if Doctor opts-out, and there is a 50/50 chance the Doctor will opt-out if they predict B, the returns in the right-hand column are half what they are in the late game. Since $4 + 0m > 1 + m(2+\frac{1}{m})$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Brussels should choose A.^[More slowly, we can use the formula to work out the score of each option. The score of A is the value in the top-left, 4, plus $m$ times the value in the top-right, 0. And that's 4, no matter the value of $m$. The score of B is the value in the bottom-left, 1, plus $m$ times the value in the bottom-left, $2 + \frac{1}{m}$. That is, the score is $1 + (1 + 2m) = 2 + 2m$. Since $m < 1$, this value is less than 4, which was the score of A.]
+Since in this game Player gets nothing if Doctor opts-out, and there is a 50/50 chance the Doctor will opt-out if they predict B, the returns in the right-hand column are half what they are in the late game. Since $4 + 0m > 1 + 3m$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Brussels should choose A.
 
 So any decisive theory will violate **The Core Premise** for some choice pair or other. Hence all decisive theories are mistaken.
 
 # Where To Next?
 
-Decision theory cannot be everything that some of its proponents want it to be. It cannot be a guide that tells us what to do in every situation, even if we allow it to sometimes say that options are tied. So what can decision theory be? A natural answer is that it can tell us which options are rationally permissible, knowing that there will often be a plurality of options that are permissible. I think the way to finding a plausible indecisive theory goes via answering the following three questions.
+Decision theory cannot be everything that some of its proponents want it to be. It cannot be a guide that tells us what to do in every situation, even if we allow it to sometimes say that options are tied. So what can decision theory be? A natural answer is that it can tell us which options are rationally permissible, knowing that there will often be a plurality of options that are permissible. I think the way to finding a plausible indecisive theory goes via answering the following five questions.
 
 First, does decision theory start with what the chooser believes, or with what they should believe? If Player is certain that the red box has more money, but they have conclusive evidence that the blue box has more money, which box does decision theory say that they should choose? If decision theory is the theory of which actions "most effectively serve one's desires according to one's beliefs" [@Lewis-Price-17051988, 465], then it is the red box. If it is the theory of which choices are rational, then it is the blue box. I'm  sympathetic to the arguments that Nomy @Arpaly2002 makes that the theory of rational choice should not pay any special attention to the agent's beliefs. What's rational to choose in a situation is a function of what's rational to believe in that situation, not what one actually believes.^[See also @Lewis-Mellor-14101981 where Lewis sketches a view that would say that each choice is rational in a way, and there need not be anything more to say about which is rational all-things-considered. I take it he means decision theory is the theory of the part of rationality that the red box chooser does well on. A similar point is suggested in @Lewis-Talbott-22061984.]
 
@@ -353,4 +353,4 @@ The long term goal of the project behind this paper is to argue that there are n
 
 But all of this is for future work. The aim of this paper has been to open up the possibility of an indecisive, i.e., permissive, decision theory. Decisive decision theories have to take a stand on Stag Decisions, and there is no coherent way for them to do that. So no decisive theory is correct, and the correct decision theory is indecisive.
 
-#### References{-}
+## References{-}

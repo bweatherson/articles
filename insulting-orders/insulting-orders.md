@@ -1,0 +1,134 @@
+---
+title: "Insulting Orders: Reply to Mandelkern"
+author: "Brian Weatherson"
+date: "October, 2021"
+affiliation: "Univesity of Michigan, Ann Arbor"
+citeproc: true
+bibliography: rBib.bib
+documentclass: philosophersimprint
+header-includes:
+- |
+  ```{=latex}
+  \journalvolume{999}
+  \journalnumber{999}
+  \copyrightinfo{2021, Brian Weatherson}
+  \usepackage{opcit,kantlipsum}
+  \usepackage{url}
+  \usepackage[breaklinks,colorlinks,linkcolor=black,citecolor=black,
+            pagecolor=black,urlcolor=black]{hyperref}
+  ```
+---
+
+Matthew @Mandelkern2021 raises a fascinating pair of puzzles about sentences like this one.
+
+(@basic)    \# Clean your room! I doubt you'll clean your room.
+
+One puzzle is that this speech seems defective in some way, even in a context where each part of it seems acceptable. Parent could properly want Child to clean their room, have the authority to order Child to clean their room, utter the first sentence as a proper exercise of this authority, know that Child is unlikely to follow the order, and utter the second sentence as an expression of their rationally held pessimism about child. Every step in this seems fine, but the overall speech is somehow defective. The first puzzle is to explain why this is so.
+
+A related puzzle, or perhaps a constraint on any solution to the first puzzle, is that the two sentences in (@basic) can be uttered in as much proximity as one likes, as long as they are to different audiences.
+
+(@two-part)  Parent (to Child): Clean your room! \
+  Parent (to Co-parent, resignedly): She won't clean her room.
+  
+Mandelkern notes that is fine, in a way that (@basic) is not. What's going on here? Note already that (@two-part) should make us suspicious that these are similar to Moore's paradox. Parent can't say _p_ to Child and immediately say _Maybe not p_ to Co-Parent. Moore paradoxical assertions remain defective if the two parts have different audiences. But whatever the problem is with (@basic), it only arises in the case where there is one audience for the two parts. This will become important in a bit, but first let's note what Mandelkern himself suggests is the problem. 
+
+The problem with (@basic), Mandelkern says, is that it violates a principle he calls _Posturing_.
+
+_Posturing_:
+    When you order someone to $\varphi$, you must act towards them as if you believe that they will $\varphi$. [@Mandelkern2021 52]
+    
+But this principle is too general, and is subject to counterexamples. Let's look at two of them.
+
+It is sometimes fine to follow up an order to $\varphi$ with instructions on how to $\varphi$. It isn't always fine - often it's insulting - but sometimes it is fine. So there is nothing wrong with (@teeth), if Child habitually forgets to brush their teeth.
+
+(@teeth)   Get ready for school! Don't forget to brush your teeth!
+
+Brushing teeth is a constituent part of getting ready for school. By _Posturing_, Parent should already be acting as if they believe that Child will get ready for school, and hence brush their teeth, by the time the second sentence is uttered. But then the second sentence would feel redundant and hence defective. But it doesn't, so _Posturing_ fails in this case. And indeed it fails in any case where it is acceptable to order someone to $\varphi$, and immediately give them help, or guidance, or instruction, on how to $\varphi$. And while many such speeches are annoying, these are at least sometimes acceptable.
+
+_Posturing_ also fails when it comes to omissions. Imagine Parent has the following dispositions. If Child does clean their room, they will take them out for ice cream. But Child's preferences over ice cream shops change in unpredictable ways. So Parent is disposed to ask Child where they would like to go for ice cream as soon as they believe Child will actually clean the room. They won't wait until the room is clean, since they want Child to enjoy the anticipation of going out for ice cream as soon as they are clearly being cooperative. This all seems like a coherent set of dispositions. But if Parent has these dispositions, and _Posturing_ is correct, they should immediately follow _Clean your room!_ with _Where would you like to go for ice cream?_. After all, given Parent's dispositions, the way to act towards Child as if Parent believes Child will clean their room is to ask them where they would like to go for ice cream. But if Parent is sceptical Child will actually follow the order, there is no reason to ask that question straight away. And more generally, ordering someone to $\varphi$ does not automatically licence, let alone require, futher actions one is disposed to take on believing that they will $\varphi$. The omission of those actions is completely appropriate. That is, _Posturing_ does not rule out those omissions.
+
+So if _Posturing_ isn't the right story, what is? In the rest of this note I'll sketch a rival explanation. To motivate this explanation, consider this variant on the second puzzle.
+
+(@three-part)  Parent (to Child): Clean your room! \
+  Parent (to Co-parent, in a stage whisper): She won't clean her room. \
+  Child (to both parents): I heard that!
+  
+Child's response is appropriate, both in tone and content. The angry tone is appropriate because the stage whisper is insulting. (It might be a deserved insult, if Child never cleans their room, but it's still an insult, and fine to get angry about.) But the content is more interesting for our purposes. Why is it right to complain that the second sentence was audible? It's because it's much more insulting to make a negative evaluation of someone in a speech directed to them, than it is to make it to a third party. Normally how insulting some behavior is is positively correlated with how disrespectful it is. But this is an exception; it's more insulting to tell someone they are wrong to their face, but more disrespectful to say it behind their back.
+
+These features of insults are interesting because they are structurally the right kind of feature to explain the two puzzles. If the problem with (@basic) is that it is impermissibly insulting, that could explain why it is bad but (@two-part) is not. But here you might worry that we've just pushed the problem back a stage. Why is (@basic) insulting? Here we need to take a little detour into speech act theory.
+
+There are two big ways in which speech acts can go wrong: they can fail to be authoritative, or they can fail to be apt. If they fail to be authoritative, then the speaker doesn't really perform the speech act they purport to perform. If my neighbor's cat walks up to me in the backyard, and I say _I hereby name you Roaring Kitty_, this goes wrong because I've purported to perform a naming, but it fact I haven't. I don't have the authority to rename my neighbor's cat. But other speech acts that I do have the authority to perform can fail to be apt. Think about what's at stake in the proper class many papers on norms of assertion. A defender of the knowledge norm says that I violate a standard when I assert something I don't know. They don't say that I fail to even make an assertion; they say I make a defective assertion.
+
+As well as these primary norms on speech acts, there are secondary norms. As well as making speech acts that are authoritative and apt, one must talk as if one's speech acts are authoritative and apt. Talking as if one's speech acts are not authoritative and apt is bad, even if they in fact are. One theory of what goes wrong in Moore paradoxical assertions is that they violate this kind of secondary norm. If one says _p but maybe not p_, the second clause implies the first is not apt. I'll say that the general secondary norm is that speech acts must not be self-undermining.
+
+What is it for an order to be authoritative and apt? The authority condition for orders just is authority. One can only order someone else to $\varphi$ if one has sufficient authority. In (@reply-guy), Child's utterance fails this condition.
+
+(@reply-guy)  Parent: Clean your room! \
+  Child: ?? You clean your room!
+  
+As @Maitra2012 notes, this authority requirement is an ex post condition not ex ante. One doesn't need prior authority to make an order. Instead, one can acquire authority by purporting to make the order and not being challenged. Our cases are all ones where Parent does have prior authority, but this ex ante/ex post distinction will be very important to what comes next.
+
+There isn't any literature that I know of that's directly on the aptness condition for orders. Here's my hypothesis as to what the aptness condition is.
+
+**Must Rule**:
+    One must (Order X to $\varphi$ only if X must $\varphi$)
+    
+Like the authority condition, this is an ex post rule. (The ex ante version is an interesting hypothesis about the aptness condition for advice.) Orders are apt only if once the order is made, they must be followed. This is related to the authority condition, since having authority means being able to create reasons for the receiver to act. But the aptness condition is in general stronger than the authority condition. If Parent orders child to go to bed, and Child instead rushes to the bathroom to avoid an accident, Parent's order was defective, but it was still an order. In virtue of their authority, and the fact they made an order, Parent gave Child a reason to go to bed. But Nature gave them a stronger reason to go to the bathroom.
+
+As evidence for the Must rule, note that declaring that one's own orders violate it sounds bad, even if the declaration is to a third party.
+
+(@under) Parent (to Child): Clean your room! \
+  Parent (to Co-Parent): ?? She doesn't have to clean her room.
+  
+I'm assuming that in context 'must' and 'have to' are close enough in meaning for this to be a good test. Note that the Must Rule is, like other rules for speech acts, a rule that's internal to the speech act, and not an all-things-considered rule. It has the same status as the rule that one must only assert truths. This is a correct rule governing assertion, but not an all-things-considered rule. Contra Kant, one need not tell the truth to the Terrorist at the door. And sometimes there are orders that it is all-things-considered good to give, perhaps for the sake of going on the record, even if the hearer does not in fact have to do what you order. But that's just to say, sometimes there are reasons to make defective assertions, or to give defective orders.
+
+The Must Rule looks like it could be part of the solution to the puzzle because it's bad to say someone might not do what they must do, even when this is not part of an order. Sometimes saying that someone must $\varphi$ is reporting on a pre-existing norm, not in any sense ordering them. Imagine that A is a member of the Sea Shanty Singers Union (SSSU), and considers themselves bound by its norms. B is very knowledgeable about the SSSU, but is not a member, and does not regard its norms as binding. All of this is common knowledge in the conversation. A has forgotten what their singing obligations are as a member.
+
+(@sssu)  A: How often do I have to sing sea shanties? \
+  B: You have to sing every morning when you wake up. \# But you probably won't.
+  
+Note that B is not ordering A here. Rather, B is reporting on prior norms that are binding on A. We can see this by noting that B could continue "But I think these are absurd rules; you should only sing when you're on camera." Still, we get the same kind of phenomena here that Mandelkern noted, which is a sign that it's not strictly speaking a phenomena to do with orders. (@Mandelkern2021 [43] notes that if the norms are not treated as binding on A, then B's utterance is fine. The point I want to make is that B's utterance is bad even if the norms are not treated as binding on B, and B thinks they should not be binding on A.)
+
+So this is the first part of a solution. It's incompatible to say that hearer must $\varphi$ and yet that one is unsure about whether they will. And so it's incompatible to perform a speech act whose aptness condition is that hearer must $\varphi$, and express doubt about whether they will. But this might not look like much progress - it's not that far yet from Mandelkern's own statement of the problem. (He takes declaratives like "You must $\varphi$" rather than imperatives like "Do $\varphi$" as his primary examples.) To finish the solution, we need to think about insults a bit more. Consider the following three exchanges.
+
+(@insult)   C: I'm going to try to read _War and Peace_. \
+  D: ?? I doubt you'll finish it.
+  
+(@delayed-insult)   C: I'm going to try to read _War and Peace_. \
+  (C leaves) \
+  D (to E): ? I doubt she'll finish it.
+  
+(@delayed-question)   C: I'm going to try to read _War and Peace_. \
+  (C leaves) \
+  E (to D): Do you think she'll finish it? \
+  D (to E): I doubt it.
+  
+In (@insult), D has insulted C. In (@delayed-question) they have not. I'm not entirely sure what to say about (@delayed-insult); it's at least disrespectful to bring this up first thing after C leaves, but whether it is insulting is tricky. Stil the contrast between (@insult) and (@delayed-question) is instructive. It's in general insulting to say to someone's face that they probably won't succeed in something they are trying to do. But if you reasonably believe they are unlikely to succeed, it isn't insulting to say this to a third party (if the topic is appropriate).
+
+In fact, the non-insulting responses to C line up fairly well with the non-defective continuants of an order like _Read War and Peace!_. It's not fine to say to them you doubt they will do it. It is fine to say that to a third party. (One necessary condition: these doubts are reasonable. One desiderata: the question of whether they will succeed is already salient.) It's fine to respond with helpful advice about how to succeed. (Note this is a thoroughly externalist norm. The advice must actually be helpful, and helpful to the advisee, not just to the goal.) And it's fine to not take further actions that would be appropriate if you thought they'd succeed. (You don't have to offer suggestions for follow up reading, even if you would make those offers were you to believe they'd succeed.) In general, there is a surprising correlation between what D can say to C without insult, and what one can say following up an order.
+
+Furthermore, it's disrespectful to believe of someone that they won't even try to do a thing they must do. And it is insulting to say this, or to imply it, or to say something that presupposes it.
+
+Now we have all the pieces together to explain (@basic). One of the following three things must be true when (@basic) is uttered.
+
+i. Child does not have to clean their room.
+ii. Child has to clean their room, but they won't even try to clean their room.
+iii. Child will try to clean their room, but Parent doubts they will succeed.
+
+If i is true, then the initial order is inapt. Since it is bad to undermine your own speech acts, Parent can't be read as taking i to be the case. So ii or iii is true. But saying either of these things, or even their disjunction, is insulting. And it's bad to be insulting in just this way.
+
+This story explains the contrast between (@basic) and (@two-part). If iii is true, Parent can order Child to clean their room, and not insult Child by expressing doubts to Co-Parent that Child will do what they have to do.
+
+I'll end with one objection, the objection that is most troubling to me. I've argued that (@basic) is either defective or insulting. Since it's bad to have a defective utterance, and bad to be insulting, it sounds bad. But, says the objector, we know what insults sound like. They don't always sound bad. Nothing wrong with saying to a colleague "You're the Ted Cruz of this department" if they have warranted such a comparison. And when they do sound bad, like when you say this to a colleague who is actually good, they don't sound anything like Moore paradoxical sentences. But (@basic) doesn't just sound bad, it sounds bad in something like the way Moore paradoxical sentences do. How do we explain this?
+
+I have three replies, in increasing order of responsiveness. The last is the most speculative, but would be most persuasive if it works. So let's build to it. 
+
+First, we should be a little sceptical that intuition can tell us not just that an utterance has gone wrong, but how it has gone wrong. One of the lessons of Gricean pragmatics is that intuition is a bad guide to what errors there are in a sentence. It leads smart people to think utterances which are true but misleading are actually false. So worst case scenario, we could just reject the intuition behind this objection here as yet another one that had to be corrected.
+
+Second, we know that (@basic) can't be exactly like other Moore paradoxical sentences because, as Mandelkern noted in the very setup of the problem, the problems with it go away if you change audiences between the two parts. And this is not the case with regular Moore paradoxical sentences. So whatever solution we offer, it couldn't and shouldn't make (@basic) be exactly like other Moore paradoxical sentences.
+
+Third, it is possible that the principle of charity is tripping us up here. If we hear someone uttering (@basic), we know they are either being self-undermining or insulting. Linguistically, it seems worse to be self-undermining. But morally, it's worse to be insulting. And if we have to make an all-things-considered judgment, it's probably better to violate linguistic norms than moral norms. Bad to be a fool, but worse to be a knave. So we charitably interpret (@basic) as self-undermining, because that's a more charitable interpretation than taking it to be an insult. That's why it sounds like (@basic) is self-undermining; it is self-undermining on its most charitable interpretation.
+
+If this theory sounds far-fetched, and offhand it does sound far-fetched to me, note that (@three-part) provides some evidence for the theory. Parent's second utterance there sounds not nearly as bad as the second sentence in (@basic). If that's right, it's mysterious. It is a really blatant counterexample to _Posturing_, and otherwise the counterexamples to _Posturing_ involve roundabout things like relevance conditions and omissions. What could be going on? My guess is that (@three-part) sounds better because it is so obviously insulting. We don't hear it as defective because it's so clear that Parent invites us to hear it as insulting. But in (@basic), no such invitation is on offer, and so we look for an alternative explanation, even if it involves the attribution of a linguistic error.
+
+## References
