@@ -7,7 +7,7 @@ volume: "999"
 number: "998"
 copyrightinfo: "2021, Brian Weatherson"
 citeproc: true 
-bibliography: rBib.bib 
+bibliography: keynesbib.bib 
 documentclass: philosophersimprint 
 numbersections: true 
 ---
