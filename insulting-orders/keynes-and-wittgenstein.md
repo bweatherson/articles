@@ -3,13 +3,12 @@ title: "Keynes and Wittgenstein"
 author: "Brian Weatherson"
 date: "October, 2021"
 affiliation: "University of Michigan, Ann Arbor"
-volume: "999"
-number: "998"
-copyrightinfo: "2021, Brian Weatherson"
-citeproc: true 
 bibliography: rBib.bib 
-documentclass: philosophersimprint 
 numbersections: true 
+mainfont: Lato
+mainfontoptions: Scale=MatchLowercase
+indent: true
+link-citations: true
 ---
 
 # Introduction
