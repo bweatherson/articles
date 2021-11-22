@@ -39,7 +39,7 @@ require(ftExtra)
 
 knitr::opts_chunk$set(echo = FALSE, results = "asis")
 
-gameformat <- function(game, caption){
+gameformat <- function(game){
   #### Latex version for PDF
   kbl(game,
       booktabs = T,
@@ -122,7 +122,7 @@ If you prefer this in the way we standardly present games in normal form, it loo
 	   "A", "6,4", "0,0",
 	   "B", "3,0", "4,1"
 	)
-gameformat(main_game, "")
+gameformat(main_game)
 ```
 
 Doctor is good at predictions, and prefers more money to less. So if Doctor predicts Player will choose A, they will opt-in, and also play A, getting $4. But what if they predict Player will choose B. They will get $1 either by opting-out, or by opting-in and choosing B. Since they are indifferent in this case, let's say they will flip a coin to decide which way to go. And Player knows that this is how Doctor will decide, should Doctor predict Player will choose B. Doctor will also flip a coin to decide what prediction to make if they think Player is completely indifferent between the choices, and Player also knows this.
@@ -183,7 +183,7 @@ To see why theories might violate **The Core Premise**, it's helpful to set out 
 	   "A", "6", "0",
 	   "B", "3", "4"
 	)
-gameformat(ams_game, "")
+gameformat(ams_game)
 ```
 
 I've written **PA** and **PB** in the columns to indicated that A or B is Predicted. But in this game that makes little difference, since Doctor will do whatever they predict Amsterdam will do. Things are a little different for Brussels. If Doctor predicts that Brussels has written B, they will flip a coin to decide whether to opt-out, or opt-in.  So we can't write Brussels's return in actual dollars, since we don't know how the coin lands. But we can write the return in expected dollars, and we assume that Brussels is after all trying to maximise expected dollars. (We'll come back to this assumption in the next section.) So the table Brussels faces looks like this.
@@ -194,7 +194,7 @@ I've written **PA** and **PB** in the columns to indicated that A or B is Predic
 	   "A", "6", "50",
 	   "B", "3", "52"
 	)
-gameformat(bru_game, "")
+gameformat(bru_game)
 ```
 
 If Doctor predicts B, then Player has a 1 in 2 chance of getting $100, and a 1 in 2 chance of getting the payout from the previous game. So their average payout is $50 if they play A, and $52 if they play B. Hence the values in  the right hand column here.
@@ -229,7 +229,7 @@ stag_hunt_game <- tribble(
   "G",      "$x, x$", "$y, z$",
   "H",    "$z, y$", "$w, w$"
 )
-gameformat(stag_hunt_game, "")
+gameformat(stag_hunt_game)
 ```
 
 - $x > z$
@@ -251,7 +251,7 @@ stag_hunt_decision <- tribble(
   "G",      "$x$", "$y$",
   "H",    "$z$", "$w$"
 )
-gameformat(stag_hunt_decision, "")
+gameformat(stag_hunt_decision)
 ```
 
 These kinds of decisions are important in the history of game theory because they illustrate in the one game the two most prominent theories of equilibrium selection: risk dominance and payoff dominance [@HarsanyiSelten1988]. Risk dominance recommends gathering; payoff dominance recommends hunting. And most contemporary proponents of decisive decision theories in philosophy fall into one of these two camps.
@@ -272,7 +272,7 @@ two_eqm_decision <- tribble(
   "E",      "$x$", "$y$",
   "F",    "$z$", "$w$"
 )
-gameformat(two_eqm_decision, "")
+gameformat(two_eqm_decision)
 ```
 
 Any coherent solution must be invariant under redescriptions of the problem. So if you take a real world example that fits this category, and relabel which option is E and which is F, the recommendation should flip. And if you rescale the utilities by multiplying by a positive constant or adding a constant, the verdict should be unchanged, since utilities are only defined up to positive affine transformation. The only theories that meet these constraints say that a choice has a 'score' $x + my$, where $x$ is the equilibrium payoff, and $y$ is the other possible payoff, and $m$ is a free variable the theory sets which reflects how much it cares about the value of the non-equilibrium payoff. The theory then says to pick the option with the higher score, or to be indifferent otherwise. So it  says to strictly prefer E to F iff $x + my > w + mz$ and to be indifferent between the choices if that's an equality not an inequality. Setting $m$ to 0 gives you the view that says one should always Hunt, since one should always pick the equilibrium with the highest equilibrium value. Setting $m$ to 1 gives you the view that you should always Gather, since you should maximise the sum (or, equivalently, the average) of the two payouts you might get with the choice. And both of these views violate **The Core Premise**. But what should we say about views that give $m$ other values?
@@ -299,7 +299,7 @@ general_late_game <- tribble(
   "A",      "4", "0",
   "B",    "3", "2"
 )
-gameformat(general_late_game, "")
+gameformat(general_late_game)
 ```
 
 Since $2 + 3m > 4 + 0m$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Amsterdam should choose B.
@@ -312,7 +312,7 @@ general_early_game <- tribble(
   "A",      "4", "0",
   "B",    "3", "1"
 )
-gameformat(general_early_game, "")
+gameformat(general_early_game)
 ```
 
 Since in this game Player gets nothing if Doctor opts-out, and there is a 50/50 chance the Doctor will opt-out if they predict B, the returns in the right-hand column are half what they are in the late game. Since $4 + 0m > 1 + 3m$ for any value of $m$ satisfying $\frac{2}{3} \leq m \leq \frac{46}{47}$, the theory will say Brussels should choose A.

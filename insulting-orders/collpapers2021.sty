@@ -1,0 +1,71 @@
+\makeatletter
+\let\Title\@title
+\let\Author\@author
+\makeatother
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mdwlist}
+\usepackage{enumitem}
+\setlist{noitemsep}
+
+\usepackage[compact]{titlesec}
+\titleformat{\section}
+  {\normalfont\fontsize{11.5}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{11}{14}\itshape}{\thesubsection}{1em}{}
+
+\usepackage[text={4.6in,7.44in},centering]{geometry}
+
+\usepackage{graphicx}
+\usepackage[geometry,weather,misc,clock]{ifsym}
+\usepackage{array}
+\usepackage{hanging}
+\usepackage{hyphenat}
+%\usepackage[pagebackref]{hyperref}
+%\renewcommand*\backref[1]{\ifx#1\relax \else (#1) \fi}
+
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black}
+\usepackage{needspace}
+\usepackage{textcomp}
+\usepackage{substr}
+\usepackage{natbib}
+\usepackage{nicefrac}
+\usepackage{tabulary}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+%\usepackage[table]{xcolor}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{objection}{Objection}
+\usepackage{tabto}
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\def\thesection{\arabic{section}}
+
+\widowpenalty=200
+\clubpenalty=200
+
+%\setlength{\cftbeforepartskip}{9pt}
+%\setlength{\cftbeforechapskip}{3pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1 }{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[C]{\textit \leftmark}
+\fancyhead[R]{\thepage}
+%\fancyhead[LE]{\bfseries\rightmark}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt}
+\fancypagestyle{plain}{
+  \fancyhead{}
+  \renewcommand{\headrulewidth}{0pt}
+}
