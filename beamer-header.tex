@@ -1,0 +1,32 @@
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{tabulary}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+

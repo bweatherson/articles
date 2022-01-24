@@ -1,0 +1,18 @@
+---
+title: "Comments on Das"
+author: "Brian Weatherson"
+date: "January 2022"
+mainfont: SF Pro Rounded
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+mathfont: Fira Math
+header-include:
+  - \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+output: 
+  beamer_presentation:
+    keep_tex: true
+    latex_engine: xelatex
+    fonttheme: serif
+    fig_caption: no
+    includes:
+      in_header: "../beamer-header.tex"
+---
