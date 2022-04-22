@@ -55,7 +55,7 @@ The group has to choose between these three options.
 
 - Let's try dictatorship.
 - There might be an Arrovian argument that we'll be forced into dictatorship.
-- Very hard to get a decision rule that is Paretian and Blackwellian other than dictatorship. (Does hard mean impossible? Good question - if someone wants to work this out/write this up, lmk.)
+- Very hard to get a decision rule that is Paretian and Bayesian other than dictatorship. (Does hard mean impossible? Good question - if someone wants to work this out/write this up, lmk.)
 
 ## But It's a Good Dictatorship, Right
 
