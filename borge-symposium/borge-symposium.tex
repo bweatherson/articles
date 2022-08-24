@@ -8,8 +8,8 @@
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -37,14 +37,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={The Sporting Attitude},
-  pdfauthor={Brian Weatherson},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1.4in]{geometry}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -73,23 +65,22 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\hypersetup{hidelinks}
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
 \usepackage{calc}
@@ -97,10 +88,22 @@
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\hypersetup{hidelinks}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={The Sporting Attitude},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{The Sporting Attitude}
 \author{Brian Weatherson}
-\date{2021-08-09}
+\date{2022-08-23}
 
 \begin{document}
 \maketitle
@@ -179,7 +182,7 @@ In most cases in football, the strength of reasons is just what you might expect
 
 But if an ethos is so essential to a sport, does that mean that players in communities with a different ethos are literally playing different games? As Borge points out, this would be an absurd result\footnote{I'm drawing here on his discussion of Ghafoor Jahani at the 1978 World Cup, on page 148.}. His example involves a World Cup team not used to the stricter refereeing in international games. But you don't need to go that far afield. I've heard that in England it can be a debacle when a Premier League referee takes charge of a Championship game, because the players just one level down are used to getting away with much heavier tackles than a referee who has to look after superstars in the top flight will allow. Now here's the objection. If the ethos is essential to the game, and the ethos is different in the Premiership and the Championship, then it follows they are playing a different sport in the Premiership and the Championship. And that's a reductio of the position.
 
-This criticism relies on reading too much into the notion of an ethos. It's true that in a colloquial sense, the game has a different ethos in a place where a certain tackle is commonplace to what it has in a place where that tackle is routinely penalised. But this isn't what D'Agastino meant by ``ethos,'' and it isn't what I mean. In D'Agastino's version, it concerned what was simply not to be done. The teams who are used to lighter refereeing typically won't do things that teams used to stricter refereeing simply won't do. The things they get penalised for all the time are part of the repetoire of the more mannered teams; it's just that those teams don't do them as often. So I'm not sure these are examples of difference in ethos in D'Agastino's sense. And they need not be differences in my sense either. As I'm using the term, the ethos of a game tells you what reasons you have to not do certain actions beyond what penalties will be applied to those actions. Changing the penalties doesn't even look like something that changes the non-penalty reasons.
+This criticism relies on reading too much into the notion of an ethos. It's true that in a colloquial sense, the game has a different ethos in a place where a certain tackle is commonplace to what it has in a place where that tackle is routinely penalised. But this isn't what D'Agastino meant by ``ethos'', and it isn't what I mean. In D'Agastino's version, it concerned what was simply not to be done. The teams who are used to lighter refereeing typically won't do things that teams used to stricter refereeing simply won't do. The things they get penalised for all the time are part of the repetoire of the more mannered teams; it's just that those teams don't do them as often. So I'm not sure these are examples of difference in ethos in D'Agastino's sense. And they need not be differences in my sense either. As I'm using the term, the ethos of a game tells you what reasons you have to not do certain actions beyond what penalties will be applied to those actions. Changing the penalties doesn't even look like something that changes the non-penalty reasons.
 
 But the bigger point to make in reply turns on the fact, much stressed by Borge, that football is social. Indeed, it is social twice over. Whether one is playing football at a given moment is a social fact. Whether I am reading a book at a moment is largely up to me. But there is literally nothing I could do right now, sitting at my computer with no one around, that would make it the case that I was playing a game of football. For that I would need teammates, and opponents (and for that matter a field) and none of them are to hand. But that doesn't exhaust how social football is. As Borge argues in chapter two, what makes it the case that various token games are tokens of the kind \emph{football} consists largely of social facts as well. Once we take these things into account, we can see that appeal to something like an ethos of football won't make it the case that people with different attitudes are playing different games.
 
@@ -201,16 +204,16 @@ While I've disagreed, at least on points of emphasis, with Borge, I want to clos
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-Borge2010}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Borge2010}{}}%
 Borge, Steffen. 2010. {``In Defence of Maradona's Hand of God.''} In \emph{Philosophy of Sport: International Perspectives}, edited by A. Hardman and C. Jones, 154--79. Cambridge Scholars Publishing.
 
-\leavevmode\hypertarget{ref-Borge2019}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Borge2019}{}}%
 ---------. 2019. \emph{The Philosophy of Football}. London: Routledge.
 
-\leavevmode\hypertarget{ref-DAgostino1981}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-DAgostino1981}{}}%
 D'Agostino, Fred. 1981. {``The Ethos of Games.''} \emph{Journal of the Philosophy of Sport}, 7--18.
 
-\leavevmode\hypertarget{ref-Suits1978}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Suits1978}{}}%
 Suits, Bernard. 1978. \emph{The Grasshopper: Games, Life and Utopia}. Toronto: University of Toronto Press.
 
 \end{CSLReferences}

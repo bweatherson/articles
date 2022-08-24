@@ -1,15 +1,15 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.21)  23 AUG 2022 22:49
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.21)  23 AUG 2022 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**symmetric-games.tex
-(./symmetric-games.tex
+**war-on-war.tex
+(./war-on-war.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-12-07> xparse <2020-03-03> (/usr/local/texlive/2020/
 texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count173
 \c@section=\count174
@@ -181,83 +181,115 @@ LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/unicode-math/unicode-math-table.t
 ex)))
 
-Package fontspec Info: Lato scale = 0.8509361028956599.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato scale = 0.8509361028956599.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/B scale = 0.8401532025859727.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/I scale = 0.8509361028956599.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/BI scale = 0.8401532025859727.
+Package fontspec Info: Lato/B scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/B scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/I scale = 0.8509347800436323.
+
+
+Package fontspec Info: Lato/I scale = 0.8509347800436323.
+
+
+Package fontspec Info: Lato/BI scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/BI scale = 0.840152587367174.
 
 
 Package fontspec Info: Font family 'Lato(0)' created for font 'Lato' with
-(fontspec)             options [Scale=MatchLowercase,Ligatures=TeX,Scale=1].
+(fontspec)             options
+(fontspec)             [Scale=MatchLowercase,Ligatures=TeX,Scale=1,Scale=MatchL
+owercase].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/OT:script=latn;language=dflt;mapping=tex-t
-ext;"
+(fontspec)             <->s*[0.8509347800436323]"Lato/OT:script=latn;language=d
+flt;mapping=tex-text;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B/OT:script=latn;language=dflt;mapping=tex
--text;"
+(fontspec)             <->s*[0.840152587367174]"Lato/B/OT:script=latn;language=
+dflt;mapping=tex-text;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I/OT:script=latn;language=dflt;mapping=tex
--text;"
+(fontspec)             <->s*[0.8509347800436323]"Lato/I/OT:script=latn;language
+=dflt;mapping=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI/OT:script=latn;language=dflt;mapping=te
-x-text;"
+(fontspec)             <->s*[0.840152587367174]"Lato/BI/OT:script=latn;language
+=dflt;mapping=tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 21.
+(Font)              scaled to size 10.21124pt on input line 21.
 
-Package fontspec Info: Lato scale = 0.9999972487791457.
-
-
-Package fontspec Info: Lato scale = 0.9999972487791457.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/B scale = 0.9873254740044548.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/I scale = 0.9999972487791457.
+Package fontspec Info: Lato scale = 0.8509347800436323.
 
 
-Package fontspec Info: Lato/BI scale = 0.9873254740044548.
+Package fontspec Info: Lato scale = 0.8509347800436323.
+
+
+Package fontspec Info: Lato/B scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/B scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/I scale = 0.8509347800436323.
+
+
+Package fontspec Info: Lato/I scale = 0.8509347800436323.
+
+
+Package fontspec Info: Lato/BI scale = 0.840152587367174.
+
+
+Package fontspec Info: Lato/BI scale = 0.840152587367174.
 
 
 Package fontspec Info: Font family 'Lato(1)' created for font 'Lato' with
-(fontspec)             options [Scale=MatchLowercase].
+(fontspec)             options [Scale=MatchLowercase,Scale=MatchLowercase].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999972487791457]"Lato/OT:script=latn;language=d
+(fontspec)             <->s*[0.8509347800436323]"Lato/OT:script=latn;language=d
 flt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9873254740044548]"Lato/B/OT:script=latn;language
-=dflt;"
+(fontspec)             <->s*[0.840152587367174]"Lato/B/OT:script=latn;language=
+dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.9999972487791457]"Lato/I/OT:script=latn;language
+(fontspec)             <->s*[0.8509347800436323]"Lato/I/OT:script=latn;language
 =dflt;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.9873254740044548]"Lato/BI/OT:script=latn;languag
-e=dflt;"
+(fontspec)             <->s*[0.840152587367174]"Lato/BI/OT:script=latn;language
+=dflt;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
@@ -267,14 +299,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/lmr/bx/n --> TU/Lato(1)/b/n on input line 21.
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
 Package fontspec Info: Could not resolve font "Fira Math/B" (it probably
 (fontspec)             doesn't exist).
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
 Package fontspec Info: Font family 'FiraMath(0)' created for font 'Fira Math'
@@ -286,51 +318,51 @@ allCapsFont={},Script=Math].
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9610985070838159]"Fira
+(fontspec)             <->s*[0.817833712549855]"Fira
 (fontspec)             Math/OT:script=math;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/FiraMath(0)/m/n' will be
-(Font)              scaled to size 10.5241pt on input line 22.
+(Font)              scaled to size 9.81409pt on input line 22.
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
 Package fontspec Info: Could not resolve font "Fira Math/B" (it probably
 (fontspec)             doesn't exist).
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
 Package fontspec Info: Font family 'FiraMath(1)' created for font 'Fira Math'
 (fontspec)             with options
 (fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=9.417-},{Size=7.1175-9.417,Font=
-Fira
-(fontspec)             Math,Style=MathScript},{Size=-7.1175,Font=Fira
+allCapsFont={},Script=Math,SizeFeatures={{Size=10.32-},{Size=7.8-10.32,Font=Fir
+a
+(fontspec)             Math,Style=MathScript},{Size=-7.8,Font=Fira
 (fontspec)             Math,Style=MathScriptScript}}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.417->s*[0.9610985070838159]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;"<7.1175-9.417>s*[0.96
-10985070838159]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.1175>s*[0
-.9610985070838159]"Fira
+(fontspec)             <10.32->s*[0.817833712549855]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;"<7.8-10.32>s*[0.81783
+3712549855]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.8>s*[0.81
+7833712549855]"Fira
 (fontspec)             Math/OT:script=math;language=dflt;+ssty=1;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 10.5241pt on input line 22.
+(Font)              scaled to size 9.81409pt on input line 22.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `normal' on input line 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -340,74 +372,74 @@ LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/FiraMath(1)/b/n on input line 22.
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9611946169345243.
+Package fontspec Info: Fira Math scale = 0.81791549592111.
 
 
 Package fontspec Info: Could not resolve font "Fira Math/B" (it probably
 (fontspec)             doesn't exist).
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9611946169345243.
+Package fontspec Info: Fira Math scale = 0.81791549592111.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9611946169345243.
+Package fontspec Info: Fira Math scale = 0.81791549592111.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9611946169345243.
+Package fontspec Info: Fira Math scale = 0.81791549592111.
 
 
 Package fontspec Info: Font family 'FiraMath(2)' created for font 'Fira Math'
 (fontspec)             with options
 (fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=9.417-},{Size=7.1175-9.417,Font=
-Fira
-(fontspec)             Math,Style=MathScript},{Size=-7.1175,Font=Fira
+allCapsFont={},Script=Math,SizeFeatures={{Size=10.32-},{Size=7.8-10.32,Font=Fir
+a
+(fontspec)             Math,Style=MathScript},{Size=-7.8,Font=Fira
 (fontspec)             Math,Style=MathScriptScript}},ScaleAgain=1.0001,FontAdju
 stment={\fontdimen
-(fontspec)             8\font =6.10397pt\relax \fontdimen 9\font
-(fontspec)             =4.73584pt\relax \fontdimen 10\font =4.73584pt\relax
-(fontspec)             \fontdimen 11\font =7.36687pt\relax \fontdimen 12\font
-(fontspec)             =5.05156pt\relax \fontdimen 13\font =4.20964pt\relax
-(fontspec)             \fontdimen 14\font =4.20964pt\relax \fontdimen 15\font
-(fontspec)             =2.8415pt\relax \fontdimen 16\font =3.68343pt\relax
-(fontspec)             \fontdimen 17\font =3.68343pt\relax \fontdimen 18\font
-(fontspec)             =3.78868pt\relax \fontdimen 19\font =2.63103pt\relax
-(fontspec)             \fontdimen 22\font =2.94675pt\relax \fontdimen 20\font
+(fontspec)             8\font =5.69217pt\relax \fontdimen 9\font
+(fontspec)             =4.41634pt\relax \fontdimen 10\font =4.41634pt\relax
+(fontspec)             \fontdimen 11\font =6.86986pt\relax \fontdimen 12\font
+(fontspec)             =4.71075pt\relax \fontdimen 13\font =3.92563pt\relax
+(fontspec)             \fontdimen 14\font =3.92563pt\relax \fontdimen 15\font
+(fontspec)             =2.64981pt\relax \fontdimen 16\font =3.43494pt\relax
+(fontspec)             \fontdimen 17\font =3.43494pt\relax \fontdimen 18\font
+(fontspec)             =3.53307pt\relax \fontdimen 19\font =2.45352pt\relax
+(fontspec)             \fontdimen 22\font =2.74794pt\relax \fontdimen 20\font
 (fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax }].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.417->s*[0.9611946169345243]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;"<7.1175-9.417>s*[0.96
-11946169345243]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.1175>s*[0
-.9611946169345243]"Fira
+(fontspec)             <10.32->s*[0.81791549592111]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;"<7.8-10.32>s*[0.81791
+549592111]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.8>s*[0.81
+791549592111]"Fira
 (fontspec)             Math/OT:script=math;language=dflt;+ssty=1;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.10397pt\relax \fontdimen 9\font
-(fontspec)             =4.73584pt\relax \fontdimen 10\font =4.73584pt\relax
-(fontspec)             \fontdimen 11\font =7.36687pt\relax \fontdimen 12\font
-(fontspec)             =5.05156pt\relax \fontdimen 13\font =4.20964pt\relax
-(fontspec)             \fontdimen 14\font =4.20964pt\relax \fontdimen 15\font
-(fontspec)             =2.8415pt\relax \fontdimen 16\font =3.68343pt\relax
-(fontspec)             \fontdimen 17\font =3.68343pt\relax \fontdimen 18\font
-(fontspec)             =3.78868pt\relax \fontdimen 19\font =2.63103pt\relax
-(fontspec)             \fontdimen 22\font =2.94675pt\relax \fontdimen 20\font
+(fontspec)             \fontdimen 8\font =5.69217pt\relax \fontdimen 9\font
+(fontspec)             =4.41634pt\relax \fontdimen 10\font =4.41634pt\relax
+(fontspec)             \fontdimen 11\font =6.86986pt\relax \fontdimen 12\font
+(fontspec)             =4.71075pt\relax \fontdimen 13\font =3.92563pt\relax
+(fontspec)             \fontdimen 14\font =3.92563pt\relax \fontdimen 15\font
+(fontspec)             =2.64981pt\relax \fontdimen 16\font =3.43494pt\relax
+(fontspec)             \fontdimen 17\font =3.43494pt\relax \fontdimen 18\font
+(fontspec)             =3.53307pt\relax \fontdimen 19\font =2.45352pt\relax
+(fontspec)             \fontdimen 22\font =2.74794pt\relax \fontdimen 20\font
 (fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
@@ -419,63 +451,63 @@ LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/FiraMath(2)/b/n on input line 22.
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610023972331075.
+Package fontspec Info: Fira Math scale = 0.8177519291786.
 
 
 Package fontspec Info: Could not resolve font "Fira Math/B" (it probably
 (fontspec)             doesn't exist).
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610023972331075.
+Package fontspec Info: Fira Math scale = 0.8177519291786.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610023972331075.
+Package fontspec Info: Fira Math scale = 0.8177519291786.
 
 
-Package fontspec Info: Fira Math scale = 0.9610985070838159.
+Package fontspec Info: Fira Math scale = 0.817833712549855.
 
 
-Package fontspec Info: Fira Math scale = 0.9610023972331075.
+Package fontspec Info: Fira Math scale = 0.8177519291786.
 
 
 Package fontspec Info: Font family 'FiraMath(3)' created for font 'Fira Math'
 (fontspec)             with options
 (fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=9.417-},{Size=7.1175-9.417,Font=
-Fira
-(fontspec)             Math,Style=MathScript},{Size=-7.1175,Font=Fira
+allCapsFont={},Script=Math,SizeFeatures={{Size=10.32-},{Size=7.8-10.32,Font=Fir
+a
+(fontspec)             Math,Style=MathScript},{Size=-7.8,Font=Fira
 (fontspec)             Math,Style=MathScriptScript}},ScaleAgain=0.9999,FontAdju
 stment={\fontdimen
-(fontspec)             8\font =0.79984pt\relax \fontdimen 9\font
-(fontspec)             =1.57861pt\relax \fontdimen 10\font =1.57861pt\relax
-(fontspec)             \fontdimen 11\font =1.57861pt\relax \fontdimen 12\font
-(fontspec)             =6.31445pt\relax \fontdimen 13\font =0pt\relax }].
+(fontspec)             8\font =0.74586pt\relax \fontdimen 9\font
+(fontspec)             =1.4721pt\relax \fontdimen 10\font =1.4721pt\relax
+(fontspec)             \fontdimen 11\font =1.4721pt\relax \fontdimen 12\font
+(fontspec)             =5.88846pt\relax \fontdimen 13\font =0pt\relax }].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.417->s*[0.9610023972331075]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;"<7.1175-9.417>s*[0.96
-10023972331075]"Fira
-(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.1175>s*[0
-.9610023972331075]"Fira
+(fontspec)             <10.32->s*[0.8177519291786]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;"<7.8-10.32>s*[0.81775
+19291786]"Fira
+(fontspec)             Math/OT:script=math;language=dflt;+ssty=0;"<-7.8>s*[0.81
+77519291786]"Fira
 (fontspec)             Math/OT:script=math;language=dflt;+ssty=1;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.79984pt\relax \fontdimen 9\font
-(fontspec)             =1.57861pt\relax \fontdimen 10\font =1.57861pt\relax
-(fontspec)             \fontdimen 11\font =1.57861pt\relax \fontdimen 12\font
-(fontspec)             =6.31445pt\relax \fontdimen 13\font =0pt\relax 
+(fontspec)             \fontdimen 8\font =0.74586pt\relax \fontdimen 9\font
+(fontspec)             =1.4721pt\relax \fontdimen 10\font =1.4721pt\relax
+(fontspec)             \fontdimen 11\font =1.4721pt\relax \fontdimen 12\font
+(fontspec)             =5.88846pt\relax \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 2
@@ -626,107 +658,30 @@ Package graphics Info: Driver file: xetex.def on input line 105.
 \cslhangindent=\skip61
 \csllabelwidth=\skip62
 \cslentryspacingunit=\skip63
-(/usr/local/texlive/2020/texmf-dist/tex/latex/units/nicefrac.sty
-Package: nicefrac 1998/08/04 v0.9b Nice fractions
-\L@UnitsRaiseDisplaystyle=\skip64
-\L@UnitsRaiseTextstyle=\skip65
-\L@UnitsRaiseScriptstyle=\skip66
-(/usr/local/texlive/2020/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)) (/usr/local/texlive/2020/texmf-dist/tex/latex/mathastext/mathastext.sty
-Package: mathastext 2019/11/16 v1.3w Use the text font in math mode (JFB)
-\mst@exists@muskip=\muskip18
-\mst@forall@muskip=\muskip19
-\mst@prime@muskip=\muskip20
-\mst@do@nonletters=\toks25
-\mst@do@easynonletters=\toks26
-\mst@do@az=\toks27
-\mst@do@AZ=\toks28
-\symmtoperatorfont=\mathgroup6
-\symmtletterfont=\mathgroup7
-** ! and ?
-** punctuation: , . : ; and \colon
-LaTeX Info: Redefining \rightarrowfill on input line 790.
-LaTeX Info: Redefining \leftarrowfill on input line 795.
-** + and =
-** adding = ; and + to \nfss@catcodes
-** parentheses ( ) [ ] and slash /
-** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
-LaTeX Font Info:    Redeclaring math delimiter \backslash on input line 932.
-LaTeX Font Info:    Redeclaring math symbol \setminus on input line 944.
-LaTeX Info: Redefining \models on input line 953.
-** \# \mathdollar \% \& 
-** \imath and \jmath 
-LaTeX Font Info:    Overwriting math alphabet `\mathnormalbold' in version `nor
-mal'
-(Font)                  TU/Lato(0)/b/it --> TU/Lato(0)/b/it on input line 2140.
-
-LaTeX Font Info:    Overwriting math alphabet `\mathnormalbold' in version `bol
-d'
-(Font)                  TU/Lato(0)/b/it --> TU/Lato(0)/b/it on input line 2140.
-
-LaTeX Font Info:    Overwriting symbol font `mtletterfont' in version `normal'
-(Font)                  TU/Lato(0)/m/it --> TU/Lato(0)/m/it on input line 2140.
-
-LaTeX Font Info:    Overwriting symbol font `mtletterfont' in version `bold'
-(Font)                  TU/Lato(0)/m/it --> TU/Lato(0)/b/it on input line 2140.
-
-LaTeX Font Info:    Overwriting symbol font `mtoperatorfont' in version `normal
-'
-(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/m/n on input line 2140.
-LaTeX Font Info:    Overwriting symbol font `mtoperatorfont' in version `bold'
-(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/b/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathbf' in version `normal'
-(Font)                  TU/Lato(0)/b/n --> TU/Lato(0)/b/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathbf' in version `bold'
-(Font)                  TU/Lato(0)/b/n --> TU/Lato(0)/b/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathit' in version `normal'
-(Font)                  TU/Lato(0)/m/it --> TU/Lato(0)/m/it on input line 2140.
-
-LaTeX Font Info:    Overwriting math alphabet `\Mathit' in version `bold'
-(Font)                  TU/Lato(0)/m/it --> TU/Lato(0)/b/it on input line 2140.
-
-LaTeX Font Info:    Overwriting math alphabet `\Mathsf' in version `normal'
-(Font)                  TU/lmss/m/n --> TU/lmss/m/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathsf' in version `bold'
-(Font)                  TU/lmss/m/n --> TU/lmss/b/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathtt' in version `normal'
-(Font)                  TU/lmtt/m/n --> TU/lmtt/m/n on input line 2140.
-LaTeX Font Info:    Overwriting math alphabet `\Mathtt' in version `bold'
-(Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 2140.
-** Latin letters in the normal (resp. bold) math versions are now
-** set up to use the fonts TU/Lato(0)/m(b)/it
-** Other characters (digits, ...) and \log-like names will be
-** typeset with the n shape.
-** \hbar
-** minus as endash
-** \HUGE has been (re)-defined.
-** mathastext has declared larger sizes for subscripts.
-** To keep LaTeX defaults, use option `defaultmathsizes'.
-) (/usr/local/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip67
+\multirow@colwidth=\skip64
 \multirow@cntb=\count294
-\multirow@dima=\skip68
+\multirow@dima=\skip65
 \bigstrutjot=\dimen181
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen182
 \WF@size=\dimen183
 \c@WF@wrappedlines=\count295
 \WF@box=\box57
-\WF@everypar=\toks29
+\WF@everypar=\toks25
 Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count296
-\float@exts=\toks30
+\float@exts=\toks26
 \float@box=\box58
-\@float@everytoks=\toks31
+\@float@everytoks=\toks27
 \@floatcapt=\box59
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-\everycr=\toks32
-\minrowclearance=\skip69
+\everycr=\toks28
+\minrowclearance=\skip66
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/lscape.sty
@@ -762,13 +717,13 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \abovetabulinesep=\dimen192
 \belowtabulinesep=\dimen193
 \tabustrutrule=\dimen194
-\tabu@thebody=\toks33
-\tabu@footnotes=\toks34
+\tabu@thebody=\toks29
+\tabu@footnotes=\toks30
 \tabu@box=\box61
 \tabu@arstrutbox=\box62
 \tabu@hleads=\box63
 \tabu@vleads=\box64
-\tabu@cellskip=\skip70
+\tabu@cellskip=\skip67
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
@@ -782,12 +737,12 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/local/texlive/2020/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\TPTL@width=\skip71
+\TPTL@width=\skip68
 ) (/usr/local/texlive/2020/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box66
 \UL@hyphenbox=\box67
-\UL@skip=\skip72
-\UL@hook=\toks35
+\UL@skip=\skip69
+\UL@hook=\toks31
 \UL@height=\dimen195
 \UL@pe=\count304
 \UL@pixel=\dimen196
@@ -798,7 +753,7 @@ Package: ulem 2019/11/18
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen198
 \c@nlinenum=\count305
-\TeXr@lab=\toks36
+\TeXr@lab=\toks32
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -853,7 +808,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4800.
 \c@Hy@tempcnt=\count309
 (/usr/local/texlive/2020/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip21
+\Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5159.
@@ -906,44 +861,44 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip73
+\Hy@SectionHShift=\skip70
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2019/12/03 v1.28 bookmark driver for dvipdfm (HO)
 \BKM@id=\count318
 )) (/usr/local/texlive/2020/texmf-dist/tex/latex/xurl/xurl.sty
 Package: xurl 2020/01/24 v 0.09 modify URL breaks
-) (./symmetric-games.aux)
-\openout1 = `symmetric-games.aux'.
+) (./war-on-war.aux)
+\openout1 = `war-on-war.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 113.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 111.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/b/n on input line 113.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/b/n on input line 111.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 113.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 111.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/b/n on input line 113.
-LaTeX Info: Redefining \microtypecontext on input line 113.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/b/n on input line 111.
+LaTeX Info: Redefining \microtypecontext on input line 111.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -990,7 +945,7 @@ Package microtype Warning: Unknown slot number of character
 (microtype)                `microtype.cfg/390(protrusion)'.
 
 Package microtype Info: Character `\dj ' is missing
-(microtype)             in font `\TU/Lato(0)/m/n/10.95'.
+(microtype)             in font `\TU/Lato(0)/m/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
 
 Package microtype Warning: Unknown slot number of character
@@ -1162,23 +1117,23 @@ Package microtype Warning: Unknown slot number of character
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(115.63243pt, 383.03014pt, 115.63243pt)
-* v-part:(T,H,B)=(115.63243pt, 563.70512pt, 115.63243pt)
+* h-part:(L,W,R)=(93.95122pt, 426.39256pt, 93.95122pt)
+* v-part:(T,H,B)=(93.95122pt, 607.06755pt, 93.95122pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=383.03014pt
-* \textheight=563.70512pt
-* \oddsidemargin=43.36244pt
-* \evensidemargin=43.36244pt
-* \topmargin=6.36244pt
+* \textwidth=426.39256pt
+* \textheight=607.06755pt
+* \oddsidemargin=21.68123pt
+* \evensidemargin=21.68123pt
+* \topmargin=-15.31877pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=59.0pt
+* \marginparwidth=44.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1188,9 +1143,7 @@ Package microtype Warning: Unknown slot number of character
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package mathastext Info: current meaning of amsmath \resetMathstrut@ saved on i
-nput line 113.
-Package hyperref Info: Link coloring OFF on input line 113.
+Package hyperref Info: Link coloring OFF on input line 111.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/usr/local/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1202,44 +1155,44 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count319
 )
-LaTeX Info: Redefining \ref on input line 113.
-LaTeX Info: Redefining \pageref on input line 113.
-LaTeX Info: Redefining \nameref on input line 113.
+LaTeX Info: Redefining \ref on input line 111.
+LaTeX Info: Redefining \pageref on input line 111.
+LaTeX Info: Redefining \nameref on input line 111.
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 115.
+(Font)              scaled to size 17.64842pt on input line 113.
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 115.
+(Font)              scaled to size 12.25348pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 11.53326pt on input line 115.
+(Font)              scaled to size 11.77689pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 9.61105pt on input line 115.
+(Font)              scaled to size 8.1784pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 7.68884pt on input line 115.
+(Font)              scaled to size 5.72488pt on input line 113.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-15.
+13.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 11.53436pt on input line 115.
+(Font)              scaled to size 11.77798pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 9.61197pt on input line 115.
+(Font)              scaled to size 8.17917pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 7.68958pt on input line 115.
+(Font)              scaled to size 5.72542pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 115.
+(Font)              scaled to size 11.77557pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 115.
+(Font)              scaled to size 8.17749pt on input line 113.
 LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 115.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 115
+(Font)              scaled to size 5.72424pt on input line 113.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 113
 .
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 115
+LaTeX Font Info:    Trying to load font information for U+msb on input line 113
 .
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1247,74 +1200,54 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 115.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 115.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 12.0pt on input line 115.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 10.0pt on input line 115.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 8.0pt on input line 115.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 118.
+(Font)              scaled to size 14.70418pt on input line 139.
 LaTeX Font Info:    Font shape `TU/Lato(0)/b/n' will be
-(Font)              scaled to size 14.4pt on input line 118.
-LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 8.64995pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 6.72774pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 10.5251pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 8.65077pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 6.72838pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 10.52292pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 10.95pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 9.0pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
-(Font)              scaled to size 4.80553pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
-(Font)              scaled to size 4.80598pt on input line 122.
-LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
-(Font)              scaled to size 4.805pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 122.
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 5.0pt on input line 122.
+(Font)              scaled to size 14.51776pt on input line 139.
 [1
 
-] [2]
+]
+LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
+(Font)              scaled to size 7.06613pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(1)/m/n' will be
+(Font)              scaled to size 5.69217pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
+(Font)              scaled to size 9.815pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
+(Font)              scaled to size 7.06679pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(2)/m/n' will be
+(Font)              scaled to size 5.6927pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
+(Font)              scaled to size 9.81299pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
+(Font)              scaled to size 7.06534pt on input line 161.
+LaTeX Font Info:    Font shape `TU/FiraMath(3)/m/n' will be
+(Font)              scaled to size 5.69153pt on input line 161.
 LaTeX Font Info:    Font shape `TU/Lato(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 180.
-[3] [4] [5] [6] [7]
-Underfull \hbox (badness 1226) in paragraph at lines 299--300
-[]\TU/Lato(0)/m/n/10.95 Similar kinds of arguments are made by Dogramaci (2012)
- and Horowitz
+(Font)              scaled to size 10.08179pt on input line 163.
+File: war-on-war_files/figure-latex/first-anti-war-1.png Graphic file (type bmp
+)
+<war-on-war_files/figure-latex/first-anti-war-1.png>
+[2] [3]
+File: war-on-war_files/figure-latex/second-anti-war-1.png Graphic file (type bm
+p)
+<war-on-war_files/figure-latex/second-anti-war-1.png>
+
+Underfull \hbox (badness 1087) in paragraph at lines 241--242
+\TU/Lato(0)/m/n/12 Chooser will do one thing if Heads and another if Tails, the
+y will use the information from
  []
 
-[8] [9] [10] [11] (./symmetric-games.aux) ) 
+[4] [5] [6]
+LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
+(Font)              scaled to size 10.21124pt on input line 291.
+[7] (./war-on-war.aux) ) 
 Here is how much of TeX's memory you used:
- 20522 strings out of 477298
- 352458 string characters out of 5832537
- 809796 words of memory out of 5000000
- 39818 multiletter control sequences out of 15000+600000
- 411142 words of font info for 105 fonts, out of 8000000 for 9000
+ 19638 strings out of 477298
+ 339889 string characters out of 5832537
+ 797841 words of memory out of 5000000
+ 38957 multiletter control sequences out of 15000+600000
+ 410099 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,10n,121p,1785b,557s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 94i,10n,121p,1102b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on symmetric-games.pdf (11 pages).
+Output written on war-on-war.pdf (7 pages).

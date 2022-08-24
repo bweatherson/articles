@@ -10,10 +10,10 @@ geometry: margin=1.4in
 linestretch: 1.1
 bibliography: ../rBib.bib
 output: 
-#  bookdown::pdf_document2:
-#    latex_engine: xelatex
-#    toc: false
-#    keep_tex: true
+  bookdown::pdf_document2:
+   latex_engine: xelatex
+   toc: false
+   keep_tex: true
   bookdown::word_document2:
     number_sections: true
 header-includes:
