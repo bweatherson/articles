@@ -1,0 +1,708 @@
+---
+title: "Non-Ideal Decision Theory"
+author: "Anon"
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    toc: no
+    keep_tex: yes
+  bookdown::word_document2:
+     number_sections: yes
+mainfont: Lato
+mathfont: Fira Math
+mainfontoptions: Scale=MatchLowercase
+geometry: margin=1.3in
+linestretch: 1.4
+bibliography: ../rBib.bib
+fontsize: 12pt
+indent: true
+#header-includes: \hypersetup{hidelinks}
+---
+
+```{r, include=FALSE}
+require(knitr)
+require(tidyverse)
+require(kableExtra)
+require(huxtable)
+require(TSP)
+require(maps)
+require(grid)
+
+knitr::opts_chunk$set(echo = FALSE, results = "asis")
+
+gameformat <- function(game, caption){
+#### HTML Code
+#   gg <- as_hux(game) %>%
+#     set_width(ncol(game)/10) %>%
+# 	  set_markdown() %>% 
+#     set_caption(caption) %>%
+#     set_bold(1, everywhere) %>%
+#     set_bold(everywhere, 1) %>%
+#     set_align(everywhere, everywhere, "center") %>%
+# #    set_right_border(everywhere, 1, 0.5) %>%
+# #    set_bottom_border(1, everywhere, 0.5) %>%
+#     set_right_border_color(everywhere, 1, "grey60") %>%
+#     set_bottom_border_color(1, everywhere, "grey60") %>%
+#     set_caption_pos("bottom") %>%
+#     set_row_height(everywhere, 0.6)
+#   print_html(gg)
+#### PDF Code
+  cat("\\renewcommand{\\arraystretch}{1.3}   \n")
+  kable(game,
+     format = 'latex',
+   booktabs = T,
+   escape = FALSE,
+   align = paste0("r",strrep("c", ncol(game)-1)),
+   linesep = "",
+   caption = caption
+   )%>%
+  column_spec(0:ncol(game), border_right = F) %>%
+  column_spec(1,
+             border_right = F,
+             bold = T) %>%
+  row_spec(0, bold = T) %>%
+  sub("\\\\centering", "\\\\centering \\\\vspace{6pt}", .) %>%
+  sub("\\\\toprule", "", .) %>%
+  sub("\\\\bottomrule", "", .) %>%
+  sub("\\\\midrule", "", .)
+#### Word Code
+#   gg <- as_hux(game) %>%
+#     set_width(ncol(game)/10) %>%
+# 	  set_markdown() %>%
+#     set_bold(1, everywhere) %>%
+#     set_bold(everywhere, 1) %>%
+#     set_align(everywhere, everywhere, "center") %>%
+# #    set_right_border(everywhere, 1, 0.5) %>%
+# #    set_bottom_border(1, everywhere, 0.5) %>%
+#     set_right_border_color(everywhere, 1, "grey60") %>%
+#     set_bottom_border_color(1, everywhere, "grey60") %>%
+#     set_row_height(everywhere, 0.6) %>%
+#     set_caption(caption) %>%
+#     set_caption_pos("bottom") %>%
+#     as_flextable()
+# gg
+# 
+  }
+
+```
+
+
+<!-- Intro about salesman problem from Demon book 
+    Have to restrict the map to CA, NV, OR, and renumber-->
+
+### Decisions Under Certainty {#deccertainty}
+
+Most philosophical work on decision theory focusses on choices under uncertainty. And I'm going to follow suit for most of this book. But not yet. Instead, I'll start with an example of decision making under certainty, and in particular a version of the problem that Julia Robinson dubbed the 'travelling salesman' problem.~^[The dubbing is in @Robinson1949. For a thorough history of the problem, see @Schrijver2005. For an accessible history of the problem, which includes these references, see the wikipedia page on 'Traveling Salesman Problem'.]~ 
+
+>> **Salesman**    
+>> Chooser is given the straight line distance between each pair of cities from the 257 represented on the map below. Using this information, Chooser has to find as short a path as possible that goes through all 257 cities and returns to the first one. The longer a path Chooser selects, the worse things will be for Chooser. 
+
+```{r salesman-points, fig.cap="The 257 cities that must be visited in the Salesman problem."}
+
+theme_map <- function(base_size=9, base_family="") {
+  theme_bw(base_size=base_size, base_family=base_family) %+replace%
+    theme(axis.line=element_blank(),
+          axis.text=element_blank(),
+          axis.ticks=element_blank(),
+          axis.title=element_blank(),
+          panel.background=element_blank(),
+          panel.border=element_blank(),
+          panel.grid=element_blank(),
+          panel.spacing=unit(0, "lines"),
+          plot.background=element_blank(),
+          legend.justification = c(0,0),
+          legend.position = c(0,0)
+    )
+}
+
+theme_set(theme_map())
+
+all_states <- map_data("state") %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  select(state = region)
+
+all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+                     "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", 
+                     "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", 
+                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
+                     "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+
+used_states <- 1:49
+
+long_states <- all_states$state[used_states]
+short_states <- all_states$code[used_states]
+
+data("USCA312")
+data("USCA312_GPS")
+
+cities <- as_tibble(as.matrix(USCA312))
+
+city_numbers <- tibble(
+  id = 1:312,
+  thecities = colnames(cities)
+) %>% 
+  mutate(used_city = case_when(str_sub(thecities, -2) %in% short_states  ~ 1,
+                               TRUE ~ 0))
+
+the_city_numbers <- filter(city_numbers, used_city == 1)$id
+
+
+our_cities <- cities %>% 
+  select(all_of(the_city_numbers)) %>% 
+  slice(the_city_numbers)
+
+our_gps <- USCA312_GPS %>% 
+  slice(the_city_numbers) %>% 
+  rowid_to_column()
+
+city_matrix <- as.matrix(our_cities)
+
+rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
+
+## Fine tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion")
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+
+## Not good tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="cheapest_insertion", start = 17) # - Very messy
+
+## Generate tour by longitude - really bad
+#tour_line <- TOUR(arrange(our_gps, long)$rowid, tsp = as.TSP(city_matrix))
+
+## Best tour
+load("tour_line.RData")
+
+## Turn tour to map path
+# paths <- tribble(
+#   ~step, ~property, ~rowid, ~long, ~lat
+# )
+# 
+# for (i in 1:nrow(our_gps)){
+#   x <- tour_line[i]
+#   first_city <- our_gps %>% slice(x)
+#   next_city <- our_gps %>% slice(x %% 31)
+#   paths <- paths %>% 
+#     add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>% 
+#   #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+# }
+# 
+# x <- tour_line[1]
+# 
+# paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states) 
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+#  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap()
+#tour_length(tour_line)
+tour_map
+
+tour_map_points_only <- tour_map
+
+#str_c(our_gps$name, sep = "; ", collapse = "; ")
+```
+
+Since there are $256!$ possible paths, Chooser has a few options here.^[The 256 cities are the cities in the lower 48 states from the 312 cities in North America that John Burkardt mapped in his dataset Cities, available at [people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html](https://people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html).]
+
+Question: What makes a particular choice of path a good one? Answer: It's no longer than the other ~$256!-1$~ options.
+
+Question: How should Chooser make a good choice here? Answer: Read a lot of the literature on this kind of optimisation problem, look for ways to rule out large collections of options all at once, etc.
+
+These answers are quite different, and that means the questions are different to. The first question is asking something almost metaphysical - in virtue of what is the right answer the right one? The second question is practical - how do we go about finding that right answer, or at least getting close to it?
+
+It would be really terrible to answer the second question by saying "choose the shortest route". This wouldn't be obviously incorrect. But it would be useless, which in context is almost as bad. The second question is asking a question in what we might call non-ideal decision theory.~^[I'm borrowing the term 'non-ideal' from work in political philosophy. See @Valentini2012 for a good survey of some relevant work, and @Mills2005 for an important critique of the centrality of ideal theory in political philosophy. Critics of ideal theory, such as Mills, and @Sen2006, argue that we shouldn't base non-ideal theory on ideal theory. I'm going to agree, but my focus is primarily in the other direction. I'm going to argue that it isn't a constraint on ideal theory that it is useful in constructing a non-ideal theory.]~ And a constraint on a non-ideal theory is that it is useful, in a way that "choose the shortest route" is useless.
+
+But this is the right answer to the first question. The shortest route is, kind of by definition in this case, the best choice. That's the ideal. An ideal decision theory should say to choose it.~^[The full list of cities in the Salesman problem is: `r str_c(our_gps$name, sep = "; ", collapse = "; ")`.]~
+
+
+<!---Intro about basketball example from Demon book
+     Have to adjust table; it won't print right like this--->
+
+### Decisions Under Uncertainty {#decuncertain}
+
+It's time to introduce uncertainty into the mix, because cases like Salesman might leave a misleading impression about what ideal decision theory tries to achieve.
+
+>> **Basketball**    
+>> Chooser is at a casino, and a basketball game is about to start. Chooser knows that basketball games don't have draws or ties; one side will win. And Chooser knows the teams are equally balanced; each team is 50% likely to win. Chooser has three options. They can bet on the Home team to win, bet on the Away team to win, or Pass, and not bet. If they bet, they win $100 if the team they bet on wins, and lose $110 if that team loses. If they Pass, they neither gain nor lose anything.
+
+Ideal decision theory says that in Basketball, Chooser should Pass. That's not the optimal outcome for Chooser. The optimal outcome is that they bet on the winning team. But since they don't know who that is, and either bet will, on average, lose them money, they should Pass rather than bet on Home or Away.
+
+Still, there is some sense in which they should not Pass - it doesn't produce the best outcomes. We could have a theory that just evaluated the possible outcomes in any decision. I'll call this Outcome Evaluation Theory, though it's more commonly called axiology. My name has the vice of being longer, but the virtue of using more familiar and descriptive language, so I'll stick with it.
+
+Now there are three theories on the table: Outcome Evaluation Theory, Ideal Decision Theory, and Non-Ideal Decision Theory. One initial claim I want to make is that ordinary claims about what one should do are often three-way ambiguous, with the three ways corresponding to these three theories. Sometimes the claim is that one will produce the best outcome by doing this, sometimes that Ideal Decision Theory says to do it, and sometimes that Non-Ideal Decision Theory says to do it. Possibly the middle one, about Ideal Decision Theory, is the least commonly used in ordinary thought and talk, but it is a possible interpretation of a claim that one should do a particular thing. It's just that it's not the only possible interpretation of that claim.
+
+We can distinguish these three theories by what they say to do in two examples introduced so far: Salesman and Basketball.
+
+
+Table: (\#tab:three-theories) How three kinds of theories handle two problems.
+
+      **Theory**          **Salesman**          **Basketball**
+--------------------  ---------------------- --------------------
+ Outcome Evaluation     Shortest route         Bet on winner
+     Ideal Decision     Shortest route         Pass
+ Non-Ideal Decision     Study optimization     Pass
+
+Ideal Decision Theory is an odd mid-point between the two other theories listed. It takes Chooser's worldly knowledge as it is, and Chooser's mathematical abilities as they might be. That is, it idealises away from mathematical shortcomings, but not worldly ignorance. One question we might well ask is why we care about just these idealisations.
+
+A related question is what benefit we gain from studying Ideal Decision Theory. Outcome Evaluation is obviously useful; we need to know what's better than what. Non-Ideal Decision Theory is obviously useful; it's good to make better decisions. But what do we gain from Ideal Decision Theory? The answer I'm going to give in chapter ~\@ref(defensive)~ is that Ideal Decision Theory is a vital input into worthwhile explanatory projects. But for now what I want to argue is that Ideal Decision Theory is distinct from Outcome Evaluation Theory and from Non-Ideal Decision Theory. And not just is it distinct, it's the project that philosophy decision theorists have primarily been engaged in for decades.
+
+<!---Argument that decision theorists are ideal from book
+     I think this just needs tildes removed, and maybe some cuts--->
+
+### Decision Theorists are Ideal {#areideal}
+
+Most philosophical work in decision theory concerns what I've called Ideal Decision Theory. At least, that's what I'm going to argue in this subsection. And I'm going to argue for it with two caveats.
+
+First, this particular usage of the Ideal/Non-Ideal distinction is mine. So it isn't that decision theorists are addressing Ideal Decision Theory under that label. But they are, I'll presently argue, implicitly addressing it.
+
+Second, the reason I say 'most' not 'all' here is primarily to exclude what is called 'descriptive decision theory' ~[@ChandlerSEP]~ from the scope of the my claim. Descriptive decision theory concerns how people actually make decisions. Most of that work takes place outside philosophy, but I don't want to get into needless border wars to defend the claim I'm making. So I'll just note that philosophers working on descriptive decision theory are definitely not working on Ideal Decision Theory.
+
+But Non-Ideal Decision Theory isn't Descriptive Decision Theory. It's a normative theory; it's about what people should do. The verdicts of Non-Ideal Decision Theory are that someone facing a problem like Salesman should learn some optimisation theory, that someone facing a novel and difficult situation should stop and have a think about their options, and so on. These are normative claims; they are about what the person should do. But they are not the kinds of claims that Outcome Evaluation Theory, or Ideal Decision Theory make. And my main sociological claim is that very few philosophers work on this normative but Non-Ideal branch of decision theory. Very few isn't zero, and there are philosophers who aim to take into account the kinds of limitations that Non-Ideal Decision Theory accounts for. But they are a small minority of decision theorists.
+
+To see this, think about what most decision theorists say about our two examples: Salesman and Basketball. I'm not going to go over the range of what different decision theorists say case by case, for a couple of reasons. First, there are several good surveys of these views. The Stanford Encyclopedia alone has three surveys of different parts of the field ~[@SteeleSEP; @WeirichSEP; @BriggsSEP]~. Second, and more importantly, they all say the same thing. They all say that Chooser should pick the shortest route in Salesman, and should Pass in Basketball.
+
+These theories all say that Chooser should pick the shortest route in Salesman in part because as stated they assume perfect mathematical competence. But they do not assume perfect foresight, so they don't say Chooser should see into the future. It's not just that they assume perfect mathematical competence, and that's enough to solve Salesman. It's that the particular skills that one needs to solve Salesman are also needed to apply any of the theories of decision on the market.
+
+Think about what it takes to solve Salesman by brute force. For each option, one has to look up 257 values, and sum them. Then one has to find the minimum value of the resulting sums.
+
+Think about what it takes to maximise expected utility by brute force.~^[I'll say more about what that means in a bit. For now, see @BriggsSEP for the details on expected utility.]~  For each option, one has to calculate some values - products of utilities and probabilities - and sum the results of these calculations. Then one has to find the maximum value of the resulting sums.
+
+These are more or less the same skills. Anyone who can find the maximum expected utility of any of an arbitrarily large set of options can find the shortest path from an arbitrarily large set of possible paths. Applying the most popular decision theory we have, expected utility theory, requires exactly the same skill as solving problems like Salesman. And we said that the signature difference between Ideal and Non-Ideal Decision Theory was that the former did, but the latter did not, abstract away from the fact that ordinary humans cannot simply solve these problems.
+
+I'm not saying this to object to expected utility theory. Indeed, the theory I'm going to develop is just a version of expected utility theory. Rather, I'm saying it to support the claim that expected utility theory cannot be a theory of how to make good decisions. Instead, it's a theory of what makes a decision good. A chooser shouldn't calculate expected utilities for all their options. If they have, for example, ~$256!~ options, they probably won't be able to. But a choice is good if it is the option with maximal expected utility. That's to say, expected utility theory is a form of Ideal Decision Theory.
+
+And what goes for expected utility theory goes equally well for all theories out there. Treating any of them as a general theory of Non-Ideal Decision Theory would require that the person using them was able to solve problems at least as hard as the one in Salesman. And that's not something we should assume in a theory that's designed to be useful. Again, this isn't an objection to these theories. It's rather an argument that they should be interpreted as theories of Ideal Decision Theory. The only alternative is to interpret them in a way that Salesman is a quick refutation of each of them. That interpretation would be so uncharitable as to be wrong. Hence they are, as I said at the top of the subsection, attempts to offer an Ideal Decision Theory.
+
+<!---Salesman section from book
+    Cut a lot, but keep citations, and description of insertion techniques--->
+
+### The Salesman
+
+The last two examples are dilemmas on every theory of decision. **Outguess the Demon** is a dilemma according to causal ratificationism, but not according to most other theories. I'll end this section with a case that is harder to classify. It is **Salesman**, the problem from section ~\@ref(deccertainty)~. The aim is to find as short a path as possible through these cities, assuming that it is possible to travel between any two cities in a straight line.
+
+```{r salesman-points-reprise, fig.cap="The 257 cities that must be visited in the Salesman problem (reprise)."}
+tour_map_points_only
+```
+
+For an ideal agent, this isn't a dilemma; there is a shortest path. But for normal people, it is a dilemma. At least, it satisfies the definition of a dilemma that I've given. And thinking through the case helps motivate that definition, and indeed helps clarify dilemmas in general.
+
+Just about the least thoughtful path possible through the 257 cities orders the cities alphabetically. The resulting tour is shown in figure ~\@ref(fig:alpha-tour)~.
+
+```{r drawmap-definition, cache=FALSE}
+drawmap <- function(tour_line){
+  paths <- tribble(
+    ~step, ~property, ~rowid, ~long, ~lat
+  )
+  
+  for (i in 1:nrow(our_gps)){
+    x <- tour_line[i]
+    first_city <- our_gps %>% slice(x)
+    next_city <- our_gps %>% slice(x %% 31)
+    paths <- paths %>%
+      add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+    #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+  }
+  
+  x <- tour_line[1]
+  
+  paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+  
+  
+  state_map_data <- map_data("state") %>%
+    #  filter(subregion != "north" | is.na(subregion)) %>%
+    filter(region %in% long_states) 
+  
+  tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+    geom_polygon(fill = "white", colour = "grey90") + 
+    geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+    geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+    coord_quickmap() +
+    labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+    theme(axis.title.x = element_text())
+  #tour_length(tour_line)
+  tour_map
+  
+}
+```
+
+```{r alpha-tour, cache=TRUE, fig.cap="A solution to the salesman problem that orders the cities alphabetically."}
+tour_line <- solve_TSP(as.TSP(city_matrix), method="identity")
+drawmap(tour_line)
+```
+
+It's only slightly more thoughtful to order the cities from west-to-east, as in figure ~\@ref(fig:longit-tour)~, but it does reduce the length by nearly two-thirds.
+
+```{r longit-tour, cache=TRUE, fig.cap="A solution to the salesman problem that orders the cities by longtitude."}
+tour_line <- TOUR(arrange(our_gps, long)$rowid, tsp = as.TSP(city_matrix))
+drawmap(tour_line)
+```
+
+Let's try something slightly more thoughtful. Start in an arbitrary city, I'll use New York, and then at each step go to the nearest city that isn't yet on the path. The result looks tour is shown in ~\@ref(fig:newyork-tour)~.
+
+```{r newyork-tour, cache=TRUE, fig.cap="A solution to the salesman problem that chooses the nearest remaining city."}
+bad_path <- c(153)
+
+for (i in 1:256){
+  latest_city <- bad_path[i]
+
+    lengths <- our_cities %>% 
+    select(all_of(latest_city)) %>% 
+    rowid_to_column() %>% 
+    filter(!rowid %in% bad_path)
+    
+    lengths <- lengths %>% 
+    arrange(across(names(lengths)[2]))
+  
+bad_path <- c(bad_path, lengths$rowid[1])
+}
+tour_line <- TOUR(bad_path, tsp = as.TSP(city_matrix))
+drawmap(tour_line)
+```
+
+It's better, but it still looks not so great in a few respects. For one thing, it crosses over itself too many times. For another, those very long lines seem like mistakes. And they are somewhat inevitable consequences of this approach. Always choosing the nearest city will mean sometimes the path leaves a region without clearing it, and has to come back. So in this map there is a single step from Wyoming to New Jersey, as the map goes back to clean up the cities near the start that were missed.
+
+Here's a much better idea, in two stages. For both stages I've used the implementation of these ideas in the TSP package by Michael Hashler and Kurt Hornik, and what follows is from their description ~[-@HashlerHornik2007]~.
+
+The first stage uses the _farthest-insertion_ method. The idea is to build the path in stages. At each stage, the algorithm identifies the city that is farthest from the existing path. It then inserts that city into the path at the spot where it will make the least addition to the path length. These kind of insertion algorithms are common. What makes the farthest-insertion algorithm work well is that it forces the path to start with something like a loop around the edges of the map, and this is a generally good approach.
+
+The second stage uses the _two-optimization_ method. This takes a completed path as input, and tries to improve it by seeing if the path would be shortened by flipping adjacent points. It does this repeatedly until it finds a local minimum. One way to turn this into an algorithm is to start with a random path. But what I did here was start with the path that a particular run of the farthest-insertion method generated. The farthest-insertion algorithm needs a start city, or it will choose one randomly. So for reproducibility purposes, I used New York again. And I set the _seed_ for the random number generator in R to 1. And the result was the elegant path shown in figure ~\@ref(fig:two-stage-tour)~.
+
+```{r two-stage-tour, cache=TRUE, fig.cap="A solution to the salesman problem that uses two algorithms."}
+set.seed(1)
+tour_line <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion", start=153)
+tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+drawmap(tour_line)
+```
+
+That map has a lot of virtues. There aren't any obvious missteps on the map, where it's easy to see just by looking that it could be shortened. The theory behind it makes sense. It was generated very quickly. It took my computer more time to draw the map than to find the path. And it is a very short path compared to the other maps we've seen.
+
+But it isn't optimal. I'm not sure what is optimal, but the shortest one I found after trying a few methods is shown in figure ~\@ref(fig:two-stage-optimal)~.
+
+```{r two-stage-optimal, cache=TRUE, fig.cap="The best solution I found to the salesman problem."}
+# Converting the concorde generated tour into our form
+my_list <- as.integer(unlist(strsplit("0,84,59,240,13,198,121,58,102,89,170,20,212,135,231,127,136,107,147,17,151,97,24,142,162,228,87,229,194,206,116,138,244,158,61,108,207,44,54,11,132,9,55,143,26,86,103,47,117,7,96,216,46,251,95,184,69,179,250,174,153,183,242,15,99,119,110,181,248,4,249,164,10,234,71,148,109,152,161,246,222,42,33,150,137,149,100,219,252,175,78,34,30,38,123,130,134,57,173,171,12,16,144,36,32,168,235,2,208,239,25,226,186,35,74,254,167,223,245,39,1,51,256,45,8,56,221,60,98,50,124,129,31,146,159,77,230,118,104,145,83,125,232,6,65,81,19,189,120,106,18,92,112,215,90,49,115,178,139,210,94,133,187,163,28,43,238,62,218,192,53,220,111,82,237,156,73,247,196,233,113,114,191,126,157,213,214,64,243,41,105,67,185,70,225,68,193,140,190,79,141,27,166,180,211,23,93,101,37,169,155,197,176,29,217,241,253,21,209,227,172,195,75,76,22,154,201,204,202,224,188,182,40,85,14,203,128,160,199,200,255,122,80,165,236,72,205,3,88,91,48,63,52,177,66,5,131",",")))
+my_list_adj <- my_list + 1
+tour_line <- TOUR(my_list_adj, tsp = as.TSP(city_matrix))
+drawmap(tour_line)
+```
+
+That was the best I could find with the tools I had, and I'm not sure it is even optimal. It would actually be helpful for the argument I'm about to make if it isn't optimal, and the shortest path is shorter again. But let's assume that it, or something like it, is. Because what I want us to focus on is the philosophical status of the tour in figure ~\@ref(fig:two-stage-tour)~. Getting clear on that will be the beginning of a solution to the puzzles about dilemmas.
+
+<!---Heaven example from book; needs heavy editing to fit this story--->
+
+### Heaven {#heaven}
+
+One reason someone may worry about **Open Ended Good** is that it involves discontinuous payouts. The limit payout, as $x$ tends to 1, of choosing $x$ is 1. But the payout of choosing 1 is undefined. If we allow unlimited payouts, this discontinuity goes away. Unlimited payouts are sometimes thought to be of dubious coherence due to paradoxes like St. Petersburg, and I'm somewhat sympathetic to this line of thought. But they can be motivated, even in paradoxical situations.
+
+> **Heaven**    
+> Chooser has died, and gone to face the last judgment. God looks over Chooser's varied and active life, and is struggling to make a final call. He eventually says, "Look there is so much bad here I can't just let you into Heaven. But there is so much good that I can't just send you away either. So here's what I'll do. You'll stay a while here, then off to the other place. I've been struggling with thinking about how long you should stay here." And at this point, Chooser is hoping God picks a very large number. Chooser has had a bit of a look around while God was deciding. This is strictly speaking against the rules, but as we mentioned, Chooser had a varied and active life. Chooser has realised that (a) days in Heaven are good, and the goodness of them does not diminish over time, (b) the other place is considerably less good, and (c) the afterlife is infinite in duration. After a pause, God speaks again. "You know what, you decide. Pick a number, any number, any natural number that is, and you'll spend that many days here, then off to the other place." What should Chooser do?
+
+Again, Chooser faces a dilemma. If Chooser picks $n$, then it would have been considerably better to pick $2n$, or $n!$, or $(n!)!$. Whatever choice Chooser makes, will be regretted instantly.
+
+It is worth thinking through this case a bit, to get a feel for what dilemmas are like from the inside. I think there is a common view that decision theory shouldn't allow dilemmas because it should be practical, that it should offer advice. And saying in cases like table ~\@ref(tab:first-dilemma)~ that whatever one does, one will regret it, isn't exactly advice. But in **Heaven**, that's obviously the right thing to say. Or, at least, it's obviously part of the right thing to say. And both of these insights, that everything is regrettable is both correct and incomplete, will be important in what follows.
+
+<!---Fargle and Nargle from book; not complete and needs editing--->
+
+## Evaluating the Non-Ideal
+
+So far I’ve argued that it is consistent to say that table ref is a dilemma, and that it is better to choose D than U. I now turn to the question of whether D is in fact better, and, if it is, why it is. 
+
+The short version will be that non-ideal strategies should be evaluated not in terms of how well they do on an occasion, or even in terms of how well they respond to the available evidence on an occasion, but in terms of how well they do generally. But what is it for a strategy to do well _generally_? That turns out to be a hard question, and not one that I'll make much progress on settling here. The aim of this section is to set up this question, and point towards what a resolution of it might look like.
+
+### Salesman, One Last Time
+
+As with most things about dilemmas, and non-ideal decision theory, **Salesman** turns out to be a useful guide. So let's think about one last particular case of it. Fargle and Nargle are solving the version of Salesman in figure 
+
+```{r west-coast-tour, fig.cap="The 21 cities that must be visited in the west coast salesman problem."}
+theme_set(theme_map())
+
+all_states <- map_data("state") %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  select(state = region)
+
+all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+                     "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", 
+                     "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", 
+                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
+                     "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+
+used_states <- c(36, 4, 27)
+
+long_states <- all_states$state[used_states]
+short_states <- all_states$code[used_states]
+
+data("USCA312")
+data("USCA312_GPS")
+
+cities <- as_tibble(as.matrix(USCA312))
+
+city_numbers <- tibble(
+  id = 1:312,
+  thecities = colnames(cities)
+) %>% 
+  mutate(used_city = case_when(str_sub(thecities, -2) %in% short_states  ~ 1,
+                               TRUE ~ 0))
+
+the_city_numbers <- filter(city_numbers, used_city == 1)$id
+
+
+our_cities <- cities %>% 
+  select(all_of(the_city_numbers)) %>% 
+  slice(the_city_numbers)
+
+our_gps <- USCA312_GPS %>% 
+  slice(the_city_numbers) %>% 
+  rowid_to_column()
+
+city_matrix <- as.matrix(our_cities)
+
+rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
+
+length_tib <- tibble(st = 1:length(the_city_numbers)) 
+
+length_tib <- length_tib %>% 
+  rowwise() %>% 
+  mutate(farth = tour_length(solve_TSP(as.TSP(city_matrix), method="farthest_insertion", start = st))) %>% 
+  mutate(near = tour_length(solve_TSP(as.TSP(city_matrix), method="nearest_insertion", start = st))) %>% 
+  ungroup() %>% 
+  mutate(diff = near - farth) %>% 
+  arrange(diff)
+
+best_diff <- min(length_tib$near) - max(length_tib$farth)
+
+near_tour <- solve_TSP(as.TSP(city_matrix), method="nearest_insertion", start = 7)
+far_tour <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion", start = 19)
+
+tour_line <- far_tour
+
+# Turn tour to map path
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states)
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") +
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+#  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) +
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  theme(axis.title.x = element_blank())
+#tour_length(tour_line)
+tour_map
+```
+
+This is just like the version that I've used many times so far, constrained to California, Nevada, and Oregon. Both of them know that _insertion_ algorithms are very good ways to quickly get a short path through the points. And in both cases, it is reasonable, given the stakes involved in the problem and the computational resources available, to use a single run through an insertion algorithm to find a solution. So that's what they will do.
+
+But they use different insertion algorithms. Recall how insertion algorithms go. The full path is built by adding a city into the path at each step. To go from, say, fifteen cities to sixteen, the algorithm looks at the fifteen options for inserting the new city between each of the existing adjacent cities on the path, and chooses the shortest one. Then it looks to add the seventeenth city by inserting it between two paths on the existing path, and so on until all the cities are included. There are three kinds of choice points in running an insertion algorithm: which city to start with, how to choose the city to be inserted, and how to break ties. The last is usually done at random, and it introduces some noise into the process. The first is also done somewhat arbitrarily, although it turns out to make a big difference. But the second we can be more theoretical about.
+
+Two natural versions of the insertion algorithm are the _farthest insertion_ and the _nearest insertion_. The farthest insertion algorithm chooses at each stage the city that is farthest from the path, and looks at the way to insert it onto the path with minimal increase in length. The nearest insertion algorithm chooses at each stage the city that is closest from the path, and looks at the way to insert it onto the path with minimal increase in length. In the vast majority of cases, the farthest insertion algorithm does better. A lot of people find this counterintuitive, as I did when I first learned it. But the reason it works is that it forces the path to start with a giant loop around the edge of the map, and  in general the shortest paths have the structure of giant loops with interior cities reached by small detours. 
+
+Fargle and Nargle both know this fact about insertion algorithms. Fargle reacts to this sensibly, by using a farthest insertion algorithm, and ending up with the path shown on the left of figure ~\@ref(fig:near-and-far)~. Nargle reacts less sensibly, by choosing a nearest insertion algorithm, and ending up with the path shown on the right of ~\@ref(fig:near-and-far)~.
+
+```{r near-and-far, fig.cap="Two solutions to the west coast salesman problem.", fig.show="hold",out.width="50%"}
+## A script to find a pair of paths where a typically worse algorithm does better on the particular use
+
+require(tidyverse)
+require(TSP)
+require(maps)
+set.seed(2)
+
+theme_map <- function(base_size=9, base_family="") {
+  require(grid)
+  theme_bw(base_size=base_size, base_family=base_family) %+replace%
+    theme(axis.line=element_blank(),
+          axis.text=element_blank(),
+          axis.ticks=element_blank(),
+          axis.title=element_blank(),
+          panel.background=element_blank(),
+          panel.border=element_blank(),
+          panel.grid=element_blank(),
+          panel.spacing=unit(0, "lines"),
+          plot.background=element_blank(),
+          legend.justification = c(0,0),
+          legend.position = c(0,0)
+    )
+}
+
+theme_set(theme_map())
+
+all_states <- map_data("state") %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  select(state = region)
+
+all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+                     "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", 
+                     "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", 
+                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
+                     "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+
+used_states <- c(36, 4, 27)
+
+long_states <- all_states$state[used_states]
+short_states <- all_states$code[used_states]
+
+data("USCA312")
+data("USCA312_GPS")
+
+cities <- as_tibble(as.matrix(USCA312))
+
+city_numbers <- tibble(
+  id = 1:312,
+  thecities = colnames(cities)
+) %>% 
+  mutate(used_city = case_when(str_sub(thecities, -2) %in% short_states  ~ 1,
+                               TRUE ~ 0))
+
+the_city_numbers <- filter(city_numbers, used_city == 1)$id
+
+
+our_cities <- cities %>% 
+  select(all_of(the_city_numbers)) %>% 
+  slice(the_city_numbers)
+
+our_gps <- USCA312_GPS %>% 
+  slice(the_city_numbers) %>% 
+  rowid_to_column()
+
+city_matrix <- as.matrix(our_cities)
+
+rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
+
+length_tib <- tibble(st = 1:length(the_city_numbers)) 
+
+length_tib <- length_tib %>% 
+  rowwise() %>% 
+  mutate(farth = tour_length(solve_TSP(as.TSP(city_matrix), method="farthest_insertion", start = st))) %>% 
+  mutate(near = tour_length(solve_TSP(as.TSP(city_matrix), method="nearest_insertion", start = st))) %>% 
+  ungroup() %>% 
+  mutate(diff = near - farth) %>% 
+  arrange(diff)
+
+best_diff <- min(length_tib$near) - max(length_tib$farth)
+
+near_tour <- solve_TSP(as.TSP(city_matrix), method="nearest_insertion", start = 7)
+far_tour <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion", start = 19)
+
+tour_line <- far_tour
+
+# Turn tour to map path
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states)
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") +
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) +
+  coord_quickmap() +
+  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  theme(axis.title.x = element_text(size=14))
+#tour_length(tour_line)
+tour_map
+
+tour_line <- near_tour
+
+# Turn tour to map path
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states)
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") +
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) +
+  coord_quickmap() +
+  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  theme(axis.title.x = element_text(size=14))
+#tour_length(tour_line)
+tour_map
+
+# Just do California and Nevada and Oregon
+# Nearst starts in Las Vegas, NV
+# Farthest starts in Reno, NV
+# Learn how to do side by side pictures for this
+# Have the players in the story pick these at random
+# Reno, NV is a bad start location, kind of obviously so, but maybe player doesn't know that.
+```
+
+
+And as sometimes happens, Nargle does better. This is rare. (It took some looking to find a pair like this.) This does not show that Nargle was more rational; Fargle was more rational. Indeed, Fargle might have done as well as one could do given the available skills and resources. That's true even though there are many better routes that, in theory, could have been selected. For instance, if Fargle had selected literally any of the other twenty cities as their first city, they would have done better than Nargle. And this was a priori knowable when they set out. 
+
+<!--Ideas for rest-->
+
+- Some kind of average success seems like the right idea here, indeed seems compulsory.
+- But there is a reference class problem or in fact two; which possible cases count, and how should they be weighed.
+- Natural solution; ones consistent with evidence count, and they are weighed by evidential probability.
+- Five challenges, increasing order of importance. I think first three can be met, last two cannot. But more interesting to lay them out than to judge them.
+
+1. Need theory of action; can borrow from MandekernEtAl
+2. Need theory of evidence; but as NE points out, kind of need one of those anyway
+3. Implies one-boxing in Newcomb's Problem. Some will say that's no problem. Even CDTers should agree. It's a limiting case of where should one-box, and can explain the disagreement.
+4. Needs a theory of dynamic choice, and either option here leads to implausible outcomes (though this is tricky). Something like the WAR examples for EDT, and the Kubrik example for FDT
+5. The regrees. A is actually EU maximising; B maximises EEU; C maximises EEEU. What's the philosophical argument for B? (Quote Conlisk on this)
+
+- Alternative: straight reliabiism. Does this lead to too much luck? Picking a good algorithm feels luck not skill. But in non-ideal decision theory, being good at calculating is actually a kind of luck. We shouldn't expect a luck-free theory to work. Still need a theory of action, and of dynamic choice - but can avoid Newcomb problems by saying the actual contents of the box might fix reference class
