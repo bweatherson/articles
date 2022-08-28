@@ -87,16 +87,16 @@ gameformat <- function(game, caption){
 
 ```
 
+This paper is a discussion of some of the philosophically interesting questions in non-ideal decision theory. It has three main aims. The first is to argue that philosophical work on decision theory has been too focused on the idea case, where the decision maker is logically and mathematically omniscient, and faces no computational costs. This is an important special case, but it is a special case, and we should also pay attention to the more general case where computational costs are non-zero. The second is to argue that the formal structure of a non-ideal decision theory should be very different to the formal structure of ideal decision theory. Ideal decision theory makes a binary division of choices into the rational and irrational. Non-ideal decision theory makes a more fine-grained division of choices into the more and less skilled. And the third, and most contentious, aim is to argue against a broadly evidentialist approach to non-ideal decision theory, and in favor of a broadly reliabilist approach. I'll argue that skilled choices are those that result from processes that reliably produce good results. The most salient contrast will be with views that identify skilled choice with those that result from processes that the chooser has reason to believe, or has evidence, reliably produce good results. I'll be arguing that the fact of reliable success is more important than evidence or belief about it. This view is vulnerable to an obvious objection: it counts as skilful choices that result from a lucky guess about which approach to take, and this seems intuitively wrong. I'll argue that when we look at the details of individual cases, this objection looks less pressing.
 
-<!-- Intro about salesman problem from Demon book 
-    Have to restrict the map to CA, NV, OR, and renumber-->
+<!--Check number of cities, and that map works-->
 
 ### Decisions Under Certainty {#deccertainty}
 
-Most philosophical work on decision theory focusses on choices under uncertainty. And I'm going to follow suit for most of this book. But not yet. Instead, I'll start with an example of decision making under certainty, and in particular a version of the problem that Julia Robinson dubbed the 'travelling salesman' problem.~^[The dubbing is in @Robinson1949. For a thorough history of the problem, see @Schrijver2005. For an accessible history of the problem, which includes these references, see the wikipedia page on 'Traveling Salesman Problem'.]~ 
+Most philosophical work on decision theory focusses on choices under uncertainty. But it will be useful here to start with an example of decision making under certainty. In particular, I'll start with a version of the problem that Julia Robinson dubbed the 'travelling salesman' problem.~^[The dubbing is in @Robinson1949. For a thorough history of the problem, see @Schrijver2005. For an accessible history of the problem, which includes these references, see the wikipedia page on 'Traveling Salesman Problem'.]~ 
 
 >> **Salesman**    
->> Chooser is given the straight line distance between each pair of cities from the 257 represented on the map below. Using this information, Chooser has to find as short a path as possible that goes through all 257 cities and returns to the first one. The longer a path Chooser selects, the worse things will be for Chooser. 
+>> Chooser is given the straight line distance between each pair of cities from the twenty-one represented on the map below. Using this information, Chooser has to find as short a path as possible that goes through all twenty-one cities and returns to the first one. The longer a path Chooser selects, the worse things will be for Chooser. 
 
 ```{r salesman-points, fig.cap="The 257 cities that must be visited in the Salesman problem."}
 
@@ -129,7 +129,7 @@ all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
                      "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
                      "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
 
-used_states <- 1:49
+used_states <- c("CA", "NV", "OR")
 
 long_states <- all_states$state[used_states]
 short_states <- all_states$code[used_states]
@@ -161,37 +161,6 @@ city_matrix <- as.matrix(our_cities)
 
 rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
 
-## Fine tour
-#tour_line <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion")
-#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
-
-## Not good tour
-#tour_line <- solve_TSP(as.TSP(city_matrix), method="cheapest_insertion", start = 17) # - Very messy
-
-## Generate tour by longitude - really bad
-#tour_line <- TOUR(arrange(our_gps, long)$rowid, tsp = as.TSP(city_matrix))
-
-## Best tour
-load("tour_line.RData")
-
-## Turn tour to map path
-# paths <- tribble(
-#   ~step, ~property, ~rowid, ~long, ~lat
-# )
-# 
-# for (i in 1:nrow(our_gps)){
-#   x <- tour_line[i]
-#   first_city <- our_gps %>% slice(x)
-#   next_city <- our_gps %>% slice(x %% 31)
-#   paths <- paths %>% 
-#     add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>% 
-#   #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
-# }
-# 
-# x <- tour_line[1]
-# 
-# paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
-
 
 state_map_data <- map_data("state") %>%
   #  filter(subregion != "north" | is.na(subregion)) %>%
@@ -200,27 +169,21 @@ state_map_data <- map_data("state") %>%
 tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
   geom_polygon(fill = "white", colour = "grey90") + 
   geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
-#  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
   coord_quickmap()
-#tour_length(tour_line)
 tour_map
 
 tour_map_points_only <- tour_map
-
-#str_c(our_gps$name, sep = "; ", collapse = "; ")
 ```
 
-Since there are $256!$ possible paths, Chooser has a few options here.^[The 256 cities are the cities in the lower 48 states from the 312 cities in North America that John Burkardt mapped in his dataset Cities, available at [people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html](https://people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html).]
+Since there are $20!$ possible paths, Chooser has a few options here.^[The twenty-one cities are the cities in California, Nevada and Oregon included in the 312 cities in North America that John Burkardt mapped in his dataset Cities, available at <people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html>. Those cities are: `r str_c(our_gps$name, sep = "; ", collapse = "; ")`.]
 
-Question: What makes a particular choice of path a good one? Answer: It's no longer than the other ~$256!-1$~ options.
+Question: What makes a particular choice of path the best one? Answer: It's no longer than the other ~$20!-1$~ options.
 
-Question: How should Chooser make a good choice here? Answer: Read a lot of the literature on this kind of optimisation problem, look for ways to rule out large collections of options all at once, etc.
+Question: What is the best way for Chooser to make a choice here? Answer: Read a lot of the literature on this kind of optimisation problem, look for ways to rule out large collections of options all at once, etc.
 
-These answers are quite different, and that means the questions are different to. The first question is asking something almost metaphysical - in virtue of what is the right answer the right one? The second question is practical - how do we go about finding that right answer, or at least getting close to it?
+These answers are quite different, and that means the questions are different too. The first question is asking something almost metaphysical; in virtue of what is the right answer the right one? The second question is practical; how do we go about finding that right answer, or at least getting close to it?
 
-It would be really terrible to answer the second question by saying "choose the shortest route". This wouldn't be obviously incorrect. But it would be useless, which in context is almost as bad. The second question is asking a question in what we might call non-ideal decision theory.~^[I'm borrowing the term 'non-ideal' from work in political philosophy. See @Valentini2012 for a good survey of some relevant work, and @Mills2005 for an important critique of the centrality of ideal theory in political philosophy. Critics of ideal theory, such as Mills, and @Sen2006, argue that we shouldn't base non-ideal theory on ideal theory. I'm going to agree, but my focus is primarily in the other direction. I'm going to argue that it isn't a constraint on ideal theory that it is useful in constructing a non-ideal theory.]~ And a constraint on a non-ideal theory is that it is useful, in a way that "choose the shortest route" is useless.
-
-But this is the right answer to the first question. The shortest route is, kind of by definition in this case, the best choice. That's the ideal. An ideal decision theory should say to choose it.~^[The full list of cities in the Salesman problem is: `r str_c(our_gps$name, sep = "; ", collapse = "; ")`.]~
+It would be really terrible to answer the second question by saying "choose the shortest route". This wouldn't be obviously incorrect. But it would be useless, which in context is almost as bad. The second question is asking a question in what we might call non-ideal decision theory.^[I'm borrowing the term 'non-ideal' from work in political philosophy. See @Valentini2012 for a good survey of some relevant work, and @Mills2005 for an important critique of the centrality of ideal theory in political philosophy. Critics of ideal theory, such as Mills, and @Sen2006, argue that we shouldn't base non-ideal theory on ideal theory. I'm going to agree, but my focus is primarily in the other direction. I'm going to argue that it isn't a constraint on ideal theory that it is useful in constructing a non-ideal theory.] And a constraint on a non-ideal theory is that it is useful, in a way that "choose the shortest route" is useless. But this is the right answer to the first question. The shortest route is, kind of by definition in this case, the best choice. That's the ideal. An ideal decision theory should say to choose it.
 
 
 <!---Intro about basketball example from Demon book
