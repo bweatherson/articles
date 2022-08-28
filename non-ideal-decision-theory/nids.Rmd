@@ -91,7 +91,7 @@ This paper is a discussion of some of the philosophically interesting questions 
 
 <!--Check number of cities, and that map works-->
 
-### Decisions Under Certainty {#deccertainty}
+# Decisions Under Certainty {#deccertainty}
 
 Most philosophical work on decision theory focusses on choices under uncertainty. But it will be useful here to start with an example of decision making under certainty. In particular, I'll start with a version of the problem that Julia Robinson dubbed the 'travelling salesman' problem.~^[The dubbing is in @Robinson1949. For a thorough history of the problem, see @Schrijver2005. For an accessible history of the problem, which includes these references, see the wikipedia page on 'Traveling Salesman Problem'.]~ 
 
@@ -187,18 +187,19 @@ It would be really terrible to answer the second question by saying "choose the 
 
 
 <!---Intro about basketball example from Demon book
-     Have to adjust table; it won't print right like this--->
+     Have to adjust table; it won't print right like this
+     Also have to introduce language about ideal, maybe earlier--->
 
-### Decisions Under Uncertainty {#decuncertain}
+# Decisions Under Uncertainty {#decuncertain}
 
-It's time to introduce uncertainty into the mix, because cases like Salesman might leave a misleading impression about what ideal decision theory tries to achieve.
+Now there aren't many decision theory papers in philosophy journals that focus on problems, like Salesman, where all the relevant facts are available to Chooser. So let's regain contact with the literature by looking at a problem that does involve uncertainty.
 
 >> **Basketball**    
 >> Chooser is at a casino, and a basketball game is about to start. Chooser knows that basketball games don't have draws or ties; one side will win. And Chooser knows the teams are equally balanced; each team is 50% likely to win. Chooser has three options. They can bet on the Home team to win, bet on the Away team to win, or Pass, and not bet. If they bet, they win $100 if the team they bet on wins, and lose $110 if that team loses. If they Pass, they neither gain nor lose anything.
 
-Ideal decision theory says that in Basketball, Chooser should Pass. That's not the optimal outcome for Chooser. The optimal outcome is that they bet on the winning team. But since they don't know who that is, and either bet will, on average, lose them money, they should Pass rather than bet on Home or Away.
+Any philosophical decision theory I know of says that in Basketball, Chooser should Pass. This point at least is common ground in the literature.^[There is one possible exception. Lara @BuchakRisk develops a risk-sensitive theory of decision. On Buchak's theory, if Chooser is risk-attracted, it could be rational for them to bet. But while this is a possible use of Buchak's theory, it's not really the intended use. Her focus, and the focus of most of the discussion of her work, is on the use of the theory to model risk-averse choosers. And any Buchakian risk-averse chooser will also Pass in Basketball. This example is structurally like the much-discussed miners' puzzle, but with a somewhat more realistic, and less grizzly, story.] That's not the optimal outcome for Chooser. The optimal outcome is that they bet on the winning team. But since they don't know who that is, and either bet will, on average, lose them money, they should Pass rather than bet on Home or Away.
 
-Still, there is some sense in which they should not Pass - it doesn't produce the best outcomes. We could have a theory that just evaluated the possible outcomes in any decision. I'll call this Outcome Evaluation Theory, though it's more commonly called axiology. My name has the vice of being longer, but the virtue of using more familiar and descriptive language, so I'll stick with it.
+Still, there is some sense in which they should not Pass; it doesn't produce the best outcomes. We could have a theory that just evaluated the possible outcomes in any decision. I'll call this Outcome Evaluation Theory, though it's more commonly called axiology. My name has the vice of being longer, but the virtue of using more familiar and descriptive language, so I'll stick with it.
 
 Now there are three theories on the table: Outcome Evaluation Theory, Ideal Decision Theory, and Non-Ideal Decision Theory. One initial claim I want to make is that ordinary claims about what one should do are often three-way ambiguous, with the three ways corresponding to these three theories. Sometimes the claim is that one will produce the best outcome by doing this, sometimes that Ideal Decision Theory says to do it, and sometimes that Non-Ideal Decision Theory says to do it. Possibly the middle one, about Ideal Decision Theory, is the least commonly used in ordinary thought and talk, but it is a possible interpretation of a claim that one should do a particular thing. It's just that it's not the only possible interpretation of that claim.
 
