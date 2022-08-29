@@ -3,12 +3,12 @@ title: "Tough Decisions, Pragmatic Encroachment, and Closure"
 author: "Anon"
 date: "`r Sys.Date()`"
 output:
+  bookdown::word_document2:
+    number_sections: yes
   bookdown::pdf_document2:
     latex_engine: xelatex
     toc: no
     keep_tex: yes
-  pdf_document:
-    toc: no
 mainfont: Lato
 mathfont: Fira Math
 mainfontoptions: Scale=MatchLowercase
@@ -16,7 +16,7 @@ geometry: margin=1.5in
 linestretch: 1.1
 bibliography: ../rBib.bib
 fontsize: 12pt
-indent: true
+indent: yes
 ---
 
 One of the original motivations for an interest-relative theory of knowledge (IRT) was that it avoided the closure failures that dogged rivals. But it turns out that there is a closure problem for natural versions of IRT. Alex @Zweber2016 and, separately, Charity Anderson and John Hawthorne [-@AndersonHawthorne2019a], showed that, on pain of generating closure violations, the following principle cannot be the only way interests enter into our theory of knowledge.
