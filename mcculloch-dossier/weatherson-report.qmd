@@ -1,0 +1,69 @@
+---
+title: "Cameron McCulloch Dossier Report"
+author: "Brian Weatherson"
+format: pdf
+editor: visual
+bibliography: ../rBib.bib
+date: April 17, 2023
+mainfont: Lato
+geometry: margin=1.4in
+linestretch: 1.2
+keep-tex: true
+link-citations: true
+linkcolor: black
+hyperrefoptions: "hidelinks"
+---
+
+## Thesis Plan
+
+Cameron plans to write a thesis on privacy. As is fairly common, the thesis consists of a set of papers. As is less common, the thesis is in two 'parts'. The first part is about the relationship between privacy and knowledge. The second part is about the relationship between privacy and property. Since one of the papers from the first part is the sample chapter, I'll say much more about this below. So I'll mostly comment here on the connections to property.
+
+The first thing to say is that the thesis plan does the thing that is, in my mind, sufficient for passing at this stage. It identifies some important questions, and makes feasible promises for how the thesis will make progress on them, and those promises are such that, if fulfilled, we'd have an excellent thesis. So the top line is that I think it's good enough to move on to the defense, and then to writing. And if it does carry out the task of connecting privacy both to property law/rights, and to epistemology, it could be a really really *great* thesis. So I definitely want to encourage passing the thesis, and moving forward.
+
+That said, the plan (and the sample chapter) felt rather repetitive in places. I feel I saw that quote from Goldman 1999 at least three times, for example. And the fifth chapter (the second chapter on property) looks like it is going to spend a lot of time on papers that were at the center of the sample chapter.
+
+There is a problem here that I don't know the general solution to. In a thesis styled as a continuous manuscript, one can simply refer to earlier discussions of a point, in a way that's not so easy in a set of papers. And if the papers are to appear in journals, it helps for them to be self-standing, and that implies a degree of repetition. But sooner or later, you want someone (e.g., someone on a hiring committee) to take a serious look at the body of work you're producing. And at that point excess repetition can hurt. As I said, I don't have a general answer here. But my gut feeling is that as things stand, this leans too far in the direction of making everything self-standing, and hence in having too much get repeated across multiple chapters.
+
+The other thing is that there is a hard choice to be made about how much of a deep dive into the property literature that the thesis needs to make. It might be a big task to do this. The Merrill and Smith papers that are mentioned have between them thousands of citations. But it actually kind of matters to the thesis whether something like what they say is right. If the 20th century view they oppose - that property is a disunified bundle of rights - turns out to be correct, that creates some complications for the unifying project of the thesis as a whole. (Jonathan Sarnoff has some work in progress arguing that Merrill and Smith are mistaken, and the 20th century view is closer to the truth, and his arguments seemed persuasive to me.) So there are some big questions here. But I'm not sure given the timeline that learning a lot about the nuances of property jurisprudence is going to be the optimal use of time.
+
+## Sample Chapter
+
+The sample chapter argues that privacy is distinctively epistemic - in particular, one loses privacy if and only if one becomes more 'known'. This is a striking claim, and one that seems worth defending. And some of the replies to existing critiques of it seem on point. But I felt that at a lot of points, it needed much more engagement with the philosophical literature, or, perhaps better, more careful treatment of difficult matters that were lurking just off screen.
+
+This is, I think, a slightly odd paper for us to have as a sample chapter. It's not a lit review, so it isn't a rule violation. But it is more review-like than we normally see. While there is a sketch of a positive argument for the view at the start of the chapter, the bulk of it consists of replies to objections to it. And the objections come from a special issue of *Episteme*, and an unpublished ms. My guess is that if something like this were to be a writing sample, it would be much better to focus on a positive argument for the view. (But perhaps it isn't meant as that, in which case that doesn't matter.)
+
+As I mentioned, I thought the paper at a few places needed to engage much more with some questions that were just below the surface. I'll focus here on three of them, though maybe we'll talk about more at the defense.
+
+### Knowledge First
+
+The positive view here has a lot in common with the knowledge first program associated with Timothy @Williamson2000. That was especially true around page 15, when Cameron is arguing that even if some things that don't look epistemic are privacy breaches, they might still be consistent with his thesis because they are connected in the right way to knowledge. And a lot of the argumentation at the start of the paper about the centrality of knowledge talk to privacy talk, and the usefulness of having a unified account, felt very Williamsonian. I wasn't sure by the end of the paper exactly what the objection to a JTB theory of privacy would be, but I suspected it would be a lot like Williamson's objection to a JTB theory of evidence.
+
+But obviously the knowledge first program is a Big Deal in recent epistemology. To the extent that this project consists of extending the program to privacy, it would probably be worth engaging with some of its critics. The papers in @Greenough2009-GREWOK are useful places to start, especially the @Goldman2009 paper on evidence. I've only skimmed the book on knowledge first by Aidan @McGlynn2014-MCGKF, but it could be useful. But what really jumped out of some of the discussions was the possibility that different notions of knowledge being central were being run together. Carrie Jenkins and Jonathan Ichikawa [-@Ichikawa2017-ICHOPK] have a nice discussion of the different things that one might mean by 'knowledge first', and I thought it could be helpful in sorting out exactly what way knowledge is meant to be central to privacy.
+
+### Who Knows?
+
+I was a little shocked by the reference on page 17 to "other papers that spring to mind". That didn't exactly seem like academic writing. And I thought there was a much bigger question here about exactly who the knowers are.
+
+For one thing, it isn't obvious at all that something is known iff it is known by someone, or even by some group. Alexander @Bird2010 has some nice examples where he claims something is known by 'the scientific community' without any one person knowing it. But you might worry (I in fact do worry) that the scientific community is too diffuse a thing to really have knowledge. What's true, in Bird's case, is that a fact is known without being known by anyone. (The simplest examples are ones where a fact is recorded in the right place such that anyone who cared to look would find it, but all the people who ever looked it up, or who discovered it and stored it in the right place, have died.)
+
+Now maybe that's ok. Maybe the fact that some fact about one is known does diminish one's privacy, even if it isn't known by anyone. At least, this isn't an implausible claim. But it seems important to understanding the core slogan of the paper, and it felt like it got left out here.
+
+There is also a bit of a literature on how knowledge is graded. Nick @Treanor2013-TRETMO has a paper (which, to be honest, I didn't love) on how to measure how much someone knows. And Carlotta @Pavese2017-PAVKAG has a paper that uses a tool similar to what is used here to generate gradability from what looks like an ungraded source. Some of this should also be noted in the thesis.
+
+There are some technical problems around here which I'm sure are solvable, but do need solving at some point. For example, if someone knows one fact about A, then does some simple logical deductions (or-introduction with random propositions, and-introduction with random other pieces of knowledge) do they diminish A's privacy? I would think not, but as it stands I think the view implies that they do.
+
+### About Aboutness
+
+First, a caveat. There are several really hard questions lurking around here, any one of which could make a perfectly good thesis topic in itself. It would *not* be a good idea to go into too much depth on any of them. But that said, the breezy way in which questions about aboutness was glossed over, especially on page 11, seemed off-putting. Here are some practical and theoretical questions that it would be good to at least have views about, even if they aren't all in the thesis.
+
+Romeo loves Juliet. That's about Romeo, for sure. Is it about Juliet? That's much harder. On the one hand, it doesn't seem to violate, or even diminish, Juliet's privacy to learn this. (Imagine Juliet is a rock star and Romeo is a fan she's never heard of.) On the other hand, it seems deeply equivalent to *Juliet is loved by Romeo*, and that looks like it is about Juliet. (The 'deep equivalence' here is not just necessary equivalence; it seems like it is stating the same Tractarian fact.)
+
+Let's try an even harder case - *Romeo dreamed that Juliet was flying*. Again, clearly about Romeo. But is it about Juliet? I don't think so, but I think it's a little hard to say why. If it is about Juliet, then presumably if Romeo knows that Romeo dreamed that Juliet was flying, that diminishes Juliet's privacy. And that seems maybe a little implausible. This also seems relevant to the Tattoo Dream case in the paper, the discussion of which I found a little hard to follow.
+
+Absurdly hard case. Here's a true thing that I know (at least on sunny days): *Either the sky is blue or Juliet is a Seahawks fan*. Is that about Juliet? I think the answer is no. I mean it better be no for this thesis to hold. Do I really diminish Juliet's privacy when I look out the window, see the sky is blue, and do or-introduction? That doesn't seem plausible. But a theory of aboutness that gets this case right is not exactly easy to generate. Both the most natural theory of aboutness that takes the bearers of aboutness to be unstructured entities (like Lewis's), and the simplest theory that takes the bearers of aboutness to be structured propositions, both make it turn out to be about Juliet.
+
+At this point one might think the thing to do would be to have a theory of aboutness, and use it to resolve the hard cases. I want to very strongly urge against that course of action. A theory of aboutness is *at least* a thesis sized project. It might be worth looking at the theories developed by @Lewis1988e (building on @Lewis1982c), @Yablo2014-YABA, and the survey of more recent views in section 4.2 of @sep-hyperintensionality. But don't expect to get any clear answers to the big picture question of what aboutness really is.
+
+One thing to keep in the back of one's mind is that while the thesis doesn't presuppose, or need, any particular theory of aboutness, it does presuppose something about the architecture of such a theory. That is, the thesis presupposes that the things that are known are the things that have aboutness properties. That's not implausible, but it isn't completely obvious. And at times some of the language of the thesis seems to presuppose that these are the same kind of things as (a) facts, and (b) information. Now (a) isn't too surprising - it's nearly universally accepted that facts are things that can be known. But (b) is much trickier. It's somewhat plausible that information is intensional (i.e., is a set of possible worlds), but aboutness is hyperintensional. That is to say, contra Lewis's best efforts, there is no thing that a set of possible worlds is about. So strictly speaking, there is no information about me, because the things that are information are the wrong kind of thing to bear aboutness relations to individuals. If that's right, it probably just means that some wording needs changing here or there. (And even if no information is strictly speaking about anyone or anything, there must be some informal way of capturing the ordinary way of using the phrase 'information about'.) But it brings up how tricky this whole area is. To speak a little metaphorically, the ice gets very thin very fast around here. I don't think the right reaction to that is to do careful measurements of the exact thickness of the ice; but it is a reason to watch your footing.
+
+### References {.unnumbered}

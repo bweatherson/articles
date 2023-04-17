@@ -1,0 +1,207 @@
+---
+title: Epistemic Permissiveness and Symmetric Games
+date: "`r Sys.Date()`"
+author: Anon
+fontsize: 11pt
+mainfont: Lato
+mathfont: Fira Math
+geometry: margin=1.6in
+linestretch: 1.1
+bibliography: ../rBib.bib
+output: 
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    toc: false
+    keep_tex: true
+indent: true
+header-includes:
+#  - \hypersetup{hidelinks}
+  - \usepackage{nicefrac}
+  - \usepackage[italic]{mathastext}
+---
+
+```{r, include=FALSE}
+require(knitr)
+require(tidyverse)
+require(kableExtra)
+require(huxtable)
+require(TSP)
+require(maps)
+require(grid)
+
+knitr::opts_chunk$set(echo = FALSE, results = "asis")
+
+gameformat <- function(game, caption){
+#   gg <- as_hux(game) %>%
+#     set_width(ncol(game)/10) %>%
+# 	  set_markdown() %>% 
+#     set_caption(caption) %>%
+#     set_bold(1, everywhere) %>%
+#     set_bold(everywhere, 1) %>%
+#     set_align(everywhere, everywhere, "center") %>%
+# #    set_right_border(everywhere, 1, 0.5) %>%
+# #    set_bottom_border(1, everywhere, 0.5) %>%
+#     set_right_border_color(everywhere, 1, "grey60") %>%
+#     set_bottom_border_color(1, everywhere, "grey60") %>%
+#     set_caption_pos("bottom") %>%
+#     set_row_height(everywhere, 0.6) %>%
+#   print_html(gg)
+  cat("\\renewcommand{\\arraystretch}{1.2}   \n")
+  kable(game,
+     format = 'latex',
+   booktabs = T,
+   escape = FALSE,
+   align = paste0("r",strrep("c", ncol(game)-1)),
+   linesep = "",
+   caption = caption
+   )%>%
+  column_spec(0:ncol(game), border_right = F) %>%
+  column_spec(1,
+             border_right = F,
+             bold = T) %>%
+  row_spec(0, bold = T) %>%
+  sub("\\\\centering", "\\\\centering \\\\vspace{4pt}", .) %>%
+  sub("\\\\toprule", "", .) %>%
+  sub("\\\\bottomrule", "", .) %>%
+  sub("\\\\midrule", "", .)
+}
+
+```
+
+# Introduction
+
+Permissivism in epistemology is a family of theses, each of which says that rationality is compatible with a number of distinct attitudes. This paper argues that thinking about symmetric games gives us new reason to believe in Permisivism. I'm going to offer two arguments, one involving finite games, and the other involving infinite games. In finite games, the theorist who denies Permissivism says that the players have to think that the other player is more likely to take one action rather than another, although they know the actions have equal expected utility. In infinite games, the theorist who denies Permissivism has to say that it is impossible for certain games to be played with common knowledge of rationality, although there does not seem to be anything paradoxical about the games. The latter set of arguments rely on the recent discovery that there are symmetric games with only asymmetric equilibria. It was long known that there are symmetric games with no pure strategy symmetric equilibria; the surprising new discovery is that there are symmetric games with asymmetric equilibria, but no symmetric equilibria involving either mixed or pure strategies. In both cases, thinking about players in symmetric games pushes us towards accepting Permisivism.
+
+The Permisivist theses that have been the focus on recent philosophical attention vary along two dimensions.^[For a much more thorough introduction to the debate, and especially into the varieties of Permisivist theses, see @KopecTitelbaum2016 and @Meacham2019. The next three paragraphs draw heavily from these two papers. For more recent arguments in favor of Permisivism, see @Callahan2021, @Lota2023, @Palmira2023, and @Ye2023. For criticisms, see @Schultheis2018 and @Ross2021.]
+
+The first dimension concerns what we hold fixed when we say that multiple attitudes are rationally permissible. It's basically common ground that people with different evidence can rationally believe different things, or that a person can believe different things when their evidence changes. But are these sufficient conditions for rational disagreement or change also necessary conditions. What's called *Interpersonal Permissiveness* says that given some evidence, there may be more than one doxastic state that it is rational to be in. What's called *Intrapersonal Permissiveness* says that given a person and some evidence, there may be more one doxastic state that it is rational to be in. A classic form of subjectivist Bayesianism says that a person can pick any prior they like, but they have to update it by conditionalisation. This is a version of a view that rejects Intrapersonal Permissiveness, since given one's prior there is only one permissible posterior, but endorses Interpersonal Permissiveness, since there are multiple permissible priors.
+
+The second dimension concerns whether the distinct views can be acknowledged as rational. Stewart @Cohen2013 defends the view that multiple attitudes can be rational, but one cannot rationally acknowledge a distinct view as rational. Following @KopecTitelbaum2016, call a view that says multiple views can both be rationally held and be believed to be rational *Acknowledged Permissiveness*, and the view that says multiple views could be rationally held, but could not be acknowledged, *Unacknowledged Permissiveness*.
+
+Putting the last two paragraphs together gives us four varieties of Permissive theses. The negation of a Permisive thesis is a Uniqueness thesis. The name suggests that there is precisely one rational attitude to take in a specified situation, but we'll interpret it as the view that there is at most one rational attitude to take so as to ensure each Uniqueness thesis is the negation of a Permisive thesis. So if there are four Permissive theses, there are four Uniqueness theses that negate them.
+
+This paper focusses on the strongest of these four Permissive theses, Acknowledged Intrapersonal Permissiveness, and its negation, Acknowledged Interpersonal Uniqueness. This is, I think, the most commonly discussed form of Permissiveness in the literature, and in any case is interesting. And I'm going to be arguing that in some cases involving symmetric games, coherence considerations provide a strong argument in favor of Acknowledged Intrapersonal Permissiveness.
+
+I am going to make two large assumptions that might seem to weaken the claim I'm defending. I think once the assumptions are set out it will be plausible that they do not appreciably weaken the claims, and the view I'm defending is pretty close to the strongest form of Permissivism that is defended. But it's important to have them on the table.
+
+The first assumption concerns the reason one might endorse Interpersonal Permissivism but Intrapersonal Uniqueness. The thought, as the example of subjectivist Bayesianism brings out, is that there might be some background parameter that (a) one has a free choice about, and (b) is relevant to what doxastic states are permissible. In the subjectivist Bayesian case, the background parameter is the prior probability function. But a kind could also be the predicates one takes to be projectible, or an attitude to inductive risk, or a value function that prioritises solving certain questions, or really anything else that combines with evidence to settle a uniquely permissible doxastic state. I'll say that two people share a _kind_ if the parameter values are the same for each of them. And I'll assume that kinds are stable - they don't change during deliberation - and sharable - they don't include identifying properties like _Being Julius Caeser_. Given that background, I'll take Acknowledged Intrapersonal Uniqueness to be the view that given one's evidence and one's kind, there is at most one doxastically permissible state. And the negation of that, Acknowledged Intrapersonal Permissivism, is that given one's kind and one's evidence, multiple doxastic states are permissible, even if one acknowledges that each of them are permissible.
+
+The second assumption is that it makes sense to inquire into theses like Uniqueness and Permissivism in the artificial context set up by orthodox decision theory and game theory. Now this might seem like a strong assumption, since some of the motivations for Permissiveness come from the ways in which the messy real world differs from the idealised contexts that game theory and decision theory typically live in. But I think this assumption should be allowed for two reasons. First, if the 'messiness' is a motivation for Permissiveness, then the fact that we can motivate Permissiveness while assuming away the mess is good news for Permissiveness; it can win the argument with one hand tied behind its back. Second, the arguments against Permissiveness are often extremely general. Consider, for instance, the anti-arbitrariness arguments that @Meacham2019 discusses (and critiques). These arguments purport to impose very general constraints on rational thought. If the constraints hold, they hold everywhere. So if I can show they don't hold somewhere, this undermines the arguments for Uniqueness. That doesn't quite show that Permissiveness is true; there's a gap between critiquing an argument and showing its negation is true. But it does mean that even if one doesn't want to draw too many real world lessons from artificial cases like the ones I'm discussing, and thinks that the real world should be addressed directly rather than via artificial models, I'll still have shown something. Namely, I'll have shown that principles Uniqueness theorists often use can't be right.
+
+When I say I'm working in this artificial context, I mean that I'll make the following four assumptions. First, I assume that everyone is self-aware in the sense that they know what their evidence is, what their kind is, and what they are doing. Second, I assume that everyone is logically omniscient, and has doxastic states that are coherent, and closed under logical entailments. Third, I assume that everyone maximises expected utility. Fourth, I assume that everyone is coherent, in the sense that they do not have beliefs that they believe are irrational, and they do not perform actions that they believe do not maximise expected utility. These are very strong assumptions, and obviously real world people are not like this. But they are also assumptions that tend to make Uniqueness more plausible, so I'm hardly tilting the playing field in my favor.
+
+There is one technical challenge in even stating the debate in this framework. We're interested in the question of whether it's possible for two people, who know themselves to be of the same kind and have the same evidence, but who also know that they have different doxastic states, can acknowledge that each is rational. But given the background assumptions, it's not clear how this is possible. Given self-awareness, the two people, A and B, will each know their own identity. But that means they will have different beliefs; A will believe _I'm A_, and B will believe _I'm B_. And that in turn either shows very quickly that Uniqueness is false, since these self-identifying beliefs are distinct and rational, or (more plausibly) that they don't really have the same evidence.
+
+The solution to this technical challenge is two-fold. First, we say, following @Lewis1979a, that the relevant evidence and belief is de se rather than de dicto. Second, self-awareness does not include identifying information. So A knows things like _The sky is blue_, and _My evidence includes that the sky is blue_, but not _A's evidence includes that the sky is blue._ Lewis's views on de se content are hardly uncontroversial, and this is a somewhat artificial move. But without it there is no way to sensibly talk about people who know what their evidence is also sharing evidence, which is at the heart of debates about Acknowledged Permissivism. So I'll simply flag that I'm assuming the relevant evidence is de se, and note that there might be some complications arising from this assumption. 
+
+The next two sections set out two symmetric games where Uniqueness^[From now on, when I say 'Uniqueness' I mean Acknowledged Intrapersonal Uniqueness. It's easier to simply stipulate this now than repeating the phrase every time.] leads to surprising results. In all cases I'll assume that if Uniqueness is true, then the players know that it is true. This is arguably something that follows from the standard idealising assumptions, since the idealised players have internalised a full theory of rationality. But in case it isn't, I'll note it here. And while this might be obvious, I'll also note explicitly that they players have no evidence about the game or the players beyond what I write here about the structure of the games.
+
+# Chicken
+
+Some finite symmetric games have no symmetric pure-strategy equilibria. One notable example is Chicken. Table \@ref(tab:chicken) is a version of Chicken that has no symmetric pure-strategy equilibrium.^[When presenting games in this format, I'll write Row's payout first, then Column's payout. So the top right cell here, for example, says that if Row plays Stay and Column plays Swerve, then Row gets a payout of 1, and Column gets a payout of -1. All payouts are in utils unless otherwise stated. For people unfamiliar with it, the backstory of Chicken is that the players are in cars driving towards each other on a one-lane road. They can stay on the road, possibly winning points for courage and possibly dying, or swerve off.]
+
+
+```{r chicken, cache=FALSE}
+chicken <- tribble(
+	   ~"", ~Stay, ~Swerve,
+	   "Stay", "$-100, -100$", "$1, -1$",
+	   "Swerve", "$-1, 1$", "$0, 0$"
+	)
+gameformat(chicken, "A simple version of Chicken.")
+```
+
+The symmetric pure-strategy pairs $\langle$ Stay, Stay $\rangle$ and $\langle$ Swerve, Swerve $\rangle$ are not equilibria; in each case both parties have an incentive to defect. But the game does have a symmetric mixed strategy equilibria. It is that both players play the mixed strategy of Stay with probability 0.01, and Swerve with probability 0.99. 
+
+Now assume that Row and Column are of the same kind, that they are self-aware and fully rational, and that these facts and no other are common knowledge between them, and that they are about to play Chicken one time. (It's also common knowledge that they won't play again; dropping this would raise the possibility of complicated strategic reasoning.)
+
+Let **Swerve** be the proposition that a rational player of their kind with their will Swerve. And call the players Row and Column. Given our assumptions so far, plus Uniqueness, we can prove that Row's credence in **Swerve** is 0.99. Here's the proof.
+
+1. Let $x$ be Row's credence in **Swerve**.
+2. By self-awareness, Row knows that $x$ is her credence in **Swerve**.
+3. Since Row knows Row is rational, Row can infer that $x$ is a rational credence in **Swerve**.
+4. Since Row knows Uniqueness is true, Row can infer that $x$ is the only rational credence in **Swerve**.
+5. Since Row knows Column is rational, Row can infer that $x$ is Column's credence in **Swerve**, since (at step 4) Row has deduced that $x$ is the only rational credence in **Swerve**.
+6. Since all the assumptions so far are common knowledge, Row can infer that Column knows that $x$ is Row's credence in **Swerve**.
+7. If $x =$ 1, then Row can infer that it is rational for Column to Swerve, while knowing that Row will also Swerve. But this is impossible, since if Column knows Row will Swerve, it is best for Column to Stay. So $x \neq$ 1.
+8. If $x =$ 0, then Row can infer that it is rational for Column to Stay, while knowing that Row will also Stay. But this is impossible, since if Column knows Row will Stay, it is best for Column to Swerve. So $x \neq$ 0.
+9. So 0 $< x <$ 1.
+10. Since Row knows Column's credence that Row will Swerve (whatever it is), and Row knows Column is rational, but Row does not know what Column will do, it must be that Column is indifferent between Stay and Swerve given her (i.e., Columns') credences about what Row will do.
+11. Column is indifferent between Stay and Swerve only if her credence that Row will Swerve is 0.99. (This is a reasonably simple bit of algebra to prove.)
+12. So from 10 and 11, Column's credence that Row will Swerve is 0.99.
+13. By (known) Uniqueness, it follows that the only rational credence in **Swerve** is 0.99.
+14. So since Row is rational, it follows that $x =$ 0.99.
+
+Now there is nothing inconsistent in this reasoning. In a sense, it is purely textbook reasoning. But the conclusion is deeply puzzling. We've proven that Column is indifferent between her two options. And we've proven that Row knows this. But we've also proven that Row thinks it is 99 times more likely that Column will choose one of the options over the other. Why is that? It isn't because there is more reason to do one than the other; given Column's attitudes, the options are equally balanced. It is purely because Uniqueness pushes us to a symmetric equilibrium, and this is the only symmetric equilibrium. Given Uniqueness, the only coherent state is to have believe the other party is 99 times more likely to resolve a tie one way rather than another.
+
+
+
+I don't think this result will convince many devotees of Uniqueness to give up their view. It's not a particularly novel claim that rational players will end up at the unique Nash equilibrium of a game. And to be sure, if this game was being played repeatedly, much weaker assumptions entail that each player should Stay 1% of the time, with those Stays being randomly distributed across the plays of the game. But it is still odd, at least to me, to see the same conclusion drawn in the single shot game, where each player is known to be indifferent between their choices.
+
+The next case is I think much worse for Uniqueness.
+
+# Elections
+
+The cases that really inspired this paper come from some recent work on this rather old question,
+
+> If a symmetric game has an equilibrium, does it have a symmetric equilibrium?
+
+Over the years, a positive answer was given to various restricted forms of that question. Most importantly, John @Nash1951 showed that if each player has finitely many moves available, then the game does have a symmetric equilibrium. 
+
+But recently it has been proven that the answer to the general question is no. Mark @Fey2012 showed that there are symmetric positive-sum two-player games that have only asymmetric equilibria.^[Fey also includes a nice chronology of some of the proofs of positive answers to restricted forms of the question.] And Dimitrios @Xefteris2015 showed that there is a symmetric three-player zero-sum that has only asymmetric equilibria. In fact, he showed that a very familiar game, a version of a Hotelling–Downs model of elections, has this property. Here's how he describes the game.
+
+> Consider a unit mass of voters. Each voter is characterized by her ideal policy. We assume that the ideal policies of the voters are uniformly distributed in [0, 1]. We moreover assume that three candidates $A$, $B$ and $C$ compete for a single office. Each candidate $J \in \{A, B, C\}$ announces a policy $s_J \in$ [0, 1]  and each voter votes for the candidate who announced the policy platform which is nearest to her ideal policy. If a voter is indifferent between two or among all three candidates she evenly splits her vote between/among them. A candidate $J \in \{A, B, C\}$ gets a payoff equal to one if she receives a vote-share strictly larger than the vote-share of each of the two other candidates. If two candidates tie in the first place each gets a payoff equal to one half. If all three candidates receive the same vote-shares then each gets a payoff equal to one third. In all other cases a candidate gets a payoff equal to zero. [@Xefteris2015, 124]
+
+It is clear that there is no symmetric pure-strategy equilibrium here. If all candidates announced the same policy, everyone would get a payoff of $\frac{1}{3}$. But no matter what that strategy is, if $B$ and $C$ announce the same policy, then $A$ has a winning move available. 
+
+What's more surprising, and what Xefteris proves, is that there is no symmetric mixed strategy equilibria either. Again, in such an equilibrium, any player would have a payoff of $\frac{1}{3}$. Very roughly, the proof that no such equilibrium exists is that random deviations from the equilibrium are as likely to lead to winning as losing, so they have a payoff of roughly $\frac{1}{2}$. So there is no incentive to stay in equilibrium. So no symmetric equilibrium exists.
+
+But if Uniqueness is true, and if it is possible to play the game under circumstances of common knowledge of rationality and kind, then there must be a symmetric equilibrium. The reason is that a version of the proof of the previous section still goes through. Whatever credal distribution $A$ has over $B$'s possible policies, $A$ must also have over $C$'s policies (since they both adopt the uniquely rational strategy), and she must know that $B$ and $C$ each have over each other's policies and over hers, and these distributions must be consistent with each player having these credal distributions while thinking that the other players have the same distributions and are maximising expected utility. In other words, the assumptions we've made about the game imply that $A$ has a credal distribution $F$ over $B$'s possible policies only if the mixed strategy triple where each player adopts $F$ as their mixed strategy is itself an equilibrium. And that would be a symmetric equilibrium. But no symmetric equilibrium exists. 
+
+But if we drop Uniqueness, it is possible to keep all the other assumptions. As Xefteris points out, the game has asymmetric equilibria. Here is one possible model for the game.
+
+* $A$ plays 0.6 (and wins), $B$ and $C$ each play 0.4 (and lose).
+* Each player has a correct belief about what the other players will play.
+* But both $B$ and $C$ know they cannot win given the other player's moves, so they pick a move completely arbitrarily.
+* Further, each player has a correct belief about why each player makes the move they make.
+
+This is the coherent equilibria that Xefteris describes, but note that it is rather implausible that we'd end up there in a real-life version of the game. It requires two of the players to know that one of the other players will be indifferent between their options, but from this draw a correct inference about what they will do. That's not particularly plausible. So let's note that there is a somewhat more plausible way to get all three players to make those moves.
+
+* $A$ plays 0.6 (and wins), $B$ and $C$ each play 0.4 (and lose).
+* The only two rational plays are 0.4 and 0.6, but each of them is permissible.
+* In any world that a player believes to be actual, or a player believes another player believes to be actual, or a player believes another player believes another player believes to be actual, etc., the following two conditions hold.
+* If a player plays 0.6, they believe the other two players will play 0.4, and hence playing 0.6 is a winning move.
+* If a player plays 0.4, they believe the other two players will play 0.6, and hence playing 0.4 is a winning move.
+
+The main difference between this model and Xefteris's is that it allows that players have false beliefs. But why shouldn't they have false beliefs? All they know is that the other players are rational, and rationality (we're assuming) does not settle a unique verdict for what players will do.^[To use the game-theory jargon, Xefteris describes a Nash equilibrium of the game, but what I've described is a a rationalizable strategy triple [@Bernheim1984, Pearce1984]. If Uniqueness is true, then strictly speaking any rationalizable strategy pair for a symmetric game is a symmetric Nash equilibrium.] So I think this strategy set, where the players have rational (but false) beliefs about the other players, is more useful to think about.
+
+# Objections
+
+The reductio arguments here have all assumed not just that Uniqueness is true, but that the players know that it is true. What happens if we drop that assumption, and consider the possibility that Uniqueness is true but unknowable?
+
+This possibility is a little uncomfortable for philosophical defenders of Uniqueness. If the players in these games do not know that Uniqueness is true, then neither do the authors writing about Uniqueness. And now we have to worry about whether it is permissible to assert in print that Uniqueness is true. I wouldn't make too much of this though. It is unlikely that a knowledge norm governs assertion in philosophical journals.
+
+The bigger worry here is that one key argument for Uniqueness seems to require that Uniqueness is knowable. A number of recent authors have argued that Uniqueness best explains our practice of deferring to rational people.^[There is a nice discussion of this argument, including citations of the papers I'm about to discuss, in @KopecTitelbaum2016 [195].] For instance, Greco and Hedden use this principle in their argument for Uniqueness.
+
+> If agent $S_1$ judges that $S_2$'s belief that $P$ is rational and that $S_1$ does not have relevant evidence that $S_2$ lacks, then $S_1$ defers to $S_2$'s belief that $P$. [@GrecoHedden2016, 373].
+
+Similar kinds of arguments are made by @Dogramaci2012 and @Horowitz2014. But the principle looks rather dubious in the case of these games. Imagine that $A$ forms a belief (we'll come back to how) that $B$ believes that a rational thing to do in the Xefteris game is to play 0.6, and so she will play 0.6. She should judge that belief to be rational; as we saw it is fully defensible. But although she does not believe that she has evidence that $B$ lacks, she should not defer to it. At least, she should not act as if she defers to it; believing that $B$ will play 0.6 is a reason to play something other than 0.6. 
+
+And that's the general case for these symmetric games with only asymmetric equilibria. Believing that someone else is at an equilibrium point is a reason to not copy them. If it were not a reason to not copy them, then the strategy profile where each player plays the same thing would be a symmetric equilibrium. So thinking about these games doesn't just give us a rebutting defeater for Uniqueness, as described in the previous two sections, but an undercutting defeater, since they also tell against a premise that has been central to recent defences of Uniqueness.
+
+I think there is a somewhat better move available to the Uniqueness theorist. They could simply deny that the Xefteris game, as I've described it, is even possible. ^[This is really just a response to the argument based on that game; I think they just have to say that in Chicken a rational player will rationally think the other player is more likely to make one of the two choices with equal expected payoffs.] This perhaps isn't as surprising as it might seem.
+
+Note two things about the Xefteris game. First, it is an infinite game in the sense that each player has infinitely many choices. It turns out this matters to the proof that there is no symmetric equilibrium to the game. Second, we are assuming it is common knowledge, and hence true, that the players are perfectly rational. Third, we are assuming that perfect rationality entails that people will not choose one option when there is a better option available. When you put those three things together, some things that do not look obviously inconsistent turn out to be impossible. Here's one example of that.
+
+> $A$ and $B$ are playing a game. Each picks a real number in the open interval (0, 1). They each receive a payoff equal to the average of the two numbers picked.
+
+For any number that either player picks, there is a better option available. It is always better to pick $\frac{x+1}{2}$ than $x$, for example. So it is impossible that each player knows the other is rational, and that rationality means never picking one option when a better option is available. 
+
+So the Uniqueness theorist could say that the same thing is going on in the Xefteris game. Some infinitely games cannot be played by rational actors (understood as people who never choose sub-optimal options); this is one of them. But if this is all the Uniqueness theorist says, it is not a well motivated response. We can say why it is impossible to rationally play games like the open interval game; the options get better without end. But that isn't true in the Xefteris game. The only thing that makes the game seem impossible is the Uniqueness assumption. People who reject Uniqueness can easily describe how the Xefteris game can be played by rational players. Simply saying that it is impossible, without any motivation or explanation for this other than Uniqueness itself, feels like an implausible move.
+
+# Conclusion
+
+If Uniqueness is true, then the following thing happens in games between people who know each other to be the same kind, and to be rational. When someone forms a belief about what the other person will do, they can infer that this is a rational way to play the game given knowledge that everyone else will do the same thing. But sometimes this is a very unintuitive inference. In Chicken, it implies that we should have asymmetric attitudes to someone who is facing a choice between two options with equal expected value. In the election game Xefteris describes, a game that feels consistent turns out to be impossible. 
+
+I think the conclusion to draw from these cases of symmetric interactions this is that Uniqueness is false, and hence Permisivism is true. Sometimes in such an interaction one simply has to form a belief about the other player, knowing they may well form a different belief about you. Indeed, sometimes only coherent way to form a belief about the other player is to believe that they will form a different belief about you. And that means giving up on Uniqueness.
+
+# References {-}
