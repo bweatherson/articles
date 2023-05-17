@@ -1,0 +1,483 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode,hidelinks}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+  \setmainfont[]{Lato}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1.4in]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Cameron McCulloch Dossier Report},
+  pdfauthor={Brian Weatherson},
+  colorlinks=true,
+  linkcolor={black},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Cameron McCulloch Dossier Report}
+\author{Brian Weatherson}
+\date{2023-04-17}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden, interior hidden, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
+
+\setstretch{1.2}
+\hypertarget{thesis-plan}{%
+\subsection{Thesis Plan}\label{thesis-plan}}
+
+Cameron plans to write a thesis on privacy. As is fairly common, the
+thesis consists of a set of papers. As is less common, the thesis is in
+two `parts'. The first part is about the relationship between privacy
+and knowledge. The second part is about the relationship between privacy
+and property. Since one of the papers from the first part is the sample
+chapter, I'll say much more about this below. So I'll mostly comment
+here on the connections to property.
+
+The first thing to say is that the thesis plan does the thing that is,
+in my mind, sufficient for passing at this stage. It identifies some
+important questions, and makes feasible promises for how the thesis will
+make progress on them, and those promises are such that, if fulfilled,
+we'd have an excellent thesis. So the top line is that I think it's good
+enough to move on to the defense, and then to writing. And if it does
+carry out the task of connecting privacy both to property law/rights,
+and to epistemology, it could be a really really \emph{great} thesis. So
+I definitely want to encourage passing the thesis, and moving forward.
+
+That said, the plan (and the sample chapter) felt rather repetitive in
+places. I feel I saw that quote from Goldman 1999 at least three times,
+for example. And the fifth chapter (the second chapter on property)
+looks like it is going to spend a lot of time on papers that were at the
+center of the sample chapter.
+
+There is a problem here that I don't know the general solution to. In a
+thesis styled as a continuous manuscript, one can simply refer to
+earlier discussions of a point, in a way that's not so easy in a set of
+papers. And if the papers are to appear in journals, it helps for them
+to be self-standing, and that implies a degree of repetition. But sooner
+or later, you want someone (e.g., someone on a hiring committee) to take
+a serious look at the body of work you're producing. And at that point
+excess repetition can hurt. As I said, I don't have a general answer
+here. But my gut feeling is that as things stand, this leans too far in
+the direction of making everything self-standing, and hence in having
+too much get repeated across multiple chapters.
+
+The other thing is that there is a hard choice to be made about how much
+of a deep dive into the property literature that the thesis needs to
+make. It might be a big task to do this. The Merrill and Smith papers
+that are mentioned have between them thousands of citations. But it
+actually kind of matters to the thesis whether something like what they
+say is right. If the 20th century view they oppose - that property is a
+disunified bundle of rights - turns out to be correct, that creates some
+complications for the unifying project of the thesis as a whole.
+(Jonathan Sarnoff has some work in progress arguing that Merrill and
+Smith are mistaken, and the 20th century view is closer to the truth,
+and his arguments seemed persuasive to me.) So there are some big
+questions here. But I'm not sure given the timeline that learning a lot
+about the nuances of property jurisprudence is going to be the optimal
+use of time.
+
+\hypertarget{sample-chapter}{%
+\subsection{Sample Chapter}\label{sample-chapter}}
+
+The sample chapter argues that privacy is distinctively epistemic - in
+particular, one loses privacy if and only if one becomes more `known'.
+This is a striking claim, and one that seems worth defending. And some
+of the replies to existing critiques of it seem on point. But I felt
+that at a lot of points, it needed much more engagement with the
+philosophical literature, or, perhaps better, more careful treatment of
+difficult matters that were lurking just off screen.
+
+This is, I think, a slightly odd paper for us to have as a sample
+chapter. It's not a lit review, so it isn't a rule violation. But it is
+more review-like than we normally see. While there is a sketch of a
+positive argument for the view at the start of the chapter, the bulk of
+it consists of replies to objections to it. And the objections come from
+a special issue of \emph{Episteme}, and an unpublished ms. My guess is
+that if something like this were to be a writing sample, it would be
+much better to focus on a positive argument for the view. (But perhaps
+it isn't meant as that, in which case that doesn't matter.)
+
+As I mentioned, I thought the paper at a few places needed to engage
+much more with some questions that were just below the surface. I'll
+focus here on three of them, though maybe we'll talk about more at the
+defense.
+
+\hypertarget{knowledge-first}{%
+\subsubsection{Knowledge First}\label{knowledge-first}}
+
+The positive view here has a lot in common with the knowledge first
+program associated with Timothy Williamson
+(\protect\hyperlink{ref-Williamson2000}{2000}). That was especially true
+around page 15, when Cameron is arguing that even if some things that
+don't look epistemic are privacy breaches, they might still be
+consistent with his thesis because they are connected in the right way
+to knowledge. And a lot of the argumentation at the start of the paper
+about the centrality of knowledge talk to privacy talk, and the
+usefulness of having a unified account, felt very Williamsonian. I
+wasn't sure by the end of the paper exactly what the objection to a JTB
+theory of privacy would be, but I suspected it would be a lot like
+Williamson's objection to a JTB theory of evidence.
+
+But obviously the knowledge first program is a Big Deal in recent
+epistemology. To the extent that this project consists of extending the
+program to privacy, it would probably be worth engaging with some of its
+critics. The papers in Greenough, Pritchard, and Williamson
+(\protect\hyperlink{ref-Greenough2009-GREWOK}{2009}) are useful places
+to start, especially the Goldman
+(\protect\hyperlink{ref-Goldman2009}{2009}) paper on evidence. I've only
+skimmed the book on knowledge first by Aidan McGlynn
+(\protect\hyperlink{ref-McGlynn2014-MCGKF}{2014}), but it could be
+useful. But what really jumped out of some of the discussions was the
+possibility that different notions of knowledge being central were being
+run together. Carrie Jenkins and Jonathan Ichikawa
+(\protect\hyperlink{ref-Ichikawa2017-ICHOPK}{2017}) have a nice
+discussion of the different things that one might mean by `knowledge
+first', and I thought it could be helpful in sorting out exactly what
+way knowledge is meant to be central to privacy.
+
+\hypertarget{who-knows}{%
+\subsubsection{Who Knows?}\label{who-knows}}
+
+I was a little shocked by the reference on page 17 to ``other papers
+that spring to mind''. That didn't exactly seem like academic writing.
+And I thought there was a much bigger question here about exactly who
+the knowers are.
+
+For one thing, it isn't obvious at all that something is known iff it is
+known by someone, or even by some group. Alexander Bird
+(\protect\hyperlink{ref-Bird2010}{2010}) has some nice examples where he
+claims something is known by `the scientific community' without any one
+person knowing it. But you might worry (I in fact do worry) that the
+scientific community is too diffuse a thing to really have knowledge.
+What's true, in Bird's case, is that a fact is known without being known
+by anyone. (The simplest examples are ones where a fact is recorded in
+the right place such that anyone who cared to look would find it, but
+all the people who ever looked it up, or who discovered it and stored it
+in the right place, have died.)
+
+Now maybe that's ok. Maybe the fact that some fact about one is known
+does diminish one's privacy, even if it isn't known by anyone. At least,
+this isn't an implausible claim. But it seems important to understanding
+the core slogan of the paper, and it felt like it got left out here.
+
+There is also a bit of a literature on how knowledge is graded. Nick
+Treanor (\protect\hyperlink{ref-Treanor2013-TRETMO}{2013}) has a paper
+(which, to be honest, I didn't love) on how to measure how much someone
+knows. And Carlotta Pavese
+(\protect\hyperlink{ref-Pavese2017-PAVKAG}{2017}) has a paper that uses
+a tool similar to what is used here to generate gradability from what
+looks like an ungraded source. Some of this should also be noted in the
+thesis.
+
+There are some technical problems around here which I'm sure are
+solvable, but do need solving at some point. For example, if someone
+knows one fact about A, then does some simple logical deductions
+(or-introduction with random propositions, and-introduction with random
+other pieces of knowledge) do they diminish A's privacy? I would think
+not, but as it stands I think the view implies that they do.
+
+\hypertarget{about-aboutness}{%
+\subsubsection{About Aboutness}\label{about-aboutness}}
+
+First, a caveat. There are several really hard questions lurking around
+here, any one of which could make a perfectly good thesis topic in
+itself. It would \emph{not} be a good idea to go into too much depth on
+any of them. But that said, the breezy way in which questions about
+aboutness was glossed over, especially on page 11, seemed off-putting.
+Here are some practical and theoretical questions that it would be good
+to at least have views about, even if they aren't all in the thesis.
+
+Romeo loves Juliet. That's about Romeo, for sure. Is it about Juliet?
+That's much harder. On the one hand, it doesn't seem to violate, or even
+diminish, Juliet's privacy to learn this. (Imagine Juliet is a rock star
+and Romeo is a fan she's never heard of.) On the other hand, it seems
+deeply equivalent to \emph{Juliet is loved by Romeo}, and that looks
+like it is about Juliet. (The `deep equivalence' here is not just
+necessary equivalence; it seems like it is stating the same Tractarian
+fact.)
+
+Let's try an even harder case - \emph{Romeo dreamed that Juliet was
+flying}. Again, clearly about Romeo. But is it about Juliet? I don't
+think so, but I think it's a little hard to say why. If it is about
+Juliet, then presumably if Romeo knows that Romeo dreamed that Juliet
+was flying, that diminishes Juliet's privacy. And that seems maybe a
+little implausible. This also seems relevant to the Tattoo Dream case in
+the paper, the discussion of which I found a little hard to follow.
+
+Absurdly hard case. Here's a true thing that I know (at least on sunny
+days): \emph{Either the sky is blue or Juliet is a Seahawks fan}. Is
+that about Juliet? I think the answer is no. I mean it better be no for
+this thesis to hold. Do I really diminish Juliet's privacy when I look
+out the window, see the sky is blue, and do or-introduction? That
+doesn't seem plausible. But a theory of aboutness that gets this case
+right is not exactly easy to generate. Both the most natural theory of
+aboutness that takes the bearers of aboutness to be unstructured
+entities (like Lewis's), and the simplest theory that takes the bearers
+of aboutness to be structured propositions, both make it turn out to be
+about Juliet.
+
+At this point one might think the thing to do would be to have a theory
+of aboutness, and use it to resolve the hard cases. I want to very
+strongly urge against that course of action. A theory of aboutness is
+\emph{at least} a thesis sized project. It might be worth looking at the
+theories developed by Lewis (\protect\hyperlink{ref-Lewis1988e}{1988})
+(building on Lewis (\protect\hyperlink{ref-Lewis1982c}{1982})), Yablo
+(\protect\hyperlink{ref-Yablo2014-YABA}{2014}), and the survey of more
+recent views in section 4.2 of Berto and Nolan
+(\protect\hyperlink{ref-sep-hyperintensionality}{2021}). But don't
+expect to get any clear answers to the big picture question of what
+aboutness really is.
+
+One thing to keep in the back of one's mind is that while the thesis
+doesn't presuppose, or need, any particular theory of aboutness, it does
+presuppose something about the architecture of such a theory. That is,
+the thesis presupposes that the things that are known are the things
+that have aboutness properties. That's not implausible, but it isn't
+completely obvious. And at times some of the language of the thesis
+seems to presuppose that these are the same kind of things as (a) facts,
+and (b) information. Now (a) isn't too surprising - it's nearly
+universally accepted that facts are things that can be known. But (b) is
+much trickier. It's somewhat plausible that information is intensional
+(i.e., is a set of possible worlds), but aboutness is hyperintensional.
+That is to say, contra Lewis's best efforts, there is no thing that a
+set of possible worlds is about. So strictly speaking, there is no
+information about me, because the things that are information are the
+wrong kind of thing to bear aboutness relations to individuals. If
+that's right, it probably just means that some wording needs changing
+here or there. (And even if no information is strictly speaking about
+anyone or anything, there must be some informal way of capturing the
+ordinary way of using the phrase `information about'.) But it brings up
+how tricky this whole area is. To speak a little metaphorically, the ice
+gets very thin very fast around here. I don't think the right reaction
+to that is to do careful measurements of the exact thickness of the ice;
+but it is a reason to watch your footing.
+
+\hypertarget{references}{%
+\subsubsection*{References}\label{references}}
+\addcontentsline{toc}{subsubsection}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-sep-hyperintensionality}{}}%
+Berto, Francesco, and Daniel Nolan. 2021. {``{Hyperintensionality}.''}
+In \emph{The {Stanford} Encyclopedia of Philosophy}, edited by Edward N.
+Zalta, {S}ummer 2021.
+\url{https://plato.stanford.edu/archives/sum2021/entries/hyperintensionality/};
+Metaphysics Research Lab, Stanford University.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Bird2010}{}}%
+Bird, Alexander. 2010. {``Social Knowing: The Social Sense of
+'Scientific Knowledge'.''} \emph{Philosophical Perspectives} 24 (1):
+23--56. \url{https://doi.org/10.1111/j.1520-8583.2010.00184.x}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Goldman2009}{}}%
+Goldman, Alvin. 2009. {``Williamson on Knowledge and Evidence.''} In
+\emph{{Williamson on Knowledge}}, 73--91. Oxford: Oxford University
+Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Greenough2009-GREWOK}{}}%
+Greenough, Patrick, Duncan Pritchard, and Timothy Williamson. 2009.
+\emph{{Williamson on Knowledge}}. Oxford University Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Ichikawa2017-ICHOPK}{}}%
+Ichikawa, Jonathan, and C. S. I. Jenkins. 2017. {``On Putting Knowledge
+'First'.''} In \emph{Knowledge First: Approaches in Epistemology and
+Mind}, edited by Joseph Adam Carter, Emma C. Gordon, and Benjamin
+Jarvis, 113--31. Oxford University Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Lewis1982c}{}}%
+Lewis, David. 1982. {``Logic for Equivocators.''} \emph{No{û}s} 16 (3):
+431--41. \url{https://doi.org/10.1017/cbo9780511625237.009}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Lewis1988e}{}}%
+---------. 1988. {``Statements Partly about Observation.''}
+\emph{Philosophical Papers} 17 (1): 1--31.
+\url{https://doi.org/10.1080/05568648809506282}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-McGlynn2014-MCGKF}{}}%
+McGlynn, Aidan. 2014. \emph{Knowledge First?} New York, NY: Palgrave
+Macmillian.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Pavese2017-PAVKAG}{}}%
+Pavese, Carlotta. 2017. {``Know-How and Gradability.''}
+\emph{Philosophical Review} 126 (3): 345--83.
+\url{https://doi.org/10.1215/00318108-3878493}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Treanor2013-TRETMO}{}}%
+Treanor, Nick. 2013. {``The Measure of Knowledge.''} \emph{Noûs} 47 (3):
+577--601. \url{https://doi.org/10.1111/j.1468-0068.2011.00854.x}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Williamson2000}{}}%
+Williamson, Timothy. 2000. \emph{{Knowledge and its Limits}}. Oxford
+University Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Yablo2014-YABA}{}}%
+Yablo, Stephen. 2014. \emph{Aboutness}. Oxford: Princeton University
+Press.
+
+\end{CSLReferences}
+
+
+
+\end{document}
