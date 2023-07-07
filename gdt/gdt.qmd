@@ -151,7 +151,7 @@ There are two demons, who will predict what Chooser will do. Both of them are ar
 A Newcomb problem with two demons
 :::
 
-If Demon-1 predicts that Chooser will play Down, Demon-1 will offer Chooser @tbl-war-left; if Demon-1 predicts that Chooser will play Up, Demon-1 will offer Chooser @tbl-war-lighteft. Then Demon-2's prediction will be used for determining whether the payout is from column PU or PD. In almost all cases, if Chooser uses CDT, they will get 1001, while if they use EDT, they will get 2. So in this case, CDT will get more than EDT.
+If Demon-1 predicts that Chooser will play Down, Demon-1 will offer Chooser @tbl-war-left; if Demon-1 predicts that Chooser will play Up, Demon-1 will offer Chooser @tbl-war-right. Then Demon-2's prediction will be used for determining whether the payout is from column PU or PD. In almost all cases, if Chooser uses CDT, they will get 1001, while if they use EDT, they will get 2. So in this case, CDT will get more than EDT.
 
 This case is not meant as an objection to EDT. It is perfectly fair for the evidential decision theorist to complain that they have simply been the victim of a Demon who intends to punish users of EDT, and reward users of CDT. That seems a perfectly fair complaint. But if the evidential decision theorist makes it, they cannot object when causal decision theorists, such as @Lewis1981e, use the same language to describe Newcomb's Problem. The 'objection' that CDT leaves one poorly off in one particular case is equally an objection to everyone, and so it is an objection to no one.
 
@@ -165,11 +165,11 @@ Perhaps the biggest difference between the decision theory found in game theory 
 
 The philosophers' dismissal is usually accompanied by one or both of these reasons.\^These reasons are both offered, briefly, by Nozick - cite here - in the foundational document of modern decision theory. Other philosophers have followed him in using them, but
 
-# Ratificationist
+# Ratificationist  {#sec-ratify}
 
 Solution concepts in game theory tend to be equilibria. And by an equilibria, everyone is happy with their moves knowing what all the moves of all the players are. (Or, at least, they are as happy as they can be.) Put in decision theoretic terms, that means that all solutions are ratifiable; Chooser is happy with their choice once it is made.
 
-Ratificationism used to be a more popular view among decision theorists. Richard @Jeffrey1983 added a ratifiability constraint to a broadly evidential decision theory. And
+Ratificationism used to be a more popular view among decision theorists. Richard @Jeffrey1983 added a ratifiability constraint to a broadly evidential decision theory. And ratifiability was endorsed by
 
 insert references endorsed versions of causal decision theory that included a ratifiability constraint. But it lost popularity for two reasons.
 
@@ -219,7 +219,7 @@ Perhaps the most intuitive case for indecisiveness involves what I'll call Stag 
 |   **Up** |    6    |     0     |
 | **Down** |    5    |     2     |
 
-: An example of a Stag Hunt.
+: An example of a Stag Hunt. {#tbl-stag-hunt}
 
 Note three things about this game. First, both Up and Down are ratifiable. Second, Up has a higher expected return than Down. Third, Up has a higher possible regret than Down. If Chooser plays Up and Demon is wrong, Chooser gets 2 less than they might have otherwise. (They get 0 but could have got 2.) If Chooser plays Down and Demon is wrong, Chooser only gets 1 less than they might have otherwise. (They get 5 but could have got 6.)
 
@@ -227,9 +227,15 @@ There is considerable disagreement about what this means for Chooser. EDT says t
 
 [^9]: The view I'm going to develop is hence similar to the 'permissive CDT' defended by @Fuscond.
 
-My argument for indecisiveness will turn on a case that all eight of the views mentioned in the last paragraph agree on, namely cite below table
+My argument for indecisiveness will turn on a case that all seven of the views mentioned in the last paragraph agree on, namely @tbl-coord.
 
-PU PD U 4 0 D 0 3
+|          |         |           |
+|---------:|:-------:|:---------:|
+|          | **PUp** | **PDown** |
+|   **Up** |    4    |     0     |
+| **Down** |    0    |     3     |
+
+: An example of a coordination game. {#tbl-coord}
 
 All of them agree that Up is the uniquely rational play in this example, and I think intuition agrees with them. I'll argue, however, that Down is permissible. The argument turns on a variation that embeds cite table in a more complicated problem. This problem involves two demons, each of whom are arbitrarily good at predicting Chooser. The (first version of) the problem involves the following sequence.
 
@@ -241,35 +247,71 @@ All of them agree that Up is the uniquely rational play in this example, and I t
 
 I'll call these Exit Problems, and it's worth having the abstract structure of them in front of us.
 
-Two tables. On left have Exit Payout, e, Pr(Exit \| PU) = x, Pr(Exit \| PD) = y. On right have U/D, PU/PD with payouts a, b ,c, d.
+::: {#tbl-general-exit layout-ncol="2"}
+|                   |     |
+|:-----------------:|:---:|
+|    Exit Payout    | *e* |
+|  Pr(Exit \| PUp)  | *x* |
+| Pr(Exit \| PDown) | *y* |
+
+: Exit Parameters {#tbl-exit-param}
+
+|          |         |           |
+|---------:|:-------:|:---------:|
+|          | **PUp** | **PDown** |
+|   **Up** |   *a*   |    *b*    |
+| **Down** |   *c*   |    *d*    |
+
+: Round 2 game {#tbl-exit-r2g}
+
+The abstract form of an exit problem.
+:::
 
 Our problem has this abstract structure with *b* = *c* = *e* = *y* = 0, *x* = 0.5, *a* = 4, *d* = 3.
 
-Now consider a simple variant of the above 5 step problem. The same things happen, but steps 2 and 3 are reversed. That is, Chooser decides on Up or Down after Demons make their predictions, but before they are told whether Demon-1 decided to Exit. Still, their choice will only matter if Demon-1 decided not to Exit, since their choices do not make a difference if Demon-1 Exits. Call this variant the Early Choice version, and the original the Late Choice variant. I don't have any clear intuitions about what to do in most Exit Problems, but I do find the following principle very plausible.
+Now consider a simple variant of the above 5 step problem. The same things happen, but steps 2 and 3 are reversed. That is, Chooser decides on Up or Down after Demons make their predictions, but before they are told whether Demon-1 decided to Exit. Still, their choice will only matter if Demon-1 decided not to Exit, since their choices do not make a difference if Demon-1 Exits. Call this variant the Early Choice version, and the original the Late Choice variant. I don't have any clear intuitions about what to do in most Exit Problems, save for this constraint on choices.
 
 -   **Exit Principle**: In any Exit Problem, the same choices are permissible in the Early Choice and Late Choice variants.
 
 The reason comes from thinking about what Chooser is doing in the Early Choice variant. They are making a decision about what to do if Demon-1 doesn't Exit. The way to make that decision is just to assume that Demon-1 doesn't Exit, and then decide what to do. It just is the same choice as they face in the Late Choice variant, except now they make it in the context of a conditional. So they should decide it the same way.
 
-One could also argue, I think correctly, that anyone who violates Exit Principle will violate a plausible version of the Sure Thing Principle. Such an argument seems sound to me, but the Sure Thing Principle is controversial, and I prefer to put more weight on the argument from how conditional reasoning works in the previous paragraph.
+One could also argue, I think correctly, that anyone who violates Exit Principle will violate a plausible version of the Sure Thing Principle. Such an argument seems sound to me, but the Sure Thing Principle is controversial, and I prefer to put more weight on the argument from how conditional reasoning works in the previous paragraph. (Indeed, I think using the Exit Principle to motivate a version of the Sure Thing Principle is more plausible than the reverse argument.)
 
-To put the point in game-theoretic terms, there is no difference between extensive form and normal form reasoning when a decider has only one possible choice to make.\^Cite Bonano on extensive and normal forms.
+To put the point in game-theoretic terms, there is no difference between extensive form and normal form reasoning when a decider has only one possible choice to make.
 
-Any plausible theory that says that only Up is rationally playable in problems like cite above table will violate Exit Principle. Think about what they will say about Table Below
+Any plausible theory that says that only Up is rationally playable in problems like @tbl-coord cite above table will violate Exit Principle. Think about what they will say @tbl-early-choice.
 
-PU PM PD U 2 3 0 D 0 3 3
+|          |         |            |           |
+|---------:|:-------:|:----------:|:---------:|
+|          | **PUp** | **PMixed** | **PDown** |
+|   **Up** |    2    |     3      |     0     |
+| **Down** |    0    |     3      |     3     |
 
-In this problem, PU means that both demons predict Up, PD means that they both predict Down, and PM means that one predicts one, and one the other. This possibility is arbitrarily improbable, and the two strategies have the same expected return given M in any case, so we can ignore it. So really this game comes to Table below
+: The Early Choice decision. {#tbl-early-choice}
 
-PU PD U 2 0 D 0 3
+In this problem, PUp means that both demons predict Up, PDown means that they both predict Down, and PMixed means that one predicts one, and one the other. This possibility is arbitrarily improbable, and the two strategies have the same expected return given M in any case, so we can ignore it. So really this game comes to @tbl-early-choice-simplified.
 
-Now presumably if one prefers Up in above table, it is because one prefers Up in any game like Table below where *x* \> *y* \> 0.
+|          |         |           |
+|---------:|:-------:|:---------:|
+|          | **PUp** | **PDown** |
+|   **Up** |    2    |     0     |
+| **Down** |    0    |     3     |
 
-PU PD U *x* 0 D 0 *y*
+: The Early Choice decision simplified. {#tbl-early-choice-simplified}
 
-How could it be otherwise? Given expectationism, it's not like there is anything special about the numbers 4 and 3. But anyone who endorses this policy will play *D* in Third table and so, presumably, in Second table. And that means they will violate Exit Principle.
+Now presumably if one prefers Up in above table, it is because one prefers Up in any game like @tbl-general-coord Table below where *x* \> *y* \> 0.
 
-The only view that is consistent with Exit Principle in cases like Fourth table is that both Up and Down are permissible moves. And since in any such case, improving Up or Down be a tiny amount wouldn't materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.
+|          |         |           |
+|---------:|:-------:|:---------:|
+|          | **PUp** | **PDown** |
+|   **Up** |   *x*   |     0     |
+| **Down** |    0    |    *y*    |
+
+: General coordination game. {#tbl-general-coord}
+
+How could it be otherwise? Given expectationism, it's not like there is anything special about the numbers 4 and 3. But anyone who endorses this policy will play Down @tbl-early-choice-simplified and so, presumably, in @tbl-early-choice. And that means they will violate Exit Principle.
+
+The only view that is consistent with Exit Principle in cases like @tbl-general-coord. And since in any such case, improving Up or Down be a tiny amount wouldn't materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.
 
 # Dual Mandate {#sec-dualmandate}
 
@@ -281,7 +323,7 @@ Say a decision tree is a series of steps with the following characteristics.
 -   Chooser knows before the first step what payout they will receive given each possible sequence of choices and information.
 -   Before the first step, chooser has a probability for each possible piece of information they could receive, given the prior steps in the tree.
 
-That's incredibly abstract, but it excludes some possibilities. It excludes cases where Chooser learns along the way that they have hitherto unknown abilities. It excludes cases where Chooser gains the capacity to think new relevant thoughts along the way, say by meeting a new person and gaining the capacity to have singular thoughts about them.[^10] But it does cover a lot of cases.
+That's incredibly abstract, but it excludes some possibilities. It excludes cases where Chooser learns along the way that they have hitherto unknown abilities. It excludes cases where Chooser gains the capacity to think new relevant thoughts along the way, say by meeting a new person and gaining the capacity to have singular thoughts about them.[^10] Still, it does cover a lot of cases.
 
 [^10]: Following @Stalnaker2008, I think it excludes the Sleeping Beauty case, since there Beauty gains the capacity to have singular thoughts about a time, the 'now' when she awakes, that she did not previously have.
 
@@ -305,7 +347,7 @@ Chooser is the Prime Minister of a small country, and they are threatened by a l
 | **N** |   -1   |   0    |
 | **D** |  -50   |  -50   |
 
-: Deciding whether to retaliate.
+: Deciding whether to retaliate. {#tbl-retaliation}
 
 In the top left, neighbour bombs Chooser's capital, thinking correctly that Chooser will not retaliate. In the top right and lower right, neighbour is sufficiently scared of the doomsday device that they do nothing. But in the bottom left, neighbour attacks, and Chooser retaliates, creating a disaster for everyone, something 50 times worse than even the horrors of the carpet bombing.
 
@@ -315,9 +357,27 @@ Change the example so that Chooser has two advisors who are talking to him as th
 
 Change the example again, and make it a bit more realistic. Chooser has the same two advisors, with the same views. Chooser thinks the one who says the Demon is 99% reliable is 60% likely to be right, and the other 40% likely. So Chooser forms the plan to retaliate, because right now that's the strategy with highest expected return. But now, to everyone's surprise, neighbour attacks. The resolute theorist will say that Chooser should stick to their (overpowered) guns. But think about how the choice of plans looks to Chooser now. The actions of neighbour are evidence about the reliability of the demon. And a simple application of Bayes' Rule says that Chooser should now think the advisor who thought the demon was 97% reliable is 2/3 likely to be right. That is, given Chooser's current evidence, retaliating wasn't even the utility maximising strategy to start with. Yet it is what the resolute theorist, or at least the resolute theorist who is not also sophisticated, would have Chooser do. This is, again, absurd, and enough reason to give up on such a theory.
 
-What about the other direction? Is it sensible to have a sophisticated theory that is not resolute? There does seem to be something puzzling about such theories. They are "diachronically exploitable" in the sense described by @Spencer2021. Here is Spencer's example of a diachronically exploitable agent.[^13] The agent will play first the left and then the right game, and their payouts (shown in dollars) will be summed over the game. They won't be told between the games what they got from the first game.[^14]
+What about the other direction? Is it sensible to have a sophisticated theory that is not resolute? There does seem to be something puzzling about such theories. They are "diachronically exploitable" in the sense described by @Spencer2021. Let's start with one example. Extend the theory offered by @Gallow2020 to make it a pure sophisticated dynamic theory. That is, in a decision tree, the chooser values future choices by the expected value of the choice they'll make, and if that choice is guaranteed to end the decision tree, they use Gallow's theory. Chooser is now offered the following two-step option. At step 1 they can choose to receive 1 or play the game in @tbl-gallow-sophisticated.
 
-[^13]: Spencer himself thinks diachronic non-exploitability is a constraint on rationality, but rational agents do not violate a similar constraint he calls the Guaranteed Principle. I don't find it plausible that one but not the other is a constraint on rationality.
+|       |        |        |
+|------:|:------:|:------:|
+|       | **PU** | **PD** |
+| **U** |   2    |   2    |
+| **D** |   5    |   0    |
+
+: A challenge for pure sophisticated decision. {#tbl-gallow-sophisticated}
+
+If Chooser gets to step 2, they'll play D, since it is the best option according to Gallow's theory. So at step 1 they'll choose the 1 rather than playing this game. But that's absurd; they know they could have done better by simply playing the game and choosing U.
+
+What the Dual Mandate says is that the last step of reasoning here is sound; it is a fair criticism of an agent to say that their strategy doesn't make sense even if every step makes sense taken on its own. Since this does seem like a fair criticism, it is reasonable to adopt the Dual Mandate.
+
+If one has a decisive theory, then a huge number of decision trees will be dilemmas, since it is unlikely that the optimal strategy matches the series of optimal choices. This is not a reason to reject the Dual Mandate; it's another reason to reject decisiveness.
+
+You might worry that the argument based around @tbl-gallow-sophisticated is not really an objection to theories that reject the Dual Mandate, but just to the combination of that rejection and the endorsement of Gallow's particular theory of decision. That worry is half right. This result is a problem for Gallow's theory. But that doesn't mean it isn't also an argument for the Dual Mandate. The point of the Dual Mandate is not to criticise individual decisions, like taking the 1 in this game. It's to criticise theories that endorse those decisions. It's true that once we find the right theory of synchronic choice, the Dual Mandate will be unnecessary, since it will be automatically satisfied. But the Dual Mandate plays an essential role in selecting that theory.
+
+Jack @Spencer2021 has an example which he thinks tells against the Dual Mandate, or what he calls the requirement that Chooser not be diachronically exploitable.[^13] The agent will play first the left and then the right game, and their payouts (shown in dollars) will be summed over the game. They won't be told between the games what they got from the first game.[^14]
+
+[^13]: Spencer's non-exploitability isn't quite the same thing as the Dual Mandate, but it's close enough for these purposes. Spencer rejects non-exploitability, but endorses a weaker constraint he calls the Guaranteed Principle. I don't see any reason to distinguish between these constraints, in part because of the argument that follows in the text.
 
 [^14]: Assume Chooser is reasonably risk-neutral over dollars over this range of outcomes.
 
@@ -338,7 +398,7 @@ What about the other direction? Is it sensible to have a sophisticated theory th
 
 : Second game {#tbl-ni-right}
 
-Newcomb Insurance (from @Spencher2021).
+Ahmed Insurance (from @Spencer2021).
 :::
 
 Note that in @tbl-ni-right, the states are not the usual ones about Demon's predictions. Rather, they are that the Demon made the Correct, or Incorrect, prediction in @tbl-ni-left. There are eight strategies in this game, but since the Demon doesn't care about what happens at non-chosen nodes, we won't care either, and just focus on the four combinations of moves Chooser might make, and how they interact with Demon's prediction. If we do that, we get the following table (also given by Spencer, and also with payouts in dollars).
@@ -351,29 +411,31 @@ Note that in @tbl-ni-right, the states are not the usual ones about Demon's pred
 | **D~1~U~2~** |    -15    |    -15    |
 | **D~1~D~2~** |    135    |    -65    |
 
-: Strategic form of Newcomb Insurance. {#tbl-ni-strategic}
+: Strategic form of Ahmed Insurance. {#tbl-ni-strategic}
 
 Spencer argues that even though D~1~U~2~ is dominated by U~1~D~2~ it might be rational to play it. After all, it is rational to bet on Demon being correct in @tbl-ni-right, since Demon is arbitrarily good. And if one knows one is going to do that, one may as well take the sure extra \$10 that playing U~1~ rather than D~1~ gives. So diachronic exploitability is consistent with rationality.
 
 The reasoning of the previous paragraph fails because neither CDT, nor any other sensible decision theory, recommends taking two boxes in Newcomb Problems embedded in strategic interactions. This would be like thinking that CDT recommended always defecting in Iterated Prisoners' Dilemma, even it was chancy whether the iterations came to an end after each round, so backward induction reasoning was unavailable. If Chooser has convinced themselves that they will play U~2~, and we'll come back to whether they should believe that, then the choice in @tbl-ni-left comes down to this.
 
-|          |           |            |
-|---------:|:---------:|:----------:|
-|          | **PU~1~** | **PD~1~**  |
-| **U~1~** |    75     |    -125    |
-| **D~1~** |    -15    |    -15     |
+|          |           |           |
+|---------:|:---------:|:---------:|
+|          | **PU~1~** | **PD~1~** |
+| **U~1~** |    75     |   -125    |
+| **D~1~** |    -15    |    -15    |
 
-: First game in Newcomb Insurance, if D~2~ will be played. {#tbl-ni-new-left}
+: First game in Ahmed Insurance, if D~2~ will be played. {#tbl-ni-new-left}
 
-And while that game has multiple solutions, it is clear that it is permissible to play U~1~. Moreover, it is also rational to play a 50/50 mixture of the two options in @tbl-ni-left, and then D~2~ in @tbl-ni-right, for an expected return of \$25.
+This game has two pure strategy equilibria, and on its own I think (because of the arguments in @sec-indecisive) that either play is acceptable. In context though, either play is clearly unacceptable. Given that one chooses either U~1~ or D~1~, the only reasonable thing to believe is that Demon has almost certainly predicted this, so it makes to play U~2~, since Demon is almost certainly correct. So one ends up playing U~1~U~2~ or D~1~U~2~, both of which are dominated and hence absurd strategies.
 
-So this example isn't a reason to believe in the rationality of diachronic exploitability. But is there a positive argument we can give against diachronic exploitability? There are some circumstances where one ought adopt a sub-optimal strategy. Odysseus binds himself to the mast because he does not approve of future-Odysseus's preferences. Professor Procrastinate[^15] cite turns down a referee request because he does not trust his future self to be practically rational. Both of them deliberately turn down strategies that would be better than where they end up, because they do not trust their future selves to carry them out. They are alienated in this way from their future selves.
+Spencer argues that since the Demon is almost certainly accurate, Chooser should play U~2~, so they should play a dominated strategy, so the Dual Mandate doesn't apply. (This assumes that synchronic choice rules out strictly dominated options in cases like this, but Spencer agrees that it does.) This argument only goes through if Chooser doesn't have access to mixed strategies; i.e., if Chooser is not ideally practically rational. If Chooser does have access to mixed strategies, they should play a 50/50 mix of U~1~ and D~1~, then choose D~2~. That is ratifiable as long as Chooser believes Demon plays PU~1~ with probability 0.45, and PD~1~ with probability 0.55. Since that's the only ratifiable play for Demon, it's reasonable for Chooser to believe this. If mixed strategies are allowed, this is not a case where the Dual Mandate fails.
+
+In general, if mixed strategies are not allowed, the Dual Mandate is implausible. But that's because without mixed strategies, cases like @tbl-newcomb-insurance are dilemmas; they have no ratifiable choices. And it's true that the Dual Mandate is implausible in dilemmas. Think back to the sinner described in @sec-ratify. Imagine that sinner will in fact say that they get *d* days in heaven. Now complicate the case; they are offered a choice of *d*! days in heaven, or to make their own choice. If they will in fact choose *d*, they should simply take *d*!, even though there are strategies available, like choosing *d*!! days, that are better. Weird things happen when there are dilemmas around, and we shouldn't judge decision theories against these cases.
+
+The Dual Mandate is also implausible if Chooser thinks they will be irrational, or that they will have different preferences. Indeed, it is implausible if Chooser thinks they might either change or lose their mind. For example, Odysseus binds himself to the mast because he does not approve of future-Odysseus's preferences. Professor Procrastinate[^15] cite turns down a referee request because he does not trust his future self to be practically rational. Both of them deliberately turn down strategies that would be better than where they end up, because they do not trust their future selves to carry them out. They are alienated in this way from their future selves. When one does not endorse one's future preferences, or does not trust one's rationality in the future, it makes sense to be alienated from one's future self in this way. In such cases, one's future self is just another part of the world that must be predicted and worked around. And so it might make sense to forego, as Odysseus and Procrastinate forego, strategies that one's future self will not be so kind as to carry out.
 
 [^15]: A famous character in @JacksonPargetter1986.
 
-When one does not endorse one's future preferences, or does not trust one's rationality in the future, it makes sense to be alienated from one's future self in this way. In such cases, one's future self is just another part of the world that must be predicted and worked around. And so it might make sense to forego, as Odysseus and Procrastinate forego, strategies that one's future self will not be so kind as to carry out.
-
-My main claim here is when neither of those two conditions obtain, i.e., when one knows that one's future self will be rational and have the same preferences, one's choices should make strategic sense. That is, they should satisfy the fairly weak condition that they are part of some strategy that one could choose if one was simply choosing a strategy for the whole tree. Unless one fears future irrationality, or future change of preference, one should not be alienated from one's future self. If Chooser plays D~1~U~2~ they will be alienated in this way. They will think, I know I'll be \$40 better off if only I played U~1~D~2~, but that fool future-me will not carry out that plan. But future-them is not a fool; by hypothesis they are known to be ideally rational. So it isn't coherent to think this way, and that reveals that it is incoherent to 'rationally' play D~1~U~2~. And that is why the Dual Mandate requires that one's strategy be rational, and not just the moves that make up the strategy.
+My main claim here is when neither of those two conditions obtain, i.e., when one knows that one's future self will be rational and have the same preferences, one's choices should make strategic sense. That is, they should satisfy the fairly weak condition that they are part of some strategy that one could choose if one was simply choosing a strategy for the whole tree. Unless one fears future irrationality, or future change of preference, one should not be alienated from one's future self. If Chooser takes 1 rather than play @tbl-gallow-sophisticated, they are alienated in this way. They have to think, I know I'd be better off if I played U. But that fool future-me will play D instead, and blow up the plan. But future-them is not a fool; by hypothesis they are known to be ideally rational. So it isn't coherent to think this way, and that reveals that it is incoherent to 'rationally' take the 1. And that is why the Dual Mandate requires that one's strategy be rational, and not just the moves that make up the strategy.
 
 # Substantive {#sec-substantive}
 
@@ -421,7 +483,7 @@ If you prefer things in table form, here are the payouts chooser gets, given wha
 |    T     |      T      |     H     |     40      |
 |    T     |      T      |     T     |     10      |
 
-: The coin game.
+: The coin game. {#tbl-cho-kreps}
 
 What will Chooser do? There are two coherent things for Chooser to do, though each of them is only coherent given a background belief that isn't entailed by the evidence.
 
