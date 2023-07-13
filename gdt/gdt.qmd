@@ -2,15 +2,37 @@
 title: "Gamified Decision Theory"
 author: "Brian Weatherson"
 format: 
-  pdf: 
+    html:
+      theme: 
+        light: 
+          - solar
+          - html-fonts.scss
+          - solar-defaults.scss
+        dark:
+          - solar
+          - html-fonts.scss
+          - dark-table.scss
+      linestretch: 1.5
+      toc: true
+      toc-depth: 3
+      toc-location: left
+      reference-location: margin
+      margin-header: "&nbsp;"
+      fontsize: 1.2em
+      include-in-header:
+        - text: |
+            <link rel="stylesheet" href="https://use.typekit.net/gdw0otp.css">
+      mainfont: "baskerville, sans-serif"
+    docx: default
+    pdf: 
 #    geometry: "left=1.in,right=1.95in,top=1.78in,bottom=1.78in"
-    mainfont: Baskerville
-    sansfont: Baskerville
-    mainfontoptions: Scale = MatchLowercase
-    include-in-header:
-      text: |
-        \setlength\heavyrulewidth{0ex}
-        \setlength\lightrulewidth{0ex}
+      mainfont: Baskerville
+      sansfont: Baskerville
+      mainfontoptions: Scale = MatchLowercase
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
 editor: visual
 bibliography: ../rBib.bib
 number-sections: true
@@ -36,14 +58,14 @@ What I do want to argue is that you can find some support for all of these in so
 
 Methodologically, this paper differs from most works in decision theory in two ways. It has been a commonplace since @Nozick1969 to include demons, who are arbitrarily good at predicting a decision, in problems. Some of the cases here will involve two such demons, each of which is arbitrarily good at predicting a decision, and whose errors are probabilistically independent. Second, I'm going to rely less on intuitions about particular cases, and more on intuitions that certain cases should be treated the same way. This makes sense given the history of the field. There is much less consensus about what to do in Newcomb problems than about which problems are Newcomb problems. Judgments, or intuitions if you prefer, about how to classify problems seem more stable and more reliable, and they will be central to this paper.
 
-The conclusion of this paper is that a permissive version of causal ratificationism is correct. Ideal choosers make choices that they do not immediately regret. With two small caveats, that's all there is to decision theory; any ratifiable choice is one an ideal agent might make. The first caveat is to with choices over time; the ideal chooser will make choices such that both their individual choices, and the set of choices they make, are ratifiable. This will exclude some possible choices that are individually ratifiable. Second, the ideal chooser will not choose weakly dominated options. These are fairly minor caveats; the resulting theory is not very different from other forms of permissive causal ratificationism, such as that defended by Melissa @Fusco2023.
+The conclusion of this paper is that a permissive version of causal ratificationism is correct. Ideal choosers make choices that they do not immediately regret. With two small caveats, that's all there is to decision theory; any ratifiable choice is one an ideal agent might make. The first caveat is to with choices over time; the ideal chooser will make choices such that both their individual choices, and the set of choices they make, are ratifiable. This will exclude some possible choices that are individually ratifiable. Second, the ideal chooser will not choose weakly dominated options. These are fairly minor caveats; the resulting theory is not very different from other forms of permissive causal ratificationism, such as that defended by Melissa @Fuscond.
 
 # Idealised {#sec-ideal}
 
 Consider the following decision problem. Chooser (our main protagonist) is going to be given a series of multiplication problems, where each of the multiplicands is a four digit number. Chooser doesn't have access to any kind of calculating device, and has no special arithmetic ability. For each question, if Chooser says the right answer, they get \$2; if they pass, they get \$1; if they say the wrong answer, they get nothing. @tbl-multi has the payout in table form.
 
 |           |                        |                          |
-|----------:|:----------------------:|:------------------------:|
+|:---------:|:----------------------:|:------------------------:|
 |           | **Best Guess Correct** | **Best Guess Incorrect** |
 | **Guess** |          \$2           |           \$0            |
 |  **Pass** |          \$1           |           \$1            |
@@ -80,7 +102,7 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 
 ::: {#tbl-rps layout-ncol="2"}
 |              |          |           |              |
-|-------------:|:--------:|:---------:|:------------:|
+|:------------:|:--------:|:---------:|:------------:|
 |              | **Rock** | **Paper** | **Scissors** |
 |     **Rock** |   0,0    |   -1,1    |     1,-1     |
 |    **Paper** |   1,-1   |    0,0    |     -1,1     |
@@ -89,7 +111,7 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 : Original game {#tbl-rps-basic}
 
 |              |          |           |              |
-|-------------:|:--------:|:---------:|:------------:|
+|:------------:|:--------:|:---------:|:------------:|
 |              | **Rock** | **Paper** | **Scissors** |
 |     **Rock** |   0,0    |   -1,1    |   1+*x*,-1   |
 |    **Paper** |   1,-1   |    0,0    |     -1,1     |
@@ -158,7 +180,7 @@ There are two demons, who will predict what Chooser will do. Both of them are ar
 
 ::: {#tbl-edt-war layout-ncol="2"}
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |    1    |     3     |
 | **Down** |    0    |     2     |
@@ -166,7 +188,7 @@ There are two demons, who will predict what Chooser will do. Both of them are ar
 : Demon-1 predicts Down {#tbl-war-left}
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |  1001   |   1003    |
 | **Down** |  1000   |   1002    |
@@ -215,7 +237,7 @@ Ratificationism used to be a more popular view among decision theorists. Richard
 One was the existence of cases where there is (allegedly) no ratifiable option. @tbl-no-pure is one such case.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |    3    |     5     |
 | **Down** |    4    |     3     |
@@ -225,7 +247,7 @@ One was the existence of cases where there is (allegedly) no ratifiable option. 
 If Chooser plays Up, they would prefer to play Down. If Chooser plays Down, they would prefer to play Up. Things get worse if we add an option that is ratifiable, but unfortunate, as in @tbl-bad-third.
 
 |          |         |           |        |
-|---------:|:-------:|:---------:|:------:|
+|:--------:|:-------:|:---------:|:------:|
 |          | **PUp** | **PDown** | **PX** |
 |   **Up** |    3    |     5     |   0    |
 | **Down** |    4    |     3     |   0    |
@@ -236,7 +258,7 @@ If Chooser plays Up, they would prefer to play Down. If Chooser plays Down, they
 The only ratifiable option is X, but surely it is worse than Up or Down. One might avoid this example by saying that there is a weak dominance constraint on rational choices, as well as a ratifiability constraint. That won't solve the problem, but it will turn it into a problem like @tbl-no-pure, where there is no good solution. But that won't help us much, as was pointed out by @Skyrms1984, since in @tbl-verybad-third there is no weakly dominant option, but X is surely still a bad play.
 
 |          |         |           |        |
-|---------:|:-------:|:---------:|:------:|
+|:--------:|:-------:|:---------:|:------:|
 |          | **PUp** | **PDown** | **PX** |
 |   **Up** |    3    |     5     |   0    |
 | **Down** |    4    |     3     |   0    |
@@ -273,7 +295,7 @@ Perhaps the most intuitive case for indecisiveness involves what I'll call Stag 
 [^15]: For much more on the philosophical importance of Stag Hunts, see @Skyrms2004.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |    6    |     0     |
 | **Down** |    5    |     2     |
@@ -289,7 +311,7 @@ There is considerable disagreement about what this means for Chooser. EDT says t
 My argument for indecisiveness will turn on a case that all seven of the views mentioned in the last paragraph agree on, namely @tbl-coord.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |    4    |     0     |
 | **Down** |    0    |     3     |
@@ -316,7 +338,7 @@ I'll call these Exit Problems, and it's worth having the abstract structure of t
 : Exit Parameters {#tbl-exit-param}
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |   *a*   |    *b*    |
 | **Down** |   *c*   |    *d*    |
@@ -341,7 +363,7 @@ To put the point in game-theoretic terms, there is no difference between extensi
 Any plausible theory that says that only Up is rationally playable in problems like @tbl-coord cite above table will violate Exit Principle. Think about what they will say @tbl-early-choice.
 
 |          |         |            |           |
-|---------:|:-------:|:----------:|:---------:|
+|:--------:|:-------:|:----------:|:---------:|
 |          | **PUp** | **PMixed** | **PDown** |
 |   **Up** |    2    |     3      |     0     |
 | **Down** |    0    |     3      |     3     |
@@ -351,7 +373,7 @@ Any plausible theory that says that only Up is rationally playable in problems l
 In this problem, PUp means that both demons predict Up, PDown means that they both predict Down, and PMixed means that one predicts one, and one the other. This possibility is arbitrarily improbable, and the two strategies have the same expected return given M in any case, so we can ignore it. So really this game comes to @tbl-early-choice-simplified.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |    2    |     0     |
 | **Down** |    0    |     3     |
@@ -361,7 +383,7 @@ In this problem, PUp means that both demons predict Up, PDown means that they bo
 Now presumably if one prefers Up in above table, it is because one prefers Up in any game like @tbl-general-coord Table below where *x* \> *y* \> 0.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |   *x*   |     0     |
 | **Down** |    0    |    *y*    |
@@ -375,7 +397,7 @@ The only view that is consistent with Exit Principle in cases like @tbl-general-
 Exit Principle also offers a response to some intuitions that have led people to question CDT in recent years. @tbl-frustrating-button is an example that Jack @Spencer2023 used to model the kind of case that's at issue. As he notes, it is similar to the psychopath button case [@Egan2007-EGASCT], the asymmetric Death in Damascus case [@Richter1984], and other puzzles for CDT.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |   10    |    10     |
 | **Down** |   15    |     0     |
@@ -394,7 +416,7 @@ If we embed Frustrating Button in an exit problem, as in @tbl-frustrating-exit, 
 : Exit Parameters {#tbl-exit-param-fb}
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |   10    |    10     |
 | **Down** |   15    |     0     |
@@ -407,7 +429,7 @@ An exit problem with Frustrating Button in round 2.
 The Early Version of @tbl-frustrating-exit is @tbl-ev-fe.
 
 |          |         |           |
-|---------:|:-------:|:---------:|
+|:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
 |   **Up** |   -38   |    10     |
 | **Down** |   -37   |     0     |
@@ -449,7 +471,7 @@ Start with why it is bad to just have a resolute approach.[^20] Game theorists u
 Chooser is the Prime Minister of a small country, and they are threatened by a large neighbour. Unfortunately, neighbour is thinking of carpet bombing Chooser's capital, in retaliation for some perceived slight. Chooser has no air defences that would prevent a great destruction, and no allies who will rally to help. Fortunately, Chooser has a mighty weapon, a Doomsday device, that could destroy neighbour. Chooser has obviously threatened to use this, but neighbour suspects it is a bluff. This is for a good reason; the doomsday device would also destroy Chooser's own country. Neighbour is known to employ a Demon who is at least 99% accurate in predicting what military plans Chooser will take. So Chooser can do Nothing (N), or use the Doomsday device (D), should neighbour attack. Chooser would obviously prefer no attack, and would certainly not use the device pre-emptively. So here is the table.
 
 |       |        |        |
-|------:|:------:|:------:|
+|:-----:|:------:|:------:|
 |       | **PN** | **PD** |
 | **N** |   -1   |   0    |
 | **D** |  -50   |  -50   |
@@ -467,7 +489,7 @@ Change the example again, and make it a bit more realistic. Chooser has the same
 What about the other direction? Is it sensible to have a sophisticated theory that is not resolute? There does seem to be something puzzling about such theories. They are "diachronically exploitable" in the sense described by @Spencer2021. Let's start with one example. Extend the theory offered by @Gallow2020 to make it a pure sophisticated dynamic theory. That is, in a decision tree, the chooser values future choices by the expected value of the choice they'll make, and if that choice is guaranteed to end the decision tree, they use Gallow's theory. Chooser is now offered the following two-step option. At step 1 they can choose to receive 1 or play the game in @tbl-gallow-sophisticated.
 
 |       |        |        |
-|------:|:------:|:------:|
+|:-----:|:------:|:------:|
 |       | **PU** | **PD** |
 | **U** |   2    |   2    |
 | **D** |   5    |   0    |
@@ -490,7 +512,7 @@ Jack @Spencer2021 has an example which he thinks tells against the Dual Mandate,
 
 ::: {#tbl-newcomb-insurance layout-ncol="2"}
 |          |           |           |
-|---------:|:---------:|:---------:|
+|:--------:|:---------:|:---------:|
 |          | **PU~1~** | **PD~1~** |
 | **U~1~** |    50     |    -50    |
 | **D~1~** |    60     |    -40    |
@@ -498,7 +520,7 @@ Jack @Spencer2021 has an example which he thinks tells against the Dual Mandate,
 : First game {#tbl-ni-left}
 
 |          |             |               |
-|---------:|:-----------:|:-------------:|
+|:--------:|:-----------:|:-------------:|
 |          | **Correct** | **Incorrect** |
 | **U~2~** |     25      |      -75      |
 | **D~2~** |     -25     |      75       |
@@ -511,7 +533,7 @@ Ahmed Insurance (from @Spencer2021).
 Note that in @tbl-ni-right, the states are not the usual ones about Demon's predictions. Rather, they are that the Demon made the Correct, or Incorrect, prediction in @tbl-ni-left. There are eight strategies in this game, but since the Demon doesn't care about what happens at non-chosen nodes, we won't care either, and just focus on the four combinations of moves Chooser might make, and how they interact with Demon's prediction. If we do that, we get the following table (also given by Spencer, and also with payouts in dollars).
 
 |              |           |           |
-|-------------:|:---------:|:---------:|
+|:------------:|:---------:|:---------:|
 |              | **PU~1~** | **PD~1~** |
 | **U~1~U~2~** |    75     |   -125    |
 | **U~1~D~2~** |    25     |    25     |
@@ -525,7 +547,7 @@ Spencer argues that even though D~1~U~2~ is dominated by U~1~D~2~ it might be ra
 The reasoning of the previous paragraph fails because neither CDT, nor any other sensible decision theory, recommends taking two boxes in Newcomb Problems embedded in strategic interactions. This would be like thinking that CDT recommended always defecting in Iterated Prisoners' Dilemma, even it was chancy whether the iterations came to an end after each round, so backward induction reasoning was unavailable. If Chooser has convinced themselves that they will play U~2~, and we'll come back to whether they should believe that, then the choice in @tbl-ni-left comes down to this.
 
 |          |           |           |
-|---------:|:---------:|:---------:|
+|:--------:|:---------:|:---------:|
 |          | **PU~1~** | **PD~1~** |
 | **U~1~** |    75     |   -125    |
 | **D~1~** |    -15    |    -15    |
@@ -556,7 +578,7 @@ We need one caveat on this. Philosophical decision theories typically do not iss
 
 At least sometimes, game theorists impose non-structural, substantive conditions on the beliefs of players. Most notably, the "intuitive criterion" of @ChoKreps1987 is meant to be continuous with other equilibrium conditions, and is a substantive constraint. Someone who violates it has coherent beliefs that don't conform to their evidence. The intuitive criterion takes some time to set up, but I'll get to a simplified version of it later in this section.
 
-First, I'll note some general reasons for scepticism about this use of the substantive-structural distinction. One obvious point is that Piz and Za do not look like rational choosers. Another is that this draws distinctions between overly similar characters, such as these two, Cla and Sic. Both of them have taken classes in classical statistics, but only skimmed the textbooks without attending to the details. Cla came away with the belief that any experiment with a *P* value less than 0.05 proved that its hypothesis is true. Sic came away with a standing disposition to belief the hypothesis whenever there was an experiment with a *P* value less than 0.05. Cla is incoherent; there is no possible world where that belief is true. Sic is coherent; any one of their beliefs could be true. It's just they just have a disposition to often form substantially irrational beliefs. Personally, I don't think the difference between Cla and Sic is important enough to be philosophically load bearing. Lastly, it has proven incredibly hard to even define what makes a norm structural. The most important recent attempt is in Alex Worsnip's book Fitting Things Together: Coherence and the Demands of Structural Rationality [@Worsnip2021]. Here's his definition:
+First, I'll note some general reasons for scepticism about this use of the substantive-structural distinction. One obvious point is that Piz and Za do not look like rational choosers. Another is that this draws distinctions between overly similar characters, such as these two, Cla and Sic. Both of them have taken classes in classical statistics, but only skimmed the textbooks without attending to the details. Cla came away with the belief that any experiment with a *P* value less than 0.05 proved that its hypothesis is true. Sic came away with a standing disposition to belief the hypothesis whenever there was an experiment with a *P* value less than 0.05. Cla is incoherent; there is no possible world where that belief is true. Sic is coherent; any one of their beliefs could be true. It's just they just have a disposition to often form substantially irrational beliefs. Personally, I don't think the difference between Cla and Sic is important enough to be philosophically load bearing. Lastly, it has proven incredibly hard to even define what makes a norm structural. The most important recent attempt is in Alex Worsnip's book _Fitting Things Together: Coherence and the Demands of Structural Rationality_ [@Worsnip2021]. Here's his definition:
 
 > *Incoherence Test*. A set of attitudinal mental states is jointly incoherent iff it is (partially) constitutive of (at least some of) the states in the set that any agent who holds this set of states has a disposition, when conditions of full transparency are met, to revise at least one of the states. [@Worsnip2021, 132]
 
@@ -614,7 +636,7 @@ An option *a* weakly dominates another option *b* if *a* is at least as good as 
 Start with @tbl-first-wd; what would the ideal chooser do?
 
 |       |        |        |
-|------:|:------:|:------:|
+|:-----:|:------:|:------:|
 |       | **PU** | **PD** |
 | **U** |   1    |   1    |
 | **D** |   0    |   1    |
@@ -631,10 +653,10 @@ Third, it has been argued by game theorists that we should always allow for the 
 
 If it is good to remove weakly dominated options, then one might think it follows straight away that it is good to keep doing this.[^28] Think about @tbl-wd-itd.
 
-[^28]: This suggestion is made by, for example @HareHedden201x.
+[^28]: This suggestion is made by, for example @HareHedden2015.
 
 |       |        |        |        |
-|------:|:------:|:------:|:------:|
+|:-----:|:------:|:------:|:------:|
 |       | **PU** | **PD** | **PX** |
 | **U** |   1    |   1    |   0    |
 | **D** |   0    |   1    |   1    |
@@ -646,7 +668,7 @@ In @tbl-wd-itd, X is weakly dominated by D. So it shouldn't be played. But if X 
 
 So does it make sense to say that U is the only play in @tbl-wd-itd? I think not, for three reasons.
 
-First, as [@BonannoText, 37] points out, in general iterative deletion of weakly dominated strategies is not a well defined decision procedure. It turns out that in two player games, the order that weakly dominated strategies are deleted can affect which choices one ends up with. There are ways of fixing this problem, by specifying one or other order of deletion as canonical, but they all feel somewhat artificial.
+First, as Bonanno [-@Bonanno2018, 37] points out, in general iterative deletion of weakly dominated strategies is not a well defined decision procedure. It turns out that in two player games, the order that weakly dominated strategies are deleted can affect which choices one ends up with. There are ways of fixing this problem, by specifying one or other order of deletion as canonical, but they all feel somewhat artificial.
 
 Second, iterative deletion of weakly dominated strategies leads to a single solution to the money-burning game described by @BenPorathDekel1992. But, as @Stalnaker1998 showed, this game has multiple rational solutions, and arguments to the contrary turn on conflating indicative and subjunctive conditionals.
 
@@ -656,7 +678,7 @@ So I conclude that we just need one round of deleting weakly dominated options t
 
 # Conclusion {#sec-conclusion}
 
-Given all that, here is the positive theory, what I'm calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices *o*~1~, \dots, *o~m~*, and causally independent states *s*~1~, \dots *s~n~*, a choice *o* is rational iff there is some probability function Pr that is a rational credal distribution over the *s* after choosing *o*, and such that for all *o~j~*, ΣPr(*s~i~*)V(\_os~i~) ≥ ΣPr(*s~i~*)V(\_o~j~s~i~).
+Given all that, here is the positive theory, what I'm calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices *o*~1~, $\dots$, *o~m~*, and causally independent states *s*~1~, $\dots$ *s~n~*, a choice *o* is rational iff there is some probability function Pr that is a rational credal distribution over the *s* after choosing *o*, and such that for all *o~j~*, ΣPr(*s~i~*)V(*os~i~*) ≥ ΣPr(*s~i~*)V(*o~j~s~i~*).
 
 There are two extra clauses. First, *o* is choiceworthy only if it is not be weakly dominated by any other option. Second, if one is making a series of decisions in a tree, and one knows that one will be rational and not change one's preferences throughout, then both the decisions one makes at any given time, and the set of decisions one collectively makes, must satisfy all the other conditions of rational choice. That is, they must be ratifiable and not weakly dominated.
 
