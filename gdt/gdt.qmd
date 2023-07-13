@@ -196,9 +196,11 @@ The thought that predictors might punish randomisation is even less conducive to
 
 [^11]: It's important to remember here that we are doing idealised decision theory. My view is that idealised decision theory has nothing to say about cases where someone will be punished for doing mental arithmetic.
 
-Being able to carry out a mixed strategy is of practical value, especially when there are predictors around. It's not good to lose every game of rock-paper-scissors to the nearest predictor. If some mental activity is of practical value, then being able to carry it out is a skill to do with practical rationality. The idealised agents in decision theory have all the skills to do with practical rationality. Hence they can carry out mixed strategies, since carrying them out is a skill to do with practical rationality.
+Being able to carry out a mixed strategy is of practical value, especially when there are predictors around. It's not good to lose every game of rock-paper-scissors to the nearest predictor. If some mental activity is of practical value, then being able to carry it out is a skill to do with practical rationality. The idealised agents in decision theory have all the skills to do with practical rationality. Hence they can carry out mixed strategies, since carrying them out is a skill to do with practical rationality. So I conclude that if we are idealising, and if that idealisation extends at least as far as arithmetic perfection, it should also extend to being able to carry out mixed strategies. 
 
-So I conclude that if we are idealising, and if that idealisation extends at least as far as arithmetic perfection, it should also extend to being able to carry out mixed strategies. There is a place for a decision theory for agents who can't mix, just like there is a place for a decision theory for agents who can't add. What I deny, and indeed what I don't see any reason to accept, is that there is value in doing decision theory for agents who are perfect at adding and multiplying, but completely incapable of mixing, even in one-shot games. The reasons that have been offered are bad ones; they rule out the arithmetic just as much as the mixing. And I can't think of any others. So from now on, I'll follow the game theorists in assuming if two options are available, so is any mixture of those two options.
+That's not to say all decision theory should be idealised decision theory. We certainly need theories for real humans. Nor is it to say that decision theory for agents who can't perform mixed strategies is useless. For any set of idealisations, it could in principle be useful to work out what happens when you relax some of them from the model. The thing that is odd about contemporary philosophical decision theory, and the thing I've been stressing in this section, is that there should be some motivation for why one leaves some idealisations in place, and relaxes others. I don't see any theoretical or practical interest in working out decision theory for agents who are logically and mathematically perfect, but can't carry out mixed strategies. Such agents are not a lot like us; since we are not logically and mathematically perfect. And they aren't even particularly close to us; most people are better at carrying out unpredictable mixed strategies than they are at solving the optimisation problems they face in everyday life. That said, it's important to be cautious here. It's often hard to tell in advance which combinations of keeping these idealisations and relaxing those will be useful. Still, I haven't seen much use for the particular combination that most philosophers have landed on, and I'm not sure what use it even could have.
+
+So from now on I'll assume (a) if two strategies are available, so is any mixed strategy built on them, and (b) if Chooser plays a mixed strategy, Demon can possibly predict that they play the mixed strategy, but not the output of it. 
 
 # Ratificationist {#sec-ratify}
 
@@ -624,31 +626,35 @@ Second, playing D involves taking on an uncompensated risk. It might be that we 
 
 Third, it has been argued by game theorists that we should always allow for the possibility that one or other player in a game will make some kind of performance error. This idea is at the heart of Reinhard Selten's notion of trembling hand equilibrium [@Selten1975], and Roger Myerson's notion of proper equilibrium [@Myerson1978]. If a strategy would not make sense if the probability of an error by one or other player was positive, even if it was arbitrarily low, it should not be played. Since D only makes sense if the probability of an error by Demon is 0, that means D should not be played.
 
+If it is good to remove weakly dominated options, then one might think it follows straight away that it is good to keep doing this.^[This suggestion is made by, for example @HareHedden201x.] Think about @tbl-wd-itd.
 
+|          |         |            |           |
+|---------:|:-------:|:----------:|:---------:|
+|          |  **PU** |    **PD**  | **PX**    |
+|    **U** |    1    |     1      |     0     |
+|    **D** |    0    |     1      |     1     |
+|    **X** |    0    |     0      |     1     |
 
-Why weak dominance?
+: An example of iterated weak dominance. {#tbl-wd-itd}
 
-PU PD U 1 1 D 0 1
+In @tbl-wd-itd, X is weakly dominated by D. So it shouldn't be played. But if X isn't played, then PX is weakly dominated by both PU and PD. Demon can't make a correct prediction by playing PX, since by hypothesis it won't be played, so it can't be better than PU or PD. But both PU and PD can be better than PX. So PX is now weakly dominated. So let's remove it as well. If both X and PX are deleted, we're back to @tbl-first-wd, in which we said Chooser should play U. 
 
-1.  D seems like a needless risk
-2.  If Pr(Demon Correct) \< 1, then D isn't ratifiable
+So does it make sense to say that U is the only play in @tbl-wd-itd? I think not, for three reasons.
 
-Why only once?
+First, as [@BonannoText, 37] points out, in general iterative deletion of weakly dominated strategies is not a well defined decision procedure. It turns out that in two player games, the order that weakly dominated strategies are deleted can affect which choices one ends up with. There are ways of fixing this problem, by specifying one or other order of deletion as canonical, but they all feel somewhat artificial.
 
-1.  Order variance (Bonano)
+Second, iterative deletion of weakly dominated strategies leads to a single solution to the money-burning game described by @BenPorathDekel1992. But, as @Stalnaker1998 showed, this game has multiple rational solutions, and arguments to the contrary turn on conflating indicative and subjunctive conditionals.
 
-2.  Money burning (cite Stalnaker)
+Third, the reasons we gave for avoiding the weakly dominated option in @tbl-first-wd simply don't carry over to @tbl-wd-itd. In the latter game, D is not an uncompensated risk. It's true that D loses if Demon makes an incorrect prediction and plays PU. But U loses if Demon makes an incorrect prediction and plays PX. Unless one thinks that PX is particularly unlikely to be played, it seems U and D are just as risky as each other. So both of them look like rational plays.
 
-3.  This game
-
-    PU PD PX U 1 1 0 D 0 1 2 X 0 1 1
-
-Iterated weak dominance would first rule out X, then PX, then D, leaving U as the only play. But D makes sense, even if the demon might make a mistake. Indeed, it makes more sense than U by some measures.
+So I conclude that we just need one round of deleting weakly dominated options to get rid of irrational plays. D is irrational in @tbl-first-wd, but not in @tbl-wd-itd.
 
 # Conclusion  {#sec-conclusion}
 
--   State positive theory
--   Include clause for weak dominance
--   Note that it can be dropped if you insist that Pr(Demon correct) \< 1.
--   Note that it meets these 9 conditions
--   Final flourish
+Given all that, here is the positive theory, what I'm calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices _o_~1~, \dots, _o~m~_, and causally independent states _s_~1~, \dots _s~n~_, a choice _o_ is rational iff there is some probability function Pr that is a rational credal distribution over the _s_ after choosing _o_, and such that for all _o~j~_, ΣPr(_s~i~_)V(_os~i~) ≥ ΣPr(_s~i~_)V(_o~j~s~i~).
+
+There are two extra clauses. First, _o_ is choiceworthy only if it is not be weakly dominated by any other option. Second, if one is making a series of decisions in a tree, and one knows that one will be rational and not change one's preferences throughout, then both the decisions one makes at any given time, and the set of decisions one collectively makes, must satisfy all the other conditions of rational choice. That is, they must be ratifiable and not weakly dominated.
+
+The big advantage of this theory is that it satisfies the nine conditions I mentioned at the start, and that it is consistent with Exit Principle. These turn out to be very sharp constraints on a theory. For example, any theory that associates some number with each choice, and says to maximise the number, will violate the Indecisiveness constraint. Any theory that simply the chooser's credences as given will violate the Substantiveness constraint. The vast bulk of decision theories on the market in philosophy do at least one of these two things, and typically both. So we have strong reason to prefer GDT to them.
+
+GDT does require that mixed strategies are available to choosers, on pain of saying that a lot of decision problems are dilemmas. That is not a problem for GDT, since ideal agents can perform mixed strategies. It is a shortcoming to not be able to perform them, and ideal agents don't have these kinds of shortcomings. But it does suggest an important research program in working out how GDT should be altered for agents who lack one or other idealisation. In fact it suggests two research programs: a descriptive one, setting out what choosers who don't satisfy one or other idealisation in fact do; and a normative one, setting out what these choosers should do. But those projects are for a very different paper.
