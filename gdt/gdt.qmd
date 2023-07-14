@@ -68,7 +68,7 @@ Consider the following decision problem. Chooser (our main protagonist) is going
 |:---------:|:----------------------:|:------------------------:|
 |           | **Best Guess Correct** | **Best Guess Incorrect** |
 | **Guess** |          \$2           |           \$0            |
-|  **Pass** |          \$1           |           \$1            |
+| **Pass**  |          \$1           |           \$1            |
 
 : The multiplication game {#tbl-multi}
 
@@ -104,8 +104,8 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 |              |          |           |              |
 |:------------:|:--------:|:---------:|:------------:|
 |              | **Rock** | **Paper** | **Scissors** |
-|     **Rock** |   0,0    |   -1,1    |     1,-1     |
-|    **Paper** |   1,-1   |    0,0    |     -1,1     |
+|   **Rock**   |   0,0    |   -1,1    |     1,-1     |
+|  **Paper**   |   1,-1   |    0,0    |     -1,1     |
 | **Scissors** |   -1,1   |   1,-1    |     0,0      |
 
 : Original game {#tbl-rps-basic}
@@ -113,8 +113,8 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 |              |          |           |              |
 |:------------:|:--------:|:---------:|:------------:|
 |              | **Rock** | **Paper** | **Scissors** |
-|     **Rock** |   0,0    |   -1,1    |   1+*x*,-1   |
-|    **Paper** |   1,-1   |    0,0    |     -1,1     |
+|   **Rock**   |   0,0    |   -1,1    |   1+*x*,-1   |
+|  **Paper**   |   1,-1   |    0,0    |     -1,1     |
 | **Scissors** | -1,1+*x* |   1,-1    |     0,0      |
 
 : Modified game {#tbl-rps-modified}
@@ -122,15 +122,15 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 Two versions of Rock-Paper-Scissors
 :::
 
-The surprising prediction is that this will *decrease* the frequency with which rock is played, and the larger *x* is, the larger the decrease will be. Simple rules like "When behavior is rewarded, it happens more often" don't always work in strategic settings, and it takes some care to tell when they do work.
+The surprising prediction is that this will *decrease* the frequency with which rock is played, and the larger *x* is, the larger the decrease will be. Simple rules like "When behaviour is rewarded, it happens more often" don't always work in strategic settings, and it takes some care to tell when they do work.
 
-The caveat is that there is a reason that this particular idealisation is chosen, at least as the first attempt. There are a lot of stylised facts about people that we could use in a model of behavior. In game theory we concentrate on the ways in which people are, at least approximately much of the time, somewhat rational. People who prefer vanilla to chocolate really do buy vanilla more than chocolate. We could also choose stylised facts that are not particularly rational. But there is a worry that these will not remain facts, even approximately, when the stakes go up. And for some purposes, what people do in high stakes situations might be really important. If you think that people are more careful in high stakes situations, and that this care translates into more rational action, and it's particularly important to make the right predictions in high stakes cases, it makes sense to focus on idealisations that are also true of perfectly rational people.
+The caveat is that there is a reason that this particular idealisation is chosen, at least as the first attempt. There are a lot of stylised facts about people that we could use in a model of behaviour. In game theory we concentrate on the ways in which people are, at least approximately much of the time, somewhat rational. People who prefer vanilla to chocolate really do buy vanilla more than chocolate. We could also choose stylised facts that are not particularly rational. But there is a worry that these will not remain facts, even approximately, when the stakes go up. And for some purposes, what people do in high stakes situations might be really important. If you think that people are more careful in high stakes situations, and that this care translates into more rational action, and it's particularly important to make the right predictions in high stakes cases, it makes sense to focus on idealisations that are also true of perfectly rational people.
 
 There is a tricky complication here that isn't always attended to in theory, though in practice it's less of a problem. Especially in decision theory, we idealise away from computational shortcomings, but not away from informational shortcomings. We take the chooser's information as fixed, and ask how they'll decide. In high stakes cases, people don't just get better calculators, they get more information. If this is why we idealise, why don't we idealise away from ignorance? The reason is that in a lot of cases, either it is impossible to get the evidence the chooser needs, because it is about the future, or it is challenging because there is someone else working just as hard to prevent the chooser getting the information. It's not a coincidence that game theory, and decision theory, are most explanatory when the chooser's ignorance is about the future, or about something that someone is trying to hide from them.
 
 There is one surprising bonus from starting with these rational idealisations. Sometimes one gets a powerful kind of explanation from very carefully working out the ideal theory, and then relaxing one of the components. At a very high level of abstraction, that's what happened with the development of cursed equilibrium [@EysterRabin2005]. The explanations one gets these ways are, to my mind, very surprising. The models have people acting as if they have solved very complex equations, but have ignored simple facts, notably that other people may know more than they do. But if the model fits the data, it is worth taking seriously. And while it was logically possible to develop a model like cursed equilibrium without first developing an ideal model and then relaxing it, it seems not surprising that in fact that's how the model was developed.
 
-So our topic is idealised decision theory. In practice, that means the followiing things. The chooser can distinguish any two possibilities that are relevant to their decision, there is no unawareness in that sense, and they know when two propositions are necessarily equivalent. They can perform any calculation necessary to making their decision at zero cost. They have perfect recall. They don't incur deliberation costs; in particular, thinking about the downsides of an option does not reduce the utility of ultimately taking that option, as it does for many humans. They know what options they can perform, and what options they can't perform. I'll argue in @sec-mixed that it means they can play mixed strategies. Finally, I'll assume it means they have numerical credences and utilities. I'm not sure this should be part of the same idealisation, but it simplifies the discussion, and it is arguable that non-numerical credences and utilities come from the same kind of unawareness that we're assuming away. [@GrantEtAl2021]
+So our topic is idealised decision theory. In practice, that means the following things. The chooser can distinguish any two possibilities that are relevant to their decision, there is no unawareness in that sense, and they know when two propositions are necessarily equivalent. They can perform any calculation necessary to making their decision at zero cost. They have perfect recall. They don't incur deliberation costs; in particular, thinking about the downsides of an option does not reduce the utility of ultimately taking that option, as it does for many humans. They know what options they can perform, and what options they can't perform. I'll argue in @sec-mixed that it means they can play mixed strategies. Finally, I'll assume it means they have numerical credences and utilities. I'm not sure this should be part of the same idealisation, but it simplifies the discussion, and it is arguable that non-numerical credences and utilities come from the same kind of unawareness that we're assuming away. [@GrantEtAl2021]
 
 So the problems our choosers face look like this. There are some possible states of the world, and possible choices. The chooser knows the value to them of each state-choice pair. (In @sec-expect I'll say more about this value.) The states are, and are known to be, causally independent of the choices. But the states might not be probabilistically independent of the choices. Instead, we'll assume that the chooser has a (reasonable) value for Pr(*s* \| *c*), where *s* is any one of the states, and *c* is any one of the choices. The question is what they will do, given all this information.
 
@@ -150,7 +150,7 @@ The view I call expectationism has two parts. First, it says that in normal deci
 
 I'm going to mostly follow suit. So why am I belabouring this point? One small reason and one large reason. The small reason is that one of the arguments I'll give concerning abnormal cases generalises to an argument for expectationism about normal cases. The other reason is dialectical.
 
-In the debate about normal cases, the method of gathering intuitions about cases, and seeing which theory fits the intuitions best, does not favor expectationism. On the contrary, the Quiggin-Buchak theory does a much better job on that score. There is something incoherent about assuming expectationism is true for normal cases, and then thinking that the right way to theorise about abnormal cases is asking which theory fits intuitions best. If that's the goal of decision theory, we shouldn't be expectationist to start with.
+In the debate about normal cases, the method of gathering intuitions about cases, and seeing which theory fits the intuitions best, does not favour expectationism. On the contrary, the Quiggin-Buchak theory does a much better job on that score. There is something incoherent about assuming expectationism is true for normal cases, and then thinking that the right way to theorise about abnormal cases is asking which theory fits intuitions best. If that's the goal of decision theory, we shouldn't be expectationist to start with.
 
 The argument for expectationism is not that it fits the intuitions about cases best, but that it's the only theory that is compatible with various highly plausible principles, such as the Sure Thing Principle. Again, the theorist working on abnormal cases who is an expectationist has a dialectical burden here. They don't have to believe in the Sure Thing Principle, and indeed many expectationists don't [@Gallownd]. But they do have to believe in some principle that can be used to make an argument for expectationism. Especially when it comes to evidential decision theorists, I'm not sure what that principle might be. Still, I don't have an argument that there is no such principle, so I'll just note this is a challenge, not any kind of refutation.
 
@@ -182,7 +182,7 @@ There are two demons, who will predict what Chooser will do. Both of them are ar
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |    1    |     3     |
+|  **Up**  |    1    |     3     |
 | **Down** |    0    |     2     |
 
 : Demon-1 predicts Down {#tbl-war-left}
@@ -190,7 +190,7 @@ There are two demons, who will predict what Chooser will do. Both of them are ar
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |  1001   |   1003    |
+|  **Up**  |  1001   |   1003    |
 | **Down** |  1000   |   1002    |
 
 : Demon-1 predicts Up {#tbl-war-right}
@@ -216,7 +216,7 @@ The philosophers' dismissal is usually accompanied by one or both of these reaso
 
 [^12]: Not a particularly realistic concern when everyone carries a smartphone, but in theory smartphones might not exist.
 
-It isn't obvious why choosers should be perfect at arithmetic. True, calculators are a real help, but not everyone has a calculator in their pocket. Even if they do have a smartphone, it's hard to, for instance, solve a traveling salesman problem [@Robinson1949] on a typical smartphone. Those problems involve a lot of arithmetic, but ultimately they are just arithmetic. What we mean by saying choosers are perfect at arithmetic is that we are idealising away from arithmetic shortcomings. Once we're allowed to idealise away from shortcomings, it makes equally good sense to idealise away from inabilities to mix.
+It isn't obvious why choosers should be perfect at arithmetic. True, calculators are a real help, but not everyone has a calculator in their pocket. Even if they do have a smartphone, it's hard to, for instance, solve a travelling salesman problem [@Robinson1949] on a typical smartphone. Those problems involve a lot of arithmetic, but ultimately they are just arithmetic. What we mean by saying choosers are perfect at arithmetic is that we are idealising away from arithmetic shortcomings. Once we're allowed to idealise away from shortcomings, it makes equally good sense to idealise away from inabilities to mix.
 
 The thought that predictors might punish randomisation is even less conducive to decision theory as we know it. Compare what happens in this problem. Chooser will be given a sequence of pairs of two digit numbers. They can reply by either saying a number, or saying "Pass". If they say a number, they get \$2 if it is the sum of those numbers, and nothing otherwise. If they pass, they get \$1. The catch is that if they are detected doing any mental arithmetic between hearing the numbers and saying something, they will be tortured. Decision theory as we know it has nothing to say about this case. Ideally, they simply say the right answer each time, and all the theories in the literature say that's the right thing to do. In practice, that's an absurd strategy. Chooser should utter the word "Pass" as often as they can, before they unintentionally do any mental arithmetic. The point is that as soon as we put constraints on how Chooser comes to act, and not just on what action Chooser performs, decision theory as we know it ceases to apply. And playing a mixed strategy is a way of coming to act. Punishing Chooser for it is like punishing Chooser for doing mental arithmetic, and is equally destructive to decision theory.[^13]
 
@@ -239,7 +239,7 @@ One was the existence of cases where there is (allegedly) no ratifiable option. 
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |    3    |     5     |
+|  **Up**  |    3    |     5     |
 | **Down** |    4    |     3     |
 
 : A case with no pure ratifiable options. {#tbl-no-pure}
@@ -249,9 +249,9 @@ If Chooser plays Up, they would prefer to play Down. If Chooser plays Down, they
 |          |         |           |        |
 |:--------:|:-------:|:---------:|:------:|
 |          | **PUp** | **PDown** | **PX** |
-|   **Up** |    3    |     5     |   0    |
+|  **Up**  |    3    |     5     |   0    |
 | **Down** |    4    |     3     |   0    |
-|    **X** |    0    |     0     |   0    |
+|  **X**   |    0    |     0     |   0    |
 
 : A case with only a bad pure ratifiable option. {#tbl-bad-third}
 
@@ -260,9 +260,9 @@ The only ratifiable option is X, but surely it is worse than Up or Down. One mig
 |          |         |           |        |
 |:--------:|:-------:|:---------:|:------:|
 |          | **PUp** | **PDown** | **PX** |
-|   **Up** |    3    |     5     |   0    |
+|  **Up**  |    3    |     5     |   0    |
 | **Down** |    4    |     3     |   0    |
-|    **X** |    0    |     0     |   ε    |
+|  **X**   |    0    |     0     |   ε    |
 
 : Skyrms's counterexample to ratificationism. {#tbl-verybad-third}
 
@@ -297,7 +297,7 @@ Perhaps the most intuitive case for indecisiveness involves what I'll call Stag 
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |    6    |     0     |
+|  **Up**  |    6    |     0     |
 | **Down** |    5    |     2     |
 
 : An example of a Stag Hunt. {#tbl-stag-hunt}
@@ -313,7 +313,7 @@ My argument for indecisiveness will turn on a case that all seven of the views m
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |    4    |     0     |
+|  **Up**  |    4    |     0     |
 | **Down** |    0    |     3     |
 
 : An example of a coordination game. {#tbl-coord}
@@ -340,7 +340,7 @@ I'll call these Exit Problems, and it's worth having the abstract structure of t
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |   *a*   |    *b*    |
+|  **Up**  |   *a*   |    *b*    |
 | **Down** |   *c*   |    *d*    |
 
 : Round 2 game {#tbl-exit-r2g}
@@ -356,12 +356,12 @@ Now consider a simple variant of the above 5 step problem. The same things happe
 
 The reason comes from thinking about what Chooser is doing in the Early Choice variant. They are making a decision about what to do if Demon-1 doesn't Exit. The way to make that decision is just to assume that Demon-1 doesn't Exit, and then decide what to do. It just is the same choice as they face in the Late Choice variant, except now they make it in the context of a conditional. So they should decide it the same way.
 
-To put the point in game-theoretic terms, there is no difference between extensive form and normal form reasoning when a decider has only one possible choice to make. And there is a natural argument for this claim. It starts with the idea that for any _p_, the following two questions have the same answers.
+To put the point in game-theoretic terms, there is no difference between extensive form and normal form reasoning when a decider has only one possible choice to make. And there is a natural argument for this claim. It starts with the idea that for any *p*, the following two questions have the same answers.
 
-1. If _p_ happens, what do you want to do?
-2. So, _p_ happened. What do you want to do?
+1.  If *p* happens, what do you want to do?
+2.  So, *p* happened. What do you want to do?
 
-When one is asked to choose a strategy for a tree that has only one possible decision in it, the question one is being asked is that if we get to the point in the tree where one has to decide, what will you do. And the 'Late Question' is that that point in the tree has been reached; now what will you do? So the questions fit the schema, and should get the same answers. One could see this as a consequence of applying something like the Ramsey test to conditional questions [@RamseyGeneralPropositions]. Denying Exit Principle means treating these two very similar sounding questions differently, and that's implausible.
+When one is asked to choose a strategy for a tree that has only one possible decision in it, the question one is being asked is that if we get to the point in the tree where one has to decide, what will you do. And the 'Late Question' is that that point in the tree has been reached; now what will you do? So the questions fit the schema, and should get the same answers. One could see this as a consequence of applying something like the Ramsey test to conditional questions [@RamseyGeneralProp]. Denying Exit Principle means treating these two very similar sounding questions differently, and that's implausible.
 
 One could also argue, I think correctly, that anyone who violates Exit Principle will violate a plausible version of the Sure Thing Principle. Such an argument seems sound to me, but the Sure Thing Principle is controversial, and I prefer to put more weight on the argument from how conditional reasoning works in the previous paragraph. (Indeed, I think using the Exit Principle to motivate a version of the Sure Thing Principle is more plausible than the reverse argument.)
 
@@ -370,7 +370,7 @@ Any plausible theory that says that only Up is rationally playable in problems l
 |          |         |            |           |
 |:--------:|:-------:|:----------:|:---------:|
 |          | **PUp** | **PMixed** | **PDown** |
-|   **Up** |    2    |     3      |     0     |
+|  **Up**  |    2    |     3      |     0     |
 | **Down** |    0    |     3      |     3     |
 
 : The Early Choice decision. {#tbl-early-choice}
@@ -380,7 +380,7 @@ In this problem, PUp means that both demons predict Up, PDown means that they bo
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |    2    |     0     |
+|  **Up**  |    2    |     0     |
 | **Down** |    0    |     3     |
 
 : The Early Choice decision simplified. {#tbl-early-choice-simplified}
@@ -390,7 +390,7 @@ Now presumably if one prefers Up in above table, it is because one prefers Up in
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |   *x*   |     0     |
+|  **Up**  |   *x*   |     0     |
 | **Down** |    0    |    *y*    |
 
 : General coordination game. {#tbl-general-coord}
@@ -404,7 +404,7 @@ Exit Principle also offers a response to some intuitions that have led people to
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |   10    |    10     |
+|  **Up**  |   10    |    10     |
 | **Down** |   15    |     0     |
 
 : Frustrating Button (from @Spencer2023). {#tbl-frustrating-button}
@@ -423,7 +423,7 @@ If we embed Frustrating Button in an exit problem, as in @tbl-frustrating-exit, 
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |   10    |    10     |
+|  **Up**  |   10    |    10     |
 | **Down** |   15    |     0     |
 
 : Frustrating Button {#tbl-exit-r2g-fb}
@@ -436,7 +436,7 @@ The Early Version of @tbl-frustrating-exit is @tbl-ev-fe.
 |          |         |           |
 |:--------:|:-------:|:---------:|
 |          | **PUp** | **PDown** |
-|   **Up** |   -38   |    10     |
+|  **Up**  |   -38   |    10     |
 | **Down** |   -37   |     0     |
 
 : Early Version of @tbl-frustrating-exit. {#tbl-ev-fe}
@@ -473,7 +473,7 @@ Start with why it is bad to just have a resolute approach.[^20] Game theorists u
 
 [^20]: The so-called Foundational Decision Theory of @LevinsteinSoares2020 agrees with the resolute approach in the special case where the only information Chooser will receive are the results of predictions, and is subject to the criticisms I'll make of resolute theories.
 
-Chooser is the Prime Minister of a small country, and they are threatened by a large neighbour. Unfortunately, neighbour is thinking of carpet bombing Chooser's capital, in retaliation for some perceived slight. Chooser has no air defences that would prevent a great destruction, and no allies who will rally to help. Fortunately, Chooser has a mighty weapon, a Doomsday device, that could destroy neighbour. Chooser has obviously threatened to use this, but neighbour suspects it is a bluff. This is for a good reason; the doomsday device would also destroy Chooser's own country. Neighbour is known to employ a Demon who is at least 99% accurate in predicting what military plans Chooser will take. So Chooser can do Nothing (N), or use the Doomsday device (D), should neighbour attack. Chooser would obviously prefer no attack, and would certainly not use the device pre-emptively. So here is the table.
+Chooser is the Prime Minister of a small country, and they are threatened by a large neighbour. Unfortunately, neighbour is thinking of carpet bombing Chooser's capital, in retaliation for some perceived slight. Chooser has no air defences that would prevent a great destruction, and no allies who will rally to help. Fortunately, Chooser has a mighty weapon, a Doomsday device, that could destroy neighbour. Chooser has obviously threatened to use this, but neighbour suspects it is a bluff. This is for a good reason; the doomsday device would also destroy Chooser's own country. Neighbour is known to employ a Demon who is at least 99% accurate in predicting what military plans Chooser will take. So Chooser can do Nothing (N), or use the Doomsday device (D), should neighbour attack. Chooser would obviously prefer no attack, and would certainly not use the device preemptively. So here is the table.
 
 |       |        |        |
 |:-----:|:------:|:------:|
@@ -583,7 +583,7 @@ We need one caveat on this. Philosophical decision theories typically do not iss
 
 At least sometimes, game theorists impose non-structural, substantive conditions on the beliefs of players. Most notably, the "intuitive criterion" of @ChoKreps1987 is meant to be continuous with other equilibrium conditions, and is a substantive constraint. Someone who violates it has coherent beliefs that don't conform to their evidence. The intuitive criterion takes some time to set up, but I'll get to a simplified version of it later in this section.
 
-First, I'll note some general reasons for scepticism about this use of the substantive-structural distinction. One obvious point is that Piz and Za do not look like rational choosers. Another is that this draws distinctions between overly similar characters, such as these two, Cla and Sic. Both of them have taken classes in classical statistics, but only skimmed the textbooks without attending to the details. Cla came away with the belief that any experiment with a *P* value less than 0.05 proved that its hypothesis is true. Sic came away with a standing disposition to belief the hypothesis whenever there was an experiment with a *P* value less than 0.05. Cla is incoherent; there is no possible world where that belief is true. Sic is coherent; any one of their beliefs could be true. It's just they just have a disposition to often form substantially irrational beliefs. Personally, I don't think the difference between Cla and Sic is important enough to be philosophically load bearing. Lastly, it has proven incredibly hard to even define what makes a norm structural. The most important recent attempt is in Alex Worsnip's book _Fitting Things Together: Coherence and the Demands of Structural Rationality_ [@Worsnip2021]. Here's his definition:
+First, I'll note some general reasons for scepticism about this use of the substantive-structural distinction. One obvious point is that Piz and Za do not look like rational choosers. Another is that this draws distinctions between overly similar characters, such as these two, Cla and Sic. Both of them have taken classes in classical statistics, but only skimmed the textbooks without attending to the details. Cla came away with the belief that any experiment with a *P* value less than 0.05 proved that its hypothesis is true. Sic came away with a standing disposition to belief the hypothesis whenever there was an experiment with a *P* value less than 0.05. Cla is incoherent; there is no possible world where that belief is true. Sic is coherent; any one of their beliefs could be true. It's just they just have a disposition to often form substantially irrational beliefs. Personally, I don't think the difference between Cla and Sic is important enough to be philosophically load bearing. Lastly, it has proven incredibly hard to even define what makes a norm structural. The most important recent attempt is in Alex Worsnip's book *Fitting Things Together: Coherence and the Demands of Structural Rationality* [@Worsnip2021]. Here's his definition:
 
 > *Incoherence Test*. A set of attitudinal mental states is jointly incoherent iff it is (partially) constitutive of (at least some of) the states in the set that any agent who holds this set of states has a disposition, when conditions of full transparency are met, to revise at least one of the states. [@Worsnip2021, 132]
 
@@ -636,7 +636,7 @@ So that's why decision theory requires substantive rationality. The right decisi
 
 # Weak Dominance, Once {#sec-weak}
 
-An option *a* weakly dominates another option *b* if *a* is at least as good as *b* in all states, and better than *b* in some states. Just what role weak dominance has in decision theory is one of the most unsettled topics in game theory. There are three natural positions, and all of them are occupied. One is that weak dominance is of no significance. A second is that ideal agents do not choose weakly dominated options, and that's the only role weak dominance has. And a third is that ideal agents do not choose options that are eliminated by an iterative process of deleting weakly dominated strategies. I'm going to argue in favor of the middle position. I'm not going to try to argue this is the standard game-theoretic move; as I said, I think you can find prominent support for all three options. To argue for the middle position requires making two cases: first, that weakly dominated options are not ideally chosen; and second, that options that would be eliminated by iterative deletion of weakly dominated options are ideally chosen. I'll argue for these in turn.
+An option *a* weakly dominates another option *b* if *a* is at least as good as *b* in all states, and better than *b* in some states. Just what role weak dominance has in decision theory is one of the most unsettled topics in game theory. There are three natural positions, and all of them are occupied. One is that weak dominance is of no significance. A second is that ideal agents do not choose weakly dominated options, and that's the only role weak dominance has. And a third is that ideal agents do not choose options that are eliminated by an iterative process of deleting weakly dominated strategies. I'm going to argue in favour of the middle position. I'm not going to try to argue this is the standard game-theoretic move; as I said, I think you can find prominent support for all three options. To argue for the middle position requires making two cases: first, that weakly dominated options are not ideally chosen; and second, that options that would be eliminated by iterative deletion of weakly dominated options are ideally chosen. I'll argue for these in turn.
 
 Start with @tbl-first-wd; what would the ideal chooser do?
 
@@ -646,7 +646,7 @@ Start with @tbl-first-wd; what would the ideal chooser do?
 | **U** |   1    |   1    |
 | **D** |   0    |   1    |
 
-: A ratiable, weakly dominated, option. {#tbl-first-wd}
+: A ratifiable, weakly dominated, option. {#tbl-first-wd}
 
 On the one hand, D is ratifiable, as long as Demon is sufficiently reliable. If Demon will in fact get the predictions right, D gets a return of 1, and had Chooser played U, they would have still received 1. So they would not regret playing D, so by ratifiability it is fine to play it. Against this, there are three reasons to not play D.
 
@@ -690,3 +690,5 @@ There are two extra clauses. First, *o* is choiceworthy only if it is not be wea
 The big advantage of this theory is that it satisfies the nine conditions I mentioned at the start, and that it is consistent with Exit Principle. These turn out to be very sharp constraints on a theory. For example, any theory that associates some number with each choice, and says to maximise the number, will violate the Indecisiveness constraint. Any theory that simply the chooser's credences as given will violate the Substantiveness constraint. The vast bulk of decision theories on the market in philosophy do at least one of these two things, and typically both. So we have strong reason to prefer GDT to them.
 
 GDT does require that mixed strategies are available to choosers, on pain of saying that a lot of decision problems are dilemmas. That is not a problem for GDT, since ideal agents can perform mixed strategies. It is a shortcoming to not be able to perform them, and ideal agents don't have these kinds of shortcomings. But it does suggest an important research program in working out how GDT should be altered for agents who lack one or other idealisation. In fact it suggests two research programs: a descriptive one, setting out what choosers who don't satisfy one or other idealisation in fact do; and a normative one, setting out what these choosers should do. But those projects are for a very different paper.
+
+
