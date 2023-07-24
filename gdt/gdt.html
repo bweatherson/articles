@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brian Weatherson">
+<meta name="dcterms.date" content="2023-07-22">
 
 <title>Gamified Decision Theory</title>
 <style>
@@ -55,7 +56,7 @@ div.csl-indent {
 <link href="gdt_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="gdt_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="gdt_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link rel="stylesheet" href="https://use.typekit.net/gdw0otp.css">
+<link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -82,6 +83,7 @@ div.csl-indent {
   <li><a href="#sec-weak" id="toc-sec-weak" class="nav-link" data-scroll-target="#sec-weak"><span class="header-section-number">10</span> Weak Dominance, Once</a></li>
   <li><a href="#sec-conclusion" id="toc-sec-conclusion" class="nav-link" data-scroll-target="#sec-conclusion"><span class="header-section-number">11</span> Conclusion</a></li>
   <li><a href="#sec-buchak" id="toc-sec-buchak" class="nav-link" data-scroll-target="#sec-buchak">Appendix on Risk-Weighted Utility</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="gdt.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="gdt.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -105,6 +107,12 @@ div.csl-indent {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 22, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -114,7 +122,7 @@ div.csl-indent {
 
 <section id="sec-intro" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>Textbook versions of game theory embed a distinctive approach to decision theory. That theory isn’t always made explicit, and it isn’t always clear how it handles some cases. But we can extract one interesting and plausible theory, which I’ll call Gamified Decision Theory (GDT), from these textbooks. There are nine characteristics of GDT (as I’ll understand it) that I will focus on, with the bulk of this paper one in each of the following nine sections.</p>
+<p>Textbook versions of game theory embed a distinctive approach to decision theory. That theory isn’t always made explicit, and it isn’t always clear how it handles some cases. But we can extract one interesting and plausible theory, which I’ll call Gamified Decision Theory (GDT), from these textbooks. There are nine characteristics of GDT (as I’ll understand it) that I will focus on. I’ll quickly list them here, then the bulk of the paper will consist of a section on each of the nine characteristics.</p>
 <ol type="1">
 <li><strong>Idealised</strong>; GDT is a theory of what ideal deciders do.</li>
 <li><strong>Expectationist</strong>; the ideal decider prefers getting more expected value to getting less.</li>
@@ -159,7 +167,7 @@ div.csl-indent {
 <p>Every variety of decision theory defended in philosophy journals in recent years, and every game theory textbook, says that Chooser should simply say the correct answer. After all, Chooser should have probabilistically coherent credences, and every mathematical truth has probability 1, so whatever the correct answer is, saying it is a sure $2.</p>
 <p>This is completely terrible advice. Chooser should pass every time, unless the question is something boring like 1000 times 2000. The chance of them getting a question like 5278 times 9713 correct are way less than one in two, so they are better off passing.</p>
 <p>This doesn’t mean that every philosophical decision theory, and every game theory textbook, is wrong. Those theories are not in the business of giving advice to people like Chooser. They are in the business of saying what it would be ideal, in some sense of ideal, for Chooser to do. And it would be ideal for Chooser to be a reliable computer, so if Chooser were reliable, they would always give the correct answer.</p>
-<div class="page-columns page-full"><p>There is a big question about why we should care about what would have if Chooser were ideal. Chooser is not in fact ideal, so who cares what they would do if they were different. One might think that knowing what the ideal is gives Chooser something to aim for. Even if Chooser is not ideal, they can try to be closer to the ideal. The problem is that trying to be more like the ideal will make things worse. The ideal agent will never pass, and even if Chooser doesn’t know the answers to the particular questions, they can know this fact. So if they try to be more like the ideal, they will never pass, and things will go badly.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This is a special case of Lipsey and Lancaster’s Theory of the Second Best <span class="citation" data-cites="LipseyLancaster">Lipsey and Lancaster (<a href="#ref-LipseyLancaster" role="doc-biblioref">1956</a>)</span>. If you don’t have control over every parameter, setting the parameters you do control to the ideal values is generally inadvisable.</p></li></div></div>
+<div class="page-columns page-full"><p>There is a big question about why we should care about what would have if Chooser were ideal. Chooser is not in fact ideal, so who cares what they would do if they were different. One might think that knowing what the ideal is gives Chooser something to aim for. Even if Chooser is not ideal, they can try to be closer to the ideal. The problem is that trying to be more like the ideal will make things worse. The ideal agent will never pass, and even if Chooser doesn’t know the answers to the particular questions, they can know this fact. So if they try to be more like the ideal, they will never pass, and things will go badly.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This is a special case of Lipsey and Lancaster’s Theory of the Second Best <span class="citation" data-cites="LipseyLancaster">(<a href="#ref-LipseyLancaster" role="doc-biblioref">Lipsey and Lancaster 1956</a>)</span>. If you don’t have control over every parameter, setting the parameters you do control to the ideal values is generally inadvisable.</p></li></div></div>
 <div class="page-columns page-full"><p>In philosophy we have two very different uses of the term ‘idealisation’. One is the kind of idealisation we see in, for example, Ideal Observer theories in ethics. The other is the kind of idealisation we see in, for example, Ideal Gas models in chemistry. It’s important to not confuse the two. Think about the volumeless, infinitely dense, molecules in an Ideal Gas model. To say that this is an idealised model is not to say that having volume, taking up space, is an imperfection. The point is not to tell molecules what the perfect size is. (“The only good molecule is a volumeless molecule.”) Nor is it to tell them that they should approximate the ideal. (“Smaller the better, fellas.”) It’s to say that for some predictive and explanatory purposes, molecules behave no differently to how they would behave if they took up no space.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;I’m drawing here on work on the nature of idealisations by Michael <span class="citation" data-cites="Strevens2008">Strevens (<a href="#ref-Strevens2008" role="doc-biblioref">2008</a>)</span> and by Kevin <span class="citation" data-cites="Davey2011">Davey (<a href="#ref-Davey2011" role="doc-biblioref">2011</a>)</span>.</p></li></div></div>
 <p>The best way to understand decision theorists, and game theorists, is that they are using idealisations in this latter sense. The ideal choosers of decision theory are not like the Ideal Observers in ethics, but like the Ideal Gases. The point of the theory is to say how things go in a simplified version of the case, and then argue that this is useful for predictive and explanatory purposes because, at least some of the time, the simplifications don’t make a difference.</p>
 <p>One nice example of this working is George Akerlof’s discussion of the used car market <span class="citation" data-cites="Akerlof1970">Akerlof (<a href="#ref-Akerlof1970" role="doc-biblioref">1970</a>)</span>. In the twentieth century, it was common for lightly used cars to sell at a massive discount to new cars. There was no good explanation for this, and it was often put down to a brute preference for new cars. What Akerlof showed was that a model where (a) new cars varied substantially in quality, and (b) in the used car market, buyers had less information about the car than sellers, you could get a discount similar to what you saw in real life even if the buyers had no special preference for new cars. Rather, buyers had a preference for good cars, and took the fact that this car was for sale to be evidence that it was badly made. It was important for Akerlof’s explanatory purposes that he could show that people were being rational, and this required that he have a decision theory that they followed. In fact what he used was something like GDT. We now have excellent evidence that something like his model was correct. As the variation in quality of new cars has declined, and the information available to buyers of used cars has risen, the used car discount has just about vanished. (In fact it went negative during the pandemic, for reasons I don’t at all understand.)</p>
@@ -413,7 +421,7 @@ div.csl-indent {
 <td style="text-align: center;"><strong>X</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">0</td>
-<td style="text-align: center;">ε</td>
+<td style="text-align: center;"><span class="math inline">\(\varepsilon\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +495,7 @@ div.csl-indent {
 <li>Demon-2’s prediction is chosen, and that determines whether we are in state PU or state PD.</li>
 <li>Chooser’s payouts are given by cite above table.</li>
 </ol>
-<p>I’ll call these Exit Problems, and it’s worth having the abstract structure of them in front of us.</p>
+<p>I’ll call these Exit Problems, and <a href="#tbl-general-exit">Table&nbsp;9</a> gives the general form of such a problem. Our problem has this abstract of <a href="#tbl-general-exit">Table&nbsp;9</a> with <em>b</em> = <em>c</em> = <em>e</em> = <em>y</em> = 0, <em>x</em> = 0.5, <em>a</em> = 4, <em>d</em> = 3.</p>
 <div id="tbl-general-exit" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table&nbsp;9: The abstract form of an exit problem.</p>
@@ -536,7 +544,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Our problem has this abstract structure with <em>b</em> = <em>c</em> = <em>e</em> = <em>y</em> = 0, <em>x</em> = 0.5, <em>a</em> = 4, <em>d</em> = 3.</p>
 <p>Now consider a simple variant of the above 5 step problem. The same things happen, but steps 2 and 3 are reversed. That is, Chooser decides on Up or Down after Demons make their predictions, but before they are told whether Demon-1 decided to Exit. Still, their choice will only matter if Demon-1 decided not to Exit, since their choices do not make a difference if Demon-1 Exits. Call this variant the Early Choice version, and the original the Late Choice variant. I don’t have any clear intuitions about what to do in most Exit Problems, save for this constraint on choices.</p>
 <ul>
 <li><strong>Exit Principle</strong>: In any Exit Problem, the same choices are permissible in the Early Choice and Late Choice variants.</li>
@@ -622,7 +629,7 @@ div.csl-indent {
 </table>
 </div>
 <p>How could it be otherwise? Given expectationism, it’s not like there is anything special about the numbers 4 and 3. But anyone who endorses this policy will play Down <a href="#tbl-early-choice-simplified">Table&nbsp;11</a> and so, presumably, in <a href="#tbl-early-choice">Table&nbsp;10</a>. And that means they will violate Exit Principle.</p>
-<p>The only view that is consistent with Exit Principle in cases like <a href="#tbl-general-coord">Table&nbsp;12</a>. And since in any such case, improving Up or Down be a tiny amount wouldn’t materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.</p>
+<p>The only view that is consistent with Exit Principle in cases like <a href="#tbl-general-coord">Table&nbsp;12</a> is that both Up and Down are permissible. And since in any such case, improving Up or Down be a tiny amount wouldn’t materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.</p>
 <p>Exit Principle also offers a response to some intuitions that have led people to question CDT in recent years. <a href="#tbl-frustrating-button">Table&nbsp;13</a> is an example that Jack <span class="citation" data-cites="Spencer2023">Spencer (<a href="#ref-Spencer2023" role="doc-biblioref">2023</a>)</span> used to model the kind of case that’s at issue. As he notes, it is similar to the psychopath button case <span class="citation" data-cites="Egan2007-EGASCT">(<a href="#ref-Egan2007-EGASCT" role="doc-biblioref">Egan 2007</a>)</span>, the asymmetric Death in Damascus case <span class="citation" data-cites="Richter1984">(<a href="#ref-Richter1984" role="doc-biblioref">Richter 1984</a>)</span>, and other puzzles for CDT.</p>
 <div id="tbl-frustrating-button" class="anchored">
 <table class="table">
@@ -646,7 +653,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>If we embed Frustrating Button in an exit problem, as in <a href="#tbl-frustrating-exit">Table&nbsp;14</a>, the intuitions shift.</p>
+<p>Apparently the common intuition here is that that Up is the uniquely rational play. Note though that if we embed Frustrating Button in an exit problem, as in <a href="#tbl-frustrating-exit">Table&nbsp;14</a>, the intuitions shift.</p>
 <div id="tbl-frustrating-exit" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table&nbsp;14: An exit problem with Frustrating Button in round 2.</p>
@@ -1070,7 +1077,7 @@ div.csl-indent {
 </section>
 <section id="sec-conclusion" class="level1 page-columns page-full" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Conclusion</h1>
-<p>Given all that, here is the positive theory, what I’m calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices <em>o</em><sub>1</sub>, <span class="math inline">\(\dots\)</span>, <em>o<sub>m</sub></em>, and causally independent states <em>s</em><sub>1</sub>, <span class="math inline">\(\dots\)</span> <em>s<sub>n</sub></em>, a choice <em>o</em> is rational iff there is some probability function Pr that is a rational credal distribution over the <em>s</em> after choosing <em>o</em>, and such that for all <em>o<sub>j</sub></em>, ΣPr(<em>s<sub>i</sub></em>)V(<em>os<sub>i</sub></em>) ≥ ΣPr(<em>s<sub>i</sub></em>)V(<em>o<sub>j</sub>s<sub>i</sub></em>).</p>
+<p>Given all that, here is the positive theory, what I’m calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices <em>o</em><sub>1</sub>, <span class="math inline">\(\dots\)</span>, <em>o<sub>m</sub></em>, and causally independent states <em>s</em><sub>1</sub>, <span class="math inline">\(\dots\)</span> <em>s<sub>n</sub></em>, a choice <em>o</em> is rational iff there is some probability function Pr that is a rational credal distribution over the <em>s</em> after choosing <em>o</em>, and such that for all <em>o<sub>j</sub></em>, <span class="math inline">\(\Sigma\)</span>Pr(<em>s<sub>i</sub></em>)V(<em>os<sub>i</sub></em>) ≥ <span class="math inline">\(\Sigma\)</span>Pr(<em>s<sub>i</sub></em>)V(<em>o<sub>j</sub>s<sub>i</sub></em>).</p>
 <p>There are two extra clauses. First, <em>o</em> is choiceworthy only if it is not be weakly dominated by any other option. Second, if one is making a series of decisions in a tree, and one knows that one will be rational and not change one’s preferences throughout, then both the decisions one makes at any given time, and the set of decisions one collectively makes, must satisfy all the other conditions of rational choice. That is, they must be ratifiable and not weakly dominated.</p>
 <p>The big advantage of this theory is that it satisfies the nine conditions I mentioned at the start, and that it is consistent with Exit Principle. These turn out to be very sharp constraints on a theory. For example, any theory that associates some number with each choice, and says to maximise the number, will violate the Indecisiveness constraint. Any theory that simply the chooser’s credences as given will violate the Substantiveness constraint. The vast bulk of decision theories on the market in philosophy do at least one of these two things, and typically both. So we have strong reason to prefer GDT to them.</p>
 <div class="page-columns page-full"><p>GDT does require that mixed strategies are available to choosers, on pain of saying that a lot of decision problems are dilemmas. That is not a problem for GDT, since ideal agents can perform mixed strategies. It is a shortcoming to not be able to perform them, and ideal agents don’t have these kinds of shortcomings. But it does suggest an important research program in working out how GDT should be altered for agents who lack one or other idealisation. In fact it suggests two research programs: a descriptive one, setting out what choosers who don’t satisfy one or other idealisation in fact do; and a normative one, setting out what these choosers should do. But those projects are for a very different paper.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn30"><p><sup>30</sup>&nbsp;Thanks to many people for conversations on these topics, especially Dmitri Gallow and Ishani Maitra, and audiences and ACU and UBC, and students in my group choices classes at University of Michigan.</p></li></div></div>
@@ -1249,11 +1256,11 @@ REU_E(X) \geq REU_E(Y) \leftrightarrow REU_L(X) \geq REU_L(Y)
 </div>
 </div>
 <p>In <a href="#tbl-one-coin-exit">Table&nbsp;26</a>, it’s also easy to see that <span class="math inline">\(REU_L(U) = REU_L(D) = 1\)</span>. So by Exit Principle, <span class="math inline">\(REU_E(U) = REU_E(D)\)</span>. And it’s also clear that <span class="math inline">\(REU_E(D) = 1\)</span>, since that’s the only possible payout for Down. So <span class="math inline">\(REU_E(U) = 1\)</span>. So we get the following result.</p>
-<span class="math display">\[\begin{align}
+<span class="math display">\[\begin{align*}
 REU_E(U) &amp;= r(1-y(1-m)) + r(ym) \\
 &amp;= 1    \\
 \therefore  r(1-y(1-m)) &amp;= r(ym)
-\end{align}\]</span>
+\end{align*}\]</span>
 <p>That doesn’t look like a particularly notable result, but it will become useful when we discuss our last case, <a href="#tbl-two-coin-exit">Table&nbsp;27</a>, which is just the same as <a href="#tbl-one-coin-exit">Table&nbsp;26</a>, except the exit payout is now 2.</p>
 <div id="tbl-two-coin-exit" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
@@ -1304,22 +1311,24 @@ REU_E(U) &amp;= r(1-y(1-m)) + r(ym) \\
 </div>
 </div>
 <p>In <a href="#tbl-two-coin-exit">Table&nbsp;27</a>, it’s again easy to see that <span class="math inline">\(REU_L(U) = REU_L(D) = 1\)</span>. So by Exit Principle, <span class="math inline">\(REU_E(U) = REU_E(D)\)</span>. But the early values are more complicated. <span class="math inline">\(REU_E(D) = 1 + r(1-y)\)</span>, and <span class="math inline">\(REU_E(U) = 2r(1-y(1-m))\)</span>. Using what we’ve discovered so far, we can do something with that last value.</p>
-<p><span class="math display">\[\begin{align}
+<span class="math display">\[\begin{align*}
 REU_E(U) &amp;= 2r(1-y(1-m)) \\
   &amp;= 2(1-r(ym))  &amp;&amp; \text{from previous calculations} \\
   &amp;= 2 - 2r(ym) \\
   &amp;= 2 - 2r(y)r(m) &amp;&amp; \text{since $r$ is multiplicative} \\
   &amp;= 2 - r(y)  &amp;&amp; \text{since $r(m) = 0.5$}
-\end{align}\]</span></p>
+\end{align*}\]</span>
 <p>Putting all this together, we get</p>
-<p><span class="math display">\[\begin{align}
+<span class="math display">\[\begin{align*}
 REU_E(D) &amp;= REU_E(U)  &amp;&amp; \Rightarrow \\
 1 + r(1-y) &amp;= 2 - r(y) &amp;&amp; \Rightarrow \\
 r(y) + r(1-y) &amp;= 1
-\end{align}\]</span></p>
+\end{align*}\]</span>
 <p>So <span class="math inline">\(r\)</span> is a monotonic increasing function satisfying <span class="math inline">\(r(0) = 0, r(1) = 1, r(xy) = r(x)r(y)\)</span> and <span class="math inline">\(r(y) + r(1-y) = 1\)</span>. The only such function is <span class="math inline">\(r(x) = x\)</span>. So the only version of risk-weighted expected utility theory that satisfies Exit Principle is where <span class="math inline">\(r(x) = x\)</span>, i.e., where risk-weighted expected utility just is old-fashioned expected utility.</p>
 <p>This doesn’t yet prove expectationism. I haven’t shown that there is no other alternative to expected utility theory that satisfies Exit Principle. There are such other theories out there, such as the Weighted-linear utility theory described by <span class="citation" data-cites="BottomleyWilliamsonnd">Bottomley and WIlliamson (<a href="#ref-BottomleyWilliamsonnd" role="doc-biblioref">n.d.</a>)</span>. But it’s a guide to how we could start defending expectationism in a way consistent with how we handle decision problems involving demons.</p>
-<!-- # References {-} -->
+</section>
+<section id="references" class="level1 unnumbered">
+
 
 </section>
 

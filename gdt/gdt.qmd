@@ -1,6 +1,7 @@
 ---
 title: "Gamified Decision Theory"
 author: "Brian Weatherson"
+date: "July 22, 2023"
 format: 
     html:
       theme: 
@@ -21,14 +22,18 @@ format:
       fontsize: 1.2em
       include-in-header:
         - text: |
-            <link rel="stylesheet" href="https://use.typekit.net/gdw0otp.css">
-      mainfont: "baskerville, sans-serif"
+            <link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
+      mainfont: "ff-scala-sans-pro, sans-serif"
+      html-math-method: mathjax
     docx: default
     pdf: 
-#    geometry: "left=1.in,right=1.95in,top=1.78in,bottom=1.78in"
-      mainfont: Baskerville
-      sansfont: Baskerville
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mainfont: Scala Pro
+      sansfont: Scala Sans Pro
       mainfontoptions: Scale = MatchLowercase
+      fontsize: 12pt
+      linkcolor: black
+      link-citations: true
       include-in-header:
         text: |
           \setlength\heavyrulewidth{0ex}
@@ -40,7 +45,7 @@ number-sections: true
 
 # Introduction {#sec-intro}
 
-Textbook versions of game theory embed a distinctive approach to decision theory. That theory isn't always made explicit, and it isn't always clear how it handles some cases. But we can extract one interesting and plausible theory, which I'll call Gamified Decision Theory (GDT), from these textbooks. There are nine characteristics of GDT (as I'll understand it) that I will focus on, with the bulk of this paper one in each of the following nine sections.
+Textbook versions of game theory embed a distinctive approach to decision theory. That theory isn't always made explicit, and it isn't always clear how it handles some cases. But we can extract one interesting and plausible theory, which I'll call Gamified Decision Theory (GDT), from these textbooks. There are nine characteristics of GDT (as I'll understand it) that I will focus on. I'll quickly list them here, then the bulk of the paper will consist of a section on each of the nine characteristics.
 
 1.  **Idealised**; GDT is a theory of what ideal deciders do.
 2.  **Expectationist**; the ideal decider prefers getting more expected value to getting less.
@@ -80,7 +85,7 @@ This doesn't mean that every philosophical decision theory, and every game theor
 
 There is a big question about why we should care about what would have if Chooser were ideal. Chooser is not in fact ideal, so who cares what they would do if they were different. One might think that knowing what the ideal is gives Chooser something to aim for. Even if Chooser is not ideal, they can try to be closer to the ideal. The problem is that trying to be more like the ideal will make things worse. The ideal agent will never pass, and even if Chooser doesn't know the answers to the particular questions, they can know this fact. So if they try to be more like the ideal, they will never pass, and things will go badly.[^1]
 
-[^1]: This is a special case of Lipsey and Lancaster's Theory of the Second Best @LipseyLancaster. If you don't have control over every parameter, setting the parameters you do control to the ideal values is generally inadvisable.
+[^1]: This is a special case of Lipsey and Lancaster's Theory of the Second Best [@LipseyLancaster]. If you don't have control over every parameter, setting the parameters you do control to the ideal values is generally inadvisable.
 
 In philosophy we have two very different uses of the term 'idealisation'. One is the kind of idealisation we see in, for example, Ideal Observer theories in ethics. The other is the kind of idealisation we see in, for example, Ideal Gas models in chemistry. It's important to not confuse the two. Think about the volumeless, infinitely dense, molecules in an Ideal Gas model. To say that this is an idealised model is not to say that having volume, taking up space, is an imperfection. The point is not to tell molecules what the perfect size is. ("The only good molecule is a volumeless molecule.") Nor is it to tell them that they should approximate the ideal. ("Smaller the better, fellas.") It's to say that for some predictive and explanatory purposes, molecules behave no differently to how they would behave if they took up no space.[^2]
 
@@ -257,12 +262,12 @@ If Chooser plays Up, they would prefer to play Down. If Chooser plays Down, they
 
 The only ratifiable option is X, but surely it is worse than Up or Down. One might avoid this example by saying that there is a weak dominance constraint on rational choices, as well as a ratifiability constraint. That won't solve the problem, but it will turn it into a problem like @tbl-no-pure, where there is no good solution. But that won't help us much, as was pointed out by @Skyrms1984, since in @tbl-verybad-third there is no weakly dominant option, but X is surely still a bad play.
 
-|          |         |           |        |
-|:--------:|:-------:|:---------:|:------:|
-|          | **PUp** | **PDown** | **PX** |
-|  **Up**  |    3    |     5     |   0    |
-| **Down** |    4    |     3     |   0    |
-|  **X**   |    0    |     0     |   ε    |
+|          |         |           |               |
+|:--------:|:-------:|:---------:|:-------------:|
+|          | **PUp** | **PDown** |    **PX**     |
+|  **Up**  |    3    |     5     |       0       |
+| **Down** |    4    |     3     |       0       |
+|  **X**   |    0    |     0     | $\varepsilon$ |
 
 : Skyrms's counterexample to ratificationism. {#tbl-verybad-third}
 
@@ -326,7 +331,7 @@ All of them agree that Up is the uniquely rational play in this example, and I t
 4.  Demon-2's prediction is chosen, and that determines whether we are in state PU or state PD.
 5.  Chooser's payouts are given by cite above table.
 
-I'll call these Exit Problems, and it's worth having the abstract structure of them in front of us.
+I'll call these Exit Problems, and @tbl-general-exit gives the general form of such a problem. Our problem has this abstract of @tbl-general-exit with *b* = *c* = *e* = *y* = 0, *x* = 0.5, *a* = 4, *d* = 3.
 
 ::: {#tbl-general-exit layout-ncol="2"}
 |                   |     |
@@ -347,8 +352,6 @@ I'll call these Exit Problems, and it's worth having the abstract structure of t
 
 The abstract form of an exit problem.
 :::
-
-Our problem has this abstract structure with *b* = *c* = *e* = *y* = 0, *x* = 0.5, *a* = 4, *d* = 3.
 
 Now consider a simple variant of the above 5 step problem. The same things happen, but steps 2 and 3 are reversed. That is, Chooser decides on Up or Down after Demons make their predictions, but before they are told whether Demon-1 decided to Exit. Still, their choice will only matter if Demon-1 decided not to Exit, since their choices do not make a difference if Demon-1 Exits. Call this variant the Early Choice version, and the original the Late Choice variant. I don't have any clear intuitions about what to do in most Exit Problems, save for this constraint on choices.
 
@@ -399,7 +402,7 @@ Now presumably if one prefers Up in above table, it is because one prefers Up in
 
 How could it be otherwise? Given expectationism, it's not like there is anything special about the numbers 4 and 3. But anyone who endorses this policy will play Down @tbl-early-choice-simplified and so, presumably, in @tbl-early-choice. And that means they will violate Exit Principle.
 
-The only view that is consistent with Exit Principle in cases like @tbl-general-coord. And since in any such case, improving Up or Down be a tiny amount wouldn't materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.
+The only view that is consistent with Exit Principle in cases like @tbl-general-coord is that both Up and Down are permissible. And since in any such case, improving Up or Down be a tiny amount wouldn't materially change the case, they must both be permissible after small sweetenings. So, given Exit Principle, the only viable theories are indecisive.
 
 Exit Principle also offers a response to some intuitions that have led people to question CDT in recent years. @tbl-frustrating-button is an example that Jack @Spencer2023 used to model the kind of case that's at issue. As he notes, it is similar to the psychopath button case [@Egan2007-EGASCT], the asymmetric Death in Damascus case [@Richter1984], and other puzzles for CDT.
 
@@ -411,7 +414,7 @@ Exit Principle also offers a response to some intuitions that have led people to
 
 : Frustrating Button (from @Spencer2023). {#tbl-frustrating-button}
 
-If we embed Frustrating Button in an exit problem, as in @tbl-frustrating-exit, the intuitions shift.
+Apparently the common intuition here is that that Up is the uniquely rational play. Note though that if we embed Frustrating Button in an exit problem, as in @tbl-frustrating-exit, the intuitions shift.
 
 ::: {#tbl-frustrating-exit layout-ncol="2"}
 |                   |     |
@@ -443,7 +446,7 @@ The Early Version of @tbl-frustrating-exit is @tbl-ev-fe.
 
 : Early Version of @tbl-frustrating-exit. {#tbl-ev-fe}
 
-And if there is an intuition here, it is that it's better to choose Down rather than Up.[^18] This violates Exit Principle, and it seems incoherent to say that one would choose Down in this game, when Down just means playing Down in round 2, and if one were to reach round 2, one would prefer Up.
+\newpage And if there is an intuition here, it is that it's better to choose Down rather than Up.[^18] This violates Exit Principle, and it seems incoherent to say that one would choose Down in this game, when Down just means playing Down in round 2, and if one were to reach round 2, one would prefer Up.
 
 [^18]: The theory offered in @Spencer2021b agrees with intuition here.
 
@@ -685,7 +688,7 @@ So I conclude that we just need one round of deleting weakly dominated options t
 
 # Conclusion {#sec-conclusion}
 
-Given all that, here is the positive theory, what I'm calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices *o*~1~, $\dots$, *o~m~*, and causally independent states *s*~1~, $\dots$ *s~n~*, a choice *o* is rational iff there is some probability function Pr that is a rational credal distribution over the *s* after choosing *o*, and such that for all *o~j~*, ΣPr(*s~i~*)V(*os~i~*) ≥ ΣPr(*s~i~*)V(*o~j~s~i~*).
+Given all that, here is the positive theory, what I'm calling Gamified Decision Theory (GDT). The core is that rational choices are ratifiable. That is, they maximise expected utility from the perspective of someone who chooses them. Formally, that means that in a particular problem, with choices *o*~1~, $\dots$, *o~m~*, and causally independent states *s*~1~, $\dots$ *s~n~*, a choice *o* is rational iff there is some probability function Pr that is a rational credal distribution over the *s* after choosing *o*, and such that for all *o~j~*, $\Sigma$Pr(*s~i~*)V(*os~i~*) ≥ $\Sigma$Pr(*s~i~*)V(*o~j~s~i~*).
 
 There are two extra clauses. First, *o* is choiceworthy only if it is not be weakly dominated by any other option. Second, if one is making a series of decisions in a tree, and one knows that one will be rational and not change one's preferences throughout, then both the decisions one makes at any given time, and the set of decisions one collectively makes, must satisfy all the other conditions of rational choice. That is, they must be ratifiable and not weakly dominated.
 
@@ -738,7 +741,7 @@ I'll write $H_1$ and $T_1$ for the propositions that the first coin lands Heads 
 
 The abstract form of an exit problem with coins.
 :::
-
+\newpage
 Then we get a version of Exit Principle that applies to games like this.
 
 -   **Exit Principle**: Whether a choice is rational for Chooser is independent of whether Chooser chooses before or after they are told the result of the first coin flip.
@@ -800,11 +803,11 @@ An exit game with exit payout 1.
 In @tbl-one-coin-exit, it's also easy to see that $REU_L(U) = REU_L(D) = 1$. So by Exit Principle, $REU_E(U) = REU_E(D)$. And it's also clear that $REU_E(D) = 1$, since that's the only possible payout for Down. So $REU_E(U) = 1$. So we get the following result.
 
 ```{=tex}
-\begin{align}
+\begin{align*}
 REU_E(U) &= r(1-y(1-m)) + r(ym) \\
  &= 1    \\
 \therefore  r(1-y(1-m)) &= r(ym)
-\end{align}
+\end{align*}
 ```
 That doesn't look like a particularly notable result, but it will become useful when we discuss our last case, @tbl-two-coin-exit, which is just the same as @tbl-one-coin-exit, except the exit payout is now 2.
 
@@ -830,24 +833,26 @@ An exit game with exit payout 2.
 
 In @tbl-two-coin-exit, it's again easy to see that $REU_L(U) = REU_L(D) = 1$. So by Exit Principle, $REU_E(U) = REU_E(D)$. But the early values are more complicated. $REU_E(D) = 1 + r(1-y)$, and $REU_E(U) = 2r(1-y(1-m))$. Using what we've discovered so far, we can do something with that last value.
 
-\begin{align}
+```{=tex}
+\begin{align*}
 REU_E(U) &= 2r(1-y(1-m)) \\
   &= 2(1-r(ym))  && \text{from previous calculations} \\
   &= 2 - 2r(ym) \\
   &= 2 - 2r(y)r(m) && \text{since $r$ is multiplicative} \\
   &= 2 - r(y)  && \text{since $r(m) = 0.5$}
-\end{align}
-
+\end{align*}
+```
 Putting all this together, we get
 
-\begin{align}
+```{=tex}
+\begin{align*}
 REU_E(D) &= REU_E(U)  && \Rightarrow \\
 1 + r(1-y) &= 2 - r(y) && \Rightarrow \\
 r(y) + r(1-y) &= 1
-\end{align}
-
+\end{align*}
+```
 So $r$ is a monotonic increasing function satisfying $r(0) = 0, r(1) = 1, r(xy) = r(x)r(y)$ and $r(y) + r(1-y) = 1$. The only such function is $r(x) = x$. So the only version of risk-weighted expected utility theory that satisfies Exit Principle is where $r(x) = x$, i.e., where risk-weighted expected utility just is old-fashioned expected utility.
 
 This doesn't yet prove expectationism. I haven't shown that there is no other alternative to expected utility theory that satisfies Exit Principle. There are such other theories out there, such as the Weighted-linear utility theory described by @BottomleyWilliamsonnd. But it's a guide to how we could start defending expectationism in a way consistent with how we handle decision problems involving demons.
 
-# References {-}
+# References {.unnumbered}
