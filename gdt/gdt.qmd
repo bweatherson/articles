@@ -1,7 +1,7 @@
 ---
 title: "Gamified Decision Theory"
 author: "Brian Weatherson"
-date: "July 22, 2023"
+date: "August 3, 2023"
 format: 
     html:
       theme: 
@@ -59,7 +59,7 @@ Textbook versions of game theory embed a distinctive approach to decision theory
 
 This is not going to be a work of exegesis, poring over game theory texts to show that they really do endorse all of 1-9. In fact it wouldn't take much work to show that they endorse 1-5, so the work wouldn't be worth doing. And while some books endorse 8 and 9, it would take a lot more investigative work than I'm going to do here to show that anything like a majority of them do. It would be interesting, but not obviously a philosophical question, to see what proportion endorse 6 and 7. But I'm going to set that aside.
 
-What I do want to argue is that you can find some support for all of these in some game theory textbooks, and that combined they produce a plausible decision theory. While the textbooks don't all agree, for simplicity I'm going to focus on one book: Giacomo Bonanno's *Game Theory* @Bonanno2018. This book has two important virtues: it is philosophically deep, and it is available for free. It isn't hard to find a game theory text with one or other of these virtues, but few have both. So it will be our primary guide in what follows, along with some primary sources (most of which are referenced in that book).
+What I do want to argue is that you can find some support for all of these in some game theory textbooks, and that combined they produce a plausible decision theory. While the textbooks don't all agree, for simplicity I'm going to focus on one book: Giacomo Bonanno's *Game Theory* [@Bonanno2018]. This book has two important virtues: it is philosophically deep, and it is available for free. It isn't hard to find a game theory text with one or other of these virtues, but few have both. So it will be our primary guide in what follows, along with some primary sources (most of which are referenced in that book).
 
 Methodologically, this paper differs from most works in decision theory in two ways. It has been a commonplace since @Nozick1969 to include demons, who are arbitrarily good at predicting a decision, in problems. Some of the cases here will involve two such demons, each of which is arbitrarily good at predicting a decision, and whose errors are probabilistically independent. Second, I'm going to rely less on intuitions about particular cases, and more on intuitions that certain cases should be treated the same way. This makes sense given the history of the field. There is much less consensus about what to do in Newcomb problems than about which problems are Newcomb problems. Judgments, or intuitions if you prefer, about how to classify problems seem more stable and more reliable, and they will be central to this paper.
 
@@ -592,7 +592,7 @@ First, I'll note some general reasons for scepticism about this use of the subst
 
 > *Incoherence Test*. A set of attitudinal mental states is jointly incoherent iff it is (partially) constitutive of (at least some of) the states in the set that any agent who holds this set of states has a disposition, when conditions of full transparency are met, to revise at least one of the states. [@Worsnip2021, 132]
 
-This won't capture nearly enough. If probabilism is correct, then non-probabilists about uncertainty like Glenn @Shafer1976 endorse incoherent views. If expectationalism is correct, then non-expectationalist decision theorists, like Lara @BuchakRisk, endorse incoherent views. If classical logic is correct, then intuitionist logicians like Crispin @WrightVaguenessCollection are incoherent. Those three all seem to meet Worsnip's conditions of full transparency, and don't seem disposed to revise their beliefs. Maybe this is just a problem with Worsnip's definition, but it is also a reason to be sceptical that there even is a distinction to be drawn here.
+This won't capture nearly enough. If probabilism is correct, then non-probabilists about uncertainty like Glenn @Shafer1976 endorse incoherent views. If expectationalism is correct, then non-expectationalist decision theorists, like Lara @BuchakRisk, endorse incoherent views. If classical logic is correct, then intuitionist logicians like Crispin @WrightVaguenessCollection are incoherent. Those three all seem to meet Worsnip's conditions of full transparency, and don't seem disposed to revise their beliefs. Maybe this is just a problem with Worsnip's definition, but it is also a reason to be sceptical that there even is a distinction to be drawn here.^[See also @Heinzelmannnd for a different set of reasons to be sceptical that there is a notion of coherence that can do the work its philosophical defenders want.]
 
 Even if the substantive/structural distinction can be made precise, and shown to do philosophical work, it won't track the notion game theorists most care about. We can see this with a version of the beer-quiche game @ChoKreps1987, here translated into decision-theoretic language.
 
