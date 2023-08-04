@@ -24,9 +24,6 @@ indent: true
 require(knitr)
 require(tidyverse)
 require(kableExtra)
-require(huxtable)
-require(TSP)
-require(maps)
 require(grid)
 
 knitr::opts_chunk$set(echo = FALSE, results = "asis")
@@ -92,11 +89,11 @@ There is a familiar complaint against Causal Decision Theory (CDT) that goes bac
 1. In Newcomb problems, the average returns to one-boxing exceed that to two-boxing.
 2. Everyone can see that (1) is true.
 3. Therefore one-boxing foreseeably does better than two-boxing. (by 1, 2)
-4. Therefore Causal Decision Theory (CDT) is committed to the foreseeably worse option for anyone facing Newcomb’s problem.
+4. Therefore Causal Decision Theory (CDT) is committed to the foreseeably worse option for anyone facing Newcomb's problem.
 
 Here's what they, and many other proponents of Evidential Decision Theory (EDT) say follows from 4.
 
-> The point of the argument is that if everyone knows that the CDT-irrational strategy will in fact do better on average than the CDT-rational strategy, then it’s rational to play the CDT-irrational strategy. [@AhmedPrice2012, 17]
+> The point of the argument is that if everyone knows that the CDT-irrational strategy will in fact do better on average than the CDT-rational strategy, then it's rational to play the CDT-irrational strategy. [@AhmedPrice2012, 17]
 
 This is what @Lewis1981e called the "Why Ain'cha Rich" argument, and what following @Bales2018 I'll call the WAR argument. I'm going to argue the last step of the WAR argument doesn't follow. Or, at the very least, that proponents of EDT cannot coherently say that it follows. For there are several cases where EDT foreseeably does worse than CDT. This paper will go over two of them.
 
@@ -224,7 +221,7 @@ I think those responses work, but as I said, they don't even fully convince me. 
 
 # Example Two - Coins and Signals {#coinssignals}
 
-This example is a version of a signaling game of the kind introduced by @Lewis1969a. And in particular it's a version of the broadly adversarial kinds of signaling games that are central to the plot of @ChoKreps1987. Again, it will involve three stages.
+This example is a version of a signalling game of the kind introduced by @Lewis1969a. And in particular it's a version of the broadly adversarial kinds of signalling games that are central to the plot of @ChoKreps1987. Again, it will involve three stages.
 
 At the first stage a fair coin is flipped, and the result shown to Chooser, but not to Demon. At the second stage, Chooser will choose Up or Down, and the choice will be publicly announced. At the third stage, Demon will try to guess what the coin showed. Demon knows the payoff table I'm about to show you, and is arbitrarily good at predicting Chooser's strategy. That is, Demon can make accurate predictions of the form "If Heads, Chooser will make this choice, and if Tails, they will make that choice." The payoffs to each player are a function of what happens at each of the three steps, and are given by table \@ref(tab:payoffs-demon-coin).
 
