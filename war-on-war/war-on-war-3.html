@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Brian Weatherson">
+<meta name="author" content="Anon">
 <meta name="dcterms.date" content="2023-08-03">
 
 <title>Gamified Decision Theory</title>
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -101,16 +67,17 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#coinssignals" id="toc-coinssignals" class="nav-link active" data-scroll-target="#coinssignals"><span class="header-section-number">1</span> Coins and Signals</a></li>
-  <li><a href="#example-three---coins-and-newcomb" id="toc-example-three---coins-and-newcomb" class="nav-link" data-scroll-target="#example-three---coins-and-newcomb"><span class="header-section-number">2</span> Example Three - Coins and Newcomb</a></li>
-  <li><a href="#why-the-examples-matter" id="toc-why-the-examples-matter" class="nav-link" data-scroll-target="#why-the-examples-matter"><span class="header-section-number">3</span> Why The Examples Matter</a></li>
+  <li><a href="#sec-coinssignals" id="toc-sec-coinssignals" class="nav-link active" data-scroll-target="#sec-coinssignals"><span class="header-section-number">1</span> Coins and Signals</a></li>
+  <li><a href="#sec-cdt-definition" id="toc-sec-cdt-definition" class="nav-link" data-scroll-target="#sec-cdt-definition"><span class="header-section-number">2</span> What is CDT</a></li>
+  <li><a href="#sec-wells-ahmed" id="toc-sec-wells-ahmed" class="nav-link" data-scroll-target="#sec-wells-ahmed"><span class="header-section-number">3</span> Wells and Ahmed</a></li>
+  <li><a href="#why-the-examples-matter" id="toc-why-the-examples-matter" class="nav-link" data-scroll-target="#why-the-examples-matter"><span class="header-section-number">4</span> Why The Examples Matter</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="war-on-war-3.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="../war-on-war-3.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
 </div>
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -124,7 +91,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Brian Weatherson </p>
+             <p>Anon </p>
           </div>
   </div>
     
@@ -152,8 +119,8 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>The point of the argument is that if everyone knows that the CDT-irrational strategy will in fact do better on average than the CDT-rational strategy, then it’s rational to play the CDT-irrational strategy. <span class="citation" data-cites="AhmedPrice2012">(<a href="#ref-AhmedPrice2012" role="doc-biblioref">Ahmed and Price 2012, 17</a>)</span></p>
 </blockquote>
-<p>This is what <span class="citation" data-cites="Lewis1981e">Lewis (<a href="#ref-Lewis1981e" role="doc-biblioref">1981</a>)</span> called the “Why Ain’cha Rich” argument, and what following <span class="citation" data-cites="Bales2018">Bales (<a href="#ref-Bales2018" role="doc-biblioref">2018</a>)</span> I’ll call the WAR argument. I’m going to argue the last step of the WAR argument doesn’t follow. Or, at the very least, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.</p>
-<section id="coinssignals" class="level1" data-number="1">
+<div class="page-columns page-full"><p>This is what <span class="citation" data-cites="Lewis1981e">Lewis (<a href="#ref-Lewis1981e" role="doc-biblioref">1981b</a>)</span> called the “Why Ain’cha Rich” argument, and what following <span class="citation" data-cites="Bales2018">Bales (<a href="#ref-Bales2018" role="doc-biblioref">2018</a>)</span> I’ll call the WAR argument. I’m going to argue the last step of the WAR argument doesn’t follow. Or, at the very least, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Ian <span class="citation" data-cites="Wells2019">Wells (<a href="#ref-Wells2019" role="doc-biblioref">2019</a>)</span> has another case where EDT does worse than CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced, and one aim of this paper is to develop an anti-WAR argument that uses slightly fewer assumptions than Wells does. I’ll come back to Wells’s case in <a href="#sec-wells-ahmed">Section&nbsp;3</a>.</p></li></div></div>
+<section id="sec-coinssignals" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Coins and Signals</h1>
 <p>This example is a version of a signalling game of the kind introduced by <span class="citation" data-cites="Lewis1969a">Lewis (<a href="#ref-Lewis1969a" role="doc-biblioref">1969</a>)</span>. And in particular it’s a version of the broadly adversarial kinds of signalling games that are central to the plot of <span class="citation" data-cites="ChoKreps1987">Cho and Kreps (<a href="#ref-ChoKreps1987" role="doc-biblioref">1987</a>)</span>. Again, it will involve three stages.</p>
 <p>At the first stage a fair coin is flipped, and the result shown to Chooser, but not to Demon. At the second stage, Chooser will choose Up or Down, and the choice will be publicly announced. At the third stage, Demon will try to guess what the coin showed. Demon knows the payoff table I’m about to show you, and is arbitrarily good at predicting Chooser’s strategy. That is, Demon can make accurate predictions of the form “If Heads, Chooser will make this choice, and if Tails, they will make that choice.” The payoffs to each player are a function of what happens at each of the three steps, and are given by table <a href="#tbl-payoffs-demon-coin">Table&nbsp;1</a>. (The payoffs here are all in utils.)</p>
@@ -229,7 +196,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p><a href="#fig-second-anti-war">Figure&nbsp;1</a> shows the game they are playing in tree form. Demons’s payoffs are just as you’d expect - they get rewarded iff they figure out how the coin landed. Chooser’s payoffs are more complicated, but the big thing to note is they get the biggest rewards if they manage to play Up while Demon makes an incorrect prediction.</p>
+<p><a href="#fig-second-anti-war">Figure&nbsp;1</a> shows the game they are playing in tree form. We start at the middle, then move left or right depending on the coin flip, up or down depending on Chooser’s choice, and at one or other angle depending on Demon’s choice. Demons’s payoffs are just as you’d expect - they get rewarded iff they figure out how the coin landed. Chooser’s payoffs are more complicated, but the big thing to note is they get the biggest rewards if they manage to play Up while Demon makes an incorrect prediction.</p>
 <div class="cell" data-hash="war-on-war-3_cache/html/fig-second-anti-war_68c92c549e9677c5fc3bd6610775d536">
 <div class="cell-output-display">
 <div id="fig-second-anti-war" class="quarto-figure quarto-figure-center anchored">
@@ -272,53 +239,118 @@ div.csl-indent {
 <li>If Demon predicts Down, and Chooser plays Up, Demon will think (falsely) that the coin must have landed Heads, since Demon will have predicted that Chooser will only say Up if Heads. So Demon will say Heads. So we’ll definitely be at line 5 of <a href="#tbl-payoffs-demon-coin">Table&nbsp;1</a>, where Chooser gets 40.</li>
 <li>If Demon predicts Down, and Chooser plays Down, Demon will think (correctly) that the coin must have landed Tails. So Demon will say that, and we’ll be at line 8 of <a href="#tbl-payoffs-demon-coin">Table&nbsp;1</a>.</li>
 </ul>
-<p>Given Demon will predict Up if Heads, there we can work out the value of Up and Down if Tails to the EDTer. If they play Up, Demon will predict that, and hence Demon will flip a coin to choose Heads or Tails. So they have a 50/50 shot at getting either 40 or 28, and so their expected return is 34. If they play Down, Demon will predict that, and hence Demon will say Tails, and they will get a return of 36. Since 36 &gt; 34, they will play Down if Tails.</p>
-<p>That’s the unique solution to the game for the EDTer. They play Up if Heads, Down if Tails. Demon can figure out that they’ll do this, so will correctly guess what the coin showed. And they will get 40 if the coin landed Heads, and 36 if it landed Tails, for an expected return of 38.</p>
-<p>What should the CDTer do? This is a somewhat interesting problem, and I don’t think all causal decision theorists will agree on it. My preferred version of CDT does not issue a verdict on this case. It says that it is permissible to do what EDT does, and it’s permissible to play the strategy of Up no matter what. The latter is a very lucrative strategy. Given they are doing the same thing whatever the coin says, Demon won’t get any information by predicting their strategy and observing their play. So Demon will simply flip their own coin, and hence lines 1, 2, 5 and 6 of the table are all equally likely to appear. So if Chooser plays this strategy, they are equally likely to get a return of 40, 400, 40 or 28, for an overall expected return of 127. And this is much higher than the 38 the EDTer is expected to receive. By changing the payout on line 2 of the table, we can make the gap in expected returns be arbitrarily large.</p>
-<p>Now you might object that I haven’t shown, and in fact don’t believe, that CDT must play this strategy. So I haven’t shown that CDT does better in this case than EDT.I don’t think that matters much. The point of the WAR is to refute a theory, and if the EDTer does foreseeably worse than one kind of Chooser, that should be enough to refute them. But just in case you think that we need a case where CDT clearly does better than EDT, I’ll include one last example.</p>
+<p>In a decision problem like <a href="#tbl-payout-if-tails">Table&nbsp;2</a>, EDT says that all that matters is which of the top-left and bottom-right cells is largest. In this case, it’s the bottom-right, so EDT says to play Down. That isn’t absurd in this case; it gets the best possible payout of 44. So that’s our analysis of the game for EDT: Chooser plays Up if Heads, Down if Tails, gets 40 if Heads and 44 if Tails (plus/minus a small amount in expectation if Demon has ε chance of being wrong), and on average gets 42. What does CDT say? This needs a small detour, because ‘CDT’ has become an ambiguous signifier.</p>
 </section>
-<section id="example-three---coins-and-newcomb" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Example Three - Coins and Newcomb</h1>
-<p>This is just like Example Two, with one twist. If the game goes Tails, Down, Tails, then we don’t immediately end the game and make payouts to the players. Instead we play another game, with a familiar structure, and the payouts shown in table @ref(tab:third-anti-war). As always, Demon is really good at predicting Chooser’s play, and Chooser’s payouts are listed first in every cell. (I’m not going to include a tree here, because it is more confusing than helpful.)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>third_anti_war <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">~</span><span class="st">""</span>, <span class="sc">~</span>PU, <span class="sc">~</span>PD,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">"U"</span>, <span class="st">"20, 1"</span>, <span class="st">"40, 0"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">"D"</span>, <span class="st">"16, 0"</span>, <span class="st">"36, 1"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#gameformat(third_anti_war, "The payouts after tails–down–tails in coins and Newcomb.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The EDTer will think they’ll get 36 from this game, so the example will be just like Example Two. And the EDTer will play Up if Heads, Down if Tails, for an expected return of 38.</p>
-<p>But if Chooser follows CDT, then they will think that if the game gets to this stage, they’ll get 20. So now they think that in the original game, Up dominates Down no matter whether the coin lands Heads or Tails. So now they will definitely play Up no matter what, and get an expected return of 127.</p>
+<section id="sec-cdt-definition" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> What is CDT</h1>
+<p>David <span class="citation" data-cites="Lewis1981b">Lewis (<a href="#ref-Lewis1981b" role="doc-biblioref">1981a</a>)</span> argued that all then-existing versions of CDT were little more than notational variants; they just differed on “emphasis and formulation” <span class="citation" data-cites="Lewis1981b">(<a href="#ref-Lewis1981b" role="doc-biblioref">Lewis 1981a, 5</a>)</span>. Whether that was true then (and I have some doubts), it isn’t true now. There is a dizzying array of versions of CDT. To see the variation, it helps to consider a very abstract decision problem. Chooser has to choose Up or Down, arbitrarily accurate Demon has predicted that, and the payoffs are a function of the choice and the prediction. Here’s the abstract form of that problem.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Predict Up</th>
+<th style="text-align: center;">Predict Down</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;"><em>a</em></td>
+<td style="text-align: center;"><em>b</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;"><em>c</em></td>
+<td style="text-align: center;"><em>d</em></td>
+</tr>
+</tbody>
+</table>
+<div class="page-columns page-full"><p>As noted in <a href="#sec-coinssignals">Section&nbsp;1</a>, EDT just cares about whether <em>a</em> or <em>d</em> is larger. What’s definitional of CDT is that if the prediction is causally independent of the choice, and <em>a</em> &gt; <em>c</em>, and <em>b</em> &gt; <em>d</em>, then Up is the right choice. But what if only one of those inequalities hold? In particular, if <em>a</em> &gt; <em>c</em>, and <em>d</em> &gt; <em>b</em>, what is to be done?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> There are, in the current literature, four different verdicts on this among people who agree with the fundamental claim that CDT makes.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;I’m setting aside here questions about what to do if one or other of these is an equality, as well as the case where both these inequalities are reversed. These cases simply add to the variety of versions of CDT we’ll see below.</p></li></div></div>
+<ol type="1">
+<li>Frank <span class="citation" data-cites="Arntzenius2008">Arntzenius (<a href="#ref-Arntzenius2008" role="doc-biblioref">2008</a>)</span> says that in this case CDT should follow EDT, and use the values of <em>a</em> and <em>d</em> to settle the choice.</li>
+<li>Ralph <span class="citation" data-cites="Wedgwood2013">Wedgwood (<a href="#ref-Wedgwood2013" role="doc-biblioref">2013</a>)</span>, Dmitri <span class="citation" data-cites="Gallow2020">Gallow (<a href="#ref-Gallow2020" role="doc-biblioref">2020</a>)</span>, Abelard <span class="citation" data-cites="Podgorski2022">Podgorski (<a href="#ref-Podgorski2022" role="doc-biblioref">2022</a>)</span>, and David <span class="citation" data-cites="Barnett2022">Barnett (<a href="#ref-Barnett2022" role="doc-biblioref">2022</a>)</span> say that Chooser should choose Up or Down depending on which of <em>a</em> + <em>b</em> and <em>c</em> + <em>d</em> is larger.</li>
+<li>Jack <span class="citation" data-cites="Spencer2023">Spencer (<a href="#ref-Spencer2023" role="doc-biblioref">2023</a>)</span> says that in any such case, either Up or Down is rationally permissible.</li>
+<li>James <span class="citation" data-cites="Joyce2012">Joyce (<a href="#ref-Joyce2012" role="doc-biblioref">2012</a>)</span> says that what Chooser does here should be a function of how likely they think it is at the start of deliberation that they will choose Up or Down.</li>
+</ol>
+<div class="page-columns page-full"><p>So these four families of theories differ on what to say about cases like <a href="#tbl-payout-if-tails">Table&nbsp;2</a>. And further cases can, for some of them, reveal yet further differences.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The best conclusion, I think, is that there are Causal Decision <em>Theories</em>, but no one Causal Decision <em>Theory</em>. CDT is a name for a family of views, not a particular view. There are some people in the literature who try to use the term for one particular one of these four views, but I can’t see what particularly motivates any one choice; they all look equally deserving of the term to me.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Personally I prefer a causal theory that resembles both Spencer and Joyce’s theories, without being the same as either.</p></li></div></div>
+<div class="page-columns page-full"><p>This is an asymmetry between EDT and CDT. EDT is indeed a theory; it is the theory defended by Arif <span class="citation" data-cites="Ahmed2012">Ahmed (<a href="#ref-Ahmed2012" role="doc-biblioref">2012</a>)</span>. But CDT is a family. So we shouldn’t compare EDT to CDT as such, we should compare it to a particular causal theory. And for this paper, I’ll focus on the theories listed in 2 above, and especially the version defended by Gallow.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;One clarificatory note. Gallow does not emphasise the comparison between <em>a</em> + <em>b</em> and <em>c</em> + <em>d</em>, but rather the comparison between <em>a</em> - <em>c</em> and <em>d</em> - <em>b</em>. This is just a notational variation, and I find my variant easier to use, if a little removed from the underlying philosophical motivation.</p></li></div></div>
+<div class="page-columns page-full"><p>On Gallow’s view, Chooser should play Up in <a href="#tbl-payout-if-tails">Table&nbsp;2</a>, since 34 + 40 &gt; 18 + 44. So Chooser will always play Up. So Demon will always flip a coin to decide what to do. So all of the top four outcomes in <a href="#fig-second-anti-war">Figure&nbsp;1</a> are equally likely, and Chooser will on average get a return of 127. Since 127 /&gt; 42, that means that on average if Chooser follows Gallow’s theory, they will on average be much richer than if they follow EDT. So if WAR arguments work, they show that EDT should be rejected in favor of Gallow’s theory.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;I suspect similar reasoning could be used to show that Spencer and Joyce’s views should be preferred to EDT on WAR grounds, but this would take some more work to show, because one has to deal with the complications arising from these views not being as decisive. Since I think WAR arguments fail, it’s not worth really going through these complications.</p></li></div></div>
 </section>
-<section id="why-the-examples-matter" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Why The Examples Matter</h1>
-<p>This paper is very much not an argument against EDT; instead, it’s part of a war on WAR. The point of the first example is that any theory whatsoever is subject to a WAR argument. That’s because for any theory whatsoever, you can construct pairs of choices like Left and Right, where the theory says to take choices that lead Demon to preferring to go Left. So for any theory whatsoever, or at least any theory that is consequentialist in the sense popularised by <span class="citation" data-cites="Hammond1988">Hammond (<a href="#ref-Hammond1988" role="doc-biblioref">1988</a>)</span>, there is an example where the theory leads to worse returns. So any consequentialist theory is subject to an objection by WAR. It’s the paradigm of an over-generating objection.</p>
-<p>There is perhaps something a bit interesting about the second example, though it isn’t a problem especially for EDT. What makes the second example work is that Chooser is in a situation that rewards unpredictability, and EDT is predictable in all cases that don’t involve ties. Indeed, any theory that is predictable in cases that don’t involve ties will be subject to an WAR-style objection from cases like this. So we’ll end with two clear lessons from the cases. The first is that EDTers can’t endorse WAR-style objections, since there is such an objection to their theory. The second is that everyone should worry about WAR-style objections backfiring; the examples here can be easily generalised to tell against most theories of decision.</p>
+<section id="sec-wells-ahmed" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Wells and Ahmed</h1>
+<p>Ian <span class="citation" data-cites="Wells2019">Wells (<a href="#ref-Wells2019" role="doc-biblioref">2019</a>)</span> has earlier offered an example where EDT predictably does worse than (all versions of) CDT. His case involves a two-step game, where the EDTer will pay money at the first step to avoid making a decision at the second-step that they would now regret. Arif <span class="citation" data-cites="Ahmed2020">Ahmed (<a href="#ref-Ahmed2020" role="doc-biblioref">2020</a>)</span> responds that this is an unfair criticism. In Wells’s cases, he says, the EDT and CDT deciders are not in equivalent situations in round one. The EDTer knows that they will use EDT in later rounds, and the CDTer knows that they will use CDT in later rounds. So they have different evidence about what will happen at some later time in a way that’s relevant to their current decision, so it’s not a like-for-like comparison between CDT and EDT at the first stage.</p>
+<p>The first thing to say is that I’m not sure this is a fair criticism of Wells. If WAR arguments work anywhere (something that Ahmed believes but Wells is only assuming for <em>reductio</em>), they are meant to work against CDT in Newcomb’s Problem. But in that case the CDTer and EDTer also have different subjective credences about the problem they face. The CDTer thinks that they have a transparent box and an empty box in front of them; the EDTer thinks that they have a transparent box and a box full of money in front of them. If differences in credences about what one will do mean that WAR arguments are unfair, then WAR arguments don’t work in the very case they are designed for. So I think Wells’s argument works, and that Ahmed’s criticism is</p>
+<p>Set that aside though, because the main thing I want to add is that this example does not turn on differences in the subjective states of the possible choosers. Every chooser, whether they follow EDT, Gallow’s theory, or any other, will choose Up if the coin lands Heads. And this is common knowledge. Demon knows this, and Chooser knows that Demon knows it, and so on. The only difference is that if Chooser follows EDT, they will play Down if Tails. And that’s good as far as it goes; they’ll probably get the highest possible payoff they can get at that point. But it won’t make them rich in the long run. In the long-run, only theories, like Gallow’s, that make the Demon flip coins in either case will lead to maximal wealth.</p>
+</section>
+<section id="why-the-examples-matter" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Why The Examples Matter</h1>
+<p>This paper is very much not an argument against EDT; instead, it’s part of a war on WAR. WAR arguments overgenerate. They sometimes ‘show’ that EDT is better than Gallow-style CDT, and sometimes, as in <a href="#fig-second-anti-war">Figure&nbsp;1</a>, ‘show’ the reverse. Even when they seem to favor a view like Gallow’s, it’s something of a coincidence that they do. Go back to <a href="#tbl-payoffs-demon-coin">Table&nbsp;1</a>, and vary the Chooser Payoff in line 2. As long as it is greater than 0, Gallow-style CDT will still say to choose Up either way. Changing line 2 can’t possibly make a difference to what to do if Tails, and as long as that payoff is greater than 0, Up is guaranteed to do better than Down if Heads. But if that payoff is less than 60, the long-run return of EDT (which is still 42) will be better than the long-run return of Gallow-style CDT.</p>
+<p>So which theory is favored by WAR considerations turns on a factor, namely the payout at line 2, that’s not part of the decision process for either theory at the point they differ. The two theories differ on what to do if the coin lands Tails. And that turns entirely on the payouts in lines 5 to 8. Indeed, if one is a consequentialist in the sense popularised by <span class="citation" data-cites="Hammond1988">Hammond (<a href="#ref-Hammond1988" role="doc-biblioref">1988</a>)</span>, what to do if the coin lands Tails can only turn on the payouts that are possible if the coin lands Tails. And all of the theories I’ve described so far are indeed consequentialist in this sense. So WAR considerations say we should judge theories on factors that consequentialism says aren’t relevant, i.e., on payouts at parts of the decision tree that Chooser knows not to obtain. So consequentialists shouldn’t rely on WAR arguments; they are inconsistent with consequentialism. Since EDT is a form of consequentialism, EDT can’t be defended with a WAR argument.</p>
+<p>Now I haven’t said anything here about whether non-consequentialists can legitimately use WAR arguments. And this matters a bit more than it used to, because there are sophisticated defenders of non-consequentialism, such as <span class="citation" data-cites="LevinsteinSoares2020">Levinstein and Soares (<a href="#ref-LevinsteinSoares2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p><strong>Say something to finish</strong></p>
+<p><strong>Acknowledge referees</strong></p>
+<p><strong>Write a cover letter</strong></p>
 </section>
 <section id="references" class="level1 unnumbered">
 
 
 </section>
 
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Ahmed2012" class="csl-entry" role="listitem">
+Ahmed, Arif. 2012. <span>“Push the Button.”</span> <em>Philosophy of Science</em> 79 (3): 386–95. <a href="https://doi.org/10.1086/666065">https://doi.org/10.1086/666065</a>.
+</div>
+<div id="ref-Ahmed2020" class="csl-entry" role="listitem">
+———. 2020. <span>“Equal Opportunities in Newcomb’s Problem and Elsewhere.”</span> <em>Mind</em> 129 (515): 867–86. <a href="https://doi.org/10.1093/mind/fzz073">https://doi.org/10.1093/mind/fzz073</a>.
+</div>
 <div id="ref-AhmedPrice2012" class="csl-entry" role="listitem">
 Ahmed, Arif, and Huw Price. 2012. <span>“Arntzenius on ‘Why Ain’cha Rich?’.”</span> <em>Erkenntnis</em> 77 (1): 15–30. <a href="https://doi.org/10.1007/s10670-011-9355-2">https://doi.org/10.1007/s10670-011-9355-2</a>.
+</div>
+<div id="ref-Arntzenius2008" class="csl-entry" role="listitem">
+Arntzenius, Frank. 2008. <span>“No Regrets; or, Edith Piaf Revamps Decision Theory.”</span> <em>Erkenntnis</em> 68 (2): 277–97. <a href="https://doi.org/10.1007/s10670-007-9084-8">https://doi.org/10.1007/s10670-007-9084-8</a>.
 </div>
 <div id="ref-Bales2018" class="csl-entry" role="listitem">
 Bales, Adam. 2018. <span>“Richness and Rationality: Causal Decision Theory and the WAR Argument.”</span> <em>Synthese</em> 195 (1): 259–67. <a href="https://doi.org/10.1007/s11229-016-1214-x">https://doi.org/10.1007/s11229-016-1214-x</a>.
 </div>
+<div id="ref-Barnett2022" class="csl-entry" role="listitem">
+Barnett, David James. 2022. <span>“Graded Ratifiability.”</span> <em>Journal of Philosophy</em> 119 (2): 57–88. <a href="https://doi.org/10.5840/jphil202211925">https://doi.org/10.5840/jphil202211925</a>.
+</div>
 <div id="ref-ChoKreps1987" class="csl-entry" role="listitem">
 Cho, In-Koo, and David M. Kreps. 1987. <span>“Signalling Games and Stable Equilibria.”</span> <em>The Quarterly Journal of Economics</em> 102 (2): 179–221. <a href="https://doi.org/10.2307/1885060">https://doi.org/10.2307/1885060</a>.
+</div>
+<div id="ref-Gallow2020" class="csl-entry" role="listitem">
+Gallow, J. Dmitri. 2020. <span>“The Causal Decision Theorist’s Gudie to Managing the News.”</span> <em>The Journal of Philosophy</em> 117 (3): 117–49.
 </div>
 <div id="ref-Hammond1988" class="csl-entry" role="listitem">
 Hammond, Peter J. 1988. <span>“Consequentialist Foundations for Expected Utility.”</span> <em>Theory and Decision</em> 25: 25–78. <a href="https://doi.org/10.1007/BF00129168">https://doi.org/10.1007/BF00129168</a>.
 </div>
+<div id="ref-Joyce2012" class="csl-entry" role="listitem">
+Joyce, James M. 2012. <span>“Regret and Instability in Causal Decision Theory.”</span> <em>Synthese</em> 187 (1): 123–45. <a href="https://doi.org/10.1007/s11229-011-0022-6">https://doi.org/10.1007/s11229-011-0022-6</a>.
+</div>
+<div id="ref-LevinsteinSoares2020" class="csl-entry" role="listitem">
+Levinstein, Benjamin Anders, and Nate Soares. 2020. <span>“Cheating Death in Damascus.”</span> <em>Journal of Philosophy</em> 117 (5): 237–66. <a href="https://doi.org/10.5840/jphil2020117516">https://doi.org/10.5840/jphil2020117516</a>.
+</div>
 <div id="ref-Lewis1969a" class="csl-entry" role="listitem">
 Lewis, David. 1969. <em>Convention: A Philosophical Study</em>. Cambridge: Harvard University Press.
 </div>
+<div id="ref-Lewis1981b" class="csl-entry" role="listitem">
+———. 1981a. <span>“Causal Decision Theory.”</span> <em>Australasian Journal of Philosophy</em> 59 (1): 5–30. <a href="https://doi.org/10.1080/00048408112340011">https://doi.org/10.1080/00048408112340011</a>.
+</div>
 <div id="ref-Lewis1981e" class="csl-entry" role="listitem">
-———. 1981. <span>“Why Ain’cha Rich?”</span> <em>No<span>û</span>s</em> 15 (3): 377–80. <a href="https://doi.org/10.2307/2215439">https://doi.org/10.2307/2215439</a>.
+———. 1981b. <span>“Why Ain’cha Rich?”</span> <em>No<span>û</span>s</em> 15 (3): 377–80. <a href="https://doi.org/10.2307/2215439">https://doi.org/10.2307/2215439</a>.
+</div>
+<div id="ref-Podgorski2022" class="csl-entry" role="listitem">
+Podgorski, Aberlard. 2022. <span>“Tournament Decision Theory.”</span> <em>No<span>û</span>s</em> 56 (1): 176–203. <a href="https://doi.org/10.1111/nous.12353">https://doi.org/10.1111/nous.12353</a>.
+</div>
+<div id="ref-Spencer2023" class="csl-entry" role="listitem">
+Spencer, Jack. 2023. <span>“Can It Be Irrational to Knowingly Choose the Best?”</span> <em>Australasian Journal of Philosophy</em> 101 (1): 128–39. <a href="https://doi.org/10.1080/00048402.2021.1958880">https://doi.org/10.1080/00048402.2021.1958880</a>.
+</div>
+<div id="ref-Wedgwood2013" class="csl-entry" role="listitem">
+Wedgwood, Ralph. 2013. <span>“A Priori Bootstrapping.”</span> In <em>The a Priori in Philosophy</em>, edited by Albert Casullo and Joshua C. Thurow, 225–46. Oxford: Oxford University Press.
+</div>
+<div id="ref-Wells2019" class="csl-entry" role="listitem">
+Wells, Ian. 2019. <span>“Equal Opportunity and Newcomb’s Problem.”</span> <em>Mind</em> 128 (510): 429–57. <a href="https://doi.org/10.1093/mind/fzx018">https://doi.org/10.1093/mind/fzx018</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->

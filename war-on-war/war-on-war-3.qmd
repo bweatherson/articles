@@ -1,6 +1,6 @@
 ---
 title: "Gamified Decision Theory"
-author: "Brian Weatherson"
+author: "Anon"
 date: "August 3, 2023"
 format: 
     html:
@@ -78,7 +78,7 @@ require(Rcpp)
 require(tidyverse)
 ```
 
-@fig-second-anti-war shows the game they are playing in tree form. Demons's payoffs are just as you'd expect - they get rewarded iff they figure out how the coin landed. Chooser's payoffs are more complicated, but the big thing to note is they get the biggest rewards if they manage to play Up while Demon makes an incorrect prediction.
+@fig-second-anti-war shows the game they are playing in tree form. We start at the middle, then move left or right depending on the coin flip, up or down depending on Chooser's choice, and at one or other angle depending on Demon's choice. Demons's payoffs are just as you'd expect - they get rewarded iff they figure out how the coin landed. Chooser's payoffs are more complicated, but the big thing to note is they get the biggest rewards if they manage to play Up while Demon makes an incorrect prediction.
 
 ```{r engine='tikz'}
 #| label: fig-second-anti-war
