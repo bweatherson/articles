@@ -1,7 +1,7 @@
 ---
-title: "Gamified Decision Theory"
+title: "Why Ain't Evidentialists Rich?"
 author: "Anon"
-date: "August 3, 2023"
+date: "August 4, 2023"
 format: 
     html:
       theme: 
@@ -29,6 +29,7 @@ format:
       mainfontoptions: Scale = MatchLowercase
       fontsize: 12pt
       linkcolor: black
+      linestretch: 1.4
       link-citations: true
       include-in-header:
         text: |
@@ -50,11 +51,11 @@ Here's what they, and many other proponents of Evidential Decision Theory (EDT) 
 
 > The point of the argument is that if everyone knows that the CDT-irrational strategy will in fact do better on average than the CDT-rational strategy, then it's rational to play the CDT-irrational strategy. [@AhmedPrice2012, 17]
 
-This is what @Lewis1981e called the "Why Ain'cha Rich" argument, and what following @Bales2018 I'll call the WAR argument. I'm going to argue the last step of the WAR argument doesn't follow. Or, at the very least, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.^[Ian @Wells2019 has another case where EDT does worse than CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced, and one aim of this paper is to develop an anti-WAR argument that uses slightly fewer assumptions than Wells does. I'll come back to Wells's case in @sec-wells-ahmed.]
+This is what @Lewis1981e called the "Why Ain'cha Rich" argument, and what following @Bales2018 I'll call the WAR argument. I'm going to argue the last step of the WAR argument doesn't follow. Or, at the very least, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.^[Ian @Wells2019 has another case where EDT does worse than sone versions of CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced, and one aim of this paper is to develop an anti-WAR argument that uses slightly fewer assumptions than Wells does. I'll come back to Wells's case in @sec-wells-ahmed.]
 
 # Coins and Signals {#sec-coinssignals}
 
-This example is a version of a signalling game of the kind introduced by @Lewis1969a. And in particular it's a version of the broadly adversarial kinds of signalling games that are central to the plot of @ChoKreps1987. Again, it will involve three stages.
+This example is a version of a signalling game of the kind introduced by @Lewis1969a. And in particular it's a version of the broadly adversarial kinds of signalling games that are central to the plot of @ChoKreps1987. It will involve three stages.
 
 At the first stage a fair coin is flipped, and the result shown to Chooser, but not to Demon. At the second stage, Chooser will choose Up or Down, and the choice will be publicly announced. At the third stage, Demon will try to guess what the coin showed. Demon knows the payoff table I'm about to show you, and is arbitrarily good at predicting Chooser's strategy. That is, Demon can make accurate predictions of the form "If Heads, Chooser will make this choice, and if Tails, they will make that choice." The payoffs to each player are a function of what happens at each of the three steps, and are given by table @tbl-payoffs-demon-coin. (The payoffs here are all in utils.)
 
@@ -78,7 +79,7 @@ require(Rcpp)
 require(tidyverse)
 ```
 
-@fig-second-anti-war shows the game they are playing in tree form. We start at the middle, then move left or right depending on the coin flip, up or down depending on Chooser's choice, and at one or other angle depending on Demon's choice. Demons's payoffs are just as you'd expect - they get rewarded iff they figure out how the coin landed. Chooser's payoffs are more complicated, but the big thing to note is they get the biggest rewards if they manage to play Up while Demon makes an incorrect prediction.
+@fig-second-anti-war shows the game they are playing in tree form. We start at the middle, then move left or right depending on the coin flip, up or down depending on Chooser's choice, and at one or other angle depending on Demon's choice. Demons's payoffs are just as you'd expect - they get rewarded iff they figure out how the coin landed. Chooser's payoffs are more complicated, but the big things to note are the huge payout if they get to the top-left and Demon does not make a correct prediction, and the generally poor payouts for choosing Down.
 
 ```{r engine='tikz'}
 #| label: fig-second-anti-war
@@ -145,7 +146,7 @@ edge from parent node [below,align=center]{$T$ \\ $0.5$}
 \end{tikzpicture}
 ```
 
-I intend the Demon to be a rational player in a familiar game-theoretic sense. But to translate that into decision-theory terms, it's important to make a few stipulations. Demon predicts Chooser's strategy, that is Chooser's plan about what to do if the coin lands Heads and what to do if the coin lands Tails, before the game starts. They make their decision about what to do after seeing Chooser's actual choice, and updating on this information. If they predict that Chooser will do the same thing however the coin lands, they will flip their own coin to make a guess. So in that case it will be 50/50 whether Demon says Heads or Tails. Also, if they are surprised by what the Chooser does, i.e., if they had predicted Chooser would do one thing however the coin lands, and Chooser does the other thing, Demon will also flip their own coin to make a guess. Finally, Demon's predictions are arbitrarily accurate. It makes the math easiest to assume Demon is correct with probability 1. Some people (myself among them) worry that stipulating the Demon succeeds with probability 1 might take us too close to case of backwards causation, and it's very important that Chooser does not cause Demon's prediction of a strategy. If you have that worry, say that Demon's probability of successful prediction (whichever of the four strategies Chooser opts for) is 1 - ε, where ε is small enough that it doesn't make a difference to what happens.
+I intend the Demon to be a rational player in a game-theoretic sense. But to translate that into decision-theory terms, it's important to make a few stipulations. Demon predicts Chooser's strategy, that is Chooser's plan about what to do if the coin lands Heads and what to do if the coin lands Tails, before the game starts. They make their decision about what to do after seeing Chooser's actual choice, and updating on this information. If they predict that Chooser will do the same thing however the coin lands, they will flip their own coin to make a guess. So in that case it will be 50/50 whether Demon says Heads or Tails. Also, if they are surprised by what the Chooser does, i.e., if they had predicted Chooser would do one thing however the coin lands, and Chooser does the other thing, Demon will also flip their own coin to make a guess.^[A key part of the discussion in @ChoKreps1987 is that in sone cases we can say substantuve things about what a player will do if they are surprised in this sense. But @fig-second-snti-war is not one of these cases.] Finally, Demon's predictions are arbitrarily accurate. It makes the math easiest to assume Demon is correct with probability 1. Some people (myself among them) worry that stipulating the Demon succeeds with probability 1 might take us too close to a case of backwards causation, and it's very important that Chooser does not cause Demon's prediction of a strategy. If you have that worry, say that Demon's probability of successful prediction (whichever of the four strategies Chooser opts for) is 1 - ε, where ε is small enough that it doesn't make a difference to what happens.
 
 Now I want to analyse what Chooser will do if they follow EDT. It should be fairly clear that if the coin lands Heads, Chooser should say Up. The worst possible return from Up is 40, the best possible return from Down is 0. So that's what any theory would recommend, and Chooser will do that whether or not they follow EDT. Indeed, this is so clear that we should assume Demon will predict that Chooser will play Up if the coin lands Heads. So what happens if the coin lands Tails? There are four possibilities here: the two things Chooser might do crossed with the two predictions Demon might make. The expected return to Chooser in these four possibilities is given in @tbl-payout-if-tails.
 
