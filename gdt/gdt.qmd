@@ -180,7 +180,7 @@ What's more controversial is that they are right to adopt a kind of causal decis
 
 The intuitions behind the asymmetric Death in Damascus cases are inconsistent with the Exit Principle that I'll discuss in @sec-indecisive. The Frustrator cases are no problem for a version of CDT that says that idealised agents can always play mixed strategies. Like the game theorists, I will also assume mixed strategies are available, and I'll come back in @sec-mixed to why that assumption should be allowed.
 
-That leaves the point that CDT leaves one poorly off in Newcomb's Problem, while other theories, like evidential decision theory (EDT) leave one well off. This isn't a particular mark against CDT, since other theories, like EDT, leave one poorly off in some situations. Here is one such case.
+That leaves the point that CDT leaves one poorly off in Newcomb's Problem, while other theories, like evidential decision theory (EDT) leave one well off. This isn't a particular mark against CDT, since other theories, like EDT, leave one poorly off in some situations. Here is one such case.^[See @Wells2019 for a slightly more complicated case, and @Ahmed2020 for an argument that Wells's argument is unfair to EDT.]
 
 There are two demons, who will predict what Chooser will do. Both of them are arbitrarily good, though not quite perfect, and their errors are independent. Chooser will play either the left or right game in @tbl-edt-war.
 
@@ -593,7 +593,7 @@ First, I'll note some general reasons for scepticism about this use of the subst
 
 > *Incoherence Test*. A set of attitudinal mental states is jointly incoherent iff it is (partially) constitutive of (at least some of) the states in the set that any agent who holds this set of states has a disposition, when conditions of full transparency are met, to revise at least one of the states. [@Worsnip2021, 132]
 
-This won't capture nearly enough. If probabilism is correct, then non-probabilists about uncertainty like Glenn @Shafer1976 endorse incoherent views. If expectationalism is correct, then non-expectationalist decision theorists, like Lara @BuchakRisk, endorse incoherent views. If classical logic is correct, then intuitionist logicians like Crispin @WrightVaguenessCollection are incoherent. Those three all seem to meet Worsnip's conditions of full transparency, and don't seem disposed to revise their beliefs. Maybe this is just a problem with Worsnip's definition, but it is also a reason to be sceptical that there even is a distinction to be drawn here.^[See also @Heinzelmannnd for a different set of reasons to be sceptical that there is a notion of coherence that can do the work its philosophical defenders want.]
+This won't capture nearly enough. If probabilism is correct, then non-probabilists about uncertainty like Glenn @Shafer1976 endorse incoherent views. If expectationalism is correct, then non-expectationalist decision theorists, like Lara @BuchakRisk, endorse incoherent views. If classical logic is correct, then intuitionist logicians like Crispin @WrightVaguenessCollection are incoherent. Those three all seem to meet Worsnip's conditions of full transparency, and don't seem disposed to revise their beliefs. Maybe this is just a problem with Worsnip's definition, but it is also a reason to be sceptical that there even is a distinction to be drawn here. Wooram @Leend raises some different challenges for Worsnip, and offers a rival theory. But for that theory to work, Lee requires that when a dialethist proposes to solve the Liar Paradox by saying the liar sentence is both true and not true, they are being insincere. The idea is that sincerely saying _p_ requires believing _p_ and not believing its negation. But this simply isn't part of the concept of sincerity, and as much as I find the dialethist solution to the Liar implausible, I think the dialethists I know have been perfectly sincere in offering it. Maybe there is some theory of coherence waiting to be found, but the search for one feels like a degenerating research program.^[See also @Heinzelmannnd for a different set of reasons to be sceptical that there is a notion of coherence that can do the work its philosophical defenders want.]
 
 Even if the substantive/structural distinction can be made precise, and shown to do philosophical work, it won't track the notion game theorists most care about. We can see this with a version of the beer-quiche game @ChoKreps1987, here translated into decision-theoretic language.
 
@@ -742,7 +742,7 @@ I'll write $H_1$ and $T_1$ for the propositions that the first coin lands Heads 
 
 The abstract form of an exit problem with coins.
 :::
-\newpage
+
 Then we get a version of Exit Principle that applies to games like this.
 
 -   **Exit Principle**: Whether a choice is rational for Chooser is independent of whether Chooser chooses before or after they are told the result of the first coin flip.
