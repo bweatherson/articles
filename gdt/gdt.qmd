@@ -25,6 +25,7 @@ format:
             <link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
       mainfont: "ff-scala-sans-pro, sans-serif"
       html-math-method: mathjax
+      self-contained: true
     docx: default
     pdf: 
       geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"

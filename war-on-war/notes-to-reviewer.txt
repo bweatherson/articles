@@ -1,0 +1,36 @@
+Thanks to the editor and the reviewers for incredibly helpful feedback on the paper. I've revised the paper in light of this feedback rather radically. I won't go through the responses line-by-line, since the revisions are extensive enough to make that unhelpful. Rather, I'll go over the big changes.
+
+# Getting rid of example 1
+
+Both reviewers had some questions about whether this should be in, and on reflection I agree that it shouldn't. The biggest reason was the point a reviewer made that the whole argument assumes that what Chooser should do at a step is independent of how they got to that step. I did make that assumption, and in fact I believe it's (probably) right. But it's really not obvious that it's right, and I don't think I was entitled to make it without a thorough defense. And making that defense (and going into the relevant philosophical and game-theoretic literature on both sides of the question) would take me way over the Analysis word limit. It's probably something worthy of a good paper in its own right, but this paper is not going to be it.
+
+# Getting rid of example 3
+
+This was only one paragraph in the original, so it wasn't cut for word length. Rather, it was cut because of the reviewer's suggestion that I say something about how my paper compares to the Wells-Ahmed debate. And, somewhat to my horror, when I went back to my notes on that, I found that by the time I got to example 3, it really didn't add to that debate at all. That is, the key assumption that Wells makes and Ahmed rejects, namely that a case is a fair comparison for WAR purposes even if the compared choosers differ in their belief about what theory they will use in the future, is one that I also make in example 3. At that point the only thing to do is to (re)litigate that point; not to introduce new examples. So I cut that as well.
+
+# Including a discussion of Ahmed and Wells
+
+This was a very good suggestion, and it's now section 3 of the paper. The short version is that Wells's version turns on the choosers (the CDTer and the EDTer) having different beliefs about which theory they will use in the future. Mine does not; Chooser only makes one decision. And while it does matter that it's a matter of chance which situation they make that choice in, in the situation where they differ, it's common knowledge that they would have acted the same way in the other situation. So Ahmed's criticism of Wells, which is that the EDTer and CDTer are in subjectively different situations in Wells's example, doesn't have any bite here. They are in fact in the same subjective state, in the only situation where they make different choices. I also don't really think Ahmed's criticism works, in that I don't think he's successfully identified a way in which Wells's WAR argument differs from his own. And I briefly say why in the paper. But my main point is that this example doesn't require any differing beliefs about what Chooser will do in the future.
+
+# What is CDT?
+
+In the earlier version, and indeed in these notes, I've been using 'CDT' freely as if it is the name of a theory. But that's really not right, and on occasion it matters that it isn't right. There are at least seven different causal decision theories in the current literature, all of which choose 2 boxes in Newcomb because it's the causally dominant option, and all of which disagree with the other six on what to do in identifiable cases. They agree enough that we can sometimes talk about what 'the CDTer' will do. But sometimes the differences really matter.
+
+And the case I'm relying on, my old example 2, is one such case. So I've added a section pointing out the variety of versions of CDT, and noting that one prominent such version, the one Dmitri Gallow has defended in a few papers, gives a different verdict to EDT in my example, and will on average yield more wealth than EDT. This required tinkering a little with the numbers to make it clear that Gallow's theory would have this result, so it's not quite the same as the old example, but it's still similar enough.
+
+# Why do theories do better
+
+In the old version I'd said something at best misleading, arguably false, about why some theories did better than EDT over the long-run in this case. The reviews made it clear to me that what I should say was a bit simpler. Gallow's version of CDT does better than EDT in this case because I picked the numbers carefully enough that it did better. If you pick different numbers, it would do worse. And, this I think is the philosophically important part, if you changed the numbers in ways that were irrelevant to how either Gallow or EDT would actually make a decision given either Heads or Tails, it would do worse. Which theory does better in the long-run is sensitive to factors that both theories agree are irrelevant to decision. That's all good news for my conclusion that WAR arguments are bad; they tell you to look at factors that (almost) all theorists, including EDTers, agree are irrelevant. I spell that out a bit more in section 4, going over how a simple variation in my example changes which theory does better in the long run, without changing any factor that either theory uses to actually make a decision. I think the right conclusion from all this is that long-run wealth considerations shouldn't be used; just make the right decision today and hope that someone hasn't thrown you into a situation where you'd have been better being irrational.
+
+# Getting the details right, and into the paper
+
+In terms of words, the biggest difference between this version and the old one is that I've been much more careful about showing my working. I fully agree that I was being too quick in the first draft. I've still kept it under 4000 words, this is still Analysis, but I go over much more carefully what happens at each step. A few particular things to note, which were not made explicit in the first draft.
+
+- The Demon predicts Chooser's strategy (i.e., what they'll do if Heads, and what they'll do if Tails) before the coin is flipped. Chooser's play has no causal impact on this.
+- Demon is as close to perfect in this prediction as it's possible to be without getting into murky backward causation waters.
+- If Demon is surprised, e.g., if they predicted Chooser would play Up however the coin lands, but they say Down, Demon flips a coin to decide what to do.
+- Given all that, we can work out the expected value to Chooser of each of the four possibilities (play Up vs Down, have Demon predict Up vs Down) if the coin lands Tails. And I've spelled those out (Table 2 in the paper). It was only in spelling these out that I realised I'd have to tinker with the numbers to make it the case that Gallow's theory would unambiguously recommend Up, so being asked to spell these out was very helpful!
+
+# Thank you!
+
+These were incredibly helpful comments. It took me a while to feel at all happy with the changes I made to the paper in light of them. I hope this version is clearer and more satisfactory.
