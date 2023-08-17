@@ -28,6 +28,7 @@ format:
       self-contained: true
     docx:
       reference-doc: my-template.docx
+    epub: default
     pdf: 
       geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
       mainfont: Scala Pro
@@ -105,7 +106,7 @@ The objection is that decision theory isn't actually that helpful for prediction
 
 [^4]: A somewhat similar point is made in the example of the drowning dog on page 216 of @Bonanno2018.
 
-Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says that he really likes seeing rock beat scissors, so he will pay whoever wins by playing rock \$1. Assuming that Row and Column have no ability to collude, the effect of this will be to shift the payouts in the game they are playing from left table to right table, where *x* is the value of the dollar compared to the value of winning the game. This changes the game they are playing from @tbl-rps-basic to @tbl-rps-modified.
+Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says that he really likes seeing rock beat scissors, so he will pay whoever wins by playing rock \$1. Assuming that Row and Column have no ability to collude, the effect of this will be to shift the payouts in the game they are playing from left table to right table, where *c* is the value of the dollar compared to the value of winning the game. This changes the game they are playing from @tbl-rps-basic to @tbl-rps-modified.
 
 ::: {#tbl-rps layout-ncol="2"}
 |              |          |           |              |
@@ -120,16 +121,16 @@ Imagine Row and Column are playing rock-paper-scissors. A bystander, C, says tha
 |              |          |           |              |
 |:------------:|:--------:|:---------:|:------------:|
 |              | **Rock** | **Paper** | **Scissors** |
-|   **Rock**   |   0,0    |   -1,1    |   1+*x*,-1   |
+|   **Rock**   |   0,0    |   -1,1    |   1+*c*,-1   |
 |  **Paper**   |   1,-1   |    0,0    |     -1,1     |
-| **Scissors** | -1,1+*x* |   1,-1    |     0,0      |
+| **Scissors** | -1,1+*c* |   1,-1    |     0,0      |
 
 : Modified game {#tbl-rps-modified}
 
 Two versions of Rock-Paper-Scissors
 :::
 
-The surprising prediction is that this will *decrease* the frequency with which rock is played, and the larger *x* is, the larger the decrease will be. Simple rules like "When behaviour is rewarded, it happens more often" don't always work in strategic settings, and it takes some care to tell when they do work.
+The surprising prediction is that this will *decrease* the frequency with which the bystander gets their way. The incentive will not make either party play rock more often, they will still play it one third of the time, but the frequency of scissors will decrease, so the _rock smash_ outcome will be less frequent. Moreover, the bigger the incentive, the larger this increase will be^[The proof is in Appendix One.]. Simple rules like "When behaviour is rewarded, it happens more often" don't always work in strategic settings, and it takes some care to tell when they do work.
 
 The caveat is that there is a reason that this particular idealisation is chosen, at least as the first attempt. There are a lot of stylised facts about people that we could use in a model of behaviour. In game theory we concentrate on the ways in which people are, at least approximately much of the time, somewhat rational. People who prefer vanilla to chocolate really do buy vanilla more than chocolate. We could also choose stylised facts that are not particularly rational. But there is a worry that these will not remain facts, even approximately, when the stakes go up. And for some purposes, what people do in high stakes situations might be really important. If you think that people are more careful in high stakes situations, and that this care translates into more rational action, and it's particularly important to make the right predictions in high stakes cases, it makes sense to focus on idealisations that are also true of perfectly rational people.
 
@@ -456,7 +457,7 @@ And if there is an intuition here, it is that it's better to choose Down rather 
 
 [^19]: The theory offered in @Spencer2021b agrees with intuition here.
 
-Exit Principle can also be used to argue against the non-expectationist theory offered by Lara @BuchakRisk, but that argument is more complicated, and I'll leave it to an appendix.
+Exit Principle can also be used to argue against the non-expectationist theory offered by Lara @BuchakRisk, but that argument is more complicated, and I'll leave it to Appendix Two.
 
 # Dual Mandate {#sec-dualmandate}
 
@@ -706,7 +707,50 @@ GDT does require that mixed strategies are available to choosers, on pain of say
 
 [^32]: Thanks to many people for conversations on these topics, especially Dmitri Gallow and Ishani Maitra, and audiences and ACU and UBC, and students in my group choices classes at University of Michigan.
 
-# Appendix on Risk-Weighted Utility {#sec-buchak .unnumbered}
+# Appendix One: Rock-Paper-Scissors {#sec-rps .unnumbered .appendix}
+
+This appendix shows how to find the equilibrium of @tbl-rps-modified, the version of Rock-Paper-Scissors where it is common knowledge that the players will get a bonus of $c > 0$ if they will while playing rock. The game is symmetric, so we'll just work out Column's strategy, and the same will go for Row.
+
+There is no pure strategy equilibrium of the game, so we have to find a mixed strategy for each player. And a mixed strategy equilibrium requires that every option that has positive probability has equal expected returns. (If that didn't happen, it wouldn't make sense to mix between them.) Let $x$ be the probability (in equilibrium) that Column plays Rock, $y$ that they play Paper, and $z$ that they play Scissors. Given that, the expected return of the three options for Row are:
+
+```{=tex}
+\begin{align*}
+V(Rock) &= z(1+c) - y \\
+V(Paper) &= x - z \\
+V(Scissors) &= y - x
+\end{align*}
+```
+We know that these three values are equal, and that $x+y+z=1$. From this we can start making some deductions.
+
+Since $x-z=y-x$, it follows that $x=\frac{y+z}{2}$. And that plus the fact that $x+y+z=1$ implies that $x=\frac{1}{3}$. So we've already shown one of the surprising results; adding in the bonus $c$ will not change the probability with which Rock is played. Substituting this value for $x$ into the fact that Rock and Paper have the same payout, we get the following.
+
+```{=tex}
+\begin{align*}
+&& \frac{1}{3} - z &= z(1+c) - y \\
+\Rightarrow && \frac{1}{3} + y &= z(2+c) \\
+\Rightarrow && z &= \frac{y + \frac{1}{3}}{2 + c}
+\end{align*}
+```
+
+Now we can substitute the values for $x$ and $z$ into the fact that $x+y+z=1$.
+
+```{=tex}
+\begin{align*}
+&& x + y + z &= 1  && \\
+\Rightarrow && \frac{1}{3} + y + \frac{y + \frac{1}{3}}{2 + c} &= 1 && \\
+\Rightarrow && (2+c) + 3y(2+c) + (3y+1) &= 3(2+c) && \text{Multiply both sides by } 3(2+c) \\
+\Rightarrow && 3cy + 9y + c + 3 &= 3c + 6 \\
+\Rightarrow && 3cy + 9y &= 2c + 3 \\
+\Rightarrow && y &= \frac{2c + 3}{3c + 9} \\
+\Rightarrow && z &= \frac{3}{3c + 9} && \text{From previous derivation for }z
+\end{align*}
+```
+
+So each option has expected payout $\frac{c}{3c+9}$. And there is one unsurprising result, namely that the expected return to the players increases as $c$ increases. But note that $x$, the probability that a player plays Rock, is invariant as $c$ changes. And $z$, the probability that a player plays Scissors, goes down as $c$ goes up.
+
+It is intuitive that announcing the reward makes each player less likely to play Scissors. And that in turn puts down downward pressure on playing Rock. What you need some theory (and algebra) to show is that this downward pressure is exactly as strong as the upward pressure that comes from the incentive for playing Rock supplied by the bystander. Intuition alone can tell you what the various forces are that are acting on a chooser; the role of theory is to say something more precise about the strength of these forces.
+
+# Appendix Two: Risk-Weighted Utility {#sec-buchak .unnumbered .appendix}
 
 This appendix goes over a problem for Lara Buchak's risk-weighted utility theory, based around the Exit Principle from @sec-indecisive. Buchak's theory concerns normal decision problems, where there are no demons lying around, so we have to modify Exit Principle a little to make it apply. The modifications still leave it recognisably the same principle though. And the main point of this appendix is to show that it is possible to theorise about normal and abnormal decision problems using the same tools.
 
