@@ -1,0 +1,16 @@
+# Intro
+
+In the early 1950s, David Blackwell wrote two important papers proving a very strong result about the value of information. In the years since there have been several other similar results, but it isn't always clear how they relate to the original results that Blackwell proved. Recently two papers, one sole-authored by Kevin @Dorst2020, one co-authored by Dorst with four others (@DorstEtAl2021), have developed results that are stronger than Blackwell's in some respects, but weaker in some others.
+
+The first aim of this note is to ask whether the results Dorst and colleagues get can be generalised so that they are no longer weaker (in these respects) than Blackwell's. The answer is negative; the attempts to generalise them run into counterexamples. This appears relevant to the philosophical significance of the results, though we'll largely leave the question of philosophical significance to others.
+
+The second aim is to use Blackwell's original result to put some order on the literature on the value of information. We identify five aspects of Blackwell's original result, and use these five aspects to classify various contributions to the philosophical debate on the value of information. We think the resulting classification helps make sense of how the various contributions relate to one another.
+
+# Blackwell
+
+Blackwell proved the following theorem, which we'll call **Blackwell-value**.^[This is not to say that **Blackwell-value** is the only thing proved in these papers; we're simplifying a lot here. We're also using somewhat different terminology to Blackwell, in order to make it easier to see how his theories relate to the current debates.] We'll first state this informally, then provide a more careful statement.
+
+**Blackwell-Value**  
+An experiment $f$ is guaranteed to be more valuable than $g$ iff $f$ is more informative than $g$.
+
+
