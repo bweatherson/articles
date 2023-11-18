@@ -1,0 +1,74 @@
+# Deference Posts
+
+## Blackwell
+
+Go over the four things that are distinctive about Blackwell
+
+1. Infinite
+2. Probabilistic
+3. Comparative
+4. Biconditional
+
+And one way in which result is weaker than it might be: partitional
+
+## Game Theory Book
+
+Writing book on the decision theory implicit in textbook versions of game theory, and how it's not just CDT, though it is kind of CDT.
+
+1. Examples, especially stag hunt
+2. Bring dynamic choice in really early on, flag the dual mandate
+3. Selectional, rather than evaluative (give numerical values) or preferential (develop a preference ordering)
+
+The last two are related. What's the point of saying that one unselected option is better than another. Only point is counterfactual: if they were the only two available, which would be chosen. But that's incoherent in the context of dynamic choice. Imagine you have a two-way choice, then another two-way choice, so eight possible choices. (Footnote: why not four.) It doesn't make sense to say that all A is unavailable, but ABB is available, and BAA are available.
+
+This is why not moved by Dmitri on instability; don't think a preference ordering is the way to go.
+
+## What is Money
+
+Surplus of liquidity premium over carrying costs.
+
+1. What are carrying costs, and how do you distinguish from yield.
+2. What is liquidity? **Easily exchangable** for **many things** in **many circumstances**. All three are important.
+3. Why is it rational to pay for it?
+
+Flag for future post: do you need imprecise probabilities to generate liquidity premium?
+
+Examples
+
+- A suitcase full of pennies - not money!
+- A Venmo account with a high balance - definitely money!
+- A shoebox full of Walmart gift cards - more or less money
+- Cigarettes in a prison yard, bottles of rum in early colonial Sydney - very money!
+- A house - not money, but tricky if you don't distinguish yield from carrying costs.
+
+Philosophical work often focusses on rules for being currency. But currency not equal money. And what makes those rules special is not that they are definitional, but that they guarantee liquidity (in context)
+
+## What is weight
+
+Old view: Range of imprecise probability
+
+Problem: Dilation
+Text: Gibbon example very nice example of dilation in real world
+Solution: Weight is incoherent, this is the best way of solving problem.
+
+Problem: POI
+Text: Keynes is very clear he believes in a (heavily restricted) version of the POI
+But a pure application of the POI doesn't max out weight
+
+New view: Weight as expected future variance in value
+Odd effect: Can have weight without imprecise probability. I think that's ok
+Upside: Explans the relationship between weight and liquidity premium
+High weight bets, like suitcases full of banknotes, are very likely to be useful come what may. 
+Connection to imprecise probability: High range guarantees low weight, because you can't predict future animal spirits.
+That's why Tesla stock isn't really money; you don't know it will be there in an emergency.
+
+## Dual Mandate chapter
+
+## Single Choice Principle
+
+Include one quick application of it
+
+## Closure Chapter
+
+Problem - seems to lead to closure failures or scepticism (Frankie Lee example)
+Solution - a decision theory that is sensitive to deliberation costs
