@@ -11,6 +11,18 @@ Go over the four things that are distinctive about Blackwell
 
 And one way in which result is weaker than it might be: partitional
 
+## Nesting 
+
+- Good as really simple instance of Blackwell
+- Geanokopoulos as dropping the two other things
+- Important point: only partional on one side
+- Other important point: needs finiteness 
+
+## Nesting and Probability
+
+
+# Game Theory as Decision Theory Posts
+
 ## Game Theory Book
 
 Writing book on the decision theory implicit in textbook versions of game theory, and how it's not just CDT, though it is kind of CDT.
@@ -22,6 +34,15 @@ Writing book on the decision theory implicit in textbook versions of game theory
 The last two are related. What's the point of saying that one unselected option is better than another. Only point is counterfactual: if they were the only two available, which would be chosen. But that's incoherent in the context of dynamic choice. Imagine you have a two-way choice, then another two-way choice, so eight possible choices. (Footnote: why not four.) It doesn't make sense to say that all A is unavailable, but ABB is available, and BAA are available.
 
 This is why not moved by Dmitri on instability; don't think a preference ordering is the way to go.
+
+
+## Dual Mandate chapter
+
+## Single Choice Principle
+
+Include one quick application of it
+
+# Keynes Posts
 
 ## What is Money
 
@@ -62,13 +83,23 @@ High weight bets, like suitcases full of banknotes, are very likely to be useful
 Connection to imprecise probability: High range guarantees low weight, because you can't predict future animal spirits.
 That's why Tesla stock isn't really money; you don't know it will be there in an emergency.
 
-## Dual Mandate chapter
+## Keynes and Schelling
+My reading of chapter 2
+Ways it could fail:
 
-## Single Choice Principle
+- Payoffs aren't right for coordination game
+- Individual contracts mean it isn't any kind of coordination game at all; relevant to the rolling assumption throughout the GT that workers doing the same job at the same firm get the same pay.
+- There is another focal point equilibrium; strike when the COLA is insufficient given the official CPI measures.
 
-Include one quick application of it
+# KAHIS Posts
 
 ## Closure Chapter
 
 Problem - seems to lead to closure failures or scepticism (Frankie Lee example)
 Solution - a decision theory that is sensitive to deliberation costs
+
+## Section 7.3 on grounding
+
+## Section 7.4 on Das on interests
+
+## Inquiry chapter (when it is written!!!)
