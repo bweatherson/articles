@@ -6,7 +6,7 @@ format:
       template-partials:
         - title-slide.html
       slide-number: c/t
-      menu: false
+      menu: true
       highlight-style: github-dark
       theme: teodt.scss
       logo: UM.svg
