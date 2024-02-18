@@ -1,0 +1,711 @@
+---
+title: "The End of Decision Theory"
+author: "Brian Weatherson"
+format:
+  revealjs: 
+    theme: solarized
+editor: source
+---
+
+# Overview
+
+## Decision Theory
+
+This talk is about decision theory, i.e., this field:
+
+![PhilPapers subject directory for Decision Theory](philpapers_decisiontheory.png){width="40%"}
+
+## Two Big Questions
+
+1.  What question are decision theorists trying to answer?
+2.  Why is it a worthwhile question to ask and answer?
+
+## What Question
+
+Decision theory is about trying to describe what a certain kind of idealised decider will do.
+
+## Why Care About That Question
+
+Negative claim
+
+:   Not because it helps us make decisions in anything like normal circumstances.
+
+Positive claim
+
+:   Because it helps us predict and understand what people will do in an interesting range of cases.
+
+# Getting at the Question
+
+## Methodology
+
+-   Figure out what question decision theorists must be asking by looking at what answers they give.
+-   Concentrate on questions that everyone (in the field) answers the same way.
+
+## Betting Example
+
+-   Chooser has \$110, and is in a sports betting shop.
+-   There is a basketball game about to start, between two teams they know to be equally matched.
+-   Chooser has three options: bet the \$110 on Home, bet it on Away, keep money.
+-   If they bet and are right, they win \$100 (plus get the money back they bet), if they are wrong, they lose the money.
+
+## Betting Example
+
+-   Given standard assumptions about how much Chooser likes money, literally everyone in decision theory thinks Chooser should not bet.
+-   So decision theory is not in the business of answering this question:
+-   *What action will produce the best outcome?*
+
+## Axiology
+
+-   We do have a discipline in philosophy that is all about evaluating outcomes: axiology.
+-   It's a worthwhile project.
+-   But it's not what decision theorists are up to.
+
+## Why Not Axiology?
+
+Intuitive Answer
+
+:   It isn't very practical in this case. Chooser can't bet on the winner.[^the_end_of_decision_theory-1]
+
+[^the_end_of_decision_theory-1]: Actually, it's a bit more complicated than that, but let's stick with this characterisation for now.
+
+## Helpful Advice
+
+-   Philosophical decision theory is not in the business of providing helpful advice to choosers.
+-   We can see this by another example.
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE, cache=TRUE}
+require(tidyverse)
+require(TSP)
+require(maps)
+
+theme_map <- function(base_size=9, base_family="") {
+  require(grid)
+  theme_bw(base_size = base_size, base_family = base_family) %+replace%
+    theme(axis.line = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.background = element_blank(),
+          panel.border = element_blank(),
+          panel.grid = element_blank(),
+          panel.spacing = unit(0, "lines"),
+          plot.background = element_blank(),
+          legend.justification = c(0,0),
+          legend.position = c(0,0)
+    )
+}
+
+theme_set(theme_map())
+
+all_states <- map_data("state") %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  select(state = region)
+
+all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+                     "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", 
+                     "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", 
+                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
+                     "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+
+used_states <- 1:49
+
+long_states <- all_states$state[used_states]
+short_states <- all_states$code[used_states]
+
+data("USCA312")
+data("USCA312_GPS")
+
+cities <- as_tibble(as.matrix(USCA312))
+
+city_numbers <- tibble(
+  id = 1:312,
+  thecities = colnames(cities)
+) %>% 
+  mutate(used_city = case_when(str_sub(thecities, -2) %in% short_states  ~ 1,
+                               TRUE ~ 0))
+
+the_city_numbers <- filter(city_numbers, used_city == 1)$id
+
+
+our_cities <- cities %>% 
+  select(all_of(the_city_numbers)) %>% 
+  slice(the_city_numbers)
+
+our_gps <- USCA312_GPS %>% 
+  slice(the_city_numbers) %>% 
+  rowid_to_column()
+
+city_matrix <- as.matrix(our_cities)
+
+rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
+
+## Fine tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion")
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+
+## Not good tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="cheapest_insertion", start = 17) # - Very messy
+
+## Generate tour by longitude - really bad
+#tour_line <- TOUR(arrange(our_gps, long)$rowid, tsp = as.TSP(city_matrix))
+
+## Best tour
+load("tour_line.RData")
+
+#tour_line <- TOUR(bad_path, tsp = as.TSP(city_matrix))
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+#tour_length(tour_line)
+
+# Turn tour to map path
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states) 
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+#  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  labs(x = "") +
+  theme(axis.title.x = element_text())
+#tour_length(tour_line)
+tour_map
+
+#str_c(our_gps$name, sep = "; ", collapse = "; ")
+```
+
+-   Task: find the shortest path that goes through each of these cities.
+
+## Answer
+
+-   Literally every philosophical decision theory on the market says that one should choose the path that's actually shortest.
+-   That's not particularly helpful advice!
+
+## Helpful Advice
+
+Now as it turns out there are various helpful things you can say here.
+
+Farthest Insertion Algorithm
+
+:   Start with an arbitrary city. At each stage, add a city to the path by finding the point to insert it into the path that will add the least distance. The city you add should be the one **farthest** from the existing path.
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE, cache=TRUE}
+theme_set(theme_map())
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+#  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+
+Not a bad path, but not the best.
+
+## More Good Advice
+
+Delete pairs of edges and find the optimal replacement for that pair, until there are no benefits from doing this deletion.
+
+-   This will give you something very close to the original, but typically a bit shorter. And here it knocks off a few hundred miles.
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE, cache=TRUE}
+theme_set(theme_map())
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "two_opt", tour = tour_line)
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+#  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+
+## Making Adjustments
+
+::: {layout-ncol=2}
+```{r echo=FALSE, cache=TRUE, fig.width=6}
+require(ggrepel)
+theme_set(theme_map())
+
+
+swmich <- our_gps %>% 
+  filter(long > -87.5, long < -85, lat > 40.5, lat < 43) %>% 
+  mutate(name = str_remove(name, ", MI")) %>% 
+  mutate(name = str_remove(name, ", IN"))
+  
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap(xlim=c(-88,-85), ylim = c(41.5,43)) +
+  geom_text_repel(data = swmich, aes(x = long, y = lat, label=name), inherit.aes = FALSE) +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+    labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+```{r echo=FALSE, cache=TRUE, fig.width=6}
+theme_set(theme_map())
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "two_opt", tour = tour_line)
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap(xlim=c(-88,-85), ylim = c(41.5,43)) +
+  geom_text_repel(data = swmich, aes(x = long, y = lat, label=name), inherit.aes = FALSE) +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+    labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+:::
+
+## Unlimited Computing
+
+-   If you have unlimited computer power, you could brute force your way through all 257! paths.
+-   Or even with a bit less computing power (but with more mathematical knowledge than before) you can come up with the following map.
+
+------------------------------------------------------------------------
+
+```{r echo = FALSE, cache = TRUE}
+my_list <- as.integer(unlist(strsplit("0,84,59,240,13,198,121,58,102,89,170,20,212,135,231,127,136,107,147,17,151,97,24,142,162,228,87,229,194,206,116,138,244,158,61,108,207,44,54,11,132,9,55,143,26,86,103,47,117,7,96,216,46,251,95,184,69,179,250,174,153,183,242,15,99,119,110,181,248,4,249,164,10,234,71,148,109,152,161,246,222,42,33,150,137,149,100,219,252,175,78,34,30,38,123,130,134,57,173,171,12,16,144,36,32,168,235,2,208,239,25,226,186,35,74,254,167,223,245,39,1,51,256,45,8,56,221,60,98,50,124,129,31,146,159,77,230,118,104,145,83,125,232,6,65,81,19,189,120,106,18,92,112,215,90,49,115,178,139,210,94,133,187,163,28,43,238,62,218,192,53,220,111,82,237,156,73,247,196,233,113,114,191,126,157,213,214,64,243,41,105,67,185,70,225,68,193,140,190,79,141,27,166,180,211,23,93,101,37,169,155,197,176,29,217,241,253,21,209,227,172,195,75,76,22,154,201,204,202,224,188,182,40,85,14,203,128,160,199,200,255,122,80,165,236,72,205,3,88,91,48,63,52,177,66,5,131",",")))
+my_list_adj <- my_list + 1
+tour_line <- TOUR(my_list_adj, tsp = as.TSP(city_matrix))
+
+theme_set(theme_map())
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+#  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+
+I'm not sure if this is best, but it's the best I could do, and it involved applying black box algorithms I don't understand.
+
+## Where We're At
+
+Let's summarise these two cases in a table.
+
+|                 |    Betting    |     Salesman     |
+|-----------------|:-------------:|:----------------:|
+| Best outcome    | Bet on winner |  Shortest path   |
+| Decision theory |     Pass      |  Shortest path   |
+| Best advice     |     Pass      | Learn algorithms |
+
+Decision theory is neither the theory of what is best to do, nor what is advisable to do.
+
+## So What Is It?
+
+Imagine a version of Chooser with knowledge as it is, and computational powers as they might be.
+
+-   So for any mathematical problem, they can do it instantly.
+-   Ask, what would they do?
+
+## Decision Theory as Idealisation
+
+They will pass in bet, and choose the shortest path.
+
+-   The mathematical work will be immense.
+-   They have to calculate the path length for each of 257! paths.
+-   And they have to find the minimum length among all of them.
+-   But setting computational costs to zero, this is easily do-able.
+
+## Technical Detour
+
+Most philosophical decision theory concerns decisions under uncertainty, not decisions like Salesman that are made under certainty.
+
+-   But the structure is still the same.
+
+## Technical Detour
+
+They say that for each option, you should loop through the possible states of the world, in each case multiplying something (usually a probability) by something else (usually a utility), and then summing the results. Then you choose the maximum.
+
+-   That's exactly the same technical task as solving Salesman by brute force.[^the_end_of_decision_theory-2]
+
+[^the_end_of_decision_theory-2]: Actually one step harder because of the multiplication, but otherwise the same.
+
+## Summary
+
+Decision theory describes what a particular kind of idealised agent **will** do.
+
+- I've bolded **will** because it's going to turn out that's the important modal to use here; as opposed to *should*.
+- If there is any normativity here, it's in the **idealised** part of that sentence, not the modal.
+
+# Idealisations as Life Goals
+
+## A Modest Proposal
+
+Decision theory is relevant to how we should act because:
+
+1. It tells us that idealised people do use decision theory, and
+2. We should try to be like idealised people.
+C.  We should try to use decision theory. 
+
+---
+
+![I think this stands for What Would Jeffrey Do?](bracelet.jpg)
+
+## First Objection - Knowing the Inputs
+
+To use decision theory as a guide to action, I need to know the utility of the possible states. 
+
+- Knowing ordering isn't enough, need cardinality of each utility.
+- I can only ever tell that the utility of A is half way between that of B and C by thinking about whether A is better or worse to take than a 50/50 bet on B or C.
+- I need to make decisions to get the inputs to decision theory.
+- And I think this is the usual case.
+
+## Second Objection - The General Theory of the Second Best
+
+In general, it's not true that one should try to approximate what the ideal is like.
+
+---
+
+![_The General Theory of the Second Best_, by R. G. Lipsey and Kelvin Lancaster, The Review of Economic Studies, 1956](lipsey.png)
+
+This is one of the most philosophically important economics papers ever published.
+
+## Second Best
+
+Often times, the right thing to do is something whose value consists in mitigating the costs of our other flaws.
+
+- We should, especially in high stakes settings, stop and have a little think before acting.
+- The "ideal agent" of decision theory never stops to have a think.
+- Stopping is costly, and **they** don't gain anything from it.
+
+## Second Best
+
+- The ideal agent does lots of things we don't do.
+- They always take reasonable hedges against costly possibilities, and they never stop to have a think.
+- Knowing that the ideal agent is *F* doesn't tell us whether we should try to be *F* unless we also know that *F* is more like the first of these than the second.
+- And decision theory, in anything like its current form, is not particularly helpful on this score.
+
+## Third Objection - The Yoda Objection
+
+Decision theory doesn't say what one should try or not try, it says what one should do.
+
+- So it's weird to infer something about trying from a theory about trying.
+
+## Yoda
+
+I think there's something importantly right about this - decision theory gives criteria of correctness not methods of deliberation - but that in turn shows us why it might be useful.
+
+
+# Idealisations as Models
+
+## Luck
+
+One thing that decision theory is useful for is sorting bad decisions from bad luck.
+
+- This is important in assessing spur-of-the-moment decisions on whether to gamble or not in, e.g., sporting situations.
+- But I'm not sure it is important beyond that.^[I used to think this was a significant project for moral and legal philosophy, but I've changed my mind on this, and am more than happy to talk about why in Q&A.]
+
+## Two Notions of Idealisation
+
+In philosophy we use the word 'idealisation' for two rather different kinds of thing.
+
+1. Perfect
+2. Simple
+
+## Two Notions of Idealisation
+
+It's easy to come up with things that are one but not the other.
+
+1. Whoever the greatest writer or painter is, they aren't simple.
+2. A point mass is not perfect in any sense, but it is a very useful simplication in reasoning.
+
+## Idealisations in Decision Theory
+
+Decision theory provides idealisations in the second sense - they are **simplifications**.
+
+- Just like the point masses we use in the ideal gas law, they say not what should happen, but what would happen in the absence of certain complications.
+
+## Idealisations in Decision Theory
+
+Why do I say it isn't the perfection kind?
+
+1. As already noted, it's bad advice. Don't spend zero seconds on hard but important math problems, like your idealised self does.
+2. But the idealised self isn't really perfect - they have very restricted information.
+
+## Idealisations in Decision Theory
+
+The idealised self that gets used is god-like in one respect - computational ability - but human-like in another - informational awareness.
+
+- That's a common feature of idealised models.
+- You abstract away from one feature, but not others.
+
+## Why Care?
+
+That's what we do, but why do we do it?
+
+- Because sometimes these models are enlightening.
+- Sometimes, the fact that we have computational limitations is not relevant to predicting/explaining/understanding what we will do.
+
+## Really, Why Care?
+
+It's tempting to identify these with high stakes situations, since those are ones where we'll throw enough computational resources at the problem that we have god-like powers.
+
+- But that isn't quite right.
+- In some high stakes cases, we also throw enough investigative resources at the problem that holding actual knowledge fixed is a bad modeling assumption.
+
+## Informational Limitations
+
+What we need are cases where there are principled limitations to our informational capacities, such as,
+
+1. Cases where the information concerns the future; or 
+2. Cases where someone has (or may have) just as strong an incentive to hide information from us.
+
+I'll end with a discussion of an important instance of the second.^[Photo of George Akerlof on next slide by Yan Chi Vinci Chow.]
+
+## Akerlof on Lemons
+
+::: {.columns}
+
+:::: {.column width=35%}
+
+![](akerlof.jpg){width=80% height=80%}
+
+::::
+
+:::: {.column width=65%}
+
+![](lemon.jpg){width=80% height=80%}
+
+::::
+
+:::
+
+## Akerlof on Lemons
+
+::: {.columns}
+
+:::: {.column width=35%}
+
+![](akerlof.jpg){width=80% height=80%}
+
+::::
+
+:::: {.column width=65%}
+
+![](vw.jpeg){width=80% height=80%}
+
+::::
+
+:::
+
+## A 20th Century Puzzle
+
+Used cars sold at a huge discount to new cars, even when the cars were just a few months old with almost no usage.
+
+- There was no agreed upon explanation for this, with the most common theory being that it reflected a preference/prejudice on the part of buyers.
+
+## Akerlof's Theory
+
+Make the following assumptions.
+
+1. Cars vary a lot in quality, even coming from the same production line.
+2. Sellers of used cars know how good this token car is.
+3. Buyers of used cars do not; they only know how good the model is in general.
+4. People rarely sell cars they just bought.
+5. Everyone involved is an expected utility maximiser.
+
+## Akerlof's Theory
+
+Akerlof built a formal model with the following properties.
+
+- The most common reason to sell a car one just bought is the discovery that it was a bad instance of that kind of car.
+- Knowing this, buyers of used cars demanded a big discount in exchange for the possibility they were buying a dud.
+- Everyone is acting rationally within the model, given their asymmetric information.
+
+## Akerlof's Theory
+
+If he was right (and I basically think he was) you'd expect the used car discount to fall if either of the following things happened.
+
+1. Production lines got more reliable, and cars off the same line were more similar to one another; or
+2. Buyers had access to better tools to judge the quality of used cars.
+
+By 2020 both of those things had happened, and the used car discount was almost zero.
+
+## Back To Philosophy
+
+You can't build models like this without a theory of rational action under uncertainty.
+
+- And that's the payoff of philosophical decision theory.
+- It's an essential input to useful models, like this one.
+
+## Consequences for Decision Theory
+
+The thing about explanatory models is that they can have very limited scope.
+
+- An explanation of this particular election doesn't have to generalise.
+- Why did Democrats do so well in last month's US elections? Because of a backlash to Republican attacks on abortion rights.
+- Objection: That doesn't explain the poor results of Labour in the 2019 UK election.
+- Reply: Who cares? That's no reason to think it's the wrong explanation of this election.
+
+## Consequences for Decision Theory
+
+This matters because a lot of people in decision theory assume that a good decision theory will have something to say about every possible choice situation.
+
+- They say this because they think decision theory is in the business of giving advice, and you don't know what situation your advisee will be in.
+
+## Consequences for Decision Theory
+
+This matters because a lot of people in decision theory assume that a good decision theory will have something to say about every possible choice situation.
+
+- But if you're in the business of explanation, it's fine to say that the theory only applies in some cases, and it only provides explanations in those cases.
+
+## Consequences for Decision Theory
+
+There are (at least) two interesting notions around here:
+
+1. What the ideal decider would do in a particular situation.
+2. What it would be advisable for a real life human to do in this situation.
+
+- These come apart in Traveling Salesman cases, and we should keep open the possibility that they also come apart in cases that philosophers talk about.
+
+## For Another Day
+
+At this point you might expect that I'd have a theory that does go silent on a bunch of hard cases, and which explains away a bunch of intuitions about cases as intuitions about advisability, not about what an ideal decider does, and you'd be right on both counts.
+
+- And I'm happy to talk about that theory (and those cases) at literally any length people want.
+- But it's mostly for another talk.
+
+## Conclusions
+
+- Decision theory provides idealisations.
+- These are not things we should aim for, but simplifications that play a role in explanations.
+
