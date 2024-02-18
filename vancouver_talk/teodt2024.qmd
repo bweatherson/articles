@@ -2,8 +2,14 @@
 title: "The End of Decision Theory"
 author: "Brian Weatherson"
 format:
-  revealjs: 
-    theme: solarized
+  revealjs:
+      template-partials:
+        - title-slide.html
+      slide-number: c/t
+      menu: false
+      highlight-style: github-dark
+      theme: teodt.scss
+      logo: UM.svg
 editor: source
 ---
 
@@ -15,14 +21,38 @@ This talk is about decision theory, i.e., this field:
 
 ![PhilPapers subject directory for Decision Theory](philpapers_decisiontheory.png){width="40%"}
 
+## Example Puzzle
+
+Imagine that Chooser is going to choose Up or Down, and there is a Demon who is very good at predicting Chooser's choice. 
+
+Chooser's payoff is a function of their choice and Demon's prediction, as shown on this table.
+
+|        |   **PU**   |   **PD**   |
+|:------:|:----------:|:----------:|
+|  **U** |      3     |     0      |
+|  **D** |      2     |     2      |
+
+## Four Answers
+
+1. Up is the only correct choice.
+2. Down is the only correct choice.
+3. Both Up and Down are correct choices.
+4. More information is needed to say what the correct choice.
+
+All four answers are defended in the literature.^[More accurately, for each answer, and theory that implies that answer is defended. Few people focus on exactly this puzzle, which is unfortunate.]
+
 ## Two Big Questions
 
-1.  What question are decision theorists trying to answer?
+1.  If those are the possible answers, what precisely is the question?
 2.  Why is it a worthwhile question to ask and answer?
 
 ## What Question
 
 Decision theory is about trying to describe what a certain kind of idealised decider will do.
+
+The idealisation here is more like the idealisations of science than of ethics.
+
+When we talk about an **ideal decider**, that's more like talking about an **ideal gas** than about an **ideal advisor**.
 
 ## Why Care About That Question
 
@@ -34,12 +64,21 @@ Positive claim
 
 :   Because it helps us predict and understand what people will do in an interesting range of cases.
 
+## Aside on David Lewis
+
+Lewis defended a third answer to the questions.
+
+He decision theory was about articulating part of the theory of rationality that goes into the theory of mental content, via the notion of constitutive rationality.
+
+I don't entirely agree, but I'm not going to engage with that here. His answers are closer to mine than the ones I'm mostly opposing here.
+
 # Getting at the Question
 
 ## Methodology
 
--   Figure out what question decision theorists must be asking by looking at what answers they give.
--   Concentrate on questions that everyone (in the field) answers the same way.
+- Figure out what question decision theorists must be asking by looking at what answers they give.
+- Concentrate on questions that everyone (in the field) answers the same way.
+- I said earlier there was a four-way disagreement on one particular puzzle; here I'll turn to questions where all the parties to that debate agree. 
 
 ## Betting Example
 
@@ -50,7 +89,7 @@ Positive claim
 
 ## Betting Example
 
--   Given standard assumptions about how much Chooser likes money, literally everyone in decision theory thinks Chooser should not bet.
+-   Given standard assumptions about how much Chooser likes money, all the decision theories I'm discussing say Chooser should not bet.
 -   So decision theory is not in the business of answering this question:
 -   *What action will produce the best outcome?*
 
@@ -200,7 +239,7 @@ tour_map
 
 ## Answer
 
--   Literally every philosophical decision theory on the market says that one should choose the path that's actually shortest.
+-   All the decision theories I'm discussing say that one should choose the path that's actually shortest.
 -   That's not particularly helpful advice!
 
 ## Helpful Advice
@@ -372,6 +411,16 @@ tour_map
 ```
 :::
 
+## Salesman
+
+For someone with normal amounts of computing power available, what they should do when faced with a Salesman problem is something like:
+
+1. Run an insertion algorithm; and
+2. Run a pairwise deletion and optimisation algorithm on the results of 1.
+3. If they have the time and resources, repeat 1 and 2 a few times to see if they get a luckier draw.
+
+This will typically not optimise, but it's what they should do.
+
 ## Unlimited Computing
 
 -   If you have unlimited computer power, you could brute force your way through all 257! paths.
@@ -512,13 +561,13 @@ Often times, the right thing to do is something whose value consists in mitigati
 - The ideal agent does lots of things we don't do.
 - They always take reasonable hedges against costly possibilities, and they never stop to have a think.
 - Knowing that the ideal agent is *F* doesn't tell us whether we should try to be *F* unless we also know that *F* is more like the first of these than the second.
-- And decision theory, in anything like its current form, is not particularly helpful on this score.
+- And decision theory, in **anything like its current form**, is not particularly helpful on this score.
 
 ## Third Objection - The Yoda Objection
 
 Decision theory doesn't say what one should try or not try, it says what one should do.
 
-- So it's weird to infer something about trying from a theory about trying.
+- So it's weird to infer something about trying from a theory about doing.
 
 ## Yoda
 
@@ -527,13 +576,6 @@ I think there's something importantly right about this - decision theory gives c
 
 # Idealisations as Models
 
-## Luck
-
-One thing that decision theory is useful for is sorting bad decisions from bad luck.
-
-- This is important in assessing spur-of-the-moment decisions on whether to gamble or not in, e.g., sporting situations.
-- But I'm not sure it is important beyond that.^[I used to think this was a significant project for moral and legal philosophy, but I've changed my mind on this, and am more than happy to talk about why in Q&A.]
-
 ## Two Notions of Idealisation
 
 In philosophy we use the word 'idealisation' for two rather different kinds of thing.
@@ -541,12 +583,11 @@ In philosophy we use the word 'idealisation' for two rather different kinds of t
 1. Perfect
 2. Simple
 
-## Two Notions of Idealisation
+The point particles in ideal gas theory are not perfect - having volume is not an imperfection. 
 
-It's easy to come up with things that are one but not the other.
+Nor are they things to aim for - high school chemistry does not imply a rule: **Smaller the better**.
 
-1. Whoever the greatest writer or painter is, they aren't simple.
-2. A point mass is not perfect in any sense, but it is a very useful simplication in reasoning.
+But they are simple.
 
 ## Idealisations in Decision Theory
 
@@ -556,10 +597,10 @@ Decision theory provides idealisations in the second sense - they are **simplifi
 
 ## Idealisations in Decision Theory
 
-Why do I say it isn't the perfection kind?
+Why do I say this idealisation is a simplification not a perfection?
 
-1. As already noted, it's bad advice. Don't spend zero seconds on hard but important math problems, like your idealised self does.
-2. But the idealised self isn't really perfect - they have very restricted information.
+1. Allocating zero seconds to hard math problems is not a perfection.
+2. The idealised self isn't  absolutely perfect - they have very restricted information.
 
 ## Idealisations in Decision Theory
 
@@ -603,7 +644,7 @@ I'll end with a discussion of an important instance of the second.^[Photo of Geo
 
 :::: {.column width=65%}
 
-![](lemon.jpg){width=80% height=80%}
+![](lemon.jpg){width=71% height=71%}
 
 ::::
 
@@ -658,7 +699,7 @@ If he was right (and I basically think he was) you'd expect the used car discoun
 1. Production lines got more reliable, and cars off the same line were more similar to one another; or
 2. Buyers had access to better tools to judge the quality of used cars.
 
-By 2020 both of those things had happened, and the used car discount was almost zero.
+By 2020 both of those things had happened, and the used car discount was almost zero. (Then in 2021 it went negative for weird reasons.)
 
 ## Back To Philosophy
 
@@ -671,16 +712,7 @@ You can't build models like this without a theory of rational action under uncer
 
 The thing about explanatory models is that they can have very limited scope.
 
-- An explanation of this particular election doesn't have to generalise.
-- Why did Democrats do so well in last month's US elections? Because of a backlash to Republican attacks on abortion rights.
-- Objection: That doesn't explain the poor results of Labour in the 2019 UK election.
-- Reply: Who cares? That's no reason to think it's the wrong explanation of this election.
-
-## Consequences for Decision Theory
-
-This matters because a lot of people in decision theory assume that a good decision theory will have something to say about every possible choice situation.
-
-- They say this because they think decision theory is in the business of giving advice, and you don't know what situation your advisee will be in.
+- There are lots of properties of gases that you cannot explain with the ideal gas model.
 
 ## Consequences for Decision Theory
 
@@ -703,6 +735,14 @@ At this point you might expect that I'd have a theory that does go silent on a b
 
 - And I'm happy to talk about that theory (and those cases) at literally any length people want.
 - But it's mostly for another talk.
+
+## For Yet Another Day
+
+You might also wonder at this point whether there are other idealisations we could make, which are useful in different circumstances to the standard computationally perfect, informationally limited model.
+
+- I used to think the answer was no on broadly a priori grounds.
+- But this was wrong, and the work on cursed equilibrium shows it was wrong.
+- There are some potentially really interesting questions here for philosophy of economics that engages seriously with 21st century economics.
 
 ## Conclusions
 
