@@ -1,7 +1,10 @@
 ---
 title: "The End of Decision Theory"
 author: "Brian Weatherson"
-format: pdf
+format: 
+	pdf: default
+	docx: default
+	html: default
 editor: source
 ---
 
@@ -583,4 +586,3 @@ You might also wonder at this point whether there are other idealisations we cou
 
 - Decision theory provides idealisations.
 - These are not things we should aim for, but simplifications that play a role in explanations.
-
