@@ -2,9 +2,9 @@
 title: "The End of Decision Theory"
 author: "Brian Weatherson"
 format: 
-	pdf: default
-	docx: default
-	html: default
+  pdf: default
+  docx: default
+  html: default
 editor: source
 ---
 
@@ -218,7 +218,7 @@ tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
   theme(axis.title.x = element_text())
 tour_map
 
-prop_cap <= paste0("An output of the Farthest Insertion Algorithm, with a length of ", tour_length(tour_line), " miles.")
+prop_cap <- paste0("An output of the Farthest Insertion Algorithm, with a length of ", tour_length(tour_line), " miles.")
 ```
 
 The path in @fig-farthest is not bad, but with only a bit of extra computational work, one can do better. A fairly simple optimisation algorithm takes a map as input, and then deletes pairs of edges at a time, and finds the shortest path of all possible paths with all but those two edges. The process continues until no improvements can be made by deleting two edges at a time, at which point you've found a somewhat resilient local minimum. @fig-two_opt is the output from applying this strategy to the path in @fig-farthest.
@@ -226,7 +226,7 @@ The path in @fig-farthest is not bad, but with only a bit of extra computational
 ```{r}
 #| echo: false
 #| cache: true
-#| label: fig-opt
+#| label: fig-two_opt
 #| fig-cap: !expr prop_cap
 theme_set(theme_map())
 tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
