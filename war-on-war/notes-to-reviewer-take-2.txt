@@ -1,0 +1,11 @@
+Thanks to the editor and the reviewers again for helpful comments, and I'm sorry I was so slow getting to this.
+
+I've basically done everything the reviewers asked. 
+
+- The times I wrote '18' rather than '22' were a dumb mistake and I've corrected those. 
+- There were a lot of anaphoric pronouns that were very unclear; the reviewers picked up some but when I went back and re-read it looking for similar problems I found a few more. So I spell things out a lot more clearly now rather than saying "that case" or "that view". 
+- The last line at the end of section 2 was overstated. I wound it back considerably, and then put some of the nuance in a footnote.
+- I've added a few more references to place the paper a little better in the current literature.
+- I caught a few more typos and changed them.
+
+But otherwise the paper is largely as it was, apart from correcting the mistakes the reviewers picked up. And I'm very grateful for their help with this.
