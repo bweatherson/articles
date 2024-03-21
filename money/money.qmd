@@ -61,39 +61,47 @@ The second is the functional theory. The simplest way to introduce the functiona
 
 The last line of that is essentially right. Money is that which can be exchange for goods and services. That's the functional role of it.
 
-The first thing to note is that these are different theories. Having the kind of institutions 
+The first thing to note is that these are different theories. Having the kind of institutions that Searle and Larue describe is neither necessary nor sufficient for there to be something that plays the functional role of money. 
 
-They aren’t necessary because money can arise without anything that should be called an institution. When there is a complete breakdown of institutional control, people will use of bottles of alcohol as currency. In slightly less dramatic circumstances, private bodies can issue things that are good enough to count as money.1 Often, a nearby institution is good enough. You can buy what you need at Gretna Green, or on the Canadian side of Niagra Falls, with banknotes from the large country to the south, as well as those of the country you’re in.2
+It isn't necessary because it is occasionally possible to have private money that fills the functional role of money. Examples include company scrip in old-fashioned company towns, and the _monnaie à cours libre_ that sprung up outside Paris in the early stages of the French Revolution [@Spang20xx Ch 3]. Crypto currencies are not actually filling this role, and I'll come back to why, but it's conceivable that they could. 
 
-They aren’t sufficient because in a hyper-inflation, currency stops being money, even though the institutional facts haven’t changed. But it can’t be exchanged for goods and services, so it isn’t money.
+Nor is the institution sufficient for something to be money. The Weimar hyper inflation did not destroy the Weimar institutions, but it did mean that the paper currency produced by those institutions ceased to be money.
 
-The title and tag promised this would be about Keynes, not Homer, so let’s return to that thread. In chapter 17 of the General Theory, Keynes offers a metaphysics of money.
+And even when something fills the functional role because of an institution, it isn't always because of the institution that is officially in charge of that location. During the period of dollarisation of Russia in the 1990s, greenbacks were functionally money, although the institutional structure of Russia didn't change. You can buy lots of things with greenbacks on the Canadian side of Niagara Falls, or with English banknotes at Gretna Green. In general in cases like these, the institutional structures are sharply bounded geographically, but the functional utility of the currency decreases gradually, over a large vague area. It would take some effort to figure out when in Russia's recovery in the late 1990s and early 2000s dollars ceased to play the functional role of money; but it's quite precise when various institutional facts about dollars in Moscow were settled.
 
-The key notion is money is the thing that has the greatest excess of liquidity premium over carrying costs. This is stated a couple of times, first a bit more carefully,
+When the theories come apart, which of them is right? Intuition, and ordinary usage, strongly favors the functional account. Someone who lots of US dollars in Moscow in 1997, or Niagara Falls today, has lots of money with them. Someone in Weimar Germany with outdated banknotes has wallpaper.
 
-    But it is an essential difference between money and all (or most) other assets that in the case of money its liquidity-premium much exceeds its carrying cost, whereas in the case of other assets their carrying cost much exceeds their liquidity-premium.
+So why is the institutional theory popular? One reason, I suspect, is that an institutional theory of _currency_ is plausible, and currency is such a paradigmatic form of money. Another reason, that I'll get to in a bit, is a concern that the functional theory overgeneralises.
 
-And then a bit less carefully,
+But let's start with the money/currency distinction. In the modern world, these are of course very different. The Bank of England estimates that in England and Wales, only 4% of the money in circulation is in the form of currency. The rest is balances in banks or other similar institutions. I suspect this tracks much of your ordinary life. I use money every day, and currency every few weeks. 
 
-    The excess of liquidity-premium over carrying-costs [is] greater for money than for any other asset.
+But it's not just in the contemporary world that money and currency come apart. Money is much older, probably more than twice as old, as currency. Coinage only dates to around 2700 years ago; money is thousands of years older. To have money you just need a blockchain, or, even better, tablets stored in the temple. 
 
-Taken literally, this would mean the only thing that is money is the thing with the highest excess of liquidity-premium over carrying-cost. I’m pretty sure that $20 bills have a higher excess of liquidity-premium over carrying-cost than $1 bills, so $1 bills would not be money. That can’t be right, and certainly can’t be what Keynes meant. The reading more consistent with the tenor of the chapter, and common sense, is that something is more money-like the greater its excess of liquidity-premium over carrying-cost.
+Currency does have one nice characteristic that it is relatively easy to identify, and even to define. In America, currency is pennies, nickels, dimes, and so on up to $100 bills. In other countries, the currency is somewhat different. At least in most of the countries it is different; in Ecuador, for example, it is completely the same as it is in the US.
 
-The plan for this post is to go over what this means, say why it is a version of Homer’s view about the role of money, note some applications of this to hard cases about what is and isn’t money, and end with two open questions. If I’m lucky, I’ll answer one or other of those upcoming questions in future posts, though since I currently have no idea what the answer could be, those posts might be well in the future.
-Money and Currency
-
-First, it’s very important to keep clear on the difference between money and currency. Philosophers aren’t always clear about this, and Searle might be partially to blame.
-
-Anyway, money and currency are quite distinct. That’s especially true in modern economies; I use money every day, and use currency every few weeks. But it was also true in many traditional economies.
-
-Currency does have the advantage that it is relatively easy to identify, and even to define. In America, currency is pennies, nickels, dimes, and so on up to $100 bills. In other countries, the currency is somewhat different. (At least in most of the countries it is different; in Ecuador, for example, it is completely the same.)
-
-Money is not the same thing as currency. Money is what you keep in the bank. Money is what you Venmo to other people. You don’t keep currency in the bank. It’s true that you can go and hand currency over to the bank, and they will on occasion hand currency back to you. But there is no currency in the bank. That is your money. You don’t get the same currency back from the bank when you make a withdrawal. Things are even clearer with Venmo. No currency gets exchanged when you Venmo some money to someone.
+But money is a much broader category. Money is what you Venmo to other people. Money is what you keep in the bank. You don’t keep currency in the bank. It’s true that you can go and hand currency over to the bank, and they will on occasion hand currency back to you. But there is no currency in the bank, even though your money is there. You don’t get the same currency back from the bank when you make a withdrawal. Things are even clearer with Venmo. No currency gets exchanged when you Venmo some money to someone.
 
 That’s the key thing about money; it’s what you keep in the bank, pay off debts, and exchange for goods and services. Sometimes currency can be used for that. Sometimes the right way to pay off a debt is to hand someone some coins or some pieces of green paper. Sometimes we even talk this way. On certain occasions if you ask me, do you have any money, it’s clear in context at what you mean to ask is whether I have any currency. But even that is not always the case. If we are at a vending machine and you ask me if I have any money, a $20 bill is not going to help. On the other hand, a phone with Apple Pay installed will help. The phone, but not the $20 bill, is money in the sense relevant to that particular transaction. And what we are going be interested in is what kind of money is relevant to most transactions.
 
-If you confused money and currency, then debates about the relationship between coinage and money in the ancient world aren’t going to make a lot of sense. But that’s a topic for a different time.
-Carrying-Costs
+In the vast bulk of real world cases, currency is an institutional kind. It isn't in all cases. The _monnaie a cours libre_ is, I think, a counterexample even to an institutional theory of currency. But counterexamples to an institutional theory of money are much more common.
+
+Still, you might have an objection to the functional theory. In principle, anything can be exchanged for goods and services. Barter isn't actually impossible. If money is just what can be exchanged for goods and services, then anything is money. And that's not particularly plausible. How can the functional theory be protected from over-generating.
+
+Here it helps to turn to the theory of money that Keynes put forward in chapter 17 of the _General Theory_. I'll state the theory, and then go back and define the key terms in it. What's characteristic of money is that it has a very high excess of _liquidity premium_ over _carrying costs_. Keynes says this twice, first a bit carefully, in 
+
+> But it is an essential difference between money and all (or most) other assets that in the case of money its liquidity-premium much exceeds its carrying cost, whereas in the case of other assets their carrying cost much exceeds their liquidity-premium.
+
+And then a bit less carefully,
+
+> The excess of liquidity-premium over carrying-costs [is] greater for money than for any other asset.
+
+Taken literally, this would mean the only thing that is money is the thing with the highest excess of liquidity-premium over carrying-cost. I’m pretty sure that $20 bills have a higher excess of liquidity-premium over carrying-cost than $1 bills, so $1 bills would not be money. That can’t be right, and certainly can’t be what Keynes meant. The reading more consistent with the tenor of the chapter, and common sense, is that something is more money-like the greater its excess of liquidity-premium over carrying-cost.
+
+My plan for the next few paragraphs is to say what these terms mean, and say these comments ground a plausible version of a functionalist theory of money.
+
+Keynes identifies three 
+
+
 
 The carrying costs of a good are the costs you incur by just having it. If the good is a box of apples, they go bad. If it’s a large ice cube, it melts. If it’s a house, you need to pay taxes and do maintenance. This would mostly be pretty intuitive if it weren’t for one big problem.
 
