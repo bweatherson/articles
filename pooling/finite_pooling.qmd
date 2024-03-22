@@ -1,0 +1,44 @@
+Can there be a triple of probability functions a, b, c with the following characteristics:
+
+- For some subset S of [0,1], c(a(p) $\in$ S) = 1, and c(b(p) $\in$ S) = 1.
+- For any x $\in$ S, c(p | a(p) = x) = x, c(p | b(p) = x) = x, and c(p | a(p) = x $\wedge$ b(p) = x) = x.
+- For any x, y $\in$ S such that x < y, x < c(p | a(p) = x $\wedge$ b(p) = y) < x.
+- c(a = b) < 1.
+
+Intuitively, if a, b, and c are credence functions for three people, A, B and C, then C has the following three attitudes towards A and B.
+
+1. Individually, they are each experts on p. For either of them, conditional on the expert having credence x in p, C will have credence x in p.
+2. If the experts agree on p, C will agree with them as well.
+3. If the experts disagree on p, C will have some value strictly between the values of the experts.
+4. C does not think it is certain that the experts will agree.
+
+I think the answer to the question is _yes_, but only if S is infinite. If we add a fifth constraint, that S is finite, then the answer is _no_.
+
+The proof that it's yes in the infinite case is fairly easy. Let X, Y, Z be standard normal distributions, i.e., normal distributions with mean 0 and standard deviation 1. Let p be that X + Y + Z > 0. All of these things are common knowledge to A, B, and C. Further, C has credence 0.5 in each of the following two hypotheses:
+
+- A knows the value of X + Y, and B knows the value of X.
+- B knows the value of X + Y, and A knows the value of X.
+
+It isn't too hard to show that given all this, c, i.e., C's credence will satisfy all of the constraints. The subset S of [0, 1] just is [0, 1]. Clearly a and b are not identical. Also clearly C should be deferring to A and B individually, since each of them know strictly more than C. 
+
+If C knew which of A and B knew X + Y, C should defer to that one. But since they don't, their credence in p given a(p) = x $\wedge$ b(p) = y should be kx + (1-k)y, where k is their posterior credence that A is the one who knows X + Y. It's a bit of work to calculate this (and requires appeal to the integral of the normal distribution and its inverse), but it's easy enough to calculate. And whenever x and y are distinct, k is (strictly) between 0 and 1, so a's posterior credence in p is strictly between 0 and 1.
+
+But what about the case when S is finite? Let t be the largest number in S. We know all of the following things:
+
+- c(p | a(p) = t) = t
+- c(p | a(p) = t $\wedge$ b(p) = t) = t
+- c(p | a(p) = t $\wedge$ b(p) < t) < t
+- c(b(p) = t $\vee$ b(p) < t) = 1
+
+From these it follows that c(b(p) = t | a(p) = t) = 1. And the same holds mutatis mutandis if we flip a and b around. Now consider u, the second highest value in S. Given the setup of the problem and what we just proved, we know
+
+- c(p | a(p) = t) = u
+- c(p | a(p) = t $\wedge$ b(p) = u) = u
+- c(p | a(p) = t $\wedge$ b(p) < u) < u
+- c(b(p) = u $\vee$ b(p) < u | a(p) = u) = 1
+
+And again from all these it follows that c(b(p) = u | a(p) = u) = 1. A similar argument shows that conditional on a(p) taking the third largest value, c has credence 1 that b(p) takes the same value, and so on for all the values in S.
+
+What follows from all this? Is it possible for real human C to defer to both A and B, and to have credence in p between A and B's credence if they disagree, and to think it's a live possibility that they will disagree? Answer, yes iff C gives some credence to infinitely many distinct options for A and B's credences. But C is human, and so finite. Can they really have infinitely many views like this?
+
+My guess is that the right answer is _yes_. It seems we can sensibly model someone as believing that some random variable is normally distributed. It is seriously artificial to model them as having some kind of finite approximation to a normal distribution. It is like saying that we can't really model C as thinking that something is a circle; we should instead think that they treat it as a chiliagon. But I find this all very confusing; I'm not used to working on questions in probability where the finite model property fails this dramatically.

@@ -1,0 +1,202 @@
+## Two Backgrounds
+
+1. Seminar I taught on Keynes
+2. The social turn in recent-ish metaphysics
+
+# Two Theories about Money
+
+## Institutional
+
+![Searle's 1995 book (actually the 2010 reissue from a rare books site)](searle_book.png){width=40%}
+
+## Institutional
+
+> That a piece of paper with certain physical traits is a dollar bill is an institutional fact. But its existence depends on the existence of other institutional facts, such as the United States of America, the Federal Reserve, the Treasury, etc. (Louis Larue)
+
+## Functional
+
+{{< video https://youtu.be/embed/dgct3Jn8pFA >}}
+
+## Functional 
+
+|  — Aww, $20?! I wanted a peanut!
+|  - $20 can buy many peanuts!
+|  — Explain how!
+|  — Money can be exchanged for goods and services.
+
+My view: the last line of that is right.
+
+## Function without Institutions
+
+- Company scrip.
+- Monnaie à cours libre.
+- Maybe in the future: crypto.
+
+## Institutions without Function
+
+- Hyper-inflation.
+- Failed states.
+
+## Different Boundary Conditions
+
+- Other people's institutions might do, e.g., dollarisation in 1990s Russia. (I think Ecuador is a different case.)
+- English and Scottish bank notes both keep working some distance the 'wrong' side of the border.
+- US dollars work in several Canadian border towns, especially Niagara Falls. 
+
+## Vague Boundaries
+
+- The reach of English and USian financial institutions is sharply bounded.
+- But the reach of their money is rather vague.
+
+## Which is Right
+
+When they come apart, seems to me the functional view gets it right.
+
+- Someone who has US dollars in Niagara Falls or 1990s Moscow has money.
+- Someone who has out of date marks in 1923 Weimar has wallpaper.
+
+## Appeal of Institutional Theory
+
+It's better (though still not actually right) as a theory of **currency** than a theory of money.
+
+![Currency with a philosopher on it](turing.png){width=60%}
+
+## Money is not (only) Currency
+
+![Infographic from the Bank of England](boe_infographic.png){width=70%}
+
+I use money every day, and currency every few weeks.
+
+## History
+
+- Currency is a relatively recent invention; maybe 2700 years ago.
+- Money goes back much further than this.
+
+## What is Money
+
+- Money is what you Venmo to other people. 
+- Money is what you keep in the bank. You don’t keep *your* currency in the bank. 
+- It's what you exchange for goods and services. 
+
+## Exchange and Currency
+
+Sometimes the best thing to use for a transaction is currency.
+
+But actually Apple Pay works better.
+
+## Institutional Theories of Currency
+
+These are *better* than institutional theories of money, but still not right.
+
+The _monnaie a cours libre_ is still a counterexample.
+
+## Overgeneration
+
+Problem: Anything can be exchanged for goods and services, at least some of the time.
+
+# Keynes and Liquidity
+
+
+
+Here it helps to turn to the theory of money that Keynes put forward in chapter 17 of the _General Theory_. I'll state the theory, and then go back and define the key terms in it. What's characteristic of money is that it has a very high excess of _liquidity premium_ over _carrying costs_. Keynes says this twice, first a bit carefully, in 
+
+> But it is an essential difference between money and all (or most) other assets that in the case of money its liquidity-premium much exceeds its carrying cost, whereas in the case of other assets their carrying cost much exceeds their liquidity-premium.
+
+And then a bit less carefully,
+
+> The excess of liquidity-premium over carrying-costs [is] greater for money than for any other asset.
+
+Taken literally, this would mean the only thing that is money is the thing with the highest excess of liquidity-premium over carrying-cost. I’m pretty sure that $20 bills have a higher excess of liquidity-premium over carrying-cost than $1 bills, so $1 bills would not be money. That can’t be right, and certainly can’t be what Keynes meant. The reading more consistent with the tenor of the chapter, and common sense, is that something is more money-like the greater its excess of liquidity-premium over carrying-cost.
+
+My plan for the next few paragraphs is to say what these terms mean, and say these comments ground a plausible version of a functionalist theory of money.
+
+Keynes identifies three characteristics that investments have, which he argues collectively determine the (subjective) value of the investment. The first is the yield of the investment - how much money one makes just by holding the investment. The second is the carrying costs - how much it costs simply to keep the investment in good order. And the third is the liquidity premium - how valuable it is to have the investment in a form where it can be used for other purposes if needed. Keynes is, in a way perhaps characteristic of English writers of this time, not really thinking here about the future sale value of the investment, but we probably should include that.
+
+Carrying costs lead to a complication. The carrying costs of a good are the costs you incur by just having it. If the good is a box of apples, they go bad. If it’s a large ice cube, it melts. If it’s a house, you need to pay taxes and do maintenance. This would mostly be pretty intuitive if it weren’t for one big problem.
+
+At the start of the chapter, Keynes distinguishes the yield of a good from its capital costs. The yield is the revenue you earn from the good, the costs are the expenses you incur. In the real world, it’s sometimes hard to tell apart a cost from a reduction in yield. Let’s use a real world example to make this eaasier. Let’s say you buy a house and rent it out. There are two large sources of yield here: the rent, and the capital appreciation. There are any number of negatives though: the property taxes, the maintenance, perhaps the agency fees if you let through an agency, the broker fees when you sell, and so on.
+
+Which of these are carrying costs, and which of these are deductions from the yield?
+
+Keynes's first pass on this is to say that it doesn’t matter because we’re only going to care about the difference between yield and carrying costs, and for the purposes of that calculation, it won’t matter whether you count maintenance as a carrying cost or a yield deduction. But despite him saying that, it isn’t true! When he gets to the definition of money, carrying costs matter and yield doesn’t. Remember, the definition he gives of money is the thing with a high surplus of liquidity premium over carrying costs; yield doesn't come into it.
+
+I think in the house case it makes some amount of sense to say that the carrying costs are those costs you’d incur even if the house was just sitting there, and everything you pay in order to get the rent is a deduction from the yield. Clearly enough, the agency fees are deductions from the yield, not a carrying cost. And the property taxes are a carrying cost, not a deduction from the yield. The maintenance is tricky; some maintenance is always needed on houses, and some is caused by having renters. Worse still, some is avoided by having renters; there are distinctive things that go wrong in houses that are left unattended. It is all rather vague, and we’re probably just going to have to live with the vagueness.
+
+Let's turn to liquidity. Consider two investors, each of whom has a million dollars to invest. Investor A buys a house for a million dollars, and rents it out. She expects to have something like the following balance sheet:
+
+|:------|-------:|
+| Income | $100,000 |
+| Expenses | $30,000 |
+| Profit | $70,000 |
+ 
+
+Investor B keeps her money in overnight Treasury bonds. That means, she gets the going rate of interest the Treasury pays (currently 5.25%, though she expects that to fall some over the year), and can access her money at 24 hours notice or less. Since approximately none of her expenses have a payment due in under 24 hours (she pays everything on credit card so it’s more like 45 days), that means her money is basically always at hand. She expects to have the following balance sheet for the year:
+
+
+|:------|-------:|
+| Income | $50,000 |
+| Expenses | $0 |
+| Profit | $50,000 |
+
+
+Now there is a very clear sense in which Investor A is doing better than Investor B, at least in expectation. Investor A gets $20,000 more. But Investor B's approach has some upsides. If anything happens over the year, she can use her money to solve the problem, and Investor B can’t. Think about things that can happen. She could have a medical emergency, or a housing emergency. She could get a hot tip on an insider trading opportunity. (Not legal advice.) If something happens and it would be really useful to have a large pile of money around to solve the problem (or exploit the opportunity), Investor B is right there. Investor A, on the other hand, is a bit stuck. True, she could sell the house. But that would (a) probably take more time than she has before the bills are due, (b) probably be at a loss, since it would be quite literally at fire-sale prices, and (c) if she’s in the US involve a 6% commission. (Though apparently that commission is getting reduced; I guess I'll believe it when I see it.)
+
+If B thinks that one of those things is sufficiently likely, then it could be perfectly rational to take the safe $50,000 profit, rather than the likely $70,000 profit, with unknown and large downside.
+
+This doesn’t mean B would pass up any larger profit at all. After a while, if the difference between the two options was large enough, B would go for the riskier option. The amount that B would have to get from the illiquid investment, i.e., the house, in order to favor it over the liquid investment, is the liquidity-premium of the investment she actually makes.
+
+So that's the liquidity _premium_, but what is _liquidity_? What is this thing that investors are paying a premium to get. As I understand it, the liquidity of a good is its ability to be **easily exchanged** for **many things** in **many circumstances**. I’ve bolded three terms there because all three parts of the definition are relevant.
+
+Easily exchanged means that the transaction costs are low. You don’t have to pay 6% to brokers, or 12% to a machine, or wait 90 days for the payment, to make the trade. You don’t have to pay a large fee to an ad agency to advertise for buyers. You can find a buyer and make the sale easily. ‘Easily’ is vague, as everything else will be here.
+
+Many things means that the good can’t simply be traded for a small variety of things. A Starbucks gift card can be easily traded for some things, namely products from Starbucks. But it is a bit harder to trade for beer. It's not completely impossible to trade a Starbucks gift card for beer, but it's hard enough to make a dent in its liquidity.
+
+Many circumstances means that the good will keep having these two properties in most of the realistic scenarios the agent takes to be plausible. This matters for thinking about whether stocks are money, which in turn is particularly relevant to whether liquidity preference affects the availability of investment capital.
+
+Tesla stocks are actually pretty easy to trade for many things. True, you can’t walk into a bar and pay for a negroni with some percentage of a Tesla stock. But most bars take credit cards these days. And it’s easy (and these days fee-free) to sell Tesla stocks in considerably less time than it takes for a credit card bill to come through. Indeed, if you are day-drinking, you can probably make the sale and transfer the funds in the time it takes the bartender to make the drink. (On the west coast I guess this is serious day-drinking since markets close at 1.) So are Tesla stocks liquid?
+
+Well, that’s what this third criteria turns on. The problem with Tesla stocks is that they are really incredibly volatile. If you put money into them now, thinking that they can be sold in an emergency, and might make some profit in the interim, you don’t really know how much they will be worth at the time the emergency happens. If you put some money into Tesla, and a month later have a medical emergency that requires exactly that much money to take care of, the stocks may well have fallen, and you won’t be able to cover the emergency. And it’s not like scenarios where individual stocks fall in price dramatically are some weird philosophers’ invention.
+
+So let’s go through a few things and ask if they are or are not money.
+
+A bank account linked to a credit card and a Venmo account. Definitely money. Really the paradigm of money. You can buy practically anything this way, and it will only fail in scenarios where everything else has failed as well.
+
+A briefcase full of banknotes. Mostly money. The carrying costs are non-trivial - you’ve got to do some work to keep it secure - and there are some things you can’t really buy with it - e.g., you can’t pay your hospital bills this way. But it’s pretty liquid, and has relatively low carrying costs.
+
+A suitcase full of pennies. Not money. The carrying costs are immense. I mean literally, try lifting that thing let along carrying it. And no one in their right mind will take it as payment. You could go to a Coinstar machine and trade the pennies for something actually useful, but (a) you’ve got to find such a machine, and (b) they charge 12%. Not money.
+
+A shoebox full of Walmart gift cards. Mostly money. You can trade it for most things - literally Walmart sells most things. And for things you want they don’t sell, you can probably (a) find someone to buy the card at just about face value, or (b) buy other things that you need at Walmart and use other resources for the thing they don’t sell. So I say it’s money.
+
+_Monnaie a cours libre_, the private currencies issued by the local notables in French municipalities in the early 1790s. Mostly money. For most purposes, these can be traded for goods and services, so they are money. That they only work in a very small geographic region does reduce their liquidity premium, especially if one is liable to be conscripted to an army based in far away Paris, but for everyday purposes they are good enough. And notably, they are money not because the surplus of liquidity premium over carrying costs is particularly high, but because nothing else has a higher surplus.
+
+A large box of cigarettes in an old-fashioned prison. Money. I’ve no idea what the trading regulations in contemporary prisons are. But in traditional prisons, cigarettes could be traded for most anything that was available in trade. So they were liquid. There were some carrying costs, but everything in prison has carrying costs. So I think that counts as money.
+
+A Robinhood account with the money all in overnight Treasuries. Money, and a very special kind of money. It’s money that is not barren, contra the assumptions Keynes makes in chapter 17 of the _General Theory_ that money is barren. It makes 5.25% right now, but is still easy to use to pay off credit card bills, which means anything you can buy on credit card, it can be easily exchange for.
+
+    A Robinhood account with the money in a volatile stock, like Tesla. Not quite money. It’s just too unstable to know that it will be there in a crunch, and money should be somewhat stable.
+
+    A Robinhood account with the money in index funds. Maybe money. This one is hard, and I’m not sure. It would be a weird result for Keynes if it turned out to be money, but maybe it sort of actually is. Index funds are so much more stable than individual stocks, and they are otherwise very liquid.
+
+The last one is surprising enough that you might think it’s a counterexample to the theory. But since they can be easily exchanged for goods and services, I suspect we should just accept that they are a strange form of money. Why wouldn’t they be?
+
+One reason is that they have a highly volatile purchasing power. That’s why we didn’t count shares of individual stocks as money. They might not be there in an emergency. Except the emergencies that lead to a material loss in purchasing power for an index fund are pretty rare. Not brain-in-vat rare, but rare. And it’s not like we require zero inflation for currency to count as money, so some volatility in purchasing power is consistent with money-ness.
+
+It’s true that on a day-to-day basis, currency (and bank accounts) have more stability of purchasing power than index funds. But I’m not sure that’s true over anything but the shortest of terms. If you keep a briefcase full of banknotes in your safe for 3 years, that’s probably more likely to lose 20% of its purchasing power than an index fund is. So volatility can’t prevent the index fund being money unless the briefcase is also not money.
+
+Another reason is that you can’t directly trade the index fund for beer, you have to make two transactions. Maybe you could say that money is that which can be directly traded for goods and services.
+
+I suspect this won’t work because there isn’t going to be a plausible way to make the notion of ‘directness’ work. Buying things on credit card is a pretty indirect process. More importantly, precisely how indirect it is is one of those bits of financial plumbing that ordinary people sensibly don’t care about. If how much money one had turned on just how direct the process was by which credit card payments were made, people should care about it. But most importantly, it’s not like ordinary credit card payments are completely simple. A credit card payment isn’t just tapping a card at the store - you also have to make the monthly payment on the bill. It’s two transactions. And going from index funds in a Robinhood account to beer isn’t really any harder than buying the beer on credit card and then paying the credit card statement.
+State Money
+
+So is the state unimportant in all this? No, the state matters, but indirectly. If the state is minimally functional, then the currency it issues will have a high excess of liquidity-premium over carrying-costs. Moreover, since the state will typically take only what it issues6 as payment for taxes, anything else will have a dent in its liquidity. But being money is being able to be exchanged for goods and services; that is, having a liquidity-premium. And the state makes money by making things have a liquidity-premium, not by simple declarations.
+Two Open Questions
+
+This is more than long enough for one week. I’ll end with two things that I’ll hope to come back to when I have more time/wisdom.
+
+First, in a world where some forms of capital provision to enterprises are essentially money, what is the Keynesian explanation of slumps? The very short version of the General Theory is that slumps happen when the providers of capital have such a great demand for liquidity that they won’t build enough things that employ people. Can that happen in a world like ours where one can simultaneously provide investment capital and have liquid funds?
+
+Second, what’s the relationship between liquidity-premium and the risk/uncertainty distinction, or (what I think is the same thing) the precise/imprecise probability distinction. Keynes links the discussion of liquidity-premium in chapter 17 to his Treatise on Probability, and in particular the discussion of weight in chapter 6 of the Treatise. What could the link be?
+
+On the one hand, it seems like you can have liquidity preference in a world with just risk. I didn’t have to talk about Keynesian/Knightian uncertainty in the earlier example of the two investors. On the other hand, maybe there’s a more subtle argument here.
+
+Some days I think Keynes has the following view in mind. If there was only risk, all the premises of Aumann’s Agreement Theorem would be in place, so everyone would know the expected monetary value of each investment good, and everyone would know that everyone would know that, so there would be an agreed upon market price for (all? most?) investment goods, so they would be liquid. From this perspective, it’s only because of uncertainty that anything is ever illiquid, so anything else has a liquidity-premium. But whether Keynes really thinks that, and whether it’s plausible, are for future posts.
