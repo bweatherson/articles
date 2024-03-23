@@ -1,3 +1,18 @@
+---
+title: "The Metaphysics of Money"
+author: "Brian Weatherson"
+format:
+  revealjs:
+      template-partials:
+        - title-slide.html
+      slide-number: c/t
+      menu: true
+      highlight-style: github-dark
+      theme: teodt.scss
+      logo: UM.svg
+editor: source
+---
+
 ## Two Backgrounds
 
 1. Seminar I taught on Keynes
@@ -15,12 +30,12 @@
 
 ## Functional
 
-{{< video https://youtu.be/embed/dgct3Jn8pFA >}}
+{{< video https://www.youtube.com/embed/dgct3Jn8pFA?si=JRg0bdlAfuEN2Sxm width="80%" height="80%" >}}
 
 ## Functional 
 
 |  — Aww, $20?! I wanted a peanut!
-|  - $20 can buy many peanuts!
+|  — Twenty dollars can buy many peanuts!
 |  — Explain how!
 |  — Money can be exchanged for goods and services.
 
@@ -142,19 +157,29 @@ In practice the boundary between negative contributions to yield and positive co
 
 ## Two Investors
 
+:::{.columns}
+::::{.column width=50%}
+
+|     |     |
 |:------|-------:|
 | Income | $100,000 |
 | Expenses | $30,000 |
 | Profit | $70,000 |
- 
-: House 
 
+: House 
+::::
+
+::::{.column width=50%}
+
+|  |  |
 |:------|-------:|
 | Income | $50,000 |
 | Expenses | $0 |
 | Profit | $50,000 |
 
 : Bank Deposit
+::::
+:::
 
 ## What Not Option A?
 
@@ -206,6 +231,8 @@ Tesla stocks are easily exchanged for many things (provided you have a credit ca
 
 A bank account linked to a credit card and a Venmo account. 
 
+![Photo of someone Venmo-ing money for beer at Burning Man, from Motley Fool](venmo.jpeg){width=60%}
+
 . . .
 
 Definitely money. Really the paradigm of money. You can buy practically anything this way, and it will only fail in scenarios where everything else has failed as well.
@@ -213,6 +240,8 @@ Definitely money. Really the paradigm of money. You can buy practically anything
 ## Examples
 
 A briefcase full of banknotes. 
+
+![A briefcase full of banknotes, via TV Tropes](briefcase.jpeg){width=60%}
 
 . . .
 
@@ -223,6 +252,8 @@ The carrying costs are non-trivial - you’ve got to do some work to keep it sec
 ## Examples
 
 A suitcase full of pennies.
+
+![Firefly does not understand how small pennies are](pennies.jpeg){width=60%}
 
 . . .
 
@@ -235,6 +266,8 @@ The carrying costs are immense. I mean literally, try lifting that thing let alo
 
 A shoebox full of Walmart gift cards. 
 
+![A Walmart gift card - I couldn't find the shoebox](walmart.jpg){width=60%}
+
 . . .
 
 Mostly money. 
@@ -244,6 +277,8 @@ You can trade it for most things - literally Walmart sells most things. And you 
 ## Examples
 
 _Monnaie a cours libre_, the private currencies issued by the local notables in French municipalities in the early 1790s. 
+
+![An assignat, the official currency, in absurd denominations, via Wikipedia](assignat.jpg){width=60%}
 
 . . .
 
@@ -255,6 +290,8 @@ For most purposes, these can be traded for goods and services, so they are money
 
 A large box of cigarettes in an old-fashioned prison. 
 
+![Old cigarettes, via Lux Military Antiques](luckies.png){width=60%}
+
 . . .
 
 Money. 
@@ -264,6 +301,8 @@ I mean, this is really in the movies prisons. But in the movies you could trade 
 ## Examples
 
 A Robinhood account with the money all in overnight Treasuries. 
+
+![An ad for Robinhood, with the money very much not in Treasuries](robinhood.png){width=60%}
 
 . . .
 
@@ -277,6 +316,8 @@ It makes 5.25% right now, but is still easy to use to pay off credit card bills,
 
 A Robinhood account with the money in a volatile stock, like Tesla. 
 
+![An ad for Robinhood, with the money in a more stable stock than Tesla](robinhood.png){width=60%}
+
 . . .
 
 Not quite money. 
@@ -285,28 +326,22 @@ It’s just too unstable to know that it will be there in a crunch, and money sh
 
 ## Examples
 
-    A Robinhood account with the money in index funds. Maybe money. This one is hard, and I’m not sure. It would be a weird result for Keynes if it turned out to be money, but maybe it sort of actually is. Index funds are so much more stable than individual stocks, and they are otherwise very liquid.
+A Robinhood account with the money in index funds. 
 
-The last one is surprising enough that you might think it’s a counterexample to the theory. But since they can be easily exchanged for goods and services, I suspect we should just accept that they are a strange form of money. Why wouldn’t they be?
+![Price history of the main index fund - Vanguard's VOO](voo.png){width=60%}
 
-One reason is that they have a highly volatile purchasing power. That’s why we didn’t count shares of individual stocks as money. They might not be there in an emergency. Except the emergencies that lead to a material loss in purchasing power for an index fund are pretty rare. Not brain-in-vat rare, but rare. And it’s not like we require zero inflation for currency to count as money, so some volatility in purchasing power is consistent with money-ness.
+. . .
 
-It’s true that on a day-to-day basis, currency (and bank accounts) have more stability of purchasing power than index funds. But I’m not sure that’s true over anything but the shortest of terms. If you keep a briefcase full of banknotes in your safe for 3 years, that’s probably more likely to lose 20% of its purchasing power than an index fund is. So volatility can’t prevent the index fund being money unless the briefcase is also not money.
+Maybe money. This one is hard, and I’m not sure. 
 
-Another reason is that you can’t directly trade the index fund for beer, you have to make two transactions. Maybe you could say that money is that which can be directly traded for goods and services.
+It is really hard to say why it isn't liquid.
 
-I suspect this won’t work because there isn’t going to be a plausible way to make the notion of ‘directness’ work. Buying things on credit card is a pretty indirect process. More importantly, precisely how indirect it is is one of those bits of financial plumbing that ordinary people sensibly don’t care about. If how much money one had turned on just how direct the process was by which credit card payments were made, people should care about it. But most importantly, it’s not like ordinary credit card payments are completely simple. A credit card payment isn’t just tapping a card at the store - you also have to make the monthly payment on the bill. It’s two transactions. And going from index funds in a Robinhood account to beer isn’t really any harder than buying the beer on credit card and then paying the credit card statement.
-State Money
+## Three Questions
 
-So is the state unimportant in all this? No, the state matters, but indirectly. If the state is minimally functional, then the currency it issues will have a high excess of liquidity-premium over carrying-costs. Moreover, since the state will typically take only what it issues6 as payment for taxes, anything else will have a dent in its liquidity. But being money is being able to be exchanged for goods and services; that is, having a liquidity-premium. And the state makes money by making things have a liquidity-premium, not by simple declarations.
-Two Open Questions
+1. Is the Vanguard case just a counterexample to this theory of money?
+2. What does the existence of a very liquid form of capital investment mean for Keynes's account of the origins of recessions?
+3. Why does _anything_ have a liquidity premium? What would a world where there was no such thing as a fire-sale price, where everything was readily tradable, look like?
 
-This is more than long enough for one week. I’ll end with two things that I’ll hope to come back to when I have more time/wisdom.
+## Question 3
 
-First, in a world where some forms of capital provision to enterprises are essentially money, what is the Keynesian explanation of slumps? The very short version of the General Theory is that slumps happen when the providers of capital have such a great demand for liquidity that they won’t build enough things that employ people. Can that happen in a world like ours where one can simultaneously provide investment capital and have liquid funds?
-
-Second, what’s the relationship between liquidity-premium and the risk/uncertainty distinction, or (what I think is the same thing) the precise/imprecise probability distinction. Keynes links the discussion of liquidity-premium in chapter 17 to his Treatise on Probability, and in particular the discussion of weight in chapter 6 of the Treatise. What could the link be?
-
-On the one hand, it seems like you can have liquidity preference in a world with just risk. I didn’t have to talk about Keynesian/Knightian uncertainty in the earlier example of the two investors. On the other hand, maybe there’s a more subtle argument here.
-
-Some days I think Keynes has the following view in mind. If there was only risk, all the premises of Aumann’s Agreement Theorem would be in place, so everyone would know the expected monetary value of each investment good, and everyone would know that everyone would know that, so there would be an agreed upon market price for (all? most?) investment goods, so they would be liquid. From this perspective, it’s only because of uncertainty that anything is ever illiquid, so anything else has a liquidity-premium. But whether Keynes really thinks that, and whether it’s plausible, are for future posts.
+My hypothesis (and this is both a theory I like and I think a plausible bit of Keynes exegesis) is that it would be a world where all probabilities were numerical. So all of this does come back to formal epistemology eventually. But that's for another talk!
