@@ -253,7 +253,7 @@ The carrying costs are non-trivial - you’ve got to do some work to keep it sec
 
 A suitcase full of pennies.
 
-![Firefly does not understand how small pennies are](pennies.jpeg){width=60%}
+![Firefly does not understand how small pennies are](pennies.jpg){width=60%}
 
 . . .
 
