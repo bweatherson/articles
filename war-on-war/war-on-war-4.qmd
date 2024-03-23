@@ -56,7 +56,7 @@ Here's what they, and many other proponents of Evidential Decision Theory (EDT) 
 
 This is what @Lewis1981en called the "Why Ain'cha Rich" argument, and what following Ahmed [-@Ahmed2014, 182] and @Bales2018 I'll call the WAR argument. I'm going to argue the last step of the WAR argument doesn't follow. Or, more precisely, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.[^1]
 
-[^1]: Ian @Wells2019 has another case where EDT does worse than some versions of CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced, and one aim of this paper is to develop an anti-WAR argument that uses slightly fewer assumptions than Wells does. I'll come back to Wells's case in @sec-wells-ahmed.
+[^1]: Ian @Wells2019 has another case where EDT does worse than some versions of CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced. I'll come back to Wells's case in @sec-wells-ahmed.
 
 # Coins and Signals {#sec-coinssignals}
 
@@ -196,7 +196,7 @@ So these four families of theories say different things about cases like @tbl-pa
 
 This is an asymmetry between EDT and CDT. EDT is indeed a theory; it is the theory defended by Arif @Ahmed2014. But CDT is a family of theories. So we shouldn't compare EDT to CDT as such, we should compare it to a particular causal theory. And for this paper, I'll focus on the theories listed in point 2 above, and especially the version defended by Gallow.
 
-On Gallow's view, Chooser should play Up in @tbl-payout-if-tails, since 34 + 40 \> 22 + 44. So Chooser will always play Up in @fig-second-anti-war. So Demon will always flip a coin to decide what to do. So all of the outcomes where Chooser plays Up are equally likely.^[That is, the four outcomes at the top of @fig-second-anti-war, or options 1, 2, 5, and 6 in @tbl-payoffs-demon-coin.] That means Chooser will on average get a return of 127. Since 127 \> 42, on average if Chooser follows Gallow's theorythey will get a better return than if they follow EDT. So if WAR arguments work, they show that EDT should be rejected since it does worse than Gallow's theory in cases like @fig-second-anti-war.[^5]
+On Gallow's view, Chooser should play Up in @tbl-payout-if-tails, since 34 + 40 \> 22 + 44. So Chooser will always play Up in @fig-second-anti-war. So Demon will always flip a coin to decide what to do. So all of the outcomes where Chooser plays Up are equally likely.^[That is, the four outcomes at the top of @fig-second-anti-war, or options 1, 2, 5, and 6 in @tbl-payoffs-demon-coin.] That means Chooser will on average get a return of 127. Since 127 \> 42, on average if Chooser follows Gallow's theory they will get a better return than if they follow EDT. So if WAR arguments work, they show that EDT should be rejected since it does worse than Gallow's theory in cases like @fig-second-anti-war.[^5]
 
 [^5]: As a referee points out, this doesn't show that WAR arguments would give one a reason to *endorse* Gallow's theory. After all, since Gallow's theory is a version of CDT, it has worse returns on average than EDT in Newcomb problems. The real point is that showing theory A has better returns than theory B in one particular problem doesn't mean much unless we show that there is no problem where theory B does better.
 
