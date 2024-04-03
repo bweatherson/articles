@@ -1,0 +1,351 @@
+---
+title: "Money, States, and Liquidity"
+author: "Brian Weatherson"
+format:
+  revealjs:
+      template-partials:
+        - title-slide.html
+      slide-number: c/t
+      menu: true
+      highlight-style: github-dark
+      theme: teodt.scss
+      logo: UM.svg
+editor: source
+---
+
+## Two Backgrounds
+
+1. Seminar I taught on Keynes, and thinking about both the role of early 20th century philosophy in Keynes's economic works, and the role of Keynes in early 20th century philosophy.
+2. The social turn in recent-ish metaphysics.
+
+# Two Theories about Money
+
+## Institutional
+
+![Searle's 1995 book (actually the 2010 reissue from a rare books site)](searle_book.png){width=40%}
+
+## Institutional
+
+> That a piece of paper with certain physical traits is a dollar bill is an institutional fact. But its existence depends on the existence of other institutional facts, such as the United States of America, the Federal Reserve, the Treasury, etc. (Louis Larue)
+
+## Functional
+
+{{< video https://www.youtube.com/embed/dgct3Jn8pFA?si=JRg0bdlAfuEN2Sxm width="80%" height="80%" >}}
+
+## Functional 
+
+|  — Aww, $20?! I wanted a peanut!
+|  — Twenty dollars can buy many peanuts!
+|  — Explain how!
+|  — Money can be exchanged for goods and services.
+
+My view: the last line of that is right.
+
+## Function without Institutions
+
+- Company scrip.
+- Monnaie à cours libre.
+- Maybe in the future: crypto.
+
+## Institutions without Function
+
+- Hyper-inflation.
+- Failed states.
+
+## Different Boundary Conditions
+
+- Other people's institutions might do, e.g., dollarisation in 1990s Russia. (I think Ecuador is a different case.)
+- English and Scottish bank notes both keep working some distance the 'wrong' side of the border.
+- US dollar bills work in several Canadian border towns, especially Niagara Falls. 
+
+## Vague Boundaries
+
+- The reach of English and USian monetary institutions is sharply bounded.
+- But the reach of their money is rather vague.
+
+## Which is Right
+
+When they come apart, seems to me the functional view gets it right.
+
+- Someone who has US dollars in Niagara Falls or 1990s Moscow has money.
+- Someone who has out of date marks in 1923 Weimar has wallpaper.
+
+## Appeal of Institutional Theory
+
+It's better (though still not actually right) as a theory of **currency** than a theory of money.
+
+![Currency with a philosopher on it](turing.png){width=60%}
+
+## Money is not (only) Currency
+
+![Infographic from the Bank of England](boe_infographic.png){width=70%}
+
+I use money every day, and currency every few weeks.
+
+## History
+
+- Currency is a relatively recent invention; maybe 2700 years ago.
+- Money goes back much further than this.
+
+## What is Money
+
+- Money is what you Venmo to other people. 
+- Money is what you keep in the bank. You don’t keep *your* currency in the bank. 
+- It's what you exchange for goods and services. 
+
+## Exchange and Currency
+
+Sometimes the best thing to use for a transaction is currency.
+
+But actually Apple Pay works better.
+
+## Institutional Theories of Currency
+
+These are *better* than institutional theories of money, but still not right.
+
+The _monnaie a cours libre_ is still a counterexample.
+
+## Overgeneration
+
+Problem: Anything can be exchanged for goods and services, at least some of the time.
+
+# Keynes and Liquidity
+
+## Keynes
+
+![John Maynard Keynes](keynes.jpg){width=40%}
+
+## Three Famous Books
+
+- Economic Consequences of the Peace (1919)
+- Treatise on Probability (1921)
+- General Theory of Employment, Interest and Money (1936)
+
+Actually the middle isn't that famous outside philosophy, but still.
+
+## The Interest in the General Theory
+
+One of the moving parts in the General Theory is an account of what causes the rate of interest.
+
+The short version is that it is the amount that must be given to creditors in exchange for their loss of liquidity.
+
+## The Money in the General Theory
+
+In a modern economy, we typically (in fact almost exclusively) borrow money.
+
+In a loan, the borrower gets money, and the lender gives it up.
+
+And the reason the lender must be compensated is for their loss of liquidity. This all suggests a theory.
+
+## The Money in the General Theory
+
+In chapter 17 (which is what this talk is really about), Keynes says that money is the thing that has a high excess of
+
+> **liquidity premium**
+
+over
+
+> **carrying costs**
+
+## Three Properties of Investments
+
+1. Yield - what you get from the investment
+2. Carrying costs - how much it costs to hold the investment
+3. Liquidity premium - how much it benefits you that the investment is liquid.
+
+In practice the boundary between negative contributions to yield and positive contributions to carrying costs is blurry - this actually raises problems that I'll skip in the interests of time.
+
+## Two Investors
+
+:::{.columns}
+::::{.column width=50%}
+
+|     |     |
+|:------|-------:|
+| Income | $100,000 |
+| Expenses | $30,000 |
+| Profit | $70,000 |
+
+: House 
+::::
+
+::::{.column width=50%}
+
+|  |  |
+|:------|-------:|
+| Income | $50,000 |
+| Expenses | $0 |
+| Profit | $50,000 |
+
+: Bank Deposit
+::::
+:::
+
+## What Not Option A?
+
+Because something might go wrong.
+
+If it does, B has the resources to meet it.
+
+A has to go through a messy sale process, that takes time, loses value on the investment, costs a 6% commission, and probably takes 90 days to clear.
+
+## Liquidity Premium
+
+The liquidity premium of the second investment is roughly how much better the bottom line on the left has to be to make it, all things considered, a better investment.
+
+## Liquidity Premium
+
+So that's the liquidity _premium_, but what is _liquidity_? 
+
+As I understand it, the liquidity of a good is its ability to be 
+
+1. **easily exchanged** for 
+2. **many things** in 
+3. **many circumstances**. 
+ 
+## Easily Exchanged
+
+Low transaction cost.
+
+No brokers commission or Coinstar fee.
+
+No paying someone to advertise for the buyers.
+
+## Many Things
+
+You can trade the good for a lot of different things.
+
+A Starbucks gift card can be easily exchanged for coffee like substance, but not so easily for beer.
+
+## Many Circumstances
+
+The good will keep having those properties in a wide range of realistic scenarios.
+
+Tesla stocks are easily exchanged for many things (provided you have a credit card and you've set up your stock sales to go straight to your credit card bill), but they can't be exchanged if the stock falls a lot.
+
+## Tesla Stock
+
+![Buys a lot less beer than you might have hoped](tesla.png){width=80%}
+
+## Examples
+
+A bank account linked to a credit card and a Venmo account. 
+
+![Photo of someone Venmo-ing money for beer at Burning Man, from Motley Fool](venmo.jpeg){width=60%}
+
+. . .
+
+Definitely money. Really the paradigm of money. You can buy practically anything this way, and it will only fail in scenarios where everything else has failed as well.
+
+## Examples
+
+A briefcase full of banknotes. 
+
+![A briefcase full of banknotes, via TV Tropes](briefcase.jpeg){width=60%}
+
+. . .
+
+Mostly money. 
+
+The carrying costs are non-trivial - you’ve got to do some work to keep it secure - and there are some things you can’t really buy with it - e.g., you can’t pay your hospital bills this way. 
+
+## Examples
+
+A suitcase full of pennies.
+
+![Firefly does not understand how small pennies are](pennies.jpg){width=60%}
+
+. . .
+
+
+Not money. 
+
+The carrying costs are immense. I mean literally, try lifting that thing let along carrying it. And no one in their right mind will take it as payment. 
+
+## Examples
+
+A shoebox full of Walmart gift cards. 
+
+![A Walmart gift card - I couldn't find the shoebox](walmart.jpg){width=60%}
+
+. . .
+
+Mostly money. 
+
+You can trade it for most things - literally Walmart sells most things. And you could probably get close to face value for it without too much effort if you really wanted something Walmart didn't sell.
+
+## Examples
+
+_Monnaie a cours libre_, the private currencies issued by the local notables in French municipalities in the early 1790s. 
+
+![An assignat, the official currency, in absurd denominations, via Wikipedia](assignat.jpg){width=60%}
+
+. . .
+
+Mostly money. 
+
+For most purposes, these can be traded for goods and services, so they are money. That they only work in a very small geographic region does reduce their liquidity premium, especially if one is liable to be conscripted to an army based in far away Paris.
+
+## Examples
+
+A large box of cigarettes in an old-fashioned prison. 
+
+![Old cigarettes, via Lux Military Antiques](luckies.png){width=60%}
+
+. . .
+
+Money. 
+
+I mean, this is really in the movies prisons. But in the movies you could trade those things for anything that was for sale. This is not 2024 America prison consulting advice, and for that you should contact an actual prison consultant. (Yes that's a real job, probably a well paying one.)
+
+## Examples
+
+A Robinhood account with the money all in overnight Treasuries. 
+
+![An ad for Robinhood, with the money very much not in Treasuries](robinhood.png){width=60%}
+
+. . .
+
+Money, and a very special kind of money. 
+
+It’s money that is not barren, contra the assumptions Keynes makes in chapter 17 of the _General Theory_ that money is barren. 
+
+It makes 5.25% right now, but is still easy to use to pay off credit card bills, which means anything you can buy on credit card, it can be easily exchange for.
+
+## Examples
+
+A Robinhood account with the money in a volatile stock, like Tesla. 
+
+![An ad for Robinhood, with the money in a more stable stock than Tesla](robinhood.png){width=60%}
+
+. . .
+
+Not quite money. 
+
+It’s just too unstable to know that it will be there in a crunch, and money should be somewhat stable.
+
+## Examples
+
+A Robinhood account with the money in index funds. 
+
+![Price history of the main index fund - Vanguard's VOO](voo.png){width=60%}
+
+. . .
+
+Maybe money. This one is hard, and I’m not sure. 
+
+It is really hard to say why it isn't liquid.
+
+## Three Questions
+
+1. Is the Vanguard case just a counterexample to this theory of money?
+2. What does the existence of a very liquid form of capital investment mean for Keynes's account of the origins of recessions?
+3. Why does _anything_ have a liquidity premium? What would a world where there was no such thing as a fire-sale price, where everything was readily tradable, look like?
+
+## Question 3
+
+My hypothesis (and this is both a theory I like and I think a plausible bit of Keynes exegesis) is that it would be a world where all probabilities were numerical. 
+
+So it's possible that somewhat technical issues in formal epistemology turn out to be really central for understanding important economic phenomena (or what were important economic phenomena pre-Vanguard). 
+
+But that's for another talk!
