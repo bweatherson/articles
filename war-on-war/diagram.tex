@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{fontspec}
+\setmainfont{Cormorant Garamond Light}
+\usepackage{tikz}
+\begin{document}
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.4]
+\tikzset{
+% Two node styles for game trees: solid and hollow
+solid node/.style={circle,draw,inner sep=1.5,fill=black},
+hollow node/.style={circle,draw,inner sep=1.5},
+square node/.style={rectangle,draw, inner sep = 1, fill = black}
+}
+
+% Specify spacing for each level of the tree
+\tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+\tikzstyle{level 2}=[level distance=15mm,sibling distance=15mm]
+\tikzstyle{level 3}=[level distance=13mm,sibling distance=11mm]
+
+% The Tree
+\node(0)[hollow node,label=above:{Nature}]{}
+child[grow=left]{node[solid node,label=left:{
+Chooser
+}] {}
+child[grow=up]{node(1)[solid node]{}
+child{node[square node,label=above:{400,0}]{} edge from parent node [right]{T}}
+child{node[square node,label=above:{40,1}]{} edge from parent node [left]{H}}
+edge from parent node [left, yshift = -5]{Up}
+}
+child[grow=down]{node(3)[solid node]{}
+child{node[square node,label=below:{0,1}]{} edge from parent node [left]{H}}
+child{node[square node,label=below:{0,0}]{} edge from parent node [right]{T}}
+edge from parent node [left, yshift = 5]{Down}
+}
+edge from parent node [below, align=center]{H \\ 0.5}
+}
+child[grow=right]{node[solid node,label=right:{
+Chooser
+}] {}
+child[grow=up]{node(2)[solid node]{}
+child{node[square node,label=above:{28,1}]{} edge from parent node [right]{T}}
+child{node[square node,label=above:{40,0}]{} edge from parent node [left]{H}}
+edge from parent node [right, yshift = -5]{Up}
+}
+child[grow=down]{node(4)[solid node]{}
+child{node[square node,label=below:{0,0}]{} edge from parent node [left]{H}}
+child{node[square node,label=below:{44,1}]{} edge from parent node [right]{T}}
+edge from parent node [right, yshift = 5]{Down}
+}
+edge from parent node [below,align=center]{T \\ 0.5}
+};
+
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.45,.45)$)rectangle($(2) +(.45,-.45)$);
+\draw[dashed,rounded corners=10]($(3) + (-.45,.45)$)rectangle($(4) +(.45,-.45)$);
+% specify mover at 2nd information set
+\node at ($(1)!.5!(2)$) {Demon};
+\node at ($(3)!.5!(4)$) {Demon};
+\end{tikzpicture}
+\end{document}
