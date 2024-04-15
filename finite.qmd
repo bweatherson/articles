@@ -1,0 +1,37 @@
+This note discusses three recent results concerning deference and updating. The general topic will be probability functions that are defined over a space that includes the values of other probability functions. A special case of that is when one function **fully defers** to another. As I'm using the term, H fully defers to A with respect to p just in case for all x in [0, 1], H(p | A(p) = x) = x. David Lewis's Principal Principle (Lewis 1980) and Bas van Fraassen's Reflection Principle (van Fraassen 1984) can both be rephrased as principles of full deference: Lewis thinks rational agents fully defer to chance (with respect to all propositions they don't have undermining evidence about), and van Fraassen thinks that rational agents fully defer to their future self (again with respect to a wide range of propositions). 
+
+Plan
+1. Snow on mixtures
+Counterexample - X, Y, Z are normal distributions with mean 0, sd 1. p is that X + Y + Z >= 0. One of A/B knows X + Y, the other knows X only. Prior in each is 50/50. The posterior mix is the posterior that one or other knows X + Y. This is never 1, so mixture is always strict
+
+2. Geanokopolous on nesting
+Counterexample - X is a real in (0, 1). Any distribution will do. Bc for any real c is a bet that pays -1 if X <= c, and c otherwise. The experimenter learns X >= x, for the actual value of X. Prior the best bet is B0, with guaranteed return of 0. After learning X >= x, the best bet is Bx, which will actually pay -1. So learning leads to loss.
+
+3. Dorst et al on Trust and Value
+Counterexample - X is a non-negative integer. Pr(X = 0) = 0, Pr(X = n) = 2^-n. The experimenter learns nothing if X = 0, learns X <= x if X is positive. Let Y be a random variable s.t. Y(0) = 0, otherwise Y(n) = 1 - 2^-n. Conditional on experimenter's EV for Y being at least 2/3, prior is that Y is 0, because that only happens when X = 0.
+
+But this model I *think* satisfies value. For any strategy S and option O, V(S) and V(O) can be defined as limits as n -> /infty of their values conditional on X <= n. And if we conditionalise on that, we get a finite nested model, so Value holds. (This is very hand-wavy)
+
+This also shows that Trust, which holds on all finite nested frames, does not hold on countable nested frames.
+
+Questions
+1. Does Zhang's result hold in countable frames?
+2. Does Geanokopoulos's result hold in countable frames?
+3. What does this mean for philosophical payoff?
+
+One special case of Reflection is when the agent believes that (a) they will only update by conditionalisation, and (b) that their evidence is *partitional*. (I'll come back to precisely what I mean by partitional presently). In that case, the agent thinks that “
+In words, Hero (i.e., H) *defers* to A; that is, they regard A as an *expert*. They take A's probability for p to settle the question of what probability to have for p, in the absence of other information.
+
+The first result is due to Snow Zhang. She shows that if the domains of H, A, and B are finite, then the following conditions cannot all be met:
+
+- H(p | A(p) = x) = x, i.e., H defers to A.
+- H(p | B(p) = x) = x, i.e., H defers to B.
+- H(A = B) < 1.
+- min(x, y) <= H(p | A(p) = x & B(p) = y) <= max(x, y)
+- If x != y, min(x, y) < H(p | A(p) = x & B(p) = y) < max(x, y)
+
+Our first observation is that if the domain of these functions is infinite, then it is possible to satisfy all of these constraints. (Zhang proves something stronger than this concerning the case where H defers to any finite number of experts, but we'll just discuss this weakening of her result; it isn't too hard to see how to generalise the example here to the case of arbitrarily many experts.) This will set the theme for what follows. Three interesting results about deference in finite models do not generalise to infinite models. This is moderately surprising, since the results don't at first glance look like they have anything to do with finitude.
+
+The second result is due to John Geanokopolous, and has recently been used in interesting ways by Kevin Dorst (2020). Let a frame <W, R, V, B, H, B> consist of a set of worlds W, an accessibility relation R on W, a valuation of atomic propositions V (i.e., a function from atomics to subsets of W), B is a set of and a prior probability function H defined over a salient sigma-algebra defined on W. (We won't fuss here over exactly which algebra it is; in all cases W will be a set of reals, and we'll assume the algebra includes all intervals within W.) Intuitively, let aRb, for a, b in W, mean that after conducting an experiment (in the sense defined by Blackwell (1951, 1953)), if a is actual, b is possible. 
+
+
