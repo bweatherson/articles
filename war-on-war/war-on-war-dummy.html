@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.525">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brian Weatherson">
+<meta name="dcterms.date" content="2024-04-19">
+
+<title>Why Ain’t Evidentialists Rich?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="war-on-war-dummy_files/libs/clipboard/clipboard.min.js"></script>
+<script src="war-on-war-dummy_files/libs/quarto-html/quarto.js"></script>
+<script src="war-on-war-dummy_files/libs/quarto-html/popper.min.js"></script>
+<script src="war-on-war-dummy_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="war-on-war-dummy_files/libs/quarto-html/anchor.min.js"></script>
+<link href="war-on-war-dummy_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="war-on-war-dummy_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="war-on-war-dummy_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="war-on-war-dummy_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="war-on-war-dummy_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-coinssignals" id="toc-sec-coinssignals" class="nav-link active" data-scroll-target="#sec-coinssignals"><span class="header-section-number">1</span> Coins and Signals</a></li>
+  <li><a href="#sec-cdt-definition" id="toc-sec-cdt-definition" class="nav-link" data-scroll-target="#sec-cdt-definition"><span class="header-section-number">2</span> What is CDT?</a></li>
+  <li><a href="#sec-wells-ahmed" id="toc-sec-wells-ahmed" class="nav-link" data-scroll-target="#sec-wells-ahmed"><span class="header-section-number">3</span> Wells and Ahmed</a></li>
+  <li><a href="#why-the-examples-matter" id="toc-why-the-examples-matter" class="nav-link" data-scroll-target="#why-the-examples-matter"><span class="header-section-number">4</span> Why The Examples Matter</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="war-on-war-dummy.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="../war-on-war-dummy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why Ain’t Evidentialists Rich?</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brian Weatherson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 19, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>There is a familiar complaint against Causal Decision Theory (CDT) that goes back to the modern origins of decision theory in the 1970s. Here is a recent version of it due to <span class="citation" data-cites="AhmedPrice2012">Ahmed and Price (<a href="#ref-AhmedPrice2012" role="doc-biblioref">2012</a>)</span>. (I’ve slightly changed some of the wording, but otherwise this argument is quoted from page 16 of their paper.)</p>
+<ol type="1">
+<li>In Newcomb problems, the average returns to one-boxing exceed that to two-boxing.</li>
+<li>Everyone can see that (1) is true.</li>
+<li>Therefore one-boxing foreseeably does better than two-boxing. (by 1, 2)</li>
+<li>Therefore Causal Decision Theory (CDT) is committed to the foreseeably worse option for anyone facing Newcomb’s problem.</li>
+</ol>
+<p>Here’s what they, and many other proponents of Evidential Decision Theory (EDT) say follows from 4.</p>
+<blockquote class="blockquote">
+<p>The point of the argument is that if everyone knows that the CDT-irrational strategy will in fact do better on average than the CDT-rational strategy, then it’s rational to play the CDT-irrational strategy. <span class="citation" data-cites="AhmedPrice2012">(<a href="#ref-AhmedPrice2012" role="doc-biblioref">Ahmed and Price 2012, 17</a>)</span></p>
+</blockquote>
+<p>This is what <span class="citation" data-cites="Lewis1981en">Lewis (<a href="#ref-Lewis1981en" role="doc-biblioref">1981b</a>)</span> called the “Why Ain’cha Rich” argument, and what following Ahmed <span class="citation" data-cites="Ahmed2014">(<a href="#ref-Ahmed2014" role="doc-biblioref">2014, 182</a>)</span> and <span class="citation" data-cites="Bales2018">Bales (<a href="#ref-Bales2018" role="doc-biblioref">2018</a>)</span> I’ll call the WAR argument. I’m going to argue the last step of the WAR argument doesn’t follow. Or, more precisely, that proponents of EDT cannot coherently say that it follows. For there are cases where EDT foreseeably does worse than at least some prominent versions of CDT.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Ian <span class="citation" data-cites="Wells2019">Wells (<a href="#ref-Wells2019" role="doc-biblioref">2019</a>)</span> has another case where EDT does worse than some versions of CDT. I think his case successfully shows that WAR arguments are no good, but not everyone is convinced. I’ll come back to Wells’s case in <a href="#sec-wells-ahmed" class="quarto-xref">Section&nbsp;3</a>.</p></li></div><section id="sec-coinssignals" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Coins and Signals</h1>
+<p>The example I’ll use is a version of a signalling game of the kind introduced by <span class="citation" data-cites="Lewis1969a">Lewis (<a href="#ref-Lewis1969a" role="doc-biblioref">1969</a>)</span>. And in particular it’s a version of the broadly adversarial kind of signalling game that is central to the plot of <span class="citation" data-cites="ChoKreps1987">Cho and Kreps (<a href="#ref-ChoKreps1987" role="doc-biblioref">1987</a>)</span>. It will involve a human Chooser, and a Demon who is excellent at predictions. The game will have three stages.</p>
+<p>At the first stage a fair coin is flipped, and the result shown to Chooser, but not to Demon. At the second stage, Chooser will choose Up or Down, and the choice will be publicly announced. At the third stage, Demon will try to guess what the coin showed. Demon knows the payoff table I’m about to show you, and is arbitrarily good at predicting Chooser’s strategy for what to do given how the coin appears. This prediction is causally independent of Chooser’s choice, but Demon’s guess is not independent; it could be affected by the choice. The payoffs to each player are a function of what happens at each of the three steps, and are given by table <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a>. (The payoffs here are all in utils.)</p>
+<div id="tbl-payoffs-demon-coin" class="anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-payoffs-demon-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Payouts for the coins and signals game
+</figcaption>
+<div aria-describedby="tbl-payoffs-demon-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 27%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Coin</strong></th>
+<th style="text-align: center;"><strong>Chooser</strong></th>
+<th style="text-align: center;"><strong>Demon</strong></th>
+<th style="text-align: center;"><strong>Chooser Payoff</strong></th>
+<th style="text-align: center;"><strong>Demon Payoff</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a> shows the game they are playing in tree form. We start at the middle, then move left or right depending on the coin flip, up or down depending on Chooser’s choice, and at one or other angle depending on Demon’s choice. Demons’s payoffs are just as you’d expect - they get rewarded iff they figure out how the coin landed. Chooser’s payoffs are more complicated, but the big things to note are the huge payout if they get to the top-left and Demon does not make a correct prediction, and the generally poor payouts for choosing Down.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-second-anti-war" class="quarto-figure quarto-figure-center anchored" width="384">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-second-anti-war-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="war-on-war-dummy_files/figure-html/fig-second-anti-war-1.jpg" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-second-anti-war-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Tree Diagram of the Coins and Signals Game
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>I intend the Demon to be a rational player in a game-theoretic sense. But to translate that into decision-theoretic terms, it’s important to make a few stipulations. Demon predicts Chooser’s strategy, that is Chooser’s plan about what to do if the coin lands Heads and what to do if the coin lands Tails, before the game starts. They make their guess about how the coin landed after seeing Chooser’s actual choice, and updating their prior beliefs (about both the coin and Chooser) with this information. If they predict that Chooser will do the same thing however the coin lands, they will have no useful information about the coin, so they will flip their own coin to make a guess. In that case it will be 50/50 whether Demon says Heads or Tails. Also, if Demon is surprised by what Chooser does, i.e., if they had predicted Chooser would do one thing however the coin lands but Chooser does the other thing, Demon will also flip their own coin to make a guess.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Finally, Demon’s predictions are arbitrarily accurate. It makes the math easiest to assume Demon is correct with probability 1. Some people (myself among them) worry that stipulating the Demon succeeds with probability 1 might take us too close to a case of backwards causation, and it’s very important that Chooser does not cause Demon’s prediction of a strategy. If you have that worry, say that Demon’s probability of successful prediction (whichever of the four strategies Chooser opts for) is 1&nbsp;-&nbsp;<span class="math inline">\(\varepsilon\)</span>, where <span class="math inline">\(\varepsilon\)</span> is small enough that it doesn’t make a difference to what is rational for Chooser to do.</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;A key move <span class="citation" data-cites="ChoKreps1987">Cho and Kreps (<a href="#ref-ChoKreps1987" role="doc-biblioref">1987</a>)</span> is that in some cases we can say substantive things about what a player will do if they are surprised in this sense. But <a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a> is not one of these cases.</p></li></div><p>Now I want to analyse what Chooser will do if they follow EDT. It should be fairly clear that if the coin lands Heads, Chooser should say Up. The worst possible return from Up is 40, the best possible return from Down is 0. So playing Up if the coin lands Heads is what any theory would recommend, and Chooser will do that whether or not they follow EDT. Indeed, this is so clear that we should assume Demon will predict that Chooser will play Up if the coin lands Heads. So what happens if the coin lands Tails? There are four possibilities here: the two things Chooser might do crossed with the two predictions Demon might make. The expected return to Chooser in these four possibilities is given in <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div id="tbl-payout-if-tails" class="anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-payout-if-tails-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: The expected payout to Chooser in four cases if the coin lands Tails
+</figcaption>
+<div aria-describedby="tbl-payout-if-tails-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Predict Up</strong></th>
+<th style="text-align: center;"><strong>Predict Down</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">44</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The numbers in <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a> aren’t entirely obvious; I’ll spell out how I got them.</p>
+<ul>
+<li>If Demon predicts Up if Tails, Demon will flip a coin if the coin lands Tails, whatever Chooser does. That’s because they’ll either get no information (if Chooser plays Up), or will be surprised (if Chooser plays Down). So Chooser will get the average of lines 5 and 6 in <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a> if they play Up, and the average of lines 7 and 8 if they play Down.</li>
+<li>If Demon predicts Down if Tails, and Chooser plays Up, Demon will think (falsely) that the coin must have landed Heads, since Demon will have predicted that Chooser will only say Up if Heads. So Demon will say Heads. So we’ll definitely be at line 5 of <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a>, where Chooser gets 40.</li>
+<li>If Demon predicts Down if Tails, and Chooser plays Down, Demon will think (correctly) that the coin must have landed Tails. So Demon will say that, and we’ll be at line 8 of <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a>.</li>
+</ul>
+<p>In a decision problem like <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a>, EDT says that if Demon is sufficiently likely to be accurate, all that matters is which of the top-left and bottom-right cells is largest. In this case, it’s the bottom-right, so EDT says to play Down. That isn’t absurd in <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a> itself; it almost certainly results in Chooser getting the best possible payout of 44. So that’s our analysis of the game for EDT: Chooser plays Up if Heads, Down if Tails, gets 40 if Heads and 44 if Tails (plus/minus a small amount in expectation if Demon has <span class="math inline">\(\varepsilon\)</span> chance of being wrong), and on average gets 42. What does CDT say? This needs a small detour, because ‘CDT’ has become an ambiguous signifier.</p>
+</section>
+<section id="sec-cdt-definition" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> What is CDT?</h1>
+<p>David <span class="citation" data-cites="Lewis1981bn">Lewis (<a href="#ref-Lewis1981bn" role="doc-biblioref">1981a</a>)</span> argued that all then-existing versions of CDT were little more than notational variants; they just differed on “emphasis and formulation” <span class="citation" data-cites="Lewis1981bn">(<a href="#ref-Lewis1981bn" role="doc-biblioref">Lewis 1981a, 5</a>)</span>. Whether that was true then (and I have some doubts), it isn’t true now. There are now many broadly causal decision theories, i.e., theories that say one should take two boxes in Newcomb’s Problem because it is the causally dominant option, on the philosophical market. To see the available variety, it helps to consider a very abstract decision problem. Chooser has to choose Up or Down, arbitrarily accurate Demon has predicted what Chooser will select, and the payoffs are a function of the choice and the prediction. <a href="#tbl-abstract" class="quarto-xref">Table&nbsp;3</a> presents the abstract form of that problem.</p>
+<div id="tbl-abstract" class="anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-abstract-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: An abstract decision problem
+</figcaption>
+<div aria-describedby="tbl-abstract-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Predict Up</strong></th>
+<th style="text-align: center;"><strong>Predict Down</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;"><em>a</em></td>
+<td style="text-align: center;"><em>b</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;"><em>c</em></td>
+<td style="text-align: center;"><em>d</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>To make the analysis a little easier, I’m going to assume all four of these values are distinct. We could get to the same conclusions as I reach below without this assumption, but we’d have to spent a lot of time checking edge cases. And I’ve set up the puzzles in this paper so that questions about what to do if any of these values are equal don’t come up.</p>
+<p>As noted in <a href="#sec-coinssignals" class="quarto-xref">Section&nbsp;1</a>, if Demon is accurate enough, EDT just cares about whether <em>a</em> or <em>d</em> is larger. What’s definitional of CDT is that if the prediction is causally independent of the choice, and <em>a</em>&nbsp;&gt;&nbsp;<em>c</em>, and <em>b</em>&nbsp;&gt;&nbsp;<em>d</em>, then Up is the right choice.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> But what if only one of those inequalities hold? In particular, if <em>a</em>&nbsp;&gt;&nbsp;<em>c</em>, and <em>d</em>&nbsp;&gt;&nbsp;<em>b</em>, what is to be done? There are, in the current literature, four different verdicts on this among people who agree with the fundamental claim that CDT makes about Newcomb-like problems.</p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;To be clear, <em>I</em> am taking this to be definitional of being a causal decision theory. I think this is a fairly standard usage outside of decision theory, but not all decision theorists go along with it.</p></li></div><ol type="1">
+<li>Frank <span class="citation" data-cites="Arntzenius2008">Arntzenius (<a href="#ref-Arntzenius2008" role="doc-biblioref">2008</a>)</span> and Johan <span class="citation" data-cites="Gustafsson2011">Gustafsson (<a href="#ref-Gustafsson2011" role="doc-biblioref">2011</a>)</span> say that in this case CDT should follow EDT, and use the values of <em>a</em> and <em>d</em> to settle the choice. In <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a> that means playing Down, since 44&nbsp;&gt;&nbsp;34.</li>
+<li>Ralph <span class="citation" data-cites="Wedgwood2013a">Wedgwood (<a href="#ref-Wedgwood2013a" role="doc-biblioref">2013</a>)</span>, Dmitri <span class="citation" data-cites="Gallow2020">Gallow (<a href="#ref-Gallow2020" role="doc-biblioref">2020</a>)</span>, Abelard <span class="citation" data-cites="Podgorski2022">Podgorski (<a href="#ref-Podgorski2022" role="doc-biblioref">2022</a>)</span>, and David <span class="citation" data-cites="Barnett2022">Barnett (<a href="#ref-Barnett2022" role="doc-biblioref">2022</a>)</span> say that Chooser should choose Up or Down depending on which of <em>a</em> + <em>b</em> and <em>c</em> + <em>d</em> is larger.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a> they recommend Up, since 34 + 40&nbsp;&gt;&nbsp;22 + 44.</li>
+<li>Jack <span class="citation" data-cites="Spencer2023">Spencer (<a href="#ref-Spencer2023" role="doc-biblioref">2023</a>)</span> and Melissa <span class="citation" data-cites="Fuscond">Fusco (<a href="#ref-Fuscond" role="doc-biblioref">n.d.</a>)</span> say that if <em>a</em>&nbsp;&gt;&nbsp;<em>c</em>, and <em>d</em>&nbsp;&gt;&nbsp;<em>b</em>, either Up or Down is rationally permissible.</li>
+<li>James <span class="citation" data-cites="Joyce2012">Joyce (<a href="#ref-Joyce2012" role="doc-biblioref">2012</a>)</span> says that what Chooser does if <em>a</em>&nbsp;&gt;&nbsp;<em>c</em>, and <em>d</em>&nbsp;&gt;&nbsp;<em>b</em> should be a function of how likely they think it is at the start of deliberation that they will choose Up or Down.</li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;My description these four theories may seem surprising since they do not emphasise the comparison between <em>a</em> +&nbsp;<em>b</em> and <em>c</em> +&nbsp;<em>d</em>, but rather the comparison between <em>a</em> -&nbsp;<em>c</em> and <em>d</em> -&nbsp;<em>b</em>. This is just a notational variation, and I find my variant easier to use, if a little removed from the underlying philosophical motivation.</p></li><li id="fn5"><p><sup>5</sup>&nbsp;Or possibly for an older theory like the one defended by <span class="citation" data-cites="GibbardHarper1978">Gibbard and Harper (<a href="#ref-GibbardHarper1978" role="doc-biblioref">1978</a>)</span> or the one defended by <span class="citation" data-cites="Lewis1981bn">Lewis (<a href="#ref-Lewis1981bn" role="doc-biblioref">1981a</a>)</span></p></li></div><p>So these four families of theories say different things about cases like <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a>. And within each family (except possibly the last), it isn’t hard to find other cases where the theories disagree. The best conclusion, I think, is that there are Causal Decision <em>Theories</em>, but no one Causal Decision <em>Theory</em>. CDT is a name for a family of views, not a particular view. There are some people in the literature who try to use the term for one particular one of the nine views I just described<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, but I can’t see what particularly motivates any one choice; they all look equally deserving of the term to me.</p>
+<p>This is an asymmetry between EDT and CDT. EDT is indeed a theory; it is the theory defended by Arif <span class="citation" data-cites="Ahmed2014">Ahmed (<a href="#ref-Ahmed2014" role="doc-biblioref">2014</a>)</span>. But CDT is a family of theories. So we shouldn’t compare EDT to CDT as such, we should compare it to a particular causal theory. And for this paper, I’ll focus on the theories listed in point 2 above, and especially the version defended by Gallow.</p>
+<p>On Gallow’s view, Chooser should play Up in <a href="#tbl-payout-if-tails" class="quarto-xref">Table&nbsp;2</a>, since 34 + 40&nbsp;&gt;&nbsp;22 + 44. So Chooser will always play Up in <a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a>. So Demon will always flip a coin to decide what to do. So all of the outcomes where Chooser plays Up are equally likely.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> That means Chooser will on average get a return of 127. Since 127&nbsp;&gt;&nbsp;42, on average if Chooser follows Gallow’s theory they will get a better return than if they follow EDT. So if WAR arguments work, they show that EDT should be rejected since it does worse than Gallow’s theory in cases like <a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;That is, the four outcomes at the top of <a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a>, or options 1, 2, 5, and 6 in <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a>.</p></li><li id="fn7"><p><sup>7</sup>&nbsp;As a referee points out, this doesn’t show that WAR arguments would give one a reason to <em>endorse</em> Gallow’s theory. After all, since Gallow’s theory is a version of CDT, it has worse returns on average than EDT in Newcomb problems. The real point is that showing theory A has better returns than theory B in one particular problem doesn’t mean much unless we show that there is no problem where theory B does better.</p></li></div></section>
+<section id="sec-wells-ahmed" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Wells and Ahmed</h1>
+<p>Ian <span class="citation" data-cites="Wells2019">Wells (<a href="#ref-Wells2019" role="doc-biblioref">2019</a>)</span> has earlier offered an example where EDT predictably does worse than (all versions of) CDT. His case involves a two-step game, where the EDTer will, at step 2, make a decision that everyone, whether they believe in CDT or EDT or any other plausible theory, think is bad from the perspective of the player at step 1. At round 1 the players can pay to tie their hands at round 2, and the EDTer will make this payment. (As would the CDTer who thinks they will become an EDTer before round 2 starts.) Arif <span class="citation" data-cites="Ahmed2020">Ahmed (<a href="#ref-Ahmed2020" role="doc-biblioref">2020</a>)</span> responds that this is an unfair criticism. In Wells’s cases, he says, the EDT and CDT deciders are not in equivalent situations in round one. The EDTer knows that they will use EDT in later rounds, and the CDTer knows that they will use CDT in later rounds. So they have different evidence about what will happen at some later time in a way that’s relevant to their current decision, so it’s not a like-for-like comparison between CDT and EDT at the first stage.</p>
+<p>The first thing to say is that I’m not sure this is a fair criticism of Wells. If WAR arguments work anywhere (something that Ahmed believes but Wells is only assuming for <em>reductio</em>), they are meant to work against CDT in Newcomb’s Problem. But in that case the CDTer and EDTer also have different subjective credences about the problem they face. The CDTer thinks that they have a transparent box and an empty box in front of them; the EDTer thinks that they have a transparent box and a box full of money in front of them. If differences in credences about what one will do mean that WAR arguments are unfair, then WAR arguments don’t work in the very case they are designed for. So I think Wells’s argument works, and that Ahmed’s criticism does not rescue the argument for EDT.</p>
+<p>Set that aside though, because the main thing I want to add is that my example does not turn on differences in the subjective states of the possible choosers. Every chooser, whether they follow EDT, Gallow’s theory, or any other, will choose Up if the coin lands Heads. And this is common knowledge. Demon knows this, and Chooser knows that Demon knows it, and so on. The only difference is that if Chooser follows EDT, they will play Down if Tails. And that’s good as far as it goes; they’ll probably get the highest possible payoff they can get at that point. More importantly for this debate, they will have the same subjective states if Tails is true whether they follow EDT, Gallow’s theory, or anything else. They will believe that they would have played Up if Heads, and that the Demon would have predicted that. So the different choices they make if the coin lands Tails can’t be traced back to differences in their subjective states. So the complaint that Ahmed makes about Wells’s examples can’t be made here (even setting aside the question of whether it is a fair complaint). Nonetheless, the EDTer ends up with less money in the long run than the follower of Gallow’s theory when playing this game.</p>
+</section>
+<section id="why-the-examples-matter" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Why The Examples Matter</h1>
+<p>This paper is very much not an argument against EDT; instead, it’s part of a war on WAR. WAR arguments overgenerate. They sometimes ‘show’ that EDT is better than Gallow-style CDT, as in Newcomb’s Problem, but sometimes they ‘show’ the reverse, as in <a href="#fig-second-anti-war" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>Even when they seem to favour a view like Gallow’s, it’s something of a coincidence that they do. Go back to <a href="#tbl-payoffs-demon-coin" class="quarto-xref">Table&nbsp;1</a>, and replace the payoff to Chooser at line 2 with a variable <em>x</em>. As long as <em>x</em>&nbsp;&gt;&nbsp;0, Gallow-style CDT will still say to choose Up however the coin lands. The value of <em>x</em> is irrelevant to what to do if Tails, and as long as <em>x</em>&nbsp;&gt;&nbsp;0, Up is guaranteed to do better than Down if the coin lands Heads. But if <em>x</em> &lt; 60, the average payoff to EDT, which is 42 whatever the value of <em>x</em> is, will be greater than the average payoff to Gallow-style CDT, which is (108&nbsp;+&nbsp;<em>x</em>)/4.</p>
+<p>So which of these two theories is favoured by WAR considerations turns on a factor, namely the value of <em>x</em>, that’s not part of the decision process for either theory in the only part of the decision tree where they differ. The two theories differ on what to do if the coin lands Tails. And that turns entirely on the payouts in lines 5 to 8. This is because both theories are consequentialist theories in the sense of consequentialism popularised by <span class="citation" data-cites="Hammond1988">Hammond (<a href="#ref-Hammond1988" role="doc-biblioref">1988</a>)</span>. That’s I think the deepest lesson of this example. Which theory is favoured by WAR considerations is a deeply non-consequentialist consideration; it’s about what theory one would have been best off adopting originally. So strange things can happen if you use it to ‘decide’ between competing consequentialist theories. What the example reveals is that those strange things actually happen in some specifiable cases.</p>
+<p>Now I haven’t said anything here about whether non-consequentialists can legitimately use WAR arguments. And this matters a bit more than it used to, because there are sophisticated defenders of non-consequentialism, such as <span class="citation" data-cites="LevinsteinSoares2020">Levinstein and Soares (<a href="#ref-LevinsteinSoares2020" role="doc-biblioref">2020</a>)</span>. Nothing I’ve said here tells against the use of WAR arguments by such theories. I think there are independent arguments against these non-consequentialist theories, especially when one thinks about cases where generally reliable predictors are known to have made mistakes, but that’s a story for another day. What I hope to have shown here is that proponents of EDT cannot coherently use WAR arguments. And while I haven’t proven this generalises to all consequentialist theories, i.e., that no consequentialist theory can coherently use WAR arguments, I think cases like mine make that generalisation more probable.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;Thanks to two very helpful reviewers for <em>Analysis</em>, who corrected several mistakes in an earlier version of this paper, pushed me to clarify things that I’d rushed by (and at least in two cases made a clumsy error in the rush), and pointed out ways in which I needed to engage more with existing work. The comments helped every part of the paper, but in particular this conclusion about just what the cases show, and why they show that, owes a lot to their feedback.</p></li></div><section id="references" class="level2 unnumbered content-include" data-unless-format="html">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+</section>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Ahmed2014" class="csl-entry" role="listitem">
+Ahmed, Arif. 2014. <em>Evidence, Decision and Causality</em>. Cambridge: <span>C</span>ambridge <span>U</span>niversity <span>P</span>ress.
+</div>
+<div id="ref-Ahmed2020" class="csl-entry" role="listitem">
+———. 2020. <span>“Equal Opportunities in Newcomb’s Problem and Elsewhere.”</span> <em>Mind</em> 129 (515): 867–86. doi: <a href="https://doi.org/10.1093/mind/fzz073">10.1093/mind/fzz073</a>.
+</div>
+<div id="ref-AhmedPrice2012" class="csl-entry" role="listitem">
+Ahmed, Arif, and Huw Price. 2012. <span>“Arntzenius on ‘Why Ain’cha Rich?’.”</span> <em>Erkenntnis</em> 77 (1): 15–30. doi: <a href="https://doi.org/10.1007/s10670-011-9355-2">10.1007/s10670-011-9355-2</a>.
+</div>
+<div id="ref-Arntzenius2008" class="csl-entry" role="listitem">
+Arntzenius, Frank. 2008. <span>“No Regrets; or, Edith Piaf Revamps Decision Theory.”</span> <em>Erkenntnis</em> 68 (2): 277–97. doi: <a href="https://doi.org/10.1007/s10670-007-9084-8">10.1007/s10670-007-9084-8</a>.
+</div>
+<div id="ref-Bales2018" class="csl-entry" role="listitem">
+Bales, Adam. 2018. <span>“Richness and Rationality: Causal Decision Theory and the WAR Argument.”</span> <em>Synthese</em> 195 (1): 259–67. doi: <a href="https://doi.org/10.1007/s11229-016-1214-x">10.1007/s11229-016-1214-x</a>.
+</div>
+<div id="ref-Barnett2022" class="csl-entry" role="listitem">
+Barnett, David James. 2022. <span>“Graded Ratifiability.”</span> <em>Journal of Philosophy</em> 119 (2): 57–88. doi: <a href="https://doi.org/10.5840/jphil202211925">10.5840/jphil202211925</a>.
+</div>
+<div id="ref-ChoKreps1987" class="csl-entry" role="listitem">
+Cho, In-Koo, and David M. Kreps. 1987. <span>“Signalling Games and Stable Equilibria.”</span> <em>The Quarterly Journal of Economics</em> 102 (2): 179–221. doi: <a href="https://doi.org/10.2307/1885060">10.2307/1885060</a>.
+</div>
+<div id="ref-Fuscond" class="csl-entry" role="listitem">
+Fusco, Melissa. n.d. <span>“Absolution of a Causal Decision Theorist.”</span> <em>No<span>û</span>s</em>. doi: <a href="https://doi.org/10.1111/nous.12459">10.1111/nous.12459</a>. Early view.
+</div>
+<div id="ref-Gallow2020" class="csl-entry" role="listitem">
+Gallow, J. Dmitri. 2020. <span>“The Causal Decision Theorist’s Guide to Managing the News.”</span> <em>The Journal of Philosophy</em> 117 (3): 117–49. doi: <a href="https://doi.org/10.5840/jphil202011739">10.5840/jphil202011739</a>.
+</div>
+<div id="ref-GibbardHarper1978" class="csl-entry" role="listitem">
+Gibbard, Allan, and William Harper. 1978. <span>“Counterfactuals and Two Kinds of Expected Utility.”</span> In, 125–62.
+</div>
+<div id="ref-Gustafsson2011" class="csl-entry" role="listitem">
+Gustafsson, Johan E. 2011. <span>“A Note in Defence of Ratificationism.”</span> <em>Erkenntnis</em> 75 (1): 147–50. doi: <a href="https://doi.org/10.1007/s10670-010-9267-6">10.1007/s10670-010-9267-6</a>.
+</div>
+<div id="ref-Hammond1988" class="csl-entry" role="listitem">
+Hammond, Peter J. 1988. <span>“Consequentialist Foundations for Expected Utility.”</span> <em>Theory and Decision</em> 25 (1): 25–78. doi: <a href="https://doi.org/10.1007/BF00129168">10.1007/BF00129168</a>.
+</div>
+<div id="ref-Joyce2012" class="csl-entry" role="listitem">
+Joyce, James M. 2012. <span>“Regret and Instability in Causal Decision Theory.”</span> <em>Synthese</em> 187 (1): 123–45. doi: <a href="https://doi.org/10.1007/s11229-011-0022-6">10.1007/s11229-011-0022-6</a>.
+</div>
+<div id="ref-LevinsteinSoares2020" class="csl-entry" role="listitem">
+Levinstein, Benjamin Anders, and Nate Soares. 2020. <span>“Cheating Death in Damascus.”</span> <em>Journal of Philosophy</em> 117 (5): 237–66. doi: <a href="https://doi.org/10.5840/jphil2020117516">10.5840/jphil2020117516</a>.
+</div>
+<div id="ref-Lewis1969a" class="csl-entry" role="listitem">
+Lewis, David. 1969. <em>Convention: A Philosophical Study</em>. Cambridge: Harvard University Press.
+</div>
+<div id="ref-Lewis1981bn" class="csl-entry" role="listitem">
+———. 1981a. <span>“Causal Decision Theory.”</span> <em>Australasian Journal of Philosophy</em> 59 (1): 5–30. doi: <a href="https://doi.org/10.1080/00048408112340011">10.1080/00048408112340011</a>.
+</div>
+<div id="ref-Lewis1981en" class="csl-entry" role="listitem">
+———. 1981b. <span>“Why Ain’cha Rich?”</span> <em>No<span>û</span>s</em> 15 (3): 377–80. doi: <a href="https://doi.org/10.2307/2215439">10.2307/2215439</a>.
+</div>
+<div id="ref-Podgorski2022" class="csl-entry" role="listitem">
+Podgorski, Aberlard. 2022. <span>“Tournament Decision Theory.”</span> <em>No<span>û</span>s</em> 56 (1): 176–203. doi: <a href="https://doi.org/10.1111/nous.12353">10.1111/nous.12353</a>.
+</div>
+<div id="ref-Spencer2023" class="csl-entry" role="listitem">
+Spencer, Jack. 2023. <span>“Can It Be Irrational to Knowingly Choose the Best?”</span> <em>Australasian Journal of Philosophy</em> 101 (1): 128–39. doi: <a href="https://doi.org/10.1080/00048402.2021.1958880">10.1080/00048402.2021.1958880</a>.
+</div>
+<div id="ref-Wedgwood2013a" class="csl-entry" role="listitem">
+Wedgwood, Ralph. 2013. <span>“Gandalf’s Solution to the Newcomb Problem.”</span> <em>Synthese</em> 190 (14): 2643–75. doi: <a href="https://doi.org/10.1007/s11229-011-9900-1">10.1007/s11229-011-9900-1</a>.
+</div>
+<div id="ref-Wells2019" class="csl-entry" role="listitem">
+Wells, Ian. 2019. <span>“Equal Opportunity and Newcomb’s Problem.”</span> <em>Mind</em> 128 (510): 429–57. doi: <a href="https://doi.org/10.1093/mind/fzx018">10.1093/mind/fzx018</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
