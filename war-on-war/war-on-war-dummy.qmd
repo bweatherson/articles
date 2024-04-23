@@ -2,6 +2,7 @@
 title: "Why Ain't Evidentialists Rich?"
 title-short: "Rich"
 author: "Brian Weatherson"
+abstract: "Really, why aren't they? What has gone wrong."
 date: today
 format: 
     html:
@@ -42,20 +43,20 @@ format:
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
           \usepackage[automark]{scrlayer-scrpage}
-          \usepackage{authoraftertitle}
           \renewcommand{\leftmark}{\author}
           \clearpairofpagestyles
-          \cehead{\myauthor}
-          \cohead{\mytitle}
+          \cehead{
+            {{< meta author >}}
+            }
+          \cohead{
+            {{< meta title >}}
+            }
           \ohead{\bfseries \pagemark}
           \cfoot{}
 editor: visual
 bibliography: war-on-war.bib
 csl: ../../quarto-articles/chicago-with-note.csl
 number-sections: true
-params:
-    mytitle: title
-    myauthor: author
 ---
 
 ```{r}
@@ -66,9 +67,6 @@ if(knitr::is_latex_output()) {
 }
 options(tinytex.engine = "xelatex")
 ```
-
-\newcommand{\mytitle}{`r params$mytitle`}
-\newcommand{\myauthor}{`r params$myauthor`}
 
 There is a familiar complaint against Causal Decision Theory (CDT) that goes back to the modern origins of decision theory in the 1970s. Here is a recent version of it due to @AhmedPrice2012. (I've slightly changed some of the wording, but otherwise this argument is quoted from page 16 of their paper.)
 
