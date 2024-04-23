@@ -25,8 +25,10 @@
 \usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
-  \setmainfont[Scale = MatchLowercase]{Times New Roman}
-  \setsansfont[]{Times New Roman}
+  \setmainfont[ItalicFont=EB Garamond Italic,BoldFont=EB Garamond
+Bold]{EB Garamond Math}
+  \setsansfont[]{Europa-Bold}
+  \setmathfont[]{Garamond-Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -34,18 +36,8 @@
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
 \usepackage{xcolor}
-\usepackage[left=1.94in,right=1.94in,top=1.5in,bottom=1.5in]{geometry}
+\usepackage[left=1in,right=1in,top=0.8in,bottom=0.8in,paperheight=9.5in,paperwidth=6.5in]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -130,6 +122,19 @@
   }
 \ohead{\bfseries \pagemark}
 \cfoot{}
+\makeatletter
+\newcommand*\NoIndentAfterEnv[1]{%
+  \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+\NoIndentAfterEnv{itemize}
+\NoIndentAfterEnv{enumerate}
+\NoIndentAfterEnv{description}
+\NoIndentAfterEnv{quote}
+\NoIndentAfterEnv{equation}
+\NoIndentAfterEnv{longtable}
+\renewenvironment{abstract}
+ {\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip}
+ {\par\noindent\rule{\linewidth}{.5pt}\endquotation}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -198,13 +203,10 @@
 Really, why aren't they? What has gone wrong.
 \end{abstract}
 
-\emph{
-Brian Weatherson}
-
 \setstretch{1.1}
-There is a familiar complaint against Causal Decision Theory (CDT) that
-goes back to the modern origins of decision theory in the 1970s. Here is
-a recent version of it due to Ahmed and Price
+\noindent There is a familiar complaint against Causal Decision Theory
+(CDT) that goes back to the modern origins of decision theory in the
+1970s. Here is a recent version of it due to Ahmed and Price
 (\citeproc{ref-AhmedPrice2012}{2012}). (I've slightly changed some of
 the wording, but otherwise this argument is quoted from page 16 of their
 paper.)

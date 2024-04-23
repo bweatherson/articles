@@ -28,11 +28,17 @@ format:
       reference-doc: my-template.docx
     pdf: 
       classoption: twoside
-      geometry: "left=1.94in,right=1.94in,top=1.5in,bottom=1.5in"
-      mainfont: Times New Roman
-      sansfont: Times New Roman
-      mainfontoptions: Scale = MatchLowercase
+      geometry: "left=1in,right=1in,top=0.8in,bottom=0.8in,paperheight=9.5in,paperwidth=6.5in"
+      mathspec: false
+      mathfont: Garamond-Math
+      mainfont: EB Garamond Math
+      sansfont: Europa-Bold
+      mainfontoptions: 
+#        - Scale = MatchLowercase
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond Bold
       fontsize: 10pt
+      indent: true
       linkcolor: black
       linestretch: 1.1
       link-citations: true
@@ -53,6 +59,19 @@ format:
             }
           \ohead{\bfseries \pagemark}
           \cfoot{}
+          \makeatletter
+          \newcommand*\NoIndentAfterEnv[1]{%
+            \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+          \makeatother
+          \NoIndentAfterEnv{itemize}
+          \NoIndentAfterEnv{enumerate}
+          \NoIndentAfterEnv{description}
+          \NoIndentAfterEnv{quote}
+          \NoIndentAfterEnv{equation}
+          \NoIndentAfterEnv{longtable}
+          \renewenvironment{abstract}
+           {\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip}
+           {\par\noindent\rule{\linewidth}{.5pt}\endquotation}
 editor: visual
 bibliography: war-on-war.bib
 csl: ../../quarto-articles/chicago-with-note.csl
@@ -68,7 +87,7 @@ if(knitr::is_latex_output()) {
 options(tinytex.engine = "xelatex")
 ```
 
-There is a familiar complaint against Causal Decision Theory (CDT) that goes back to the modern origins of decision theory in the 1970s. Here is a recent version of it due to @AhmedPrice2012. (I've slightly changed some of the wording, but otherwise this argument is quoted from page 16 of their paper.)
+\noindent There is a familiar complaint against Causal Decision Theory (CDT) that goes back to the modern origins of decision theory in the 1970s. Here is a recent version of it due to @AhmedPrice2012. (I've slightly changed some of the wording, but otherwise this argument is quoted from page 16 of their paper.)
 
 1.  In Newcomb problems, the average returns to one-boxing exceed that to two-boxing.
 2.  Everyone can see that (1) is true.
