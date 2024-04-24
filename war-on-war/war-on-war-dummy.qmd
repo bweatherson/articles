@@ -2,7 +2,7 @@
 title: "Why Ain't Evidentialists Rich?"
 title-short: "Rich"
 author: "Brian Weatherson"
-abstract: "Really, why aren't they? What has gone wrong."
+abstract: "Really, why aren't they? What has gone wrong. I've been told that you've been bold etc. I need to fix this because"
 date: today
 format: 
     html:
@@ -49,7 +49,6 @@ format:
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
           \usepackage[automark]{scrlayer-scrpage}
-          \renewcommand{\leftmark}{\author}
           \clearpairofpagestyles
           \cehead{
             {{< meta author >}}
@@ -70,7 +69,8 @@ format:
           \NoIndentAfterEnv{equation}
           \NoIndentAfterEnv{longtable}
           \renewenvironment{abstract}
-           {\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip}
+           {\vspace{-2cm}\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip
+           \noindent }
            {\par\noindent\rule{\linewidth}{.5pt}\endquotation}
 editor: visual
 bibliography: war-on-war.bib

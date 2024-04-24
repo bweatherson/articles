@@ -112,7 +112,6 @@ Bold]{EB Garamond Math}
 \setlength\heavyrulewidth{0ex}
 \setlength\lightrulewidth{0ex}
 \usepackage[automark]{scrlayer-scrpage}
-\renewcommand{\leftmark}{\author}
 \clearpairofpagestyles
 \cehead{
   Brian Weatherson
@@ -133,7 +132,8 @@ Bold]{EB Garamond Math}
 \NoIndentAfterEnv{equation}
 \NoIndentAfterEnv{longtable}
 \renewenvironment{abstract}
- {\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip}
+ {\vspace{-2cm}\quotation\small\noindent\rule{\linewidth}{.5pt}\par\smallskip
+ \noindent }
  {\par\noindent\rule{\linewidth}{.5pt}\endquotation}
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -195,12 +195,13 @@ Bold]{EB Garamond Math}
 
 \title{Why Ain't Evidentialists Rich?}
 \author{Brian Weatherson}
-\date{2024-04-23}
+\date{2024-04-24}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-Really, why aren't they? What has gone wrong.
+Really, why aren't they? What has gone wrong. I've been told that you've
+been bold etc. I need to fix this because
 \end{abstract}
 
 \setstretch{1.1}
