@@ -72,381 +72,7 @@ theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
 #| label: buildgraphs
 #| cache: false
 
-require(tidyverse)
-require(slider)
-require(stringr)
-
-load("philo_bib_fix.RData")
-load("philo_cite_with_jp.RData")
-
-start_year <- 1956
-end_year <- 2022
-window <- 0
-min_data <- 8
-
-active_philo_bib <- philo_bib_fix |>
-  filter(year >= start_year, year <= end_year)
-
-active_philo_cite <- philo_cite_with_jp 
-
-authadjust <- function(x){
-  paste0(str_extract(x, '\\b[^,]+$'), " ", str_to_title(str_extract(x,".+(?=,)")))
-}
-
-authadjust_short <- function(x){
-  str_to_title(str_extract(x,".+(?=,)"))
-}
-
-article_years <- active_philo_bib |>
-  as_tibble() |>
-  select(id, year)
-
-citation_tibble <- active_philo_cite |>
-  as_tibble() |>
-  rename(new = id, old = refs) |>
-  left_join(article_years, by = c("old" = "id")) |>
-  rename(old_year = year)  |>
-  left_join(article_years, by = c("new" = "id")) |>
-  rename(new_year = year) |>
-  filter(old_year >= start_year,
-         new_year <= end_year,
-         old_year >= start_year,
-         new_year <= end_year)
-
-# Now a tibble of how many times articles in year x are cited in year y
-
-year_in_year_out <- citation_tibble |>
-  group_by(old_year, new_year) |>
-  tally(name = "citations") |> # Now add the 'missing' pairs
-  ungroup() |>
-  complete(old_year, new_year, fill = list(citations = 0))
-
-# Tibble for raw citation age
-
-raw_age_tibble <- citation_tibble |>
-  mutate(age = new_year - old_year) |>
-  group_by(age) |>
-  tally(name = "count")
-
-raw_age_plot <- raw_age_tibble |>
-  ggplot(aes(x = age, y = count)) +
-  geom_point() + # Using geom_line makes it not obvious how many points there are, because it is *so* straight
-  xlab('Age of citation') +
-  ylab('Number of citations')
-
-# I'm going to count the 'available' articles as those published between 1 and 14 years before the citing year
-# Those are all the years with 10,000 or more cites in the database
-
-# Tibble for number of publications each year, and cumulative, or 'available'
-
-articles_per_year <- active_philo_bib |>
-  rename(old_year = year) |>
-  group_by(old_year) |>
-  tally(name = "articles") |>
-  mutate(available = slide_dbl(articles, sum, .before = 14) - articles)
-
-articles_per_year_plot <- articles_per_year |>
-  ggplot(aes(x = old_year, y = articles)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Number of indexed articles")
-
-available_plot <- articles_per_year |>
-  ggplot(aes(x = old_year, y = available)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Number of available indexed articles")
-
-# Same for citations
-
-citations_per_year <- citation_tibble |>
-  group_by(new_year) |>
-  tally(name = "citations") 
-
-citations_per_year_plot <- citations_per_year |>
-  ggplot(aes(x = new_year, y = citations)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Citations to indexed articles")
-
-# Outbound citations
-
-outbound_citations <- left_join(
-  articles_per_year,
-  citations_per_year,
-  by = c("old_year" = "new_year")
-) |>
-  mutate(outbound_rate = citations/articles) |>
-  mutate(outbound = round(outbound_rate, 2))
-
-outbound_citations_plot <- outbound_citations |>
-  ggplot(aes(x = old_year, y = outbound)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Outbound citations per indexed articles")
-
-
-
-
-
-# Citations per available article
-
-citation_rate_per_year <- citations_per_year |>
-  left_join(articles_per_year, by = c("new_year" = "old_year")) |>
-  filter(available > 0) |>
-  mutate(mean_cites = citations/available)
-
-citation_rate_per_year_plot <- citation_rate_per_year |>
-  ggplot(aes(x = new_year, y = mean_cites)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Annual citation rate of available articles.")
-
-# How many articles each year are never cited 
-
-list_of_cited_articles <- citation_tibble |> group_by(old) |> tally() |> arrange(old)
-
-never_cites <- active_philo_bib |>
-  arrange(id) |>
-  anti_join(list_of_cited_articles, by = c("id" = "old")) |>
-  group_by(year) |>
-  tally(name = "never_cited") |>
-  rename(old_year = year)
-
-never_cites_graph <- never_cites |>
-  ggplot(aes(x = old_year, y = never_cited)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Number of uncited articles published each year.")
-
-never_cited_total <- sum(never_cites$never_cited)
-
-percent_uncited <- never_cites |>
-  left_join(articles_per_year, by = "old_year") |>
-  mutate(uncited_ratio = never_cited/articles)
-
-percent_uncited_plot <- percent_uncited |>
-  ggplot(aes(x = old_year, y = uncited_ratio)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Proportion of uncited articles each year") +
-  ylim(c(0,1))
-
-# Plot how often articles are cited - final graph is log on both dimensions, and some jitter added
-
-article_times_cited <- citation_tibble |>
-  group_by(old) |>
-  tally(name = "citations")
-
-count_of_citations <- article_times_cited |>
-  ungroup() |>
-  group_by(citations) |>
-  tally(name = "number_of_articles")
-
-count_of_citations_plot <- count_of_citations |>
-  ggplot(aes(x = citations, y = number_of_articles)) +
-  xlab("Number of times cited") +
-  ylab("Number of articles") +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_jitter(height = 0.05)
-
-# Same for number of outbound citations in each article
-
-article_times_citing <- citation_tibble |>
-  group_by(new) |>
-  tally(name = "citations")
-
-count_of_citations_out <- article_times_citing |>
-  ungroup() |>
-  group_by(citations) |>
-  tally(name = "number_of_articles")
-
-count_of_citations_out_plot <- count_of_citations_out |>
-  ggplot(aes(x = citations, y = number_of_articles)) +
-  xlab("Number of outbound citations") +
-  ylab("Number of articles") +
-  scale_y_log10() +
-  geom_jitter(height = 0.05)
-
-# Find the outliers
-
-most_cited_articles <- article_times_cited |>
-  slice_max(order_by = citations, n = 10) |>
-  left_join(select(philo_bib_fix, id, full_cite), by = c("old" = "id")) |>
-  select(Article = full_cite, Citations = citations)
-
-
-most_citing_articles <- article_times_citing |>
-  slice_max(order_by = citations, n = 10) |>
-  left_join(select(philo_bib_fix, id, full_cite), by = c("new" = "id")) |>
-  select(Article = full_cite, `Articles Cited` = citations)
-
-# Compare mean per year to mean per available
-# Complicating this a little to compare only citations to *other* years
-# So cite-ratio has a numerator and denominator
-# Numerator is cites(old_year, new_year) / pubs(old_year)
-# Denominator is (all_cites(new_year) - cites(old_year, new_year)) / (avail_articles - pubs(old_year))
-# Latter is tricky because need to exclude iff it is in available window
-
-# Citations between years
-ct_sum <- citation_tibble |>
-  group_by(old_year, new_year) |>
-  tally(name = "citations") |>
-  ungroup()
-
-# All citations in a year
-ct_all <- citation_tibble |>
-  group_by(new_year) |>
-  tally(name = "all_citations")
-
-# Calculating other citations
-ct_other <- ct_sum |>
-  left_join(ct_all, by = "new_year") |>
-  mutate(other_citations = all_citations - citations)
-
-age_effect_tibble <- year_in_year_out |>
-  filter(old_year >= start_year, old_year <= end_year + 1 - min_data - window, new_year >= start_year) |>
-  left_join(select(articles_per_year, old_year, articles), by = "old_year") |>
-  left_join(select(articles_per_year, old_year, available), by = c("new_year" = "old_year")) |>
-  left_join(ct_all, by = "new_year") |> 
-  mutate(age = new_year - old_year) |>
-  mutate(available = case_when(
-    age >= 1 & age <= 14 ~ available - articles,
-    TRUE ~ available
-  )) |>
-  filter(available > 0) |>
-  mutate(cite_ratio = 
-           (
-             citations/articles
-           )
-         /
-           (
-              (all_citations - citations)
-            /
-              available   
-           ))
-
-age_effect_tibble_plot <- age_effect_tibble |>
-  filter(old_year >= start_year, old_year <= end_year + 1 - min_data - window, new_year >= start_year) |>
-  ggplot(aes(x = new_year, y = cite_ratio)) +
-  geom_point(size = 0.3) +
-  facet_wrap(~old_year, ncol = 6) +
-  xlab(element_blank()) +
-  ylab(element_blank()) +
-  theme(axis.text = element_text(size = 10),
-        strip.text = element_text(size = 12))
-
-age_effect_grouped <- age_effect_tibble |>
-  filter(new_year >= old_year) |>
-  filter(new_year <= old_year + end_year - start_year + 1 - window - min_data) |>
-  mutate(the_age = new_year - old_year) |>
-  group_by(the_age) |>
-  summarise(mean_effect = mean(cite_ratio))
-
-age_effect_tibble_adj <- age_effect_tibble |>
-  filter(new_year >= old_year) |>
-  filter(new_year <= old_year + old_year + end_year - start_year + 1 - window - min_data) |>
-  mutate(the_age = new_year - old_year) |>
-  left_join(age_effect_grouped, by = "the_age")
-
-age_effect_grouped_plot <- age_effect_grouped |>
-  ggplot(aes(x = the_age, y = mean_effect)) +
-  geom_point() +
-  xlab("Article age") +
-  ylab("Mean citation ratio")
-
-age_effect_everything_plot <- age_effect_tibble_adj |>
-  ggplot(aes(x = the_age, y = cite_ratio, color = as.factor(old_year))) +
-  geom_jitter(aes(size=(old_year==1973 | old_year == 1985), shape = (old_year==1973)), alpha = 1) +
-  scale_size_manual(values=c(0.3,3)) +
-  xlab("Age of cited articles") +
-  ylab("Citation ratio") +
-  geom_line(aes(x = the_age, y = mean_effect), color = "black") +
-  theme(legend.position = "none")
-
-year_by_year_with_effect <- year_in_year_out |>
-  filter(new_year >= old_year) |>
-  filter(new_year <= old_year + end_year - start_year + 1 - window - min_data) |>
-  filter(old_year >= start_year, old_year <= end_year - window - min_data + 1, new_year >= start_year + min_data) |>
-  mutate(the_age = new_year - old_year) |>
-  left_join(age_effect_grouped, by = "the_age") |>
-  left_join(
-    select(
-      age_effect_tibble, old_year, new_year, cite_ratio
-    ), by = c("old_year", "new_year")
-  ) |>
-  mutate(surplus = cite_ratio - mean_effect) |>
-  arrange(-surplus)
-
-# The next one calculates the difference between each year and the average. 
-# But this has odd effects at the periphery, and compares each year to something it is part of.
-# Below, in yiyo_extended, I try to work out what happens when each year is compared to the other years
-# This is more work because you have to calculate the 'other years' value again each time
-
-year_by_year_average <- year_by_year_with_effect |>
-  group_by(old_year) |>
-  summarise(mean_surplus = mean(surplus))
-
-year_by_year_average_plot <- year_by_year_average |>
-  ggplot(aes(x = old_year, y = mean_surplus)) +
-  geom_point()
-
-#year_by_year_average_plot
-
-yiyo_extended <- year_in_year_out |>
-  filter(old_year >= start_year,
-         new_year >= start_year + min_data,
-         old_year <= end_year + 1 - min_data - window,
-         new_year >= old_year + window) |> # First remove years where we don't have min_data years to compare, or min_data data points
-  mutate(age = new_year - old_year) |>
-  filter(age <= end_year - start_year + 1 - min_data - window) |> # Again, only looking at things where there are min_data comparisons
-  left_join(
-    select(
-      articles_per_year, 
-      old_year,
-      articles),
-    by = "old_year" 
-  ) |> # How many articles were published in old_year  
-  left_join(
-    select(
-      articles_per_year, 
-      old_year,
-      available),
-    by = c("new_year" = "old_year")
-  ) |> # How many articles were out at new_year
-  ungroup() |>
-  group_by(new_year) |>
-  mutate(cites_that_year = sum(citations)) |>
-  ungroup() |>
-  mutate(old_year_cite_rate = citations/articles) |>
-  mutate(other_cite_rate = (cites_that_year - citations)/(available-articles)) |>
-  mutate(surplus = old_year_cite_rate/other_cite_rate) |>
-  group_by(age) |>
-  mutate(age_effect = mean(surplus)) |>
-  ungroup() |>
-  mutate(age_adj_surplus = surplus - age_effect)
-
-yiyo_summary <- yiyo_extended |>
-  ungroup() |>
-  group_by(old_year) |>
-  summarise(cohort_effect = mean(age_adj_surplus)) |>
-  arrange(cohort_effect)
-
-yiyo_summary_plot <- yiyo_summary |> 
-  ggplot(aes(x = old_year, y = cohort_effect)) + 
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Mean adjusted citation rate")
-
-year_to_mean <- function(x){
-  yiyo_extended |>
-    filter(old_year == x) |>
-    ggplot(aes(x = age, y = surplus)) + 
-    geom_point() +
-    geom_line(aes(x = age, y = age_effect))
-}
-
+source("/Users/weath/Documents/citations-2024/5 - apc_scripts.R", local = knitr::knit_global())
 ```
 
 # Introduction {#sec-introduction}
@@ -504,8 +130,8 @@ As noted above, the study here is based on the Web of Science database, which my
 #| tbl-cap: "The journals included in this study."
 
 require(knitr)
-temp <- philo_bib_fix |>
-  filter(year >= 1956, year <= 2022) |>
+temp <- active_philo_bib |>
+  filter(year >= start_year, year <= end_year) |>
   filter(id != "gettier1963") |>
   group_by(journal) |> 
   summarise(Articles = n(), `First Year` = min(year), `Most Recent Year` = max(year)) |>
@@ -513,7 +139,7 @@ temp <- philo_bib_fix |>
 kable(temp)
 ```
 
-The column 'First Year' is *not* the first year the journal published; it is the first year that Web of Science indexed the journal. This often makes a difference; because _Analysis_ isn't indexed before 1975, we don't get "Is Knowledge Justified True Belief?" [@Gettier1963], or much of the initial literature it generated. Still, we do have a lot of information to work with, as long as we're careful about the limitations.
+The column 'First Year' is *not* the first year the journal published; it is the first year that Web of Science indexed the journal. This often makes a difference; because _Analysis_ isn't indexed before 1975, we don't get "Is Knowledge Justified True Belief?" [@Gettier1963], or much of the initial literature it generated. Still, we do have a lot of information to work with, as long as we're careful about the limitations. Similarly, the column 'Last Year' is not the last year the journal was published; thankfully most of these journals are still in operation. It's not even the last year that Web of Science has records for. For most of the journals, there were records for 2022, and even occasional records for 2023. But I stopped the study in 2021 because it was the last year we had something that felt close enough to a full year's data. 
 
 The database is supposed to tell you, for each indexed article, which things it cites. The reliability of this is mixed, especially with citations that are in footnotes rather than in a bibliography. And the data needs a huge amount of cleaning. Eugenio @Petrovich2024 did a similar study to this one focussing on five high profile journals, and his first step was a rather extensive bit of data cleaning.^[See section 4.2.4 of his book for more details on the challenges he faced.]
 
@@ -527,17 +153,17 @@ The way Web of Science handles the 'supplements' to _Noûs_, i.e., _Philosophica
 
 The other big problem is that for several journals, 1974 is missing from the index. In a couple of cases, 1973 is also missing. And in one very important case, 1971 and 1972 are missing as well. That 'important case' is _The Journal of Philosophy_. Between 1971 and 1974 it published groundbreaking articles by Harry @Frankfurt1971, George @Boolos1971, Paul @Benacerraf1973, Jaegwon @Kim1973, Michael @Friedman1974, Isaac @Levi1974, and David Lewis [-@Lewis1971cen; -@Lewis1973ben]. This seemed like a break in the data that needed fixing if I was going to tell the story correctly. So I used JSTOR to find a full list of articles (as opposed to notes or book reviews) in _Journal of Philosophy_ in those years, and then looked through the citations in articles in @tbl-list-of-journals to see which citations were to one of those articles. This did mean I was using a different classification of publications into articles and non-articles, and there are some odd choices.^[Notably, the JSTOR list seemed to exclude the symposium centered around Kenneth Arrow's "Some Ordinalist-Utilitarian Notes on Rawls’s Theory of Justice"; I'm not sure why that was.] And it meant I had to do a fair bit of data cleaning just to track down references to those four years.^[A non-trivial chunk of the cleaning was sorting through the many and varied ways that philosophers have spelled Brian O'Shaughnessy's name over the years.] While I've strived to make the data as consistent as possible with the other years, it's possible that I haven't succeeded, and some discontinuities around the early 1970s are due to this discontinuity in how the data was acquired.
 
-After all that, we are left with `{r} nrow(article_years)` articles, from "Aristotle and the Sea Battle" [@Anscombe1956] to "Your Mother Should Know: Pregnancy, the Ethics of Abortion and Knowledge Through Acquaintance of Moral Value" [@Woolard2022]. These articles collectively cite each other `{r} nrow(citation_tibble)` times.
+After all that, we are left with `{r} nrow(article_years)` articles, from "Aristotle and the Sea Battle" [@Anscombe1956] to "Zooming Irresponsibly Down the Slippery Slope" [@Coren2021]. These articles collectively cite each other `{r} nrow(citation_tibble)` times.
 
 # Period Effects {#sec-period}
 
-Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(citations_per_year, new_year == 2021)$citations`. There are actually slightly fewer in 2022, because as you can see in @tbl-list-of-journals, not all journals were indexed for 2022. @fig-citationsperyear shows the growth in indexed citations over time.
+Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(all_citations_per_year, new_year == 2021)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
 
 ```{r}
 #| label: fig-citationsperyear
 #| fig-cap: "The number of citations in the dataset made each year."
 
-citations_per_year_plot
+all_citations_per_year_plot
 ```
 
 What explains this dramatic growth? Part of the explanation is that more articles are being published, and more articles are being indexed. @fig-articlesperyear shows how many articles are in the dataset each year.
@@ -570,24 +196,59 @@ Second, it feels like the relative importance of _journals_, as opposed to books
 
 There is a third factor I'd like to study, but again this dataset won't help much with it. Antecedently, I'd have guessed that the rate of citation of _non_-philosophy journals was increasing. In particular, philosophers seem to spend a lot more time discussing results in psychology now than they used to do. If that were true, it would encourage generate a downwards slope in @fig-outboundcitations, which obviously isn't what we see at the end. But maybe the rate of citations to all journals is growing even more rapidly than the rate of citations to philosophy journals. That will be left as a study for another day.
 
-Although the number of citations is going up, the number of articles available to be cited is also going up. For reasons I'll get to in @sec-age, I'll say articles are _available_ to be cited if they were published between 0 and 20 years before the article doing the citing. Now of course some articles are cited more than 20 years after publication, and some articles are cited before they are published. But the large majority of citations take place in this window, and it will help focus our analysis to restrict attention to them. Using that definition, the number of available articles each year is shown in @fig-availablearticles.
+Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
 
+::: {.column-screen-inset}
 ```{r}
-#| label: fig-availablearticles
-#| fig-cap: "The number of articles available to be cited each year."
+#| label: fig-articlecounts
+#| fig-cap: "Article counts."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typically cited articles"
+#| layout-ncol: 2
+#| fig-column: screen-inset
+
 available_plot
+typical_plot
 ```
+:::
 
-Putting all these together we can work out how often, on average, available articles are cited in each year. The results are in @fig-availablerate. (I haven't graphed this, but the numerator in @fig-availablerate is the number of citations to articles between 0 and 20 years old. That's similar to, but not quite identical to, the number of citations altogether.)
+In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
 
+::: {.column-screen-inset}
 ```{r}
-#| label: fig-availablerate
-#| fig-cap: "The average number of citations in a year that each available article receives."
+#| label: fig-citationcounts
+#| fig-cap: "Citation counts."
+#| fig-subcap: 
+#|   - "Citations to available articles"
+#|   - "Citations to typical articles"
+#| layout-ncol: 2
+#| fig-column: screen-inset
 
-citation_rate_per_year_plot
+available_citations_per_year_plot 
+typical_citations_per_year_plot
 ```
+:::
 
-Two things stand out about @fig-availablerate. One is that it is fairly flat for a long time. Between 1976 and 2002 it bounces around a bit without doing much. It does take off after 2002 though, and then goes through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
+Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
+
+::: {.column-screen-inset}
+```{r}
+#| label: fig-citationrate
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typical articles"
+#| layout-ncol: 2
+
+
+available_citation_rate_per_year_plot 
+typical_citation_rate_per_year_plot 
+
+```
+:::
+
+Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
 
 The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them.
 
@@ -604,7 +265,7 @@ Let's start with that simplest possible method. Say the _age_ of a citation is t
 raw_age_plot
 ```
 
-The picture in @fig-rawage is fairly intuitive. Articles rarely get cited before they are published.^[Though in "Naive Validity, Internalization, and Substructural Approaches To Paradox" [@Rosenblatt2017], there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.] Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @Anscombe1956 is cited by @Mayr2022. But most articles reach the end of their citation life sooner or, occasionally, later.
+The picture in @fig-rawage is fairly intuitive. Articles rarely get cited before they are published.^[Though in "Naive Validity, Internalization, and Substructural Approaches To Paradox" [@Rosenblatt2017], there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.] Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @Anscombe1956 is cited by @Izgin2020. But most articles reach the end of their citation life sooner or, occasionally, later.
 
 But the fact that @fig-rawage looks plausible shouldn't obscure the fact that this is a lousy methodology. Given how many of the citations are in the last few years, what this graph tells us is largely what citation practices with respect to age have been like in recent times. It could be that the overall picture is very different, once we look closely.
 
@@ -657,39 +318,3 @@ There are two things that I want to particularly highlight about @fig-ageeffecte
 
 # Cohort Effects {#sec-cohort}
 
-
-
-```{r}
-#| label: fig-cohortsummary
-#| fig-cap: "Citation rate for articles published each year after adjusting for age and period effects."
-
-yiyo_summary_plot
-```
-
-```{r}
-#| label: fig-ytm1973
-#| fig-cap: "Citation rate for articles published in 1973 at various ages, adjusted for period and compared to mean for that age."
-
-year_to_mean(1973)
-```
-
-```{r}
-#| label: fig-ytm1980
-#| fig-cap: "Citation rate for articles published in 1980 at various ages, adjusted for period and compared to mean for that age."
-
-year_to_mean(1980)
-```
-
-```{r}
-#| label: fig-ytm1985
-#| fig-cap: "Citation rate for articles published in 1985 at various ages, adjusted for period and compared to mean for that age."
-
-year_to_mean(1985)
-```
-
-```{r}
-#| label: fig-ytm2007
-#| fig-cap: "Citation rate for articles published in 2007 at various ages, adjusted for period and compared to mean for that age."
-
-year_to_mean(2007)
-```
