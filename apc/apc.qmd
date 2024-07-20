@@ -198,9 +198,9 @@ There is a third factor I'd like to study, but again this dataset won't help muc
 
 Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
 
-::: {.column-screen-inset}
 ```{r}
 #| label: fig-articlecounts
+#| column: screen-inset
 #| fig-cap: "Article counts."
 #| fig-subcap: 
 #|   - "Available articles"
@@ -211,13 +211,12 @@ Although the number of citations is going up, the number of articles available t
 available_plot
 typical_plot
 ```
-:::
 
 In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
 
-::: {.column-screen-inset}
 ```{r}
 #| label: fig-citationcounts
+#| column: screen-inset
 #| fig-cap: "Citation counts."
 #| fig-subcap: 
 #|   - "Citations to available articles"
@@ -228,13 +227,12 @@ In @fig-citationcounts, I've shown how often, in each year, the available articl
 available_citations_per_year_plot 
 typical_citations_per_year_plot
 ```
-:::
 
 Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
 
-::: {.column-screen-inset}
 ```{r}
 #| label: fig-citationrate
+#| column: screen-inset
 #| fig-cap: "Mean annual citations to different article kinds."
 #| fig-subcap: 
 #|   - "Available articles"
@@ -246,7 +244,6 @@ available_citation_rate_per_year_plot
 typical_citation_rate_per_year_plot 
 
 ```
-:::
 
 Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
 
@@ -269,9 +266,30 @@ The picture in @fig-rawage is fairly intuitive. Articles rarely get cited before
 
 But the fact that @fig-rawage looks plausible shouldn't obscure the fact that this is a lousy methodology. Given how many of the citations are in the last few years, what this graph tells us is largely what citation practices with respect to age have been like in recent times. It could be that the overall picture is very different, once we look closely.
 
-As it turns out though, this is roughly the right picture. I'll show that with some graphs that are a bit more careful about adjusting for the period effect. 
+As it turns out though, this is roughly the right picture. I'll show that with some graphs that are a bit more careful about adjusting for the period effect.
 
-In @fig-ageeffecttibble I've done the same graph for sixty different years, from 1956 to 2015. 
+The key notion is what I'm going to call the *citation ratio*. This is a function that takes two years, which I'll call _old_ and _new_, as input. Intuitively, it measures how often articles from _old_ are cited in _new_, normalised for how many articles are published in _old_, and what the citation practices are in _new_. More formally, it is the following ratio:
+
+- The numerator is how often the average article in _old_ is cited in _new_. So we search the articles published in _new_, count up the number of citations of articles published in _old_, and divide by the number of articles published in _old_.
+- The denominator is the rate a 'typical' article is cited in _new_. Remember that I'm defining, somewhat stipulatively, a typical article to be published between `{r} typical_low` and `{r} typical_high` years before _new_. So again we search the articles published in _new_, count the citations to articles published `{r} typical_low` to `{r} typical_high` years earlier, and divide by the number of articles originally published `{r} typical_low` to `{r} typical_high` years earlier.
+
+```{r}
+#| label: paramsforratioexample
+
+sample_old <- 1991
+sample_new <- 1998
+num_of_num <- nrow(filter(citation_tibble, old_year == sample_old, new_year == sample_new))
+den_of_num <- nrow(filter(active_philo_bib, year == sample_old))
+num_of_den <- nrow(filter(citation_tibble, old_year >= sample_new - typical_high, old_year <= sample_new - typical_low, new_year == sample_new))
+den_of_den <- nrow(filter(active_philo_bib, year >= sample_new - typical_high, year <= sample_new - typical_low))
+num_of_cite <- num_of_num / den_of_num
+den_of_cite <- num_of_den / den_of_den
+overall_cite <- num_of_cite / den_of_cite
+```
+
+Let's illustrate this with an example, using `{r} sample_old` as _old_ and `{r} sample_new` as _new_. In `{r} sample_new`, indexed articles from `{r} sample_old` were cited `{r} num_of_num` times. There are `{r} den_of_num` articles published in `{r} sample_old` in the index, so the numerator for the citation ratio is `{r} num_of_num` / `{r} den_of_num`, i.e., about `{r} round(num_of_cite, 3)`. In the `{r} typical_low` to `{r} typical_high` years before `{r} sample_old`, there were `{r} den_of_den` indexed articles published. Those articles were, collectively, cited `{r} num_of_den` times in `{r} sample_new`. So the denominator, the average number of citations the typical article got in `{r} sample_new`, is `{r} num_of_den` / `{r} den_of_den`, i.e., about `{r} round(den_of_cite, 3)`. Putting those together, the citation ratio for `{r} sample_old` in `{r} sample_new` is (about) `{r} round(overall_cite,3)`. 
+
+In @fig-ageeffecttibble I've graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the _facets_), are for each value of _old_, the x-axis is the value for _new_, and the y-axis is the citation ratio. Note that before `{r} start_year + typical_high`, we can't calculate the citation ratio because there isn't enough data to calculate the typical citation rate. So the y-axis starts at `{r} start_year + typical_high`. And for most years there are no dots on the left side of the graph, because I haven't calculated the citation ratio in years where _old_ is later than _new_; there are few enough of these cases that they are best left out.
 
 ```{r}
 #| label: fig-ageeffecttibble
@@ -286,35 +304,83 @@ age_effect_tibble_plot +
     )
 ```
 
-There are several notable things about @fig-ageeffecttibble. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to around 2 within three or four years of publication, then heads back down. There is a fair bit of variation in how it declines, and that's something we'll return to a lot in what follows, but the basic picture of a steep rise to a peak around 2 within three to four years of publication, then a descent, is remarkably stable.
-
-It might not be clear from @fig-ageeffecttibble just where the graphs peak in each facet. In @fig-peakratio, I've graphed the high point for each year.
-
-```{r}
-#| label: fig-peakratio
-#| fig-cap: "The maximum citation ratio in each facet in @fig-ageeffecttibble."
-max_ratio_finder <- age_effect_tibble |>
-  group_by(old_year) |>
-  summarise(maxrat = max(cite_ratio)) |>
-  ggplot(aes(x = old_year, y = maxrat)) +
-  geom_point() +
-  xlab(element_blank()) +
-  ylab("Maximum citation ratio") +
-  ylim(c(0, 3))
-
-max_ratio_finder
-```
-
-Another way to visualise these effects is to put all of the citation ratios onto a single graph. That's what I've done in @fig-ageeffecteverything. Each dot represents a citation ratio. The x-axis is now the age of the citations, not the year of the citing articles. The colour of the dots represents the year whose citation ratio is being calculated, but there are so many colours that it's impossible (at least for me) to tell precisely which colour goes with which year.^[Roughly, oranges are 1960s, greens are 1970s, blues are 1990s, with varieties of teal between them, and pinks and purples are the 2000s.] I've highlighted two particularly interesting years, 1973 and 1985. The circles are for 1985, and the triangles are for 1973. I've also drawn the average citation ratio for each year as a line on the graph.
+There are several notable things about @fig-ageeffecttibble. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I'll come back in @sec-culture to why it might be. Still, it doesn't change that the shape of the curves is common enough to talk sensibly about an average curve. In @fig-ageeffecteverything, I've put most of the data from @fig-ageeffecttibble, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say 'most' of the data because I didn't show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that's displayed.^[The graph also includes some 'jitter' to make the different points more easily visible. I've put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we'll return to faceted graphs like @fig-ageeffecttibble when I want to highlight individual years.]
 
 ```{r}
 #| label: fig-ageeffecteverything
-#| fig-cap: "All age effects on a single graph, with 1973 and 1985 highlighted."
+#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall averrage shown."
 
 age_effect_everything_plot
 ```
 
-There are two things that I want to particularly highlight about @fig-ageeffecteverything. One is how few real outliers there are. Between ages 2 and 5, there are almost no dots below the value 1. There are eleven such values in total, i.e., with an age of 2 to 5, and a citation ratio below 1. Of these eleven, ten are from the first few years of the study, i.e., 1956-1963, where the data is much noisier. On the other hand, after age twenty, there are only twenty dots above 1, out of 1,128 total dots. Of those twenty, fourteen are for 1973.^[1973 was a very distinctive year, but this does make me worry a little that having to collect the citations for _Journal of Philosophy_ in a different way has led to some inconsistencies in the data.] With very few exceptions, the black line in @fig-ageeffecteverything is something like _the_ way that philosophy citations age.
+The mean curve in @fig-ageeffecteverything is really similar to the unadjusted age curve in @fig-rawage. This is what I meant earlier by saying that after a lot of calculations, we'd get back to the same aging curve that we got from the simplest possibe measure.
+
+The calculations did have one really notable effect though. The unadjusted age numbers give us a sensible aging curve overall, but they give us an absurd aging curve for individual years. For most years in the dataset, the year they are most cited is not two to five years after initial publication; it is 2021. The point of the various adjustments in this section has been to make better sense of what's happening in individual years. 
+
+The result is the striking lack of outliers in @fig-ageeffecteverything. All the individual data points are fairly close to the mean. There is some deviation, and there would be much more if I included the earlier years where the data is much noisier. The deviation there is will be the focus of much of the rest of this paper. Still, it's notable how consistent the age curve is, once we use citation ratio to account for period effects.
+
+To end this section, I wanted to highlight two features of @fig-ageeffecttibble that are a little hard to see in the big graph. In @fig-peakratio, I've graphed the maximum value the citation ratio reaches for each year of initial publication. This is a bit misleading before `{r} start_year + typical_high`, because I don't have enough data to calculate citation ratios when the citing year is earlier than that, so it might have left off what would have been the high point. But from then on it's useful.
+
+```{r}
+#| label: fig-peakratio
+#| fig-cap: "The maximum citation ratio in each facet in @fig-ageeffecttibble."
+
+max_ratio_finder
+```
+
+After the initial jump upwards, and the very high numbers in the mid-1960s, the trend is a decline. In @fig-peakratiotime I've graphed out which age those peaks are hit at, for different years of initial publication starting in `{r} start_year + typical_high - 2`. 
+
+```{r}
+#| label: fig-peakratiotime
+#| fig-cap: "For each original publication year, the age it hits maximum citation ratio."
+
+age_at_max_ratio_plot
+```
+
+In @fig-peakratiotime, the graph is going slightly upwards. Putting these last two figures together, we get the claim I was gesturing at earlier: citation curves are getting flatter. The peaks are coming later, and they are lower.
 
 # Cohort Effects {#sec-cohort}
+
+So far we've seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In @fig-fourdeviations, I've shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.
+
+```{r}
+#| label: fig-fourdeviations
+#| column: screen-inset
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "1961"
+#|   - "1979"
+#|   - "1985"
+#|   - "2007"
+#| layout-ncol: 2
+
+year_to_mean_plot(1961)
+year_to_mean_plot(1979)
+year_to_mean_plot(1985)
+year_to_mean_plot(2007)
+```
+
+In 1961 and 1985, the yearly values are predominantly below the mean line. In 1979 and 2007, they are predominantly above it, though this isn't true for the first few years of the 2007 data. Note that the graphs have different lengths. Everything stops in `{r} end_year`. And the 1961 data is cut off a little on the left because we only start calculating citation ratios in `{r} start_year + typical_high`. That's why the line showing the mean is differently shaped that year.
+
+For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you'd expect them to be cited knowing just the age and period effects. The results are in @fig-cohort.
+
+```{r}
+#| label: fig-cohort
+#| fig-cap: "Cohort effects for different publication years."
+
+year_by_year_average_plot
+```
+
+A couple of quick technical notes on @fig-cohort. I've added a smoothed curve over the graph to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven't included what happens to `{r} start_year` papers when they are cited after `{r} end_year - min_data`. There isn't nearly enough data to say what one would 'expect' the usual aging curve to be at those points.
+
+
+
+
+# Technical Explanations {#sec-technical}
+
+# Cultural Explanations {#sec-culture}
+
+# Substantive Explanations {#sec-substantive}
+
+# Conclusion {#sec-conclusion}
 

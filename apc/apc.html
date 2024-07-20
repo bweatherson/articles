@@ -917,15 +917,15 @@ Figure&nbsp;3: The average number of citations to indexed articles each year.
 <p>Second, it feels like the relative importance of <em>journals</em>, as opposed to books or edited volumes, in journal articles is growing. This study can’t verify that, since I filtered out all citations to things other than journals. But the same kind of casual perusal that tells you three page bibliographies are more common than they used to be, also suggests that a greater percentage of those bibliographies consists of other journals.</p>
 <p>There is a third factor I’d like to study, but again this dataset won’t help much with it. Antecedently, I’d have guessed that the rate of citation of <em>non</em>-philosophy journals was increasing. In particular, philosophers seem to spend a lot more time discussing results in psychology now than they used to do. If that were true, it would encourage generate a downwards slope in <a href="#fig-outboundcitations" class="quarto-xref">Figure&nbsp;3</a>, which obviously isn’t what we see at the end. But maybe the rate of citations to all journals is growing even more rapidly than the rate of citations to philosophy journals. That will be left as a study for another day.</p>
 <p>Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is <em>available</em> if it is published in a year iff it is published in or before that year. That’s not quite right in either direction; some articles are cited before publication, some articles that come out in December aren’t in any real sense available to be cited in January. But it’s close enough. Say an article is from a year that is <em>typically</em> cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in <a href="#sec-age" class="quarto-xref">Section&nbsp;5</a>; I’m going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, <a href="#fig-articlecounts" class="quarto-xref">Figure&nbsp;4</a> shows how many articles are available to be cited each year, and are from years that are typically cited.</p>
-<div id="fig-articlecounts" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-articlecounts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-articlecounts" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-articlecounts-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-articlecounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-articlecounts-1.svg" class="img-fluid figure-img" data-ref-parent="fig-articlecounts">
+<div id="fig-articlecounts" class="quarto-layout-panel page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-articlecounts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<div class="quarto-layout-row page-full">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-articlecounts" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-articlecounts-1" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-articlecounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-articlecounts-1.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-articlecounts">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-articlecounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Available articles
@@ -933,11 +933,11 @@ Figure&nbsp;3: The average number of citations to indexed articles each year.
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-articlecounts" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-articlecounts-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-articlecounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-articlecounts-2.svg" class="img-fluid figure-img" data-ref-parent="fig-articlecounts">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-articlecounts" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-articlecounts-2" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-articlecounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-articlecounts-2.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-articlecounts">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-articlecounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Typically cited articles
@@ -953,15 +953,15 @@ Figure&nbsp;4: Article counts.
 </figure>
 </div>
 <p>In <a href="#fig-citationcounts" class="quarto-xref">Figure&nbsp;5</a>, I’ve shown how often, in each year, the available articles, and the ‘typical’ articles are cited. The ‘available’ graph is obviously similar to <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;1</a>; under 1% of citations are to articles published in future years. One thing that will be useful in <a href="#sec-age" class="quarto-xref">Section&nbsp;5</a> is that the graphs in <a href="#fig-citationcounts" class="quarto-xref">Figure&nbsp;5</a> have a similar shape.</p>
-<div id="fig-citationcounts" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-citationcounts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-citationcounts" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-citationcounts-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-citationcounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-citationcounts-1.svg" class="img-fluid figure-img" data-ref-parent="fig-citationcounts">
+<div id="fig-citationcounts" class="quarto-layout-panel page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-citationcounts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<div class="quarto-layout-row page-full">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-citationcounts" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-citationcounts-1" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-citationcounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-citationcounts-1.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-citationcounts">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citationcounts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Citations to available articles
@@ -969,11 +969,11 @@ Figure&nbsp;4: Article counts.
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-citationcounts" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-citationcounts-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-citationcounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-citationcounts-2.svg" class="img-fluid figure-img" data-ref-parent="fig-citationcounts">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-citationcounts" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-citationcounts-2" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-citationcounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-citationcounts-2.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-citationcounts">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citationcounts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Citations to typical articles
@@ -989,16 +989,15 @@ Figure&nbsp;5: Citation counts.
 </figure>
 </div>
 <p>Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in <a href="#fig-citationrate" class="quarto-xref">Figure&nbsp;6</a>.</p>
-<div class="page-columns page-full">
 <div id="fig-citationrate" class="quarto-layout-panel page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
 <div aria-describedby="fig-citationrate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
-<div class="quarto-layout-row column-screen-inset">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-citationrate" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-citationrate-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-citationrate-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-citationrate-1.svg" class="img-fluid figure-img" data-ref-parent="fig-citationrate">
+<div class="quarto-layout-row page-full">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-citationrate" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-citationrate-1" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-citationrate-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-citationrate-1.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-citationrate">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citationrate-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Available articles
@@ -1006,11 +1005,11 @@ Figure&nbsp;5: Citation counts.
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-citationrate" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-citationrate-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-citationrate-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-citationrate-2.svg" class="img-fluid figure-img" data-ref-parent="fig-citationrate">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-citationrate" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-citationrate-2" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-citationrate-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-citationrate-2.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-citationrate">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citationrate-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Typical articles
@@ -1025,8 +1024,7 @@ Figure&nbsp;6: Mean annual citations to different article kinds.
 </figcaption>
 </figure>
 </div>
-</div>
-<p>Two things stand out about <a href="#fig-citationrate" class="quarto-xref">Figure&nbsp;6</a>. One is that it is fairly flat for a long time. Between 1976 and 2002 it bounces around a bit without doing much. It does take off after 2002 though, and then goes through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a <em>decade</em>. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the ‘average article’ was being cited. Frequent citation is very much not the norm.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>Three things stand out about <a href="#fig-citationrate" class="quarto-xref">Figure&nbsp;6</a>. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a <em>decade</em>. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the ‘average article’ was being cited. Frequent citation is very much not the norm.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we’re going to have to allow for them.</p>
 </section>
 <section id="sec-age" class="level1 page-columns page-full">
@@ -1050,7 +1048,13 @@ Figure&nbsp;7: The age distribution of citations in the dataset.
 <p>The picture in <a href="#fig-rawage" class="quarto-xref">Figure&nbsp;7</a> is fairly intuitive. Articles rarely get cited before they are published.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it’s a rapid, and then a slow, decline. For the classic articles, citations never really stop; <span class="citation" data-cites="Anscombe1956">Anscombe (<a href="#ref-Anscombe1956" role="doc-biblioref">1956</a>)</span> is cited by <span class="citation" data-cites="Izgin2020">Izgin (<a href="#ref-Izgin2020" role="doc-biblioref">2020</a>)</span>. But most articles reach the end of their citation life sooner or, occasionally, later.</p>
 <p>But the fact that <a href="#fig-rawage" class="quarto-xref">Figure&nbsp;7</a> looks plausible shouldn’t obscure the fact that this is a lousy methodology. Given how many of the citations are in the last few years, what this graph tells us is largely what citation practices with respect to age have been like in recent times. It could be that the overall picture is very different, once we look closely.</p>
 <p>As it turns out though, this is roughly the right picture. I’ll show that with some graphs that are a bit more careful about adjusting for the period effect.</p>
-<p>In <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a> I’ve done the same graph for sixty different years, from 1956 to 2015.</p>
+<p>The key notion is what I’m going to call the <em>citation ratio</em>. This is a function that takes two years, which I’ll call <em>old</em> and <em>new</em>, as input. Intuitively, it measures how often articles from <em>old</em> are cited in <em>new</em>, normalised for how many articles are published in <em>old</em>, and what the citation practices are in <em>new</em>. More formally, it is the following ratio:</p>
+<ul>
+<li>The numerator is how often the average article in <em>old</em> is cited in <em>new</em>. So we search the articles published in <em>new</em>, count up the number of citations of articles published in <em>old</em>, and divide by the number of articles published in <em>old</em>.</li>
+<li>The denominator is the rate a ‘typical’ article is cited in <em>new</em>. Remember that I’m defining, somewhat stipulatively, a typical article to be published between 3 and 10 years before <em>new</em>. So again we search the articles published in <em>new</em>, count the citations to articles published 3 to 10 years earlier, and divide by the number of articles originally published 3 to 10 years earlier.</li>
+</ul>
+<p>Let’s illustrate this with an example, using 1991 as <em>old</em> and 1998 as <em>new</em>. In 1998, indexed articles from 1991 were cited 152 times. There are 1318 articles published in 1991 in the index, so the numerator for the citation ratio is 152 / 1318, i.e., about 0.115. In the 3 to 10 years before 1991, there were 10467 indexed articles published. Those articles were, collectively, cited 1279 times in 1998. So the denominator, the average number of citations the typical article got in 1998, is 1279 / 10467, i.e., about 0.122. Putting those together, the citation ratio for 1991 in 1998 is (about) 0.944.</p>
+<p>In <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a> I’ve graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the <em>facets</em>), are for each value of <em>old</em>, the x-axis is the value for <em>new</em>, and the y-axis is the citation ratio. Note that before 1966, we can’t calculate the citation ratio because there isn’t enough data to calculate the typical citation rate. So the y-axis starts at 1966. And for most years there are no dots on the left side of the graph, because I haven’t calculated the citation ratio in years where <em>old</em> is later than <em>new</em>; there are few enough of these cases that they are best left out.</p>
 <div class="cell page-columns page-full">
 <div class="cell-output-display page-columns page-full">
 <div id="fig-ageeffecttibble" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
@@ -1065,23 +1069,7 @@ Figure&nbsp;8: Each facet shows the relative citation rate for articles publishe
 </div>
 </div>
 </div>
-<p>There are several notable things about <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a>. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to around 2 within three or four years of publication, then heads back down. There is a fair bit of variation in how it declines, and that’s something we’ll return to a lot in what follows, but the basic picture of a steep rise to a peak around 2 within three to four years of publication, then a descent, is remarkably stable.</p>
-<p>It might not be clear from <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a> just where the graphs peak in each facet. In <a href="#fig-peakratio" class="quarto-xref">Figure&nbsp;9</a>, I’ve graphed the high point for each year.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-peakratio" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-peakratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="apc_files/figure-html/fig-peakratio-1.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peakratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: The maximum citation ratio in each facet in <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a>.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Another way to visualise these effects is to put all of the citation ratios onto a single graph. That’s what I’ve done in <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;10</a>. Each dot represents a citation ratio. The x-axis is now the age of the citations, not the year of the citing articles. The colour of the dots represents the year whose citation ratio is being calculated, but there are so many colours that it’s impossible (at least for me) to tell precisely which colour goes with which year.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> I’ve highlighted two particularly interesting years, 1973 and 1985. The circles are for 1985, and the triangles are for 1973. I’ve also drawn the average citation ratio for each year as a line on the graph.</p>
+<p>There are several notable things about <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a>. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I’ll come back in <a href="#sec-culture" class="quarto-xref">Section&nbsp;8</a> to why it might be. Still, it doesn’t change that the shape of the curves is common enough to talk sensibly about an average curve. In <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;9</a>, I’ve put most of the data from <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a>, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say ‘most’ of the data because I didn’t show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that’s displayed.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ageeffecteverything" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1090,21 +1078,145 @@ Figure&nbsp;9: The maximum citation ratio in each facet in <a href="#fig-ageeffe
 <img src="apc_files/figure-html/fig-ageeffecteverything-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ageeffecteverything-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: All age effects on a single graph, with 1973 and 1985 highlighted.
+Figure&nbsp;9: Age effects from 1970 onwards on a single graph, with the overall averrage shown.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>There are two things that I want to particularly highlight about <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;10</a>. One is how few real outliers there are. Between ages 2 and 5, there are almost no dots below the value 1. There are eleven such values in total, i.e., with an age of 2 to 5, and a citation ratio below 1. Of these eleven, ten are from the first few years of the study, i.e., 1956-1963, where the data is much noisier. On the other hand, after age twenty, there are only twenty dots above 1, out of 1,128 total dots. Of those twenty, fourteen are for 1973.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> With very few exceptions, the black line in <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;10</a> is something like <em>the</em> way that philosophy citations age.</p>
+<p>The mean curve in <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;9</a> is really similar to the unadjusted age curve in <a href="#fig-rawage" class="quarto-xref">Figure&nbsp;7</a>. This is what I meant earlier by saying that after a lot of calculations, we’d get back to the same aging curve that we got from the simplest possibe measure.</p>
+<p>The calculations did have one really notable effect though. The unadjusted age numbers give us a sensible aging curve overall, but they give us an absurd aging curve for individual years. For most years in the dataset, the year they are most cited is not two to five years after initial publication; it is 2021. The point of the various adjustments in this section has been to make better sense of what’s happening in individual years.</p>
+<p>The result is the striking lack of outliers in <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;9</a>. All the individual data points are fairly close to the mean. There is some deviation, and there would be much more if I included the earlier years where the data is much noisier. The deviation there is will be the focus of much of the rest of this paper. Still, it’s notable how consistent the age curve is, once we use citation ratio to account for period effects.</p>
+<p>To end this section, I wanted to highlight two features of <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a> that are a little hard to see in the big graph. In <a href="#fig-peakratio" class="quarto-xref">Figure&nbsp;10</a>, I’ve graphed the maximum value the citation ratio reaches for each year of initial publication. This is a bit misleading before 1966, because I don’t have enough data to calculate citation ratios when the citing year is earlier than that, so it might have left off what would have been the high point. But from then on it’s useful.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-peakratio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-peakratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="apc_files/figure-html/fig-peakratio-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peakratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: The maximum citation ratio in each facet in <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>After the initial jump upwards, and the very high numbers in the mid-1960s, the trend is a decline. In <a href="#fig-peakratiotime" class="quarto-xref">Figure&nbsp;11</a> I’ve graphed out which age those peaks are hit at, for different years of initial publication starting in 1964.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-peakratiotime" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-peakratiotime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="apc_files/figure-html/fig-peakratiotime-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peakratiotime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: For each original publication year, the age it hits maximum citation ratio.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In <a href="#fig-peakratiotime" class="quarto-xref">Figure&nbsp;11</a>, the graph is going slightly upwards. Putting these last two figures together, we get the claim I was gesturing at earlier: citation curves are getting flatter. The peaks are coming later, and they are lower.</p>
 </section>
-<section id="sec-cohort" class="level1 unnumbered">
+<section id="sec-cohort" class="level1 page-columns page-full">
+<h1>Cohort Effects</h1>
+<p>So far we’ve seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In <a href="#fig-fourdeviations" class="quarto-xref">Figure&nbsp;12</a>, I’ve shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.</p>
+<div id="fig-fourdeviations" class="quarto-layout-panel page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-fourdeviations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<div class="quarto-layout-row page-full">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-fourdeviations" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fourdeviations-1" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-fourdeviations-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-fourdeviations-1.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-fourdeviations">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fourdeviations-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 1961
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-fourdeviations" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fourdeviations-2" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-fourdeviations-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-fourdeviations-2.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-fourdeviations">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fourdeviations-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 1979
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row page-full">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-fourdeviations" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fourdeviations-3" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-fourdeviations-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-fourdeviations-3.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-fourdeviations">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fourdeviations-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) 1985
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell page-columns page-full" data-ref-parent="fig-fourdeviations" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fourdeviations-4" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-subfloat-fig figure page-columns page-full">
+<div aria-describedby="fig-fourdeviations-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="apc_files/figure-html/fig-fourdeviations-4.svg" class="img-fluid figure-img column-screen-inset" data-ref-parent="fig-fourdeviations">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fourdeviations-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) 2007
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fourdeviations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Mean annual citations to different article kinds.
+</figcaption>
+</figure>
+</div>
+<p>In 1961 and 1985, the yearly values are predominantly below the mean line. In 1979 and 2007, they are predominantly above it, though this isn’t true for the first few years of the 2007 data. Note that the graphs have different lengths. Everything stops in 2021. And the 1961 data is cut off a little on the left because we only start calculating citation ratios in 1966. That’s why the line showing the mean is differently shaped that year.</p>
+<p>For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you’d expect them to be cited knowing just the age and period effects. The results are in <a href="#fig-cohort" class="quarto-xref">Figure&nbsp;13</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cohort" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cohort-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="apc_files/figure-html/fig-cohort-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cohort-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Cohort effects for different publication years.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A couple of quick technical notes on <a href="#fig-cohort" class="quarto-xref">Figure&nbsp;13</a>. I’ve added a smoothed curve over the graph to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven’t included what happens to 1956 papers when they are cited after 2016. There isn’t nearly enough data to say what one would ‘expect’ the usual aging curve to be at those points.</p>
+</section>
+<section id="sec-technical" class="level1">
+<h1>Technical Explanations</h1>
+</section>
+<section id="sec-culture" class="level1">
+<h1>Cultural Explanations</h1>
+</section>
+<section id="sec-substantive" class="level1">
+<h1>Substantive Explanations</h1>
+</section>
+<section id="sec-conclusion" class="level1 unnumbered">
 
 
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Cohort Effects</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Conclusion</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Anscombe1956" class="csl-entry" role="listitem">
 Anscombe, Elizabeth. 1956. <span>“Aristotle and the Sea Battle.”</span> <em>Mind</em> 65 (1): 1–15. <a href="https://doi.org/doi.org/10.1093/mind/65.1.1">https://doi.org/doi.org/10.1093/mind/65.1.1</a>.
 </div>
@@ -1169,8 +1281,7 @@ Rosenblatt, Lucas. 2017. <span>“Naive Validity, Internalization, and Substruct
 <li id="fn8"><p>A non-trivial chunk of the cleaning was sorting through the many and varied ways that philosophers have spelled Brian O’Shaughnessy’s name over the years.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn’t be too surprising that most article have just a handful of citations in philosophy journals.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>Though in “Naive Validity, Internalization, and Substructural Approaches To Paradox” <span class="citation" data-cites="Rosenblatt2017">(<a href="#ref-Rosenblatt2017" role="doc-biblioref">Rosenblatt 2017</a>)</span>, there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>Roughly, oranges are 1960s, greens are 1970s, blues are 1990s, with varieties of teal between them, and pinks and purples are the 2000s.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>1973 was a very distinctive year, but this does make me worry a little that having to collect the citations for <em>Journal of Philosophy</em> in a different way has led to some inconsistencies in the data.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>The graph also includes some ‘jitter’ to make the different points more easily visible. I’ve put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we’ll return to faceted graphs like <a href="#fig-ageeffecttibble" class="quarto-xref">Figure&nbsp;8</a> when I want to highlight individual years.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
