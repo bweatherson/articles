@@ -1,0 +1,66 @@
+---
+title: "Intrinsic Knowledge"
+abstract: |
+  Jonathon Stoltz's "Inferential Knowledge and What that Determines" discusses the idea that knowledge is (at least sometimes) _intrinsically determined_. In this note, I discuss how that idea relates to contemporary work on the nature of intrinsicness, the nature of knowledge, and the nature of essences.
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+format:
+  html:
+    fig-format: svg
+    fig-width: 10
+    fig-height: 7
+  pdf: default
+---
+
+Jonathan Stoltz's paper is really insightful; I learned a lot from it and I basically agree with the conclusion. In this note I wanted to make some observations about how these debates connect to some contemporary literature. In particular, I want to note how thinking about some of these older debates is useful for cleaning up some unclarity in a few related contemporary debates.
+
+# Intrinsic Determination
+
+I want to start from sort of the opposite end of the question about intrinsic determination to Stoltz. Let's think about how intrinsic determination could possibly fail to obtain. We're told that what it is for intrinsic determination to hold is (INT*) is true.
+
+(INT*)
+:    K(*p*) can produce D(K(*p*) is a cognition in which *p* is true).  
+
+Here's a very quick argument for that. Since K is factive, the fact that K(*p*) determines that p. And since K(*p*) has *p* as its content, what factivity means in this case is that *p* is true. So K(*p*) determines, i.e., produces a determination, that *p* is true, and hence that K(*p*) is a cognition in which *p* is true.
+
+Now something must be wrong with that 'quick argument'. Too many careful philosophers reject the thesis of universal intrinsic determination for it to be that simple to argue for it. And the obvious thing that's wrong with it is that it leaves out any role for _intrinsicness_. We don't want to just ask whether K(*p*) can produce this determination, but whether it can produce the determination in virtue of its intrinsic features.
+
+Let's give a name to the state K(*p*) which doesn't quite so strongly presuppose that it has certain features. Let's call it 'Fred'. Then we can reformulate the 'very quick argument' as follows.
+
+> **Master Argument for Intrinsic Determination**    
+> 
+> 1. Fred is intrinsically some kind of knowledge state.
+> 2. Fred is intrinsically a state with content *p*.
+> 3. By 1, it is intrinsic to Fred that it's content is true.
+> 4. By 2 and 3, it is intrinsic to Fred that *p*.
+> 5. By 4 and (INT*), intrinsic determination holds for Fred.
+
+Since (INT*) is a definition, the real issues are about 1 and 2. What I want to do for the rest of this note is go through how different views about the nature of intrisnicness, and different views about knowledge and essence, can motivate the various different views that Stoltz finds in the historical literature.
+
+# Intrinsicness
+
+The modern literature on intrinsicness is very confusing, because there are three different questions being discussed.
+
+First, broadly speaking what kind of thing is intrinsicness. In @sep-intrinsic-extrinsic [§2], there are four broad kinds identified. For simplicity, I'll just focus on the last two: intrinsicness is a matter of a feature being internal, and intrinsicness is a matter of a feature being shared by all duplicates. These two most notably come apart with respect to identity properties, like _being Fred_. That's plausibly internal, but it's not shared by duplicates. Fred could have an identical twin who is not numerical identical with them.
+
+The second question is how to implement each of the various kinds. My one contributions to this literature [@Weatherson2001-WEAIPA, @Weatherson2006-WEATAM] presupposed that the relevant kind is _shared by duplicates_, and then fussed around with how to turn the idea that intrinsic properties are shared by duplicates into a full theory. At the time I thought this was the right way to think about intrinsicness, but I really didn't argue for that; I was mostly just working out details.
+
+Then the third question is what kind of dispute the first question really is. Is there one true notion of intrinsicness, and the proponents of the different kinds of theory are debating what it is? Or are there different notions, and the real question is which of them is most useful, or perhaps which is most useful for different purposes? I used to hold the 'one true notion' view, but I've come around to thinking the more pragmatic approach is the right one. Different kinds of intrinsicness play different philosophical roles, and we need multiple notions around here. Indeed, we'll see roles for the different kinds just in this note.
+
+# Knowledge as Extrinsic
+
+If we do understand intrinsicness as being shared by duplicates, then we quickly get to Śaṅkaranandana's view that all knowledge is extrinsic. Any knower has a duplicate in what @Williams2016 calls a 'bubble world'; a world that is a duplicate of the actual world immediately around the knower, but where things go strange outside the bubble. Since the knower is duplicated, presumably the knowledge, i.e., Fred, is also duplicated. But since *p* is false, it follows that either 1 or 2 must be false. Either Fred's counterpart has different content, falsifying 2, or Fred's counterpart is not factive, falsifying 1.
+
+One might worry that's a little quick. That argument shows that all knowledge of the external world is extrinsic, but it doesn't show that knowledge of the internal world is extrinsic. If *p* is the result of performing the _cogito_ inference, then wouldn't it still be a piece of knowledge when Fred's host's counterpart performs it?
+
+To get around this problem, we'll draw on what @Sider2001 says about 'maximal' properties. He notes that most properties of ordinary macroscopic objects, like knowers, are *maximal*. That is, part of what it is to have that property is that one is not part of a larger thing that also has it. For example, I'm a thinker, but the mereological difference between me and one of my hairs is not. I'm thinking about epistemology, and I know a bit about it, and that mereological difference does not. But the mereological difference has duplicates who are maximal; intuitively they are worlds just like this one except that hair was plucked out. So knowing stuff about epistemology isn't shared by duplicates. Similarly if both I and my counterpart with one fewer hair perform the cogito, we both end up with knowledge. But my counterpart's duplicate in this world, i.e., the mereological difference between me and that hair, does not get knowledge that way. So even the knowledge one gets from the cogito is not extrinsic.
+
+This shows that if we understand intrinsicness as being shared by duplicates, then Śaṅkaranandana is right and all knowledge is extrinsic. But that's not the most helpful way to think about knowledge and intrinsic determination. The same kind of argument shows that if we understand intrinsic value to be values that all duplicates share, then virtually nothing has intrinsic value. That doesn't seem like a particularly useful way of thinking.^[There is a tension here in the approach to intrinsic value in @Moore1903. The 'isolation test' for intrinsic value that Moore uses only really makes sense on the shared by duplicates approach to intriniscness. But that's not a helpful way to think about intrinsic value. For much more on this, see @sep-value-intrinsic-extrinsic [§2].] A better approach is to say that some other notion of intrinsicness is relevant to intrinsic value, and, relatedly, to intrinsic determination of knowledge.

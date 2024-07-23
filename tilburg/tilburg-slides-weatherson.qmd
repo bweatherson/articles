@@ -1,0 +1,66 @@
+---
+title: "A Break in the Citation Patterns"
+author: "Brian Weatherson"
+format:
+  revealjs:
+      template-partials:
+        - title-slide.html
+      slide-number: c/t
+      menu: true
+      highlight-style: github-dark
+      theme: teodt.scss
+      logo: UM.svg
+editor: source
+---
+
+## Thank You!
+
+- To the organisers, for putting this on and inviting me here.
+- To Eugenio, for writing such a great book.
+- It raises so many questions, and I'm going to briefly talk about one of them.
+
+## A Break
+
+- Eugenio says that the citations in his study fall into two or three clusters.
+- Roughly before and after 2000, though maybe with a small cluster around 2000.
+
+## Periodization
+
+Question:
+
+- Can Late Analytic be broken into periods?
+- If so, what are they?
+- If not, isn't that odd? Pre-1970 there are lots of periods that seem to pop out. Why none after?
+
+## Eugenio's Study in §4.4
+
+Start with the citations in five big journals:
+
+- _Mind_
+- _Philosophical Review_
+- _Journal of Philosophy_
+- _Noûs_
+- _Philosophy and Phenomenological Research_ 
+
+for each year from 1980-2020. 
+
+## Eugenio's Study in §4.4
+
+- Turn the citations for each year into a vector, with one dimension for every work ever cited in that timeframe.
+- The more similar the years are, the lower the cosine of the angle between those vectors will be.
+- This similarity measure is shown in  @fig-eugenio-matrix.
+
+---
+
+![From page 103 of @Petrovich2024.](cosine-screenshot.png){#fig-eugenio-matrix}{height=75%}
+
+## Eugenio's Study in §4.4
+
+- Each row of that graph is itself a vector. 
+- Eugenio looked for clusters within those vectors, and @fig-eugenio-cluster shows what he found.
+
+---
+
+![From page 104 of @Petrovich2024.](cluster-screenshot.png){#fig-eugenio-cluster}{height=50%}
+
+

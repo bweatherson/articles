@@ -1,0 +1,431 @@
+---
+title: "A Break in the Citation Patterns"
+abstract: | 
+   Comments on Eugenio Petrovich's book _A Quantitative Portrait of Analytic Philosophy: Looking Through the Margins_, for the Quantitative Studies of Philosophy workshop at Tiburg, August 21-22 2024.
+date: August 21 2024
+website:
+    sidebar:
+      style: "floating"
+      background: "danger"
+      border: true
+      title: "Hello World"
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+categories:
+  - history of analytic
+  - in progress
+  - online only
+draft: false
+execute:
+  echo: false
+  warning: false
+format:
+  html:
+    fig-format: svg
+    fig-height: 9
+    fig-width: 12
+    fig-dpi: 300
+    fig-responsive: true
+    toc: false
+    toc-depth: 3
+    toc-location: right
+    toc-title: "Sections"
+    reference-location: margin 
+  pdf:
+    fig-format: pdf
+    output-file: "A Break in the Citation Patterns"
+    include-after-body: 
+        text: |
+          \noindent Published online in June 2024.
+  docx:
+    output-file: "A Break in the Citation Patterns"
+---
+
+First, I'd like to thank the organisers for putting on these great workshops, and Eugenio for writing such a well researched and endlessly thought provoking book.
+
+I'm going to comment just on one study in the book - the intriguing suggestion that there's a break in the citation patterns around 2000. This is intriguing because it connects to a question that's long interested me: can Late Analytic Philosophy be usefully divided into eras? Are there periods within Late Analytic that are usefully separated out from the rest the way it is useful to separate out the Ordinary Language era, at least in the UK, from the times around it? No such periodization has caught on, and maybe that's because there isn't a useful one to find, but if the citations change around 2000, maybe we should think about whether that's the start of a new era.
+
+The details will matter a bit here, so let me go over what's happening at this stage of the book (i.e., section 4.4 of the book). We start with all the citations in five big journals: _Mind_, _Philosophical Review_, _Journal of Philosophy_, _Noûs_ and _Philosophy and Phenomenological Research_, for each year from 1980-2020. We represent the citations in each year as a vector, with a dimension for each article cited at any time in the study, and the magnitude of that dimension being the number of citations. That gives us 41 n-dimensional vectors, and we can look at their similarity by taking the cosine of the angle between them. The result is @fig-eugenio-matrix.
+
+![From page 103 of @Petrovich2024.](cosine-screenshot.png){#fig-eugenio-matrix}
+
+The darker cells are more similar years, so in the middle of the graph, we see several years where the similarity scores are relatively high: around 0.5. Each row of that graph is itself a vector. Eugenio looked for clusters within those vectors, and @fig-eugenio-cluster shows what he found.
+
+![From page 103 of @Petrovich2024.](cluster-screenshot.png){#fig-eugenio-cluster}
+
+In this graph there are three clusters, but the blue cluster to me feels fairly connected to the green one. What strikes me about this graph is how few dark cells there are where one year is before 1996 and the other year is after 1996. Somewhere between 1996 and 2006, there seems to be a step change here. What could explain that, and does it have a larger historical significance?
+
+Being old enough to have some memories of this time, I had two thoughts about what might be going on which I don't think end up being supported by the data.
+
+One was that there was a change in who the heroes of the narrative were around then. The giants of the mid twentieth century, particularly Wittgenstein, Rawls, Quine, and Davidson, seemed to be a smaller part of the discussion than they had been a few years earlier. But while that may be reflected in the data for Wittgenstein, the fact that Quine and Davidson write two of the five pieces most cited in these journals around the turn of the century doesn't really back up that theory.
+
+A second was that that time was characterised by many more flurries of interest in particular problems or approaches. Some of these had more lasting impacts than others, but it was striking how many of them there were. By the early 2000s, all of these were prominent topics of conversation, at least around prominent East Coast philosophy departments, in a way that distinguished that time from earlier or later times:
+
+- Non-conceptual content
+- Zombies
+- Fictionalism
+- Vagueness
+- Self-locating belief (i.e., Sleeping Beauty)
+
+But while these were definitely hot topics - at one stage you could apparently start a conversation with a Princeton grad student by asking what they were working on fictionalism about - I don't really see them represented enough in those five journals to make a difference. If we were looking at _Analysis_, which was much more sensitive to trends like these, the story might be different. There was a bit on non-conceptual content, in _Philosophical Review_ in particular, but it probably made the citation record _less_ distinctive, because it connected to earlier discussions by Evans and others. So I don't think that's the explanation here.
+
+It could be that technological changes around this time, i.e., the rise of the internet, made a difference. The internet made it somewhat easier to read articles. It made it much easier to look up citation info, and so maybe citations that got cut because the author didn't want to trudge to the library to look up page numbers instead got left in. But I suspect two other things are more important. It meant philosophers across long distances could communicate in writing in real time. So written versions of ideas could spread before they were in print. That was probably connected to the growth of so many hot topics. And it was much easier to organise and publicise small workshops and conferences, especially in the eastern United States. Maybe that's part of the explanation, though I don't have any direct evidence for it, and I want to turn to Eugenio's main suggestion for what's going on.
+
+Eugenio suggests that a big part of the story is the rise of epistemology. If that's the explanation, I suspect that's telling us something about the sociology of the journals, and of the field, not about the trends. 
+
+There are two important things happen to epistemology around this time. 
+
+One is that Ernie Sosa becomes editor of both _Noûs_ and _PPR_. And then those two journals publish more epistemology. 
+
+The other is that the boundary between epistemology and philosophy of science shifts. Some of the most important articles in late twentieth century epistemology are in philosophy of science journals. Think of "A Non-Pragmatic Vindication of Probabilism" [@Joyce1998], or "Conditionalizing on Knowledge"^[This doesn't have a ton of citations, but it is reprinted as a key chapter of _Knowledge and Its Limits_] [@Williamson1998]. Around this time the Formal **Epistemology** Workshop gets going, pushing the idea that work that was previously considered part of philosophy of science is now epistemology.
+
+Between these factors, both pull factors from the editorial changes, and push factors from the field, I think what we see is a move of epistemology from specialist journals into 'generalist' journals.
+
+It's possible the reverse is happening in political philosophy; those journals are becoming less important to political philosophy than more specialist journals like _Ethics_ and _Philosophy and Public Affairs_. There is a discussion to be had here about whether the big five journals really deserve the name 'generalist' in this period, but I'll leave that for another day.
+
+Because I want to end by sketching a little study I did that might suggest a different reason for the results in those two figures. I think they're really telling us something about something strange happening in the late 1980s and early 1990s. There are a lot fewer 'big' articles from that time. By a big article I mean one that's being *very* widely cited within a few years, and has a long tail of citations that persist over decades. Philosophy always has these; except, I think, for that period. Maybe what's distinctive in the citations around 2000 is that there should be, but isn't the long tail of articles from 10-15 years earlier (plus/minus a few) that would normally be setting the agenda.
+
+So far I've said a lot of things that are very vibes based, so let me give you some data. This is also based on a citation study, and one that I think complements Eugenio's study. He looked at **all** the citations in a **few** journals. I'm working on a study that flips that around: I'm looking at a smaller selection of the citations in all the philosophy journals. The point is not that he did anything wrong and I'm doing it right. The point is rather, as he says in section 3.4, that what we're doing here is building **models** of the field. All models have strengths and weaknesses; we should build several and see how they interact.
+
+So what I did was take the Web of Science data, and focus on 100 philosophy journals from 1956 onwards. For each year from 1956-2015 I made a list of one hundred widely cited articles, with a mix of articles that were widely cited immediately after publication, articles that have been widely cited in the last few years, and articles that are widely cited overall.  That gave me 6000 articles. Then I repeated the kind of analysis Eugenio did, looking at more journals (100 rather than 5), but with many fewer cited sources (just those 6000 rather than everything).
+
+@fig-matrix shows the year by year similarity.
+
+```{r}
+#| label: loader
+#| cache: false
+
+require(tidyverse)
+require(slider)
+require(stringr)
+require(knitr)
+require(lsa)
+
+if(knitr::is_latex_output()) {
+  knitr::opts_chunk$set(dev = 'cairo_pdf')
+}
+
+# Graph Themes
+old <- theme_set(theme_minimal())
+theme_set(old)
+theme_update(plot.title = element_text(family = "Scala Sans Pro", size = 24, face = "bold"),
+             plot.subtitle = element_text(family = "Scala Sans Pro", size = 20),
+             axis.text = element_text(family = "Scala Sans Pro", size = 18),
+             axis.title = element_text(family = "Scala Sans Pro", size = 16),
+             plot.background = element_rect(fill = "#F9FFFF"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "#F9FFFF"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.title = element_text(family = "Scala Sans Pro", size = 20),
+             strip.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.key.spacing.y = unit(0.5, 'lines'),
+             legend.key.spacing.x = unit(1, 'cm')
+  )
+
+if(knitr::is_latex_output()) {
+theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
+             plot.subtitle = element_text(family = "EB Garamond", size = 11),
+             axis.text = element_text(family = "EB Garamond", size = 10),
+             plot.background = element_rect(fill = "white"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "white"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "EB Garamond", size = 11),
+            legend.title = element_text(family = "EB Garamond", size = 11),
+             strip.text = element_text(family = "EB Garamond", size = 12),
+             legend.key.spacing.y = unit(0.5, 'lines'),
+             legend.key.spacing.x = unit(0, 'cm')
+  )
+}
+```
+
+```{r}
+#| label: setup
+#| cache: true
+
+require(tidyverse)
+require(slider)
+require(stringr)
+
+load("philo_bib_fix.RData")
+load("philo_cite_with_jp.RData")
+
+authadjust <- function(x){
+  paste0(str_extract(x, '\\b[^,]+$'), " ", str_to_title(str_extract(x,".+(?=,)")))
+}
+
+authadjust_short <- function(x){
+  str_to_title(str_extract(x,".+(?=,)"))
+}
+
+
+article_years <- philo_bib_fix |>
+  as_tibble() |>
+  select(id, year)
+
+article_title <- philo_bib_fix |>
+  as_tibble() |>
+  select(id, author = auth, art_title, journal) 
+
+citation_tibble <- philo_cite_with_jp |>
+  as_tibble() |>
+  rename(new = id, old = refs) |>
+  left_join(article_years, by = c("old" = "id")) |>
+  rename(old_year = year)  |>
+  left_join(article_years, by = c("new" = "id")) |>
+  rename(new_year = year)
+```
+
+```{r}
+#| label: setupcos
+#| cache: true
+
+require(lsa)
+
+long_article_ids <- c()
+
+for(the_year in (1956:2015)){
+  
+  topper <- 1
+  all_cited <- tribble(~old, ~n)
+  
+  while(nrow(all_cited) < 100){
+    
+    
+    most_cited <- citation_tibble |>
+      filter(old_year == the_year) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    recent_cited <- citation_tibble |>
+      filter(old_year == the_year, new_year >= pmax(2013,((the_year+2022.1)/2))) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    orig_cited <- citation_tibble |>
+      filter(old_year == the_year, new_year <= pmin(the_year+10,((the_year+2022)/2))) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    all_cited <- bind_rows(most_cited, recent_cited, orig_cited) |>
+      distinct(old, .keep_all = TRUE) |>
+      mutate(old_year = the_year)
+    
+    topper <- topper + 1
+  }
+  long_article_ids <- bind_rows(
+    long_article_ids,
+    slice_max(all_cited, n, n=100, with_ties = FALSE)
+  )
+}
+
+long_cites <- citation_tibble |>
+  filter(old %in% long_article_ids$old, new_year >=1960, new_year <= 2022) |>
+  ungroup() |>
+  group_by(old, new_year) |>
+  tally(name="year_cites") |>
+  ungroup() |>
+  complete(old, new_year, fill = list(year_cites = 0)) |>
+  pivot_wider(id_cols = "old", names_from = "new_year", values_from = "year_cites") |>
+  select(-old) 
+
+cos_years <- cosine(as.matrix(long_cites)) |> 
+  as.data.frame() |>
+  rownames_to_column(var = "year1") |>
+  pivot_longer(cols = !year1, names_to = "year2", values_to = "cos_value") |>
+  mutate(year1 = as.numeric(year1), year2 = as.numeric(year2))
+```
+
+```{r}
+#| label: fig-matrix
+#| cache: false
+#| fig-format: png
+#| fig-cap: "Similarity between citations for different years."
+
+cos_graph <- ggplot(filter(cos_years, year1 >= 1960, year2 >= 1960), aes(x = year1, y = year2, value = cos_value)) +
+  geom_tile(aes(fill = cos_value)) +
+  xlab(element_blank()) +
+  ylab(element_blank()) +
+  labs(fill = "Cosine")
+
+cos_graph
+```
+
+This starts in 1960 because before that, citations to articles published 1956 or later are few enough that it's mostly just noise.
+
+There doesn't seem to be any sharp break around 2000. To see if I was missing something, for each year I calculated the average of the similarity measure between it and the preceding five years, and the result is @fig-rolling-average. Again, I've left out the very noisy years at the very start; the first year here is 1970, so the first year whose citations get used is 1965
+
+```{r}
+#| label: fig-rolling-average
+#| cache: false
+#| fig-cap: "Similarity between a year's citations and the previous five years' citations (1970-2022)."
+
+cos_delayed <- cos_years |>
+  filter(year2 >= 1970, year1 >= year2 - 1, year1 <= year2 - 1) |>
+  group_by(year2) |>
+  summarise(past_sim_score = mean(cos_value)) |>
+  ggplot(aes(x = year2, y = past_sim_score)) +
+  geom_smooth() + 
+  geom_line() +
+  ylab("Cosine") +
+  xlab(element_blank())
+
+cos_delayed
+```
+
+The striking thing in @fig-rolling-average is the long pause between the late 1970s and early 2000s. The trend line even goes gently down for a while. Given the way I've set things up, that shouldn't happen. Citations tend to go backwards in time, so each year a new hundred articles are getting added to the range of possible citations. That makes a small difference at the end; the new articles are only 2% of the universe. But it makes a big difference at the start. So graph, which measures how similar a year is to the previous 5 in how it treats these 4000 articles, should slope up. Indeed, if we run the exact same study starting in 1986 rather than 1956, we get @fig-rolling-average-late, which is what I'd a priori expect.
+
+```{r}
+#| label: fig-rolling-average-late
+#| cache: false
+#| fig-cap: "Similarity between a year's citations and the previous five years' citations (1995-2022)."
+
+long_cites_late <- citation_tibble |>
+  filter(old %in% long_article_ids$old, new_year >=1990, new_year <= 2022, old_year >= 1986) |>
+  ungroup() |>
+  group_by(old, new_year) |>
+  tally(name="year_cites") |>
+  ungroup() |>
+  complete(old, new_year, fill = list(year_cites = 0)) |>
+  pivot_wider(id_cols = "old", names_from = "new_year", values_from = "year_cites") |>
+  select(-old) 
+
+cos_years_late <- cosine(as.matrix(long_cites)) |> 
+  as.data.frame() |>
+  rownames_to_column(var = "year1") |>
+  pivot_longer(cols = !year1, names_to = "year2", values_to = "cos_value") |>
+  mutate(year1 = as.numeric(year1), year2 = as.numeric(year2))
+
+cos_delayed_late <- cos_years_late |>
+  filter(year2 >= 1995, year1 >= year2 - 1, year1 <= year2 - 1) |>
+  group_by(year2) |>
+  summarise(past_sim_score = mean(cos_value)) |>
+  ggplot(aes(x = year2, y = past_sim_score)) +
+  geom_smooth() + 
+  geom_line() +
+  ylab("Cosine") +
+  xlab(element_blank())
+
+cos_delayed_late
+```
+
+Something odd is happening with the citations to articles from the 1980s and early 1990s. Here is my conjecture about why we see something like a break around 2000. There are three things going on at once.
+
+1. Every year there are a huge number of citations to recently published papers; lots of replies, and making small moves on top of recent work. These kind of citations keep appearing for a decade or more, but they gradually fade away.
+2. Typically, there are a handful of papers that really define a field, and while they aren't always immediately recognised as such, they tend to keep being cited, in massive volumes, for many years after the fact.
+3. The 1980s saw fewer of these papers being produced, especially after 1983. So around 2000 the usual turnover of citations, the allure of the new, had a more dramatic effect because it wasn't mixed with continued discussion of the field defining papers from 10-15 years earlier.
+
+Note here that I'm only making a claim about journal articles. There were some field defining books published in this time, notably _On the Plurality of Worlds_. And I haven't done a study of chapters in edited volumes. But the journals stopped producing articles that had much staying power. Here's one way to see this.
+
+Start by looking at articles published in the first half of the 2000s, i.e., 2000-2004. By the end of the 2000s, the 15 most cited articles from the first half of the decade were shown in @tbl-early-2000s.
+
+```{r}
+#| label: tbl-early-2000s
+#| tbl-cap: "Most cited 2000s articles by 2009."
+
+early_finder <- function(init_year, chart_list){
+  citation_tibble |>
+  filter(old_year >= init_year, old_year <= init_year + 4) |>
+  filter(new_year >= old_year, new_year <= old_year + 9) |>
+  group_by(old) |>
+  tally(name = "early_cites") |>
+  arrange(old) |>
+  slice_max(early_cites, n = chart_list, with_ties = FALSE) |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+late_finder <- function(init_year, chart_list){
+  citation_tibble |>
+  filter(old_year >= init_year, old_year <= init_year + 4) |>
+  filter(new_year >= 2018, new_year <= 2022) |>
+  group_by(old) |>
+  tally(name = "late_cites") |>
+  arrange(old) |>
+  slice_max(late_cites, n = chart_list, with_ties = FALSE) |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+overlap_finder <- function(init_year, chart_list){
+  inner_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+early_absence_finder <- function(init_year, chart_list){
+  anti_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+late_absence_finder <-  function(init_year, chart_list){
+  anti_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+early_finder(2000, 15) |>
+  select(full_cite, early_cites) |>
+  rename(Article = full_cite, Citations = early_cites) |>
+  kable()
+
+```
+
+In the most recent 5 years in the available data, 2018-2022, @tbl-late-2000s are the most cited articles first published in 2000-2004.
+
+```{r}
+#| label: tbl-late-2000s
+#| tbl-cap: "Most cited 2000s articles since 2018."
+
+late_finder(2000, 15) |>
+  select(full_cite, late_cites) |>
+  rename(Article = full_cite, Citations = late_cites) |>
+  kable()
+```
+
+There is a lot of overlap between @tbl-early-2000s and @tbl-late-2000s. In particular, the articles by `{r} combine_words(overlap_finder(2000, 15)$firstauth)` are in both lists. Having 7 articles in both lists like that isn't particularly unusual. 
+
+I've used decades to set this up, but really what I did was take some year *y*, in this case 2000, focus on articles published between *y* and *y*+4, and compare two lists: which of those articles were in the 15 most cited before *y*+9, and which were in the 15 most cited between 2018 and 2022. If you do that for different values of *y*, you often find 5-7 articles in both lists. But if you set *y* to 1984, so that it focuses on the mid-to-late 1980s, there is very little overlap. @tbl-early-1980s lists the articles from 1984-1988 that were most cited by 1993.
+
+```{r}
+#| label: tbl-early-1980s
+#| tbl-cap: "Most cited 1984-1988 articles by 1993."
+
+early_finder(1984, 15) |>
+  select(full_cite, early_cites) |>
+  rename(Article = full_cite, Citations = early_cites) |>
+  kable()
+```
+
+And @tbl-late-1980s shows the almost completely distinct list of articles from 1984 to 1988 that have been widely cited in the last 5 years of the data set.
+
+```{r}
+#| label: tbl-late-1980s
+#| tbl-cap: "Most cited 1984-1988 articles since 2018."
+
+late_finder(1984, 15) |>
+  select(full_cite, late_cites) |>
+  rename(Article = full_cite, Citations = late_cites) |>
+  kable()
+```
+
+Articles from the 1980s that made a big impact at the time were, for the most part, not sticking around. In part I think that's because the 1980s, or at least the parts that were impactful at the time, were more 'normal science'. There were a lot of articles that tried to make small improvements, especially on questions surrounding supervenience and physicalism, and there just wasn't much reason to cite those 15 or so years late. Maybe the absence of the articles from a decade or so ago that would normally be cited is part of why there's a break around the 2000s. But this is all speculative, and I think the whole question is both really interesting, and in need of further study.
+
+So I'll end where I started by saying how grateful I am to the organisers for putting this on, and to Eugenio for the book. What I've done here is look at a few things inspired by one section of the book - it is full of so many insights and observations and it both makes you rethink what you thought about recent philosophy, and raises many fascinating questions like the one I've been discussing. I hope it gets very widely read.
+
+::: {.content-visible unless-format="html"}
+## References {-}
+:::
