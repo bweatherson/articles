@@ -13,10 +13,7 @@ author:
     orcid_id: 0000-0002-0830-141X
 bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
 format:
-  html:
-    fig-format: svg
-    fig-width: 10
-    fig-height: 7
+  html: default
   pdf: default
 ---
 
@@ -77,4 +74,11 @@ Given the first and second premise, we can infer that it is intrinsic to Fred th
 
 The first and third premises here are, by philosophy standards, not that controversial. The second is much more controversial. 
 
-Before Williamson, the completely standard view was that beliefs were mental states, and to say that a belief amounted to knowledge was basically to positively evaluate it in a certain way. But being knowledge was no more part of the essence of the belief than being good was part of the essence of someone who was, as it turns out, mostly good. Williamson argued, convincingly to many, that this was the wrong way to look at things. He argued that we should reconceptualise knowledge in much the same way that we had, over the preceding decades, reconceptualised vision. There was an old view that states of visual awareness, seeings, were essentially states of visual appearance, and accidentally states where the appearances matched reality for the right reasons.^[See #Lewis1980d for some of the complications involved in trying to say more precisely what those accidental features are.] The better view was to say that seeings are a particular kind of mental state, and hallucinations and the like are not worse versions of the same state, but different states altogether. Similarly, knowledge states are not 
+Before Williamson, the completely standard view was that beliefs were mental states, and to say that a belief amounted to knowledge was basically to positively evaluate it in a certain way. But being knowledge was no more part of the essence of the belief than being good was part of the essence of someone who was, as it turns out, mostly good. Williamson argued, convincingly to many, that this was the wrong way to look at things. He argued that we should reconceptualise knowledge in much the same way that we had, over the preceding decades, reconceptualised vision. There was an old view that states of visual awareness, seeings, were essentially states of visual appearance, and accidentally states where the appearances matched reality for the right reasons.^[See #Lewis1980d for some of the complications involved in trying to say more precisely what those accidental features are.] The better view was to say that seeings are a particular kind of mental state, and hallucinations and the like are not worse versions of the same state, but different states altogether. Similarly, knowledge states are not just better versions of belief states, they are different states.
+
+My sense is that this view fits better with Buddhist and other South Asian traditions than the more traditional analytic view that knowledge states were essentially beliefs and accidentally knowledge. So I'll simply assume it in what follows. Then given the other two assumptions, which as I said are also widely accepted in recent analytic philosophy, we get that all knowledge is intrinsically determined.
+
+We're still left with a third question. What kind of view could get the view that knowledge is (a) often intrinsically determined, (b) always intrinsically determined when it is inferential knowledge, but (c) sometimes extrinsically determined. To get this we need to question the third assumption above, that cognitive states have their contents essentially.
+
+# The Genetic Conception
+
