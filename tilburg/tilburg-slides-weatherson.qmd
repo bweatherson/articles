@@ -52,7 +52,8 @@ for each year from 1980-2020.
 
 ---
 
-![From page 103 of @Petrovich2024.](cosine-screenshot.png){#fig-eugenio-matrix}{height=75%}
+![From page 103 of Petrovich (2024)](cosine-screenshot.png){#fig-eugenio-matrix width=60%}
+
 
 ## Eugenio's Study in §4.4
 
@@ -61,6 +62,476 @@ for each year from 1980-2020.
 
 ---
 
-![From page 104 of @Petrovich2024.](cluster-screenshot.png){#fig-eugenio-cluster}{height=50%}
+![From page 104 of Petrovich (2024)](cluster-screenshot.png){#fig-eugenio-cluster width=100%}
+
+- Three clusters, but the blue seems more connected to the green than the red.
+
+## Observation
+
+- Very few dark cells (in the original matrix) where one is before 1996 and the other year is after 1996. 
+- Somewhere between 1996 and 2006, there seems to be a step change here. 
+- What could explain that, and does it have a larger historical significance?
+
+## Hypothesis 1: New Gods, New Masters
+
+My memory/gut reaction was that there was a big decrease in how much attention was paid to Wittgenstein, Rawls, Quine, and Davidson around that time.
+
+- But in fact, Quine and Davidson wrote two of the five most pieces most discussed around 2000.
+- This is why you go to the tape, not your memory.
+
+## Hypothesis 2: Hot Topic
+
+This seems like a good suggestion for what was distinctive about the 2000s. Examples:
+
+- Non-conceptual content
+- Zombies
+- Fictionalism
+- Vagueness
+- Self-locating belief (i.e., Sleeping Beauty)
+
+## Hypothesis 2: Hot Topic
+
+This would explain why the citations in _Analysis_ were distictive circa Y2K, but not these five journals.
+
+The only one which really turns up a lot in these five is non-conceptual content, and the citations in those papers to Evans probably decrease the distinctiveness of the years.
+
+## Hypothesis 3: Technology
+
+So the internet happened. This had many consequences:
+
+- Ease of accessing papers.
+- Ease of submitting papers.
+- Ease of communicating outside of the journal system.
+- Ease of organising/promoting workshops.
+
+This seems like it could be part of the explanation.
+
+## Hypothesis 4: Epistemology
+
+Eugenio suggests that the rise of epistemology is part of the story here.
+
+I'm a little sceptical.
+
+I think what we saw was an increase in work in epistemology _in these five journals_.
+
+## Two Events
+
+1. Ernest Sosa becomes editor of both _Noûs_ and _PPR_, and he moves more or less full time into epistemology.
+2. The category of formal epistemology gets invented (i.e., the Formal Epistemology Workshop is launched), and probability based papers start their migration from Philosophy of Science to Epistemology.
+
+## Upshot
+
+Epistemology is better represented than it used to be in journals that are (a) generalist (as opposed to BJPS/Philosophy of Science) and (b) very-high-status (as opposed to Phil Studies/Synthese).
+
+## Possibly Related Transformation
+
+The 'generalist' journals used to do more political philosophy, but by 2000 they have basically left the field.
+
+Elizabeth Anderson's "What is the Point of Equality?" is almost never cited in these journals.
+
+I think this goes to the question of generalist the 'generalist' journals really were/are.
+
+## Hypothesis Five: The 80s.
+
+Something strange happens in the 1980s and through the early 1990s.
+
+- There are many fewer *big* articles.
+- That is, articles which immediately get a lot of citation attention, and which keep it for decades afterwards.
+- I think that's part of what's going on in the 2000s; the lack of *big* papers means work from that period disappears quicker than it should.
+
+## Work in Progress
+
+- Eugenio looked at **all** the citations in a **few** journals. 
+- I'm working on a study that flips that around: looking at a lot of journals (100 in fact), but only looking at their citations of other journals.
+- The point is not that what he did is wrong and what I'm doing is right.
+- It's that we're both building models, and having more models can give you a better guide than any one model alone.
+
+## My Dataset
+
+- 100 journals indexed by Web of Science, starting in 1956.
+- Individual journals often don't appear until later, not least because they didn't all exist in 1956.
+- And the citations are just citations to those very journals.
+
+## First Study
+
+- For each year 1956-2015, find 100 highly cited articles.
+- Mix of things that were cited a lot at the time, things that have been cited a lot recently, and things that are cited a lot overall.
+- That gives 6000 interesting articles.
+- Then do the same cosine based study, just looking at citations of these 6000 articles in these 100 journals.
+
+---
+
+```{r}
+#| label: loader
+#| cache: false
+
+require(tidyverse)
+require(slider)
+require(stringr)
+require(knitr)
+require(lsa)
+require(kableextra)
+
+if(knitr::is_latex_output()) {
+  knitr::opts_chunk$set(dev = 'cairo_pdf')
+}
+
+# Graph Themes
+old <- theme_set(theme_minimal())
+theme_set(old)
+theme_update(plot.title = element_text(family = "Scala Sans Pro", size = 24, face = "bold"),
+             plot.subtitle = element_text(family = "Scala Sans Pro", size = 20),
+             axis.text = element_text(family = "Scala Sans Pro", size = 18),
+             axis.title = element_text(family = "Scala Sans Pro", size = 16),
+             plot.background = element_rect(fill = "#F9FFFF"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "#F9FFFF"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.title = element_text(family = "Scala Sans Pro", size = 20),
+             strip.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.key.spacing.y = unit(0.5, 'lines'),
+             legend.key.spacing.x = unit(1, 'cm')
+  )
+
+if(knitr::is_latex_output()) {
+theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
+             plot.subtitle = element_text(family = "EB Garamond", size = 11),
+             axis.text = element_text(family = "EB Garamond", size = 10),
+             plot.background = element_rect(fill = "white"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "white"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "EB Garamond", size = 11),
+            legend.title = element_text(family = "EB Garamond", size = 11),
+             strip.text = element_text(family = "EB Garamond", size = 12),
+             legend.key.spacing.y = unit(0.5, 'lines'),
+             legend.key.spacing.x = unit(0, 'cm')
+  )
+}
+```
+
+```{r}
+#| label: setup
+#| cache: true
+
+require(tidyverse)
+require(slider)
+require(stringr)
+
+load("philo_bib_fix.RData")
+load("philo_cite_with_jp.RData")
+
+authadjust <- function(x){
+  paste0(str_extract(x, '\\b[^,]+$'), " ", str_to_title(str_extract(x,".+(?=,)")))
+}
+
+authadjust_short <- function(x){
+  str_to_title(str_extract(x,".+(?=,)"))
+}
 
 
+article_years <- philo_bib_fix |>
+  as_tibble() |>
+  select(id, year)
+
+article_title <- philo_bib_fix |>
+  as_tibble() |>
+  select(id, author = auth, art_title, journal) 
+
+citation_tibble <- philo_cite_with_jp |>
+  as_tibble() |>
+  rename(new = id, old = refs) |>
+  left_join(article_years, by = c("old" = "id")) |>
+  rename(old_year = year)  |>
+  left_join(article_years, by = c("new" = "id")) |>
+  rename(new_year = year)
+```
+
+```{r}
+#| label: setupcos
+#| cache: true
+
+require(lsa)
+
+long_article_ids <- c()
+
+for(the_year in (1956:2015)){
+  
+  topper <- 1
+  all_cited <- tribble(~old, ~n)
+  
+  while(nrow(all_cited) < 100){
+    
+    
+    most_cited <- citation_tibble |>
+      filter(old_year == the_year) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    recent_cited <- citation_tibble |>
+      filter(old_year == the_year, new_year >= pmax(2013,((the_year+2022.1)/2))) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    orig_cited <- citation_tibble |>
+      filter(old_year == the_year, new_year <= pmin(the_year+10,((the_year+2022)/2))) |>
+      group_by(old) |>
+      tally() |>
+      ungroup() |>
+      slice_max(n, n=topper)
+    
+    all_cited <- bind_rows(most_cited, recent_cited, orig_cited) |>
+      distinct(old, .keep_all = TRUE) |>
+      mutate(old_year = the_year)
+    
+    topper <- topper + 1
+  }
+  long_article_ids <- bind_rows(
+    long_article_ids,
+    slice_max(all_cited, n, n=100, with_ties = FALSE)
+  )
+}
+
+long_cites <- citation_tibble |>
+  filter(old %in% long_article_ids$old, new_year >=1960, new_year <= 2022) |>
+  ungroup() |>
+  group_by(old, new_year) |>
+  tally(name="year_cites") |>
+  ungroup() |>
+  complete(old, new_year, fill = list(year_cites = 0)) |>
+  pivot_wider(id_cols = "old", names_from = "new_year", values_from = "year_cites") |>
+  select(-old) 
+
+cos_years <- cosine(as.matrix(long_cites)) |> 
+  as.data.frame() |>
+  rownames_to_column(var = "year1") |>
+  pivot_longer(cols = !year1, names_to = "year2", values_to = "cos_value") |>
+  mutate(year1 = as.numeric(year1), year2 = as.numeric(year2))
+```
+
+```{r}
+#| label: fig-matrix
+#| cache: false
+#| fig-format: png
+#| fig-cap: "Similarity between citations for different years."
+#| fig-height: 6
+
+cos_graph <- ggplot(filter(cos_years, year1 >= 1960, year2 >= 1960), aes(x = year1, y = year2, value = cos_value)) +
+  geom_tile(aes(fill = cos_value)) +
+  xlab(element_blank()) +
+  ylab(element_blank()) +
+  labs(fill = "Cosine")
+
+cos_graph
+```
+
+- There doesn't seem to be any sharp break around 2000.
+
+---
+
+```{r}
+#| label: fig-rolling-average
+#| cache: false
+#| fig-cap: "Similarity between a year's citations and the previous five years' citations (1970-2022)."
+
+cos_delayed <- cos_years |>
+  filter(year2 >= 1970, year1 >= year2 - 1, year1 <= year2 - 1) |>
+  group_by(year2) |>
+  summarise(past_sim_score = mean(cos_value)) |>
+  ggplot(aes(x = year2, y = past_sim_score)) +
+  geom_smooth() + 
+  geom_line() +
+  ylab("Cosine") +
+  xlab(element_blank())
+
+cos_delayed
+```
+
+- The rolling average of similarity score to past five years doesn't show a clean break either.
+
+---
+
+```{r}
+cos_delayed
+```
+
+- Long pause between the late 1970s and early 2000s, which is weird.
+
+---
+
+```{r}
+#| label: fig-rolling-average-late
+#| cache: false
+#| fig-cap: "Similarity between a year's citations and the previous five years' citations (1995-2022)."
+
+long_cites_late <- citation_tibble |>
+  filter(old %in% long_article_ids$old, new_year >=1990, new_year <= 2022, old_year >= 1986) |>
+  ungroup() |>
+  group_by(old, new_year) |>
+  tally(name="year_cites") |>
+  ungroup() |>
+  complete(old, new_year, fill = list(year_cites = 0)) |>
+  pivot_wider(id_cols = "old", names_from = "new_year", values_from = "year_cites") |>
+  select(-old) 
+
+cos_years_late <- cosine(as.matrix(long_cites)) |> 
+  as.data.frame() |>
+  rownames_to_column(var = "year1") |>
+  pivot_longer(cols = !year1, names_to = "year2", values_to = "cos_value") |>
+  mutate(year1 = as.numeric(year1), year2 = as.numeric(year2))
+
+cos_delayed_late <- cos_years_late |>
+  filter(year2 >= 1995, year1 >= year2 - 1, year1 <= year2 - 1) |>
+  group_by(year2) |>
+  summarise(past_sim_score = mean(cos_value)) |>
+  ggplot(aes(x = year2, y = past_sim_score)) +
+  geom_smooth() + 
+  geom_line() +
+  ylab("Cosine") +
+  xlab(element_blank())
+
+cos_delayed_late
+```
+
+- This graph, same measure but starting in 1995, is more normal.
+
+## A Toy Model
+
+1. Every year there are lots of discussion notes, replies to the latest thing, but these tend to be to papers in the preceding 5-10 years.
+2. There should also be a bunch of citations to the big papers from 10-25 years earlier.
+3. But the 1980s didn't have those, which had weird effects on the citations for many years after.
+
+## Evidence?
+
+- Start by looking at articles published in the first half of the 2000s, i.e., 2000-2004. 
+- By the end of the 2000s, the 15 most cited articles from the first half of the decade were shown in @tbl-early-2000s.
+
+---
+
+```{r}
+#| label: tbl-early-2000s
+#| tbl-cap: "Most cited 2000s articles by 2009."
+#| output: asis
+
+early_finder <- function(init_year, chart_list){
+  citation_tibble |>
+  filter(old_year >= init_year, old_year <= init_year + 4) |>
+  filter(new_year >= old_year, new_year <= old_year + 9) |>
+  group_by(old) |>
+  tally(name = "early_cites") |>
+  arrange(old) |>
+  slice_max(early_cites, n = chart_list, with_ties = FALSE) |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+late_finder <- function(init_year, chart_list){
+  citation_tibble |>
+  filter(old_year >= init_year, old_year <= init_year + 4) |>
+  filter(new_year >= 2018, new_year <= 2022) |>
+  group_by(old) |>
+  tally(name = "late_cites") |>
+  arrange(old) |>
+  slice_max(late_cites, n = chart_list, with_ties = FALSE) |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+overlap_finder <- function(init_year, chart_list){
+  inner_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+early_absence_finder <- function(init_year, chart_list){
+  anti_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+late_absence_finder <-  function(init_year, chart_list){
+  anti_join(select(early_finder(init_year, chart_list), old, early_cites),
+  select(late_finder(init_year, chart_list), old, late_cites),
+  by = "old") |>
+  left_join(philo_bib_fix, by = c("old" = "id"))
+}
+
+require(kableExtra)
+
+early_finder(2000, 15) |>
+  select(full_cite, early_cites) |>
+  mutate(full_cite = str_replace_all(full_cite, "_","")) |>
+  rename(Article = full_cite, Citations = early_cites) |>
+  kable() |>
+  kable_styling(font_size = 20)
+
+```
+
+---
+
+```{r}
+#| label: tbl-late-2000s
+#| tbl-cap: "Most cited 2000s articles since 2018."
+
+late_finder(2000, 15) |>
+  select(full_cite, late_cites) |>
+  mutate(full_cite = str_replace_all(full_cite, "_","")) |>
+  rename(Article = full_cite, Citations = late_cites) |>
+  kable() |>
+  kable_styling(font_size = 20)
+```
+
+## Normal Times
+
+- 7 out of the 15 papers appear on both lists.
+- That's kind of normal.
+- Do the same thing but instead of starting in 2000 (i.e., papers published in next 4 years, early citations in next 9), start in 1984.
+
+---
+
+```{r}
+#| label: tbl-early-1980s
+#| tbl-cap: "Most cited 1984-1988 articles by 1993."
+
+early_finder(1984, 15) |>
+  select(full_cite, early_cites) |>
+  mutate(full_cite = str_replace_all(full_cite, "_","")) |>
+  rename(Article = full_cite, Citations = early_cites) |>
+  kable() |>
+  kable_styling(font_size = 20)
+```
+
+---
+
+```{r}
+#| label: tbl-late-1980s
+#| tbl-cap: "Most cited 1984-1988 articles since 2018."
+
+late_finder(1984, 15) |>
+  select(full_cite, late_cites) |>
+  mutate(full_cite = str_replace_all(full_cite, "_","")) |>
+  rename(Article = full_cite, Citations = late_cites) |>
+  kable()  |>
+  kable_styling(font_size = 20)
+```
+
+## The 1980s
+
+- Only 3 out of the 15 appear on both lists.
+- The overlap consists of two papers by Peter Railton on moral realism, and a paper by Annette Baier on trust. 
+- All of them were towards the low end of the top 15.
+- Just very few papers from that time became immediate, field-defining, papers.
+
+## Thanks
+
+Once again, thanks to
+
+- The organisers for putting this on.
+- Eugenio for writing a book with so many interesting insights, observations, questions, and avenues for yet further research.
+
+Go read the book!
