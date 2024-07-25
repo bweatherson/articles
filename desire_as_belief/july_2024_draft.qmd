@@ -1,0 +1,75 @@
+A particular anti-Humean, call her Auntie, believes there is a tight connection between wanting something and believing that it is good. David Lewis [-@Lewis1988; -@Lewis1996] has a famous argument that Auntie's view is incoherent. The point of this note is to respond on Auntie's behalf.
+
+This is not because I agree with Auntie. On the broader question I think Lewis is right and Auntie is wrong. But Lewis's argument doesn't show this, and it's worth getting clear about why.
+
+Nor is it because no one has ever stuck up for Auntie before. There are lots of replies to Lewis from all sorts of directions. What's new here is that I show how two criticisms in particular, one by Huw @Price1989 and one by Jessica @Collins2015, fit together. Both of them say that Auntie should reject one of the assumptions that Lewis attributes to her. My primary contribution is to show that the two assumptions they reject are inconsistent. Lewis's argument must fail because it requires attributing inconsistent background assumptions to Auntie, and that's certainly unfair.
+
+# The Ludovician Argument
+
+I'm not going to go over the argument in Lewis's 1988 paper, which relies on some really controversial assumptions. Instead I'll go over the 1996 argument, relying heavily the of it by Collins and by Ittay @NissanRozen2015. 
+
+Assume that we have a finite set of _worlds_. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. The worlds in this sense are are more coarse grained than Ludovician concreta in that they only specify truth values of relevant propositions, not of all propositions. That's why we can assume that there are finitely many of them. But these worlds are more fine grained than Ludovician concreta in a different sense. They will be used to represent moral uncertainty. So there can be pairs of them that are descriptively alike but evaluatively distinct. Given the supervenience of the evaluative on the descriptive, this is impossible for Ludovician worlds.
+
+For any factual proposition A, assume there is a distinct proposition Å, meaning that A is good. Let V be an agent's value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V~A~ and Pr~A~ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion.
+
+Lewis's argument against Auntie uses five assumptions. In these assumptions B is an arbitrary proposition, and A is an arbitrary *descriptive* proposition. 
+
+Equation
+:    The way to represent Auntie's anti-Humean view is V(A) = Pr(Å).
+
+Invariance
+:    V~A~(*w*) = V(*w*)
+
+Additivity
+:    V(A) = Σ~*w*~V(*w*)Pr(*w* | A)
+
+Restricted Conditionalisation
+:    Pr~A~(B) = Pr(B | A)
+
+Good-Bad
+:    All worlds are either GOOD or BAD. If $w$ is GOOD, then V(*w*) = 1, and otherwise V(*w*) = 0.
+
+The last assumption is obviously absurd, but it is useful for setting out the argument. In any case, if the first four assumptions are true, then they should be consistent with **Good-Bad**. Given those assumptions, here is Lewis's argument.
+
+|     |     |    |
+|----:|:----|:---|
+| Pr(Å) | = V(A) | |
+|     | = Σ~*w*~V(*w*) Pr(*w* | A) | (**Additivity**) |
+|     | = Σ~*w*~V_A(*w*) Pr(*w* | A) | (**Invariance**) |
+|     | = Σ~*w*~V_A(*w*) Pr_A(*w* | A) | (**Restricted Conditionalisation**) |
+|     | = V_A(A) | (**Additivity**, applied to updated values) |
+|     | = Pr_A(A°) | (**Equation**, again ater updating) |
+|     | = Pr(A° | A) | (**Restriced Conditionalisation**) |
+
+But it is absurd that A and Å are independent. At least, it's absurd if evaluative uncertainty is coherent. The following situation seems perfectly coherent. The agent knows someone, call them Peter, who they greatly admire. Peter faces a difficult decision; let A be that he takes one option, and B that he takes the other salient option. Right now agent thinks it is 60% likely that A is good, and 40% likely that B is good. But agent _really_ admires Peter. They are sure that whatever Peter does, it will be good. So conditional on A, their credence in Å is 100%. This all seems coherent, so the conclusion of Lewis' argument must be mistaken. Lewis himself takes something like this to be a reductio of Auntie's view.
+
+Now this might not look like the argument Lewis gives. He spends a lot of time in each paper spelling out a different reason that the independence conclusion is absurd. But that's not something that is really at issue; all of Auntie's defenders I've seen in the literature agree it is absurd. And Lewis does make these assumptions in the course of his argument. So I think the version I've given here, following Collins and Ittay-Rozen, is faithful to Lewis.
+
+# Questioning the Assumptions
+
+Let's think a bit harder about what Auntie says about this agent. Given Auntie's view, should agent prefer that Peter makes A true, or should they be indifferent. Both options have some plausibility. On the one hand, right now agent thinks that A is a little likelier to be good. On the other hand, whatever Peter does, agent will be completely happy with it, because they will then think that Peter has done the right thing.
+
+I'm not going to resolve this question for agent; at the end I'll come back to the question and place it in a broader philosophical consequence. What I do want to stress is that precisifying Auntie's view requires saying what she thinks about this question. And the assumptions one attributes to Auntie should be consistent with her answer. Lewis's argument does not satisfy this constraint, whatever Auntie says about agent and Peter.
+
+Assume, first, that agent wants Peter to do A, because it's right now what is thought to be better. Then agent has to reject **Additivity**. **Additivity** is the rule for people who evaluate choices conditional on those things being done, not for people who evaluate choices given their current values. As Collins points out, it's the rule for one-boxing in Newcomb's Problem, which is weird given that Lewis is very much not a one-boxer.
+
+So assume, alternatively, that Auntie thinks agent should be indifferent between Peter's choices. Then Auntie will reject **Equation**. According to **Equation**, agent should value propositions according to their current evaluations of the goodness of the proposition. But on this assumption, agent evaluates propositions like A and B according to how good they are thought to be conditional on obtaining. That is, Auntie's view is not **Equation**, but V(A) = Pr(Å | A). This is exactly what Price recommended Auntie adopt immediately after Lewis's first paper came out.
+
+In the second paper Lewis has a response to this view, but as @Hajek2015 observes, it is very hard to understand what the response really is. Lewis states the kind of view Price endorses, makes a couple of observations about it, and then ends as if the question is settled. If it's meant to be a reductio, it's really not clear what the implausible conclusion is. Hàjek speculates that a paragraph or more simply went missing; the text is puzzling enough to take such speculations seriously.^[Since Hàjek's paper was published, we've had two volumes of correspondance by Lewis published - [@Lewis2020a; @Lewis2020b]. But unfortunately nothing in them sheds light on this interpretative question.]
+
+Whatever Auntie says about agent and Peter, she has grounds to reject one of the assumptions Lewis attributes to her. If she says agent prefers Peter to make A true, the **Additivity** assumption should be rejected; as indeed Collins rejects it. If she says agent is indifferent between Peter's actions, the **Equation** should be rejected; as indeed Price rejects it. Attributing both **Additivity** and **Equation** to Auntie implies that Auntie inconsistently holds that agent both prefers and does not prefer that Peter makes A true. Auntie certainly has grounds to reject this attribution of inconsistent assumptions.
+
+# Auntie the Capitalist
+
+There is another assumption which Auntie should obviously reject: **Good-Bad**. Lewis obviously realises that this is a simplifying assumption, but says that we can restate Auntie's view without it. The real assumption is that there for any _w_, there is a numerical value for _w_, which measures how good it is. Let g be the function from worlds to goodness, so g(_w_) = _x_ means that _w_ has _x_ units of goodness. The assumption that g is a function into the reals isn't completely trivial, but let's assume Auntie is happy to live with it. Then really what Lewis needs is **Corrected Equation**.
+
+Corrected Equation
+:    The way to represent Auntie's anti-Humean view is V(A) = Σ~*w*~g(*w*) Pr(*w*). That is, agent values A according to its expected goodness.
+
+Lewis shows, using the same assumptions as before, that given this understanding of Auntie's view, it also leads to absurdity. And as before, I think his argument requires attributing inconsistent views to Auntie. But let's say that I'm wrong about that. There is something else problematic about Lewis's argument here.
+
+None of the other assumptions Lewis makes turn on the fact that g is a measure of goodness; they just rely on it being a numerical measure. It could be a measure of anything. It could, for instance, be a measure of how much profit agent makes in *w*. In that case, **Corrected Equation** says that agent values propositions according to their expected profitability. That's just the standard theory of the firm from basic economics. If Lewis's argument shows that Auntie's view is inconsistent, it also shows that the standard theory of the firm is inconsistent.
+
+To be sure, there is a lot wrong with the 'standard theory of the firm' as a theory of either real or idealised firms. But it's rather implausible that it's inconsistent, and particularly implausible that it could be shown to be inconsistent by some simple decision theory. That would be particularly ironic given how much of decision theory was developed to explain decision making by idealised firms.
+
+The lesson here is that Lewis's argument over-generates. If it shows anything, it shows that having one's valuation track the expected value of any numerical measure is inconsistent. But that can't be right, so Lewis's argument must be wrong.
