@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brian Weatherson">
+<meta name="dcterms.date" content="2024-08-21">
+
+<title>A Break in the Citation Patterns</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="citation-break_files/libs/clipboard/clipboard.min.js"></script>
+<script src="citation-break_files/libs/quarto-html/quarto.js"></script>
+<script src="citation-break_files/libs/quarto-html/popper.min.js"></script>
+<script src="citation-break_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="citation-break_files/libs/quarto-html/anchor.min.js"></script>
+<link href="citation-break_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="citation-break_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="citation-break_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="citation-break_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="citation-break_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../A Break in the Citation Patterns.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="A Break in the Citation Patterns.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Break in the Citation Patterns</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">history of analytic</div>
+    <div class="quarto-category">in progress</div>
+    <div class="quarto-category">online only</div>
+  </div>
+  </div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="http://brian.weatherson.org">Brian Weatherson</a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Michigan
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 21, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Comments on Eugenio Petrovich’s book <em>A Quantitative Portrait of Analytic Philosophy: Looking Through the Margins</em>, for the Quantitative Studies of Philosophy workshop at Tiburg, August 21-22 2024.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<p>First, I’d like to thank the organisers for putting on these great workshops, and Eugenio for writing such a well researched and endlessly thought provoking book.</p>
+<p>I’m going to comment just on one study in the book - the intriguing suggestion that there’s a break in the citation patterns around 2000. This is intriguing because it connects to a question that’s long interested me: can Late Analytic Philosophy be usefully divided into eras? Are there periods within Late Analytic that are usefully separated out from the rest the way it is useful to separate out the Ordinary Language era, at least in the UK, from the times around it? No such periodization has caught on, and maybe that’s because there isn’t a useful one to find, but if the citations change around 2000, maybe we should think about whether that’s the start of a new era.</p>
+<p>The details will matter a bit here, so let me go over what’s happening at this stage of the book (i.e., section 4.4 of the book). We start with all the citations in five big journals: <em>Mind</em>, <em>Philosophical Review</em>, <em>Journal of Philosophy</em>, <em>Noûs</em> and <em>Philosophy and Phenomenological Research</em>, for each year from 1980-2020. We represent the citations in each year as a vector, with a dimension for each article cited at any time in the study, and the magnitude of that dimension being the number of citations. That gives us 41 n-dimensional vectors, and we can look at their similarity by taking the cosine of the angle between them. The result is <a href="#fig-eugenio-matrix" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-eugenio-matrix" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eugenio-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cosine-screenshot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eugenio-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: From page 103 of <span class="citation" data-cites="Petrovich2024">@Petrovich2024</span>.
+</figcaption>
+</figure>
+</div>
+<p>The darker cells are more similar years, so in the middle of the graph, we see several years where the similarity scores are relatively high: around 0.5. Each row of that graph is itself a vector. Eugenio looked for clusters within those vectors, and <a href="#fig-eugenio-cluster" class="quarto-xref">Figure&nbsp;2</a> shows what he found.</p>
+<div id="fig-eugenio-cluster" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eugenio-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cluster-screenshot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eugenio-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: From page 103 of <span class="citation" data-cites="Petrovich2024">@Petrovich2024</span>.
+</figcaption>
+</figure>
+</div>
+<p>In this graph there are three clusters, but the blue cluster to me feels fairly connected to the green one. What strikes me about this graph is how few dark cells there are where one year is before 1996 and the other year is after 1996. Somewhere between 1996 and 2006, there seems to be a step change here. What could explain that, and does it have a larger historical significance?</p>
+<p>Being old enough to have some memories of this time, I had two thoughts about what might be going on which I don’t think end up being supported by the data.</p>
+<p>One was that there was a change in who the heroes of the narrative were around then. The giants of the mid twentieth century, particularly Wittgenstein, Rawls, Quine, and Davidson, seemed to be a smaller part of the discussion than they had been a few years earlier. But while that may be reflected in the data for Wittgenstein, the fact that Quine and Davidson write two of the five pieces most cited in these journals around the turn of the century doesn’t really back up that theory.</p>
+<p>A second was that that time was characterised by many more flurries of interest in particular problems or approaches. Some of these had more lasting impacts than others, but it was striking how many of them there were. By the early 2000s, all of these were prominent topics of conversation, at least around prominent East Coast philosophy departments, in a way that distinguished that time from earlier or later times:</p>
+<ul>
+<li>Non-conceptual content</li>
+<li>Zombies</li>
+<li>Fictionalism</li>
+<li>Vagueness</li>
+<li>Self-locating belief (i.e., Sleeping Beauty)</li>
+</ul>
+<p>But while these were definitely hot topics - at one stage you could apparently start a conversation with a Princeton grad student by asking what they were working on fictionalism about - I don’t really see them represented enough in those five journals to make a difference. If we were looking at <em>Analysis</em>, which was much more sensitive to trends like these, the story might be different. There was a bit on non-conceptual content, in <em>Philosophical Review</em> in particular, but it probably made the citation record <em>less</em> distinctive, because it connected to earlier discussions by Evans and others. So I don’t think that’s the explanation here.</p>
+<p>It could be that technological changes around this time, i.e., the rise of the internet, made a difference. The internet made it somewhat easier to read articles. It made it much easier to look up citation info, and so maybe citations that got cut because the author didn’t want to trudge to the library to look up page numbers instead got left in. But I suspect two other things are more important. It meant philosophers across long distances could communicate in writing in real time. So written versions of ideas could spread before they were in print. That was probably connected to the growth of so many hot topics. And it was much easier to organise and publicise small workshops and conferences, especially in the eastern United States. Maybe that’s part of the explanation, though I don’t have any direct evidence for it, and I want to turn to Eugenio’s main suggestion for what’s going on.</p>
+<p>Eugenio suggests that a big part of the story is the rise of epistemology. If that’s the explanation, I suspect that’s telling us something about the sociology of the journals, and of the field, not about the trends.</p>
+<p>There are two important things happen to epistemology around this time.</p>
+<p>One is that Ernie Sosa becomes editor of both <em>Noûs</em> and <em>PPR</em>. And then those two journals publish more epistemology.</p>
+<p>The other is that the boundary between epistemology and philosophy of science shifts. Some of the most important articles in late twentieth century epistemology are in philosophy of science journals. Think of “A Non-Pragmatic Vindication of Probabilism” <span class="citation" data-cites="Joyce1998">[@Joyce1998]</span>, or “Conditionalizing on Knowledge”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="Williamson1998">[@Williamson1998]</span>. Around this time the Formal <strong>Epistemology</strong> Workshop gets going, pushing the idea that work that was previously considered part of philosophy of science is now epistemology.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This doesn’t have a ton of citations, but it is reprinted as a key chapter of <em>Knowledge and Its Limits</em></p></div></div><p>Between these factors, both pull factors from the editorial changes, and push factors from the field, I think what we see is a move of epistemology from specialist journals into ‘generalist’ journals.</p>
+<p>It’s possible the reverse is happening in political philosophy; those journals are becoming less important to political philosophy than more specialist journals like <em>Ethics</em> and <em>Philosophy and Public Affairs</em>. There is a discussion to be had here about whether the big five journals really deserve the name ‘generalist’ in this period, but I’ll leave that for another day.</p>
+<p>Because I want to end by sketching a little study I did that might suggest a different reason for the results in those two figures. I think they’re really telling us something about something strange happening in the late 1980s and early 1990s. There are a lot fewer ‘big’ articles from that time. By a big article I mean one that’s being <em>very</em> widely cited within a few years, and has a long tail of citations that persist over decades. Philosophy always has these; except, I think, for that period. Maybe what’s distinctive in the citations around 2000 is that there should be, but isn’t the long tail of articles from 10-15 years earlier (plus/minus a few) that would normally be setting the agenda.</p>
+<p>So far I’ve said a lot of things that are very vibes based, so let me give you some data. This is also based on a citation study, and one that I think complements Eugenio’s study. He looked at <strong>all</strong> the citations in a <strong>few</strong> journals. I’m working on a study that flips that around: I’m looking at a smaller selection of the citations in all the philosophy journals. The point is not that he did anything wrong and I’m doing it right. The point is rather, as he says in section 3.4, that what we’re doing here is building <strong>models</strong> of the field. All models have strengths and weaknesses; we should build several and see how they interact.</p>
+<p>So what I did was take the Web of Science data, and focus on 100 philosophy journals from 1956 onwards. For each year from 1956-2015 I made a list of one hundred widely cited articles, with a mix of articles that were widely cited immediately after publication, articles that have been widely cited in the last few years, and articles that are widely cited overall. That gave me 6000 articles. Then I repeated the kind of analysis Eugenio did, looking at more journals (100 rather than 5), but with many fewer cited sources (just those 6000 rather than everything).</p>
+<p><a href="#fig-matrix" class="quarto-xref">Figure&nbsp;3</a> shows the year by year similarity.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-matrix" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="citation-break_files/figure-html/fig-matrix-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Similarity between citations for different years.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This starts in 1960 because before that, citations to articles published 1956 or later are few enough that it’s mostly just noise.</p>
+<p>There doesn’t seem to be any sharp break around 2000. To see if I was missing something, for each year I calculated the average of the similarity measure between it and the preceding five years, and the result is <a href="#fig-rolling-average" class="quarto-xref">Figure&nbsp;4</a>. Again, I’ve left out the very noisy years at the very start; the first year here is 1970, so the first year whose citations get used is 1965</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rolling-average" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rolling-average-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="citation-break_files/figure-html/fig-rolling-average-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rolling-average-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Similarity between a year’s citations and the previous five years’ citations (1970-2022).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The striking thing in <a href="#fig-rolling-average" class="quarto-xref">Figure&nbsp;4</a> is the long pause between the late 1970s and early 2000s. The trend line even goes gently down for a while. Given the way I’ve set things up, that shouldn’t happen. Citations tend to go backwards in time, so each year a new hundred articles are getting added to the range of possible citations. That makes a small difference at the end; the new articles are only 2% of the universe. But it makes a big difference at the start. So graph, which measures how similar a year is to the previous 5 in how it treats these 4000 articles, should slope up. Indeed, if we run the exact same study starting in 1986 rather than 1956, we get <a href="#fig-rolling-average-late" class="quarto-xref">Figure&nbsp;5</a>, which is what I’d a priori expect.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rolling-average-late" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rolling-average-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="citation-break_files/figure-html/fig-rolling-average-late-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rolling-average-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Similarity between a year’s citations and the previous five years’ citations (1995-2022).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Something odd is happening with the citations to articles from the 1980s and early 1990s. Here is my conjecture about why we see something like a break around 2000. There are three things going on at once.</p>
+<ol type="1">
+<li>Every year there are a huge number of citations to recently published papers; lots of replies, and making small moves on top of recent work. These kind of citations keep appearing for a decade or more, but they gradually fade away.</li>
+<li>Typically, there are a handful of papers that really define a field, and while they aren’t always immediately recognised as such, they tend to keep being cited, in massive volumes, for many years after the fact.</li>
+<li>The 1980s saw fewer of these papers being produced, especially after 1983. So around 2000 the usual turnover of citations, the allure of the new, had a more dramatic effect because it wasn’t mixed with continued discussion of the field defining papers from 10-15 years earlier.</li>
+</ol>
+<p>Note here that I’m only making a claim about journal articles. There were some field defining books published in this time, notably <em>On the Plurality of Worlds</em>. And I haven’t done a study of chapters in edited volumes. But the journals stopped producing articles that had much staying power. Here’s one way to see this.</p>
+<p>Start by looking at articles published in the first half of the 2000s, i.e., 2000-2004. By the end of the 2000s, the 15 most cited articles from the first half of the decade were shown in <a href="#tbl-early-2000s" class="quarto-xref">Table&nbsp;1</a>.</p>
+<div class="cell">
+<div id="tbl-early-2000s" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-early-2000s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Most cited 2000s articles by 2009.
+</figcaption>
+<div aria-describedby="tbl-early-2000s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 93%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Article</th>
+<th style="text-align: right;">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">P Machamer, L Darden, and CF Craver (2000) “Thinking About Mechanisms,” <em>Philosophy Of Science</em> 67&nbsp;(1):&nbsp;1-25.</td>
+<td style="text-align: right;">86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W Rabinowicz and T Ronnow-Rasmussen (2004) “The Strike of the Demon: On Fitting Pro-Attitudes and Value,” <em>Ethics</em> 114&nbsp;(3):&nbsp;391-423.</td>
+<td style="text-align: right;">71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">K DeRose (2003) “Assertion, Knowledge, and Context,” <em>Philosophical Review</em> 111&nbsp;(2):&nbsp;167-203.</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Knobe (2003) “Intentional Action and Side Effects in Ordinary Language,” <em>Analysis</em> 63&nbsp;(3):&nbsp;190-194.</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D Lewis (2000) “Causation as Influence,” <em>Journal Of Philosophy</em> 97&nbsp;(4):&nbsp;182-197.</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C Travis (2004) “The Silence of the Senses,” <em>Mind</em> 113&nbsp;(449):&nbsp;57-94.</td>
+<td style="text-align: right;">55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DJ Chalmers and F Jackson (2001) “Conceptual Analysis and Reductive Explanation,” <em>Philosophical Review</em> 110&nbsp;(3):&nbsp;315-360.</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Stanley and T Williamson (2001) “Knowing How,” <em>Journal Of Philosophy</em> 98&nbsp;(8):&nbsp;411-444.</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S Glennan (2002) “Rethinking Mechanistic Explanation,” <em>Philosophy Of Science</em> 69&nbsp;(3):&nbsp;342-353.</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Pryor (2000) “The Skeptic and the Dogmatist,” <em>Noûs</em> 34&nbsp;(4):&nbsp;517-549.</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M Matthen and A Ariew (2002) “Two Ways of Thinking About Fitness and Natural Selection,” <em>Journal Of Philosophy</em> 99&nbsp;(2):&nbsp;55-83.</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D Pitt (2004) “The Phenomenology of Cognition, Or, What is It Like To Think That P?,” <em>Philosophy And Phenomenological Research</em> 69&nbsp;(1):&nbsp;1-36.</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J MacFarlane (2003) “Future Contingents and Relative Truth,” <em>Philosophical Quarterly</em> 53&nbsp;(212):&nbsp;321-336.</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Schaffer (2003) “Is There a Fundamental Level?,” <em>Noûs</em> 37&nbsp;(3):&nbsp;498-517.</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A Hájek (2003) “What Conditional Probability Could Not Be,” <em>Synthese</em> 137&nbsp;(3):&nbsp;273-323.</td>
+<td style="text-align: right;">39</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>In the most recent 5 years in the available data, 2018-2022, <a href="#tbl-late-2000s" class="quarto-xref">Table&nbsp;2</a> are the most cited articles first published in 2000-2004.</p>
+<div class="cell">
+<div id="tbl-late-2000s" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-late-2000s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Most cited 2000s articles since 2018.
+</figcaption>
+<div aria-describedby="tbl-late-2000s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 93%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Article</th>
+<th style="text-align: right;">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">P Machamer, L Darden, and CF Craver (2000) “Thinking About Mechanisms,” <em>Philosophy Of Science</em> 67&nbsp;(1):&nbsp;1-25.</td>
+<td style="text-align: right;">192</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S Haslanger (2000) “Gender and Race: (What) Are They? (What) Do We Want Them To Be?,” <em>Noûs</em> 34&nbsp;(1):&nbsp;31-55.</td>
+<td style="text-align: right;">182</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J Pryor (2000) “The Skeptic and the Dogmatist,” <em>Noûs</em> 34&nbsp;(4):&nbsp;517-549.</td>
+<td style="text-align: right;">151</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J D’Arms and D Jacobson (2000) “The Moralistic Fallacy: On the ‘Appropriateness’ of Emotions,” <em>Philosophy And Phenomenological Research</em> 61&nbsp;(1):&nbsp;65-90.</td>
+<td style="text-align: right;">109</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J Stanley and T Williamson (2001) “Knowing How,” <em>Journal Of Philosophy</em> 98&nbsp;(8):&nbsp;411-444.</td>
+<td style="text-align: right;">109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">H Douglas (2000) “Inductive Risk and Values in Science,” <em>Philosophy Of Science</em> 67&nbsp;(4):&nbsp;559-579.</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J Fantl and M McGrath (2002) “Evidence, Pragmatics, and Justification,” <em>Philosophical Review</em> 111&nbsp;(1):&nbsp;67-94.</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AI Goldman (2001) “Experts: Which Ones Should You Trust?,” <em>Philosophy And Phenomenological Research</em> 63&nbsp;(1):&nbsp;85-110.</td>
+<td style="text-align: right;">89</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MGF Martin (2004) “The Limits of Self-Awareness,” <em>Philosophical Studies</em> 120&nbsp;(1-3):&nbsp;37-89.</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">K DeRose (2003) “Assertion, Knowledge, and Context,” <em>Philosophical Review</em> 111&nbsp;(2):&nbsp;167-203.</td>
+<td style="text-align: right;">75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D Lewis (2000) “Causation as Influence,” <em>Journal Of Philosophy</em> 97&nbsp;(4):&nbsp;182-197.</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">T Kelly (2003) “Epistemic Rationality as Instrumental Rationality: A Critique,” <em>Philosophy And Phenomenological Research</em> 66&nbsp;(3):&nbsp;612-640.</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R Feldman (2000) “The Ethics of Belief,” <em>Philosophy And Phenomenological Research</em> 60&nbsp;(3):&nbsp;667-695.</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W Rabinowicz and T Ronnow-Rasmussen (2004) “The Strike of the Demon: On Fitting Pro-Attitudes and Value,” <em>Ethics</em> 114&nbsp;(3):&nbsp;391-423.</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C Travis (2004) “The Silence of the Senses,” <em>Mind</em> 113&nbsp;(449):&nbsp;57-94.</td>
+<td style="text-align: right;">65</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>There is a lot of overlap between <a href="#tbl-early-2000s" class="quarto-xref">Table&nbsp;1</a> and <a href="#tbl-late-2000s" class="quarto-xref">Table&nbsp;2</a>. In particular, the articles by Machamer, Rabinowicz, Derose, Lewis, Travis, Stanley, and Pryor are in both lists. Having 7 articles in both lists like that isn’t particularly unusual.</p>
+<p>I’ve used decades to set this up, but really what I did was take some year <em>y</em>, in this case 2000, focus on articles published between <em>y</em> and <em>y</em>+4, and compare two lists: which of those articles were in the 15 most cited before <em>y</em>+9, and which were in the 15 most cited between 2018 and 2022. If you do that for different values of <em>y</em>, you often find 5-7 articles in both lists. But if you set <em>y</em> to 1984, so that it focuses on the mid-to-late 1980s, there is very little overlap. <a href="#tbl-early-1980s" class="quarto-xref">Table&nbsp;3</a> lists the articles from 1984-1988 that were most cited by 1993.</p>
+<div class="cell">
+<div id="tbl-early-1980s" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-early-1980s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Most cited 1984-1988 articles by 1993.
+</figcaption>
+<div aria-describedby="tbl-early-1980s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 93%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Article</th>
+<th style="text-align: right;">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">T Burge (1986) “Individualism and Psychology,” <em>Philosophical Review</em> 95&nbsp;(1):&nbsp;3-45.</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Kim (1984) “Concepts of Supervenience,” <em>Philosophy And Phenomenological Research</em> 45&nbsp;(2):&nbsp;153-176.</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J Rawls (1985) “Justice as Fairness: Political Not Metaphysical,” <em>Philosophy &amp; Public Affairs</em> 14&nbsp;(3):&nbsp;223-251.</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P Railton (1986) “Moral Realism,” <em>Philosophical Review</em> 95&nbsp;(2):&nbsp;163-207.</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F Jackson and P Pettit (1988) “Functionalism and Broad Content,” <em>Mind</em> 97&nbsp;(387):&nbsp;381-400.</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">L Laudan (1987) “Progress or Rationality: The Prospects for Normative Naturalism,” <em>American Philosophical Quarterly</em> 24&nbsp;(1):&nbsp;19-31.</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A Baier (1986) “Trust and Antitrust,” <em>Ethics</em> 96&nbsp;(2):&nbsp;231-260.</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Rawls (1988) “The Priority of Right and Ideas of the Good,” <em>Philosophy &amp; Public Affairs</em> 17&nbsp;(4):&nbsp;251-276.</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">T Burge (1988) “Individualism and Self-Knowledge,” <em>Journal Of Philosophy</em> 85&nbsp;(11):&nbsp;649-663.</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PM Churchland (1985) “Reduction, Qualia, and the Direct Introspection of Brain States,” <em>Journal Of Philosophy</em> 82&nbsp;(1):&nbsp;8-28.</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RG Millikan (1986) “Thoughts Without Laws, Cognitive Science With Content,” <em>Philosophical Review</em> 95&nbsp;(1):&nbsp;47-80.</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Bigelow and R Pargetter (1987) “Functions,” <em>Journal Of Philosophy</em> 84&nbsp;(4):&nbsp;181-196.</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P Railton (1984) “Alienation, Consequentialism, and the Demands of Morality,” <em>Philosophy &amp; Public Affairs</em> 13&nbsp;(2):&nbsp;134-171.</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P Kitcher (1984) “Species,” <em>Philosophy Of Science</em> 51&nbsp;(2):&nbsp;308-333.</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R Feldman (1985) “Reliability and Justification,” <em>Monist</em> 68&nbsp;(2):&nbsp;159-174.</td>
+<td style="text-align: right;">19</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>And <a href="#tbl-late-1980s" class="quarto-xref">Table&nbsp;4</a> shows the almost completely distinct list of articles from 1984 to 1988 that have been widely cited in the last 5 years of the data set.</p>
+<div class="cell">
+<div id="tbl-late-1980s" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-late-1980s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Most cited 1984-1988 articles since 2018.
+</figcaption>
+<div aria-describedby="tbl-late-1980s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 93%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Article</th>
+<th style="text-align: right;">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">D Lewis (1984) “Putnam’s Paradox,” <em>Australasian Journal Of Philosophy</em> 62&nbsp;(3):&nbsp;221-236.</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P Railton (1984) “Alienation, Consequentialism, and the Demands of Morality,” <em>Philosophy &amp; Public Affairs</em> 13&nbsp;(2):&nbsp;134-171.</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R Feldman and E Conee (1985) “Evidentialism,” <em>Philosophical Studies</em> 48&nbsp;(1):&nbsp;15-34.</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A Baier (1986) “Trust and Antitrust,” <em>Ethics</em> 96&nbsp;(2):&nbsp;231-260.</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">G Boolos (1984) “To Be is To Be a Value of a Variable (Or To Be Some Values of Some Variables),” <em>Journal Of Philosophy</em> 81&nbsp;(8):&nbsp;430-449.</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">E McMullin (1985) “Galilean Idealization,” <em>Studies In History And Philosophy Of Science</em> 16&nbsp;(3):&nbsp;247-273.</td>
+<td style="text-align: right;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P Railton (1986) “Moral Realism,” <em>Philosophical Review</em> 95&nbsp;(2):&nbsp;163-207.</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J Bogen and J Woodward (1988) “Saving the Phenomena,” <em>Philosophical Review</em> 97&nbsp;(3):&nbsp;303-352.</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V McGee (1985) “A Counterexample To Modus Ponens,” <em>Journal Of Philosophy</em> 82&nbsp;(9):&nbsp;462-471.</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S Cohen (1984) “Justification and Truth,” <em>Philosophical Studies</em> 46&nbsp;(3):&nbsp;279-295.</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J Hardwig (1985) “Epistemic Dependence,” <em>Journal Of Philosophy</em> 82&nbsp;(7):&nbsp;335-349.</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BC van Fraassen (1984) “Belief and the Will,” <em>Journal Of Philosophy</em> 81&nbsp;(5):&nbsp;235-256.</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">H Frankfurt (1987) “Equality as a Moral Ideal,” <em>Ethics</em> 98&nbsp;(1):&nbsp;21-43.</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W Sinnottarmstrong (1984) “Ought Conversationally Implies Can,” <em>Philosophical Review</em> 93&nbsp;(2):&nbsp;249-261.</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F Jackson and R Pargetter (1986) “Oughts, Options, and Actualism,” <em>Philosophical Review</em> 95&nbsp;(2):&nbsp;233-255.</td>
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Articles from the 1980s that made a big impact at the time were, for the most part, not sticking around. In part I think that’s because the 1980s, or at least the parts that were impactful at the time, were more ‘normal science’. There were a lot of articles that tried to make small improvements, especially on questions surrounding supervenience and physicalism, and there just wasn’t much reason to cite those 15 or so years late. Maybe the absence of the articles from a decade or so ago that would normally be cited is part of why there’s a break around the 2000s. But this is all speculative, and I think the whole question is both really interesting, and in need of further study.</p>
+<p>So I’ll end where I started by saying how grateful I am to the organisers for putting this on, and to Eugenio for the book. What I’ve done here is look at a few things inspired by one section of the book - it is full of so many insights and observations and it both makes you rethink what you thought about recent philosophy, and raises many fascinating questions like the one I’ve been discussing. I hope it gets very widely read.</p>
+
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
