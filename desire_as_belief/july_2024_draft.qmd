@@ -73,3 +73,35 @@ None of the other assumptions Lewis makes turn on the fact that g is a measure o
 To be sure, there is a lot wrong with the 'standard theory of the firm' as a theory of either real or idealised firms. But it's rather implausible that it's inconsistent, and particularly implausible that it could be shown to be inconsistent by some simple decision theory. That would be particularly ironic given how much of decision theory was developed to explain decision making by idealised firms.
 
 The lesson here is that Lewis's argument over-generates. If it shows anything, it shows that having one's valuation track the expected value of any numerical measure is inconsistent. But that can't be right, so Lewis's argument must be wrong.
+
+# A Puzzle
+
+That completes my objection to Lewis's argument. I'll end with a puzzle that arises from the discussion here.
+
+Go back to agent, who thinks that whatever Peter does will be correct, and Peter. Change the case so that agent is in fact Peter. That is, Peter isn't sure what's right, and isn't sure what he'll do, but is sure that whatever he does will be good. Assume that Peter only cares about maximising the good, even when he doesn't know what is in fact good.^[Perhaps Peter was convinced by the arguments from @MacAskillEtAl2020 that this is what he should do.] Question: What should Peter want to have happen, assuming all this?
+
+I can think of at least four coherent responses to this puzzle.
+
+First, one might think that since Peter thinks A is more likely to be good, and he wants to do good, he should make A true.
+
+Second, one might think that since Peter will be sure he does the good thing whatever he does, he should be indifferent between making A true and making B true.
+
+Third, one might think that this is really just a special case of Newcomb's Problem, where maximising expected utility according to unconditional probabilities (over states causally independenrt of one's action) gives a different recommendation to maximising expected utility according to conditional probability. This answer says that whatever you say about Newcomb's Problem, whether you say conditional probabilities are to be used (as most one-boxers say), or unconditional probabilities are to be used (as some two-boxers say), the same goes here.
+
+The third answer isn't inconsistent with the previous two. But it is a distinct answer. In particular, it can be coherently denied. It is coherent to treat the puzzle about Peter differently to Newcomb's Problem. In particular, it is coherent to adopt the version of causal decision theory that @Lewis1981x defends for descriptive uncertainty, and something that looks like evidential decision theory for moral uncertainty.
+
+Here is how that might go. Let worlds be ordered pairs (*d*, *v*), such that *d* settles the (relevant) descriptive facts, and *v* is a numerical measure of the goodness of the world. In the terminology used earlier g((*d*, *v*)) = *v*; the second term is how good the world is. Let K be a partition of the worlds such that whatever the agent does makes no causal difference to which member of the partition is actual. Intuitively, the true element of K is the conjunction of all the facts that are outside the causal control of the chooser. Crucially, K settles the *facts* outside the agent's causal control; it does not settle anything evaluative. So if (*d*, *v*) is in some cell of K, and (*d*, *v*′) is a world, (*d*, *v*′) is in the same partition. For any proposition A, the value to the agent of A is given by this equation:
+
+$$
+V(A) = \sum_{k \in K} \Pr(k) \sum_{(d, v) \in k} v\Pr((d, v) | Ak))
+$$
+
+The agent should then make true the proposition with the highest value that it is within their power to make true. The inner sum in this equation looks like preferred definition of decision-theoretic value for evidential decision theorists. But in this respect I'm following Lewis closely. As he says, "Within a single dependency hypothesis, so to speak, V-maximising [i.e., EDT] is right." [@Lewis1981x, 7]. The idea here is that Lewis could be right about this claim, and that all moral uncertainty takes place within dependency hypotheses.
+
+I'm certainly not saying this is right; I'm not even saying that we should approach moral uncertainty by trying to maximise any kind of expected value. What I am saying is that while the puzzle about Peter looks like Newcomb's Problem, there are natural ways to think it gets answered differently.
+
+Finally, one might think this version of the Peter example is incoherent. It's one thing to admire someone else, and think that whatever they do will be evidence that that choice was right all along. It's another thing altogether to admire oneself in this way. 
+
+Even if one was this kind of self-admirer, why would one be morally uncertain? Couldn't one simply think about what to do, and then having made a decision, learn what the admirable person thinks is right, and hence what is right? Well, maybe it's not so simple. Maybe one thinks that one always acts in the right way, even if one's thoughts are not always right. Perhaps one has an inner voice, a la Socrates, that prevents one from *acting* the wrong way, but which only kicks in at the moment of action.
+
+This is 
