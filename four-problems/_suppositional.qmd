@@ -1,0 +1,32 @@
+# Interlude on Suppositional Decision Theories {#sec-suppositional}
+
+When a student starts decision theory, they are introduced to a view that is simple, elegant, and wrong. The view starts by assuming that Chooser, has some actions *A* available, with *a* an arbitrary action from *A*. There are some possible states *S*, with *s* an arbitrary such state. Two numerical functions are given: a probability function Pr over states, and a value function *V* over pairs of actions and states.
+
+The simple, elegant, and wrong theory is that Chooser should value each act *a* by its expected value, and choose the one with the highest value. That is, Chooser should select *a* to maximise Σ~*s* ∈ *S*~ Pr(*s*)*V*(*as*).
+
+If Chooser has any causal influence over the states, this theory gives bad advice. Assume *A* is {*a*, *b*}, *S* is {*s*, *t*}, and *a* will cause *s* to be actual, while *b* will cause *t*. And assume *V* is described in @tbl-joycewindow.
+
+|     | *s* |  *t*  |
+|:---:|:---:|:-----:|
+| *a* |  1  | 1001  |
+| *b* |  0  | 1000  |
+
+: A counterexample to the simple theory. {#tbl-joycewindow}
+
+In @tbl-joycewindow Chooser should do *b* and bring about the best state, but whatever Pr says, the simple theory says to do *a*. So far every decision theorist would agree. But here agreement ends. There is no agreement on either why the simple theory fails in this case, or what should go in its place. The most famous disagreement is about whether it is significant that the states and actions are causally connected, or merely evidentially connected, but there are many other disputes beyond that.
+
+Still, in all of the disagreement, there is one common thread. Most decision theorists endorse a **suppositional** account of problems like @tbl-joycewindow. This terminology comes from James Joyce[-@Joyce1999 Ch. 6], and the point that most modern theories are suppositional is made by Adam @Elga2022 and Michael @Nielsen2023.^[My terminology largely follows Elga's.] A suppositional theory starts with a function from probability functions and actions to probability functions, such that Pr^A^ is the result of modifying the prior probability Pr by 'supposing' that A. At this stage, the only assumption about this function is that Pr^A^(A) = 1. The theory then says to choose the A such that the expected value of V with respect to Pr^A^ us maximised. 
+
+The point that Joyce, Elga, and Nielsen make is that many mainstream approaches to decision theory fit this description, and they differ solely with respect to what they think the 'suppositional' function is. If Pr^A^(·) = Pr(· | A), then the suppositional theory is evidential decision theory. If Pr^A^(·) = Pr(A □→ ·), the suppositional theory is the causal theory defended by @GibbardHarper1978. And so on for several other theories.
+
+Not all theories are suppositional. The regret-minimising theories I discussed in @sec-multiple are not suppositional, and nor is the risk-sensitive theory I'll discuss in @sec-buchak. One consequence of the arguments in @sec-ordering is that the SCP rules out any suppositional theory. All suppositional theories endorse Ordering, and the SCP entails that Ordering is false, so the SCP rules out suppositional theories.
+
+The non-suppositional theory I prefer is a version of causal ratificationism. I call it Gamified Decision Theory (GDT). It uses the following formula for valuing options:
+
+GDT
+:    V(a) = Σ~*s* ∈ *S*~ Pr′(*s*)*V*(*as*)
+
+In this formula, Pr^′^ is the probability distribution over states after Chooser has made their decision. GDT says that only options that have maximal value using this formula are choice-worthy.^[My preferred version of GDT adds several more constraints to this - it has a separate constraint for ruling out weakly dominated options, and a constraint for solving beer-quiche games, and maybe a constraint for ruling out mixed strategies in coordination games. But this is a necessary condition for choice-worthiness.] This allows that different options, with different values, could be choice-worthy. All that matters is that given the probability distribution over states that Chooser has after making the choice, the chosen option has maximal expected value. The SCP doesn't entail GDT, but GDT is a theory to adopt given the SCP.
+
+When I say the SCP rules out all suppositional theories, it's important to remember the assumptions I flagged back in @sec-flagging. I'm assuming that decision problems are fully specified by describing the payouts for each act-state pair, and the conditional probability of each state conditional on each act. Some suppositional theories, including the one Joyce himself defends, think that the unconditional probability of each state is also relevant to the rationality of each choice. This argument does not rule those theories out. To be sure, I don't have a proof that any such suppositional theory is consistent with the SCP, and the relevant assumption about the irrelevance of unconditional probabilities is widespread, but the argument of this section does make essential use of the assumption, and it is worth noting that here.
+

@@ -1,0 +1,136 @@
+# Defending the SCP {#sec-scp-defence}
+
+## A Sample Violation {#sec-sample-violation}
+
+The argument for the SCP is that violations of it are in various ways incoherent. It helps to have a sample violation on the table. Imagine Chooser is going to play the following game.
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-sample-violation
+#| fig.cap: "Switching Example"
+#| fig.ext: 'png'
+#| cache: TRUE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=13mm,sibling distance=13mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=13mm]
+      
+      \node[hollow node,label=above:{Demon}]{}
+        child { node [solid node,label=right:{Nature}] {}
+          child { 
+            node {45}
+            edge from parent
+              node[left] {H $\frac{8}{9}$}
+              }
+          child { 
+            node (1)[solid node]{}
+              child{
+                node{72}
+                edge from parent
+                  node[left]{Up}
+              }
+              child{
+                node{18}
+                edge from parent
+                  node[right]{Down}
+              }
+            edge from parent
+              node[right] {T $\frac{1}{9}$}}
+          edge from parent
+            node[left] {PU}}
+        child [level distance=25mm,sibling distance=25mm]{ node (2)[solid node] {}
+          child { 
+            node{36}
+            edge from parent
+              node[left] {Up}}
+          child { 
+            node{54}
+            edge from parent
+              node[right] {Down}}
+          edge from parent
+            node[right] {PD}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+\end{tikzpicture}
+```
+
+@fig-sample-violation resembles @fig-demon-then-coin, with two notable differences. First, the coin is now weighted, and has an 8/9 chance of landing Heads. Second, if Chooser must choose, either option is an equilibrium.
+
+@tbl-sample-violation-late shows the decision table Chooser faces if they must make a choice in @fig-sample-violation, and @tbl-sample-violation-early shows the expected payouts of the two strategies Chooser could select.
+
+::: {#tbl-sample-violation layout-ncol=2}
+|           |       PU      |     PD     |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     72        |     36     |
+| **Down**  |     18        |     54     |
+
+: Dynamic version. {#tbl-sample-violation-late}
+
+|           |       PU      |     PD     |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     48        |     36     |
+| **Down**  |     42        |     54     |
+
+: Strategic version. {#tbl-sample-violation-early}
+
+Payout tables for @fig-sample-violation.
+:::
+
+I'll take as my sample violator of the SCP a Chooser who prefers Up in the dynamic version, and Down in the strategic version. As we'll see in @sec-multiple, many decision theorists agree with this Chooser. But everything I say should generalise to any violation.
+
+## Ramsey Test {#sec-ramsey}
+
+To choose a strategy is to make true a bunch of conditionals. Adopting the strategy Down in @fig-sample-violation just is saying "If I have to choose, I'll choose Down". As @RamseyGeneralProp said, the way to tell which such conditional to make true is to hypothetically add the antecedent to one's stock of belief, and then decide which unconditional claim you'd like to make true. But Chooser does not do that. If they believed that they had to choose, they would choose Up. So their strategic preference implies that they believe that if they had to choose, they would choose Down, but adding the supposition that they have to choose, they choose Up. This combination is incoherent, and so violations of the SCP are incoherent.
+
+I think this argument is decisive; it's incoherent to adopt a strategy in games like @fig-demon-then-coin or @fig-sample-violation that is different from what one knows one would do if one had to carry the strategy out. That's just not how conditionals work. But in case not everyone is convinced, I'll run through some other arguments. The SCP will do a lot of work, and it is worth getting the foundations as secure as possible.
+
+## Intuitions about Change {#sec-intuitions-change}
+
+This argument starts with a story. Imagine the game master (GM) is chatting to Chooser (C), before Chooser plays @fig-sample-violation.
+
+> GM: What are you thinking of playing?    
+> C: I might not have a choice.    
+> GM: True, but assume you have to choose.    
+> C: Then Up, I guess.    
+> GM: You know, Demon can be really slow in making a prediction. Do you want to write your choice down in an envelope, and we'll open it if it's needed?
+> C: Oh sure. I'm writing Down.    
+> GM: Why did you change your mind?
+
+We could continue the conversation, but I want to focus on the presupposition of GM's last question. It seems appropriate to presuppose here that Chooser has changed their mind. This presupposition requires the SCP. If the SCP is false, Chooser has simply given different answers to different questions. First they were asked what to do in the dynamic game, and they said Up. Then they were asked what to do in the strategic game, and they said Down. Giving different answers to different questions is not changing one's mind.
+
+GM's question seems appropriate. Chooser was first asked what they planned to do in a particular situation. Then they were asked for a strategy that would only be activated in that very situation. When they give different answers to those questions, it sounds like they changed their mind. That implies the questions are fundamentally the same, which is what the SCP says.
+
+## Unifying the Examples {#sec-unity}
+
+Philosophers do not agree about Newcomb's Problem. But they do agree that in each of the examples in @sec-newcomb, the same choice is rational in the strategic and dynamic form of the game. This isn't because they think that in general strategic and dynamic forms are equivalent. Indeed, for many theorists there is no unifying story about why each of these pairs of problems gets the same answer. It is just a fact that the theory treats the dynamic and strategic problems the same way.
+
+I think it is better to have an explanation for why each of the pairs of problems gets the same answers, and for that explanation to be the same across the three pairs. The SCP provides such an explanation, and that's a point in its favour.
+
+## No Reward {#sec-no-reward}
+
+One reason that I introduced @fig-ultimatum/@tbl-ultimatum earlier is that it's the kind of case where it's most plausible that the strategic and dynamic choices might be distinct. Think about the pair of choices that EDT recommends: in the dynamic game, play TT; in the strategic game, play LT. While I ultimately disagree with this, I do think this is a plausible thing for EDT to say. The strategy LT has two big advantages that some will think make up for the fact that it is not what one would do dynamically. First, it differs from the dynamically rational play only in a situation which is, conditional on being played, highly unlikely to come about. Second, there is a reward, at least in expectation, for playing this dynamically irrational strategy; the strategy has a payout of 2 while the dynamically rational strategy only has a payout of 1. Either one of these facts will, at least to some people, make it rational to treat dynamic and strategic games differently; what's distinctive about @fig-ultimatum/@tbl-ultimatum is that both reasons are there.
+
+In dynamic problems where the SCP applies, neither of these reasons can apply. There is no possible strategic advantage to playing the dynamically irrational strategy. There is no parallel to saying, "I'm playing LT because, even though leaving money would be irrational, I almost certainly won't have to carry that part of the strategy out, and in exchange for this tiny risk, I'm getting rewarded." Doing something dynamically irrational at the only point one can possibly move can't have advantages elsewhere; you're going to get the same payout elsewhere no matter what. So whatever reason one could have in other cases for treating dynamic and strategic problems separately can't apply here; there isn't enough of an 'elsewhere' for one's bad decision at the one and only place one moves to be compensated.
+
+## Game Theory {#sec-game-theory}
+
+Assume, following @Harper1986, that decision problems involving Chooser and Demon are *games*. For Demon, they are coordination games; Demon acts as if they get rewarded for making the 'same' play as Chooser. Chooser's payouts can be more complicated, but the examples decision theorists use usually track some familiar game.^[Even before Harper, @Lewis1979en had pointed out the connection between Newcomb's Problem and Prisoners' Dilemma.] Further assume, following all the standard textbooks, that the theory of rational choice for game players is based around some equilibrium concept.^[I'm including rationalizability, as defined by @Bernheim1984 and @Pearce1984, as an equilibrium concept.] Then rational players will follow the SCP. For all the standard equilibrium concepts, the equilibria of the dynamic and strategic games are the same if each player only has one possible choice.
+
+## Sure Thing {#sec-surething}
+
+Finally, there is one very natural argument for the SCP that for various reasons I don't want to lean on too heavily. If Chooser violates the SCP, then they violate the Sure Thing Principle. They think Up is at least as good as Down both conditional on the game ending without them making a choice, and on that not happening. But they think Down is better overall. If Sure Thing can be taken as a basic assumption, the SCP immediately follows.
+
+There are three problems with this line of reasoning. The first is pragmatic. It's well known that various theories I'm arguing against here, like EDT, and Buchak's non-standard treatment of risk, violate Sure Thing. It's not a new argument against them to say that they violate the SCP, if the only reason to believe the SCP is Sure Thing. The second is that it isn't obvious that the theories that are best supported by the SCP are not consistent with Sure Thing. Dmitri @Gallownd argues that what he calls 'stable' decision theories are bound to violate Sure Thing. It's arguable that his arguments can be generalised to provide a reason to think theories supported by the SCP (which will typically not be stable in his sense) also violate Sure Thing. And the third is that even if this argument fails, there is a bad company objection to Sure Thing that I'll get to in @sec-negdom. So it's useful that we have the other four arguments to fall back on.

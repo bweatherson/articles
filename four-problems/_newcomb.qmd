@@ -1,0 +1,355 @@
+# Newcomb's Problem {#sec-newcomb}
+
+## Standard Version {#sec-newcomb-standard}
+
+In the standard vignette that goes with Newcomb's Problem  [@Nozick1969], it is a dynamic game. The demon makes a *prediction*, and then the human (hereafter, Chooser) makes a choice. Chooser doesn't know what Demon did, but they do know that Demon has acted. So the natural presentation of Newcomb's Problem is in a tree like @fig-standard-newcomb.^[I'll assume $1,000 is worth 1 util. I think this assumption of constant marginal utility is close to incoherent, and it will get relaxed later, but it's harmless for now.]
+
+```{r tikz-fonts}
+#| echo: FALSE
+#| output: FALSE
+if(knitr::is_latex_output()) {
+font_opts <- list(extra.preamble=c("\\usepackage{fontspec}", 
+                                   "\\setmainfont{EB Garamond}"))
+} else {
+  font_opts <- list(extra.preamble=c("\\usepackage{fontspec}", 
+                                   "\\setmainfont{Scala Sans Pro}"))
+}
+options(tinytex.engine = "xelatex")
+```
+
+::: {.panel-tabset}
+
+## Tree
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-standard-newcomb
+#| fig.cap: "Newcomb's Problem."
+#| fig.ext: 'png'
+#| cache: FALSE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=15mm,sibling distance=15mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=11mm]
+      
+      \node[hollow node,label=above:{Demon}]{}
+        child { node (1)[solid node] {}
+          child { 
+            node {1000}
+            edge from parent
+              node[left] {1}}
+          child { 
+            node {1001}
+            edge from parent
+              node[right] {2}}
+          edge from parent
+            node[left] {P1}}
+        child { node (2)[solid node] {}
+          child { 
+            node {0}
+            edge from parent
+              node[left] {1}}
+          child { 
+            node {1}
+            edge from parent
+              node[right] {2}}
+          edge from parent
+            node[right] {P2}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+
+\end{tikzpicture}
+```
+
+## Table
+
+|       |       P1      |     P2     |
+|:-----:|:-------------:|:----------:|
+|  1    |     1000      |     0      |
+|  2    |     1001      |     1      |
+
+: Newcomb's Problem {#tbl-standard-newcomb}
+:::
+
+I'll go over the details of how to read diagrams like @fig-standard-newcomb in @sec-decision-tree. All you need to know for now is that the game starts at the open node, here at the top, and it moves along by the agent (Demon or Chooser) making choices. The dotted lines around the two nodes where Chooser acts mean that those two nodes are in the same **information set**. That is, when Chooser is at either one of those nodes, the strongest thing Chooser knows is that they are somewhere or other in the set.^[This formalism only really makes sense if we presuppose the right epistemic logic is S5, and there are good reasons to not make that assumption in general [@Humberstone2016 380-402]. For this paper we'll treat it as a simplifying assumption that really should be relaxed in subsequent work.] So this tree represents the standard vignette for Newcomb's Problem. Demon makes a prediction - I'm in general using PX for Demon predicting X - and Chooser knows that the prediction has been made, and that either P1 or P2 happened, but chooses without knowing which it is. Then the game is resolved.
+
+What @tbl-standard-newcomb shows is a subtly different story. In @tbl-standard-newcomb, each player chooses a *strategy*. A strategy for a player in a tree like @fig-standard-newcomb is a decision about what to do at each node in the tree where that player has to move.^[In game theory, it is usually specified that strategies include decisions about what to do at nodes that are ruled out by earlier moves in that very strategy. In theory I'm assuming this whenever I talk about strategies; in practice it doesn't matter for any application in this paper.] So what @tbl-standard-newcomb represents is a situation where each player chooses a strategy simultaneously, and that determines a result for the game. It differs from @fig-standard-newcomb in part in that it's symmetric; there is no hint that Demon moves first.
+
+There is a lot of disagreement about Newcomb's Problem, but here is one point of universal agreement: @fig-standard-newcomb and @tbl-standard-newcomb have the same solutions. It would be incoherent to prefer taking 1 box in one of these puzzles and 2 boxes in the other, or to say that both options were choice-worthy in one puzzle but not the other. They may not represent exactly the same problem, they don't pose exactly the same question to Chooser, but they should get the same answer (or answers).
+
+I'm going to agree with the unanimous verdict on this point, but I'll start dissenting from orthodox opinion very soon. And one way into my dissent is to ask, why should @fig-standard-newcomb and @tbl-standard-newcomb get the same answer? What principle is someone who gives different answers to the two questions violating? I have a suggestion for what principle that might be, the SCP, but to make that suggestion plausible we need a couple more examples.
+
+## Variant 1: Coin-then-Demon
+
+Consider a variant on Newcomb's Problem I'll call Coin-Then-Demon. In this game a fair coin will be flipped and shown to Demon and Chooser. If it lands Heads, Chooser will get $5,000 and the game ends. Otherwise, they play standard Newcomb Problem. @fig-coin-then-demon shows the game tree for this game, with Nature moving first, and the probabilities of Nature's moves shown. And @tbl-coin-then-demon shows the strategy table for it, with the payouts shown in expected value.^[I will drop the assumption that Chooser maximises expected value in @sec-buchak, but it's a harmless assumption for now.]
+
+::: {.panel-tabset}
+
+## Tree
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-coin-then-demon
+#| fig.cap: "Coin-then-Demon"
+#| fig.ext: 'png'
+#| cache: TRUE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=15mm,sibling distance=15mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=11mm]
+      \node[hollow node,label=above:{Nature}]{}
+      child{
+          node{5}
+          edge from parent
+            node[left] {H (0.5)}
+      }
+      child {node[hollow node,label=right:{Demon}]{}
+        child { node (1)[solid node] {}
+          child { 
+            node {1000}
+            edge from parent
+              node[left] {1}}
+          child { 
+            node {1001}
+            edge from parent
+              node[right] {2}}
+          edge from parent
+            node[left] {P1}}
+        child { node (2)[solid node] {}
+          child { 
+            node {0}
+            edge from parent
+              node[left] {1}}
+          child { 
+            node {1}
+            edge from parent
+              node[right] {2}}
+          edge from parent
+            node[right] {P2}}
+        edge from parent
+            node[right] {T (0.5)}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+
+\end{tikzpicture}
+```
+
+## Table
+
+|       |       P1      |     P2     |
+|:-----:|:-------------:|:----------:|
+|  1    |     502.5      |     2.5      |
+|  2    |     503      |     3      |
+
+: Coin-then-Demon {#tbl-coin-then-demon}
+:::
+
+I have two hypotheses about @fig-coin-then-demon/@tbl-coin-then-demon; one of which I think everyone will agree with, and one that might be more controversial. The less controversial hypothesis is that in this game, as in standard Newcomb's Problem, it doesn't matter whether Chooser is playing the dynamic game (i.e., @fig-coin-then-demon) or the strategic game (i.e., @tbl-coin-then-demon). Whichever options are choice-worthy in one are choice-worthy in the other. The more controversial hypothesis is that the reason these two games are rationally equivalent is exactly the same as the reason that the two forms of Newcomb Problem I presented should get the same answer.
+
+## Variant 2: Demon-then-Coin
+
+One more example and we're basically done. In the game I'll call Demon-Then-Coin, the coin is only flipped if Demon predicts Chooser takes one box. If the coin lands heads, Chooser gets $5,000, and the game ends. If either Demon predicts 2 boxes, or the coin lands tails, Chooser makes a selection, knowing that one or other of these disjuncts obtained. Then the game ends. The tree for this game is @fig-demon-then-coin, and the strategy table is @tbl-demon-then-coin.
+
+::: {.panel-tabset}
+
+## Tree
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-demon-then-coin
+#| fig.cap: "Demon-then-Coin"
+#| fig.ext: 'png'
+#| cache: TRUE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=13mm,sibling distance=13mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=13mm]
+      
+      \node[hollow node,label=above:{Demon}]{}
+        child { node [solid node,label=right:{Nature}] {}
+          child { 
+            node {5}
+            edge from parent
+              node[left] {H (0.5)}
+              }
+          child { 
+            node (1)[solid node]{}
+              child{
+                node{1000}
+                edge from parent
+                  node[left]{1}
+              }
+              child{
+                node{1001}
+                edge from parent
+                  node[right]{2}
+              }
+            edge from parent
+              node[right] {T (0.5)}}
+          edge from parent
+            node[left] {P1}}
+        child [level distance=25mm,sibling distance=25mm]{ node (2)[solid node] {}
+          child { 
+            node{0}
+            edge from parent
+              node[left] {1}}
+          child { 
+            node{1}
+            edge from parent
+              node[right] {2}}
+          edge from parent
+            node[right] {P2}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+\end{tikzpicture}
+```
+
+## Table
+
+|       |       P1      |     P2     |
+|:-----:|:-------------:|:----------:|
+|  1    |     502.5      |     0      |
+|  2    |     503      |     1      |
+
+: Demon-then-Coin {#tbl-demon-then-coin}
+:::
+
+If Chooser was planning on picking 1 box, they have a little evidence against the accuracy of Demon's predictions. If in the other games they thought the probability that Demon mispredicted was *e*, in this case they should (if they plan to choose 1 box) have a probability of error of roughly 2*e*. But if *e* was small enough to start with, and I'll assume throughout that Demon's error likelihood is arbitrarily small, this shouldn't make a difference.
+
+Again, I'm going to argue that the dynamic game, @fig-demon-then-coin, and the strategic game, @tbl-demon-then-coin, should get the same solutions. Indeed, they should get the same solutions for the same reason the previous two pairs of decisions should get the same solutions. That reason, I'll argue, is the Single Choice Principle. 
+
+## Single Choice Principle {#sec-scp-definition}
+
+Here is what the Single Choice Principle (hereafter, SCP) says:
+
+> **Single Choice Principle (SCP)**    
+> In any decision tree in which all the nodes where Chooser acts are in a single information set, an option is choice-worthy in the dynamic form of the game iff it is choice-worthy in the strategic form of the game.
+
+The SCP is a highly restricted version of a claim that dynamic and static games are in some sense equivalent. The strong version of the view says that there is some mapping from the set of rational choices in a tree to the set of possible choices in the strategic version of that tree. Exactly how that mapping should be understood is tricky in the general case, but since (a) the general principle is extremely controversial, and (b) I'm not endorsing the general principle, I won't fuss over the details. What I will fuss over is getting clearer about what the SCP does and doesn't say. 
+
+The SCP doesn't just say that on any run through the game, Chooser only makes one choice. Rather, it says that Chooser only has one possible choice to make in the game. This point might be clearer with an example. Imagine Chooser and Demon are playing a simple kind of ultimatum game. Demon has to propose a split of a \$3 pot; they can either propose \$2 for Demon and \$1 for Chooser, or vice versa. Chooser then has a take it or leave it choice. If they take, each party gets the money Demon proposes; if they leave, each party gets \$0. Assume Demon is arbitrarily good at predicting Chooser's strategy, and that Demon prefers more money to less^[Also assume Demon will flip a coin if they expect each option to have equal return]. The game tree is in @fig-ultimatum, and the strategy table is in @tbl-ultimatum.
+
+::: {.panel-tabset}
+
+## Tree
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-ultimatum
+#| fig.cap: "Ultimatum Game"
+#| fig.ext: 'png'
+#| cache: TRUE
+#| echo: FALSE
+#| fig.width: 4
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=15mm,sibling distance=15mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=11mm]
+      
+      \node[hollow node,label=above:{Demon}]{}
+        child { node (1)[solid node] {}
+          child { 
+            node {2}
+            edge from parent
+              node[left] {Take}}
+          child { 
+            node {0}
+            edge from parent
+              node[right] {Leave}}
+          edge from parent
+            node[left] {D2C1}}
+        child { node (2)[solid node] {}
+          child { 
+            node {1}
+            edge from parent
+              node[left] {Take}}
+          child { 
+            node {0}
+            edge from parent
+              node[right] {Leave}}
+          edge from parent
+            node[right] {D1C2}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-1,0.2)$)rectangle($(1) +(.2,-.2)$);
+\node at ($(1) + (-0.5,0)$) {Chooser};
+\draw[dashed,rounded corners=10]($(2) + (1,-0.2)$)rectangle($(2) +(-.2,.2)$);
+\node at ($(2) + (0.5,0)$) {Chooser};
+
+\end{tikzpicture}
+
+```
+## Table
+
+:::: {#tbl-ultimatum layout-ncol=2}
+|        | D2C1 | D1C2 |
+|:------:|:----:|:----:|
+| **TT** | 1    | 2    |
+| **TL** | 1    | 0    |
+| **LT** | 0    | 2    |
+| **LL** | 0    | 0    |
+
+: Demon's Decisions {#tbl-ultimatum-game}
+
+|        | PTT  | PTL  | PLT  | PLL  |
+|:------:|:----:|:----:|:----:|:----:|
+| **TT** | 1    | 1    | 2    | 1.5  |
+| **TL** | 1    | 1    | 0    | 0.5  |
+| **LT** | 0    | 0    | 2    | 1    |
+| **LL** | 0    | 0    | 0    | 0    |
+
+: Demon's Predictions {#tbl-ultimatum-demon}
+
+Two representations of the strategic form of ultimatum game
+::::
+
+:::
+
+Most philosophers would say that in the dynamic form of the game, @fig-ultimatum, the only sensible thing to do is TT; whatever the demon does, it's better to take more money than less. But many would also say that in the strategic form, @tbl-ultimatum, some other strategy might be appropriate. For instance, Evidential Decision Theory says that in @tbl-ultimatum, the right strategy is LT.^[This is easier to see in @tbl-ultimatum-demon; EDT says to just look at the numbers in the main diagonal and choose the strategy with the highest one.] The SCP does not rule out this combination. It will ultimately have something to say about EDT, but it doesn't object to this pair of views. That's because in @fig-ultimatum there are two possible choices for Chooser to make, even if they will ultimately only make one of them, and the SCP only applies to games with just one possible choice. That makes it a more plausible principle, but surprisingly does little to reduce its philosophical significance.

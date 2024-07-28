@@ -5,18 +5,37 @@ abstract: |
 execute:
   echo: false
   warning: false
-author:
-  - name: Brian Weatherson 
-    url: http://brian.weatherson.org
-    affiliation: University of Michigan
-    affiliation_url: https://umich.edu
-    orcid_id: 0000-0002-0830-141X
+date: July 29 2024
 bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+number-sections: true
+author:
+  - name: Anon
 format:
   html:
     fig-format: svg
     fig-width: 10
     fig-height: 7
+  docx:
+    reference-doc: my-template.docx
+  pdf: 
+    geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 12pt
+    linkcolor: black
+    urlcolor: black
+    colorlinks: false
+    linestretch: 1.75
+    link-citations: true
+    output-file: "Anti-Anti-Desire-As-Belief"
+    include-in-header:
+      text: |
+        \setlength\heavyrulewidth{0ex}
+        \setlength\lightrulewidth{0ex}
 ---
 
 ```{r}

@@ -1,0 +1,128 @@
+# Problem 1: Demons and Multiple Equilibria {#sec-multiple}
+
+@tbl-generic-demon is a completely generic form of a 2*2 decision problem involving demons. Without loss of generality, I'll assume all payouts are positive. I'll also assume all payouts are distinct; dropping this requires fussing about edge cases that are not relevant here.^[These edge cases are important for thinking about the significance of weak dominance, but that's not relevant to this paper.]
+
+|           |       PU     |     PD       |
+|:---------:|:------------:|:------------:|
+|  **Up**   |     *a*      |     *b*      |
+|  **Down** |     *c*      |     *d*      |
+
+: A generic demon problem {#tbl-generic-demon}
+
+Say that an option is a (strict) equilibrium if, assuming Demon predicts correctly, Chooser's payout for choosing it is (strictly) greater than their payout for choosing any other option. The focus of this section is only problems where both Up and Down are strict equilibria. In particular, focus on problems that satisfy these three constraints.
+
+1. *a* > *c*, and *d* > *b*.
+2. *a* > *d*.
+3. *b* > *c*.
+
+The first says that Up and Down are both strict equilibria. The second says that Up has the highest payout among the equilibria. The third says that Up has a higher off-equilibrium payout than Down does. Many theorists who disagree about other questions in decision theory say that these three facts suffice to make Up uniquely choice-worthy.
+
+Evidential Decision Theorists say that 2 alone suffices for choosing Up over Down.
+
+Consider next the theory that says only equilibria are choice-worthy, and among equilibria, one should choose the equilibrium with the highest expected payout. Versions of this theory are endorsed by @Jeffrey1983b, @Arntzenius2008, and @Gustafsson2011. Given 1 and 2, this theory says to choose up.
+
+Finally, consider the theory that says one should (in two options games) minimise possible regret. That is, one should choose Up if the possible Regret from choosing Up, *d* - *b*, is less than the possible regret from choosing Down, *a* - *c*. @Wedgwood2013a, @Gallow2020, @Podgorski2022, and @Barnett2022 endorse this claim, though they go on to say very different things about cases with three or more options. Given constraints 2 and 3, these theories also say to choose Up.
+
+I'll argue that in any such problem, both Up and Down are choice-worthy. I'm not the first to say this. Jack @Spencer2021b and Melissa @Fuscond also say that both equilibria are choice-worthy.^[Fusco and Spencer disagree on a lot of other questions, and I think the SCP tends to favour Fusco's side of their disagreement, but it would be a huge digression to sort out those details.] This implies that in any problem where Up and Down are both strict equilibria, they are both choice-worthy, since there is nothing more that could make Up uniquely choice-worthy. Just what is the relationship between being an equilibrium and being choice-worthy is a question for another day, but in 2*2 games, they pick out the same options.
+
+Consider the dynamic game shown in @fig-edt.
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-edt
+#| fig.cap: "A tree that shows SCP is inconsistent with several theories."
+#| fig.ext: 'png'
+#| cache: TRUE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.8]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=25mm]
+  \tikzstyle{level 2}=[level distance=13mm,sibling distance=13mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=13mm]
+      
+      \node[hollow node,label=above:{Demon}]{}
+        child { node [solid node,label=right:{Nature}] {}
+          child { 
+            node {(\emph{b}+\emph{d})/2}
+            edge from parent
+              node[left] {H (\emph{p})}
+              }
+          child { 
+            node (1)[solid node]{}
+              child{
+                node{\emph{a}}
+                edge from parent
+                  node[left]{Up}
+              }
+              child{
+                node{\emph{c}}
+                edge from parent
+                  node[right]{Down}
+              }
+            edge from parent
+              node[right] {H (1-\emph{p})}
+              }
+          edge from parent
+            node[left] {PU}}
+        child [level distance=25mm,sibling distance=25mm]{ node (2)[solid node] {}
+          child { 
+            node{\emph{b}}
+            edge from parent
+              node[left] {Up}}
+          child { 
+            node{\emph{d}}
+            edge from parent
+              node[right] {Down}}
+          edge from parent
+            node[right] {PD}};
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+\end{tikzpicture}
+```
+
+The payouts on the right are taken from @tbl-generic-demon, and the payout if the game exits without a choice is half way between the two payouts if Demon predicts Down. I've left the probability of exit if Demon predicts Up as a variable *p*. The decision tables for the one choice in the dynamic game, and the strategic choice for the whole game, are in @tbl-edt.
+
+::: {#tbl-edt layout-ncol=2}
+|           |       PU      |     PD     |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     *a*       |     *b*    |
+| **Down**  |     *c*       |     *d*    |
+
+: Dynamic version. {#tbl-edt-late}
+
+|           |       PU                    |      PD     |
+|:---------:|:---------------------------:|:-----------:|
+| **Up**    | *p*(*b*+*d*)/2 + (1-*p*)*a* |     *b*     |
+| **Down**  | *p*(*b*+*d*)/2 + (1-*p*)*c* |     *d*     |
+
+: Strategic version. {#tbl-edt-early}
+
+Payout tables for @fig-edt.
+:::
+
+If *p* is large enough, then in @tbl-edt-early, the bottom-right will be larger than the top-left, and the bottom-left will be larger than the top-right. So if constraints 1-3 are sufficient conditions for one option to be uniquely choice-worthy, then if *p* is large enough, Down will be uniquely choice-worthy in @tbl-edt-early. But Up is uniquely choice-worthy in @tbl-edt-late, so this will violate the SCP.
+
+How large does *p* have to be? As long as *p* > (2*a* ‑ 2*d*)/(2*a* ‑ *b* ‑ *d*), then the bottom-left will be greater than the top-right. This is consistent with *p* < 1, since *d* > *b*. As long as *p* > (2*b* ‑ 2*c*)/(*b* + *d* ‑2*c*), then the bottom-right will be greater than the top-left. Again, since *d* > *b*, this is consistent with *p* < 1. We can guarantee both conditions are met if:
+
+$$
+p = 1 - \frac{(d-b)^2}{(2a-b-d)(b+d-2c)}
+$$
+
+Assume we use the values from @tbl-sample-violation-late, so *a* = 72, *b* = 36, *c* = 18, and *d* = 54. Then this formula says that *p* = 1/9. If we set *p* to 1/9, we get the tree shown in  @fig-sample-violation. What I've argued here is that that example is perfectly general. If constraints 1-3 suffice for Up being uniquely choice-worthy, then any game where there are two equilibria but Up is uniquely choice-worthy can be embedded in a dynamic game where it is the game Chooser will face if they ever have to choose, but in the strategic form of the game, Down is uniquely choice-worthy. So saying 1-3 suffices for Up being uniquely choice-worthy leads to systematic violations of the SCP. Since the SCP is true, these theories must be false.
+
+If constraints 2 and 3 don't suffice to say that a particular strict equilibrium in a 2*2 game is not choice-worthy, it's hard to see what further constraints could make a difference. So I conclude that, if the SCP is true, then in 2*2 games with two strict equilibria, both options are choice-worthy. This shows that @Spencer2021b and @Fuscond are right about these problems.
+
+That's a case where a theorist who thinks constraints 1-3 suffice for Up being uniquely choice-worthy will violate the SCP. As we noted at the start of this section, many theories do say those constraints suffice for unique choice-worthiness, so they are all wrong.
+
+In a 2*2 game with multiple strict equilibria, the only theory that's compatible with the SCP, and hence the only plausible theory, is that both equilibria are choice-worthy.

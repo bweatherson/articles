@@ -23,7 +23,7 @@ format:
       linkcolor: black
       urlcolor: black
       colorlinks: false
-      linestretch: 1.4
+      linestretch: 1.75
       link-citations: true
       output-file: "Anti-Anti-Desire-As-Belief"
       include-in-header:
@@ -40,7 +40,7 @@ The point of this paper is also not to stick up for Auntie when no one has stuck
 
 # The Ludovician Argument
 
-I'm not going to go over the argument in Lewis's 1988 paper, which relies on some really controversial assumptions. Instead I'll go over the 1996 argument, relying heavily on the presentation of it by Collins and by Ittay @NissanRozen2013.
+I'll start with a presentation of Lewis's argument, shorn of what seem to me to be extraneous details.
 
 Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. The worlds in this sense are more coarse grained than Ludovician concreta in that they only specify truth values of relevant propositions, not of all propositions. That's why we can assume that there are finitely many of them. But these worlds are more fine grained than Ludovician concreta in a different sense. They will be used to represent moral uncertainty. So there can be pairs of them that are descriptively alike but evaluatively distinct. Given the supervenience of the evaluative on the descriptive, this is impossible for Ludovician worlds.
 
@@ -126,7 +126,7 @@ Third, one might think that this is really just a special case of Newcomb's Prob
 
 The third answer isn't inconsistent with the previous two. But it is a distinct answer. It is an answer that people who disagree about Newcomb's Problem can agree is correct. But it's also a substantive claim, since there is a coherent way to deny it. In particular, it is coherent to adopt the version of causal decision theory that @Lewis1981bn defends for descriptive uncertainty, and something that looks like evidential decision theory for moral uncertainty.
 
-Here is how that might go. Following @BradleyList2009, let worlds be ordered pairs ⟨*d*, *v*⟩, such that *d* settles the (relevant) descriptive facts, and *v* is a numerical measure of the goodness of the world.^[This way of thinking about worlds helps explain some terminology that I left undefined earlier. A descriptive proposition is a proposition *p* such that for any *d*, *v*, and *v*ʹ, if ⟨*d*, *v*⟩ and ⟨*d*, *v*ʹ⟩ are worlds, then ⟨*d*, *v*⟩ ∈ *p* iff ⟨*d*, *v*ʹ⟩ ∈ *p*.] In the terminology used earlier g((*d*, *v*)) = *v*; the second term is how good the world is. 
+Here is how that might go. Loosely following @BradleyList2009, let worlds be ordered pairs ⟨*d*, *v*⟩, such that *d* settles the (relevant) descriptive facts, and *v* is a numerical measure^[At this point I differ from Bradley and List. They take the *v* part of ⟨*d*, *v*⟩ to be something like an evaluative theory, something that tells you how different things are to be valued. I'm taking it just to be a number, saying how good things are. This is why I think **Invariance** is plausible for worlds thus understood. The way I'm setting things up, **Invariance** is just the claim that the value of a terminal node doesn't change depending on where you are in a decision tree.] of the goodness of the world.^[This way of thinking about worlds helps explain some terminology that I left undefined earlier. A descriptive proposition is a proposition *p* such that for any *d*, *v*, and *v*ʹ, if ⟨*d*, *v*⟩ and ⟨*d*, *v*ʹ⟩ are worlds, then ⟨*d*, *v*⟩ ∈ *p* iff ⟨*d*, *v*ʹ⟩ ∈ *p*.] In the terminology used earlier g((*d*, *v*)) = *v*; the second term is how good the world is. 
 
 Let K be a partition of the worlds such that whatever the agent does makes no causal difference to which member of the partition is actual. Intuitively, the true element of K is the conjunction of all the facts that are outside the causal control of the chooser. Crucially, K settles the *facts* outside the agent's causal control; it does not settle anything evaluative.^[That is, all the cells of the partition are descriptive propositions.] For any proposition A, the value to the agent of A is given by this equation:
 

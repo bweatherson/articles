@@ -1,0 +1,95 @@
+# Problem 2: Ordering {#sec-ordering}
+
+## Introducing the Problem {#sec-ordering-intro}
+
+Standard approaches to decision theory assign to Chooser a probability function and a utility function, both defined over (some) propositions. The domain of each function is some subset of the reals; the interval \[0,1\] for the probability, and some bounded interval for the utilities. The real numbers have a distinctive topology. Among other things, they are totally ordered: for any two numbers, either one is greater, or they are equal. So assuming that probabilities and utilities are numerical involves assuming that for any two propositions, the probability(/utility) of the first is either greater than, less than, or equal to, that of the other. Call this assumption Ordering.
+
+Ordering is controversial, both for probabilities and utilities. For probabilities, it has been criticised since Keynes's _Treatise on Probability_ [-@Keynes1921], and in recent times has been criticised by, among others, Peter @Walley1991 and James @Joyce2010. For utilities, the most prominent contemporary critic is Ruth Chang [-@Chang2002; -@Chang2015].
+
+Just like there are many critics of Ordering, there are many defenders. @DorrEtAl2023 defend it on semantic grounds. Adam @Elga2010 argues that violations of Ordering for probabilities leads to susceptibility to a money pump. John @Broome2001 and Johan @Gustafsson2022 make similar arguments in favour of Ordering for utilities.
+
+Even critics of Ordering have noted its unintuitive characteristics. @BradleySteele2016 argue that violations of Ordering for probabilities imply it can be rational to pay to avoid information. Harvey @Ledermannd argues that violations of Ordering for utilities leads to violations of a principle he calls Negative Dominance, which I'll return to below.
+
+Both Bradley and Steele, and Lederman, think that ultimately Ordering should be rejected, and we should live with these unintuitive results. They are both pointing out troubling features of their own view. (Something philosophers should do more often.) In each case it isn't hard to convert the argument they give to a problem for the other kind of Ordering violation. If Ordering fails for utilities, a Bradley and Steele-style argument shows that it is worth paying to avoid information, and if it fails for probabilities, a Lederman style argument shows that Negative Dominance fails.
+
+I'm going to offer a new defence of Ordering violations. The defence has two parts. In this section, I'll argue that even if Ordering holds for probabilities and for values of states, it does not hold for values of actions. A bit loosely, even if Ordering is true for preferences over ends, it isn't true for preferences over means. This shows we have independent reason to reject any principle that entails Ordering is true in general. That includes many of the premises in arguments that have been offered against Ordering. Then in @sec-dual-mandate, I'm going to argue that many of the criticisms of views that permit Ordering violations presuppose a false view about how rational dynamic choice works.
+
+## Argument from Sweeteners {#sec-sweeteners}
+
+In @sec-multiple I argued that in @tbl-sample-violation-late, both Up and Down are choice-worthy. This is consistent with Ordering only if Chooser is indifferent between Up and Down. If Chooser is indifferent, then 'sweetening' one of the options, by increasing its payout in all states, should break the tie between them. But it doesn't. If we start with @tbl-edt-late and add 1 to the payout for Up, we get @tbl-sweetened. And the argument in @sec-multiple shows that both Up and Down are choice-worthy in @tbl-sweetened.
+
+|           |       PU      |     PD     |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     73        |     37     |
+| **Down**  |     18        |     54     |
+
+: @tbl-sample-violation-late with **Up** sweetened by 1. {#tbl-sweetened}
+
+So the SCP implies that Ordering fails in cases like these. Up and Down are both choice-worthy, so neither is better than the other, and they aren't equally good.
+
+## Argument from β {#sec-β}
+
+There is something odd about using preference orderings in an empirical theory of choice. We never observe preference orderings; we only ever observe choices. A tradition tracing back to @Samuelson1938 says decision theory should start with choice dispositions, not preferences.^[D. Wade @Hands2014 has much more on this tradition, focusing on Samuelson's complicated relationship to it. The SCP fits more neatly with a view that takes choice as analytically prior to utility and even to preference.] For any set of options S, let C(S) be the set of options Chooser regards as choice-worthy.^[Empirically, Chooser may select different members of S on different occasions.] This need not be a radical break with the idea that decision theory is based around preferences. Given some intuitive constraints on C, we can generate a preference relation out of it, and that preference relation will satisfy Ordering. It turns out, however, that the SCP is inconsistent with some of those constraints.
+
+Amartya @Sen1971 noted that (given some other intuitive but not uncontroversial constraints), Ordering is equivalent to the following condition on C. He gave it the unmemorable name Principle β.
+
+β
+:    If S ⊆ S', and \{A, B\} ⊆ C(S), then A ∈ C(S') iff B ∈ C(S').
+
+That is, if A and B are both initially choice-worthy, then after some options are added, either they are both choice-worthy, or neither is.^[To see why this might be plausible, imagine each option has a numerical value, and the choice-worthy ones are those with maximal value.] If β fails, then either Ordering fails, or something much less intuitive than Ordering or β fails. And the SCP is inconsistent with β.
+
+Extend @tbl-sample-violation-late so there is a third option: eXit. This option returns 60 whatever Demon does. And if Demon predicts eXit, they flip a fair coin to decide whether to play PU or PD. So the table looks like @tbl-beta-violation.
+
+|           |       PU      |     PD     |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     73        |     37     |
+| **Down**  |     18        |     54     |
+| **eXit**  |     60        |     60     |
+
+: A violation of Principle β {#tbl-beta-violation}
+
+In this table, Down is not choice-worthy, since it is dominated. So although the SCP says that C(\{U, D\}) = (\{U, D\}), C(\{U, D, X\}) = (\{U, X\}), violating β. So the SCP is inconsistent with Ordering.
+
+## Argument from Dominance {#sec-negdom}
+
+Harvey @Ledermannd notes that given some other plausible assumptions, Ordering is inconsistent with a principle he calls Negative Dominance.^[Though note that, like Sen, Lederman raises doubts about these 'other plausible assumptions'. Note also that I've rephrased his principle a little to match the notation of this paper.]
+
+> **Negative Dominance**    
+> If *p* is a lottery proposition, and A > B, then either A >~*p*~ B, or A >~¬*p*~ B.
+
+In **Negative Dominance**, > is a strict preference relation, and >~*p*~ is the preference relation conditional on *p*. The principle says that if A is strictly preferred to B, it also must be strictly preferred conditional on at least one outcome of a lottery. Most theories that violate Ordering violate Negative Dominance, and conversely most theories that violate Negative Dominance violate Ordering. Given the SCP, it seems plausible Negative Dominance fails. Let H be that a particular fair coin lands Heads, T that it lands Tails, H8 a bet that pays 8 if H and 0 otherwise, and T8 a bet that pays 8 if T and 0 otherwise. In @tbl-negdom, Chooser can play Up, Down or eXit, and Demon has made an arbitrarily accurate prediction. PU means they predicted Up; PDX means they predicted Down or eXit.
+
+|           |       PU      |     PDX    |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     1+H8      |     0      |
+| **Down**  |     0         |     1+T8   |
+| **eXit**  |     2         |     2      |
+
+: A violation of Negative Dominance {#tbl-negdom}
+
+This is a violation of Negative Dominance given these four assumptions.
+
+1. A strategy is not choice-worthy if it is dominated, including if it is dominated by a mixed strategy.
+2. If A is choice-worthy and B is not, then A > B.
+3. If B is choice-worthy and A is available, then ¬(A > B).
+4. If B strictly dominates A, then ¬(A > B).
+
+In @tbl-negdom, eXit is dominated by a 50/50 mix of Up and Down, so it is not choice-worthy (by 1). Since Up is choice-worthy, U > X (by 2). Conditional on Heads, @tbl-negdom becomes @tbl-negdom-heads.
+
+|           |       PU      |     PDX    |
+|:---------:|:-------------:|:----------:|
+| **Up**    |     9         |     0      |
+| **Down**  |     0         |     1      |
+| **eXit**  |     2         |     2      |
+
+: @tbl-negdom conditional on Heads {#tbl-negdom-heads}
+
+In @tbl-negdom-heads, Down is dominated and so eliminated. And post-deletion, the arguments in @sec-multiple show both options are choice-worthy. So ¬(U > X) (by 3). And if Tails, eXit strictly dominates Up, so ¬(U > X) (by 4). Hence given the SCP, and these four assumptions, Negative Dominance fails. 
+
+## Conclusion {#sec-conclusion}
+
+In general, it isn't easy to convert a theory of choice-worthiness into a theory of preference. There are some special cases when there is a natural way to do this, but they mostly rely on principles like β holding. Still, the arguments in this section suggest that however we convert a theory of choice consistent with the SCP into a theory of preference, Ordering will fail. And it will fail even if Ordering holds for credences (contra Keynes), and holds for values (contra Chang).
+
+The philosophical significance of this is that it shows several objections to views like Keynes's and Chang's over-generate, and hence are mistaken. Any argument that shows all Ordering violations are problematic entails that the SCP is false. But the arguments for the RCP, especially the Ramsey Test argument from @sec-ramsey, are more compelling than almost all the alleged problems for Ordering violations. So even though I've assumed in this section that Ordering holds for credences and values, the arguments here show that this assumption is not in general warranted. As long as there are other agents around (either Demons or rational human game players), Ordering will fail, so general objections to Ordering must be wrong.
+
+I said 'almost all' in the previous paragraph because there is one objection to Ordering violations that the arguments of this section don't touch: the objection from @Elga2010, @Broome2001 and @Gustafsson2022 that Ordering violations lead to choosing dominated strategies. Those arguments turn on an assumption about dynamic choice that we have independent reason to reject, and I'll come back to them in @sec-dual-mandate. But first I'll make a small note about how philosophically significant this failure of Ordering is.

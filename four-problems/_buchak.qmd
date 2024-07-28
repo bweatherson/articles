@@ -1,0 +1,111 @@
+# Problem 4: Risk-Sensitivity {#sec-buchak}
+
+Think about what value of *x* would make Chooser indifferent between these two options, and why that would be the right value:
+
+1. \$1,000,000
+2. A gamble that returns \$2,000,000 with probability *x*, and \$0 with probability 1-*x*.
+ 
+What factors are relevant to solving for *x*? One factor is the declining marginal utility of money. Money primarily has exchange value, and if Chooser won $2,000,000, Chooser would exchange the second million for things they chose not to exchange the first million for, so the second million has less value. That's one reason that *x* is well above ½.
+
+But is it the only reason? The orthodox answer is that it is. Lara @BuchakRisk has argued that it is not. We also need to know how much Chooser values, or more likely disvalues, risk. That is, we need to know how risk-seeking, or risk-averse, Chooser is.
+
+The orthodox view is that all we need to know are three numbers. In what follows, let *b* be Chooser's current wealth in millions, and V the function from wealth (in millions), to utility. Since V is only determined up to positive affine transformations, we can stipulate two of these values for V.
+
+- V(*b*), stipulated to be 0.
+- V(*b* + 1), stipulated to be 1.
+- V(*b* + 1), which we'll label *c*.
+
+On the standard view, the gamble's value is *cx*, so Chooser is indifferent between it and the money iff *x* = 1/*c*. On Buchak's view, rational Chooser has a risk function *f*, that measures their sensitivity to risk. The function must be monotonic increasing, with *f*(0) = 0, and *f*(1) = 1. If Chooser is risk-averse, then typically *f*(*x*) < *x*. Buchak's view reduces to the orthodox view if *f*(*x*) = *x*. I'm going to argue that given the SCP, *f*(*x*) does equal *x*. I'm far from the first to argue for *f*(*x*) = *x*.^[See @Briggs2015 and @Thoma2019 for different arguments to the same conclusion.] The value of the argument here is that it uses the same principle, the SCP, that is relevant to so many other problems.
+
+The core of Buchak's theory is a non-standard way of valuing a gamble. For simplicity, we'll focus on gambles with finitely many outcomes. Associate a gamble with a random variable *O*, which takes values *o*~1~, …, *o~n~*, where *o~j~* > *o~i~* iff *j* > *i*. Buchak says that the risk-weighted expected utility of *O* is given by this formula, where *f* is the agent's risk-weighting function.
+
+$$
+REU(O) = o_1 + \sum_{i = 2}^n f(\Pr(O \geq o_i))(o_i - o_{i-1})
+$$
+
+The decision rule then is simple: choose the gamble with the highest REU.
+
+The key notion here is the risk function *f*, which we introduced earlier. I'm going to show that if *f*(*x*) = *x*^2^, then we get a violation of the SCP. This is If *f* is the identity function, then this definition becomes a slightly non-standard way of defining expected utility. Buchak allows it to be much more general. The key constraints are that *f* is monotonically increasing, that *f*(0) = 0 and *f*(1) = 1. In general, if *f*(*x*) < *x*, Chooser is more risk-averse than an expected utility maximiser, while if *f*(*x*) > *x*, Chooser is more risk-seeking. The former case is more relevant to everyday intuitions, and it's what I'll focus on. Indeed, I'll focus on the case where *r*(*x*) = *x*^2^, which is also a case Buchak uses a lot.
+
+There are a number of good reasons to like Buchak's theory, but it is inconsistent with the Single Choice Principle. I'll show this for the case *r*(*x*) = *x*^2^, but it's not much harder to produce similar examples for any value of *r* other than *r*(*x*) = *x*. In @fig-buchak at stage 1 a fair die will be rolled. If it lands 1 or 2, Nature moves Left; if it lands 3 or 4, Nature moves Middle; otherwise, Nature moves Right. If Nature moves Left, the game ends, and Chooser gets 1. Otherwise Chooser is told that Nature did not move Left, but not whether they moved Middle or Right. If Chooser selects Down, they get 1. If Chooser selects Up, they get 5 if Nature moved Middle, and 0 otherwise.
+
+```{r engine='tikz', engine.opts=font_opts}
+#| label: fig-buchak
+#| fig.cap: "Tree Diagram of the counterexample to REU."
+#| fig.ext: 'png'
+#| cache: FALSE
+#| echo: FALSE
+#| fig.width: 4
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[scale=1.4,font=\footnotesize]
+  \tikzset{
+    % Three node styles for game trees: solid and hollow and square
+      solid node/.style={circle,draw,inner sep=1.5,fill=black},
+      hollow node/.style={circle,draw,inner sep=1.5},
+      square node/.style={rectangle,draw, inner sep = 1, fill = black}
+      }
+
+  % Specify spacing for each level of the tree
+  \tikzstyle{level 1}=[level distance=12mm,sibling distance=18mm]
+  \tikzstyle{level 2}=[level distance=13mm,sibling distance=13mm]
+  \tikzstyle{level 3}=[level distance=13mm,sibling distance=13mm]
+      
+      \node[hollow node,label=above:{Nature}]{}
+        child{node[square node, label=below:{1}]{}
+          edge from parent
+            node[xshift=-10]{L}}
+        child{node(1)[solid node]{}
+          child{node[square node, label=below:{5}]{}
+              edge from parent
+              node[left]{U}
+          }
+          child{node[square node, label=below:{1}]{}
+              edge from parent
+                node[right]{D}
+          }
+          edge from parent
+            node[left]{M}}
+        child{node(2)[solid node]{}
+          child{node[square node, label=below:{0}]{}
+              edge from parent
+              node[left]{U}
+          }
+          child{node[square node, label=below:{1}]{}
+              edge from parent
+                node[right]{D}
+          }
+          edge from parent
+            node[xshift=10]{R}}
+        ;
+        
+% information set
+\draw[dashed,rounded corners=10]($(1) + (-.2,.2)$)rectangle($(2) +(.2,-.2)$);
+\node at ($(1)!.5!(2)$) {Chooser};
+\end{tikzpicture}
+```
+
+@tbl-buchak-early shows the strategic table of @fig-buchak, and @tbl-buchak-late shows the decision table Chooser faces at the time they have to choose.
+
+::: {#tbl-panel layout-ncol=2}
+|          | **Left**     | **Middle**     |   **Right**  |
+|:--------:|:------------:|:--------------:|:------------:|
+| **Up**   |      1       |       5        |     0        |
+| **Down** |      1       |       1        |     1        |
+
+: The strategy table at game start. {#tbl-buchak-early}
+
+|          | **Middle**   | **Right**      |
+|:--------:|:------------:|:--------------:|
+| **Up**   |      5       |       0        |
+| **Down** |      1       |       1        |
+
+: The strategy table at choice time. {#tbl-buchak-late}
+
+Two strategy tables for @fig-buchak.
+:::
+
+In @tbl-buchak-early, the REU of Down is 1 (since that's the only possible outcome), and the REU of Up is 8/9. There is a 2/3 chance of getting at least 1, so that's worth 4/9, and there's a 1/3 chance of getting another 4, so that's also worth 4/9, and adding those gives 8/9. So the optimal strategy, according to REU theory, is Down. That is, REU says to prefer the strategy _Choose Down if you have to choose_ to the strategy _Choose Up if you have to choose_. But if we get to the choice point, we're at @tbl-buchak-late. And in that table the REU of Up is 5 times 1/4, i.e., 5/4. So at that point, REU says to choose Up. What REU says to do if you have to choose is different to which strategy it chooses for the one and only point you have to choose at. That is, Buchak's theory violates the SCP, and so should be rejected.
+
+This is far from the first objection to Buchak's view, but something interesting follows from the connection, via the SCP, to demonic problems. Many decision theorists reject Buchak's view about non-demonic problems in favour of orthodox expected utility theory, but also endorse views inconsistent with the SCP.^[Evidential Decision Theorists reject both Buchak's view and the SCP, and in this respect they are far from alone.] Those theorists can't coherently use this argument against Buchak's view. Nor can they use any other argument whose premises entail the SCP, such as an argument from the Sure Thing Principle. It would take too long to argue for this here, but I suspect there is no way to do this.^[Note that if we don't want to argue from first principles, but instead try to capture intuitions about cases, we should prefer Buchak's theory because of how it handles the @Allais1953 paradox.] If we reject the SCP, the weight of reasons favours Buchak's view over orthodoxy. I'll leave this as a challenge for theorists unconvinced by @sec-scp-defence: what is the best argument against Buchak's view, and in favour of expectationist orthodoxy, whose premises do not entail the SCP? The separation in the literature between demonic and non-demonic problems has obscured how hard a challenge this is.

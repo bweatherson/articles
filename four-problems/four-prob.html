@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brian Weatherson">
+<meta name="dcterms.date" content="2024-07-29">
+
+<title>Four Problems in Decision Theory</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="four-prob_files/libs/clipboard/clipboard.min.js"></script>
+<script src="four-prob_files/libs/quarto-html/quarto.js"></script>
+<script src="four-prob_files/libs/quarto-html/popper.min.js"></script>
+<script src="four-prob_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="four-prob_files/libs/quarto-html/anchor.min.js"></script>
+<link href="four-prob_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="four-prob_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="four-prob_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="four-prob_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="four-prob_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="four-prob.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="../Anti-Anti-Desire-As-Belief.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Four Problems in Decision Theory</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brian Weatherson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 29, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>In recent years the literature on decision theory has become disjointed. There isn’t as much discussion as there should be on how different problems impact one another. This paper aims to bring together work on problems involving demons, problems about attitudes to risk, problems about incomplete preferences, and problems about dynamic choice. In the first three of these cases, I end up defending a pre-existing view. I defend a ratificationist approach to problems with demons, the orthodox expected utility approach to risk, and the permissibility of incomplete preferences. These views are familiar, but seeing how they are related to a common strengthens the case for each of them. The most novel part of the view is the theory of dynamic choice that I offer: a sequence of choices is rational only if both the so-called ‘resolute’ and ‘sophisticated’ theories of dynamic choice would permit it. This theory would be implausible if paired with many rival solutions to the first three problems, but fits nicely with the view I’ll develop through the paper</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<p>Contemporary decision theory has become disjointed. There is less overlap than there should be in work on adjacent problems. This paper aims to undo some of that, by showing that four problems that have largely been worked on in isolation cast useful light on each other. In particular, I’ll argue that we can go a long way towards solving all four problems by working through the consequences of a plausible principle that I’ll call the Single Choice Principle.</p>
+<p>The Single Choice Principle (hereafter, SCP) relates theories of static choice and dynamic choice. In particular, it says that for a narrow class of games, it doesn’t matter whether you think of the game as involving a static, strategic choice, or a dynamic choice that is made during a game. One way into the principle is to think about an oddity in the way Newcomb’s Problem is normally introduced.</p>
+<section id="sec-newcomb" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Newcomb’s Problem</h1>
+<section id="sec-newcomb-standard" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-newcomb-standard"><span class="header-section-number">1.1</span> Standard Version</h2>
+<p>In the standard vignette that goes with Newcomb’s Problem <span class="citation" data-cites="Nozick1969">(<a href="#ref-Nozick1969" role="doc-biblioref">Nozick 1969</a>)</span>, it is a dynamic game. The demon makes a <em>prediction</em>, and then the human (hereafter, Chooser) makes a choice. Chooser doesn’t know what Demon did, but they do know that Demon has acted. So the natural presentation of Newcomb’s Problem is in a tree like <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Tree</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Table</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-standard-newcomb" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standard-newcomb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-standard-newcomb-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-newcomb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Newcomb’s Problem.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tbl-standard-newcomb" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-standard-newcomb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Newcomb’s Problem
+</figcaption>
+<div aria-describedby="tbl-standard-newcomb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">P1</th>
+<th style="text-align: center;">P2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1001</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>I’ll go over the details of how to read diagrams like <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a> in <a href="#sec-decision-tree" class="quarto-xref">Section&nbsp;7.1</a>. All you need to know for now is that the game starts at the open node, here at the top, and it moves along by the agent (Demon or Chooser) making choices. The dotted lines around the two nodes where Chooser acts mean that those two nodes are in the same <strong>information set</strong>. That is, when Chooser is at either one of those nodes, the strongest thing Chooser knows is that they are somewhere or other in the set.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> So this tree represents the standard vignette for Newcomb’s Problem. Demon makes a prediction - I’m in general using PX for Demon predicting X - and Chooser knows that the prediction has been made, and that either P1 or P2 happened, but chooses without knowing which it is. Then the game is resolved.</p>
+<p>What <a href="#tbl-standard-newcomb" class="quarto-xref">Table&nbsp;1</a> shows is a subtly different story. In <a href="#tbl-standard-newcomb" class="quarto-xref">Table&nbsp;1</a>, each player chooses a <em>strategy</em>. A strategy for a player in a tree like <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a> is a decision about what to do at each node in the tree where that player has to move.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> So what <a href="#tbl-standard-newcomb" class="quarto-xref">Table&nbsp;1</a> represents is a situation where each player chooses a strategy simultaneously, and that determines a result for the game. It differs from <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a> in part in that it’s symmetric; there is no hint that Demon moves first.</p>
+<p>There is a lot of disagreement about Newcomb’s Problem, but here is one point of universal agreement: <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a> and <a href="#tbl-standard-newcomb" class="quarto-xref">Table&nbsp;1</a> have the same solutions. It would be incoherent to prefer taking 1 box in one of these puzzles and 2 boxes in the other, or to say that both options were choice-worthy in one puzzle but not the other. They may not represent exactly the same problem, they don’t pose exactly the same question to Chooser, but they should get the same answer (or answers).</p>
+<p>I’m going to agree with the unanimous verdict on this point, but I’ll start dissenting from orthodox opinion very soon. And one way into my dissent is to ask, why should <a href="#fig-standard-newcomb" class="quarto-xref">Figure&nbsp;1</a> and <a href="#tbl-standard-newcomb" class="quarto-xref">Table&nbsp;1</a> get the same answer? What principle is someone who gives different answers to the two questions violating? I have a suggestion for what principle that might be, the SCP, but to make that suggestion plausible we need a couple more examples.</p>
+</section>
+<section id="variant-1-coin-then-demon" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="variant-1-coin-then-demon"><span class="header-section-number">1.2</span> Variant 1: Coin-then-Demon</h2>
+<p>Consider a variant on Newcomb’s Problem I’ll call Coin-Then-Demon. In this game a fair coin will be flipped and shown to Demon and Chooser. If it lands Heads, Chooser will get $5,000 and the game ends. Otherwise, they play standard Newcomb Problem. <a href="#fig-coin-then-demon" class="quarto-xref">Figure&nbsp;2</a> shows the game tree for this game, with Nature moving first, and the probabilities of Nature’s moves shown. And <a href="#tbl-coin-then-demon" class="quarto-xref">Table&nbsp;2</a> shows the strategy table for it, with the payouts shown in expected value.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Tree</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Table</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-coin-then-demon" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coin-then-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-coin-then-demon-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coin-then-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Coin-then-Demon
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tbl-coin-then-demon" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-coin-then-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Coin-then-Demon
+</figcaption>
+<div aria-describedby="tbl-coin-then-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">P1</th>
+<th style="text-align: center;">P2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">502.5</td>
+<td style="text-align: center;">2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">503</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>I have two hypotheses about <a href="#fig-coin-then-demon" class="quarto-xref">Figure&nbsp;2</a>/<a href="#tbl-coin-then-demon" class="quarto-xref">Table&nbsp;2</a>; one of which I think everyone will agree with, and one that might be more controversial. The less controversial hypothesis is that in this game, as in standard Newcomb’s Problem, it doesn’t matter whether Chooser is playing the dynamic game (i.e., <a href="#fig-coin-then-demon" class="quarto-xref">Figure&nbsp;2</a>) or the strategic game (i.e., <a href="#tbl-coin-then-demon" class="quarto-xref">Table&nbsp;2</a>). Whichever options are choice-worthy in one are choice-worthy in the other. The more controversial hypothesis is that the reason these two games are rationally equivalent is exactly the same as the reason that the two forms of Newcomb Problem I presented should get the same answer.</p>
+</section>
+<section id="variant-2-demon-then-coin" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="variant-2-demon-then-coin"><span class="header-section-number">1.3</span> Variant 2: Demon-then-Coin</h2>
+<p>One more example and we’re basically done. In the game I’ll call Demon-Then-Coin, the coin is only flipped if Demon predicts Chooser takes one box. If the coin lands heads, Chooser gets $5,000, and the game ends. If either Demon predicts 2 boxes, or the coin lands tails, Chooser makes a selection, knowing that one or other of these disjuncts obtained. Then the game ends. The tree for this game is <a href="#fig-demon-then-coin" class="quarto-xref">Figure&nbsp;3</a>, and the strategy table is <a href="#tbl-demon-then-coin" class="quarto-xref">Table&nbsp;3</a>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Tree</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Table</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-demon-then-coin" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-demon-then-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-demon-then-coin-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demon-then-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Demon-then-Coin
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tbl-demon-then-coin" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-demon-then-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Demon-then-Coin
+</figcaption>
+<div aria-describedby="tbl-demon-then-coin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">P1</th>
+<th style="text-align: center;">P2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">502.5</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">503</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>If Chooser was planning on picking 1 box, they have a little evidence against the accuracy of Demon’s predictions. If in the other games they thought the probability that Demon mispredicted was <em>e</em>, in this case they should (if they plan to choose 1 box) have a probability of error of roughly 2<em>e</em>. But if <em>e</em> was small enough to start with, and I’ll assume throughout that Demon’s error likelihood is arbitrarily small, this shouldn’t make a difference.</p>
+<p>Again, I’m going to argue that the dynamic game, <a href="#fig-demon-then-coin" class="quarto-xref">Figure&nbsp;3</a>, and the strategic game, <a href="#tbl-demon-then-coin" class="quarto-xref">Table&nbsp;3</a>, should get the same solutions. Indeed, they should get the same solutions for the same reason the previous two pairs of decisions should get the same solutions. That reason, I’ll argue, is the Single Choice Principle.</p>
+</section>
+<section id="sec-scp-definition" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-scp-definition"><span class="header-section-number">1.4</span> Single Choice Principle</h2>
+<p>Here is what the Single Choice Principle (hereafter, SCP) says:</p>
+<blockquote class="blockquote">
+<p><strong>Single Choice Principle (SCP)</strong><br>
+In any decision tree in which all the nodes where Chooser acts are in a single information set, an option is choice-worthy in the dynamic form of the game iff it is choice-worthy in the strategic form of the game.</p>
+</blockquote>
+<p>The SCP is a highly restricted version of a claim that dynamic and static games are in some sense equivalent. The strong version of the view says that there is some mapping from the set of rational choices in a tree to the set of possible choices in the strategic version of that tree. Exactly how that mapping should be understood is tricky in the general case, but since (a) the general principle is extremely controversial, and (b) I’m not endorsing the general principle, I won’t fuss over the details. What I will fuss over is getting clearer about what the SCP does and doesn’t say.</p>
+<p>The SCP doesn’t just say that on any run through the game, Chooser only makes one choice. Rather, it says that Chooser only has one possible choice to make in the game. This point might be clearer with an example. Imagine Chooser and Demon are playing a simple kind of ultimatum game. Demon has to propose a split of a $3 pot; they can either propose $2 for Demon and $1 for Chooser, or vice versa. Chooser then has a take it or leave it choice. If they take, each party gets the money Demon proposes; if they leave, each party gets $0. Assume Demon is arbitrarily good at predicting Chooser’s strategy, and that Demon prefers more money to less<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. The game tree is in <a href="#fig-ultimatum" class="quarto-xref">Figure&nbsp;4</a>, and the strategy table is in <a href="#tbl-ultimatum" class="quarto-xref">Table&nbsp;4</a>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Tree</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Table</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ultimatum" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ultimatum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-ultimatum-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ultimatum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Ultimatum Game
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tbl-ultimatum" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ultimatum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Two representations of the strategic form of ultimatum game
+</figcaption>
+<div aria-describedby="tbl-ultimatum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-ultimatum" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-ultimatum-game" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-ultimatum-game-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Demon’s Decisions
+</figcaption>
+<div aria-describedby="tbl-ultimatum-game-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">D2C1</th>
+<th style="text-align: center;">D1C2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>TT</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>TL</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>LT</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>LL</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-ultimatum" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-ultimatum-demon" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-ultimatum-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Demon’s Predictions
+</figcaption>
+<div aria-describedby="tbl-ultimatum-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PTT</th>
+<th style="text-align: center;">PTL</th>
+<th style="text-align: center;">PLT</th>
+<th style="text-align: center;">PLL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>TT</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>TL</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>LT</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>LL</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Most philosophers would say that in the dynamic form of the game, <a href="#fig-ultimatum" class="quarto-xref">Figure&nbsp;4</a>, the only sensible thing to do is TT; whatever the demon does, it’s better to take more money than less. But many would also say that in the strategic form, <a href="#tbl-ultimatum" class="quarto-xref">Table&nbsp;4</a>, some other strategy might be appropriate. For instance, Evidential Decision Theory says that in <a href="#tbl-ultimatum" class="quarto-xref">Table&nbsp;4</a>, the right strategy is LT.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> The SCP does not rule out this combination. It will ultimately have something to say about EDT, but it doesn’t object to this pair of views. That’s because in <a href="#fig-ultimatum" class="quarto-xref">Figure&nbsp;4</a> there are two possible choices for Chooser to make, even if they will ultimately only make one of them, and the SCP only applies to games with just one possible choice. That makes it a more plausible principle, but surprisingly does little to reduce its philosophical significance.</p>
+</section>
+</section>
+<section id="sec-scp-defence" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Defending the SCP</h1>
+<section id="sec-sample-violation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-sample-violation"><span class="header-section-number">2.1</span> A Sample Violation</h2>
+<p>The argument for the SCP is that violations of it are in various ways incoherent. It helps to have a sample violation on the table. Imagine Chooser is going to play the following game.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sample-violation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sample-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-sample-violation-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sample-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Switching Example
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a> resembles <a href="#fig-demon-then-coin" class="quarto-xref">Figure&nbsp;3</a>, with two notable differences. First, the coin is now weighted, and has an 8/9 chance of landing Heads. Second, if Chooser must choose, either option is an equilibrium.</p>
+<p><a href="#tbl-sample-violation-late" class="quarto-xref">Table&nbsp;5 (a)</a> shows the decision table Chooser faces if they must make a choice in <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a>, and <a href="#tbl-sample-violation-early" class="quarto-xref">Table&nbsp;5 (b)</a> shows the expected payouts of the two strategies Chooser could select.</p>
+<div id="tbl-sample-violation" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Payout tables for <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a>.
+</figcaption>
+<div aria-describedby="tbl-sample-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-sample-violation" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-sample-violation-late" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-sample-violation-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Dynamic version.
+</figcaption>
+<div aria-describedby="tbl-sample-violation-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">54</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-sample-violation" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-sample-violation-early" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-sample-violation-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Strategic version.
+</figcaption>
+<div aria-describedby="tbl-sample-violation-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">54</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>I’ll take as my sample violator of the SCP a Chooser who prefers Up in the dynamic version, and Down in the strategic version. As we’ll see in <a href="#sec-multiple" class="quarto-xref">Section&nbsp;4</a>, many decision theorists agree with this Chooser. But everything I say should generalise to any violation.</p>
+</section>
+<section id="sec-ramsey" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-ramsey"><span class="header-section-number">2.2</span> Ramsey Test</h2>
+<p>To choose a strategy is to make true a bunch of conditionals. Adopting the strategy Down in <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a> just is saying “If I have to choose, I’ll choose Down”. As <span class="citation" data-cites="RamseyGeneralProp">Ramsey (<a href="#ref-RamseyGeneralProp" role="doc-biblioref">[1929] 1990</a>)</span> said, the way to tell which such conditional to make true is to hypothetically add the antecedent to one’s stock of belief, and then decide which unconditional claim you’d like to make true. But Chooser does not do that. If they believed that they had to choose, they would choose Up. So their strategic preference implies that they believe that if they had to choose, they would choose Down, but adding the supposition that they have to choose, they choose Up. This combination is incoherent, and so violations of the SCP are incoherent.</p>
+<p>I think this argument is decisive; it’s incoherent to adopt a strategy in games like <a href="#fig-demon-then-coin" class="quarto-xref">Figure&nbsp;3</a> or <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a> that is different from what one knows one would do if one had to carry the strategy out. That’s just not how conditionals work. But in case not everyone is convinced, I’ll run through some other arguments. The SCP will do a lot of work, and it is worth getting the foundations as secure as possible.</p>
+</section>
+<section id="sec-intuitions-change" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-intuitions-change"><span class="header-section-number">2.3</span> Intuitions about Change</h2>
+<p>This argument starts with a story. Imagine the game master (GM) is chatting to Chooser (C), before Chooser plays <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<blockquote class="blockquote">
+<p>GM: What are you thinking of playing?<br>
+C: I might not have a choice.<br>
+GM: True, but assume you have to choose.<br>
+C: Then Up, I guess.<br>
+GM: You know, Demon can be really slow in making a prediction. Do you want to write your choice down in an envelope, and we’ll open it if it’s needed? C: Oh sure. I’m writing Down.<br>
+GM: Why did you change your mind?</p>
+</blockquote>
+<p>We could continue the conversation, but I want to focus on the presupposition of GM’s last question. It seems appropriate to presuppose here that Chooser has changed their mind. This presupposition requires the SCP. If the SCP is false, Chooser has simply given different answers to different questions. First they were asked what to do in the dynamic game, and they said Up. Then they were asked what to do in the strategic game, and they said Down. Giving different answers to different questions is not changing one’s mind.</p>
+<p>GM’s question seems appropriate. Chooser was first asked what they planned to do in a particular situation. Then they were asked for a strategy that would only be activated in that very situation. When they give different answers to those questions, it sounds like they changed their mind. That implies the questions are fundamentally the same, which is what the SCP says.</p>
+</section>
+<section id="sec-unity" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-unity"><span class="header-section-number">2.4</span> Unifying the Examples</h2>
+<p>Philosophers do not agree about Newcomb’s Problem. But they do agree that in each of the examples in <a href="#sec-newcomb" class="quarto-xref">Section&nbsp;1</a>, the same choice is rational in the strategic and dynamic form of the game. This isn’t because they think that in general strategic and dynamic forms are equivalent. Indeed, for many theorists there is no unifying story about why each of these pairs of problems gets the same answer. It is just a fact that the theory treats the dynamic and strategic problems the same way.</p>
+<p>I think it is better to have an explanation for why each of the pairs of problems gets the same answers, and for that explanation to be the same across the three pairs. The SCP provides such an explanation, and that’s a point in its favour.</p>
+</section>
+<section id="sec-no-reward" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-no-reward"><span class="header-section-number">2.5</span> No Reward</h2>
+<p>One reason that I introduced <a href="#fig-ultimatum" class="quarto-xref">Figure&nbsp;4</a>/<a href="#tbl-ultimatum" class="quarto-xref">Table&nbsp;4</a> earlier is that it’s the kind of case where it’s most plausible that the strategic and dynamic choices might be distinct. Think about the pair of choices that EDT recommends: in the dynamic game, play TT; in the strategic game, play LT. While I ultimately disagree with this, I do think this is a plausible thing for EDT to say. The strategy LT has two big advantages that some will think make up for the fact that it is not what one would do dynamically. First, it differs from the dynamically rational play only in a situation which is, conditional on being played, highly unlikely to come about. Second, there is a reward, at least in expectation, for playing this dynamically irrational strategy; the strategy has a payout of 2 while the dynamically rational strategy only has a payout of 1. Either one of these facts will, at least to some people, make it rational to treat dynamic and strategic games differently; what’s distinctive about <a href="#fig-ultimatum" class="quarto-xref">Figure&nbsp;4</a>/<a href="#tbl-ultimatum" class="quarto-xref">Table&nbsp;4</a> is that both reasons are there.</p>
+<p>In dynamic problems where the SCP applies, neither of these reasons can apply. There is no possible strategic advantage to playing the dynamically irrational strategy. There is no parallel to saying, “I’m playing LT because, even though leaving money would be irrational, I almost certainly won’t have to carry that part of the strategy out, and in exchange for this tiny risk, I’m getting rewarded.” Doing something dynamically irrational at the only point one can possibly move can’t have advantages elsewhere; you’re going to get the same payout elsewhere no matter what. So whatever reason one could have in other cases for treating dynamic and strategic problems separately can’t apply here; there isn’t enough of an ‘elsewhere’ for one’s bad decision at the one and only place one moves to be compensated.</p>
+</section>
+<section id="sec-game-theory" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-game-theory"><span class="header-section-number">2.6</span> Game Theory</h2>
+<p>Assume, following <span class="citation" data-cites="Harper1986">Harper (<a href="#ref-Harper1986" role="doc-biblioref">1986</a>)</span>, that decision problems involving Chooser and Demon are <em>games</em>. For Demon, they are coordination games; Demon acts as if they get rewarded for making the ‘same’ play as Chooser. Chooser’s payouts can be more complicated, but the examples decision theorists use usually track some familiar game.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Further assume, following all the standard textbooks, that the theory of rational choice for game players is based around some equilibrium concept.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Then rational players will follow the SCP. For all the standard equilibrium concepts, the equilibria of the dynamic and strategic games are the same if each player only has one possible choice.</p>
+</section>
+<section id="sec-surething" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-surething"><span class="header-section-number">2.7</span> Sure Thing</h2>
+<p>Finally, there is one very natural argument for the SCP that for various reasons I don’t want to lean on too heavily. If Chooser violates the SCP, then they violate the Sure Thing Principle. They think Up is at least as good as Down both conditional on the game ending without them making a choice, and on that not happening. But they think Down is better overall. If Sure Thing can be taken as a basic assumption, the SCP immediately follows.</p>
+<p>There are three problems with this line of reasoning. The first is pragmatic. It’s well known that various theories I’m arguing against here, like EDT, and Buchak’s non-standard treatment of risk, violate Sure Thing. It’s not a new argument against them to say that they violate the SCP, if the only reason to believe the SCP is Sure Thing. The second is that it isn’t obvious that the theories that are best supported by the SCP are not consistent with Sure Thing. Dmitri <span class="citation" data-cites="Gallownd">Gallow (<a href="#ref-Gallownd" role="doc-biblioref">n.d.</a>)</span> argues that what he calls ‘stable’ decision theories are bound to violate Sure Thing. It’s arguable that his arguments can be generalised to provide a reason to think theories supported by the SCP (which will typically not be stable in his sense) also violate Sure Thing. And the third is that even if this argument fails, there is a bad company objection to Sure Thing that I’ll get to in <a href="#sec-negdom" class="quarto-xref">Section&nbsp;5.4</a>. So it’s useful that we have the other four arguments to fall back on.</p>
+</section>
+</section>
+<section id="sec-flagging" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Flagging Assumptions</h1>
+<p>I’m going to make three assumptions in what follows, and it helps to have them on the table.</p>
+<p>One is that we can sensibly talk about demons who are arbitrarily accurate at predicting Chooser’s strategy. One reason for making this assumption is that all the problems we discuss could be rephrased if we just assumed Demon was at least epsilon better than chance at predicting Chooser’s strategy, and this is a realistic assumption. It would complicate the algebra considerably in what follows to do this, without making the examples clearer. A second reason for making the assumption is that standard approaches to game theory assume each player is a demon who can predict the other players’ strategies with arbitrary precision, so we’re just deferring to orthodox opinion in a notable research topic by making this assumption.</p>
+<p>A second is that decision problems are fully specified by setting out the states (assumed to be causally independent of actions), the available actions, the payoffs for each state-action pair, and the conditional probability of each state given each action. Here I’m following <span class="citation" data-cites="Gallownd">Gallow (<a href="#ref-Gallownd" role="doc-biblioref">n.d.</a>)</span>, whose formalism for decision problems only includes places for these variables. The primary motivation for this assumption is that it is common in the literature to describe a decision problem in a way that only specifies these factors - the state-action payoffs and the state probabilities conditional on actions - and presupposes without comment that enough has been said to specify which actions ae rational. So I think this assumption is rather widespread, if often implicit. Still, it is a substantial assumption. Some decision theorists think that which choices are rational turns on other factors, such as Chooser’s prior unconditional probabilities for various states, or Chooser’s attitude to risk. I’ll note below where this assumption matters, but in general I’ll be following Gallow in making this assumption.</p>
+<p>And a third is that in any dynamic choice, a choice at a point is permissible only if it would be permissible were that starting point of a decision problem. This rules out so-called <em>sophisticated</em> approaches to dynamic choice. And I’ll come back in <a href="#sec-dual-mandate" class="quarto-xref">Section&nbsp;7</a> to what happens if this assumption is relaxed.</p>
+</section>
+<section id="sec-multiple" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem 1: Demons and Multiple Equilibria</h1>
+<p><a href="#tbl-generic-demon" class="quarto-xref">Table&nbsp;6</a> is a completely generic form of a 2*2 decision problem involving demons. Without loss of generality, I’ll assume all payouts are positive. I’ll also assume all payouts are distinct; dropping this requires fussing about edge cases that are not relevant here.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<div id="tbl-generic-demon" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-generic-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: A generic demon problem
+</figcaption>
+<div aria-describedby="tbl-generic-demon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;"><em>a</em></td>
+<td style="text-align: center;"><em>b</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;"><em>c</em></td>
+<td style="text-align: center;"><em>d</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Say that an option is a (strict) equilibrium if, assuming Demon predicts correctly, Chooser’s payout for choosing it is (strictly) greater than their payout for choosing any other option. The focus of this section is only problems where both Up and Down are strict equilibria. In particular, focus on problems that satisfy these three constraints.</p>
+<ol type="1">
+<li><em>a</em> &gt; <em>c</em>, and <em>d</em> &gt; <em>b</em>.</li>
+<li><em>a</em> &gt; <em>d</em>.</li>
+<li><em>b</em> &gt; <em>c</em>.</li>
+</ol>
+<p>The first says that Up and Down are both strict equilibria. The second says that Up has the highest payout among the equilibria. The third says that Up has a higher off-equilibrium payout than Down does. Many theorists who disagree about other questions in decision theory say that these three facts suffice to make Up uniquely choice-worthy.</p>
+<p>Evidential Decision Theorists say that 2 alone suffices for choosing Up over Down.</p>
+<p>Consider next the theory that says only equilibria are choice-worthy, and among equilibria, one should choose the equilibrium with the highest expected payout. Versions of this theory are endorsed by <span class="citation" data-cites="Jeffrey1983b">Jeffrey (<a href="#ref-Jeffrey1983b" role="doc-biblioref">1983</a>)</span>, <span class="citation" data-cites="Arntzenius2008">Arntzenius (<a href="#ref-Arntzenius2008" role="doc-biblioref">2008</a>)</span>, and <span class="citation" data-cites="Gustafsson2011">Gustafsson (<a href="#ref-Gustafsson2011" role="doc-biblioref">2011</a>)</span>. Given 1 and 2, this theory says to choose up.</p>
+<p>Finally, consider the theory that says one should (in two options games) minimise possible regret. That is, one should choose Up if the possible Regret from choosing Up, <em>d</em>&nbsp;-&nbsp;<em>b</em>, is less than the possible regret from choosing Down, <em>a</em>&nbsp;-&nbsp;<em>c</em>. <span class="citation" data-cites="Wedgwood2013a">Wedgwood (<a href="#ref-Wedgwood2013a" role="doc-biblioref">2013</a>)</span>, <span class="citation" data-cites="Gallow2020">Gallow (<a href="#ref-Gallow2020" role="doc-biblioref">2020</a>)</span>, <span class="citation" data-cites="Podgorski2022">Podgorski (<a href="#ref-Podgorski2022" role="doc-biblioref">2022</a>)</span>, and <span class="citation" data-cites="Barnett2022">Barnett (<a href="#ref-Barnett2022" role="doc-biblioref">2022</a>)</span> endorse this claim, though they go on to say very different things about cases with three or more options. Given constraints 2 and 3, these theories also say to choose Up.</p>
+<p>I’ll argue that in any such problem, both Up and Down are choice-worthy. I’m not the first to say this. Jack <span class="citation" data-cites="Spencer2021b">Spencer (<a href="#ref-Spencer2021b" role="doc-biblioref">2021</a>)</span> and Melissa <span class="citation" data-cites="Fuscond">Fusco (<a href="#ref-Fuscond" role="doc-biblioref">n.d.</a>)</span> also say that both equilibria are choice-worthy.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> This implies that in any problem where Up and Down are both strict equilibria, they are both choice-worthy, since there is nothing more that could make Up uniquely choice-worthy. Just what is the relationship between being an equilibrium and being choice-worthy is a question for another day, but in 2*2 games, they pick out the same options.</p>
+<p>Consider the dynamic game shown in <a href="#fig-edt" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-edt" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-edt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-edt-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: A tree that shows SCP is inconsistent with several theories.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The payouts on the right are taken from <a href="#tbl-generic-demon" class="quarto-xref">Table&nbsp;6</a>, and the payout if the game exits without a choice is half way between the two payouts if Demon predicts Down. I’ve left the probability of exit if Demon predicts Up as a variable <em>p</em>. The decision tables for the one choice in the dynamic game, and the strategic choice for the whole game, are in <a href="#tbl-edt" class="quarto-xref">Table&nbsp;7</a>.</p>
+<div id="tbl-edt" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-edt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: Payout tables for <a href="#fig-edt" class="quarto-xref">Figure&nbsp;6</a>.
+</figcaption>
+<div aria-describedby="tbl-edt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-edt" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-edt-late" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-edt-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Dynamic version.
+</figcaption>
+<div aria-describedby="tbl-edt-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;"><em>a</em></td>
+<td style="text-align: center;"><em>b</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;"><em>c</em></td>
+<td style="text-align: center;"><em>d</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-edt" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-edt-early" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-edt-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Strategic version.
+</figcaption>
+<div aria-describedby="tbl-edt-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;"><em>p</em>(<em>b</em>+<em>d</em>)/2 + (1-<em>p</em>)<em>a</em></td>
+<td style="text-align: center;"><em>b</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;"><em>p</em>(<em>b</em>+<em>d</em>)/2 + (1-<em>p</em>)<em>c</em></td>
+<td style="text-align: center;"><em>d</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>If <em>p</em> is large enough, then in <a href="#tbl-edt-early" class="quarto-xref">Table&nbsp;7 (b)</a>, the bottom-right will be larger than the top-left, and the bottom-left will be larger than the top-right. So if constraints 1-3 are sufficient conditions for one option to be uniquely choice-worthy, then if <em>p</em> is large enough, Down will be uniquely choice-worthy in <a href="#tbl-edt-early" class="quarto-xref">Table&nbsp;7 (b)</a>. But Up is uniquely choice-worthy in <a href="#tbl-edt-late" class="quarto-xref">Table&nbsp;7 (a)</a>, so this will violate the SCP.</p>
+<p>How large does <em>p</em> have to be? As long as <em>p</em>&nbsp;&gt;&nbsp;(2<em>a</em>&nbsp;‑&nbsp;2<em>d</em>)/(2<em>a</em>&nbsp;‑&nbsp;<em>b</em>&nbsp;‑&nbsp;<em>d</em>), then the bottom-left will be greater than the top-right. This is consistent with <em>p</em>&nbsp;&lt;&nbsp;1, since <em>d</em>&nbsp;&gt;&nbsp;<em>b</em>. As long as <em>p</em>&nbsp;&gt;&nbsp;(2<em>b</em>&nbsp;‑&nbsp;2<em>c</em>)/(<em>b</em>&nbsp;+&nbsp;<em>d</em>&nbsp;‑2<em>c</em>), then the bottom-right will be greater than the top-left. Again, since <em>d</em>&nbsp;&gt;&nbsp;<em>b</em>, this is consistent with <em>p</em>&nbsp;&lt;&nbsp;1. We can guarantee both conditions are met if:</p>
+<p><span class="math display">\[
+p = 1 - \frac{(d-b)^2}{(2a-b-d)(b+d-2c)}
+\]</span></p>
+<p>Assume we use the values from <a href="#tbl-sample-violation-late" class="quarto-xref">Table&nbsp;5 (a)</a>, so <em>a</em>&nbsp;=&nbsp;72, <em>b</em>&nbsp;=&nbsp;36, <em>c</em>&nbsp;=&nbsp;18, and <em>d</em>&nbsp;=&nbsp;54. Then this formula says that <em>p</em>&nbsp;=&nbsp;1/9. If we set <em>p</em> to 1/9, we get the tree shown in <a href="#fig-sample-violation" class="quarto-xref">Figure&nbsp;5</a>. What I’ve argued here is that that example is perfectly general. If constraints 1-3 suffice for Up being uniquely choice-worthy, then any game where there are two equilibria but Up is uniquely choice-worthy can be embedded in a dynamic game where it is the game Chooser will face if they ever have to choose, but in the strategic form of the game, Down is uniquely choice-worthy. So saying 1-3 suffices for Up being uniquely choice-worthy leads to systematic violations of the SCP. Since the SCP is true, these theories must be false.</p>
+<p>If constraints 2 and 3 don’t suffice to say that a particular strict equilibrium in a 2<em>2 game is not choice-worthy, it’s hard to see what further constraints could make a difference. So I conclude that, if the SCP is true, then in 2</em>2 games with two strict equilibria, both options are choice-worthy. This shows that <span class="citation" data-cites="Spencer2021b">Spencer (<a href="#ref-Spencer2021b" role="doc-biblioref">2021</a>)</span> and <span class="citation" data-cites="Fuscond">Fusco (<a href="#ref-Fuscond" role="doc-biblioref">n.d.</a>)</span> are right about these problems.</p>
+<p>That’s a case where a theorist who thinks constraints 1-3 suffice for Up being uniquely choice-worthy will violate the SCP. As we noted at the start of this section, many theories do say those constraints suffice for unique choice-worthiness, so they are all wrong.</p>
+<p>In a 2*2 game with multiple strict equilibria, the only theory that’s compatible with the SCP, and hence the only plausible theory, is that both equilibria are choice-worthy.</p>
+</section>
+<section id="sec-ordering" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem 2: Ordering</h1>
+<section id="sec-ordering-intro" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-ordering-intro"><span class="header-section-number">5.1</span> Introducing the Problem</h2>
+<p>Standard approaches to decision theory assign to Chooser a probability function and a utility function, both defined over (some) propositions. The domain of each function is some subset of the reals; the interval [0,1] for the probability, and some bounded interval for the utilities. The real numbers have a distinctive topology. Among other things, they are totally ordered: for any two numbers, either one is greater, or they are equal. So assuming that probabilities and utilities are numerical involves assuming that for any two propositions, the probability(/utility) of the first is either greater than, less than, or equal to, that of the other. Call this assumption Ordering.</p>
+<p>Ordering is controversial, both for probabilities and utilities. For probabilities, it has been criticised since Keynes’s <em>Treatise on Probability</em> <span class="citation" data-cites="Keynes1921">(<a href="#ref-Keynes1921" role="doc-biblioref">1921</a>)</span>, and in recent times has been criticised by, among others, Peter <span class="citation" data-cites="Walley1991">Walley (<a href="#ref-Walley1991" role="doc-biblioref">1991</a>)</span> and James <span class="citation" data-cites="Joyce2010">Joyce (<a href="#ref-Joyce2010" role="doc-biblioref">2010</a>)</span>. For utilities, the most prominent contemporary critic is Ruth Chang <span class="citation" data-cites="Chang2002 Chang2015">(<a href="#ref-Chang2002" role="doc-biblioref">2002</a>, <a href="#ref-Chang2015" role="doc-biblioref">2015</a>)</span>.</p>
+<p>Just like there are many critics of Ordering, there are many defenders. <span class="citation" data-cites="DorrEtAl2023">Dorr, Nebel, and Zuehl (<a href="#ref-DorrEtAl2023" role="doc-biblioref">2023</a>)</span> defend it on semantic grounds. Adam <span class="citation" data-cites="Elga2010">Elga (<a href="#ref-Elga2010" role="doc-biblioref">2010</a>)</span> argues that violations of Ordering for probabilities leads to susceptibility to a money pump. John <span class="citation" data-cites="Broome2001">(<a href="#ref-Broome2001" role="doc-biblioref"><strong>Broome2001?</strong></a>)</span> and Johan <span class="citation" data-cites="Gustafsson2022">Gustafsson (<a href="#ref-Gustafsson2022" role="doc-biblioref">2022</a>)</span> make similar arguments in favour of Ordering for utilities.</p>
+<p>Even critics of Ordering have noted its unintuitive characteristics. <span class="citation" data-cites="BradleySteele2016">Bradley and Steele (<a href="#ref-BradleySteele2016" role="doc-biblioref">2016</a>)</span> argue that violations of Ordering for probabilities imply it can be rational to pay to avoid information. Harvey <span class="citation" data-cites="Ledermannd">Lederman (<a href="#ref-Ledermannd" role="doc-biblioref">2024</a>)</span> argues that violations of Ordering for utilities leads to violations of a principle he calls Negative Dominance, which I’ll return to below.</p>
+<p>Both Bradley and Steele, and Lederman, think that ultimately Ordering should be rejected, and we should live with these unintuitive results. They are both pointing out troubling features of their own view. (Something philosophers should do more often.) In each case it isn’t hard to convert the argument they give to a problem for the other kind of Ordering violation. If Ordering fails for utilities, a Bradley and Steele-style argument shows that it is worth paying to avoid information, and if it fails for probabilities, a Lederman style argument shows that Negative Dominance fails.</p>
+<p>I’m going to offer a new defence of Ordering violations. The defence has two parts. In this section, I’ll argue that even if Ordering holds for probabilities and for values of states, it does not hold for values of actions. A bit loosely, even if Ordering is true for preferences over ends, it isn’t true for preferences over means. This shows we have independent reason to reject any principle that entails Ordering is true in general. That includes many of the premises in arguments that have been offered against Ordering. Then in <a href="#sec-dual-mandate" class="quarto-xref">Section&nbsp;7</a>, I’m going to argue that many of the criticisms of views that permit Ordering violations presuppose a false view about how rational dynamic choice works.</p>
+</section>
+<section id="sec-sweeteners" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-sweeteners"><span class="header-section-number">5.2</span> Argument from Sweeteners</h2>
+<p>In <a href="#sec-multiple" class="quarto-xref">Section&nbsp;4</a> I argued that in <a href="#tbl-sample-violation-late" class="quarto-xref">Table&nbsp;5 (a)</a>, both Up and Down are choice-worthy. This is consistent with Ordering only if Chooser is indifferent between Up and Down. If Chooser is indifferent, then ‘sweetening’ one of the options, by increasing its payout in all states, should break the tie between them. But it doesn’t. If we start with <a href="#tbl-edt-late" class="quarto-xref">Table&nbsp;7 (a)</a> and add 1 to the payout for Up, we get <a href="#tbl-sweetened" class="quarto-xref">Table&nbsp;8</a>. And the argument in <a href="#sec-multiple" class="quarto-xref">Section&nbsp;4</a> shows that both Up and Down are choice-worthy in <a href="#tbl-sweetened" class="quarto-xref">Table&nbsp;8</a>.</p>
+<div id="tbl-sweetened" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sweetened-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: <a href="#tbl-sample-violation-late" class="quarto-xref">Table&nbsp;5 (a)</a> with <strong>Up</strong> sweetened by 1.
+</figcaption>
+<div aria-describedby="tbl-sweetened-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">54</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>So the SCP implies that Ordering fails in cases like these. Up and Down are both choice-worthy, so neither is better than the other, and they aren’t equally good.</p>
+</section>
+<section id="sec-β" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-β"><span class="header-section-number">5.3</span> Argument from β</h2>
+<p>There is something odd about using preference orderings in an empirical theory of choice. We never observe preference orderings; we only ever observe choices. A tradition tracing back to <span class="citation" data-cites="Samuelson1938">Samuelson (<a href="#ref-Samuelson1938" role="doc-biblioref">1938</a>)</span> says decision theory should start with choice dispositions, not preferences.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> For any set of options S, let C(S) be the set of options Chooser regards as choice-worthy.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> This need not be a radical break with the idea that decision theory is based around preferences. Given some intuitive constraints on C, we can generate a preference relation out of it, and that preference relation will satisfy Ordering. It turns out, however, that the SCP is inconsistent with some of those constraints.</p>
+<p>Amartya <span class="citation" data-cites="Sen1971">Sen (<a href="#ref-Sen1971" role="doc-biblioref">1971</a>)</span> noted that (given some other intuitive but not uncontroversial constraints), Ordering is equivalent to the following condition on C. He gave it the unmemorable name Principle β.</p>
+<dl>
+<dt>β</dt>
+<dd>
+If S ⊆ S’, and {A, B} ⊆ C(S), then A ∈ C(S’) iff B ∈ C(S’).
+</dd>
+</dl>
+<p>That is, if A and B are both initially choice-worthy, then after some options are added, either they are both choice-worthy, or neither is.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> If β fails, then either Ordering fails, or something much less intuitive than Ordering or β fails. And the SCP is inconsistent with β.</p>
+<p>Extend <a href="#tbl-sample-violation-late" class="quarto-xref">Table&nbsp;5 (a)</a> so there is a third option: eXit. This option returns 60 whatever Demon does. And if Demon predicts eXit, they flip a fair coin to decide whether to play PU or PD. So the table looks like <a href="#tbl-beta-violation" class="quarto-xref">Table&nbsp;9</a>.</p>
+<div id="tbl-beta-violation" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-beta-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: A violation of Principle β
+</figcaption>
+<div aria-describedby="tbl-beta-violation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>eXit</strong></td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In this table, Down is not choice-worthy, since it is dominated. So although the SCP says that C({U,&nbsp;D})&nbsp;=&nbsp;({U,&nbsp;D}), C({U,&nbsp;D,&nbsp;X})&nbsp;=&nbsp;({U,&nbsp;X}), violating β. So the SCP is inconsistent with Ordering.</p>
+</section>
+<section id="sec-negdom" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-negdom"><span class="header-section-number">5.4</span> Argument from Dominance</h2>
+<p>Harvey <span class="citation" data-cites="Ledermannd">Lederman (<a href="#ref-Ledermannd" role="doc-biblioref">2024</a>)</span> notes that given some other plausible assumptions, Ordering is inconsistent with a principle he calls Negative Dominance.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<blockquote class="blockquote">
+<p><strong>Negative Dominance</strong><br>
+If <em>p</em> is a lottery proposition, and A&nbsp;&gt;&nbsp;B, then either A&nbsp;&gt;<sub><em>p</em></sub>&nbsp;B, or A&nbsp;&gt;<sub>¬<em>p</em></sub>&nbsp;B.</p>
+</blockquote>
+<p>In <strong>Negative Dominance</strong>, &gt; is a strict preference relation, and &gt;<sub><em>p</em></sub> is the preference relation conditional on <em>p</em>. The principle says that if A is strictly preferred to B, it also must be strictly preferred conditional on at least one outcome of a lottery. Most theories that violate Ordering violate Negative Dominance, and conversely most theories that violate Negative Dominance violate Ordering. Given the SCP, it seems plausible Negative Dominance fails. Let H be that a particular fair coin lands Heads, T that it lands Tails, H8 a bet that pays 8 if H and 0 otherwise, and T8 a bet that pays 8 if T and 0 otherwise. In <a href="#tbl-negdom" class="quarto-xref">Table&nbsp;10</a>, Chooser can play Up, Down or eXit, and Demon has made an arbitrarily accurate prediction. PU means they predicted Up; PDX means they predicted Down or eXit.</p>
+<div id="tbl-negdom" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-negdom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: A violation of Negative Dominance
+</figcaption>
+<div aria-describedby="tbl-negdom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PDX</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">1+H8</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1+T8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>eXit</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>This is a violation of Negative Dominance given these four assumptions.</p>
+<ol type="1">
+<li>A strategy is not choice-worthy if it is dominated, including if it is dominated by a mixed strategy.</li>
+<li>If A is choice-worthy and B is not, then A&nbsp;&gt;&nbsp;B.</li>
+<li>If B is choice-worthy and A is available, then ¬(A&nbsp;&gt;&nbsp;B).</li>
+<li>If B strictly dominates A, then ¬(A&nbsp;&gt;&nbsp;B).</li>
+</ol>
+<p>In <a href="#tbl-negdom" class="quarto-xref">Table&nbsp;10</a>, eXit is dominated by a 50/50 mix of Up and Down, so it is not choice-worthy (by 1). Since Up is choice-worthy, U&nbsp;&gt;&nbsp;X (by 2). Conditional on Heads, <a href="#tbl-negdom" class="quarto-xref">Table&nbsp;10</a> becomes <a href="#tbl-negdom-heads" class="quarto-xref">Table&nbsp;11</a>.</p>
+<div id="tbl-negdom-heads" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-negdom-heads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11: <a href="#tbl-negdom" class="quarto-xref">Table&nbsp;10</a> conditional on Heads
+</figcaption>
+<div aria-describedby="tbl-negdom-heads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PDX</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>eXit</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-negdom-heads" class="quarto-xref">Table&nbsp;11</a>, Down is dominated and so eliminated. And post-deletion, the arguments in <a href="#sec-multiple" class="quarto-xref">Section&nbsp;4</a> show both options are choice-worthy. So ¬(U&nbsp;&gt;&nbsp;X) (by 3). And if Tails, eXit strictly dominates Up, so ¬(U&nbsp;&gt;&nbsp;X) (by 4). Hence given the SCP, and these four assumptions, Negative Dominance fails.</p>
+</section>
+<section id="sec-conclusion" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-conclusion"><span class="header-section-number">5.5</span> Conclusion</h2>
+<p>In general, it isn’t easy to convert a theory of choice-worthiness into a theory of preference. There are some special cases when there is a natural way to do this, but they mostly rely on principles like β holding. Still, the arguments in this section suggest that however we convert a theory of choice consistent with the SCP into a theory of preference, Ordering will fail. And it will fail even if Ordering holds for credences (contra Keynes), and holds for values (contra Chang).</p>
+<p>The philosophical significance of this is that it shows several objections to views like Keynes’s and Chang’s over-generate, and hence are mistaken. Any argument that shows all Ordering violations are problematic entails that the SCP is false. But the arguments for the RCP, especially the Ramsey Test argument from <a href="#sec-ramsey" class="quarto-xref">Section&nbsp;2.2</a>, are more compelling than almost all the alleged problems for Ordering violations. So even though I’ve assumed in this section that Ordering holds for credences and values, the arguments here show that this assumption is not in general warranted. As long as there are other agents around (either Demons or rational human game players), Ordering will fail, so general objections to Ordering must be wrong.</p>
+<p>I said ‘almost all’ in the previous paragraph because there is one objection to Ordering violations that the arguments of this section don’t touch: the objection from <span class="citation" data-cites="Elga2010">Elga (<a href="#ref-Elga2010" role="doc-biblioref">2010</a>)</span>, <span class="citation" data-cites="Broome2001">(<a href="#ref-Broome2001" role="doc-biblioref"><strong>Broome2001?</strong></a>)</span> and <span class="citation" data-cites="Gustafsson2022">Gustafsson (<a href="#ref-Gustafsson2022" role="doc-biblioref">2022</a>)</span> that Ordering violations lead to choosing dominated strategies. Those arguments turn on an assumption about dynamic choice that we have independent reason to reject, and I’ll come back to them in <a href="#sec-dual-mandate" class="quarto-xref">Section&nbsp;7</a>. But first I’ll make a small note about how philosophically significant this failure of Ordering is.</p>
+<!--Got to do strict dominance example-->
+</section>
+</section>
+<section id="sec-suppositional" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Interlude on Suppositional Decision Theories</h1>
+<p>When a student starts decision theory, they are introduced to a view that is simple, elegant, and wrong. The view starts by assuming that Chooser, has some actions <em>A</em> available, with <em>a</em> an arbitrary action from <em>A</em>. There are some possible states <em>S</em>, with <em>s</em> an arbitrary such state. Two numerical functions are given: a probability function Pr over states, and a value function <em>V</em> over pairs of actions and states.</p>
+<p>The simple, elegant, and wrong theory is that Chooser should value each act <em>a</em> by its expected value, and choose the one with the highest value. That is, Chooser should select <em>a</em> to maximise Σ<sub><em>s</em>&nbsp;∈&nbsp;<em>S</em></sub>&nbsp;Pr(<em>s</em>)<em>V</em>(<em>as</em>).</p>
+<p>If Chooser has any causal influence over the states, this theory gives bad advice. Assume <em>A</em> is {<em>a</em>, <em>b</em>}, <em>S</em> is {<em>s</em>,&nbsp;<em>t</em>}, and <em>a</em> will cause <em>s</em> to be actual, while <em>b</em> will cause <em>t</em>. And assume <em>V</em> is described in <a href="#tbl-joycewindow" class="quarto-xref">Table&nbsp;12</a>.</p>
+<div id="tbl-joycewindow" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-joycewindow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12: A counterexample to the simple theory.
+</figcaption>
+<div aria-describedby="tbl-joycewindow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><em>s</em></th>
+<th style="text-align: center;"><em>t</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><em>a</em></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1001</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>b</em></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-joycewindow" class="quarto-xref">Table&nbsp;12</a> Chooser should do <em>b</em> and bring about the best state, but whatever Pr says, the simple theory says to do <em>a</em>. So far every decision theorist would agree. But here agreement ends. There is no agreement on either why the simple theory fails in this case, or what should go in its place. The most famous disagreement is about whether it is significant that the states and actions are causally connected, or merely evidentially connected, but there are many other disputes beyond that.</p>
+<p>Still, in all of the disagreement, there is one common thread. Most decision theorists endorse a <strong>suppositional</strong> account of problems like <a href="#tbl-joycewindow" class="quarto-xref">Table&nbsp;12</a>. This terminology comes from James Joyce<span class="citation" data-cites="Joyce1999">(<a href="#ref-Joyce1999" role="doc-biblioref">1999</a> Ch. 6)</span>, and the point that most modern theories are suppositional is made by Adam <span class="citation" data-cites="Elga2022">Elga (<a href="#ref-Elga2022" role="doc-biblioref">2022</a>)</span> and Michael <span class="citation" data-cites="Nielsen2023">Nielsen (<a href="#ref-Nielsen2023" role="doc-biblioref">2023</a>)</span>.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> A suppositional theory starts with a function from probability functions and actions to probability functions, such that Pr<sup>A</sup> is the result of modifying the prior probability Pr by ‘supposing’ that A. At this stage, the only assumption about this function is that Pr<sup>A</sup>(A)&nbsp;=&nbsp;1. The theory then says to choose the A such that the expected value of V with respect to Pr<sup>A</sup> us maximised.</p>
+<p>The point that Joyce, Elga, and Nielsen make is that many mainstream approaches to decision theory fit this description, and they differ solely with respect to what they think the ‘suppositional’ function is. If Pr<sup>A</sup>(·)&nbsp;=&nbsp;Pr(·&nbsp;|&nbsp;A), then the suppositional theory is evidential decision theory. If Pr<sup>A</sup>(·)&nbsp;=&nbsp;Pr(A&nbsp;□→&nbsp;·), the suppositional theory is the causal theory defended by <span class="citation" data-cites="GibbardHarper1978">Gibbard and Harper (<a href="#ref-GibbardHarper1978" role="doc-biblioref">1978</a>)</span>. And so on for several other theories.</p>
+<p>Not all theories are suppositional. The regret-minimising theories I discussed in <a href="#sec-multiple" class="quarto-xref">Section&nbsp;4</a> are not suppositional, and nor is the risk-sensitive theory I’ll discuss in <a href="#sec-buchak" class="quarto-xref">Section&nbsp;8</a>. One consequence of the arguments in <a href="#sec-ordering" class="quarto-xref">Section&nbsp;5</a> is that the SCP rules out any suppositional theory. All suppositional theories endorse Ordering, and the SCP entails that Ordering is false, so the SCP rules out suppositional theories.</p>
+<p>The non-suppositional theory I prefer is a version of causal ratificationism. I call it Gamified Decision Theory (GDT). It uses the following formula for valuing options:</p>
+<dl>
+<dt>GDT</dt>
+<dd>
+V(a) = Σ<sub><em>s</em>&nbsp;∈&nbsp;<em>S</em></sub>&nbsp;Pr′(<em>s</em>)<em>V</em>(<em>as</em>)
+</dd>
+</dl>
+<p>In this formula, Pr<sup>′</sup> is the probability distribution over states after Chooser has made their decision. GDT says that only options that have maximal value using this formula are choice-worthy.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> This allows that different options, with different values, could be choice-worthy. All that matters is that given the probability distribution over states that Chooser has after making the choice, the chosen option has maximal expected value. The SCP doesn’t entail GDT, but GDT is a theory to adopt given the SCP.</p>
+<p>When I say the SCP rules out all suppositional theories, it’s important to remember the assumptions I flagged back in <a href="#sec-flagging" class="quarto-xref">Section&nbsp;3</a>. I’m assuming that decision problems are fully specified by describing the payouts for each act-state pair, and the conditional probability of each state conditional on each act. Some suppositional theories, including the one Joyce himself defends, think that the unconditional probability of each state is also relevant to the rationality of each choice. This argument does not rule those theories out. To be sure, I don’t have a proof that any such suppositional theory is consistent with the SCP, and the relevant assumption about the irrelevance of unconditional probabilities is widespread, but the argument of this section does make essential use of the assumption, and it is worth noting that here.</p>
+</section>
+<section id="sec-dual-mandate" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Problem 3: Dynamic Choice</h1>
+<p>This section is about dynamic decision problems. I’ll start by saying more carefully what they are, rather than the informal presentation we’ve used so far.</p>
+<section id="sec-decision-tree" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-decision-tree"><span class="header-section-number">7.1</span> Decision Trees</h2>
+<p>A <strong>decision tree</strong> is a sextuple ⟨<em>W</em>, <em>R</em>, <em>V</em>, <em>a</em>, <em>I</em>, Pr⟩ such that:</p>
+<ul>
+<li><em>W</em> is a finite set of nodes. One of these nodes, call it <em>o</em> for origin, is designated as the initial node. (This is the open circle in the diagrams.)</li>
+<li><em>R</em> is a relation on <em>W</em> such that for any <em>x</em>&nbsp;∈&nbsp;<em>W</em>, ¬<em>xRo</em>, and if <em>y</em>&nbsp;≠&nbsp;<em>o</em>, there is a unique <em>x</em> such that <em>xRy</em>. Intuitively, the decision problem starts at <em>o</em>, and continues by moving from a node <em>x</em> to another node <em>y</em> such that <em>xRy</em> until there is nowhere further to go. Say that <em>x</em> is a predecessor of <em>y</em> if <em>xR+y</em>, where <em>R+</em> is the ancestral of <em>R</em>.</li>
+<li><em>V</em> is a value function. It maps each terminal node of <em>W</em> to a real number. A node <em>x</em> is a terminal node iff there is no <em>y</em> such that <em>xRy</em>.</li>
+<li><em>a</em> is a function from non-terminal nodes in <em>W</em> to the set {C,&nbsp;D,&nbsp;N} that says who the agent is for each node. Intuitively, C is for Chooser, D is for Demon, and N is for Nature. That agent ‘chooses’ where the game goes next.</li>
+<li><em>I</em> is a partition of the nodes the non-terminal nodes <em>x:&nbsp;a(x)&nbsp;=</em>C. The elements of this partition are called information sets. Intuitively, when Chooser reaches a node where they must choose, they know that they are in one member of this partition, i.e., one information set, and nothing more. Any two nodes in the same information set have the same number of outbound links.</li>
+<li>Pr is a conditional probability function. It says that given a <em>strategy</em> for Chooser, and that a particular non-terminal node <em>x</em> which is assigned to Demon or Nature has reached, what the probability is that we’ll move to some further node <em>y</em> such that <em>xRy</em>. If <em>x</em> is assigned to Nature, this probability is independent of Chooser’s strategy.</li>
+</ul>
+<p>A <strong>strategy</strong> for one of the three players, Demon, Chooser or Nature, is a function from all the nodes in the tree which are assigned to them, to the move they will make if that node is reached. Given any decision tree, one can generate a <strong>strategic decision problem</strong> where the possible actions are strategies for Chooser, and the states are pairs of strategies for Demon and strategies for Nature. The SCP says that if there is only one cell in <em>I</em>, this strategic problem has the same solutions as the dynamic problem represented by the tree. But if <em>I</em> has more than one cell, in general the problems will be distinct.</p>
+</section>
+<section id="sec-resolute" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-resolute"><span class="header-section-number">7.2</span> Resolute Choice</h2>
+<p>There are two standard positions in philosophy for how to navigate decision trees: the resolute view and the sophisticated view.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> We’ll start with the resolute view. It says that Chooser should solve the strategic problem, and then having chosen a strategy, stick to it whatever happens. For example, Resolute Evidential Decision Theory (REDT) says Chooser should adopt the strategy with the highest conditional expected utility, and stay with it whatever happens.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> This can lead to some odd results. <a href="#fig-redt" class="quarto-xref">Figure&nbsp;7</a>/<a href="#tbl-redt" class="quarto-xref">Table&nbsp;13</a> is a variant on Newcomb’s Problem.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Tree</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Table</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-redt" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-redt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-redt-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-redt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: An open box Newcomb’s Problem.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tbl-redt" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-redt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13: An open box Newcomb’s Problem.
+</figcaption>
+<div aria-describedby="tbl-redt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">P1</th>
+<th style="text-align: center;">P2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Chooser sees Demon’s prediction before they act. Roughly speaking, Demon’s predictions are 95% accurate. More precisely, the probability of each prediction given each strategy for Chooser is given in <a href="#tbl-redt-strategy" class="quarto-xref">Table&nbsp;14</a>. I’ve also added the expected value (according to EDT) of each strategy.</p>
+<div id="tbl-redt-strategy" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-redt-strategy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;14: Demon’s prediction probabilities for <a href="#fig-redt" class="quarto-xref">Figure&nbsp;7</a>/<a href="#tbl-redt" class="quarto-xref">Table&nbsp;13</a>.
+</figcaption>
+<div aria-describedby="tbl-redt-strategy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">P1</th>
+<th style="text-align: center;">P2</th>
+<th style="text-align: center;">Exp Util</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1-if-P1, 1-if-P2</td>
+<td style="text-align: center;">0.95</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">5.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1-if-P1, 2-if-P2</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">5.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2-if-P1, 1-if-P2</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">5.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2-if-P1, 2-if-P2</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">0.95</td>
+<td style="text-align: center;">5.25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Since the strategy of always playing 1 has highest return, REDT says to play it. And it says to do that even when, as is possible, Demon plays P2, so it is guaranteed to get the worst return. This isn’t very plausible, so REDT doesn’t seem attractive. We’ll come back to whether this is because it is resolute or because it is evidential, but there is an attractive diagnosis. REDT gives the wrong result because it gives too much weight to earlier plans; it commits the sunk cost fallacy. This diagnosis supports the sophisticated theory.</p>
+</section>
+<section id="sec-sophisticated" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-sophisticated"><span class="header-section-number">7.3</span> Sophisticated Choice</h2>
+<p>The <strong>sophisticated</strong> theory (at least as I’m using the term) says that Chooser should take each node as a new choice, treat their past choices as fixed, and treat their future choices as another more-or-less knowable part of the world, and do whatever is best given those constraints. The <strong>pure sophisticated</strong> theory adds two further constraints to that, which I’ll call Openness and Separation<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>.</p>
+<dl>
+<dt>Openness</dt>
+<dd>
+Any credal distribution over Chooser’s own future actions is rationally permissible provided that it gives probability 1 to Chooser selecting some rational action at each point.
+</dd>
+</dl>
+<p>Separation The rational choices at an information set are independent of payouts in parts of the tree which cannot be reached from that information set.</p>
+<p>I’m going to accept the sophisticated theory, but reject both Openness and Separation. Any theory consistent with the SCP gets into trouble in <strong>?@fig-sophisticated-first</strong> if we accept both of these additional claims.</p>
+<p>[Include diagram here]</p>
+<p>In fig-sophisticated-first, Chooser first decides whether to eXit, or Risk. If they eXit, they get 2. If they Risk, they play <a href="#tbl-sophisticated-first" class="quarto-xref">Table&nbsp;15</a>.</p>
+<div id="tbl-sophisticated-first" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sophisticated-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;15: The risky subgame in <strong>?@fig-sophisticated-first</strong>.
+</figcaption>
+<div aria-describedby="tbl-sophisticated-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PU</th>
+<th style="text-align: center;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Up</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Down</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-sophisticated-first" class="quarto-xref">Table&nbsp;15</a>, both options are possible. So by Openness, having credence 1 that they’ll play Up is rational. If the eXit payout was -1, the only options to survive deletion of dominated strategies would be Risk-Up and Risk-Down, and in that situation the SCP implies that both options are rational. So by Separation, Down is choice-worthy in <strong>?@fig-sophisticated-first</strong>. But this combination is absurd, since the strategy Risk-Down is dominated by both eXit-Up and eXit-Down. As <span class="citation" data-cites="Spencer202x">(<a href="#ref-Spencer202x" role="doc-biblioref"><strong>Spencer202x?</strong></a>)</span> and <span class="citation" data-cites="Rothfusnd">Rothfus (<a href="#ref-Rothfusnd" role="doc-biblioref">forthcoming</a>)</span> put it, the result is dynamically inconsistent.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p>
+</section>
+<section id="sec-dual-mandate-defined" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-dual-mandate-defined"><span class="header-section-number">7.4</span> Dual Mandate</h2>
+<p>There is a better option than both of these. Following Reinhard <span class="citation" data-cites="Selten1974">(<a href="#ref-Selten1974" role="doc-biblioref"><strong>Selten1974?</strong></a>)</span>, the standard approach to dynamic choice in game theory says that both the resolute and sophisticated views are half-right. They both give necessary conditions for a series of moves being choice-worthy, but neither gives a sufficient condition. Decision theorists should adopt the same approach. In a decision tree, rational Chooser will make a choice that satisfies both of the following constraints.</p>
+<ol type="1">
+<li>They will adopt a strategy that is choice-worthy in the strategic form of the tree.</li>
+<li>At every information set, they will make a choice that is choice-worthy at that moment, holding fixed their strategy elsewhere.</li>
+</ol>
+<p>If we assume Ordering, imposing both of these constraints is implausible, since it is very unlikely that any strategy will meet both criteria.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a> But without Ordering, typically the strategies permitted by 1 and 2 will be overlapping sets.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p>
+<p>Call the view that in dynamic choices rational Chooser will conform to both 1 and 2 the <em>dual-mandate</em> view of dynamic choice. It says that both the resolute and sophisticated views provide necessary conditions for</p>
+<!--Not written. Too many ideas-->
+</section>
+</section>
+<section id="sec-buchak" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Problem 4: Risk-Sensitivity</h1>
+<p>Think about what value of <em>x</em> would make Chooser indifferent between these two options, and why that would be the right value:</p>
+<ol type="1">
+<li>$1,000,000</li>
+<li>A gamble that returns $2,000,000 with probability <em>x</em>, and $0 with probability 1-<em>x</em>.</li>
+</ol>
+<p>What factors are relevant to solving for <em>x</em>? One factor is the declining marginal utility of money. Money primarily has exchange value, and if Chooser won $2,000,000, Chooser would exchange the second million for things they chose not to exchange the first million for, so the second million has less value. That’s one reason that <em>x</em> is well above ½.</p>
+<p>But is it the only reason? The orthodox answer is that it is. Lara <span class="citation" data-cites="BuchakRisk">Buchak (<a href="#ref-BuchakRisk" role="doc-biblioref">2013</a>)</span> has argued that it is not. We also need to know how much Chooser values, or more likely disvalues, risk. That is, we need to know how risk-seeking, or risk-averse, Chooser is.</p>
+<p>The orthodox view is that all we need to know are three numbers. In what follows, let <em>b</em> be Chooser’s current wealth in millions, and V the function from wealth (in millions), to utility. Since V is only determined up to positive affine transformations, we can stipulate two of these values for V.</p>
+<ul>
+<li>V(<em>b</em>), stipulated to be 0.</li>
+<li>V(<em>b</em> + 1), stipulated to be 1.</li>
+<li>V(<em>b</em> + 1), which we’ll label <em>c</em>.</li>
+</ul>
+<p>On the standard view, the gamble’s value is <em>cx</em>, so Chooser is indifferent between it and the money iff <em>x</em>&nbsp;=&nbsp;1/<em>c</em>. On Buchak’s view, rational Chooser has a risk function <em>f</em>, that measures their sensitivity to risk. The function must be monotonic increasing, with <em>f</em>(0)&nbsp;=&nbsp;0, and <em>f</em>(1)&nbsp;=&nbsp;1. If Chooser is risk-averse, then typically <em>f</em>(<em>x</em>)&nbsp;&lt;&nbsp;<em>x</em>. Buchak’s view reduces to the orthodox view if <em>f</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em>. I’m going to argue that given the SCP, <em>f</em>(<em>x</em>) does equal <em>x</em>. I’m far from the first to argue for <em>f</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em>.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> The value of the argument here is that it uses the same principle, the SCP, that is relevant to so many other problems.</p>
+<p>The core of Buchak’s theory is a non-standard way of valuing a gamble. For simplicity, we’ll focus on gambles with finitely many outcomes. Associate a gamble with a random variable <em>O</em>, which takes values <em>o</em><sub>1</sub>, …, <em>o<sub>n</sub></em>, where <em>o<sub>j</sub></em>&nbsp;&gt;&nbsp;<em>o<sub>i</sub></em> iff <em>j</em>&nbsp;&gt;&nbsp;<em>i</em>. Buchak says that the risk-weighted expected utility of <em>O</em> is given by this formula, where <em>f</em> is the agent’s risk-weighting function.</p>
+<p><span class="math display">\[
+REU(O) = o_1 + \sum_{i = 2}^n f(\Pr(O \geq o_i))(o_i - o_{i-1})
+\]</span></p>
+<p>The decision rule then is simple: choose the gamble with the highest REU.</p>
+<p>The key notion here is the risk function <em>f</em>, which we introduced earlier. I’m going to show that if <em>f</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em><sup>2</sup>, then we get a violation of the SCP. This is If <em>f</em> is the identity function, then this definition becomes a slightly non-standard way of defining expected utility. Buchak allows it to be much more general. The key constraints are that <em>f</em> is monotonically increasing, that <em>f</em>(0)&nbsp;=&nbsp;0 and <em>f</em>(1)&nbsp;=&nbsp;1. In general, if <em>f</em>(<em>x</em>)&nbsp;&lt;&nbsp;<em>x</em>, Chooser is more risk-averse than an expected utility maximiser, while if <em>f</em>(<em>x</em>)&nbsp;&gt;&nbsp;<em>x</em>, Chooser is more risk-seeking. The former case is more relevant to everyday intuitions, and it’s what I’ll focus on. Indeed, I’ll focus on the case where <em>r</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em><sup>2</sup>, which is also a case Buchak uses a lot.</p>
+<p>There are a number of good reasons to like Buchak’s theory, but it is inconsistent with the Single Choice Principle. I’ll show this for the case <em>r</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em><sup>2</sup>, but it’s not much harder to produce similar examples for any value of <em>r</em> other than <em>r</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em>. In <a href="#fig-buchak" class="quarto-xref">Figure&nbsp;8</a> at stage 1 a fair die will be rolled. If it lands 1 or 2, Nature moves Left; if it lands 3 or 4, Nature moves Middle; otherwise, Nature moves Right. If Nature moves Left, the game ends, and Chooser gets 1. Otherwise Chooser is told that Nature did not move Left, but not whether they moved Middle or Right. If Chooser selects Down, they get 1. If Chooser selects Up, they get 5 if Nature moved Middle, and 0 otherwise.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-buchak" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-buchak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="four-prob_files/figure-html/fig-buchak-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-buchak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Tree Diagram of the counterexample to REU.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#tbl-buchak-early" class="quarto-xref">Table&nbsp;16 (a)</a> shows the strategic table of <a href="#fig-buchak" class="quarto-xref">Figure&nbsp;8</a>, and <a href="#tbl-buchak-late" class="quarto-xref">Table&nbsp;16 (b)</a> shows the decision table Chooser faces at the time they have to choose.</p>
+<div id="tbl-panel" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;16: Two strategy tables for <a href="#fig-buchak" class="quarto-xref">Figure&nbsp;8</a>.
+</figcaption>
+<div aria-describedby="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-buchak-early" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-buchak-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) The strategy table at game start.
+</figcaption>
+<div aria-describedby="tbl-buchak-early-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Left</strong></th>
+<th style="text-align: center;"><strong>Middle</strong></th>
+<th style="text-align: center;"><strong>Right</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-buchak-late" class="quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-buchak-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) The strategy table at choice time.
+</figcaption>
+<div aria-describedby="tbl-buchak-late-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Middle</strong></th>
+<th style="text-align: center;"><strong>Right</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Up</strong></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Down</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-buchak-early" class="quarto-xref">Table&nbsp;16 (a)</a>, the REU of Down is 1 (since that’s the only possible outcome), and the REU of Up is 8/9. There is a 2/3 chance of getting at least 1, so that’s worth 4/9, and there’s a 1/3 chance of getting another 4, so that’s also worth 4/9, and adding those gives 8/9. So the optimal strategy, according to REU theory, is Down. That is, REU says to prefer the strategy <em>Choose Down if you have to choose</em> to the strategy <em>Choose Up if you have to choose</em>. But if we get to the choice point, we’re at <a href="#tbl-buchak-late" class="quarto-xref">Table&nbsp;16 (b)</a>. And in that table the REU of Up is 5 times 1/4, i.e., 5/4. So at that point, REU says to choose Up. What REU says to do if you have to choose is different to which strategy it chooses for the one and only point you have to choose at. That is, Buchak’s theory violates the SCP, and so should be rejected.</p>
+<p>This is far from the first objection to Buchak’s view, but something interesting follows from the connection, via the SCP, to demonic problems. Many decision theorists reject Buchak’s view about non-demonic problems in favour of orthodox expected utility theory, but also endorse views inconsistent with the SCP.<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a> Those theorists can’t coherently use this argument against Buchak’s view. Nor can they use any other argument whose premises entail the SCP, such as an argument from the Sure Thing Principle. It would take too long to argue for this here, but I suspect there is no way to do this.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> If we reject the SCP, the weight of reasons favours Buchak’s view over orthodoxy. I’ll leave this as a challenge for theorists unconvinced by <a href="#sec-scp-defence" class="quarto-xref">Section&nbsp;2</a>: what is the best argument against Buchak’s view, and in favour of expectationist orthodoxy, whose premises do not entail the SCP? The separation in the literature between demonic and non-demonic problems has obscured how hard a challenge this is.</p>
+</section>
+<section id="sec-conclusion" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Conclusion</h1>
+<p>Not yet written</p>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Allais1953" class="csl-entry" role="listitem">
+Allais, M. 1953. <span>“Le Comportement de l’homme Rationnel Devant Le Risque: Critique Des Postulats Et Axiomes de l’ecole Americaine.”</span> <em>Econometrica</em> 21 (4): 503–46. <a href="https://doi.org/10.2307/1907921">https://doi.org/10.2307/1907921</a>.
+</div>
+<div id="ref-Arntzenius2008" class="csl-entry" role="listitem">
+Arntzenius, Frank. 2008. <span>“No Regrets; or, Edith Piaf Revamps Decision Theory.”</span> <em>Erkenntnis</em> 68 (2): 277–97. <a href="https://doi.org/10.1007/s10670-007-9084-8">https://doi.org/10.1007/s10670-007-9084-8</a>.
+</div>
+<div id="ref-Barnett2022" class="csl-entry" role="listitem">
+Barnett, David James. 2022. <span>“Graded Ratifiability.”</span> <em>Journal of Philosophy</em> 119 (2): 57–88. <a href="https://doi.org/10.5840/jphil202211925">https://doi.org/10.5840/jphil202211925</a>.
+</div>
+<div id="ref-Bernheim1984" class="csl-entry" role="listitem">
+Bernheim, B. Douglas. 1984. <span>“Rationalizable Strategic Behavior.”</span> <em>Econometrica</em> 52 (4): 1007–28. <a href="https://doi.org/10.2307/1911196">https://doi.org/10.2307/1911196</a>.
+</div>
+<div id="ref-BradleySteele2016" class="csl-entry" role="listitem">
+Bradley, Seamus, and Katie Steele. 2016. <span>“Can Free Evidence Be Bad? Value of Informationfor the Imprecise Probabilist.”</span> <em>Philosophy of Science</em> 83 (1): 1–28. <a href="https://doi.org/10.1086/684184">https://doi.org/10.1086/684184</a>.
+</div>
+<div id="ref-Briggs2015" class="csl-entry" role="listitem">
+Briggs, Ray. 2015. <span>“Costs of Abandoning the Sure-Thing Principle.”</span> <em>Canadian Journal of Philosophy</em> 45 (5): 827–40. <a href="https://doi.org/10.1080/00455091.2015.1122387">https://doi.org/10.1080/00455091.2015.1122387</a>.
+</div>
+<div id="ref-BuchakRisk" class="csl-entry" role="listitem">
+Buchak, Lara. 2013. <em>Risk and Rationality</em>. Oxford: Oxford University Press.
+</div>
+<div id="ref-Chang2002" class="csl-entry" role="listitem">
+Chang, Ruth. 2002. <span>“The Possibility of Parity.”</span> <em>Ethics</em> 112 (4): 659–88. <a href="https://doi.org/10.1086/339673">https://doi.org/10.1086/339673</a>.
+</div>
+<div id="ref-Chang2015" class="csl-entry" role="listitem">
+———. 2015. <span>“Value Incomparability and Incommensurability.”</span> In <em>The Oxford Handbook of Value Theory</em>, edited by Iwao Hirose and Jonas Olson, 205–24. Oxford: Oxford University Press. <a href="https://doi.org/10.1093/oxfordhb/9780199959303.013.0012">https://doi.org/10.1093/oxfordhb/9780199959303.013.0012</a>.
+</div>
+<div id="ref-DorrEtAl2023" class="csl-entry" role="listitem">
+Dorr, Cian, Jacob M. Nebel, and Jake Zuehl. 2023. <span>“The Case for Comparability.”</span> <em>Noûs</em> 57 (2): 414–53. <a href="https://doi.org/10.1111/nous.12407">https://doi.org/10.1111/nous.12407</a>.
+</div>
+<div id="ref-Elga2010" class="csl-entry" role="listitem">
+Elga, Adam. 2010. <span>“Subjective Probabilities Should Be Sharp.”</span> <em>Philosophers’ Imprint</em> 10: 1–11.
+</div>
+<div id="ref-Elga2022" class="csl-entry" role="listitem">
+———. 2022. <span>“Confession of a Causal Decision Theorist.”</span> <em>Analysis</em> 82 (2): 203–13. <a href="https://doi.org/10.1093/analys/anab040">https://doi.org/10.1093/analys/anab040</a>.
+</div>
+<div id="ref-Fuscond" class="csl-entry" role="listitem">
+Fusco, Melissa. n.d. <span>“Absolution of a Causal Decision Theorist.”</span> <em>No<span>û</span>s</em>. <a href="https://doi.org/10.1111/nous.12459">https://doi.org/10.1111/nous.12459</a>.
+</div>
+<div id="ref-Gallow2020" class="csl-entry" role="listitem">
+Gallow, J. Dmitri. 2020. <span>“The Causal Decision Theorist’s Guide to Managing the News.”</span> <em>The Journal of Philosophy</em> 117 (3): 117–49. <a href="https://doi.org/10.5840/jphil202011739">https://doi.org/10.5840/jphil202011739</a>.
+</div>
+<div id="ref-Gallownd" class="csl-entry" role="listitem">
+———. n.d. <span>“The Sure Thing Principle Leads to Instability.”</span> Philosophical Quarterly. <a href="https://philpapers.org/archive/GALTST-2.pdf">https://philpapers.org/archive/GALTST-2.pdf</a>.
+</div>
+<div id="ref-GibbardHarper1978" class="csl-entry" role="listitem">
+Gibbard, Allan, and William Harper. 1978. <span>“Counterfactuals and Two Kinds of Expected Utility.”</span> In <em>Foundations and Applications of Decision Theory</em>, edited by C. A. Hooker, J. J. Leach, and E. F. McClennen, 125–62. Dordrecht: Reidel.
+</div>
+<div id="ref-Gustafsson2011" class="csl-entry" role="listitem">
+Gustafsson, Johan E. 2011. <span>“A Note in Defence of Ratificationism.”</span> <em>Erkenntnis</em> 75 (1): 147–50. <a href="https://doi.org/10.1007/s10670-010-9267-6">https://doi.org/10.1007/s10670-010-9267-6</a>.
+</div>
+<div id="ref-Gustafsson2022" class="csl-entry" role="listitem">
+———. 2022. <em>Money-Pump Arguments</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-Hands2014" class="csl-entry" role="listitem">
+Hands, D. Wade. 2014. <span>“<span class="nocase">Paul Samuelson and Revealed Preference Theory</span>.”</span> <em>History of Political Economy</em> 46 (1): 85–116. <a href="https://doi.org/10.1215/00182702-2398939">https://doi.org/10.1215/00182702-2398939</a>.
+</div>
+<div id="ref-Harper1986" class="csl-entry" role="listitem">
+Harper, William. 1986. <span>“Mixed Strategies and Ratifiability in Causal Decision Theory.”</span> <em>Erkenntnis</em> 24 (1): 25–36. <a href="https://doi.org/10.1007/BF00183199">https://doi.org/10.1007/BF00183199</a>.
+</div>
+<div id="ref-Humberstone2016" class="csl-entry" role="listitem">
+Humberstone, Lloyd. 2016. <em>Philsophical Applications of Modal Logic</em>. Milton Keynes: College Publications.
+</div>
+<div id="ref-Jeffrey1983b" class="csl-entry" role="listitem">
+Jeffrey, Richard C. 1983. <em>The Logic of Decision</em>. 2nd ed. Chicago: University of Chicago Press.
+</div>
+<div id="ref-Joyce1999" class="csl-entry" role="listitem">
+Joyce, James M. 1999. <em>The Foundations of Causal Decision Theory</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-Joyce2010" class="csl-entry" role="listitem">
+———. 2010. <span>“A Defence of Imprecise Credences in Inference and Decision Making.”</span> <em>Philosophical Perspectives</em> 24 (1): 281–323. <a href="https://doi.org/10.1111/j.1520-8583.2010.00194.x">https://doi.org/10.1111/j.1520-8583.2010.00194.x</a>.
+</div>
+<div id="ref-Keynes1921" class="csl-entry" role="listitem">
+Keynes, John Maynard. 1921. <em>Treatise on Probability</em>. London: Macmillan.
+</div>
+<div id="ref-Ledermannd" class="csl-entry" role="listitem">
+Lederman, Harvey. 2024. <span>“Of Marbles and Matchsticks.”</span> <em>Oxford Studies in Epistemology</em>.
+</div>
+<div id="ref-LevinsteinSoares2020" class="csl-entry" role="listitem">
+Levinstein, Benjamin Anders, and Nate Soares. 2020. <span>“Cheating Death in Damascus.”</span> <em>Journal of Philosophy</em> 117 (5): 237–66. <a href="https://doi.org/10.5840/jphil2020117516">https://doi.org/10.5840/jphil2020117516</a>.
+</div>
+<div id="ref-Lewis1979en" class="csl-entry" role="listitem">
+Lewis, David. 1979. <span>“Prisoners’ Dilemma Is a <span>N</span>ewcomb Problem.”</span> <em>Philosophy and Public Affairs</em> 8 (3): 235–40.
+</div>
+<div id="ref-Nielsen2023" class="csl-entry" role="listitem">
+Nielsen, Michael. 2023. <span>“Only <span>CDT</span> Values Knowledge.”</span> <em>Analysis</em> 84 (1): 67–82. <a href="https://doi.org/10.1093/analys/anad041">https://doi.org/10.1093/analys/anad041</a>.
+</div>
+<div id="ref-Nozick1969" class="csl-entry" role="listitem">
+Nozick, Robert. 1969. <span>“Newcomb’s Problem and Two Principles of Choice.”</span> In <em>Essays in Honor of Carl <span>G</span>. Hempel: A Tribute on the Occasion of His Sixty-Fifth Birthday. Hempel: A Tribute on the Occasion of His Sixty-Fifth Birthday</em>, edited by Nicholas Rescher, 114–46. Riedel: Springer.
+</div>
+<div id="ref-Pearce1984" class="csl-entry" role="listitem">
+Pearce, David G. 1984. <span>“Rationalizable Strategic Behavior and the Problem of Perfection.”</span> <em>Econometrica</em> 52 (4): 1029–50. <a href="https://doi.org/10.2307/1911197">https://doi.org/10.2307/1911197</a>.
+</div>
+<div id="ref-Podgorski2022" class="csl-entry" role="listitem">
+Podgorski, Aberlard. 2022. <span>“Tournament Decision Theory.”</span> <em>No<span>û</span>s</em> 56 (1): 176–203. <a href="https://doi.org/10.1111/nous.12353">https://doi.org/10.1111/nous.12353</a>.
+</div>
+<div id="ref-RamseyGeneralProp" class="csl-entry" role="listitem">
+Ramsey, Frank. (1929) 1990. <span>“General Propositions and Causality.”</span> In <em>Philosophical Papers</em>, edited by D. H. Mellor, 145–63. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-Rothfusnd" class="csl-entry" role="listitem">
+Rothfus, Gerard J. forthcoming. <span>“Evidence, Causality, and Sequential Choice.”</span> <em>Theory and Decision</em>, forthcoming. <a href="https://doi.org/10.1007/s11238-024-09990-y">https://doi.org/10.1007/s11238-024-09990-y</a>.
+</div>
+<div id="ref-Samuelson1938" class="csl-entry" role="listitem">
+Samuelson, Paul A. 1938. <span>“A Note on the Pure Theory of Consumer’s Behaviour.”</span> <em>Econometrica</em> 5 (17): 61–71. <a href="https://doi.org/10.2307/2548836">https://doi.org/10.2307/2548836</a>.
+</div>
+<div id="ref-Sen1971" class="csl-entry" role="listitem">
+Sen, Amartya. 1971. <span>“Choice Functions and Revealed Preference.”</span> <em>Review of Economic Studies</em> 38 (3): 307–17. <a href="https://doi.org/10.2307/2296384">https://doi.org/10.2307/2296384</a>.
+</div>
+<div id="ref-Spencer2021b" class="csl-entry" role="listitem">
+Spencer, Jack. 2021. <span>“Rational Monism and Rational Pluralism.”</span> <em>Philosophical Studies</em> 178: 1769–1800. <a href="https://doi.org/10.1007/s11098-020-01509-9">https://doi.org/10.1007/s11098-020-01509-9</a>.
+</div>
+<div id="ref-Thoma2019" class="csl-entry" role="listitem">
+Thoma, Johanna. 2019. <span>“Risk Aversion and the Long Run.”</span> <em>Ethics</em> 129 (2): 230–53. <a href="https://doi.org/10.1086/699256">https://doi.org/10.1086/699256</a>.
+</div>
+<div id="ref-Walley1991" class="csl-entry" role="listitem">
+Walley, Peter. 1991. <em>Statisical Reasoning with Imprecise Probabilities</em>. London: Chapman &amp; Hall.
+</div>
+<div id="ref-Wedgwood2013a" class="csl-entry" role="listitem">
+Wedgwood, Ralph. 2013. <span>“Gandalf’s Solution to the Newcomb Problem.”</span> <em>Synthese</em> 190 (14): 2643–75. <a href="https://doi.org/10.1007/s11229-011-9900-1">https://doi.org/10.1007/s11229-011-9900-1</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>I’ll assume $1,000 is worth 1 util. I think this assumption of constant marginal utility is close to incoherent, and it will get relaxed later, but it’s harmless for now.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This formalism only really makes sense if we presuppose the right epistemic logic is S5, and there are good reasons to not make that assumption in general <span class="citation" data-cites="Humberstone2016">(<a href="#ref-Humberstone2016" role="doc-biblioref">Humberstone 2016, 380–402</a>)</span>. For this paper we’ll treat it as a simplifying assumption that really should be relaxed in subsequent work.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>In game theory, it is usually specified that strategies include decisions about what to do at nodes that are ruled out by earlier moves in that very strategy. In theory I’m assuming this whenever I talk about strategies; in practice it doesn’t matter for any application in this paper.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>I will drop the assumption that Chooser maximises expected value in <a href="#sec-buchak" class="quarto-xref">Section&nbsp;8</a>, but it’s a harmless assumption for now.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Also assume Demon will flip a coin if they expect each option to have equal return<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This is easier to see in <a href="#tbl-ultimatum-demon" class="quarto-xref">Table&nbsp;4 (b)</a>; EDT says to just look at the numbers in the main diagonal and choose the strategy with the highest one.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Even before Harper, <span class="citation" data-cites="Lewis1979en">Lewis (<a href="#ref-Lewis1979en" role="doc-biblioref">1979</a>)</span> had pointed out the connection between Newcomb’s Problem and Prisoners’ Dilemma.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>I’m including rationalizability, as defined by <span class="citation" data-cites="Bernheim1984">Bernheim (<a href="#ref-Bernheim1984" role="doc-biblioref">1984</a>)</span> and <span class="citation" data-cites="Pearce1984">Pearce (<a href="#ref-Pearce1984" role="doc-biblioref">1984</a>)</span>, as an equilibrium concept.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>These edge cases are important for thinking about the significance of weak dominance, but that’s not relevant to this paper.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Fusco and Spencer disagree on a lot of other questions, and I think the SCP tends to favour Fusco’s side of their disagreement, but it would be a huge digression to sort out those details.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>D. Wade <span class="citation" data-cites="Hands2014">Hands (<a href="#ref-Hands2014" role="doc-biblioref">2014</a>)</span> has much more on this tradition, focusing on Samuelson’s complicated relationship to it. The SCP fits more neatly with a view that takes choice as analytically prior to utility and even to preference.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Empirically, Chooser may select different members of S on different occasions.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>To see why this might be plausible, imagine each option has a numerical value, and the choice-worthy ones are those with maximal value.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Though note that, like Sen, Lederman raises doubts about these ‘other plausible assumptions’. Note also that I’ve rephrased his principle a little to match the notation of this paper.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>My terminology largely follows Elga’s.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>My preferred version of GDT adds several more constraints to this - it has a separate constraint for ruling out weakly dominated options, and a constraint for solving beer-quiche games, and maybe a constraint for ruling out mixed strategies in coordination games. But this is a necessary condition for choice-worthiness.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>These are ordinarily used in cases where preferences change over time, but here we’re applying them in cases where preferences are constant. I’m not sure the terms have completely standard denotations across philosophy; my use is somewhat stipulative. For more background, see <span class="citation" data-cites="Steele2018">(<a href="#ref-Steele2018" role="doc-biblioref"><strong>Steele2018?</strong></a>)</span>.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>REDT is similar to the Functional Decision Theory of <span class="citation" data-cites="LevinsteinSoares2020">Levinstein and Soares (<a href="#ref-LevinsteinSoares2020" role="doc-biblioref">2020</a>)</span>; the example below is also intended as a counterexample to their view.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>It is similar to what’s sometimes called an open box Newcomb’s Problem.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>The term Openness is mine, but it’s a commonly used principle. The term Separation is from <span class="citation" data-cites="Bader2019">(<a href="#ref-Bader2019" role="doc-biblioref"><strong>Bader2019?</strong></a>)</span>. <span class="citation" data-cites="Rothfusnd">Rothfus (<a href="#ref-Rothfusnd" role="doc-biblioref">forthcoming</a>)</span> uses ‘Independence’ for a similar principle<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Spencer is interested primarily in an even stricter principle than domination that gets violated here. Chooser plays Risk-Down, and the best possible payoff from it is worse than the worst possible payout from either eXit strategy.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>There are moves available here though. We could just accept that in those cases Chooser faces a dilemma, and accept there are lots of dilemmas around. Or we could adopt a theory like the one <span class="citation" data-cites="Stalnaker199x">(<a href="#ref-Stalnaker199x" role="doc-biblioref"><strong>Stalnaker199x?</strong></a>)</span> adopts, where 1 and 2 line up. Though note this would require giving up at least one of the assumptions from <a href="#sec-flagging" class="quarto-xref">Section&nbsp;3</a>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>This is especially true if we permit mixed strategies. But that’s a point for another paper.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>See <span class="citation" data-cites="Briggs2015">Briggs (<a href="#ref-Briggs2015" role="doc-biblioref">2015</a>)</span> and <span class="citation" data-cites="Thoma2019">Thoma (<a href="#ref-Thoma2019" role="doc-biblioref">2019</a>)</span> for different arguments to the same conclusion.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>Evidential Decision Theorists reject both Buchak’s view and the SCP, and in this respect they are far from alone.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p>Note that if we don’t want to argue from first principles, but instead try to capture intuitions about cases, we should prefer Buchak’s theory because of how it handles the <span class="citation" data-cites="Allais1953">Allais (<a href="#ref-Allais1953" role="doc-biblioref">1953</a>)</span> paradox.<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

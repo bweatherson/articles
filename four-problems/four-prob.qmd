@@ -1,0 +1,65 @@
+---
+title: "Four Problems in Decision Theory"
+abstract: |
+  In recent years the literature on decision theory has become disjointed. There isn't as much discussion as there should be on how different problems impact one another. This paper aims to bring together work on problems involving demons, problems about attitudes to risk, problems about incomplete preferences, and problems about dynamic choice. In the first three of these cases, I end up defending a pre-existing view. I defend a ratificationist approach to problems with demons, the orthodox expected utility approach to risk, and the permissibility of incomplete preferences. These views are familiar, but seeing how they are related to a common strengthens the case for each of them. The most novel part of the view is the theory of dynamic choice that I offer: a sequence of choices is rational only if both the so-called 'resolute' and 'sophisticated' theories of dynamic choice would permit it. This theory would be implausible if paired with many rival solutions to the first three problems, but fits nicely with the view I'll develop through the paper
+date: July 29 2024
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+number-sections: true
+author:
+  - name: Brian Weatherson
+format:
+    html: default
+    docx:
+      reference-doc: my-template.docx
+    pdf: 
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mathfont: EB Garamond Math
+      mainfont: EB Garamond Math
+      sansfont: EB Garamond SemiBold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond SemiBold
+      fontsize: 12pt
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.75
+      link-citations: true
+      output-file: "Anti-Anti-Desire-As-Belief"
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+---
+
+Contemporary decision theory has become disjointed. There is less overlap than there should be in work on adjacent problems. This paper aims to undo some of that, by showing that four problems that have largely been worked on in isolation cast useful light on each other. In particular, I'll argue that we can go a long way towards solving all four problems by working through the consequences of a plausible principle that I'll call the Single Choice Principle.
+
+The Single Choice Principle (hereafter, SCP) relates theories of static choice and dynamic choice. In particular, it says that for a narrow class of games, it doesn't matter whether you think of the game as involving a static, strategic choice, or a dynamic choice that is made during a game. One way into the principle is to think about an oddity in the way Newcomb's Problem is normally introduced.
+
+{{< include _newcomb.qmd >}}
+
+{{< include _scp.qmd >}}
+
+{{< include _flagging.qmd >}}
+
+{{< include _p1.qmd >}}
+
+{{< include _ordering.qmd >}}
+
+<!--Got to do strict dominance example-->
+
+{{< include _suppositional.qmd >}}
+
+{{< include _dualmandate-long.qmd >}}
+
+<!--Not written. Too many ideas-->
+
+{{< include _buchak.qmd >}}
+
+# Conclusion {#sec-conclusion}
+
+Not yet written
+
+:::{.content-visible unless-format="html"}
+## References {-}
+:::
