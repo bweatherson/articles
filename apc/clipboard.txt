@@ -96,10 +96,6 @@ source("/Users/weath/Documents/citations-2024/5 - apc_scripts.R", local = knitr:
 
 # Introduction {#sec-introduction}
 
-There is so much data available in citation databases these days that making sense of it requires some combination of restriction and abstraction. Happily, there are a lot of ways to restrict and abstract that lead to valuable insights on the structure of recent philosophy. This paper restricts attention to citations in philosophy journals (as opposed to books, chapters, dissertations etc.), and also just to citations of other philosophy journals. It abstracts by (for the most part) ignoring all information about a citation except the date of the cited article, and the date of the citing article. This may look like it's throwing out not just the baby along with the bathwater, but much more besides. But it helps us see the way that philosophers over time have related to prior times, and the way that journal articles have aged.
-
-The first thing I'll do is construct a function *c*(*x*, *y*), which measures how often, on average, a paper published in year *x* is cited in year *y*. Then I'll go on to discuss several 
-
 This paper concerns citations of philosophy journal articles in other philosophy journal articles, and in particular, citations that are indexed in Web of Science. Via my home institution^[I'll say what that institution is when the paper is de-anonymised], I downloaded the full citation records for one hundred prominent English language philosophy journals from the time Web of Science started indexing them. And I looked at how often each of those articles cited each other. One simple way to summarise some trends in this data set is to ask for any pair of years, how often are articles published in the first year cited in articles published in the second year. For instance, here are two simple facts about the set of citations.
 
 ```{r}
