@@ -98,7 +98,30 @@ source("/Users/weath/Documents/citations-2024/5 - apc_scripts.R", local = knitr:
 
 There is so much data available in citation databases these days that making sense of it requires some combination of restriction and abstraction. Happily, there are a lot of ways to restrict and abstract that lead to valuable insights on the structure of recent philosophy. This paper restricts attention to citations in philosophy journals (as opposed to books, chapters, dissertations etc.), and also just to citations of other philosophy journals. It abstracts by (for the most part) ignoring all information about a citation except the date of the cited article, and the date of the citing article. This may look like it's throwing out not just the baby along with the bathwater, but much more besides. But it helps us see the way that philosophers over time have related to prior times, and the way that journal articles have aged.
 
-The first thing I'll do is construct a function *c*(*x*, *y*), which measures how often, on average, a paper published in year *x* is cited in year *y*. Then I'll go on to discuss several 
+The first thing I'll do is construct a function *c*(*x*, *y*), which measures how often, on average, a paper published in year *x* is cited in year *y*. Then I'll go on to discuss several factors that explain why *c* has the values that it does.
+
+The organising principle of the paper is that it helps to think about *c* using the notion of age, cohort and period effects. These kinds of effects are most commonly considered when investigating human populations. Imagine that you are investigating some historical records, and see something surprising when you look at teenagers in the late 1960s. What could explain the surprising result? It could be an age effect: because they were *teenagers*. It could be a period effect: because it was the *1960s*. Or it could be a cohort effect: because they were *boomers*.
+
+There are two big technical problems with teasing these explanations apart. One is that a single data point doesn't distinguish between the three possible explanations. Another is that because there is a linear relationship between the variables, since age is just period minus cohort, simple statistical tests don't always tease the effects apart.^[See @KeyesEtAl2010 for a useful survey of attempts to resolve this problem.]
+
+It is, however, important to distinguish the effects. Casual observation of voting patterns across the English-speaking world would suggest that there is a major age effect on voting: older voters support more right-wing parties and candidates. But without careful analysis, it's hard to be sure that is true, and it isn't that (a) cohorts have stable voting patterns, and (b) for the last several decades cohorts have been getting less conservative. Such a theory would have a better chance of explaining why when Bill Clinton ran for the US Presidency, he did better among older voters than with any other age group.^[See @BestKrueger2012 for the survey results, and @GhitzaEtAl2023 for a recent attempt to separate age from cohort effects in US voting patterns.]
+
+I'm looking at citations, not people, but we can apply the same general idea. Explanations of *c*(*x*, *y*) should take account the age of the citation, i.e., *y* – *x*, the period of the citation, i.e., *y*, and the cohort the citation comes from, i.e., *x*. The aim here is to see how much we can explain by those three factors, and what those explanations tell us about philosophy more broadly.
+
+There is an unsurprising age effect, and one that I found much more surprising.
+
+The unsurprising one is that articles in general are not cited before they are published, then (holding period effects fixed), they reach their peak citation rate a few years after publication, after which their citation rate falls away fairly quickly.
+
+What's surprising is that while that broad pattern, quick rise followed by almost as quick fall, is persistent over time, the details have changed. In particular, as we get to later and later cohorts, the peak is *later* (4-6 years after publication not 2-3 years), it is *lower* (closer to 1.5 times typical citations rather than 2 times), and the decline from the peak is much slower. In all three respects, the citation curve has gotten much flatter over time. Prior to doing this study, I expected that the peaks would be earlier, because electronic publication meant that articles would be more quickly discovered. That is very much not what has happened.
+
+The period effects are mostly unsurprising, though one thing did stand out. There are a lot more citations later in the dataset than earlier, because (a) there are more articles being published, and (b) there are more citations per article. Both of these factors rise are actually fairly constant from around 1980 to 2000, and then they rise steadily from 2000 onwards. Then around 2020 something striking happens: the number of citations per article rises dramatically, to almost double what it had been a few years earlier. There seems to have been a notable change in citation practices, and perhaps citation norms, just before the start of the pandemic.
+
+The cohort effects are easier to visualise than to describe in words. @fig-cohortgraph shows how often articles from each year are cited relative to how often you'd expect them to be cited given age and period effects.
+
+[Include graph here.]
+
+There are five 
+
 
 This paper concerns citations of philosophy journal articles in other philosophy journal articles, and in particular, citations that are indexed in Web of Science. Via my home institution^[I'll say what that institution is when the paper is de-anonymised], I downloaded the full citation records for one hundred prominent English language philosophy journals from the time Web of Science started indexing them. And I looked at how often each of those articles cited each other. One simple way to summarise some trends in this data set is to ask for any pair of years, how often are articles published in the first year cited in articles published in the second year. For instance, here are two simple facts about the set of citations.
 
