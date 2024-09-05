@@ -3,8 +3,8 @@ title: Epistemic Permissiveness and Symmetric Games
 date: "`r Sys.Date()`"
 author: Anon
 fontsize: 11pt
-mainfont: Lato
-mathfont: Fira Math
+mainfont: EB Garamond
+mathfont: EB Garamond Math
 geometry: margin=1.6in
 linestretch: 1.1
 bibliography: ../rBib.bib
@@ -17,7 +17,7 @@ indent: true
 header-includes:
 #  - \hypersetup{hidelinks}
   - \usepackage{nicefrac}
-  - \usepackage[italic]{mathastext}
+#  - \usepackage[italic]{mathastext}
   - \setlength\heavyrulewidth{0ex}
   - \setlength\lightrulewidth{0ex}
 ---
@@ -169,6 +169,6 @@ So the Uniqueness theorist could say that the same thing is going on in the Xeft
 
 If Uniqueness is true, then the following thing happens in games between people who know each other to have the same evidence, and to be rational. When someone forms a belief about what the other person will do, they can infer that this is a rational way to play the game given knowledge that everyone else will do the same thing. But sometimes this is a very unintuitive inference. In Chicken, it implies that we should have asymmetric attitudes to someone who is facing a choice between two options with equal expected value. In the election game Xefteris describes, a game that feels consistent turns out to be impossible. 
 
-I think the conclusion to draw from these cases of symmetric interactions this is that Uniqueness is false, and hence Permissivism is true. Sometimes in such an interaction one simply has to form a belief about the other player, knowing they may well form a different belief about you. Indeed, sometimes only coherent way to form a belief about the other player is to believe that they will form a different belief about you. And that means giving up on Uniqueness.
+I think the conclusion to draw from these cases of symmetric interactions this is that Uniqueness is false, and hence Permissivism is true. Sometimes in such an interaction one simply has to form a belief about the other player, knowing they may well form a different belief about you. Indeed, sometimes only coherent way to form a belief about the other player is to believe that they will form a different belief about you. And that means giving up on Uniqueness.^[I have no conflicts of interest to report.]
 
 # References {-}

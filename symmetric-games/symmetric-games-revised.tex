@@ -20,8 +20,8 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
-  \setmainfont[]{Lato}
-  \setmathfont[]{Fira Math}
+  \setmainfont[]{EB Garamond}
+  \setmathfont[]{EB Garamond Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -58,37 +58,46 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{nicefrac}
-\usepackage[italic]{mathastext}
 \setlength\heavyrulewidth{0ex}
 \setlength\lightrulewidth{0ex}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -99,14 +108,13 @@
 
 \title{Epistemic Permissiveness and Symmetric Games}
 \author{Anon}
-\date{2023-06-16}
+\date{2024-09-04}
 
 \begin{document}
 \maketitle
 
 \setstretch{1.1}
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
 Permissivism in epistemology is a family of theses, each of which says that rationality is compatible with a number of distinct attitudes. This paper argues that thinking about symmetric games gives us new reason to believe in Permissivism. I'm going to offer two arguments, one involving finite games, and the other involving infinite games. In finite games, the theorist who denies Permissivism says that the players have to think that the other player is more likely to take one action rather than another, although they know the actions have equal expected utility. In infinite games, the theorist who denies Permissivism has to say that it is impossible for certain games to be played with common knowledge of rationality and shared evidence, although there does not seem to be anything paradoxical about the games. The latter set of arguments rely on the recent discovery that there are symmetric games with only asymmetric equilibria. It was long known that there are symmetric games with no pure strategy symmetric equilibria; the surprising new discovery is that there are symmetric games with asymmetric equilibria, but no symmetric equilibria involving either mixed or pure strategies. In both cases, thinking about players in symmetric games pushes us towards accepting Permissivism.
 
@@ -130,8 +138,7 @@ The solution to this technical challenge is two-fold. First, we say, following L
 
 The next two sections set out two symmetric games where Uniqueness\footnote{From now on, when I say `Uniqueness' I mean Acknowledged Intrapersonal Uniqueness. It's easier to simply stipulate this now than repeating the phrase every time.} leads to surprising results. In all cases I'll assume that if Uniqueness is true, then the players know that it is true. This is arguably something that follows from the standard idealising assumptions, since the idealised players have internalised a full theory of rationality. But in case it isn't, I'll note it here, and come back to this assumption at the end of the paper. And while this might be obvious, I'll also note explicitly that they players have no evidence about the game or the players beyond what I write about the structure of the games.
 
-\hypertarget{chicken}{%
-\section{Chicken}\label{chicken}}
+\section{Chicken}\label{chicken}
 
 Some finite symmetric games don't have a symmetric pure-strategy equilibrium. One notable example is Chicken, one version of which is in table \ref{tab:chicken}.\footnote{When presenting games in this format, I'll write Row's payout first, then Column's payout. So the top right cell here, for example, says that if Row plays Stay and Column plays Swerve, then Row gets a payout of 1, and Column gets a payout of -1. All payouts are in utils unless otherwise stated. For people unfamiliar with it, the backstory of Chicken is that the players are in cars driving towards each other on a one-lane road. They can stay on the road, possibly winning points for courage and possibly dying, or swerve off.}
 
@@ -198,8 +205,7 @@ It's even more puzzling because of another feature of Uniqueness. It's often ver
 
 All that said, I suspect many defenders of Uniqueness will be happy to accept these conclusions. The next case is I think poses a deeper problem for them.
 
-\hypertarget{elections}{%
-\section{Elections}\label{elections}}
+\section{Elections}\label{elections}
 
 The cases in this section come from some recent work on a rather old question,
 
@@ -282,8 +288,7 @@ This is the coherent equilibria that Xefteris describes, but it requires some am
 
 The main difference between this model and Xefteris's is that it allows that players have false beliefs. But why shouldn't they have false beliefs? All they know is that the other players are rational, and rationality (we're assuming) does not settle a unique verdict for what players will do.\footnote{To use the game-theory jargon, Xefteris describes a Nash equilibrium of the game, but what I've described is a a rationalizable strategy triple (Bernheim 1984, Pearce1984). If Uniqueness is true, then strictly speaking any rationalizable strategy n-tuple for a symmetric game is a symmetric Nash equilibrium.} So I think this strategy set, where the players have rational (but false) beliefs about the other players, is more useful to think about.
 
-\hypertarget{objections}{%
-\section{Objections}\label{objections}}
+\section{Objections}\label{objections}
 
 The arguments for premises 2 and 3 in the argument above assumed something slightly stronger than Uniqueness. They each assumed that each player knew Uniqueness was true, and could use that in their reasoning. (Most importantly, in the argument for premise 3, it's important that each player can reason through the reasoning behind premise 2, and that reasoning used Uniqueness.) What happens if we drop that assumption, and consider the possibility that Uniqueness is true but unknowable?
 
@@ -311,74 +316,72 @@ For any number that either player picks, there is a better option available. It 
 
 So the Uniqueness theorist could say that the same thing is going on in the Xefteris game. Some infinitely games cannot be played by rational actors (understood as people who never choose sub-optimal options); this is one of them. But if this is all the Uniqueness theorist says, it is not a well motivated response. We can say why it is impossible to rationally play games like the open interval game; the options get better without end. But that isn't true in the Xefteris game. The only thing that makes the game seem impossible is the Uniqueness assumption. People who reject Uniqueness can easily describe how the Xefteris game can be played by rational players. Simply saying that it is impossible, without any motivation or explanation for this other than Uniqueness itself, feels like an implausible move.
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+\section{Conclusion}\label{conclusion}
 
 If Uniqueness is true, then the following thing happens in games between people who know each other to have the same evidence, and to be rational. When someone forms a belief about what the other person will do, they can infer that this is a rational way to play the game given knowledge that everyone else will do the same thing. But sometimes this is a very unintuitive inference. In Chicken, it implies that we should have asymmetric attitudes to someone who is facing a choice between two options with equal expected value. In the election game Xefteris describes, a game that feels consistent turns out to be impossible.
 
-I think the conclusion to draw from these cases of symmetric interactions this is that Uniqueness is false, and hence Permissivism is true. Sometimes in such an interaction one simply has to form a belief about the other player, knowing they may well form a different belief about you. Indeed, sometimes only coherent way to form a belief about the other player is to believe that they will form a different belief about you. And that means giving up on Uniqueness.
+I think the conclusion to draw from these cases of symmetric interactions this is that Uniqueness is false, and hence Permissivism is true. Sometimes in such an interaction one simply has to form a belief about the other player, knowing they may well form a different belief about you. Indeed, sometimes only coherent way to form a belief about the other player is to believe that they will form a different belief about you. And that means giving up on Uniqueness.\footnote{I have no conflicts of interest to report.}
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
+\section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-\hypertarget{refs}{}
+\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-Bernheim1984}{}}%
+\bibitem[\citeproctext]{ref-Bernheim1984}
 Bernheim, B. Douglas. 1984. {``Rationalizable Strategic Behavior.''} \emph{Econometrica} 52 (4): 1007--28. \url{https://doi.org/10.2307/1911196}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Callahan2021}{}}%
+\bibitem[\citeproctext]{ref-Callahan2021}
 Callahan, Laura Frances. 2021. {``Epistemic Existentialism.''} \emph{Episteme} 18 (4): 539--54. \url{https://doi.org/10.1017/epi.2019.25}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Cohen2013}{}}%
+\bibitem[\citeproctext]{ref-Cohen2013}
 Cohen, Stewart. 2013. {``A Defence of the (Almost) Equal Weight View.''} In \emph{The Epistemology of Disagreement: New Essays}, edited by David Christensen and Jennifer Lackey, 98--117. Oxford: Oxford University Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Dogramaci2012}{}}%
+\bibitem[\citeproctext]{ref-Dogramaci2012}
 Dogramaci, Sinan. 2012. {``Reverse Engineering Epistemic Evaluations.''} \emph{Philosophy and Phenomenological Research} 84 (3): 513--30. \url{https://doi.org/10.1111/j.1933-1592.2011.00566.x}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Fey2012}{}}%
+\bibitem[\citeproctext]{ref-Fey2012}
 Fey, Mark. 2012. {``Symmetric Games with Only Asymmetric Equilibria.''} \emph{Games and Economic Behavior} 75 (1): 424--27. \url{https://doi.org/10.1016/j.geb.2011.09.008}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-GrecoHedden2016}{}}%
+\bibitem[\citeproctext]{ref-GrecoHedden2016}
 Greco, Daniel, and Brian Hedden. 2016. {``Uniqueness and Metaepistemology.''} \emph{The Journal of Philosophy} 113 (8): 365--95. \url{https://doi.org/10.1111/phc3.12318}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Horowitz2014}{}}%
+\bibitem[\citeproctext]{ref-Horowitz2014}
 Horowitz, Sophie. 2014. {``Immoderately Rational.''} \emph{Philosohical Studies} 167 (1): 41--56. \url{https://doi.org/10.1007/s11098-013-0231-6}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Keynes1921}{}}%
+\bibitem[\citeproctext]{ref-Keynes1921}
 Keynes, John Maynard. 1921. \emph{Treatise on Probability}. London: Macmillan.
 
-\leavevmode\vadjust pre{\hypertarget{ref-KopecTitelbaum2016}{}}%
+\bibitem[\citeproctext]{ref-KopecTitelbaum2016}
 Kopec, Matthew, and Michael G. Titelbaum. 2016. {``The Uniqueness Thesis.''} \emph{Philosophy Compass} 11 (4): 189--200. \url{https://doi.org/10.1111/phc3.12318}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lewis1979a}{}}%
+\bibitem[\citeproctext]{ref-Lewis1979a}
 Lewis, David. 1979. {``A Problem about Permission.''} In \emph{Essays in Honour of {J}aakko Hintikka on the Occasion of His Fiftieth Birthday on {J}anuary 12, 1979}, edited by Esa Saarinen, Risto Hilpinen, Illka Niiniluoto, and Merrill Provence, 163--75. Dordrecht: Reidel.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lota2023}{}}%
+\bibitem[\citeproctext]{ref-Lota2023}
 Lota, Kenji, and Ulf Hlobil. 2023. {``Resolutions Against Uniqueness.''} \emph{Erkenntnis} 88 (3): 1013--33. \url{https://doi.org/10.1007/s10670-021-00391-z}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Meacham2019}{}}%
+\bibitem[\citeproctext]{ref-Meacham2019}
 Meacham, Christopher. 2019. {``Deference and Uniqueness.''} \emph{Philosohical Studies} 176 (3): 709--32. \url{https://doi.org/10.1007/s11098-018-1036-4}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Nash1951}{}}%
+\bibitem[\citeproctext]{ref-Nash1951}
 Nash, John. 1951. {``Non-Cooperative Games.''} \emph{Annals of Mathematics} 54 (2): 286--95.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Palmira2023}{}}%
+\bibitem[\citeproctext]{ref-Palmira2023}
 Palmira, Michele. 2023. {``Permissivism and the Truth Connection.''} \emph{Erkenntnis} 88 (2): 641--6556. \url{https://doi.org/10.1007/s10670-020-00373-7}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Risse2000}{}}%
+\bibitem[\citeproctext]{ref-Risse2000}
 Risse, Mathias. 2000. {``What Is Rational about Nash Equilibria?''} \emph{Synthese} 124 (3): 361--84. \url{https://doi.org/10.1023/a:1005259701040}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ross2021}{}}%
+\bibitem[\citeproctext]{ref-Ross2021}
 Ross, Ryan. 2021. {``Alleged Counterexamples to Uniqueness.''} \emph{Logos and Episteme} 12 (2): 203--13.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Schultheis2018}{}}%
+\bibitem[\citeproctext]{ref-Schultheis2018}
 Schultheis, Ginger. 2018. {``Living on the Edge: Against Epistemic Permissivism.''} \emph{Mind} 127 (507): 863--79. \url{https://doi.org/10.1093/mind/fzw065}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Xefteris2015}{}}%
+\bibitem[\citeproctext]{ref-Xefteris2015}
 Xefteris, Dimitrios. 2015. {``Symmetric Zero-Sum Games with Only Asymmetric Equilibria.''} \emph{Games and Economic Behavior} 89 (1): 122--25. \url{https://doi.org/10.1016/j.geb.2014.12.001}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ye2023}{}}%
+\bibitem[\citeproctext]{ref-Ye2023}
 Ye, Ru. 2023. {``Permissivism, the Value of Rationality, and a Convergence-Theoretic Epistemology.''} \emph{Philosophy and Phenomenological Research} 106 (1): 157--75. \url{https://doi.org/10.1111/phpr.12845}.
 
 \end{CSLReferences}
