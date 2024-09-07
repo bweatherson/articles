@@ -152,8 +152,8 @@ require(tidyverse)
 require(slider)
 require(stringr)
 
-load("philo_bib_fix.RData")
-load("philo_cite_with_jp.RData")
+load("/Users/weath/Documents/citations-2024/philo_bib_fix.RData")
+load("/Users/weath/Documents/citations-2024/philo_cite_with_jp.RData")
 
 authadjust <- function(x){
   paste0(str_extract(x, '\\b[^,]+$'), " ", str_to_title(str_extract(x,".+(?=,)")))
