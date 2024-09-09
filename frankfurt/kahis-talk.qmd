@@ -1,0 +1,107 @@
+---
+title: "Knowledge: A Human Interest Story"
+author: "Brian Weatherson"
+format:
+  revealjs:
+      template-partials:
+        - title-slide.html
+      slide-number: c/t
+      menu: true
+      highlight-style: github-dark
+      theme: teodt.scss
+      logo: UM.svg
+editor: source
+---
+
+# Links
+
+- <https://brian.weatherson.org/gem/> - Slides
+- <https://brian.weatherson.org/kahis/> - Book
+
+---
+
+![Opening of _Knowledge: A Human Interest Story_](kahis-title.png){width="70%"}
+
+# Big Claim
+
+Knowledge is sensitive to interests.
+
+Two people alike in all other relevant respects, but with different interests, have different knowledge.
+
+# Schematic Argument
+
+1. One isn't taking an unacceptable epistemic risk by starting an inquiry with what one knows.
+2. For almost anything we purport to know, there are some inquiries where it would be unacceptably risky to start with that, purported, knowledge.
+3. We know a lot.
+4. Therefore, what we know must vary between inquiries.
+
+# Example
+
+Let *p* be the following proposition:
+
+- Frankfurt am Main airport is the busiest airport in Germany; i.e., it has the most passengers per year.
+
+We all know that *p* is true.
+
+---
+
+![https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Europe](airports.png){width="70%"}
+
+# An Old Argument
+
+Ansgar is offered the following bet, take it or leave it.
+
+- If he takes the bet and *p* is true, a child somewhere gets a moment's happiness, like from a game of peek-a-book.
+- If he takes the bet and *p* is false, all of humanity is cast into The Bad Place for all eternity.
+- If he declines the bet, nothing happens.
+
+# An Old Argument
+
+1. Ansgar should decline the bet.
+2. If offered a bet, and Ansgar knows taking the bet will be better than declining the bet, Ansgar should take the bet.
+3. If Ansgar knows that *p*, Ansgar knows taking the bet will be better than declining the bet.
+4. Therefore, Ansgar does not know that *p*.
+
+# Continuing the Argument
+
+5. Someone with Ansgar's evidence who is not facing, or thinking about, bets like this, knows that *p*.
+6. Therefore, what one knows depends on what kinds of bets one is facing, or thinking about.
+
+# Two More Conclusions I Reject
+
+This kind of case shows that knowledge is particularly sensitive to the **practical** interests of the (would-be) knower.
+
+I reject this for two reasons.
+
+1. I'm not sure how much this case *shows*. We'll come back to this.
+2. The case need not be practical.
+
+# A Theoretical Version
+
+- Imagine Ansgar isn't actually facing this bet.
+- But for whatever reason, perhaps because he's a philosopher, he's thinking about what he would do if he were offered it.
+- In that purely hypothetical inquiry, he should still decline, so he still doesn't know.
+
+# Two More Conclusions I Reject
+
+The other conclusion that's sometimes drawn from cases like this one is that knowledge goes away in **high stakes** cases.
+
+This is not right for two reasons.
+
+1. It turns out to be very hard to articulate what the stakes are in cases where there are more than two options.
+2. We can get similar results in relatively low stakes cases.
+
+# Red-Blue Game
+
+Willian is playing a game show on TV. One of the games has the following rules.
+
+- Two sentences will be written on the board.
+- One will be red, the other will be blue.
+- The player has to choose a sentence, red or blue, and say whether it is true or false.
+- If they say the correct truth value, they win €50. If they say the incorrect truth value, they win nothing.
+
+---
+
+- [Two plus two equals four.]{style="color:red; font-size:200%"}
+
+- [Frankfurt am Main airport is the busiest airport in Germany.]{style="color:blue; font-size:200%"}
