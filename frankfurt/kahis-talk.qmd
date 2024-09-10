@@ -105,3 +105,70 @@ Willian is playing a game show on TV. One of the games has the following rules.
 - [Two plus two equals four.]{style="color:red; font-size:200%"}
 
 - [Frankfurt am Main airport is the busiest airport in Germany.]{style="color:blue; font-size:200%"}
+
+# Another Argument
+
+1. It is irrational for Willian to play Blue-True; the only rational play is Red-True. Any other play is silly (the false options) or needlessly risky (Blue-True).
+2. If there is an option that Willian knows gets the maximum possible payout, it is rationally permissible to take that option.
+3. If Ansgar knows that *p*, Ansgar knows that Blue-True will get the maximum possible payout.
+4. Therefore, Ansgar does not know that *p*.
+
+# Two Observations
+
+- This argument does not rely on extreme cases involving crisis situations, where intuitions might easily go astray.
+- If this argument works, the argument for interest-relativity need not involve **high** stakes. 
+
+# Odds and Stakes
+
+It's the odds, not the stakes that matter.
+
+Choosing to play Blue-True over Red-True is a risk with no upside, so it's an infinitely long odds bet.
+
+# Overview
+
+- So far I've set out the main argument for the interest-relative view.
+- Next I want to go over some alternative positions, ones that offer responses to the argument.
+- I'll close by placing some of these views, and this interest-relative view, in historical context.
+
+# Four Families of Views
+
+I'll describe these more on later slides.
+
+1. Interest-relative
+2. Sceptical
+3. Epistemic
+4. Orthodox
+
+# Interest-Relative
+
+This is the view I support.
+
+Ansgar and Willian lose knowledge when they are offered these bets.
+
+# Sceptical
+
+The sceptic agrees with the conclusion of the argument that Ansgar and Willian don't know that *p*.
+
+They reject interest-relativity because they say that even in normal situations, they don't have knowledge either.
+
+I think this view is implausible, but I'll put off arguments for it until the historical section of the talk.
+
+# Epistemicist
+
+By epistemicist, I mean here the combination of these three views:
+
+1. Knowledge suffices for rational action;
+2. We know a lot;
+3. Knowledge is invariant with changes of interests.
+
+This view is committed to saying that Ansgar and Willian are rational in taking the bet, and playing Blue-True.
+
+# Epistemicist
+
+That's not particularly intuitive, but the best epistemicists have an interesting story about why intuition disagrees with their position here.
+
+
+
+
+
+  
