@@ -15,8 +15,15 @@ editor: source
 
 # Links
 
-- <https://brian.weatherson.org/gem/> - Slides
-- <https://brian.weatherson.org/kahis/> - Book
+:::{.columns}
+:::{.column width="50%"}
+![Slides - https://brian.weatherson.org/gem/](gem.png){width="80%"}
+:::
+
+:::{.column width="50%"}
+![Book - https://brian.weatherson.org/kahis/](kahis.png){width="80%"}
+:::
+:::
 
 ---
 
@@ -67,9 +74,9 @@ Ansgar is offered the following bet, take it or leave it.
 5. Someone with Ansgar's evidence who is not facing, or thinking about, bets like this, knows that *p*.
 6. Therefore, what one knows depends on what kinds of bets one is facing, or thinking about.
 
-# Two More Conclusions I Reject
+# A Mistaken Inference
 
-This kind of case shows that knowledge is particularly sensitive to the **practical** interests of the (would-be) knower.
+Some say this kind of case shows that knowledge is particularly sensitive to the **practical** interests of the (would-be) knower.
 
 I reject this for two reasons.
 
@@ -82,7 +89,7 @@ I reject this for two reasons.
 - But for whatever reason, perhaps because he's a philosopher, he's thinking about what he would do if he were offered it.
 - In that purely hypothetical inquiry, he should still decline, so he still doesn't know.
 
-# Two More Conclusions I Reject
+# Another Mistake
 
 The other conclusion that's sometimes drawn from cases like this one is that knowledge goes away in **high stakes** cases.
 
@@ -167,7 +174,270 @@ This view is committed to saying that Ansgar and Willian are rational in taking 
 
 That's not particularly intuitive, but the best epistemicists have an interesting story about why intuition disagrees with their position here.
 
+The intuitions are correct intuitions about **actors**, confused for false claims about **actions**.
 
+# Epistemicist
+
+So here's the key thought.
+
+- Ansgar and Willian, if they take the bet and play Blue-True, manifest practical (and maybe moral) **vices**.
+- These are character level evaluations.
+- Surprisingly, they manifest these vices while performing rational (and moral) **actions**.
+
+# Actions and Actors
+
+I actually think this is a not implausible thing to say about Ansgar.
+
+Perhaps maximising expected value, even when the stakes are so high, is a sign of bad character.
+
+But I think it's not a very plausible thing to say about Willian. That's the better case for interest-relativity.
+
+# Orthodoxy
+
+The more common view, at least in contemporary epistemology, is that we have to give up natural connections between knowledge and action.
+
+# Orthodoxy
+
+- It is not rational for Ansgar or Willian to take these risky bets.
+- Ordinary people (who have read Wikipedia) know that *p*.
+- Knowledge is only sensitive to factors connected to truth, or evidence, or something of the sort.
+- Therefore, doing something that one knows will be for the best is sometimes irrational.
+
+# Orthodoxy
+
+In the book I go over several ways to make that last bullet point sound even more implausible.
+
+But I don't think many people think it's naturally where you'd want to end up.
+
+Rather, they think that having knowledge be interest-sensitive is so absurd that it's worth dealing with this cost.
+
+# Interests and Intuitions
+
+In the book I have two broad kinds of move to this last point.
+
+1. Interests are an issue for everyone.
+2. Connecting knowledge and interests fits better with the history of epistemology.
+
+# Interests and Backgrounds
+
+- It's very plausible that knowledge has a reliability constraint.
+- Reliability is always relative to a reference class.
+- Which things are in the reference class is plausibly interest-relative.
+- A method that goes wrong in environment E is unreliable if E is someplace I'm likely to find myself.
+- That last clause is interest-relative.
+
+# Interests and History
+
+A quick tour through four stops:
+
+1. Nyāya
+2. Late academic scepticism
+3. Medieval jurisprudence
+4. Early modern science
+
+# Nyāya
+
+Here's an anti-sceptical argument you can find in the Nyāya philosophers.
+
+1. Some actions are rational and some are foolish.
+2. A necessary condition on an action being rational is that it is grounded in knowledge.
+3. So some people know some things, contra the sceptic.
+
+# Arguments
+
+- You might be thinking this is a somewhat question-begging argument.
+- And if so, you might be familiar with how the next few moves typically play out.
+- But rather than going down that rabbit hole, I want to think of this as a challenge to the sceptic.
+
+# The Challenge
+
+If scepticism is true, what is the difference between rational and irrational action?
+
+# Philo
+
+::: columns
+::: {.column width="40%"}
+
+![](philo.png){width="80%"}
+:::
+
+::: {.column width="60%"}
+
+This is a challenge that sceptics have taken up.
+
+Philo, one of the last sceptical heads of The Academy, worried a lot about it.
+
+:::
+:::
+
+# Philo
+
+::: columns
+::: {.column width="40%"}
+
+![](philo.png){width="80%"}
+:::
+
+::: {.column width="60%"}
+
+His solution was to say that while we cannot know things, we can rationally accept some things, and rational action is based on rational acceptance.
+
+:::
+:::
+
+# Philo
+
+Now we could talk about how, and whether, that is meant to work with scepticism.
+
+But I want to note one other thing about Philo's view.
+
+He thought that how much evidence you needed for rational acceptance was dependent on how much was at stake.
+
+He had an interest-relative view of rational accepance.
+
+# Back to the Present
+
+A very simple way of getting an interest-relative view would be to start with Philo and add two things.
+
+1. What he called acceptance is really belief.
+2. Knowledge is the norm of belief.
+
+That's very close to my view.
+
+# Medieval and Modern
+
+::: columns
+::: {.column width="50%"}
+![Robert Pasnau](bob.jpg){width="60%"}
+:::
+
+::: {.column width="50%"}
+![After Certainty](after_certainty.jpg){width="62%"}
+:::
+:::
+
+# Moral Certainty
+
+Leaping ahead 1500 years, medieval ethicists were worried about a somewhat practical problem.
+
+Imagine that a judge is faced with a murder defendent, and the evidence of guilt is overwhelming.
+
+The judge finds the defendent guilty, and the defendent is executed. But, sadly, he was innocent.
+
+Is the judge a murderer? Has the judge sinned?
+
+# Moral Certainty
+
+The response was to develop a concept of _moral certainty_.
+
+The judge has not sinned if given the evidence, it is morally certain that the defendent is guilty.
+
+This isn't meant to be a triviality. In high stakes cases, it takes much more to be morally certain than in low stakes cases.
+
+# Moral Certainty
+
+This isn't an interest relative account of **knowledge**.
+
+The whole point is that we're thinking of standards for beliefs that turn out to be false.
+
+But it's very close.
+
+# Interests and Standards
+
+What's common to the last two cases is this.
+
+- When philosophers look for epistemic standards that are meaningful, but not maximal, they often make them interest-relative.
+- Hypothesis: It's very hard to find non-maximal, interest-invariant, standards in the epistemology literature before early modern times.
+
+# Early Moderns
+
+I'll end with a conjecture.
+
+Contemporary orthodoxy in epistemology is largely about finding standards that satisfy three requirements.
+
+1. Philosophically interesting.
+2. Non-maximal.
+3. Interest-invariant.
+
+# A Conjecture
+
+It's only with the rise of scientific journals that the search for a standard meeting these three conditions becomes important.
+
+# John Wilkins
+
+:::{.columns}
+:::{.column width="40%"}
+![Bishop John Wilkins](Bp_John_Wilkins.jpg){width="80%"}
+:::
+
+:::{.column width="60%"}
+Pasnau suggests that in the story about how 1 and 2 became important, we should give special attention to John Wilkins.
+:::
+:::
+
+# John Wilkins
+
+:::{.columns}
+:::{.column width="40%"}
+![Bishop John Wilkins](Bp_John_Wilkins.jpg){width="80%"}
+:::
+
+:::{.column width="60%"}
+Pasnau suggests that in the story about how 1 and 2 became important, we should give special attention to John Wilkins.
+:::
+:::
+
+# Journals
+
+It's easy to come up with circumstances where we have philosophical uses for non-maximal standards.
+
+We're trying to judge whether people are taking rational precautions about lions (Philo), or whether judges are being moral (medievals).
+
+In both cases, having standards be sensitive to the practical situation seems sensible.
+
+# Journals
+
+When could we want a standard that is non-maximal, but where the particular practical situation is irrelevant?
+
+Answer: When we're publishing a scientific journal.
+
+# Journal
+
+Three constraints on publishing a journal.
+
+1. We want the fact that we've published something to be a meaningful mark of quality.
+2. We want to be able to publish, so we can't have Cartesian certainty.
+3. We don't know who is going to read the journal, or what use they'll put it to.
+
+# Journals
+
+My conjecture, and it is just a conjecture, is that this is the real founding of epistemology as we know it today.
+
+It's the task of coming up with standards like _Is this acceptable to publish in a scientific journal?_.
+
+That's an interesting question, but it's not the only question we might be interested in.
+
+# Back to Interests
+
+In general, I think Philo and the medievals were on the right track.
+
+Knowledge is to be used, and the standards for knowledge should be sensitive to what it is used for.
+
+# Back to Interests
+
+That's fundamentally why we should have an interest-relative theory of knowledge.
+
+And hopefully through this book I'll convince some people of that!
+
+:::{.columns}
+:::{.column width="50%"}
+![Link to Open Book Publishing](openbook.png){width="60%"}
+:::
+
+:::{.column width="50%"}
+![Link to book manuscript](kahis.png){width="60%"}
+:::
+:::
 
 
 
