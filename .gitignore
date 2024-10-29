@@ -3,6 +3,11 @@
 .RData
 .Ruserdata
 .DS_Store
+.rdb
+.rdx
+.png
+.js
+.woff
 mixing-experts/mixing-experts-not-anon_files/.DS_Store
 _extensions
 money/assignat.jpg

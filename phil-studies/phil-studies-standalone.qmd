@@ -1,0 +1,1096 @@
+---
+title: "Trends in *Philosophical Studies*"
+abstract: |
+  *Philosophical Studies* has become one of the most important journals for work in several large topics in philosophy. This paper uses data from the word distributions in those papers, and the citations of the papers, to look at how it has changed over time, and how it became so central.
+date: today
+draft: false
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+categories:
+  - history of analytic
+  - unpublished
+  - in progress
+format: 
+    html:
+      theme: 
+        light: 
+          - solar
+          - html-fonts-light.scss
+          - book-light-defaults.scss
+      linestretch: 1.5
+      toc: true
+      number-sections: true
+      toc-depth: 3
+      toc-location: left
+      reference-location: margin
+      margin-header: "&nbsp;"
+      fontsize: 1.2em
+      include-in-header:
+        - text: |
+            <link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
+      mainfont: "ff-scala-sans-pro, sans-serif"
+      html-math-method: mathjax
+      self-contained: false
+format-links: [html]
+bibliography: 
+  - /Users/weath/Documents/citations-2025/autobib.bib
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+---
+
+```{r}
+#| label: packages
+#| cache: false
+
+for (ipkg in c("tidyverse", 
+               "tidytext", 
+               "tm", 
+               "topicmodels", 
+               "lsa",
+               "slider",
+               "knitr")) {
+  if (!require(ipkg, character.only = TRUE)) {
+    install.packages(ipkg)
+    library(ipkg, character.only = TRUE)
+  }
+}
+
+if (knitr::is_latex_output()) {
+  knitr::opts_chunk$set(dev = 'cairo_pdf')
+}
+
+options(knitr.kable.NA = '')
+
+# Graph Themes
+old <- theme_set(theme_minimal())
+theme_set(old)
+theme_update(plot.title = element_text(family = "Scala Pro", size = 24, face = "bold"),
+             plot.subtitle = element_text(family = "Scala Sans Pro", size = 20),
+             axis.text = element_text(family = "Scala Sans Pro", size = 18),
+             axis.title = element_text(family = "Scala Sans Pro", size = 18),
+             plot.background = element_rect(fill = "#F9FFFF"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "#F9FFFF"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "Scala Sans Pro", size = 20),
+             strip.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.key.spacing.y = unit(1, 'lines'),
+             legend.key.spacing.x = unit(1, 'cm')
+  )
+
+if (knitr::is_latex_output()) {
+theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
+             plot.subtitle = element_text(family = "EB Garamond", size = 11),
+             axis.text = element_text(family = "EB Garamond", size = 10),
+             axis.title = element_text(family = "EB Garamond", size = 10),
+             plot.background = element_rect(fill = "white"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "white"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "EB Garamond", size = 11),
+             strip.text = element_text(family = "EB Garamond", size = 12),
+             legend.key.spacing.y = unit(-0.3, 'lines'),
+             legend.key.spacing.x = unit(0, 'cm')
+  )
+
+}
+```
+
+```{r}
+#| label: loader
+#| cache: true
+
+load("~/Documents/lda-cites-unigrams-only/ps_cites.RData")
+load("~/Documents/lda-cites-unigrams-only/ps_meta.RData")
+load("~/Documents/lda-cites-unigrams-only/ps_join.RData")
+load("~/Documents/lda-cites-unigrams-only/common_ps_words.RData")
+load("~/Documents/lda-cites-unigrams-only/ps_lda_s155376_c5_r1000.RData")
+load("~/Documents/citations-2025/philo_cite.RData")
+load("~/Documents/citations-2025/philo_bib.RData")
+```
+
+```{r}
+#| label: commontibs
+#| cache: true
+
+philo_bib <- philo_bib |>
+  mutate(year = as.numeric(year))
+
+id_year_journal <- philo_bib |>
+  select(wos_id = id, year, journal)
+
+all_cites <- philo_cite |>
+  rename(old = refs, new = id) |>
+  left_join(id_year_journal, by = c("old" = "wos_id")) |>
+  rename(old_year = year, old_journal = journal) |>
+  left_join(id_year_journal, by = c("new" = "wos_id")) |>
+  rename(new_year = year, new_journal = journal) |>
+#  filter(old_year >= 1980, old_year <= 2019) |>
+  mutate(decade = paste0(floor(new_year/10),"0s")) |>
+  mutate(citing_journal = case_when(
+    new_journal == "Philosophical Studies" ~ "PS",
+    TRUE ~ "NPS")) |>
+  mutate(cited_journal = case_when(
+    old_journal == "Philosophical Studies" ~ "PS",
+    TRUE ~ "NPS"))
+  
+active_cites <- all_cites |>
+  filter(old_year >= 1980, old_year <= 2019)
+
+article_count <- philo_bib |>
+  ungroup() |>
+  filter(year >= 1980, year <= 2019) |>
+  group_by(journal, year) |>
+  tally(name = "articles")
+
+journal_citation_count <-  active_cites |>
+    ungroup() |>
+    group_by(old_journal) |>
+    tally(name = "Citations") |>
+    rename(Journal = old_journal) |>
+    arrange(-Citations)
+
+journal_article_count <-   article_count |>
+    ungroup() |>
+    group_by(journal) |>
+    summarise(Articles = sum(articles)) |>
+    rename(Journal = journal) |>
+    arrange(-Articles)
+
+journal_citation_rate <- left_join(
+  journal_article_count,
+  journal_citation_count,
+  by = "Journal") |>
+  mutate(`Citation Rate` = round(Citations/Articles, 2)) |>
+  arrange(desc(`Citation Rate`))
+```
+
+```{r}
+#| label: moresetup
+#| cache: true
+
+ranked_journal_citation_rate <- journal_citation_rate |>
+  rowid_to_column(var = "Rank")
+
+comp_journal_count <- 20
+comp_tag <- paste0(
+  "Other top ",
+  comp_journal_count,
+  " journals"
+)
+
+first_year <- philo_bib |>
+  group_by(journal) |>
+  summarise(first_year = min(year)) |>
+  left_join(journal_citation_rate, by = c("journal" = "Journal")) |>
+  filter(first_year <= 1980) |>
+  arrange(-`Citation Rate`)
+
+comparison_journals <- first_year$journal[1:comp_journal_count]
+
+ps_comp_rate <- active_cites |>
+  ungroup() |>
+  group_by(old_year, cited_journal) |>
+  filter(old_journal %in% comparison_journals) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  rename(year = old_year) |>
+  left_join(
+    philo_bib |>
+      filter(year >= 1980, year <= 2019,
+             journal %in% comparison_journals) |>
+      mutate(cited_journal = case_when(
+        journal == "Philosophical Studies" ~ "PS",
+        TRUE ~ "NPS")) |>
+      group_by(year, cited_journal) |>
+      tally(name = "articles"),
+    by = c("cited_journal", "year")) |>
+  mutate(rate = citations/articles) |>
+  ungroup() |>
+  group_by(cited_journal) |>
+  arrange(year) |>
+  mutate(slide_arts = slide_dbl(articles, sum, .before = 4),
+         slide_cites = slide_dbl(citations, sum, .before = 4),
+         slide_rate = slide_cites/slide_arts) 
+    
+
+ps_comp_rate_wide <- ps_comp_rate |>
+  pivot_wider(
+    id_cols = year,
+    names_from = cited_journal,
+    values_from = slide_rate) |>
+  mutate(comp = round(PS/NPS, 3))
+
+citation_count <- active_cites |>
+  group_by(old) |>
+  tally(name = "cites")
+
+short_bib <- philo_bib |>
+  select(id, year, displayauth, title, journal) |>
+  left_join(citation_count, by = c("id" = "old")) |>
+  replace_na(list(cites = 0))
+
+ps_top_cites <- short_bib |>
+  filter(journal == "Philosophical Studies") |>
+  slice_max(order_by = cites, n = 30) |>
+  arrange(-cites) |>
+  rowid_to_column(var = "Rank") |>
+  filter(year >= 2003, year <= 2007) |>
+  mutate(id = sub(":", "", id)) |>
+  mutate(Article = paste0(
+    "@",
+    sub(":", "", id)
+  )) |>
+  select(Rank, Article)
+
+ps_meta <- read_csv("~/Documents/quarto-articles/posts/phil-studies/PS-metadata.csv",
+                    show_col_types = FALSE) |>
+  filter(docSubType == "research-article" | docSubType == "book-review") |>
+  mutate(id = paste0("PS-", str_sub(id, start = 29))) |>
+  mutate(journal = "Philosophical Studies") |>
+  select(id, 
+         title, 
+         journal, 
+         year = publicationYear, 
+         num = issueNumber, 
+         volume = volumeNumber, 
+         author = creator, 
+         fpage = pageStart,
+         lpage = pageEnd,
+         words = wordCount) 
+
+ps_meta_binder <- ps_meta |>
+  select(id, volume, fpage) |>
+  select(jstor_id = id, volume, fpage)
+
+ps_papers <- philo_bib |>
+  filter(journal == "Philosophical Studies") |>
+  filter(year >= 1980) |>
+  filter(year <= 2019)
+
+ps_papers_binder <- ps_papers |>
+  select(wos_id = id, volume, fpage) |>
+  mutate(volume = as.numeric(volume)) |>
+  mutate(fpage = as.character(fpage))
+
+ps_join <- inner_join(
+  ps_meta_binder,
+  ps_papers_binder,
+  by = c("volume", "fpage")
+) |>
+  select(wos_id, jstor_id)
+
+ps_meta_filter <- ps_meta |>
+  filter(id %in% ps_join$jstor_id)
+
+article_count_by_year <- ps_meta_filter |>
+  group_by(year) |>
+  tally(name = "Articles")
+
+word_count_by_year <- ps_meta_filter |>
+  group_by(year) |>
+  summarise(wordcount = sum(words))
+
+word_max_by_year <- ps_meta_filter |>
+  group_by(year) |>
+  summarise(wordmax = max(words))
+
+word_quartile_by_year <- ps_meta_filter |>
+  group_by(year) |>
+  summarise(Q1 = round(quantile(words, 0.25),1),
+            Q2 = round(quantile(words, 0.5),1),
+            Q3 = round(quantile(words, 0.75),1),
+            .groups = "drop") |>
+  pivot_longer(cols = starts_with("Q"),
+               names_to = "statistic",
+               values_to = "value") |>
+  ungroup() |>
+  group_by(statistic) |>
+  mutate(rolling = slide_dbl(value, mean, .before = 4)) |>
+  ungroup()
+
+issue_list <- read_csv("~/Documents/quarto-articles/posts/phil-studies/PS_Special.csv",
+                       show_col_types = FALSE)
+
+issue_count_by_year_type <- ps_papers |>
+  mutate(issue = case_when(
+    is.na(issue) ~ "S",
+    TRUE ~ issue
+  )) |>
+  group_by(volume, issue) |>
+  slice(1) |>
+  left_join(issue_list |> 
+              rename(volume = Volume, issue = Issue) |>
+              mutate(volume = as.character(volume)), by = c("volume", "issue")) |>
+  replace_na(list(Type = "Normal", Count = 1)) |>
+  ungroup() |>
+  arrange(year, volume, issue) |>
+  group_by(year, Type) |>
+  summarise(count = sum(Count), .groups = "drop")
+
+issue_count_by_year <- issue_count_by_year_type |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_year_normal  <- issue_count_by_year_type |>
+  filter(Type == "Normal") |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_year_abnormal  <- issue_count_by_year_type |>
+  filter(Type != "Normal") |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_type <- issue_count_by_year_type |>
+  group_by(Type) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_type_by_decade <- issue_count_by_year_type |>
+  mutate(Type = case_when(
+    Type == "Normal" ~ "Normal",
+    TRUE ~ "Special"),
+         Decade = paste0(floor(year/10),"0s")) |>
+  group_by(Decade, Type) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  pivot_wider(id_cols = Decade,
+              names_from = Type,
+              values_from = count)
+
+issue_type_by_decade_expanded <- issue_count_by_year_type |>
+  mutate(Type = case_when(
+    Type == "Conference" ~ "Topic",
+    TRUE ~ Type),
+    Decade = paste0(floor(year/10),"0s")) |>
+  group_by(Decade, Type) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  pivot_wider(id_cols = Decade,
+              names_from = Type,
+              values_from = count) %>%
+  replace(is.na(.), 0)
+```
+
+# Introduction {#sec-introduction}
+
+_Philosophical Studies_ is the most cited journal in other philosophy journals in recent times, so it is worthy of study both in its own right, and as a mirror of broader trends in philosophy. This paper mixes two techniques, topic modeling and citation analysis, to look at the nature of _Philosophical Studies_, and how it has changed over time, from 1980 to 2019.
+
+In the first half of the paper, I look at the growth the citation rate (i.e., number of citations per article) in _Philosophical Studies_. If we take its peers to be the twenty philosophy journals with the highest citation rates over the last forty years, it has gone from having a citation rate 10-20 percent below the average, to a rate 10-20 percent above the average. And it's done this despite increasing its publication volume, which one would normally expect to decrease citation rate. This is explained in part by the move to publishing more special issues, with the special issues from the Bellingham Summer Philosophy Conference being particularly important, and in part by the topic mix in _Philosophical Studies_ changing in ways that prefigured changes in the broader philosophical community.
+
+This leads to the second half of the paper, on just how the topic mix of the journal changed over the years. The short version of those changes is shown in @fig-five-topics.
+
+In the late twentieth century, _Philosophical Studies_ was focussed on philosophy of language, and in particular on core analytic questions about reference and description. These were central to philosophy in the 1970s after _Naming and Necessity_, and stayed central to graduate education at top schools well into the twenty-first century. But the focus of other journals moved away from these questions possibly a bit earlier than _Philosophical Studies_ did.
+
+After the turn of the century, the journal moved into two topics that did not hurt its citation rates. First, it was part of the enormous discussion on epistemology, and in particular on contextualism in epistemology, in the 2000s. Second, in the 2010s, it, along with much of the rest of the discipline, moved more strongly into social philosophy.
+
+One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than most journals, resisted the turn to what Ted @Sider2021 calls 'postmodal metaphysics'.
+
+# Overview {#sec-overview}
+
+## Editorial History
+
+_Philosophical Studies_ was founded by Herbert Feigl and Wilfrid Sellars, both then at the University of Minnesota, in 1950, as the "first American journal expressly devoted to analytic philosophy" [@DeVries2005 1-2]. They stayed as editors until Feigl's retirement in 1971, though after 1954 Sellars was listed as the first editor. At Feigl's retirement the journal moved from the University of Minnesota Press to Reidel, where it has stayed ever since.^[Springer is the current continuant of Reidel after several mergers and takeovers.] Sellars edited the journal alone until Keith Lehrer was brought on as associate editor in 1974, starting an association with the journal that would last nearly half a century. 
+
+In 1975 Lehrer, who had just moved from Rochester to Arizona, became editor. He stayed in that role until 1982, having been joined by John Pollock (also at Arizona) in 1979. From 1982, Pollock was Editor-in-Chief, and Lehrer went back to being Associate Editor. 
+
+In 1992 the journal moved 100 miles up I-10, as Stewart Cohen, then at Arizona State, took over as Editor.^[While the journal was at Arizona, at grad student assistant was recognised on the title page as an editorial assistant. Many prominent philosophers had this role over the years, including, in 1983, Stewart Cohen.] Cohen stayed as editor through the rest of the time covered in this study, eventually being an editor of the journal for longer than even Wilfrid Sellars.
+
+Thomas Blackson joined as book symposium editor in 2003. In 2010, Cohen moved to the University of Arizona, and so the journal was edited out of Tuscon for a second time. Jennifer Lackey and Wayne Davis, who would eventually take over from Cohen, joined as Associate Editors in 2014. In 2016 Cohen was made Editor-in-Chief, while Davis and Lackey became Editors, and that was the arrangement that persisted through 2019, the end of the focus of this paper.
+
+There are three things about this editorial history that will become important in what follows. One is that the names here include several of the most important epistemologists of the last half century. A second is that the journal has had a very stable editorial history; a summary like this for most other peer journals would take twice as long to write. And the third is that the biggest single change, the transition from John Pollock to Stewart Cohen as Editor in 1992, does not seem to have had an immediate impact on the journal. You see dramatic changes straight away at _Mind_ when G. E. Moore takes over in 1921, and again when Gilbert Ryle takes over in 1947.^[See @Lewy1976 on Moore, and *include citation from LDA* on Ryle.] The effects of the switch from Pollock to Cohen are much more delayed.
+
+## Articles
+
+_Philosophical Studies_ increased its output considerably when it moved to Reidel, and then increased it again between 1980 and 2019. @fig-article-count-by-year shows how many articles _Philosophical Studies_ has published each year; @fig-word-count-by-year shows the total word count for the journal each year; @fig-word-max-by-year shows the count of the longest article each year; and @fig-word-quartiles shows the 25th, 50th, and 75th percentile article by word count for each year.
+
+```{r}
+#| label: fig-article-count-by-year
+#| fig-cap: "Number of articles published each year"
+
+ggplot(article_count_by_year,
+       aes(x = year, y = Articles)) +
+  geom_point() +
+  labs(x = element_blank(),
+       y = "Number of Articles") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010)) +
+  scale_y_continuous(limits = c(0, 275))
+
+```
+
+```{r}
+#| label: fig-word-count-by-year
+#| fig-cap: "Number of words published each year"
+
+ggplot(word_count_by_year,
+       aes(x = year, y = wordcount)) +
+  geom_point() +
+  labs(x = element_blank(),
+       y = "Number of Words") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010)) +
+  scale_y_continuous(labels = scales::scientific,
+                     limits = c(0, 2500000))
+
+```
+
+```{r}
+#| label: fig-word-max-by-year
+#| fig-cap: "Longest article published each year"
+
+ggplot(word_max_by_year,
+       aes(x = year, y = wordmax)) +
+  geom_point() +
+  labs(x = element_blank(),
+       y = "Number of Words") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010)) +
+  scale_y_continuous(limits = c(0, 30000))
+
+```
+
+```{r}
+#| label: fig-word-quartiles
+#| fig-cap: "25th, 50th, and 75th percentile word lengths each year."
+
+ggplot(word_quartile_by_year,
+       aes(x = year, y = value, color = statistic)) +
+  geom_point() +
+  theme(legend.position = "none") +
+  labs(x = element_blank(),
+       y = "Word Count") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010)) +
+  scale_y_continuous(limits = c(0, 12500)) +
+  geom_line(aes(x = year, y = rolling, color = statistic))
+```
+
+Some of these changes reflect wider disciplinary changes, but others do not. Most journals have a much more stable publication rate, though there is more variation in commercially published journals. Articles have been getting longer all across philosophy. What's striking here is the 25th percentile rising to over 8000 words by the end of the 2010s.
+
+It used to be common for philosophy colloquia to include papers that were read out by the author. This was a bad practice, and it's been mostly gone for several years. But starting in the mid-2010s it became an impractical practice. No one was writing papers that even could be read out in the length of a typical colloquium slot.
+
+Everything I've said so far is about _articles_ in _Philosophical Studies_. As I'll go over in @sec-what-is-an-article, this is a less clear category than we might like. To get to why that's so, I'll first go over the sources I'm using.
+
+## Special Issues {#sec-special-issues}
+
+_Philosophical Studies_ has had many special issues, especially since the mid-1990s. These fall into four main categories. The first three are papers from three long-running conferences that _Philosophical Studies_ published selected papers from:
+
+1. The APA Pacific Divsion
+2. The Oberlin Colloquium
+3. The Bellingham Summer Philosophy Conference (BSPC)
+
+The fourth is a less unified set of one-off issues, either on a special topic, or, in two cases, conferences that _Philosophical Studies_ published once but did not continue with. I'll call all of these **One-off** issues.
+
+Often these were double, or occasionally triple, issues. I'm counting these as 2, or 3, issues, because provides a better sense of what proportion of the papers in a year are from special issues. As @tbl-issues-by-decade shows, the special issues become a big part of what _Philosophical Studies_ does in the 1990s.
+
+```{r}
+#| label: issues-import
+#| cache: true
+
+issue_list <- read_csv("~/Documents/quarto-articles/posts/phil-studies/PS_Special.csv",
+                       show_col_types = FALSE)
+
+issue_count_by_year_type <- ps_papers |>
+  mutate(issue = case_when(
+    is.na(issue) ~ "S",
+    TRUE ~ issue
+  )) |>
+  group_by(volume, issue) |>
+  slice(1) |>
+  left_join(issue_list |> 
+              rename(volume = Volume, issue = Issue) |>
+              mutate(volume = as.character(volume)), by = c("volume", "issue")) |>
+  replace_na(list(Type = "Normal", Count = 1)) |>
+  ungroup() |>
+  arrange(year, volume, issue) |>
+  group_by(year, Type) |>
+  summarise(count = sum(Count), .groups = "drop")
+
+issue_count_by_year <- issue_count_by_year_type |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_year_normal  <- issue_count_by_year_type |>
+  filter(Type == "Normal") |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_year_abnormal  <- issue_count_by_year_type |>
+  filter(Type != "Normal") |>
+  group_by(year) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_count_by_type <- issue_count_by_year_type |>
+  group_by(Type) |>
+  summarise(count = sum(count), .groups = "drop")
+
+issue_type_by_decade <- issue_count_by_year_type |>
+  mutate(Type = case_when(
+    Type == "Normal" ~ "Normal",
+    TRUE ~ "Special"),
+         Decade = paste0(floor(year/10),"0s")) |>
+  group_by(Decade, Type) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  pivot_wider(id_cols = Decade,
+              names_from = Type,
+              values_from = count)
+
+issue_type_by_decade_expanded <- issue_count_by_year_type |>
+  mutate(Type = case_when(
+    Type == "Conference" ~ "One-off",
+    Type == "Topic" ~ "One-off",
+    Type == "Bellingham" ~ "BSPC",
+    TRUE ~ Type),
+    Decade = paste0(floor(year/10),"0s")) |>
+  group_by(Decade, Type) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  pivot_wider(id_cols = Type,
+              names_from = Decade,
+              values_from = count) %>%
+  replace(is.na(.), 0)
+
+citation_with_type <- ps_papers |>
+  select(id, year, displayauth, title, volume, issue) |>
+  left_join(issue_list |> 
+              rename(volume = Volume, issue = Issue) |>
+              mutate(volume = as.character(volume)) |>
+              mutate(Type = case_when(
+                Type == "Conference" ~ "One-off",
+                Type == "Topic" ~ "One-off",
+                Type == "Bellingham" ~ "BSPC",
+                TRUE ~ Type)
+                     ), 
+            by = c("volume", "issue")) |>
+  select(-Count) |>
+  left_join(citation_count, by = c("id" = "old")) |>
+  replace_na(list(
+    Type = "Normal",
+    cites = 0))
+
+citation_by_type <- citation_with_type |>
+  ungroup() |>
+  group_by(Type) |>
+    summarise(Median = round(quantile(cites, 0.5),1),
+            Q3 = round(quantile(cites, 0.75),1),
+            Mean = round(mean(cites),1)) |>
+  arrange(-Mean)
+
+citation_by_type_decade <- citation_with_type |>
+  mutate(Decade = paste0(floor(year/10),"0s")) |>
+  group_by(Type, Decade) |>
+  summarise(cites = round(mean(cites),1), .groups = "drop") |>
+  arrange(Decade) |>
+#  mutate(cites = as.character(cites)) |>
+  pivot_wider(id_cols = Type,
+              names_from = Decade,
+              values_from = cites) #|>
+#  mutate(across(starts_with('1') | starts_with('2'), ~replace_na(.,"--")))
+```
+
+```{r}
+#| label: tibbles-for-special
+#| cache: true
+
+current_articles <- short_bib |>
+  filter(journal %in% comparison_journals,
+         journal != "Philosophical Studies") |>
+  mutate(cited_journal = "other") |>
+  bind_rows(short_bib |>
+              filter(journal == "Philosophical Studies") |>
+              mutate(cited_journal = "ps")) |>
+  group_by(cited_journal, year) |>
+  filter(year >= 1980, year <= 2019)
+
+journal_list <- (current_articles |>
+                   group_by(cited_journal) |>
+                   tally())$cited_journal
+
+third_quartile <- tribble(
+  ~cited_journal, ~year, ~q3
+)
+
+for (the_cited_journal in journal_list){
+  for (the_year in 1980:2019){
+    temp <- current_articles |>
+      filter(cited_journal == the_cited_journal,
+             year <= the_year + 2,
+             year >= the_year - 2)
+    third_quartile <- third_quartile |>
+      add_row(
+        cited_journal = the_cited_journal,
+        year = the_year,
+        q3 = quantile(temp$cites, prob = 0.75)
+      )
+  }
+}
+
+citation_with_all_type <- ps_papers |>
+  select(id, year, displayauth, title, volume, issue) |>
+  left_join(issue_list |> 
+              rename(volume = Volume, issue = Issue) |>
+              mutate(volume = as.character(volume)), 
+            by = c("volume", "issue")) |>
+  select(-Count) |>
+  left_join(citation_count, by = c("id" = "old")) |>
+  replace_na(list(
+    Type = "Normal",
+    cites = 0))
+
+for (the_year in 1980:2019){
+  temp <- citation_with_all_type |>
+    filter(Type == "Normal",
+           year <= the_year + 2,
+           year >= the_year - 2)
+  third_quartile <- third_quartile |>
+    add_row(
+      cited_journal = "psnorm",
+      year = the_year,
+      q3 = quantile(temp$cites, prob = 0.75)
+    )
+}
+
+for (the_year in 1980:2019){
+  temp <- citation_with_all_type |>
+    filter(Type == "Normal" | Type == "Topic",
+           year <= the_year + 2,
+           year >= the_year - 2)
+  third_quartile <- third_quartile |>
+    add_row(
+      cited_journal = "psnoconf",
+      year = the_year,
+      q3 = quantile(temp$cites, prob = 0.75)
+    )
+}
+
+third_quartile_wide <- third_quartile |>
+  pivot_wider(
+    id_cols = year,
+    names_from = cited_journal,
+    values_from = q3) |>
+  mutate(psrat = ps/other,
+         normrat = psnorm/other,
+         xconfrat = psnoconf/other)
+
+third_quartile_ratio <- third_quartile_wide |>
+  select(1, 6:8) |>
+  pivot_longer(
+    cols = ends_with("rat"),
+    names_to = "type",
+    values_to = "ratio")
+```
+
+```{r}
+#| label: tbl-issues-by-decade
+#| tbl-cap: "How many of each type of special issue were published each decade."
+
+kable(issue_type_by_decade_expanded)
+```
+
+The special issues differ from the normal issues in some striking ways, so it will be helpful to keep their presence in mind.
+
+# Methods {#sec-methods}
+
+## Sources {#sec-sources}
+
+The studies here are primarily based on two sources: citation data from Web of Science, and word lists from JSTOR.
+
+Through [University X] I downloaded the Web of Science (hereafter, WoS) Core Collection in XML format. Within it, I selected 100 prominent philosophy journals that WoS indexes. The journals I selected are, like _Philosophical Studies_ primarily English-language, analytic philosophy journals. I filtered the citations for just citations from and to those 100 journals. WoS has a special way of recording citations in indexed articles to other articles that it has indexed. These records are easy to extract, and are considerably more reliable than citation records in general.^[That's not to say they are perfect. They certainly have false negatives, especially when there are any errors in the original citation. As @Petrovich2023 [77n10] notes, they are more reliable when the citations are in a bibliography than when they are in footnotes. They also do badly with supplements. So for this study I've excluded all the supplemenmts to _Noûs_, i.e., those issues of _Philosophical Perspectives_ and _Philosophical Issues_ which were listed as supplements to _Noûs_. I did include the supplemental issue _Philosophical Studies_ issued in 2013, because the data there looked reliable enough.] What follows uses just those citations. So it is citations from indexed journals to indexed journals, where WoS recognised that both the cited and citing journal were in its database.
+
+This is obviously a small subset of all citations. It excludes citations in academic journals in other fields, in books and edited volumes, and in many other places that Google Scholar indexes, such as dissertations, lecture notes, slides, and draft manuscripts. Losing that information is a cost, but there are three large upsides. First, these citations are much more accurate. Second, we can be more confident that our data set is relatively complete; finding a full list of philosophy journals is easier than finding a full list of edited volumes in philosophy. Third, by looking at citations internal to philosophy, we can get a sense of philosophy's self-image, and how it changes over time.
+
+The downloadable citation data is not particularly up to date. I am including citations beyond 2019, because it's helpful to get a sense of how some of these articles have been received in more recent years. But the data I have only goes through mid-2022. I'll often simply say 2022; but note that even that year is incomplete.
+
+The other source I used is JSTOR, and in particular the Data for Research (DfR) program that they provide through their Constellate project. This lets you download lists of the words used in various journal articles, along with a count of how often each word is used.^[It also provides bigrams and trigrams, which I've occasionally used.] It also provides word counts for the articles, which I have used in @sec-overview. The words an author uses are a pretty good guide to what they are talking about; if the word 'denotation' is used frequently, it's probably a philosophy of language article.
+
+## Articles? {#sec-what-is-an-article}
+
+I said I'm talking about articles here, but what exactly is an _article_? A more helpful question is, which things that philosophy journals publish are not articles?
+
+Some things are easy. The table of contents is not an article. Nor is a correction, or a report on editorial change. Book reviews are not articles. If they were, _Philosophical Review_ would have the lowest rate of citations per article, not the highest. Both WoS and JSTOR also distinguish articles from discussion notes, especially if the journal has a designated discussions section. Without this distinction, _Mind_ would have a much lower rate of citations per article.
+
+Both of these last two categories are relevant to _Philosophical Studies_, even though it does not run book reviews or have designated discussion sections. They are relevant because it has many book symposia. The classifiers, WoS and JSTOR, struggle with how to classify articles in these symposia. They disagree with each other, and with their own past practice.
+
+I have some sympathy for the classifiers; these are really borderline cases. Mostly what they settled on was that the précis and replies by the book author are not articles, and that the contributions by commentators are. But they did not stick precisely to this.
+
+For the most part, I've gone with WoS's classifications. It would be practical, just barely, to go through _Philosophical Studies_ issue by issue and reclassify the book symposium entries so all and only the commentaries are articles. But it would not be practical to do this for all one hundred journals. And for this paper, we're mostly interested in comparing articles in _Philosophical Studies_ with articles in other journals, so it's best to not modify only one journal.
+
+There is one place we're I've overridden WoS's classifications. It has categories of Discussion, Note, and Review, each of which is about 0.75% of the articles across the 100 journals. The three categories include similar enough articles that I'll treat them as a unified category. Mostly these are discussion notes, or longer book reviews, that we want to exclude. But, especially in _Philosophical Review_, they occasionally put ordinary articles here. So important articles by Stanley @WOSA1962CGX0500005, Jonathan @WOS000272855000002, and Harvey @WOS000810220800002 all got listed as not being articles.^[The Cavell article was in the discussion section of the January 1962 issue of the Review, so this classification is understandable. The other two are not.] I've counted any piece in these three categories 20 pages or longer as an article.
+
+There is one last tricky category to flag. The special issues on the Oberlin Colloquium sometimes include commentaries on the main articles. These are mostly not counted as articles, and I think rightly so. Occasionally, as when Andy @Egan2011 was the commentator on an important paper by Tamar Szabò @WOS000295087100003, the commentary gets a reasonable number of citations. But mostly these commentaries are rarely if ever cited, and I think they aren't really what most people think of as journal articles. So I've been happy to exclude them.^[If these aren't articles, what are they? WoS calls Egan's paper 'Editorial-Matter'. That's wrong, but I'm not sure what I would say in their position.]
+
+# Outbound Citations {#sec-overview}
+
+## Overview of Citations {#sec-citations-overview}
+
+Articles in _Philosophical Studies_ get cited a lot. @tbl-all-cites shows the five journals with the largest number of citations of articles published between 1980 and 2019 in the 100 journals we're looking at.
+
+```{r}
+#| label: tbl-all-cites
+#| tbl-cap: "Leading journals by total number of citations (Articles published 1980-2019)."
+
+kable(
+  journal_citation_count |>
+    slice(1:5)
+)
+```
+
+_Philosophical Studies_ is in first place on that list in part, but only in part, because it publishes so much. @tbl-all-articles lists the top five journals by the number of articles they have published.
+
+```{r}
+#| label: tbl-all-articles
+#| tbl-cap: "Leading journals by total number of articles (Articles published 1980-2019)."
+
+kable(
+  journal_article_count |>
+    slice(1:5)
+)
+```
+
+_Synthese_ has 20% more articles, but 25% fewer citations. The other three journals on @tbl-all-articles are somewhat special cases. Two of them get a lot of citations outside of philosophy, and this is only a study of citations in philosophy journals. _Analysis_ only publishes short papers, and so while they get a lot of citations per page, they don't get as many citations per article as other journals.^[Recall that in @sec-what-is-an-article I noted that some _Analysis_ style papers in other journals are not even counted because they are classified as Discussions or Notes, not Articles. These excluded articles are cited at much lower rates than the typical _Analysis_ article.]
+
+Still, we'd expect on general principles that raw volume of publication wouldn't make a big difference. Citations tend to follow something like a log-normal distribution [@Brzezinski2015]. The bulk of the citations come from a handful of highly cited articles. Publishing more articles helps, but is no guarantee. 
+
+If we look not at total citations, but at citations per article as in @tbl-citation-rate, we get a list that looks a bit more like a familiar ranking of philosophy journals by prestige.
+
+```{r}
+#| label: tbl-citation-rate
+#| tbl-cap: "Leading journals by citation rate (Articles published 1980-2019)."
+
+this_table <- bind_rows(
+  ranked_journal_citation_rate |> slice(1:5),
+  tibble(
+    Journal = "...",
+  ),
+  ranked_journal_citation_rate |> slice(13:14)
+)
+
+kable(
+  this_table
+)
+```
+
+I've included _Philosophy and Phenomenological Research_ there because, like _Philosophical Studies_, it publishes many book symposia. And, like _Philosophical Studies_, the articles in these symposia are typically not cited very much.
+
+## Large Trend {#sec-large-trend}
+
+There is a striking step-change in citations to _Philosophical Studies_ that occurred in the mid-2000s. Cross-temporal comparisons of citations are hard because changes in the number of journals, the number of articles in those journals, and citation norms, make most comparisons tricky. To try to screen off some of that noise, I'll mostly compare citations to articles published in _Philosophical Studies_ to citations to other articles published at the same time.
+
+In particular, in this section I'll compare _Philosophical Studies_ to a list of nineteen other prominent philosophy journals. From the one hundred journals that I'm primarily looking at, I selected the twenty that have the highest rate of citations per published article, and which Web of Science has indexed every year since 1980.^[The last constraint notably rules out _Philosophers' Imprint_ and _Mind and Language_.] That list includes _Philosophical Studies_, and the other nineteen journals are the comparison class.
+
+@fig-compare-cites-dots shows, for each year from 1980 to 2019, the average number of citations for articles published in _Philosophical Studies_ (in blue), and in the other nineteen (in red). The figure is fairly noisy, but some trends are clear. Before 2000, the red dots, for the other journals, are mostly above the blue dots, for _Philosophical Studies_. After 2000, and especially from 2003 onwards, that is mostly reversed. Despite having less time to accrue citations, articles from the 2000s are cited more, on average, than articles published earlier. But articles published in the 2010s, especially the late 2010s, have many fewer cites largely because they haven't been around as long.
+
+```{r}
+#| label: fig-compare-cites-dots
+#| fig-cap: "Average citation rates for _Philosophical Studies_ and peer journals."
+
+ggplot(ps_comp_rate |>
+         left_join(
+           tribble(
+             ~cited_journal, ~Journal,
+             "PS", "Philosophical Studies",
+             "NPS", comp_tag,
+           ),
+           by = "cited_journal"), 
+       aes(x = year, y = rate, color = Journal)) +
+       geom_point() +
+       labs(x = element_blank(),
+            y = "Citations per article",
+            color = element_blank()) +
+       theme(legend.position = "bottom")
+```
+
+@fig-compare-cites-rolling smooths out some of the noise in @fig-compare-cites-dots in two ways. First, instead of measuring average citations per year, I measure average citations over a five-year rolling window. This doesn't make a huge difference to the measure for the other nineteen, which is already fairly smooth, but it is useful for smoothing the values for just one journal. Second, instead of showing the red and blue dots separately, I've just displayed the ratio between them.
+
+```{r}
+#| label: fig-compare-cites-rolling
+#| fig-cap: "Ratio of citations to Philosophical Studies to citations to other journals, for five year rolling windows."
+
+ggplot(ps_comp_rate_wide,
+       aes(x = year, y = comp)) +
+  geom_point() + 
+  labs(x = element_blank(),
+       y = "Ratio") +
+  theme(plot.subtitle = element_text(family = "Scala Sans Pro", size = 16))
+```
+
+The difference in @fig-compare-cites-rolling between the earlier and recent years is striking. By this one measure, citations per article, _Philosophical Studies_ was doing ok before 2003, but was towards the lower end of the top 20 journals. After 2003, it is doing better than the average journal _in the top 20_.
+
+My very anecdotal impression is that _Philosophical Studies_ is viewed as being more prestigious by younger philosophers than by older philosophers. A toy model of prestige, where it is heavily anchored to how often a journal was cited when one was in graduate school, would explain that difference. That said, I have not done (and am not going to do) a careful study of comparative prestige judgments to know if there is even an effect here to find, or whether my informal sample was not reflective of the wider population.
+
+## Means, Medians and Quartiles {#sec-means-and-ways}
+
+In some ways looking at the averages here understates the impact of _Philosophical Studies_ in the 2000s. Average numbers of citations can be very misleading. @tbl-quartiles-two-journals compares five year periods from two journals: the _Australasian Journal of Philosophy_ (AJP) from 1980-1984, and _Philosophical Studies_ (PS) from 2003-2007. Q1, Q2 and Q3 are the 25th, 50th, and 75th percentile citations, and Mean is the average number of citations.
+
+```{r}
+#| label: tbl-quartiles-two-journals
+#| tbl-cap: "Statistics for  AJP 1980-1984, and PS 2003-2007."
+
+temp_ajp <- short_bib |>
+  filter(journal == "Australasian Journal Of Philosophy",
+         year >= 1980,
+         year <= 1984) |>
+  arrange(-cites)
+
+this_table <- short_bib |>
+  filter(journal == "Australasian Journal Of Philosophy",
+         year >= 1980,
+         year <= 1984) |>
+  summarise(Q1 = round(quantile(cites, 0.25),1),
+            Q2 = round(quantile(cites, 0.5),1),
+            Q3 = round(quantile(cites, 0.75),1),
+            Mean = round(mean(cites),1)) |>
+  pivot_longer(cols = everything(),
+               names_to = "Statistic",
+               values_to = "AJP 1980-1984") |>
+  left_join(
+    short_bib |>
+  filter(journal == "Philosophical Studies",
+         year >= 2003,
+         year <= 2007) |>
+  summarise(Q1 = round(quantile(cites, 0.25),1),
+            Q2 = round(quantile(cites, 0.5),1),
+            Q3 = round(quantile(cites, 0.75),1),
+            Mean = round(mean(cites),1)) |>
+  pivot_longer(cols = everything(),
+               names_to = "Statistic",
+               values_to = "PS 2003-2007"),
+  by = "Statistic"
+  )
+
+kable(this_table)
+```
+
+The mean number of citations per article is higher for AJP 1980-1984 than for _Philosophical Studies_ 2003-2007. But that's because of the `r sum(temp_ajp$cites)` citations to articles from the AJP in those years, `r sum(filter(temp_ajp, displayauth == "David Lewis")$cites)` of them are to five articles by David Lewis. The citations to _Philosophical Studies_ are much more widely spread around. Comparing the 75th percentiles is more indicative of what's being published in the journals.
+
+Part of the difference between AJP 1980-1984 and _Philosophical Studies_ 2003-2007 is a general trend in the discipline to spread around the citations more. But it's not just that. _Philosophical Studies_ stands out for how widely spread around its citations are. @fig-quartiles-ps-vs-19 shows this. I've taken the same 19 journals that I used in @fig-compare-cites-rolling, and calculated the same quartile statistics for _Philosophical Studies_, and for those 19 journals collectively, for five-year moving windows each year from 1980 to 2019. The results are shown in @fig-quartiles-ps-vs-19. Note that the dot for each year is really the five-year window centrered on that year.
+
+```{r}
+#| label: fig-quartiles-ps-vs-19
+#| fig-cap: "Ratio of 75 percentile of _Philosophical Studies_ citations to 75th percentile of citations for other leading journals, five year rolling window."
+
+ggplot(third_quartile_ratio |>
+         filter(type == "psrat"),
+       aes(x = year, y = ratio)) +
+  geom_point() +
+  theme(legend.position = "none") +
+  labs(x = element_blank(),
+       y = "Ratio") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010))
+```
+
+The pattern is rather similar to @fig-compare-cites-rolling. Before 2000, the ratio was below one for 11 out of 20 years. After 2000, the only time it is below one is right at the end, where the data is very noisy. (The citation counts are very low for such recently published articles, so it's hard to read too much into the numbers.) There is a particular peak in the mid-2000s, just as in @fig-compare-cites-rolling. Perhaps the biggest difference is that in the 1980s, the ratio of the means was below one, but the ratio of the 75th percentiles is sometimes above one. The explanation for that is that there were very few _Philosophical Studies_ articles from those years with huge citation counts, even though a quarter of the articles were being fairly frequently cited.
+
+## Citations of Special Issues {#sec-citations-of-special-issues}
+
+Part of the explanation of the pattern in @fig-compare-cites-rolling and @fig-quartiles-ps-vs-19 is that the special issues that _Philosophical Studies_ published in the 2000s were very heavily cited. @tbl-citation-by-type shows three summary statistics, mean, median, and 75th percentile (Q3), for the normal _Philosophical Studies_ issues, and for the four classes of special issues. @tbl-citation-by-type-decade shows the means for the five classes over each of the four decades from 1980-2019. (The blank cells mean that there aren't any special issues of that type that decade.)
+
+```{r}
+#| label: tbl-citation-by-type
+#| tbl-cap: "Summary citation statistics for the five types of _Philosophical Studies_ issues."
+
+kable(citation_by_type)
+```
+
+```{r}
+#| label: tbl-citation-by-type-decade
+#| tbl-cap: "Mean citations by decade for the five types of _Philosophical Studies_ issues."
+
+options(knitr.kable.NA = '')
+kable(citation_by_type_decade)
+```
+
+The numbers for BSPC are particularly striking. In the full set of articles I'm working from, i.e., all the indexed articles from 100 journals, only 1.1% of articles have 39 or more citations. But one quarter of the articles that _Philosophical Studies_ published from BSPC are in that 1.1%. Surprisingly, given the numbers here, none of the 10 most cited articles in _Philosophical Studies_, and only one of the 30 most cited articles, was from a BSPC special issue. The high average isn't being caused by outliers, but many BSPC articles being cited very frequently. By contrast, four of the ten most cited articles were from the Oberlin colloquium. This is why the Q3 numbers for BSPC and Oberlin are so different, even though the means aren't that far apart.
+
+The fact that the normal issues have such lower citation statistics than the special issues might make us think that the explanation of @fig-compare-cites-rolling and @fig-quartiles-ps-vs-19 can be found entirely in the special issues. Indeed, if we just compare the normal issues of _Philosophical Studies_ to the other 19 journals, the effect we were seeing basically vanishes. This can be seen in @fig-quartiles-normal-only.
+
+```{r}
+#| label: fig-quartiles-normal-only
+#| fig-cap: "Ratio of 75 percentile of normal issues of _Philosophical Studies_ citations to 75th percentile of citations for other leading journals, five year rolling window."
+
+ggplot(third_quartile_ratio |>
+         filter(type == "normrat"),
+       aes(x = year, y = ratio)) +
+  geom_point() +
+  theme(legend.position = "none") +
+  labs(x = element_blank(),
+       y = "Ratio") +
+  scale_x_continuous(breaks = c(1990, 2000, 2010))
+```
+
+This is surely part of the explanation of what's going on. But @fig-quartiles-normal-only is not an apples-to-apples comparison; we've removed the special issues from _Philosophical Studies_, but not from the other 19. This could be a significant issue. I looked at the most cited article since 2005 in each of the 20 journals that go into  @fig-quartiles-normal-only, and in 6 of them (including _Philosophical Studies_), the most cited article was in a special issue. Or, in one case, a special unit in a regular issue. It's really hard to tell exactly which issues are special issues from the archival record, and even harder to tell what the refereeing process was for those special issues.^[BSPC selected almost all its papers via anonymous review, and then the papers were refereed again before going into _Philosophical Studies_. I have no idea how common that was for the other special issues.] The best we can say is that special issues are sufficiently widespread, and sufficiently widely cited, that @fig-quartiles-normal-only might be a misleading comparison. The success of special issues is part of why _Philosophical Studies_ was so widely cited in the 2000s, but maybe not all of it.
+
+Rather than go further down this rabbit hole, let's turn to what was in _Philosophical Studies_ over the years, starting with its inbound citations.
+
+# Inbound Citatations {#sec-inbound-citations}
+
+```{r}
+#| label: setupdecadeinbound
+#| cache: true
+
+require(tidyverse)
+
+decade_comparison <- c()
+
+for (dec in 198:201){
+  the_decade <- paste0(dec,"0s")
+  decade_cites <- all_cites |>
+    filter(decade == the_decade) |>
+    group_by(old) |>
+    tally(name = "dec_cites") |>
+    slice_max(order_by = dec_cites, n = 20, with_ties = FALSE)
+  ps_cites <- all_cites |>
+    filter(decade == the_decade,
+           new_journal == "Philosophical Studies",
+           old %in% decade_cites$old) |>
+    group_by(old) |>
+    tally(name = "ps_cites")
+  decade_cites <- decade_cites |>
+    left_join(ps_cites,
+              by = "old") |>
+    replace_na(list(ps_cites = 0)) |>
+    mutate(ratio = ps_cites/dec_cites,
+           decade = the_decade) |>
+    left_join(short_bib,
+              by = c("old" = "id")) |>
+    select(-cites) |>
+    mutate(Citation = paste0("@", str_replace(old, ":", ""))) |>
+    select(Citation, `PS Citations` = ps_cites, `All Citations` = dec_cites, Ratio = ratio, everything()) |>
+    arrange(decade, -Ratio, `All Citations`) |>
+    rowid_to_column(var = "Rank")
+  decade_comparison <- decade_comparison |>
+    bind_rows(decade_cites) 
+}
+
+single_decade_kable <- function(x){
+  temp <- decade_comparison |>
+    filter(decade == paste0(x,"0s")) |>
+    mutate(Percent = scales::label_percent()(Ratio)) |>
+    select(Rank, Citation, `PS Citations`, `All Citations`, Percent)
+  temp |>
+    slice(1:5) |>
+    add_row(Citation = "...") |>
+    bind_rows(temp |>
+                slice(16:20))
+  }
+
+```
+
+This section looks at the papers cited in _Philosophical Studies_ in each of the last four decades. For each decade, I find the 20 papers most cited in all philosophy journals over that decade. (They need not be published in the decade, indeed some of them are published nearly a half-century earlier.) I'll then look at which of them have the highest and lowest proportion of their citations in _Philosophical Studies_, and comment on what that tells us about the journal, and the discipline as a whole.
+
+## 1980s
+
+```{r}
+#| label: tbl-1980s-inbound
+#| tbl-cap: "Highly cited articles in the 1980s."
+
+kable(single_decade_kable(198))
+```
+
+_Philosophical Studies_ was founded to be a journal of _analytic_ philosophy. There wasn't a mission statement in the first edition, but the very first article might have served just as well. It was an article on analysis, by Morris @Weitz1950, which starts with a reference to _Language, Truth and Logic_.
+
+In the 1980s, the focus is still very much on core analytic concerns. The five articles at the top of @tbl-1980s-inbound are all in philosophy of language, broadly enough construed. That was obviously a big part of philosophy as a whole in the 1980s, but these articles were being cited in _Philosophical Studies_ at a higher rate than in the rest of the discipline.
+
+The bottom of @tbl-1980s-inbound says more about the noisiness of the data than about the journal. The Dennett paper was cited in @WOSA1985AGM6100006, but the citation was to the reprint in _Brainstorms_ not the original journal article, so it isn't captured here. The Rawls paper is cited in @WOSA1984SN28600002, with a slightly different title.^[The Rawls paper was in three parts, and WoS thought the parts were papers, and the title was the issue title, so the citations to it are particularly unreliable.] I wouldn't read much into that part of the table.^[I found these citations with Google Scholar, which has several false positives, but does track down some very hard to find citations.]
+
+## 1990s
+
+```{r}
+#| label: tbl-1990s-inbound
+#| tbl-cap: "Highly cited articles in the 1990s."
+
+kable(single_decade_kable(199))
+```
+
+The top of @tbl-1990s-inbound still has a fair bit of philosophy of language, though we're now seeing more metaphysics (Lewis), more philosophy of mind (Jackson), and in particular more metaphysics of mind (Kim). 
+
+The bottom of @tbl-1990s-inbound brings out something that we'll see a lot more going forward. _Philosophical Studies_ does a lot less political philosophy (Dworkin, Rawls), and less philosophy of science (Millikan, Cummins) than the rest of the discipline.
+
+There is one very odd entry there though: why are there so few citations to Goldman? We'll come back to this in later sections, but it stands out given how central epistemology is about to become to the journal.
+
+## 2000s
+
+```{r}
+#| label: tbl-2000s-inbound
+#| tbl-cap: "Highly cited articles in the 2000s."
+
+kable(single_decade_kable(200))
+```
+
+The story in @tbl-2000s-inbound is the centrality of epistemology to what _Philosophical Studies_ does in the 2000s. And in particular, it is the story of the centrality of epistemic contextualism to the journal. The two most important articles on contextualism are cited in _Philosophical Studies_ more than 25 times in this decade alone, which is quite remarkable.
+
+I think the three most important figures in the development of epistemic contextualism are Keith DeRose, David Lewis, and Stewart Cohen. The first two are on this list, and the third was editor of the journal through the 2000s. There are cases in the history of philosophy where a journal editor was cited more often in his journal than in the broader discipline.^[I use a male pronoun here because the editors I know of that fit this description were all male.] This isn't what happened here. Cohen's own papers are cited in _Philosophical Studies_ at roughly the same rate as they are cited in peer journals. What does happen is that a topic Cohen works on, and which is being discussed a lot throughout philosophy, is discussed even more here.
+
+The bottom of @tbl-2000s-inbound continues a pattern we've seen already. _Philosophical Studies_ does less political philosophy (Cohen, Anderson), and less philosophy of science (Cummins, Machamer et al) than similar journals.
+
+## 2010s
+
+```{r}
+#| label: tbl-2010s-inbound
+#| tbl-cap: "Highly cited articles in the 2010s."
+
+kable(single_decade_kable(201))
+```
+
+There are three related stories at the top of @tbl-2010s-inbound. The first is the appearance for the first time of ethics articles (Kolodny, Frankfurt) at the top of one of these lists. The second is the much broader spread of topics represented than in previous decades. And the third is the broader spread of years represented, with 41 years between the earliest and latest publication on the list.
+
+There isn't much new at the bottom of the list, with once again the most cited philosophy of science article of the last quarter century, and the most cited political philosophy of the last quarter century, trailing the pack. It is perhaps an interesting reflection on how the journal has changed to see "The Problem of the Essential Indexical", which was near the top of @tbl-1980s-inbound and @tbl-1990s-inbound, be near the bottom of @tbl-2010s-inbound.
+
+## Summary
+
+Just looking at the citations of very widely cited articles is a fairly crude measure. In subsequent sections we'll use topic models, and citations of clusters of articles, to make more fine-grained measurements of what was going on in the journal. But these more sophisticated approaches have a downside: they are black boxes, and it is tricky to independently confirm what they say. Counting citations of a handful of articles is much easier. That means that when the more sophisticated approaches say that philosophy of language has become a smaller part of the journal, that ethics has become more important, and that philosophy of science and political philosophy were always relatively small parts of the journal, we have independent reason to believe that they are correct.
+
+
+
+# Comparisons
+
+Articles with highest ratio of PS cites/general cites
+Articles with lowest ratio of PS cites/general cites
+Previously I just did that with articles published in PS; that seems wrong
+
+Hmm, this could be complicated. 
+Study: For each decade find 20 most cited, and look at how often they are cited in PS.
+
+For 1980s, the low is 0 for Rawls (1980) and Dennett (1971). But Rawls is cited in Post (1984), under a variant name, and Dennett is cited in Lormond (1985), but to the reprint. Maybe just live with the messiness
+High five in 1980s are all language, or language-adjacent: Lewis (1979) (both de se and time's arrow), two Perry papers, and Donnellan
+
+For 1990s, the low is 0 for McDowell's Virtue and Reason. Is in Brighouse (1990), but the citation is incomplete and uses the wrong year. Oddly the third lowest is for Discrimination and Perceptual Knowledge, only 2/38. And this looks right.
+The highs in 1990s are still language based, though with metaphysics seeping in (Kim on supervenience, Lewis on Universals)
+
+For 2000s, lows include Cummins (1975) (which is hard to track, such a common name), Anderson (1999), and Mechanisms paper (2000).
+The highs are very epistemology based - Goldman is among them, and the two big contextualism papers by DeRose and Lewis. Obviously the editor at the time was also a prominent contextualist, but his papers are not cited in the journal at a particularly out of the ordinary rate. (There are many cases in history where editors are cited a lot, but this isn't one of them.)
+Just outside top 20, but Jackson and Chalmers has nearly 1/3 its cites in PS. Tracing back to Davies and Humberstone's original paper.
+Remarkably, Elusive Knowledge is most cited in the decade; normally this kind of calculation pushes towards less cited, high variance cases.
+
+For 2010s, still mechanisms, Anderson (1999), also Kripke (1975) are the low ones
+Top 5 is more varied, both in topic and time: Kolodny (2005), Pryor (2000), Lewis (1986), Frankfurt (1969), Jackson (1982). Could be result of publishing more papers, but striking that it's pulling these older papers in.
+
+# The LDA
+
+Build the model
+Note the five categories
+Graph the trends
+Flag the methodology
+
+# Language
+
+Find the 40 most cited in each topic over the 40 years (i.e., most cited per year)
+Look how often they are cited in PS
+Look how often they are cited across the 100
+See if the trends in PS track wider trends
+Find other journals that have similar trends (Analysis, PQ, AJP)
+
+# Metaphysics
+
+Note the two Schaffer papers, and differences in citing @WOS000368189400004
+Is that because little grounding
+There is some - see graph of words
+Maybe just count how 'modal' vs 'postmodal' the 2019 papers are
+Maybe do a small LDA of the metaphysics papers
+
+# Ethics
+
+Is there anything to say here?
+Does it go more political? Still not citing Anderson, but something?
+
+Delicate. Even happening.
