@@ -1,0 +1,36 @@
+Plan for rest of paper
+
+# Introducing LDA
+
+Make the graph, link back to start of paper
+Describe the five categories
+Do just an epistemology vs language graph
+
+# LDA Methodology
+
+Describe method
+  - 3 problems: need to select k by hand, randomness and unnatural categories
+  - Solution to first: Citations tell us that other topics aren't major part
+  - Solution to second and third: pick the model with the best correlation between articles and articles they cite
+Crossed articles
+  - Clear cases: 
+      ethics & epistemology: Kelly (2002); 
+      language & epistemology: Stalnaker (2006); 
+      mind & metaphysics: Kim ???
+  - Messy cases:
+      Haslanger (2016)
+      Bourget and Chalmers (2009)
+  - For many purposes, we'll live with mess; just sum the probabilities
+  
+# LDA Statistics
+
+Probability by issue type
+Most unified issue (17 of top 18)
+Citation by LDA category
+
+# Metaphysics
+
+Can we do something on grounding. Three ideas
+1. Citations of big metaphysics articles
+2. Word usage (e.g., 'counterfactual', 'ground')
+3. A small LDA of just the metaphysics articles

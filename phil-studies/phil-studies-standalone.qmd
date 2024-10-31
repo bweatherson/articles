@@ -113,6 +113,7 @@ load("~/Documents/lda-cites-unigrams-only/common_ps_words.RData")
 load("~/Documents/lda-cites-unigrams-only/ps_lda_s155376_c5_r1000.RData")
 load("~/Documents/citations-2025/philo_cite.RData")
 load("~/Documents/citations-2025/philo_bib.RData")
+load("/Users/weath/Dropbox (Personal)/ps_lda_s387354_c5_r1000.RData")
 ```
 
 ```{r}
@@ -232,7 +233,7 @@ citation_count <- active_cites |>
   tally(name = "cites")
 
 short_bib <- philo_bib |>
-  select(id, year, displayauth, title, journal) |>
+  select(id, year, displayauth, title, journal, volume, issue) |>
   left_join(citation_count, by = c("id" = "old")) |>
   replace_na(list(cites = 0))
 
@@ -376,6 +377,132 @@ issue_type_by_decade_expanded <- issue_count_by_year_type |>
   replace(is.na(.), 0)
 ```
 
+```{r}
+#| label: setuplda
+#| cache: true
+
+phil_studies_gamma <- tidy(my_lda, matrix = "gamma") 
+
+phil_studies_classifications <- phil_studies_gamma |>
+  group_by(document) |>
+  top_n(1, gamma) |>
+  ungroup()
+
+phil_studies_titles_and_topics <- left_join(phil_studies_classifications,
+                                            ps_meta,
+                                            by = c("document" = "id"))
+
+phil_topics <- tidy(my_lda, matrix = "beta")
+
+word_score <- phil_topics |>
+  group_by(term) |>
+  dplyr::summarise(avgbeta = mean(beta), sdbeta = sd(beta))
+
+busy_topics <- phil_topics |>
+  left_join(word_score, by = "term") |>
+  right_join(common_ps_words, by = c("term" = "ngram")) |>
+  mutate(score = (beta - avgbeta) * log(tn) / sdbeta)
+
+distinctive_topics <- busy_topics %>%
+  group_by(topic) %>%
+  slice_max(n = 20, score) %>%
+  ungroup() %>%
+  arrange(desc(-topic))
+
+distinctive_articles <- phil_studies_titles_and_topics |>
+  ungroup() |>
+  group_by(topic) |>
+  slice_max(order_by = gamma, n = 15)
+
+topics_tibble <- tribble(
+  ~topic, ~Topic,
+  1, "lda-Epistemology",
+  2, "lda-Mind",
+  3, "lda-Ethics",
+  4, "lda-Language",
+  5, "lda-Metaphysics"
+)
+
+#1 - Epistemology
+#2 - Mind
+#3 - Ethics
+#4 - Language
+#5 - Metaphysics
+
+short_bib_with_gamma <- phil_studies_gamma |>
+  left_join(topics_tibble, by = c("topic")) |>
+  select(-topic) |>
+  pivot_wider(id_cols = document,
+              names_from = Topic,
+              values_from = gamma) |>
+  left_join(ps_join, by = c("document" = "jstor_id")) |>
+  rename(id = wos_id) |>
+  select(-document) |>
+  left_join(short_bib, by = "id") |>
+  filter(!is.na(year))
+
+topic_rate_by_year <- short_bib_with_gamma |>
+  group_by(year) |>
+  summarise(across(starts_with("lda"), mean))
+
+topic_count_by_year <- short_bib_with_gamma |>
+  group_by(year) |>
+  summarise(across(starts_with("lda"), sum))
+
+names(topic_rate_by_year) <- sub("^lda-", "", names(topic_rate_by_year))
+names(topic_count_by_year) <- sub("^lda-", "", names(topic_count_by_year))
+
+short_bib_with_gamma <- short_bib_with_gamma |>
+  ungroup() |>
+  rowwise() |>
+  mutate(max = max(c_across(1:5)))
+
+unsorted_articles <- short_bib_with_gamma |>
+  filter(max < 0.5) |>
+  arrange(-cites)
+
+topic_rate_by_issue <- short_bib_with_gamma |>
+  group_by(volume, issue) |>
+  summarise(across(starts_with("lda"), mean), .groups = "drop") |>
+  rowwise() |>
+  mutate(max = max(c_across(3:7))) |>
+  left_join(issue_list |>
+              mutate(volume = as.character(Volume),
+                     issue = as.character(Issue)), 
+            by = c("volume", "issue")) |>
+  replace_na(list(Type = "Normal"))
+
+topic_rate_by_type <- topic_rate_by_issue |>
+  ungroup() |>
+  mutate(Type = case_when(
+    Type == "Conference" ~ "One-off",
+    Type == "Topic" ~ "One-off",
+    Type == "Bellingham" ~ "BSPC",
+    TRUE ~ Type)) |>
+  group_by(Type) |>
+  summarise(across(starts_with("lda"), mean), .groups = "drop") %>%
+  mutate(across(starts_with("lda"), \(x) paste0(round(x, 3) * 100,"%")))
+  
+names(topic_rate_by_type) <- sub("^lda-", "", names(topic_rate_by_type))
+  
+citations_by_topic <- short_bib_with_gamma |>
+  select(id, cites, starts_with("lda")) |>
+  pivot_longer(cols = starts_with("lda"),
+               names_to = "topic",
+               values_to = "probability") |>
+  mutate(weighted_cites = cites * probability) |>
+  mutate(topic = str_replace(topic, "lda-", "")) |>
+  group_by(topic) |>
+  summarise(cites = sum(weighted_cites), articles = sum(probability)) |>
+  mutate(rate = cites/articles) |>
+  mutate(Topic = topic,
+         Articles = round(articles, 1),
+         Citations = round(cites, 1),
+         Rate = round(rate, 2)) |>
+  select(Topic, Articles, Citations, Rate)
+
+```
+
 # Introduction {#sec-introduction}
 
 _Philosophical Studies_ is the most cited journal in other philosophy journals in recent times, so it is worthy of study both in its own right, and as a mirror of broader trends in philosophy. This paper mixes two techniques, topic modeling and citation analysis, to look at the nature of _Philosophical Studies_, and how it has changed over time, from 1980 to 2019.
@@ -384,11 +511,29 @@ In the first half of the paper, I look at the growth the citation rate (i.e., nu
 
 This leads to the second half of the paper, on just how the topic mix of the journal changed over the years. The short version of those changes is shown in @fig-five-topics.
 
+```{r}
+#| label: fig-five-topics
+#| fig-cap: "Proportion of _Philosophical Studies_ articles that are in each of these five topics, 1980-2019."
+
+ggplot(topic_rate_by_year |>
+         pivot_longer(
+           cols = 2:6,
+           names_to = "topic",
+           values_to = "rate"),
+       aes(x = year, y = rate)) +
+  geom_point() +
+  facet_wrap(~topic, nrow = 2) +
+  scale_x_continuous(breaks = c(1990, 2010)) +
+  scale_y_continuous(lim = c(0, 0.4), breaks = c(0.1, 0.2, 0.3)) +
+  labs(x = element_blank(),
+       y = element_blank())
+```
+
 In the late twentieth century, _Philosophical Studies_ was focussed on philosophy of language, and in particular on core analytic questions about reference and description. These were central to philosophy in the 1970s after _Naming and Necessity_, and stayed central to graduate education at top schools well into the twenty-first century. But the focus of other journals moved away from these questions possibly a bit earlier than _Philosophical Studies_ did.
 
 After the turn of the century, the journal moved into two topics that did not hurt its citation rates. First, it was part of the enormous discussion on epistemology, and in particular on contextualism in epistemology, in the 2000s. Second, in the 2010s, it, along with much of the rest of the discipline, moved more strongly into social philosophy.
 
-One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than most journals, resisted the turn to what Ted @Sider2021 calls 'postmodal metaphysics'.
+One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than most journals, resisted the turn to what Ted @Sider2020 calls 'postmodal metaphysics'.
 
 # Overview {#sec-overview}
 
@@ -402,7 +547,7 @@ In 1992 the journal moved 100 miles up I-10, as Stewart Cohen, then at Arizona S
 
 Thomas Blackson joined as book symposium editor in 2003. In 2010, Cohen moved to the University of Arizona, and so the journal was edited out of Tuscon for a second time. Jennifer Lackey and Wayne Davis, who would eventually take over from Cohen, joined as Associate Editors in 2014. In 2016 Cohen was made Editor-in-Chief, while Davis and Lackey became Editors, and that was the arrangement that persisted through 2019, the end of the focus of this paper.
 
-There are three things about this editorial history that will become important in what follows. One is that the names here include several of the most important epistemologists of the last half century. A second is that the journal has had a very stable editorial history; a summary like this for most other peer journals would take twice as long to write. And the third is that the biggest single change, the transition from John Pollock to Stewart Cohen as Editor in 1992, does not seem to have had an immediate impact on the journal. You see dramatic changes straight away at _Mind_ when G. E. Moore takes over in 1921, and again when Gilbert Ryle takes over in 1947.^[See @Lewy1976 on Moore, and *include citation from LDA* on Ryle.] The effects of the switch from Pollock to Cohen are much more delayed.
+There are three things about this editorial history that will become important in what follows. One is that the names here include several of the most important epistemologists of the last half century. A second is that the journal has had a very stable editorial history; a summary like this for most other peer journals would take twice as long to write. And the third is that the biggest single change, the transition from John Pollock to Stewart Cohen as Editor in 1992, does not seem to have had an immediate impact on the journal. You see dramatic changes straight away at _Mind_ when G. E. Moore takes over in 1921, and again when Gilbert Ryle takes over in 1947.^[See @Lewy1976 on Moore, and @Warnock1976 on Ryle.] The effects of the switch from Pollock to Cohen are much more delayed.
 
 ## Articles
 
@@ -695,7 +840,7 @@ The special issues differ from the normal issues in some striking ways, so it wi
 
 The studies here are primarily based on two sources: citation data from Web of Science, and word lists from JSTOR.
 
-Through [University X] I downloaded the Web of Science (hereafter, WoS) Core Collection in XML format. Within it, I selected 100 prominent philosophy journals that WoS indexes. The journals I selected are, like _Philosophical Studies_ primarily English-language, analytic philosophy journals. I filtered the citations for just citations from and to those 100 journals. WoS has a special way of recording citations in indexed articles to other articles that it has indexed. These records are easy to extract, and are considerably more reliable than citation records in general.^[That's not to say they are perfect. They certainly have false negatives, especially when there are any errors in the original citation. As @Petrovich2023 [77n10] notes, they are more reliable when the citations are in a bibliography than when they are in footnotes. They also do badly with supplements. So for this study I've excluded all the supplemenmts to _Noûs_, i.e., those issues of _Philosophical Perspectives_ and _Philosophical Issues_ which were listed as supplements to _Noûs_. I did include the supplemental issue _Philosophical Studies_ issued in 2013, because the data there looked reliable enough.] What follows uses just those citations. So it is citations from indexed journals to indexed journals, where WoS recognised that both the cited and citing journal were in its database.
+Through [University X] I downloaded the Web of Science (hereafter, WoS) Core Collection in XML format. Within it, I selected 100 prominent philosophy journals that WoS indexes. The journals I selected are, like _Philosophical Studies_ primarily English-language, analytic philosophy journals. I filtered the citations for just citations from and to those 100 journals. WoS has a special way of recording citations in indexed articles to other articles that it has indexed. These records are easy to extract, and are considerably more reliable than citation records in general.^[That's not to say they are perfect. They certainly have false negatives, especially when there are any errors in the original citation. As @Petrovich2024 [77n10] notes, they are more reliable when the citations are in a bibliography than when they are in footnotes. They also do badly with supplements. So for this study I've excluded all the supplemenmts to _Noûs_, i.e., those issues of _Philosophical Perspectives_ and _Philosophical Issues_ which were listed as supplements to _Noûs_. I did include the supplemental issue _Philosophical Studies_ issued in 2013, because the data there looked reliable enough.] What follows uses just those citations. So it is citations from indexed journals to indexed journals, where WoS recognised that both the cited and citing journal were in its database.
 
 This is obviously a small subset of all citations. It excludes citations in academic journals in other fields, in books and edited volumes, and in many other places that Google Scholar indexes, such as dissertations, lecture notes, slides, and draft manuscripts. Losing that information is a cost, but there are three large upsides. First, these citations are much more accurate. Second, we can be more confident that our data set is relatively complete; finding a full list of philosophy journals is easier than finding a full list of edited volumes in philosophy. Third, by looking at citations internal to philosophy, we can get a sense of philosophy's self-image, and how it changes over time.
 
@@ -719,7 +864,7 @@ There is one place we're I've overridden WoS's classifications. It has categorie
 
 There is one last tricky category to flag. The special issues on the Oberlin Colloquium sometimes include commentaries on the main articles. These are mostly not counted as articles, and I think rightly so. Occasionally, as when Andy @Egan2011 was the commentator on an important paper by Tamar Szabò @WOS000295087100003, the commentary gets a reasonable number of citations. But mostly these commentaries are rarely if ever cited, and I think they aren't really what most people think of as journal articles. So I've been happy to exclude them.^[If these aren't articles, what are they? WoS calls Egan's paper 'Editorial-Matter'. That's wrong, but I'm not sure what I would say in their position.]
 
-# Outbound Citations {#sec-overview}
+# Outbound Citations {#sec-outbound}
 
 ## Overview of Citations {#sec-citations-overview}
 
@@ -939,23 +1084,23 @@ for (dec in 198:201){
     group_by(old) |>
     tally(name = "dec_cites") |>
     slice_max(order_by = dec_cites, n = 20, with_ties = FALSE)
-  ps_cites <- all_cites |>
+  dec_ps_cites <- all_cites |>
     filter(decade == the_decade,
            new_journal == "Philosophical Studies",
            old %in% decade_cites$old) |>
     group_by(old) |>
-    tally(name = "ps_cites")
+    tally(name = "dec_ps_cites")
   decade_cites <- decade_cites |>
-    left_join(ps_cites,
+    left_join(dec_ps_cites,
               by = "old") |>
-    replace_na(list(ps_cites = 0)) |>
-    mutate(ratio = ps_cites/dec_cites,
+    replace_na(list(dec_ps_cites = 0)) |>
+    mutate(ratio = dec_ps_cites/dec_cites,
            decade = the_decade) |>
     left_join(short_bib,
               by = c("old" = "id")) |>
     select(-cites) |>
     mutate(Citation = paste0("@", str_replace(old, ":", ""))) |>
-    select(Citation, `PS Citations` = ps_cites, `All Citations` = dec_cites, Ratio = ratio, everything()) |>
+    select(Citation, `PS Citations` = dec_ps_cites, `All Citations` = dec_cites, Ratio = ratio, everything()) |>
     arrange(decade, -Ratio, `All Citations`) |>
     rowid_to_column(var = "Rank")
   decade_comparison <- decade_comparison |>
@@ -1040,30 +1185,13 @@ There isn't much new at the bottom of the list, with once again the most cited p
 
 Just looking at the citations of very widely cited articles is a fairly crude measure. In subsequent sections we'll use topic models, and citations of clusters of articles, to make more fine-grained measurements of what was going on in the journal. But these more sophisticated approaches have a downside: they are black boxes, and it is tricky to independently confirm what they say. Counting citations of a handful of articles is much easier. That means that when the more sophisticated approaches say that philosophy of language has become a smaller part of the journal, that ethics has become more important, and that philosophy of science and political philosophy were always relatively small parts of the journal, we have independent reason to believe that they are correct.
 
+# A Topic Model for _Philosophical Studies_ {#sec-topic-model}
 
+## The Model
 
-# Comparisons
+## The Five Categories
 
-Articles with highest ratio of PS cites/general cites
-Articles with lowest ratio of PS cites/general cites
-Previously I just did that with articles published in PS; that seems wrong
-
-Hmm, this could be complicated. 
-Study: For each decade find 20 most cited, and look at how often they are cited in PS.
-
-For 1980s, the low is 0 for Rawls (1980) and Dennett (1971). But Rawls is cited in Post (1984), under a variant name, and Dennett is cited in Lormond (1985), but to the reprint. Maybe just live with the messiness
-High five in 1980s are all language, or language-adjacent: Lewis (1979) (both de se and time's arrow), two Perry papers, and Donnellan
-
-For 1990s, the low is 0 for McDowell's Virtue and Reason. Is in Brighouse (1990), but the citation is incomplete and uses the wrong year. Oddly the third lowest is for Discrimination and Perceptual Knowledge, only 2/38. And this looks right.
-The highs in 1990s are still language based, though with metaphysics seeping in (Kim on supervenience, Lewis on Universals)
-
-For 2000s, lows include Cummins (1975) (which is hard to track, such a common name), Anderson (1999), and Mechanisms paper (2000).
-The highs are very epistemology based - Goldman is among them, and the two big contextualism papers by DeRose and Lewis. Obviously the editor at the time was also a prominent contextualist, but his papers are not cited in the journal at a particularly out of the ordinary rate. (There are many cases in history where editors are cited a lot, but this isn't one of them.)
-Just outside top 20, but Jackson and Chalmers has nearly 1/3 its cites in PS. Tracing back to Davies and Humberstone's original paper.
-Remarkably, Elusive Knowledge is most cited in the decade; normally this kind of calculation pushes towards less cited, high variance cases.
-
-For 2010s, still mechanisms, Anderson (1999), also Kripke (1975) are the low ones
-Top 5 is more varied, both in topic and time: Kolodny (2005), Pryor (2000), Lewis (1986), Frankfurt (1969), Jackson (1982). Could be result of publishing more papers, but striking that it's pulling these older papers in.
+## Trends
 
 # The LDA
 
