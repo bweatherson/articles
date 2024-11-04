@@ -1234,16 +1234,118 @@ The only one of those labels that might be misleading is 'ethics'. Really that c
 
 Is having just five topics enough? There are certainly other major topics in philosophy, as well as several other smaller topics. Let's set aside the smaller topics^[By 'smaller topic' here, I just mean one that isn't as large a part of analytic English-language philosophy as it is practiced. It's arguable that philosophy of history, to pick one such topic, should be a large part of philosophy; it's uncontroversial that it is not in fact a large part of the last half-century of analytic English-language philosophy.], which are hard to detect by this method, and focus on the four largest topics that aren't listed here: logic, history of philosophy, philosophy of science, and political philosophy.
 
-The most casual flick through the tables of contents for _Philosophical Studies_ is enough to see that logic and history of philosophy are not major parts of the journal. There are some papers on the boundary between logic and philosophy of language, and the model is happy to classify all of them with language papers. What few history papers there are get classified according to which part of philosophy they are from the history of. So "Was Kant a Nonconceptualist?" [@WOS:000251971400006] is 99.98% likely to be a mind paper, and "Descartes' Debt To Teresa of Avila, or Why We Should Work on Women in the History of Philosophy" [@WOS000410736800011] is 83% likely to be an epistemology paper.
+The most casual flick through the tables of contents for _Philosophical Studies_ is enough to see that logic and history of philosophy are not major parts of the journal. There are some papers on the boundary between logic and philosophy of language, and the model is happy to classify all of them with language papers. What few history papers there are get classified according to which part of philosophy they are from the history of. So "Was Kant a Nonconceptualist?" [@WOS000251971400006] is 99.98% likely to be a mind paper, and "Descartes' Debt To Teresa of Avila, or Why We Should Work on Women in the History of Philosophy" [@WOS000410736800011] is 83% likely to be an epistemology paper.
 
 There are very few political philosophy papers until recently. The few from earlier years, and the more frequent such papers from recent years, get slotted easily into ethics.
 
-The one that's a bit more complicated is philosophy of science. I already noted that 
+The one that's a bit more complicated is philosophy of science. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five categories. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five categories. So we aren't losing much by not having a separate category for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
 
+# Trends
 
+The biggest trend in @fig-five-topics is the drop in importance of philosophy of language. It's worth isolating that part of the graph to see how dramatic it is, as in @fig-language. I've also added a trend-line to make the pattern more visible.
 
+```{r}
+#| label: fig-language
+#| fig-cap: "Proportion of _Philosophical Studies_ articles in philosophy of language."
 
+ggplot(topic_rate_by_year |>
+         pivot_longer(
+           cols = 2:6,
+           names_to = "topic",
+           values_to = "rate") |>
+           filter(topic == "Language"),
+       aes(x = year, y = rate)) +
+  geom_point() +
+  geom_smooth(method = loess, formula = y ~ x) +
+  scale_x_continuous(breaks = c(1990, 2010)) +
+  scale_y_continuous(lim = c(0, 0.4), breaks = c(0.1, 0.2, 0.3)) +
+  labs(x = element_blank(),
+       y = element_blank())
 
+```
+
+If you don't trust black box methods like topic modeling, you can see a similar trend (possibly even more dramatic) just in the word usage. @fig-frege-russell shows how often the words "description" and "reference" appear in _Philosophical Studies_ each year, as a proportion of all the words in the articles.
+
+```{r}
+#| label: word-graphs
+
+word_graphs <- function(x){
+  active_docs <- ps_uni |>
+    filter(ngram %in% x)
+  
+  active_docs |>
+    group_by(year, ngram) |>
+    summarise(#docs = n_distinct(wos_id), 
+              words = sum(count),
+              .groups = "drop") |>
+    left_join(word_count_by_year, by = "year") |>
+    mutate(proportion = words/wordcount) |>
+    ggplot(aes(x = year, y = proportion)) +
+    geom_point() +
+    facet_wrap(vars(ngram), ncol = 2) +
+    scale_x_continuous(limits = c(1980, 2019),
+                       breaks = c(1990, 2010),
+                       minor_breaks = 396:404 * 5) +
+    scale_y_continuous(limits = c(0, NA)) +
+    labs(x = element_blank(), y = element_blank())
+    
+}
+```
+
+```{r}
+#| label: fig-frege-russell
+#| fig-cap: "Frequency of the words 'description' and 'reference' in _Philosophical Studies_."
+
+word_graphs(c("reference", "description"))
+```
+
+The words don't disappear, that would be strange given how many uses they have, but clearly these classic questions about the relationship between reference and description are less central to what the journal is publishing.
+
+Is this a trend specific to _Philosophical Studies_, or does it tell us something more broadly about philosophy journals? The answer is a bit of both, but mostly it is a general trend. The fact that "The Problem of the Essential Indexical" is near the top of @tbl-1990s-inbound, and near the bottom of @tbl-2010s-inbound suggests that a certain kind of philosophy of language has declined more at _Philosophical Studies_ than elsewhere. But some of the trends seem more widespread.
+
+```{r}
+#| label: workoutlanguageratio
+
+language_articles <- (phil_studies_gamma |>
+                        filter(topic == 4,
+                               gamma > 0.5) |>
+                        left_join(ps_join,
+                                  by = c("document" = "jstor_id")) |>
+                        select(id = wos_id))$id
+
+language_cites <- active_cites |>
+  filter(
+    new_year >= 2005,
+    old %in% language_articles) |>
+  ungroup() |>
+  group_by(citing_journal) |>
+  tally()
+
+all_ps_articles <- citation_with_type$id
+
+all_ps_cites <- active_cites |>
+  filter(
+    new_year >= 2005,
+    old %in% all_ps_articles) |>
+  ungroup() |>
+  group_by(citing_journal) |>
+  tally()
+
+language_citation_rate <- language_cites$n[2] / sum(language_cites$n)
+all_ps_citation_rate <- all_ps_cites$n[2] / sum(all_ps_cites$n)
+```
+
+Ideally, we could build a topic model for all 100 of the journals, and see how many of them are language articles in this sense. But that would be computationally impractical. Fortunately, we can estimate it another way. The graph in @fig-language starts turning downwards around 2005. If that was a phenomenon unique to _Philosophical Studies_, it should show up in the citation data. In particular, it should show up in philosophy of language articles having a lower than usual share of their citations in _Philosophical Studies_. 
+
+So I found the 694 _Philosophical Studies_ articles that the model said were at least 50% likely to be philosophy of language articles, and looked at what proportion of their citations, since 2005, were in _Philosophical Studies_. The answer was around 14.7%. Then I did the same thing for all _Philosophical Studies_ articles, asking what percentage of their citations were in _Philosophical Studies_. The answer was 13.4%. The difference between these numbers isn't significant. What is significant is that we don't see evidence that philosophy of language, especially the kind of philosophy of language that _Philosophical Studies_ published, was still a major part of the other journals, while dropping in importance in _Philosophical Studies_ itself.
+
+That last qualification, about the kind of philosophy of language that was published, is perhaps significant. Even when philosophy of language was the largest topic in the journal, there wasn't much interaction with linguists working on formal semantics. Before 2000, only one paper mentioned Irene Heim [@WOSA1988P180000006], and only two mentioned Angelika Kratzer [@WOSA1986D182100003; @WOSA1984SK63200001]. There were more mentions of Chomsky, though they were mostly in passing, and in any case Chomsky is more significant as a syntactician than a semanticist. The closest thing I see to interdisciplinary work are some applications of Montague grammar, e.g., by [@WOSA1984TJ24700012]. But there is a much sharper division between philosophers of language and linguists working on semantics in _Philosophical Studies_ before 2000 than you see in more recent work in philosophy of language. As the field moved towards more interdisciplinary work, _Philosophical Studies_ moved its focus onto other topics, especially epistemology.
+
+I've focused largely on philosophy of language because the decline in importance of what were once core questions of analytic philosophy, about description and reference, is the single biggest story in the trends. But there are two other trends worth noting, although they are much smaller.
+
+There is a small uptick in epistemology articles in the journal in the 2000s. Interestingly, this matches a finding by Eugenio @Petrovich2024, who (using a different method) sees a notable uptick in epistemology in five other leading journals starting around 2000. As we'll see @sec-citations-topic, this is related to the notable increase in citations to _Philosophical Studies_ starting around the same time.
+
+And there is a trend upwards in ethics over the last few years, though it's only returning ethics to the position it was in earlier years. I'll have more to say about this in @sec-social; the short version is that what's happening inside ethics, and in particular the focus on social questions, is more interesting than the size of the category.
 
 ## Trends
 
