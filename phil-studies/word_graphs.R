@@ -26,3 +26,6 @@ ps_to_ps <- ps_cites |>
 
 word_graphs(c("slur", "slurs"))
 word_graphs(c("testimony", "trust", "friend", "blame"))
+word_graphs(c("reference", "description"))
+word_graphs(c("heim", "kratzer"))
+word_graphs(c("chomsky", "montague"))
