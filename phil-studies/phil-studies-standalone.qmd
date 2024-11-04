@@ -503,9 +503,26 @@ citations_by_topic <- short_bib_with_gamma |>
 
 ```
 
+```{r}
+#| label: setupwordcount
+#| cache: true
+
+ps_uni <- read_csv("/Users/weath/Documents/Phil-Studies-JSTOR/PS-unigrams.csv",
+                   show_col_types = FALSE) |>
+  mutate(ngram = str_trim(ngram)) |>
+  mutate(ngram = str_replace_all(ngram, "[^[:alnum:]]", "")) |>
+  mutate(ngram = str_to_lower(ngram)) |>
+  filter(str_length(ngram) > 1) |>
+  filter(!grepl("\\d", ngram)) |>
+  mutate(jstor_id = paste0("PS-", str_sub(id, start = 29))) |>
+  select(-id) |>
+  right_join(ps_join, by = "jstor_id") |>
+  left_join(short_bib_with_gamma, by = c("wos_id" = "id"))
+```
+
 # Introduction {#sec-introduction}
 
-_Philosophical Studies_ is the most cited journal in other philosophy journals in recent times, so it is worthy of study both in its own right, and as a mirror of broader trends in philosophy. This paper mixes two techniques, topic modeling and citation analysis, to look at the nature of _Philosophical Studies_, and how it has changed over time, from 1980 to 2019.
+_Philosophical Studies_ is the most cited journal in philosophy journals in recent times, so it is worthy of study both in its own right, and as a mirror of broader trends in philosophy. This paper mixes two techniques, topic modeling and citation analysis, to look at the nature of _Philosophical Studies_, and how it has changed over time, from 1980 to 2019.
 
 In the first half of the paper, I look at the growth the citation rate (i.e., number of citations per article) in _Philosophical Studies_. If we take its peers to be the twenty philosophy journals with the highest citation rates over the last forty years, it has gone from having a citation rate 10-20 percent below the average, to a rate 10-20 percent above the average. And it's done this despite increasing its publication volume, which one would normally expect to decrease citation rate. This is explained in part by the move to publishing more special issues, with the special issues from the Bellingham Summer Philosophy Conference being particularly important, and in part by the topic mix in _Philosophical Studies_ changing in ways that prefigured changes in the broader philosophical community.
 
@@ -533,7 +550,7 @@ In the late twentieth century, _Philosophical Studies_ was focussed on philosoph
 
 After the turn of the century, the journal moved into two topics that did not hurt its citation rates. First, it was part of the enormous discussion on epistemology, and in particular on contextualism in epistemology, in the 2000s. Second, in the 2010s, it, along with much of the rest of the discipline, moved more strongly into social philosophy.
 
-One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than most journals, resisted the turn to what Ted @Sider2020 calls 'postmodal metaphysics'.
+One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than many journals, resisted the turn to what Ted @Sider2020 calls 'postmodal metaphysics'.
 
 # Overview {#sec-overview}
 
@@ -543,11 +560,11 @@ _Philosophical Studies_ was founded by Herbert Feigl and Wilfrid Sellars, both t
 
 In 1975 Lehrer, who had just moved from Rochester to Arizona, became editor. He stayed in that role until 1982, having been joined by John Pollock (also at Arizona) in 1979. From 1982, Pollock was Editor-in-Chief, and Lehrer went back to being Associate Editor. 
 
-In 1992 the journal moved 100 miles up I-10, as Stewart Cohen, then at Arizona State, took over as Editor.^[While the journal was at Arizona, at grad student assistant was recognised on the title page as an editorial assistant. Many prominent philosophers had this role over the years, including, in 1983, Stewart Cohen.] Cohen stayed as editor through the rest of the time covered in this study, eventually being an editor of the journal for longer than even Wilfrid Sellars.
+In 1992 the journal moved 100 miles up I-10, as Stewart Cohen, then at Arizona State, took over as Editor.^[While the journal was at Arizona, each year a grad student assistant was recognised on the title page as an editorial assistant. Many prominent philosophers had this role over the years, including, in 1983, Stewart Cohen.] Cohen stayed as editor through the rest of the time covered in this study, eventually being an editor of the journal for longer than even Wilfrid Sellars.
 
 Thomas Blackson joined as book symposium editor in 2003. In 2010, Cohen moved to the University of Arizona, and so the journal was edited out of Tuscon for a second time. Jennifer Lackey and Wayne Davis, who would eventually take over from Cohen, joined as Associate Editors in 2014. In 2016 Cohen was made Editor-in-Chief, while Davis and Lackey became Editors, and that was the arrangement that persisted through 2019, the end of the focus of this paper.
 
-There are three things about this editorial history that will become important in what follows. One is that the names here include several of the most important epistemologists of the last half century. A second is that the journal has had a very stable editorial history; a summary like this for most other peer journals would take twice as long to write. And the third is that the biggest single change, the transition from John Pollock to Stewart Cohen as Editor in 1992, does not seem to have had an immediate impact on the journal. You see dramatic changes straight away at _Mind_ when G. E. Moore takes over in 1921, and again when Gilbert Ryle takes over in 1947.^[See @Lewy1976 on Moore, and @Warnock1976 on Ryle.] The effects of the switch from Pollock to Cohen are much more delayed.
+There are three things about this editorial history that will become important in what follows. One is that the names here include several of the most important epistemologists of the last half century. A second is that the journal has had a very stable editorial history; a summary like this for most other leading journals would take twice as long to write. And the third is that the biggest single change, the transition from John Pollock to Stewart Cohen as Editor in 1992, does not seem to have had an immediate impact on the journal. You see dramatic changes straight away at _Mind_ when G. E. Moore takes over in 1921, and again when Gilbert Ryle takes over in 1947.^[See @Lewy1976 on Moore, and @Warnock1976 on Ryle.] The effects of the switch from Pollock to Cohen are much more delayed.
 
 ## Articles
 
@@ -611,11 +628,11 @@ ggplot(word_quartile_by_year,
   geom_line(aes(x = year, y = rolling, color = statistic))
 ```
 
-Some of these changes reflect wider disciplinary changes, but others do not. Most journals have a much more stable publication rate, though there is more variation in commercially published journals. Articles have been getting longer all across philosophy. What's striking here is the 25th percentile rising to over 8000 words by the end of the 2010s.
+Some of these changes reflect wider disciplinary changes, but others do not. Most journals have a much more stable publication rate. Journals that are commercially published, like _Philosophical Studies_, have tended to increase their production in recent years, but this growth is still unusual.
 
-It used to be common for philosophy colloquia to include papers that were read out by the author. This was a bad practice, and it's been mostly gone for several years. But starting in the mid-2010s it became an impractical practice. No one was writing papers that even could be read out in the length of a typical colloquium slot.
+Articles have been getting longer all across philosophy. What's striking in @fig-word-quartiles is the 25th percentile rising to over 8000 words by the end of the 2010s. It used to be common for philosophy colloquia to include papers that were read out by the author. This was a bad practice, and it's been mostly gone for several years. But starting in the mid-2010s it became an impractical practice. No one was writing papers that even could be read out in the length of a typical colloquium slot.
 
-Everything I've said so far is about _articles_ in _Philosophical Studies_. As I'll go over in @sec-what-is-an-article, this is a less clear category than we might like. To get to why that's so, I'll first go over the sources I'm using.
+Everything I've said so far is about _articles_ in _Philosophical Studies_. As I'll go over in @sec-what-is-an-article, this is a less clear category than we might like, in part because of the variety of kinds of issues _Philosophical Studies_ puts out.
 
 ## Special Issues {#sec-special-issues}
 
@@ -625,7 +642,7 @@ _Philosophical Studies_ has had many special issues, especially since the mid-19
 2. The Oberlin Colloquium
 3. The Bellingham Summer Philosophy Conference (BSPC)
 
-The fourth is a less unified set of one-off issues, either on a special topic, or, in two cases, conferences that _Philosophical Studies_ published once but did not continue with. I'll call all of these **One-off** issues.
+The fourth category consists of one-off issues, either on a special topic, or, in two cases, conferences that _Philosophical Studies_ published once but did not continue with. I'll call all of these **One-off** issues.
 
 Often these were double, or occasionally triple, issues. I'm counting these as 2, or 3, issues, because provides a better sense of what proportion of the papers in a year are from special issues. As @tbl-issues-by-decade shows, the special issues become a big part of what _Philosophical Studies_ does in the 1990s.
 
@@ -840,29 +857,31 @@ The special issues differ from the normal issues in some striking ways, so it wi
 
 The studies here are primarily based on two sources: citation data from Web of Science, and word lists from JSTOR.
 
-Through [University X] I downloaded the Web of Science (hereafter, WoS) Core Collection in XML format. Within it, I selected 100 prominent philosophy journals that WoS indexes. The journals I selected are, like _Philosophical Studies_ primarily English-language, analytic philosophy journals. I filtered the citations for just citations from and to those 100 journals. WoS has a special way of recording citations in indexed articles to other articles that it has indexed. These records are easy to extract, and are considerably more reliable than citation records in general.^[That's not to say they are perfect. They certainly have false negatives, especially when there are any errors in the original citation. As @Petrovich2024 [77n10] notes, they are more reliable when the citations are in a bibliography than when they are in footnotes. They also do badly with supplements. So for this study I've excluded all the supplemenmts to _Noûs_, i.e., those issues of _Philosophical Perspectives_ and _Philosophical Issues_ which were listed as supplements to _Noûs_. I did include the supplemental issue _Philosophical Studies_ issued in 2013, because the data there looked reliable enough.] What follows uses just those citations. So it is citations from indexed journals to indexed journals, where WoS recognised that both the cited and citing journal were in its database.
+Through the University of Michigan I downloaded the Web of Science (hereafter, WoS) Core Collection in XML format. Within it, I selected 100 prominent philosophy journals that WoS indexes. The journals I selected are, like _Philosophical Studies_ primarily English-language, analytic philosophy journals. I filtered the citations for just citations from and to those 100 journals.
 
-This is obviously a small subset of all citations. It excludes citations in academic journals in other fields, in books and edited volumes, and in many other places that Google Scholar indexes, such as dissertations, lecture notes, slides, and draft manuscripts. Losing that information is a cost, but there are three large upsides. First, these citations are much more accurate. Second, we can be more confident that our data set is relatively complete; finding a full list of philosophy journals is easier than finding a full list of edited volumes in philosophy. Third, by looking at citations internal to philosophy, we can get a sense of philosophy's self-image, and how it changes over time.
+WoS has a special way of recording citations in indexed articles to other articles that it has indexed. These records are easy to extract, and are considerably more reliable than citation records in general. That's not to say they are perfect. They certainly have false negatives, especially when there are any errors in the original citation. As @Petrovich2024 [77n10] notes, they are more reliable when the citations are in a bibliography than when they are in footnotes. They also do badly with supplements. So for this study I've excluded all the supplemenmts to _Noûs_, i.e., those issues of _Philosophical Perspectives_ and _Philosophical Issues_ which were listed as supplements to _Noûs_. I did include the supplemental issue _Philosophical Studies_ issued in 2013, because the data there looked reliable enough. What follows uses just those citations. So it is citations from indexed journals to indexed journals, where WoS recognised that both the cited and citing journal were in its database.
 
-The downloadable citation data is not particularly up to date. I am including citations beyond 2019, because it's helpful to get a sense of how some of these articles have been received in more recent years. But the data I have only goes through mid-2022. I'll often simply say 2022; but note that even that year is incomplete.
+This is obviously a small subset of all citations. It excludes citations in academic journals in other fields, in books and edited volumes, and in many other places that Google Scholar indexes, such as dissertations, lecture notes, slides, and draft manuscripts. Losing that information is a cost, but there are three large upsides. First, these citations are much more accurate. Second, we can be more confident that our data set is relatively complete; finding a full list of philosophy journals is easier than finding a full list of edited volumes, or manuscripts on websites, in philosophy. Third, by looking at citations internal to philosophy, we can get a sense of philosophy's self-image, and how it changes over time.
 
-The other source I used is JSTOR, and in particular the Data for Research (DfR) program that they provide through their Constellate project. This lets you download lists of the words used in various journal articles, along with a count of how often each word is used.^[It also provides bigrams and trigrams, which I've occasionally used.] It also provides word counts for the articles, which I have used in @sec-overview. The words an author uses are a pretty good guide to what they are talking about; if the word 'denotation' is used frequently, it's probably a philosophy of language article.
+The downloadable citation data is not particularly up to date. I am including citations beyond 2019, because it's helpful to get a sense of how some of these articles have been received in more recent years. But the data I have only goes through mid-2022.
+
+The other source I used is JSTOR, and in particular the Data for Research (DfR) program that they provide through their Constellate project. This lets you download lists of the words used in various journal articles, along with a count of how often each word is used.^[It also provides bigrams and trigrams, which I've looked at in preparing this paper, but didn't end up using.] It also provides word counts for the articles, which I have used in @sec-overview. The words an author uses are a pretty good guide to what they are talking about; if the word 'denotation' is used frequently, it's probably a philosophy of language article.
 
 ## Articles? {#sec-what-is-an-article}
 
 I said I'm talking about articles here, but what exactly is an _article_? A more helpful question is, which things that philosophy journals publish are not articles?
 
-Some things are easy. The table of contents is not an article. Nor is a correction, or a report on editorial change. Book reviews are not articles. If they were, _Philosophical Review_ would have the lowest rate of citations per article, not the highest. Both WoS and JSTOR also distinguish articles from discussion notes, especially if the journal has a designated discussions section. Without this distinction, _Mind_ would have a much lower rate of citations per article.
+Some things are easy. The table of contents is not an article. Nor is a correction, or a report on editorial change. Book reviews are not articles. If they were, _Philosophical Review_ would have the lowest rate of citations per article, not the highest.^[I'll report on citations per article in @tbl-citation-rate.] Both WoS and JSTOR also distinguish articles from discussion notes, especially if the journal has a designated discussions section. Without this distinction, _Mind_ would have a much lower rate of citations per article.
 
-Both of these last two categories are relevant to _Philosophical Studies_, even though it does not run book reviews or have designated discussion sections. They are relevant because it has many book symposia. The classifiers, WoS and JSTOR, struggle with how to classify articles in these symposia. They disagree with each other, and with their own past practice.
+Both of these last two categories are relevant to _Philosophical Studies_, even though it does not run book reviews or have designated discussion sections. Although it has neither of those things, it does have many book symposia. The classifiers, WoS and JSTOR, struggle with how to classify articles in these symposia. They disagree with each other, and occasionally with their own past practice.
 
 I have some sympathy for the classifiers; these are really borderline cases. Mostly what they settled on was that the précis and replies by the book author are not articles, and that the contributions by commentators are. But they did not stick precisely to this.
 
 For the most part, I've gone with WoS's classifications. It would be practical, just barely, to go through _Philosophical Studies_ issue by issue and reclassify the book symposium entries so all and only the commentaries are articles. But it would not be practical to do this for all one hundred journals. And for this paper, we're mostly interested in comparing articles in _Philosophical Studies_ with articles in other journals, so it's best to not modify only one journal.
 
-There is one place we're I've overridden WoS's classifications. It has categories of Discussion, Note, and Review, each of which is about 0.75% of the articles across the 100 journals. The three categories include similar enough articles that I'll treat them as a unified category. Mostly these are discussion notes, or longer book reviews, that we want to exclude. But, especially in _Philosophical Review_, they occasionally put ordinary articles here. So important articles by Stanley @WOSA1962CGX0500005, Jonathan @WOS000272855000002, and Harvey @WOS000810220800002 all got listed as not being articles.^[The Cavell article was in the discussion section of the January 1962 issue of the Review, so this classification is understandable. The other two are not.] I've counted any piece in these three categories 20 pages or longer as an article.
+There is one place we're I've overridden WoS's classifications. It has categories of Discussion, Note, and Review, each of which make up about 0.75% of the articles across the 100 journals. The three categories include similar enough pieces that I'll treat them as a unified category. Mostly these are discussion notes, or longer book reviews, that we want to exclude. But, especially in _Philosophical Review_, they occasionally put ordinary articles here. So important articles by Stanley @WOSA1962CGX0500005, Jonathan @WOS000272855000002, and Harvey @WOS000810220800002 all got listed as not being articles.^[The Cavell article was in the discussion section of the January 1962 issue of the Review, so this classification is understandable. The other two are not.] I've counted any piece in these three categories 20 pages or longer as an article.
 
-There is one last tricky category to flag. The special issues on the Oberlin Colloquium sometimes include commentaries on the main articles. These are mostly not counted as articles, and I think rightly so. Occasionally, as when Andy @Egan2011 was the commentator on an important paper by Tamar Szabò @WOS000295087100003, the commentary gets a reasonable number of citations. But mostly these commentaries are rarely if ever cited, and I think they aren't really what most people think of as journal articles. So I've been happy to exclude them.^[If these aren't articles, what are they? WoS calls Egan's paper 'Editorial-Matter'. That's wrong, but I'm not sure what I would say in their position.]
+There is one last tricky category to flag. The special issues on the Oberlin Colloquium sometimes include commentaries on the main articles. These are mostly not counted as articles, and I think rightly so. Occasionally, as when Andy @Egan2011 was the commentator on an important paper by Tamar Szabò @WOS000295087100003, the commentary gets a reasonable number of citations. But mostly these commentaries are rarely if ever cited, and I think they aren't really what most people think of as journal articles. So I've been happy to exclude them.^[If these aren't articles, what are they? WoS classifies Egan's paper as 'Editorial-Matter'. That's wrong, but I'm not sure what I would say in their position.]
 
 # Outbound Citations {#sec-outbound}
 
@@ -945,7 +964,7 @@ ggplot(ps_comp_rate |>
        theme(legend.position = "bottom")
 ```
 
-@fig-compare-cites-rolling smooths out some of the noise in @fig-compare-cites-dots in two ways. First, instead of measuring average citations per year, I measure average citations over a five-year rolling window. This doesn't make a huge difference to the measure for the other nineteen, which is already fairly smooth, but it is useful for smoothing the values for just one journal. Second, instead of showing the red and blue dots separately, I've just displayed the ratio between them.
+@fig-compare-cites-rolling smooths out some of the noise in @fig-compare-cites-dots in two ways. First, instead of measuring average citations per year, I measure average citations over a five-year rolling window. This doesn't make a huge difference to the measure for the other nineteen, which is already fairly smooth, but it is useful for smoothing the values for _Philosophical Studies_. Second, instead of showing the red and blue dots separately, I've just displayed the ratio between them.
 
 ```{r}
 #| label: fig-compare-cites-rolling
@@ -965,7 +984,7 @@ My very anecdotal impression is that _Philosophical Studies_ is viewed as being 
 
 ## Means, Medians and Quartiles {#sec-means-and-ways}
 
-In some ways looking at the averages here understates the impact of _Philosophical Studies_ in the 2000s. Average numbers of citations can be very misleading. @tbl-quartiles-two-journals compares five year periods from two journals: the _Australasian Journal of Philosophy_ (AJP) from 1980-1984, and _Philosophical Studies_ (PS) from 2003-2007. Q1, Q2 and Q3 are the 25th, 50th, and 75th percentile citations, and Mean is the average number of citations.
+In some ways looking at the averages here understates the impact of _Philosophical Studies_ in the 2000s. Average numbers of citations can be very misleading.^[See @BornmannWilliams2020, who also use percentiles, including the 75th percentile that I'll focus on, to mitigate the misleadingness.] @tbl-quartiles-two-journals compares five year periods from two journals: the _Australasian Journal of Philosophy_ (AJP) from 1980-1984, and _Philosophical Studies_ (PS) from 2003-2007. Q1, Q2 and Q3 are the 25th, 50th, and 75th percentile citations, and Mean is the average number of citations.
 
 ```{r}
 #| label: tbl-quartiles-two-journals
@@ -1026,6 +1045,8 @@ ggplot(third_quartile_ratio |>
 
 The pattern is rather similar to @fig-compare-cites-rolling. Before 2000, the ratio was below one for 11 out of 20 years. After 2000, the only time it is below one is right at the end, where the data is very noisy. (The citation counts are very low for such recently published articles, so it's hard to read too much into the numbers.) There is a particular peak in the mid-2000s, just as in @fig-compare-cites-rolling. Perhaps the biggest difference is that in the 1980s, the ratio of the means was below one, but the ratio of the 75th percentiles is sometimes above one. The explanation for that is that there were very few _Philosophical Studies_ articles from those years with huge citation counts, even though a quarter of the articles were being fairly frequently cited.
 
+In general, the 75th percentile of citations is close to the mean number of citations per article for sets of philosophy papers. If the citations are very unevenly distributed, as with the Australasian Journal in the early 1980s, the mean is much higher. If the citations are more evenly spread around, as we'll see below happens with BSPC articles, the mean is much lower.
+
 ## Citations of Special Issues {#sec-citations-of-special-issues}
 
 Part of the explanation of the pattern in @fig-compare-cites-rolling and @fig-quartiles-ps-vs-19 is that the special issues that _Philosophical Studies_ published in the 2000s were very heavily cited. @tbl-citation-by-type shows three summary statistics, mean, median, and 75th percentile (Q3), for the normal _Philosophical Studies_ issues, and for the four classes of special issues. @tbl-citation-by-type-decade shows the means for the five classes over each of the four decades from 1980-2019. (The blank cells mean that there aren't any special issues of that type that decade.)
@@ -1063,7 +1084,7 @@ ggplot(third_quartile_ratio |>
   scale_x_continuous(breaks = c(1990, 2000, 2010))
 ```
 
-This is surely part of the explanation of what's going on. But @fig-quartiles-normal-only is not an apples-to-apples comparison; we've removed the special issues from _Philosophical Studies_, but not from the other 19. This could be a significant issue. I looked at the most cited article since 2005 in each of the 20 journals that go into  @fig-quartiles-normal-only, and in 6 of them (including _Philosophical Studies_), the most cited article was in a special issue. Or, in one case, a special unit in a regular issue. It's really hard to tell exactly which issues are special issues from the archival record, and even harder to tell what the refereeing process was for those special issues.^[BSPC selected almost all its papers via anonymous review, and then the papers were refereed again before going into _Philosophical Studies_. I have no idea how common that was for the other special issues.] The best we can say is that special issues are sufficiently widespread, and sufficiently widely cited, that @fig-quartiles-normal-only might be a misleading comparison. The success of special issues is part of why _Philosophical Studies_ was so widely cited in the 2000s, but maybe not all of it.
+This is surely part of the explanation of what's going on. But @fig-quartiles-normal-only is not an apples-to-apples comparison; we've removed the special issues from _Philosophical Studies_, but not from the other 19. This could be a significant issue. I looked at the most cited article since 2005 in each of the 20 journals that go into  @fig-quartiles-normal-only, and in 6 of them (including _Philosophical Studies_), the most cited article was in a special issue. (Or, in one case, a special unit in a regular issue.) It's really hard to tell exactly which issues are special issues from the archival record, and even harder to tell what the refereeing process was for those special issues.^[BSPC selected almost all its papers via anonymous review, and then the papers were refereed again before going into _Philosophical Studies_. I have no idea how common that was for the other special issues.] The best we can say is that special issues are sufficiently widespread, and sufficiently widely cited, that @fig-quartiles-normal-only might be a misleading comparison. The success of special issues is part of why _Philosophical Studies_ was so widely cited in the 2000s, but maybe not all of it.
 
 Rather than go further down this rabbit hole, let's turn to what was in _Philosophical Studies_ over the years, starting with its inbound citations.
 
@@ -1183,13 +1204,46 @@ There isn't much new at the bottom of the list, with once again the most cited p
 
 ## Summary
 
-Just looking at the citations of very widely cited articles is a fairly crude measure. In subsequent sections we'll use topic models, and citations of clusters of articles, to make more fine-grained measurements of what was going on in the journal. But these more sophisticated approaches have a downside: they are black boxes, and it is tricky to independently confirm what they say. Counting citations of a handful of articles is much easier. That means that when the more sophisticated approaches say that philosophy of language has become a smaller part of the journal, that ethics has become more important, and that philosophy of science and political philosophy were always relatively small parts of the journal, we have independent reason to believe that they are correct.
+Just looking at the citations of very widely cited articles is a fairly crude measure. In subsequent sections we'll use topic models, and citations of clusters of articles, to make more fine-grained measurements of what was going on in the journal. But these more sophisticated approaches have a downside: they are black boxes, and it is tricky to independently confirm what they say. Counting citations of a handful of articles is much easier. That means that when the more sophisticated approaches say that philosophy of language has become a smaller part of the journal, and that philosophy of science and political philosophy were always relatively small parts of the journal, we have independent reason to believe that they are correct.
 
 # A Topic Model for _Philosophical Studies_ {#sec-topic-model}
 
 ## The Model
 
-## The Five Categories
+Following the groundbreaking work of Christophe Malaterre and colleagues, I analysed the content of _Philosophical Studies_ articles by building a five-category topic model.^[This technique is used to analyse _Philosophy of Science_ by @Malaterre2019, to analyse _Biology and Philosophy_ by @Malaterre2019a, and to analyse a family of eight philosophy of science journals by @Malaterre2020. In @Malaterre2022 the technique is extended to journals that don't publish exclusively in one language, but that's not relevant to _Philosophical Studies_.] Without going too deep into the details of what topic modeling is, I'll note four features of it that are relevant.
+
+First, a topic model divides some texts into *k* categories, where *k* is given by the model builder. On the one hand, the model itself doesn't tell you how many categories to use. On the other hand, the model builder doesn't tell the model what those categories should be. I thought a five category model should work because the biggest topics in _Philosophical Studies_ are epistemology, ethics, language, mind, and metaphysics. After asking the model to divide the articles into five categories, it more or less found those five groups. (Though with some caveats that will become clearer in what follows.) The model doesn't give names to those categories; that's something I did. But it does create the five groupings
+
+Second, the model takes as input the words in an article, but not the order those words appear in. For this reason, it is poorly suited to determining which side of a debate an article is on. Articles on utilitarianism use different words to articles on mental content; articles for and against utilitarianism tend to use similar words. Possibly the next generation of language models, the kinds of classifiers that power ChatGPT, will do better on this score.
+
+Third, the model doesn't simply say that an article is in one or other category. For each of the five categories, it gives a probability to the article being in that category. This is helpful for classifying articles that don't slot cleanly into one or other group. _Philosophical Studies_ has published a lot of papers on physicalism. For many of these, it would be arbitrary to call them mind articles or metaphysics articles. The model doesn't require that we choose. It gives a probability to the article being in metaphysics, and a probability to it being in mind. In some cases, such as "Chalmers on the Addition of Consciousness To the Physical World" [@WOS000086712500005], the model gives almost equal probability to the two categories.
+
+Often when topic models are used, articles are classified by their maximal probability. I prefer to use the actual probabilities. So the graph in @fig-five-topics shows the average probability that an article is in each category by year. I think it shouldn't matter much whether Latham's article is counted as 51% mind and 49% metaphysics or vice versa, and using the probabilities allows for that.
+
+Finally, the models are rather random. Somewhat metaphorically, they work by picking a random starting point, and scanning for a local maximum. The scanning procedure is deterministic, but the starting point is not. This can make a difference to individual articles. Every model I built was unsure how to classify "What Do Philosophers Believe?" [@WOS000340619100006]. The one I'm using said it was 50% metaphysics, and 50% spread between the other four categories, but other models said it was 60% mind, or largely ethics. All this makes sense; the article cuts across all the fields.
+
+But this randomness raises a problem: how do we choose which random starting point to use? We could just use the first one we run, but that might be a very idiosyncratic output. We could hand code the starting point, but that would introduce our own biases. We could build many models and just which one looks most like familiar categories, but that would introduce even more biases.
+
+Here I got around this problem by using citation data. I had the computer build (or at least start building) several thousand models. I told it to focus on the ones where articles were classified in a similar way to articles that they cited. The results were similar to the last solution I mentioned: the ones which classified cited and citing articles in similar ways looked like familiar topics. (That is, they looked like PhilPapers classifications.) More precisely, the extreme cases matched familiar classifications: whenever the cited and citing were classified very similarly, the model looked familiar; whenever they were classified differently, the model looked like an arbitrary gerrymander. So rather than using my own judgment about the best model^[If I had used my own judgment, I would have picked a model similar to, but not quite identical to, this one. But I'd rather trust citation data than my idiosyncratic judgments.], I used the one that best conformed to the citation data.
+
+## The Five Categories {#sec-five-categories}
+
+I picked five categories for the model hoping, correctly, that it would land on something like epistemology, ethics, language, mind, and metaphysics. 
+
+The only one of those labels that might be misleading is 'ethics'. Really that category includes all papers on norms broadly construed. So it includes papers on decision theory^[I think this is the right way to classify decision theory; it could sensibly be called 'formal ethics'. But I'm not relying on my views here, just noting that the model was remarkably confident that decision theory papers go in ethics.], on political philosophy (though there aren't a lot of those), and even some papers on epistemic norms. The latter was a little confusing to me at first; I wasn't sure why it thought of Kelly's "The Rationality of Belief and Some Other Propositional Attitudes" [@WOS000178572700004] was 50% ethics and 50% epistemology.^[The model I'm using actually had it at 51% ethics. Most models I looked at had it around 50/50, but usually with a higher probability for epistemology. The precise numbers aren't particularly meaningful.] Why shouldn't it be classified like "Justification and Truth" [@WOSA1984TN86300001], which is classified as 99.3% epistemology. The answer is that anything explicitly about norms is counted as at least somewhat ethics. So when I talk about ethics in what follows, note that I'm referring to a category in a model that includes a wide range of papers concerned with norms.
+
+Is having just five topics enough? There are certainly other major topics in philosophy, as well as several other smaller topics. Let's set aside the smaller topics^[By 'smaller topic' here, I just mean one that isn't as large a part of analytic English-language philosophy as it is practiced. It's arguable that philosophy of history, to pick one such topic, should be a large part of philosophy; it's uncontroversial that it is not in fact a large part of the last half-century of analytic English-language philosophy.], which are hard to detect by this method, and focus on the four largest topics that aren't listed here: logic, history of philosophy, philosophy of science, and political philosophy.
+
+The most casual flick through the tables of contents for _Philosophical Studies_ is enough to see that logic and history of philosophy are not major parts of the journal. There are some papers on the boundary between logic and philosophy of language, and the model is happy to classify all of them with language papers. What few history papers there are get classified according to which part of philosophy they are from the history of. So "Was Kant a Nonconceptualist?" [@WOS:000251971400006] is 99.98% likely to be a mind paper, and "Descartes' Debt To Teresa of Avila, or Why We Should Work on Women in the History of Philosophy" [@WOS000410736800011] is 83% likely to be an epistemology paper.
+
+There are very few political philosophy papers until recently. The few from earlier years, and the more frequent such papers from recent years, get slotted easily into ethics.
+
+The one that's a bit more complicated is philosophy of science. I already noted that 
+
+
+
+
+
 
 ## Trends
 
