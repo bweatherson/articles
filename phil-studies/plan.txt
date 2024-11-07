@@ -28,9 +28,4 @@ Probability by issue type
 Most unified issue (17 of top 18)
 Citation by LDA category
 
-# Metaphysics
-
-Can we do something on grounding. Three ideas
-1. Citations of big metaphysics articles
-2. Word usage (e.g., 'counterfactual', 'ground')
-3. A small LDA of just the metaphysics articles
+# Social
