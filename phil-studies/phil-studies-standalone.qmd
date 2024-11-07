@@ -550,8 +550,6 @@ In the late twentieth century, _Philosophical Studies_ was focussed on philosoph
 
 After the turn of the century, the journal moved into two topics that did not hurt its citation rates. First, it was part of the enormous discussion on epistemology, and in particular on contextualism in epistemology, in the 2000s. Second, in the 2010s, it, along with much of the rest of the discipline, moved more strongly into social philosophy.
 
-One notable way in which _Philosophical Studies_ bucked a trend in philosophy is that it did not move heavily into work on grounding. As you can see in @fig-five-topics, this wasn't because it moved away from metaphysics more broadly. But is has, more than many journals, resisted the turn to what Ted @Sider2020 calls 'postmodal metaphysics'.
-
 # Overview {#sec-overview}
 
 ## Editorial History
