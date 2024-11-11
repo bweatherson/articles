@@ -2,7 +2,7 @@
 title: "Anti-Anti-Desire-As-Belief"
 abstract: |
   David Lewis put forward a decision theoretic argument against there being a tight connection between desires and beliefs about the good. I argue that his argument fails twice over. It makes inconsistent background assumptions about his opponents' views, and it over-generates so broadly that if it worked, it would also rule out some standard economic models. I end with a puzzle that arises from the response to Lewis. If one responds to moral uncertainty by saying one should maximise expected moral value, how does one treat cases where one's action is evidence for or against the goodness of different actions?
-date: July 29 2024
+date: November 2024
 bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
 number-sections: true
 author:
@@ -48,9 +48,26 @@ Before Peter acts, both Auntie's have the same credal distribution, satisfying t
 - Pr(~Å | ~A) = 0.9
 - Pr(A) = 0.7
 
+@tbl-credence shows the credence each Auntie has in each of the four possibilites from crossing A with Å.
+
+|    |   Å    |    ¬Å    |
+|---:|:------:|:--------:|
+| A  |   0.56 |   0.14   |
+| ¬A |   0.03 |   0.27   |
+
+Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
+
 Now you might think at this point that I've said enough to tell you what each Auntie hopes Peter will do. After all, I've told you everything relevant about each Auntie's credence in Å, and I've told you that their credences in propositions about goodness determine their values. But I haven't told you one thing extra - I haven't told you what decision theory the two Aunties follow.
 
-Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a. Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse. We'll return to this point in a bit. In particular, Auntie's values are given by the following formula:
+Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a. Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse. We'll return to this point in a bit. In particular, Auntie's values are given by the following formula. In the formula, let x be an arbitrary action, from some set Y of options. Let y be a variable that ranges over members of Y. For simplicity, assume it is given that precisely one element of Y is good.^[It gets complicated to state Auntie's view without this assumptions; I'm hoping to say just enough here to show how and why Auntie C resists Lewis's argument.] A full statement of her view is left for another day. Let Gy be the proposition that y is the good option. Finally, let w be a variable that ranges over worlds, where worlds here fix both the descriptive and the evaluative facts.
+
+> V(x) = ∑_y_ Pr(Gy) ∑_w_ Pr(w | Gy ∧ x) Pr(w ∈ Gx)
+
+This resembles the theory of value that Lewis gives in "Causal Decision Theory" in two respects. First, it has the same kind of double sum structure. Second, the outer sum is over a partition of the possibility space such that the valuer has no causal control over which member is actual. After all, Auntie can't control the moral facts.
+
+It also has two key dissimilarities from Lewis's view. First, the partition in the outer sum does not settle all facts that Auntie can't control. In particular, it doesn't settle Peter's actions. Second, there is nothing directly representing a desire on the right hand side. The value of actions is entirely a function of credal states.
+
+In the simple case where there are just two possible outcomes, A and ¬A, Auntie C's view simplifies to the familiar formula, V(A) = Pr(Å). Since Pr(Å) = 0.59, and Pr(¬Å) = 0.41, Auntie C 
 
 $$
 \text{V(X)} = \sum_{\text{m} \in \text{M}} \text(Pr(m)} \sum_{\text{w}} \text{Pr(w | Xm)Pr(X is good | mw)}

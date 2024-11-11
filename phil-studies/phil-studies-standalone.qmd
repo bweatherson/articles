@@ -518,6 +518,93 @@ ps_uni <- read_csv("/Users/weath/Documents/Phil-Studies-JSTOR/PS-unigrams.csv",
   select(-id) |>
   right_join(ps_join, by = "jstor_id") |>
   left_join(short_bib_with_gamma, by = c("wos_id" = "id"))
+
+ps_uni_grouped <- ps_uni |>
+  group_by(
+    ngram,
+    jstor_id,
+    wos_id,
+    year,
+    displayauth,
+    title,
+    journal,
+    volume,
+    issue
+  ) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  select(ngram, count, everything())
+```
+
+```{r}
+#| label: setupwords
+#| cache: true
+
+very_common_words <- ps_uni_grouped |>
+  filter(count >= 5) |>
+  group_by(ngram) |>
+  tally(name = "articles") |>
+  filter(articles >= 10)
+
+citation_by_document <- active_cites |>
+  filter(cited_journal == "PS") |>
+  group_by(old, citing_journal) |>
+  summarise(citations = n_distinct(new), .groups = "drop") |>
+  pivot_wider(id_cols = old,
+              names_from = citing_journal,
+              values_from = citations) |>
+  replace_na(list(PS = 0, NPS = 0)) |>
+  mutate(all_cites = PS + NPS) |>
+  left_join(ps_join, by = c("old" = "wos_id")) 
+
+words_with_cites <- ps_uni_grouped |>
+  filter(ngram %in% very_common_words$ngram) |>
+  left_join(citation_by_document, by = "jstor_id") |>
+  replace_na(list(PS = 0, NPS = 0, all_cites = 0)) |>
+  group_by(ngram) |>
+  summarise(ps_cites = sum(PS), all_cites = sum(all_cites)) |>
+  mutate(proportion = ps_cites/all_cites) |>
+  arrange(proportion) |>
+  left_join(very_common_words, by = "ngram")
+
+words_by_decades <- ps_uni_grouped |>
+  mutate(decade = paste0(floor(year/10),"0s")) |>
+  group_by(ngram, decade) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  pivot_wider(id_cols = ngram,
+              names_from = decade,
+              names_prefix = "d",
+              values_from = count) |>
+  replace_na(
+    list(
+      d1980s = 0,
+      d1990s = 0,
+      d2000s = 0,
+      d2010s = 0
+    )
+  )
+
+all_word_count <- sum(ps_uni_grouped$count)
+word_proportion_year <- function(x){
+  sum(
+    (
+      word_count_by_year |> filter(year %in% x)
+    )$wordcount
+  )/ all_word_count
+}
+f1980s <- word_proportion_year(1980:1989)
+f1990s <- word_proportion_year(1990:1999)
+f2000s <- word_proportion_year(2000:2009)
+f2010s <- word_proportion_year(2010:2019)
+
+words_by_decades <- words_by_decades |>
+  mutate(all_uses = d1980s + d1990s + d2000s + d2010s) |>
+  mutate(c1980s = pbinom(all_uses - d1980s, size = all_uses, prob = 1-f1980s)) |>
+  mutate(c1990s = pbinom(all_uses - d1990s, size = all_uses, prob = 1-f1990s)) |>
+  mutate(c2000s = pbinom(all_uses - d2000s, size = all_uses, prob = 1-f2000s)) |>
+  mutate(c2010s = pbinom(all_uses - d2010s, size = all_uses, prob = 1-f2010s))
+
+words_overall <- words_with_cites |>
+  left_join(words_by_decades, by = "ngram")
 ```
 
 # Introduction {#sec-introduction}
@@ -1238,9 +1325,13 @@ There are very few political philosophy papers until recently. The few from earl
 
 The one that's a bit more complicated is philosophy of science. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five categories. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five categories. So we aren't losing much by not having a separate category for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
 
-# Trends
+## Categories and Special Issues
 
-The biggest trend in @fig-five-topics is the drop in importance of philosophy of language. It's worth isolating that part of the graph to see how dramatic it is, as in @fig-language. I've also added a trend-line to make the pattern more visible.
+## Categories and Citations
+
+# Words and Trends {#sec-words-trends}
+
+Four of the five categories of articles make up a relatively stable proportion of papers in _Philosophical Studies_ over time, while philosophy of language falls away dramatically.  It's worth isolating that part of the graph to see how dramatic it is, as in @fig-language. I've also added a trend-line to make the pattern more visible.
 
 ```{r}
 #| label: fig-language
@@ -1266,8 +1357,7 @@ If you don't trust black box methods like topic modeling, you can see a similar 
 
 ```{r}
 #| label: word-graphs
-
-word_graphs <- function(x){
+word_graphs <- function(x, y){
   active_docs <- ps_uni |>
     filter(ngram %in% x)
   
@@ -1280,11 +1370,10 @@ word_graphs <- function(x){
     mutate(proportion = words/wordcount) |>
     ggplot(aes(x = year, y = proportion)) +
     geom_point() +
-    facet_wrap(vars(ngram), ncol = 2) +
+    facet_wrap(vars(ngram), ncol = y) +
     scale_x_continuous(limits = c(1980, 2019),
                        breaks = c(1990, 2010),
                        minor_breaks = 396:404 * 5) +
-    scale_y_continuous(limits = c(0, NA)) +
     labs(x = element_blank(), y = element_blank())
     
 }
@@ -1294,10 +1383,152 @@ word_graphs <- function(x){
 #| label: fig-frege-russell
 #| fig-cap: "Frequency of the words 'description' and 'reference' in _Philosophical Studies_."
 
-word_graphs(c("reference", "description"))
+word_graphs(c("reference", "description"), 2)
 ```
 
 The words don't disappear, that would be strange given how many uses they have, but clearly these classic questions about the relationship between reference and description are less central to what the journal is publishing.
+
+The aim of this section is to look at three questions. First, what more can we say about this fall in the frequency of philosophy of language articles? Second, what changes are there within the other four categories? Third, how much are the answers to the first two questions specific to _Philosophical Studies_, and how much do they reflect broader trends in philosophy.
+
+I first tried answering these questions by using more topic models, i.e., by making five fine-grained topic models for just the articles in each of these five categories. This revealed some interesting things that I'll mention over the rest of the paper. But none of the models I built felt sufficiently stable to use as the center of the discussion; minor changes to the initial conditions led to dramatic changes in the outputs. That was not true for the model in @sec-topic-model, whose macro-properties were fairly stable in this sense. So I didn't want to base the discussion around any one model.
+
+Instead I'll use two simpler properties of the distributions of words in _Philosophical Studies_. 
+
+First, I'll look at the relative frequency of the roughly 6000 most common word types over the four decades from 1980-2019. For each word, and each decade, I'll look at how far removed the word's frequency in the decade differs from its overall frequency, and how improbably that deviation is. So consider the word "contextualism", which you might expect would be more frequent in the 2000s than the other three decades. In fact that's so; 984 of its 2282 appearances are in the 2000s. It does appear more often in the 2010s, but _Philosophical Studies_ published more than twice as many words in the 2010s as the 2000s, so its appearance rate is lower. Overall, 26.48% of the words in _Philosophical Studies_ from 1980-2019 were published in the 2000s. If those 2282 appearances of "contextualism" were distributed at random, the probability that 984 (or more) of them would be in the 2000s, given that each one has probability 0.2648 of being in the 2000s, is about 10^-65^. So, as expected, uses of "contextualism" are heavily concentrated in the 2000s. In general, I'll use this improbability of the word appearing this often at random as a measure of concentration. When the decade is clear, I'll simply write the probability after the word, e.g., contextualism (10^-65^), to indicate how concentrated it is.
+
+Second, I'll look at the articles where a given word appears five or more times. If there are 10 or more such articles, I'll look at how often those articles were cited in _Philosophical Studies_, and how often they were cited across the 100 philosophy journals. This is a measure of how much of the discussion of the topics associated with those words is centered in _Philosophical Studies_.
+
+So consider the word "homeostatic". It appears five or more times in precisely 10 _Philosophical Studies_ articles. Those articles are fairly widely cited; between them they have 494 citations (in philosophy journals). Only 35 of those citations, or 7.1%, are in _Philosophical Studies_, indicating that the vast bulk of the discussion of them is elsewhere. A similar pattern occurs with "democratic". The 14 articles where it is used 5 or more times have 525 citations, but only 43 of them, 8.2%, are in _Philosophical Studies_. At the other extreme, the word "Pereboom's" appears five or more times in 14 articles, mostly discussing Derk Pereboom's free will scepticism. Those articles (many of which are quite recent) have 223 citations, of which 57, or 25.6%, are in _Philosophical Studies_. So here the discussion of the articles is much more centered in _Philosophical Studies_.
+
+On average, 13.8% of citations of _Philosophical Studies_ articles are in _Philosophical Studies_, so we're looking for whether this proportion of citations is above or below 13.8% to tell whether something is being discussed more inside or outside the journal, relative to its peers. In general, 7.1% of all citations of articles from 1980-2019 are in _Philosophical Studies_. But that's not the right baseline. Every journal cites its own articles more commonly than it cites arbitrary other journals. This could be because articles in the same journal are guaranteed to be in the area the journal publishes in, and (especially outside the US), it is often because there are geographic correlations between the journal's location, and the home institution of both the cited and citing authors. Articles in _Philosophical Studies_ are typically cited about twice as often in the journal as you'd expect from a random distribution of citations; for most journals that multiple is well above two. Anyway, the main thing to know is that 13.8% is the baseline, and we can compare articles to that to see what's distinctive to _Philosophical Studies_, and what's a wider trend.
+
+## Miscellany
+
+Before getting into words that tell us about changes in the subject matter, I want to briefly note three small things we can see in the word count.
+
+The JSTOR set includes all the words in the article, including headers, footnotes, and bibliography. _Philosophical Studies_ gradually moved from footnote citations to author-text plus bibliography. So 'op' and 'cit' appear primarily in the 1980s dataset. More strikingly, "Oxford" is concentrated in the 2010s, with 17159 of its 24239 appearances being in the 2010s. The probability of that happening by chance is less than 10^-300^. This is in part a result of longer bibliographies in the 2010s, in part a consequence of the proliferation of Oxford Handbooks and Oxford Studies publications, but largely a sign of the dominance of philosophy book publishing in the 2010s by Oxford University Press. It also doesn't hurt that _Philosophical Studies_ through 2019 used addresses in the entries for books, so "Oxford" appears twice in every entry for Oxford University Press.
+
+Another word that appears a lot in the 2010s is "thanks" (10^-60^). As @Petrovich2024 notes, one pattern in the 2010s is that acknowledgements footnotes became more frequent, and more informal. So papers will cite "Theodore Sider" and thank "Ted Sider". And they will not start with "I am grateful to..." but simply "Thanks to...".
+
+Finally, the trend in gender terms is remarkable. The word most concentrated in the 1980s (by the probability measure I'm using) is 'which'; I think this just reflects stylistic changes. The second most concentrated is 'he'. @fig-gender-words shows the frequency over time of male (he/him/his) and female (she/her/hers) pronouns over the years.
+
+```{r}
+#| label: fig-gender-words
+#| fig-cap: "Frequency of gendered words in _Philosophical Studies_."
+
+ps_uni_grouped |>
+  filter(ngram %in% c("he", "him", "his",
+                      "she", "her", "hers")) |>
+  mutate(Gender = case_when(
+    ngram %in% c("he", "him", "his") ~ "Male",
+    TRUE ~ "Female")) |>
+  ungroup() |>
+  group_by(year, Gender) |>
+  summarise(count = sum(count), .groups = "drop") |>
+  left_join(word_count_by_year, by = "year") |>
+  mutate(freq = count/wordcount) |>
+  ggplot(
+    aes(
+      x = year,
+      y = freq,
+      color = Gender
+    )
+  ) +
+  geom_point() +
+  labs(x = element_blank(),
+         y = element_blank())
+
+```
+
+I'll leave it for someone else to figure out what proportion of the change in @fig-gender-words is due to there being more references to particular women, and what proportion is due to philosophers using female pronouns for arbitrary or fictional characters.
+
+## 1980s
+
+From the 1990s to at least the mid 2010s, the bulk of ethics papers in _Philosophical Studies_ were on fairly theoretical questions, with special focus on questions moral realism, moral motivation, and (a topic I'll return to) moral responsibility. But in the 1980s the ethics papers in the journal had a different focus. 
+
+There were several papers on utilitarianism. So there was a lot of discussion of "utility" (10^-15^), "utilitarianism" (10^-41^) and "utilitarian" (10^-45^). One can use almost any philosophical term in a paper attacking the theory it names; indeed the 1980s paper with the most uses of "Kantian" [@WOSA1989CE37600004] is an anti-Kantian paper. But most of these papers were supporting utilitarianism. (Some of the uses of "utility", both in the 1980s and afterwards, were in decision theory papers.)
+
+There were also many papers on abortion.^[One of these, [@WOSA1985ANT6600005; @WOSA1986AZA8100007], got printed twice because the pages were out of order the first time.] These were largely *anti*-abortion arguments. They did not get much uptake in philosophy journals. The nine^[Or ten, if you count both printings of the Gensler piece.] papers from the 1980s that use "abortion" five times or more average less than one citation per article in philosophy journals. Google Scholar tells me that some of them have more uptake elsewhere, including in bioethics journals outside this study, but they weren't picked up on in philosophy.
+
+But the big story of the 1980s is the centrality of philosophy of language to the journal, and how different this is to what the journal became in later years. The kind of philosophy of language _Philosophical Studies_ published in the 1980s (and 1990s) was centered around issues about reference and description that became central to philosophy over the 1960s and 1970s.
+
+Part of the evidence for that consists of which words were central to the journal in the 1980s. There was a lot of discussion of Donnellan's distinction between referential and attributive uses of definite descriptions. The words "Donnellan" (10^-72^), "Donnellan's" (10^-58^), "referential" (10^-34^) and "attributive" (10^-23^) appear much more often than they do in later decades. The 21 articles that use "Donnellan's" five times or more are cited on average 15 times, which is a relatively high number given their publication year. Strikingly, over 25% of those citations are in _Philosophical Studies_. That shows discussion of this topic was playing a bigger role in _Philosophical Studies_ than it was in the wider literature.
+
+More generally, the story here is that while _Philosophical Studies_ was publishing a lot of philosophy of language, it was not publishing the kind of philosophy of language that would become central to the next couple of decades.
+
+There was very little on conditionals. The words "conditional", "conditionals" and "counterfactuals" appear less frequently this decade than in later decades. There are no _Philosophical Studies_ articles cited in Dorothy Edgington's influential and comprehensive "On Conditionals" [@WOS:A1995QX94800001].
+
+Similarly, there was very little on speech acts, or on context sensitivity. The words "assertion" and "Austin" appear at lower than average frequency, as do all the cognates of "context".
+
+Perhaps most significantly, despite the centrality of philosophy of language, there was very little interaction with linguistics, and especially not with linguists working on formal semantics. Here it helps to look at the 1980s and 1990s together, because this trend continues through the turn of the century. Before 2000, only one paper mentioned Irene Heim [@WOSA1988P180000006], only two mentioned Angelika Kratzer [@WOSA1986D182100003; @WOSA1984SK63200001], and only three mentioned James McCawley [@WOSA1985ABV7900005; @WOSA1988M482100005; @WOS000083809100001]. As you can see from those dates, if anything there was even less engagement with linguists in the 1990s than there had been in the 1980s. There were more mentions of Chomsky, though they were mostly in passing, and as often in philosophy of mind papers as philosophy of language. Similarly, there were a few mentions of George Lakoff, but again not always in philosophy of language. The closest thing I see to interdisciplinary work are some applications of Montague grammar, e.g., by [@WOSA1984TJ24700012]. But there is a much sharper division between philosophers of language and linguists working on semantics in _Philosophical Studies_ before 2000 than you see in more recent work in philosophy of language.
+
+In @fig-1980s-words I show the frequency of some of the words mentioned in this subsection over time. I've put this in two graphs so the movement in the less frequently used words is easier to see.
+
+```{r}
+#| label: fig-1980s-words
+#| fig-cap: "Words that appear more often in the 1980s."
+#| fig-subcap: 
+#|   - "More common words"
+#|   - "Less common words"
+#| layout-ncol: 1
+
+word_graphs(c("statement", "description", "reference"), 3)
+word_graphs(c("abortion", "donnellan", "fetus", "utilitarian", "attributive", "referential"), 3)
+```
+
+## 1990s
+
+- Still issues about content externalism. Now moved to mind, as 'arthritis', 'Fodor' and 'mentalese' show
+- But really lagging here. 'Arthritis' is at 16.2%, 'Mentalese' at 19.4%.
+- Big story is causation, and we'll just word 'causal' to look at it. (Do graph just for it.)
+- Very centered in 1990s - 7 of the 14 years where it most appears are in the 1990s, and 1991 is a weird outlier.
+- Note "relevance" is because "causal relevance" is used a lot
+
+```{r}
+#| label: fig-1990s-words
+#| fig-cap: "Words that appear more often in the 1990s."
+#| fig-subcap: 
+#|   - "More common words"
+#|   - "Less common words"
+#| layout-ncol: 1
+
+word_graphs(c("arthritis", "sentence", "language"), 3)
+word_graphs(c("network", "fodor", "burge", "player", "hesperus", "efficacy"), 3)
+```
+
+
+```{r}
+#| label: fig-2000s-words
+#| fig-cap: "Words that appear more often in the 2000s."
+#| fig-subcap: 
+#|   - "More common words"
+#|   - "Less common words"
+#| layout-ncol: 1
+
+word_graphs(c("contextualism", "fictionalism", "physicalism"), 3)
+word_graphs(c("contextualist", "fictionalist", "physicalist"), 3)
+word_graphs(c("water", "rigid", "demonstrative"), 3)
+```
+
+```{r}
+#| label: fig-2010s-words
+#| fig-cap: "Words that appear more often in the 2010s."
+#| fig-subcap: 
+#|   - "More common words"
+#|   - "Less common words"
+#| layout-ncol: 1
+
+word_graphs(c("normative", "epistemic", "evidence", "reasons"), 2)
+word_graphs(c("argue", "account", "explain", "response", "view"), 2)
+word_graphs(c("social", "testimony", "gender", "reactive"), 2) # Move social to its own
+word_graphs(c("grounding", "credence", "explanation"), 2)
+word_graphs(c("schaffer", "schellenberg", "schwitzgebel", "cappelen"), 2)
+word_graphs(c("lackey", "sider", "hawthorne", "gendler"), 2)
+word_graphs(c("schaffer", "schellenberg", "schwitzgebel", "cappelen",
+              "lackey", "sider", "hawthorne", "gendler",
+              "fodor", "burge", "quine", "davidson"), 4)
+```
+
 
 Is this a trend specific to _Philosophical Studies_, or does it tell us something more broadly about philosophy journals? The answer is a bit of both, but mostly it is a general trend. The fact that "The Problem of the Essential Indexical" is near the top of @tbl-1990s-inbound, and near the bottom of @tbl-2010s-inbound suggests that a certain kind of philosophy of language has declined more at _Philosophical Studies_ than elsewhere. But some of the trends seem more widespread.
 
