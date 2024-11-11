@@ -1,0 +1,63 @@
+---
+title: "Anti-Anti-Desire-As-Belief"
+abstract: |
+  David Lewis put forward a decision theoretic argument against there being a tight connection between desires and beliefs about the good. I argue that his argument fails twice over. It makes inconsistent background assumptions about his opponents' views, and it over-generates so broadly that if it worked, it would also rule out some standard economic models. I end with a puzzle that arises from the response to Lewis. If one responds to moral uncertainty by saying one should maximise expected moral value, how does one treat cases where one's action is evidence for or against the goodness of different actions?
+date: July 29 2024
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+number-sections: true
+author:
+  - name: Anon
+format:
+    html: default
+    docx:
+      reference-doc: my-template.docx
+    pdf: 
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mathfont: EB Garamond Math
+      mainfont: EB Garamond Math
+      sansfont: EB Garamond SemiBold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond SemiBold
+      fontsize: 12pt
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.75
+      link-citations: true
+      output-file: "Anti-Anti-Desire-As-Belief"
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+---
+
+# The Cast
+
+A particular kind of anti-Humean, call her Auntie, believes there is a tight connection between wanting something and believing that it is good. David Lewis [-@Lewis1988; -@Lewis1996] has a famous argument that Auntie's view is incoherent. The point of this note is to respond on Auntie's behalf. The response will be in an important respect not at all novel. What I'm going to do is essentially put together the responses offered by Huw @Price1989 and Jessica @Collins2015, and show that between them, they offer a response that any Auntie can accept, and so Lewis's argument shouldn't make any of them lose a moment's sleep.
+
+I'm going to distinguish two kinds of Aunties, I'll call them Auntie C and Auntie E, and argue that both of them can satisfy the description _believes there is a tight connection between wanting something and believing that it is good_, and that they each have a principled reason to reject one of the premises in Lewis's anti-Auntie argument. I'll then argue that there is no one who should have accepted all the premises of Lewis's argument in the first place.
+
+To do this, we need one last character. Auntie is of course an Auntie of someone; call the someone Peter. Naturally enough, Auntie thinks the world of Peter. Both Auntie E and Auntie C (who are both aunts of Peter), both think that if Peter does something, it's very likely to be the right thing to do. Indeed, they are fairly deferential to Peter in this respect; if Peter does something they thought was wrong, they take that as some (strong but inconclusive) reason to change their belief about the morality of the action.
+
+Peter is currently contemplating some action a. Let A be the proposition that Peter does a, and Å be the proposition that doing a is good. For simplicity, assume it is common knowledge that not doing a is good iff doing a is not good, so ~Å can be read as either of the epistemically equivalent propositions _a is not good_ and _not a is good_. 
+
+Before Peter acts, both Auntie's have the same credal distribution, satisfying these constraints.
+
+- Pr(Å | A) = 0.8
+- Pr(~Å | ~A) = 0.9
+- Pr(A) = 0.7
+
+Now you might think at this point that I've said enough to tell you what each Auntie hopes Peter will do. After all, I've told you everything relevant about each Auntie's credence in Å, and I've told you that their credences in propositions about goodness determine their values. But I haven't told you one thing extra - I haven't told you what decision theory the two Aunties follow.
+
+Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a. Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse. We'll return to this point in a bit. In particular, Auntie's values are given by the following formula:
+
+$$
+\text{V(X)} = \sum_{\text{m} \in \text{M}} \text(Pr(m)} \sum_{\text{w}} \text{Pr(w | Xm)Pr(X is good | mw)}
+$$
+
+In this formula, M is a partition of _moral_ possibility space. Since we're following Lewis and simplifying the discussion to moral theories that just say worlds are good or bad, an element of M is a function from how the world is descriptively, to how the world is evaluatively.
+
+Now at this point you might worry that given the supervenience of the evaluative on the descriptive, the correctness of the correct element of m will be a necessary truth. After all, there cannot be two duplicate worlds where one is good and the other is bad. But, as @Chalmers20xx points out, we don't want uncertainty to be defined over metaphysical possibilities. It is a necessary truth that water is not atomic, but we want to be able to represent the credal states of people who did not, or do not, know this. So the 'worlds' in Auntie's formula should be (as Chalmers says they should be) epistemic possibilities. And there can be two worlds that are both epistemically possible, which are alike descriptively and not alike evaluatively. What it means to have (purely) evaluative uncertainty just is for there to be pairs like this that are epistemically possible.
+
+Auntie C's formula looks a lot like how Lewis recommends evaluating actions in "Causal Decision Theory". The big difference is that instead of the outer sum ranging over hypotheses about how things might be causally, it ranges over hypotheses about how the world might be morally. The other difference is that the very last term is a (conditional) probability claim about goodness
