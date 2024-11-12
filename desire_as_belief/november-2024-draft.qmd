@@ -44,37 +44,98 @@ Peter is currently contemplating some action a. Let A be the proposition that Pe
 
 Before Peter acts, both Auntie's have the same credal distribution, satisfying these constraints.
 
-- Pr(Å | A) = 0.8
-- Pr(~Å | ~A) = 0.9
-- Pr(A) = 0.7
+- C(Å | A) = 0.8
+- C(~Å | ~A) = 0.9
+- C(A) = 0.7
 
-@tbl-credence shows the credence each Auntie has in each of the four possibilites from crossing A with Å.
+@tbl-credence shows the credence each Auntie has in each of the four possibilities from crossing A with Å.
 
 |    |   Å    |    ¬Å    |
 |---:|:------:|:--------:|
 | A  |   0.56 |   0.14   |
 | ¬A |   0.03 |   0.27   |
 
-Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
+Auntie's credence that Peter will do a, and that it will be right. {#tbl-credence}
 
 Now you might think at this point that I've said enough to tell you what each Auntie hopes Peter will do. After all, I've told you everything relevant about each Auntie's credence in Å, and I've told you that their credences in propositions about goodness determine their values. But I haven't told you one thing extra - I haven't told you what decision theory the two Aunties follow.
 
-Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a. Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse. We'll return to this point in a bit. In particular, Auntie's values are given by the following formula. In the formula, let x be an arbitrary action, from some set Y of options. Let y be a variable that ranges over members of Y. For simplicity, assume it is given that precisely one element of Y is good.^[It gets complicated to state Auntie's view without this assumptions; I'm hoping to say just enough here to show how and why Auntie C resists Lewis's argument.] A full statement of her view is left for another day. Let Gy be the proposition that y is the good option. Finally, let w be a variable that ranges over worlds, where worlds here fix both the descriptive and the evaluative facts.
+Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a. Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse. We'll return to this point in a bit. In particular, Auntie's values are given by the following formula. In the formula, let x be an arbitrary action, from some set Y of options, and X be the proposition that it is performed. Let G be the proposition that a good option from Y is chosen. (We're still assuming that actions are only good or bad, though it isn't too hard to allow other values in.) Let C~x~ be the result of _imaging_ the credence function C on the proposition x is performed, where we assume that changing the descriptive facts is a smaller change for imaging purposes than changing the moral facts. For example, consider the world where Peter does a, and that is good, and ask, what is the image of that world under the assumption that Peter does not do a. It is the world where Peter does not do a, and that is bad. That is, we hold fixed that a is good, not that Peter does something good.
 
-> V(x) = ∑_y_ Pr(Gy) ∑_w_ Pr(w | Gy ∧ x) Pr(w ∈ Gx)
+With all that in place, Auntie C's view is easy to state.
 
-This resembles the theory of value that Lewis gives in "Causal Decision Theory" in two respects. First, it has the same kind of double sum structure. Second, the outer sum is over a partition of the possibility space such that the valuer has no causal control over which member is actual. After all, Auntie can't control the moral facts.
+> V(x) = C_X_(G)
 
-It also has two key dissimilarities from Lewis's view. First, the partition in the outer sum does not settle all facts that Auntie can't control. In particular, it doesn't settle Peter's actions. Second, there is nothing directly representing a desire on the right hand side. The value of actions is entirely a function of credal states.
+This resembles equation (11) in "Causal Decision Theory". Indeed, after the first character, it just is the special case of that equation where the only possible values are 1 and 0. But the first character matters. Lewis is presenting a theory of usefulness, not of value. His formula is meant to measure the thing that a rational actor maximises. It is not measuring the thing an altruistic friend hopes is maximised. We'll come back to this point in @sec-open-question. For now, I just want to note the similarities to Lewis's own theory.
 
-In the simple case where there are just two possible outcomes, A and ¬A, Auntie C's view simplifies to the familiar formula, V(A) = Pr(Å). Since Pr(Å) = 0.59, and Pr(¬Å) = 0.41, Auntie C 
+Using this formula, Auntie C hopes that Peter does a iff C(Å) > C(¬Å). Since C(Å) = 0.59, and C(¬Å) = 0.41, that means she does hope that Peter does A.
 
-$$
-\text{V(X)} = \sum_{\text{m} \in \text{M}} \text(Pr(m)} \sum_{\text{w}} \text{Pr(w | Xm)Pr(X is good | mw)}
-$$
+Auntie E's view is easier to state. She is an evidential decision theorist. For her, the value of an arbitrary action x is given by this formula.
 
-In this formula, M is a partition of _moral_ possibility space. Since we're following Lewis and simplifying the discussion to moral theories that just say worlds are good or bad, an element of M is a function from how the world is descriptively, to how the world is evaluatively.
+> V(x) = C(G | X)
 
-Now at this point you might worry that given the supervenience of the evaluative on the descriptive, the correctness of the correct element of m will be a necessary truth. After all, there cannot be two duplicate worlds where one is good and the other is bad. But, as @Chalmers20xx points out, we don't want uncertainty to be defined over metaphysical possibilities. It is a necessary truth that water is not atomic, but we want to be able to represent the credal states of people who did not, or do not, know this. So the 'worlds' in Auntie's formula should be (as Chalmers says they should be) epistemic possibilities. And there can be two worlds that are both epistemically possible, which are alike descriptively and not alike evaluatively. What it means to have (purely) evaluative uncertainty just is for there to be pairs like this that are epistemically possible.
+That is, she looks at Peter's options, and hopes that he does the one that she is most confident is good, conditional on Peter doing it. That means she hopes Peter does not do a, since then she'll have credence 0.9 that Peter has done the right thing. If Peter does a, she'll only have credence 0.8 that he'll have done the right thing, which isn't as good.
 
-Auntie C's formula looks a lot like how Lewis recommends evaluating actions in "Causal Decision Theory". The big difference is that instead of the outer sum ranging over hypotheses about how things might be causally, it ranges over hypotheses about how the world might be morally. The other difference is that the very last term is a (conditional) probability claim about goodness
+That puts our players on the stage. It's now time to introduce Lewis's argument.
+
+# The Ludovician Argument
+
+I'll present here a somewhat simplified version of Lewis's argument, following the presentation in @Collins2015 and @IttayRozen2014. This version is somewhat simpler than Lewis's, but it's easy to find parts in Lewis's text where he endorses every premise here, and the premises are sufficient to get the result. So I think it's fair to attribute the argument to him.
+
+Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. The worlds in this sense are more coarse grained than Ludovician concreta in that they only specify truth values of relevant propositions, not of all propositions. That's why we can assume that there are finitely many of them. But these worlds are more fine grained than Ludovician concreta in a different sense. They will be used to represent moral uncertainty. So there can be pairs of them that are descriptively alike but evaluatively distinct. Given the supervenience of the evaluative on the descriptive, this is impossible for Ludovician worlds.^[That we're using metaphysically impossible worlds should not cause any concern here. As @Chalmers20xx argues, we want the quantifiers here to range over epistemically possible worlds. For people who are unsure of the moral facts, as happens here, that means that there are some metaphysically impossible worlds that are epistemically possible.]
+
+For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is good. Let V be an agent's value function, and C their credence function, with superscripts representing what those functions are like after updating. So V^A^ and C^A^ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion. (Later I'll also write C(*w*) for the probability of C({*w*}); again it shouldn't result in confusion.)
+
+Lewis's argument against Auntie uses five assumptions. In these assumptions B is an arbitrary proposition, and A is an arbitrary *descriptive* proposition. 
+
+Equation
+:    The way to represent Auntie's anti-Humean view is V(A) = C(Å).
+
+Invariance
+:    V^A^(*w*) = V(*w*)
+
+Additivity
+:    V(A) = Σ~*w*~V(*w*)C(*w* | A)
+
+Restricted Conditionalisation
+:    C^A^(B) = C(B | A)
+
+Good-Bad
+:    All worlds are either GOOD or BAD. If *w* is GOOD, then V(*w*) = 1, and otherwise V(*w*) = 0.
+
+The last assumption is obviously absurd, but it is useful for setting out the argument. In any case, if the first four assumptions are true, then they should be consistent with **Good-Bad**. Given those assumptions, here is Lewis's argument.
+
+|   |           |              |
+|--:|:----------|:-------------|
+| C(Å) | = V(A) |               |
+|       | = Σ~*w*~V(*w*) C(*w* \| A) | (**Additivity**) |
+|       | = Σ~*w*~V^A^(*w*) C(*w* \| A) | (**Invariance**) |
+|       | = Σ~*w*~V^A^(*w*) C^A^(*w* \| A) | (**Restricted Conditionalisation**) |
+|       | = V^A^(A) | (**Additivity**, applied to updated values) |
+|       | = C^A^(Å) | (**Equation**, again after updating) |
+|       | = C(Å \| A) | (**Restriced Conditionalisation**) |
+
+But it is absurd that A and Å are independent. At least, it's absurd if evaluative uncertainty is coherent. It's possible to be like Auntie and not know whether A is true, but think that it being true is evidence that it is good.
+
+At this point Lewis does not rely on the intuition that Auntie's case is possible, but instead gives an argument that A and Å cannot always be independent. It goes roughly like this.
+
+1. It is possible that someone could have positive credence in all four cells of @tbl-credence.
+2. It is further possible that such a person could learn A ∨ Å and nothing else.
+3. If such a person learned A ∨ Å and nothing else, they should update by conditionalisation on A ∨ Å.
+4. From 1-3, plus some algebra, it follows that A and Å will not be independent post-conditionalisation.
+5. But the earlier argument shows that Desire-as-Belief implies A and Å will be independent after any possible learning experience.
+
+The problem is that step 3 is not particularly plausible. If moral beliefs have centered world contents, the kind of content described in @Lewis1979x, then they probably should not be updated by conditionalisation. On most views of learning what time it is, the learner does not update by conditionalisation. And moral beliefs plausibly do have centered world contents; that is a natural interpretation of the meta-ethical view that Lewis himself endorses [@Lewis1989x].
+
+I don't mean to endorse the objection to premise 3 in the last paragraph; I think the questions here are rather tricky. I do mean to endorse two other claims. One is that just thinking about cases like Peter and his Aunties gives us a stronger reason to reject independence than Lewis's argument from conditionalisation. Second, if one does think that independence is independently implausible, Lewis only needs **Restricted Conditionalisation** for the rest of the argument to work. And **Restricted Conditionalisation** is plausible, even if one rejects conditionalisation for centered worlds contents.
+
+# Aunties' Response
+
+With the argument in front of us, it's easy enough to see how the Aunties can respond. Auntie E rejects **Equation**, and Auntie C rejects **Additivity**. The main point of this section is to argue that each Auntie has a principled reason to reject the premise in Lewis relies on. A secondary point is to argue that this means any desire-as-belief theorist has a reason to reject Lewis's argument.
+
+Let's start with Auntie E. She objects to Lewis's argument in the same way Huw @Price1989 does - by rejecting **Equation**. According to **Equation**, Auntie should value propositions according to her current evaluations of the goodness of the proposition. But Auntie E thinks that gets Peter's case wrong, and for a simple reason. How valuable a proposition is not a function of how likely it is to be good, but how likely it is that it would be good, were it true. That is, Auntie's view is not **Equation**, but V(A) = Pr(Å | A). This is exactly what Price recommended Auntie adopt immediately after Lewis's first paper on desire-as-belief came out.
+
+In the sequel paper Lewis has a response to Price's suggestion. As @Hajek2015 observes, it is very hard to understand what the response really is. Lewis states the kind of view Price endorses, makes a couple of observations about it, and then ends as if the question is settled. If it's meant to be a reductio, it's really not clear what the implausible conclusion is. Hàjek speculates that a paragraph or more simply went missing; the text is puzzling enough to take such speculations seriously.^[Since Hàjek's paper was published, we've had two volumes of correspondence by Lewis published [@LewisLetters1; @LewisLetters2]. But unfortunately nothing in them sheds light on this interpretative question.]
+
+Now let's consider Auntie C. She thinks that **Additivity** is wrong because it gets Peter's case wrong. She thinks it gets the case wrong for a simple reason: it's the way evidential decision theorists value gambles, and she's a causal decision theorist, not an evidential decision theorist. (And, she adds, she thought Lewis was one too.)
+
+Again, Lewis has a response. He 
