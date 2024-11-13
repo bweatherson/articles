@@ -625,7 +625,7 @@ ggplot(topic_rate_by_year |>
            names_to = "topic",
            values_to = "rate"),
        aes(x = year, y = rate)) +
-  geom_point() +
+  geom_point(size = 0.5) +
   facet_wrap(~topic, nrow = 2) +
   scale_x_continuous(breaks = c(1990, 2010)) +
   scale_y_continuous(lim = c(0, 0.4), breaks = c(0.1, 0.2, 0.3)) +
@@ -996,7 +996,7 @@ kable(
 )
 ```
 
-_Synthese_ has 20% more articles, but 25% fewer citations. The other three journals on @tbl-all-articles are somewhat special cases. Two of them get a lot of citations outside of philosophy, and this is only a study of citations in philosophy journals. _Analysis_ only publishes short papers, and so while they get a lot of citations per page, they don't get as many citations per article as other journals.^[Recall that in @sec-what-is-an-article I noted that some _Analysis_ style papers in other journals are not even counted because they are classified as Discussions or Notes, not Articles. These excluded articles are cited at much lower rates than the typical _Analysis_ article.]
+_Synthese_ has 20% more articles, but 25% fewer citations. The other three journals on @tbl-all-articles are somewhat special cases. Two of them get a lot of citations outside of philosophy, and this is only a study of citations in philosophy journals. _Analysis_ only publishes short papers, and so while they get a lot of citations per page, they don't get as many citations per article as other journals.
 
 Still, we'd expect on general principles that raw volume of publication wouldn't make a big difference. Citations tend to follow something like a log-normal distribution [@Brzezinski2015]. The bulk of the citations come from a handful of highly cited articles. Publishing more articles helps, but is no guarantee. 
 
@@ -1023,11 +1023,9 @@ I've included _Philosophy and Phenomenological Research_ there because, like _Ph
 
 ## Large Trend {#sec-large-trend}
 
-There is a striking step-change in citations to _Philosophical Studies_ that occurred in the mid-2000s. Cross-temporal comparisons of citations are hard because changes in the number of journals, the number of articles in those journals, and citation norms, make most comparisons tricky. To try to screen off some of that noise, I'll mostly compare citations to articles published in _Philosophical Studies_ to citations to other articles published at the same time.
+There is a striking step-change in citations to _Philosophical Studies_ that occurred in the mid-2000s. To bring this out, I'll compare _Philosophical Studies_ to nineteen other prominent philosophy journals. From the one hundred journals that I'm primarily looking at, I selected the twenty (including _Philosophical Studies_) that have the highest rate of citations per published article, and which Web of Science has indexed every year since 1980.^[The last constraint notably rules out _Philosophers' Imprint_ and _Mind and Language_.]
 
-In particular, in this section I'll compare _Philosophical Studies_ to a list of nineteen other prominent philosophy journals. From the one hundred journals that I'm primarily looking at, I selected the twenty that have the highest rate of citations per published article, and which Web of Science has indexed every year since 1980.^[The last constraint notably rules out _Philosophers' Imprint_ and _Mind and Language_.] That list includes _Philosophical Studies_, and the other nineteen journals are the comparison class.
-
-@fig-compare-cites-dots shows, for each year from 1980 to 2019, the average number of citations for articles published in _Philosophical Studies_ (in blue), and in the other nineteen (in red). The figure is fairly noisy, but some trends are clear. Before 2000, the red dots, for the other journals, are mostly above the blue dots, for _Philosophical Studies_. After 2000, and especially from 2003 onwards, that is mostly reversed. Despite having less time to accrue citations, articles from the 2000s are cited more, on average, than articles published earlier. But articles published in the 2010s, especially the late 2010s, have many fewer cites largely because they haven't been around as long.
+@fig-compare-cites-dots shows, for each year from 1980 to 2019, the average number of citations for articles published in _Philosophical Studies_ (in blue), and in the other nineteen (in red). The figure is fairly noisy, but some trends are clear. Before 2000, the red dots, for the other journals, are mostly above the blue dots, for _Philosophical Studies_. After 2000, and especially from 2003 onwards, that is mostly reversed.
 
 ```{r}
 #| label: fig-compare-cites-dots
@@ -1049,7 +1047,7 @@ ggplot(ps_comp_rate |>
        theme(legend.position = "bottom")
 ```
 
-@fig-compare-cites-rolling smooths out some of the noise in @fig-compare-cites-dots in two ways. First, instead of measuring average citations per year, I measure average citations over a five-year rolling window. This doesn't make a huge difference to the measure for the other nineteen, which is already fairly smooth, but it is useful for smoothing the values for _Philosophical Studies_. Second, instead of showing the red and blue dots separately, I've just displayed the ratio between them.
+@fig-compare-cites-rolling smooths out some of the noise in @fig-compare-cites-dots in two ways. First, instead of measuring average citations per year, I measure average citations over a five-year rolling window. Second, instead of showing the red and blue dots separately, I've just displayed the ratio between them.
 
 ```{r}
 #| label: fig-compare-cites-rolling
@@ -1067,70 +1065,7 @@ The difference in @fig-compare-cites-rolling between the earlier and recent year
 
 My very anecdotal impression is that _Philosophical Studies_ is viewed as being more prestigious by younger philosophers than by older philosophers. A toy model of prestige, where it is heavily anchored to how often a journal was cited when one was in graduate school, would explain that difference. That said, I have not done (and am not going to do) a careful study of comparative prestige judgments to know if there is even an effect here to find, or whether my informal sample was not reflective of the wider population.
 
-## Means, Medians and Quartiles {#sec-means-and-ways}
-
-In some ways looking at the averages here understates the impact of _Philosophical Studies_ in the 2000s. Average numbers of citations can be very misleading.^[See @BornmannWilliams2020, who also use percentiles, including the 75th percentile that I'll focus on, to mitigate the misleadingness.] @tbl-quartiles-two-journals compares five year periods from two journals: the _Australasian Journal of Philosophy_ (AJP) from 1980-1984, and _Philosophical Studies_ (PS) from 2003-2007. Q1, Q2 and Q3 are the 25th, 50th, and 75th percentile citations, and Mean is the average number of citations.
-
-```{r}
-#| label: tbl-quartiles-two-journals
-#| tbl-cap: "Statistics for  AJP 1980-1984, and PS 2003-2007."
-
-temp_ajp <- short_bib |>
-  filter(journal == "Australasian Journal Of Philosophy",
-         year >= 1980,
-         year <= 1984) |>
-  arrange(-cites)
-
-this_table <- short_bib |>
-  filter(journal == "Australasian Journal Of Philosophy",
-         year >= 1980,
-         year <= 1984) |>
-  summarise(Q1 = round(quantile(cites, 0.25),1),
-            Q2 = round(quantile(cites, 0.5),1),
-            Q3 = round(quantile(cites, 0.75),1),
-            Mean = round(mean(cites),1)) |>
-  pivot_longer(cols = everything(),
-               names_to = "Statistic",
-               values_to = "AJP 1980-1984") |>
-  left_join(
-    short_bib |>
-  filter(journal == "Philosophical Studies",
-         year >= 2003,
-         year <= 2007) |>
-  summarise(Q1 = round(quantile(cites, 0.25),1),
-            Q2 = round(quantile(cites, 0.5),1),
-            Q3 = round(quantile(cites, 0.75),1),
-            Mean = round(mean(cites),1)) |>
-  pivot_longer(cols = everything(),
-               names_to = "Statistic",
-               values_to = "PS 2003-2007"),
-  by = "Statistic"
-  )
-
-kable(this_table)
-```
-
-The mean number of citations per article is higher for AJP 1980-1984 than for _Philosophical Studies_ 2003-2007. But that's because of the `r sum(temp_ajp$cites)` citations to articles from the AJP in those years, `r sum(filter(temp_ajp, displayauth == "David Lewis")$cites)` of them are to five articles by David Lewis. The citations to _Philosophical Studies_ are much more widely spread around. Comparing the 75th percentiles is more indicative of what's being published in the journals.
-
-Part of the difference between AJP 1980-1984 and _Philosophical Studies_ 2003-2007 is a general trend in the discipline to spread around the citations more. But it's not just that. _Philosophical Studies_ stands out for how widely spread around its citations are. @fig-quartiles-ps-vs-19 shows this. I've taken the same 19 journals that I used in @fig-compare-cites-rolling, and calculated the same quartile statistics for _Philosophical Studies_, and for those 19 journals collectively, for five-year moving windows each year from 1980 to 2019. The results are shown in @fig-quartiles-ps-vs-19. Note that the dot for each year is really the five-year window centrered on that year.
-
-```{r}
-#| label: fig-quartiles-ps-vs-19
-#| fig-cap: "Ratio of 75 percentile of _Philosophical Studies_ citations to 75th percentile of citations for other leading journals, five year rolling window."
-
-ggplot(third_quartile_ratio |>
-         filter(type == "psrat"),
-       aes(x = year, y = ratio)) +
-  geom_point() +
-  theme(legend.position = "none") +
-  labs(x = element_blank(),
-       y = "Ratio") +
-  scale_x_continuous(breaks = c(1990, 2000, 2010))
-```
-
-The pattern is rather similar to @fig-compare-cites-rolling. Before 2000, the ratio was below one for 11 out of 20 years. After 2000, the only time it is below one is right at the end, where the data is very noisy. (The citation counts are very low for such recently published articles, so it's hard to read too much into the numbers.) There is a particular peak in the mid-2000s, just as in @fig-compare-cites-rolling. Perhaps the biggest difference is that in the 1980s, the ratio of the means was below one, but the ratio of the 75th percentiles is sometimes above one. The explanation for that is that there were very few _Philosophical Studies_ articles from those years with huge citation counts, even though a quarter of the articles were being fairly frequently cited.
-
-In general, the 75th percentile of citations is close to the mean number of citations per article for sets of philosophy papers. If the citations are very unevenly distributed, as with the Australasian Journal in the early 1980s, the mean is much higher. If the citations are more evenly spread around, as we'll see below happens with BSPC articles, the mean is much lower.
+I won't repeat the analysis here, but if we measure median citations, or 75th percentile citations, rather than means, the analysis stays the same. On any of these measures, _Philosophical Studies_ was below the middle of this group of twenty before 2000, and above it afterwards.
 
 ## Citations of Special Issues {#sec-citations-of-special-issues}
 
@@ -1153,38 +1088,23 @@ kable(citation_by_type_decade)
 
 The numbers for BSPC are particularly striking. In the full set of articles I'm working from, i.e., all the indexed articles from 100 journals, only 1.1% of articles have 39 or more citations. But one quarter of the articles that _Philosophical Studies_ published from BSPC are in that 1.1%. Surprisingly, given the numbers here, none of the 10 most cited articles in _Philosophical Studies_, and only one of the 30 most cited articles, was from a BSPC special issue. The high average isn't being caused by outliers, but many BSPC articles being cited very frequently. By contrast, four of the ten most cited articles were from the Oberlin colloquium. This is why the Q3 numbers for BSPC and Oberlin are so different, even though the means aren't that far apart.
 
-The fact that the normal issues have such lower citation statistics than the special issues might make us think that the explanation of @fig-compare-cites-rolling can be found entirely in the special issues. Indeed, if we just compare the normal issues of _Philosophical Studies_ to the other 19 journals, the effect we were seeing basically vanishes. This can be seen in @fig-means-normal-only.
+The fact that the normal issues have such lower citation statistics than the special issues might make us think that the explanation of @fig-compare-cites-rolling and @fig-quartiles-ps-vs-19 can be found entirely in the special issues. Indeed, if we just compare the normal issues of _Philosophical Studies_ to the other 19 journals, the effect we were seeing basically vanishes. This can be seen in @fig-quartiles-normal-only.
 
 ```{r}
-#| label: fig-means-normal-only
-#| fig-cap: "Ratio of citations of normal issues of _Philosophical Studies_ citations to citations of other leading journals, five year rolling window."
+#| label: fig-quartiles-normal-only
+#| fig-cap: "Ratio of 75 percentile of normal issues of _Philosophical Studies_ citations to 75th percentile of citations for other leading journals, five year rolling window."
 
-normal_citation_rate <- citation_with_all_type |>
-  filter(Type == "Normal") |>
-  group_by(year) |>
-  summarise(citations = sum(cites),
-            articles = n_distinct(id))|>
-  ungroup() |>
-  arrange(year) |>
-  mutate(slide_arts = slide_dbl(articles, sum, .before = 4),
-         slide_cites = slide_dbl(citations, sum, .before = 4),
-         slide_rate = slide_cites/slide_arts) |>
-  left_join(ps_comp_rate |>
-              ungroup() |>
-              filter(cited_journal == "NPS") |>
-              select(year, nps = slide_rate),
-            by = "year") |>
-  mutate(normrat = slide_rate / nps)
-
-ggplot(normal_citation_rate,
-       aes(x = year, y = normrat)) +
+ggplot(third_quartile_ratio |>
+         filter(type == "normrat"),
+       aes(x = year, y = ratio)) +
   geom_point() +
   theme(legend.position = "none") +
   labs(x = element_blank(),
        y = "Ratio") +
   scale_x_continuous(breaks = c(1990, 2000, 2010))
 ```
-When we just focus on the normal issues, there are on average more citations to the other 19 journals than to _Philosophical Studies_ until the mid-2010s. So part of the story behind @fig-compare-cites-rolling is that the special issues of _Philosophical Studies_ in the 2000s were well cited. But it's potentially misleading to compare normal issues of one journal to all issues of other journals. I looked at the most cited article since 2005 in each of the 20 journals that go into  @fig-means-normal-only, and in 6 of them (including _Philosophical Studies_), the most cited article was in a special issue. (Or, in one case, a special unit in a regular issue.) Special issues, including refereed special issues, have been very widely cited in recent times.
+
+This is surely part of the explanation of what's going on. But @fig-quartiles-normal-only is not an apples-to-apples comparison; we've removed the special issues from _Philosophical Studies_, but not from the other 19. This could be a significant issue. I looked at the most cited article since 2005 in each of the 20 journals that go into  @fig-quartiles-normal-only, and in 6 of them (including _Philosophical Studies_), the most cited article was in a special issue. (Or, in one case, a special unit in a regular issue.) It's really hard to tell exactly which issues are special issues from the archival record, and even harder to tell what the refereeing process was for those special issues.^[BSPC selected almost all its papers via anonymous review, and then the papers were refereed again before going into _Philosophical Studies_. I have no idea how common that was for the other special issues.] The best we can say is that special issues are sufficiently widespread, and sufficiently widely cited, that @fig-quartiles-normal-only might be a misleading comparison. The success of special issues is part of why _Philosophical Studies_ was so widely cited in the 2000s, but maybe not all of it.
 
 Rather than go further down this rabbit hole, let's turn to what was in _Philosophical Studies_ over the years, starting with its inbound citations.
 
