@@ -128,7 +128,7 @@ The problem is that step 3 is not particularly plausible. If moral beliefs have 
 
 I don't mean to endorse the objection to premise 3 in the last paragraph; I think the questions here are rather tricky. I do mean to endorse two other claims. One is that just thinking about cases like Peter and his Aunties gives us a stronger reason to reject independence than Lewis's argument from conditionalisation. Second, if one does think that independence is independently implausible, Lewis only needs **Restricted Conditionalisation** for the rest of the argument to work. And **Restricted Conditionalisation** is plausible, even if one rejects conditionalisation for centered worlds contents.
 
-# Aunties' Response
+# Aunties' Responses
 
 With the argument in front of us, it's easy enough to see how the Aunties can respond. Auntie E rejects **Equation**, and Auntie C rejects **Additivity**. The main point of this section is to argue that each Auntie has a principled reason to reject the premise in Lewis relies on. A secondary point is to argue that this means any desire-as-belief theorist has a reason to reject Lewis's argument.
 
@@ -136,6 +136,38 @@ Let's start with Auntie E. She objects to Lewis's argument in the same way Huw @
 
 In the sequel paper Lewis has a response to Price's suggestion. As @Hajek2015 observes, it is very hard to understand what the response really is. Lewis states the kind of view Price endorses, makes a couple of observations about it, and then ends as if the question is settled. If it's meant to be a reductio, it's really not clear what the implausible conclusion is. Hàjek speculates that a paragraph or more simply went missing; the text is puzzling enough to take such speculations seriously.^[Since Hàjek's paper was published, we've had two volumes of correspondence by Lewis published [@LewisLetters1; @LewisLetters2]. But unfortunately nothing in them sheds light on this interpretative question.]
 
-Now let's consider Auntie C. She thinks that **Additivity** is wrong because it gets Peter's case wrong. She thinks it gets the case wrong for a simple reason: it's the way evidential decision theorists value gambles, and she's a causal decision theorist, not an evidential decision theorist. (And, she adds, she thought Lewis was one too.)
+Now let's consider Auntie C. She thinks that **Additivity** is wrong because it gets Peter's case wrong. She thinks it gets the case wrong for a simple reason: it's the way evidential decision theorists value gambles, and she's a causal decision theorist, not an evidential decision theorist.^[So far Auntie C is following closely the argument in @Collins2015, though she will ultimately disagree with Collins on a point of detail: Auntie accepts **Restricted Conditionalisation**.]
 
-Again, Lewis has a response. He 
+Again, Lewis has a response. He says that this is to confuse choice-worthiness and desirability.
+
+> A famous difficulty need not concern us here. Suppose a certain action would serve as an effective means to your ends. Yet at the same time it would constitute evidence—evidence available to you in no other way—that you are predestined inescapably to some dreadful misfortune. Should you perform that action?—Yes; your destiny is not a consideration, since that is outside your control. Do you desire to perform it?—No; you want good news, not bad. Since our topic here is not choiceworthiness but desire, and since the two diverge, we adopt an “evidential” conception of expected value, on which the value of the useful action that brings bad news is low. Choiceworthiness is governed by a different, “causal”, conception of expected value. [@Lewis1996 304]
+
+Auntie finds this very puzzling. Imagine a person, call them Rosencrantz, is playing Newcomb's Problem. It sounds like Lewis is saying that Rosencrantz should (a) take both boxes, and (b) desire that they take one box. But that means that their actions won't flow from their desires in the way that Humeans, like Lewis, say that they should. Indeed, one of the motivations of the first Desire as Belief paper, right on the first page, was preserving the link between desire and action.
+
+So Auntie C is unmoved. She wants what is best, and she doesn't want people to do things just so she'll have evidence that things are better than she thought.
+
+Let's sum up. Lewis showed that it is impossible to hold onto the four named principles, Auntie's anti-Humean view, and probabilistic dependence between A and Å. The argument that this combination is untenable seems sound. And I think (though some disagree) that we should hold on to **Invariance**, **Restricted Conditionalisation** and the possibility of probabilistic dependence. The question then is which of these three to give up:
+
+1. Anti-Humeanism
+2. **Equation**
+3. **Additivity**
+
+My argument is that Lewis has not given us a compelling reason to reject 1, rather than rejecting 2 or 3. What's tricky about the case is that it's hard to say which of 2 or 3 we should reject. One kind of anti-Humean, Auntie E, rejects 2, since she thinks that desirability tracks the conditional probability of an act being good. Another kind of anti-Humean, Auntie C, rejects 3, since she thinks desirability goes with causal choice-worthiness. Both these rejections seem principled, so either anti-Humean has a principled reason to reject Lewis's argument.
+
+# A Decision Problem {#sec-decision}
+
+To back this point up, imagine Peter is not making a morally loaded decision. Instead he's playing a version of the problem @Skyrms1981 calls Nice Demon. The rules are simple.
+
+1. Peter will choose Up or Down.
+2. Demon will try to predict Peter's choice.
+3. If Demon's prediction is correct, Peter gets $1. Otherwise he gets nothing.
+4. Demon is 0.9 likely to correctly predict Down (if Peter chooses it), and 0.8 likely to correctly predict Up (if Peter chooses it).
+
+Both Aunties start deliberation with credence 0.7 that Peter will choose Up. Question: What does Auntie hope that Peter will do? Answer: They disagree.
+
+Auntie C hopes that Peter will choose Up. She has credence 0.59 that Demon has predicted Up, and she wants Peter to get the money. This case is, for her, another counterexample to **Additivity**.
+
+Auntie E hopes that Peter will choose Down. She agrees with Lewis on what is desirable, i.e., she thinks desire goes with evidential choice-worthiness. This case is, for her, another reason to reject **Equation**.
+
+Who should accept both **Addivity** and **Equation**? Only someone who thinks Peter should choose both Up and Down. That's implausible, so 
+
