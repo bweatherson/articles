@@ -1186,112 +1186,97 @@ single_decade_kable <- function(x){
                 slice(16:20))
   }
 
+
+most_cited <- all_cites |>
+  filter(new_year >= 1980, new_year <= 2019, old_year > 1960) |>
+  group_by(old) |>
+  tally(name = "all_cites") |>
+  slice_max(order_by = all_cites, n = 80, with_ties = TRUE)
+
+ps_top_cites <- all_cites |>
+  filter(new_journal == "Philosophical Studies",
+         new_year >= 1980,
+         new_year <= 2019,
+         old %in% most_cited$old) |>
+  group_by(old) |>
+  tally(name = "ps_cites") |>
+  left_join(most_cited, by = "old") |>
+  left_join(short_bib,
+            by = c("old" = "id")) |>
+  mutate(Citation = paste0("@", str_replace(old, ":", ""))) 
+
+ps_base_rate <- sum(ps_top_cites$ps_cites) / sum(ps_top_cites$all_cites)
+
+ps_top_cites <- ps_top_cites |>
+  mutate(ps_prob = pbinom(ps_cites, all_cites, ps_base_rate)) |>
+  arrange(ps_prob)
+
 ```
 
-This section looks at the papers cited in _Philosophical Studies_ in each of the last four decades. For each decade, I find the 20 papers most cited in all philosophy journals over that decade. (They need not be published in the decade, indeed some of them are published nearly a half-century earlier.) I'll then look at which of them have the highest and lowest proportion of their citations in _Philosophical Studies_, and comment on what that tells us about the journal, and the discipline as a whole.
-
-## 1980s
+This section looks at the eighty journal articles that are most cited across the hundred journals between 1980 and 2019, and looks at what proportion of their citations are in _Philosophical Studies_. On average, those articles have about 10% of their citations in _Philosophical Studies_, but the proportion varies greatly by articles. @tbl-mainly-in-ps lists the twelve articles whose citations are most concentrated in _Philosophical Studies_.^[The ranking here is not by proportion of cites in _Philosophical Studies_, but instead by the probability that an article would have this many cites in _Philosophical Studies_, given how many overall citations it has and that highly cited articles have about 10% of their citations in _Philosophical Studies_. I think this is a slightly better way to separate the signal from the noise.]
 
 ```{r}
-#| label: tbl-1980s-inbound
-#| tbl-cap: "Highly cited articles in the 1980s."
+#| label: tbl-mainly-in-ps
+#| tbl-cap: "Articles with a high concentration of ciations in _Philosophical Studies_."
 
-kable(single_decade_kable(198))
+kable(ps_top_cites |>
+        arrange(-ps_prob) |>
+        slice(1:12) |>
+        select(Article = Citation, `PS Citations` = ps_cites, `All Citations` = all_cites))
 ```
 
-_Philosophical Studies_ was founded to be a journal of _analytic_ philosophy. There wasn't a mission statement in the first edition, but the very first article might have served just as well. It was an article on analysis, by Morris @Weitz1950, which starts with a reference to _Language, Truth and Logic_.
+There are articles here in the five main topics _Philosophical Studies_ covers: language, ethics, metaphysics, mind, and epistemology (hereafter, LEMME). I extended the list to 12 because the last two articles, @WOSA1969Y444700002 and @WOSA1966ZC83800001	will be important in what follows.
 
-In the 1980s, the focus is still very much on core analytic concerns. The five articles at the top of @tbl-1980s-inbound are all in philosophy of language, broadly enough construed. That was obviously a big part of philosophy as a whole in the 1980s, but these articles were being cited in _Philosophical Studies_ at a higher rate than in the rest of the discipline.
-
-The bottom of @tbl-1980s-inbound says more about the noisiness of the data than about the journal. The Dennett paper was cited in @WOSA1985AGM6100006, but the citation was to the reprint in _Brainstorms_ not the original journal article, so it isn't captured here. The Rawls paper is cited in @WOSA1984SN28600002, with a slightly different title.^[The Rawls paper was in three parts, and WoS thought the parts were papers, and the title was the issue title, so the citations to it are particularly unreliable.] I wouldn't read much into that part of the table.^[I found these citations with Google Scholar, which has several false positives, but does track down some very hard to find citations.]
-
-## 1990s
+The other end of the scale looks quite different, as shown in @tbl-mainly-out-ps. There we see articles in political philosophy, philosophy of science, and logic.
 
 ```{r}
-#| label: tbl-1990s-inbound
-#| tbl-cap: "Highly cited articles in the 1990s."
+#| label: tbl-mainly-out-ps
+#| tbl-cap: "Articles with a low concentration of ciations in _Philosophical Studies_."
 
-kable(single_decade_kable(199))
+kable(ps_top_cites |>
+        arrange(ps_prob) |>
+        slice(1:8) |>
+        select(Article = Citation, `PS Citations` = ps_cites, `All Citations` = all_cites))
 ```
 
-The top of @tbl-1990s-inbound still has a fair bit of philosophy of language, though we're now seeing more metaphysics (Lewis), more philosophy of mind (Jackson), and in particular more metaphysics of mind (Kim). 
-
-The bottom of @tbl-1990s-inbound brings out something that we'll see a lot more going forward. _Philosophical Studies_ does a lot less political philosophy (Dworkin, Rawls), and less philosophy of science (Millikan, Cummins) than the rest of the discipline.
-
-There is one very odd entry there though: why are there so few citations to Goldman? We'll come back to this in later sections, but it stands out given how central epistemology is about to become to the journal.
-
-## 2000s
-
-```{r}
-#| label: tbl-2000s-inbound
-#| tbl-cap: "Highly cited articles in the 2000s."
-
-kable(single_decade_kable(200))
-```
-
-The story in @tbl-2000s-inbound is the centrality of epistemology to what _Philosophical Studies_ does in the 2000s. And in particular, it is the story of the centrality of epistemic contextualism to the journal. The two most important articles on contextualism are cited in _Philosophical Studies_ more than 25 times in this decade alone, which is quite remarkable.
-
-I think the three most important figures in the development of epistemic contextualism are Keith DeRose, David Lewis, and Stewart Cohen. The first two are on this list, and the third was editor of the journal through the 2000s. There are cases in the history of philosophy where a journal editor was cited more often in his journal than in the broader discipline.^[I use a male pronoun here because the editors I know of that fit this description were all male.] This isn't what happened here. Cohen's own papers are cited in _Philosophical Studies_ at roughly the same rate as they are cited in peer journals. What does happen is that a topic Cohen works on, and which is being discussed a lot throughout philosophy, is discussed even more here.
-
-The bottom of @tbl-2000s-inbound continues a pattern we've seen already. _Philosophical Studies_ does less political philosophy (Cohen, Anderson), and less philosophy of science (Cummins, Machamer et al) than similar journals.
-
-## 2010s
-
-```{r}
-#| label: tbl-2010s-inbound
-#| tbl-cap: "Highly cited articles in the 2010s."
-
-kable(single_decade_kable(201))
-```
-
-There are three related stories at the top of @tbl-2010s-inbound. The first is the appearance for the first time of ethics articles (Kolodny, Frankfurt) at the top of one of these lists. The second is the much broader spread of topics represented than in previous decades. And the third is the broader spread of years represented, with 41 years between the earliest and latest publication on the list.
-
-There isn't much new at the bottom of the list, with once again the most cited philosophy of science article of the last quarter century, and the most cited political philosophy of the last quarter century, trailing the pack. It is perhaps an interesting reflection on how the journal has changed to see "The Problem of the Essential Indexical", which was near the top of @tbl-1980s-inbound and @tbl-1990s-inbound, be near the bottom of @tbl-2010s-inbound.
-
-## Summary
-
-Just looking at the citations of very widely cited articles is a fairly crude measure. In subsequent sections we'll use topic models, and citations of clusters of articles, to make more fine-grained measurements of what was going on in the journal. But these more sophisticated approaches have a downside: they are black boxes, and it is tricky to independently confirm what they say. Counting citations of a handful of articles is much easier. That means that when the more sophisticated approaches say that philosophy of language has become a smaller part of the journal, and that philosophy of science and political philosophy were always relatively small parts of the journal, we have independent reason to believe that they are correct.
+These tables tell us that the LEMME topics are at the heart of what _Philosophical Studies_ has published over those four decades. I'll use that fact in the next analysis
 
 # A Topic Model for _Philosophical Studies_ {#sec-topic-model}
 
 ## The Model
 
-Following the groundbreaking work of Christophe Malaterre and colleagues, I analysed the content of _Philosophical Studies_ articles by building a five-category topic model.^[This technique is used to analyse _Philosophy of Science_ by @Malaterre2019, to analyse _Biology and Philosophy_ by @Malaterre2019a, and to analyse a family of eight philosophy of science journals by @Malaterre2020. In @Malaterre2022 the technique is extended to journals that don't publish exclusively in one language, but that's not relevant to _Philosophical Studies_.] Without going too deep into the details of what topic modeling is, I'll note four features of it that are relevant.
+Following the groundbreaking work of Christophe Malaterre and colleagues, I analysed the content of _Philosophical Studies_ articles by building a five-topic topic model.^[This technique is used to analyse _Philosophy of Science_ by @Malaterre2019, to analyse _Biology and Philosophy_ by @Malaterre2019a, and to analyse a family of eight philosophy of science journals by @Malaterre2020. In @Malaterre2022 the technique is extended to journals that don't publish exclusively in one language, but that's not relevant to _Philosophical Studies_.] Without going too deep into the details of what topic modeling is, I'll note four features of it that are relevant.
 
-First, a topic model divides some texts into *k* categories, where *k* is given by the model builder. On the one hand, the model itself doesn't tell you how many categories to use. On the other hand, the model builder doesn't tell the model what those categories should be. I thought a five category model should work because the biggest topics in _Philosophical Studies_ are epistemology, ethics, language, mind, and metaphysics. After asking the model to divide the articles into five categories, it more or less found those five groups. (Though with some caveats that will become clearer in what follows.) The model doesn't give names to those categories; that's something I did. But it does create the five groupings
+First, a topic model divides some texts into *k* topics, where *k* is given by the model builder. On the one hand, the model itself doesn't tell you how many topics to use. On the other hand, the model builder doesn't tell the model what those topics should be. I thought a five topic model should work because _Philosophical Studies_ concentrates on the LEMME topics. After asking the model to divide the articles into five topics, it more or less found those five groups. (Though with some caveats that will become clearer in what follows.) The model doesn't give names to those topics; that's something I did. But it does create the five groupings.
 
-Second, the model takes as input the words in an article, but not the order those words appear in. For this reason, it is poorly suited to determining which side of a debate an article is on. Articles on utilitarianism use different words to articles on mental content; articles for and against utilitarianism tend to use similar words. Possibly the next generation of language models, the kinds of classifiers that power ChatGPT, will do better on this score.
+Second, the model takes as input the words in an article, but not the order those words appear in. For this reason, it is poorly suited to determining which side of a debate an article is on. Articles on utilitarianism use different words to articles on mental content; articles for and against utilitarianism tend to use similar words. So the model isn't much help at telling us whether articles in _Philosophical Studies_ are for or against the topic being discussed; for that we have to read the articles.
 
-Third, the model doesn't simply say that an article is in one or other category. For each of the five categories, it gives a probability to the article being in that category. This is helpful for classifying articles that don't slot cleanly into one or other group. _Philosophical Studies_ has published a lot of papers on physicalism. For many of these, it would be arbitrary to call them mind articles or metaphysics articles. The model doesn't require that we choose. It gives a probability to the article being in metaphysics, and a probability to it being in mind. In some cases, such as "Chalmers on the Addition of Consciousness To the Physical World" [@WOS000086712500005], the model gives almost equal probability to the two categories.
+Third, the model doesn't simply say that an article is in one or other topic. For each of the five topics, it gives a probability to the article being in that topic. This is helpful for classifying articles that don't slot cleanly into one or other group. _Philosophical Studies_ has published a lot of papers on physicalism. For many of these, it would be arbitrary to call them mind articles or metaphysics articles. The model doesn't require that we choose. It gives a probability to the article being in metaphysics, and a probability to it being in mind. In some cases, such as "Chalmers on the Addition of Consciousness To the Physical World" [@WOS000086712500005], the model gives almost equal probability to the two topics.
 
-Often when topic models are used, articles are classified by their maximal probability. I prefer to use the actual probabilities. So the graph in @fig-five-topics shows the average probability that an article is in each category by year. I think it shouldn't matter much whether Latham's article is counted as 51% mind and 49% metaphysics or vice versa, and using the probabilities allows for that.
+Often when topic models are used, articles are classified by their maximal probability. I prefer to use the actual probabilities. So the graph in @fig-five-topics shows the average probability that an article is in each topic by year. I think it shouldn't matter much whether Latham's article is counted as 51% mind and 49% metaphysics or vice versa, and using the probabilities allows for that.
 
-Finally, the models are rather random. Somewhat metaphorically, they work by picking a random starting point, and scanning for a local maximum. The scanning procedure is deterministic, but the starting point is not. This can make a difference to individual articles. Every model I built was unsure how to classify "What Do Philosophers Believe?" [@WOS000340619100006]. The one I'm using said it was 50% metaphysics, and 50% spread between the other four categories, but other models said it was 60% mind, or largely ethics. All this makes sense; the article cuts across all the fields.
+Finally, the models are rather random. Somewhat metaphorically, they work by picking a random starting point, and scanning for a local maximum. The scanning procedure is deterministic, but the starting point is not. This can make a difference to individual articles. Every model I built was unsure how to classify "What Do Philosophers Believe?" [@WOS000340619100006]. The one I'm using said it was 50% metaphysics, and 50% spread between the other four topics, but other models said it was 60% mind, or largely ethics. All this makes sense; the article cuts across all the fields.
 
-But this randomness raises a problem: how do we choose which random starting point to use? We could just use the first one we run, but that might be a very idiosyncratic output. We could hand code the starting point, but that would introduce our own biases. We could build many models and just which one looks most like familiar categories, but that would introduce even more biases.
+But this randomness raises a problem: how do we choose which random starting point to use? We could just use the first one we run, but that might be a very idiosyncratic output. We could hand code the starting point, but that would introduce our own biases. We could build many models and just which one looks most like familiar topics, but that would introduce even more biases.
 
-Here I got around this problem by using citation data. I had the computer build (or at least start building) several thousand models. I told it to focus on the ones where articles were classified in a similar way to articles that they cited. The results were similar to the last solution I mentioned: the ones which classified cited and citing articles in similar ways looked like familiar topics. (That is, they looked like PhilPapers classifications.) More precisely, the extreme cases matched familiar classifications: whenever the cited and citing were classified very similarly, the model looked familiar; whenever they were classified differently, the model looked like an arbitrary gerrymander. So rather than using my own judgment about the best model^[If I had used my own judgment, I would have picked a model similar to, but not quite identical to, this one. But I'd rather trust citation data than my idiosyncratic judgments.], I used the one that best conformed to the citation data.
+Here I got around this problem by using citation data. I had the computer build (or at least start building) several thousand models. I told it to focus on the ones where articles were classified in a similar way to articles that they cited. In general, the greater the similarity between the classification of articles and classification of citations of those articles, the more the model resembled familiar topics. So rather than using my own judgment about the best model^[If I had used my own judgment, I would have picked a model similar to, but not quite identical to, this one. But I'd rather trust citation data than my idiosyncratic judgments.], I used the one that best conformed to the citation data.^[There was one real oddity in this model. It put articles on phenomenal properties in metaphysics, and articles on dispositions in mind. Most other models did not do this, and I would have preferred this one didn't either. But overall, this model did best at co-classifying articles and articles they cite, and every model is odd in some respect, so I stuck with this model.]
 
-## The Five Categories {#sec-five-categories}
+## The Five Topics {#sec-five-topics}
 
-I picked five categories for the model hoping, correctly, that it would land on something like epistemology, ethics, language, mind, and metaphysics. 
+I picked five topics for the model hoping, correctly, that it would land on something like the LEMME topics. And that's more or less what happened.
 
-The only one of those labels that might be misleading is 'ethics'. Really that category includes all papers on norms broadly construed. So it includes papers on decision theory^[I think this is the right way to classify decision theory; it could sensibly be called 'formal ethics'. But I'm not relying on my views here, just noting that the model was remarkably confident that decision theory papers go in ethics.], on political philosophy (though there aren't a lot of those), and even some papers on epistemic norms. The latter was a little confusing to me at first; I wasn't sure why it thought of Kelly's "The Rationality of Belief and Some Other Propositional Attitudes" [@WOS000178572700004] was 50% ethics and 50% epistemology.^[The model I'm using actually had it at 51% ethics. Most models I looked at had it around 50/50, but usually with a higher probability for epistemology. The precise numbers aren't particularly meaningful.] Why shouldn't it be classified like "Justification and Truth" [@WOSA1984TN86300001], which is classified as 99.3% epistemology. The answer is that anything explicitly about norms is counted as at least somewhat ethics. So when I talk about ethics in what follows, note that I'm referring to a category in a model that includes a wide range of papers concerned with norms.
+I labeled the topics, and mostly the labels are straightforward.  The only one of those labels that might be misleading is 'ethics'. In the model, that topic includes all papers on norms broadly construed. So it includes papers on decision theory^[I think this is the right way to classify decision theory; it could sensibly be called 'formal ethics'. But I'm not relying on my views here, just noting that the model was remarkably confident that decision theory papers go in ethics.], on political philosophy (though there aren't a lot of those), and even some papers on epistemic norms. So Kelly's "The Rationality of Belief and Some Other Propositional Attitudes" [@WOS000178572700004] is classified as 50% ethics and 50% epistemology.^[The model I'm using actually had it at 51% ethics. Most models I looked at had it around 50/50, but usually with a higher probability for epistemology. The precise numbers aren't particularly meaningful.] It's a little odd that it isn't classified like "Justification and Truth" [@WOSA1984TN86300001], which is classified as 99.3% epistemology. But the model (and all the other models I built) put all articles about norms together, including articles about epistemic norms.
 
-Is having just five topics enough? There are certainly other major topics in philosophy, as well as several other smaller topics. Let's set aside the smaller topics^[By 'smaller topic' here, I just mean one that isn't as large a part of analytic English-language philosophy as it is practiced. It's arguable that philosophy of history, to pick one such topic, should be a large part of philosophy; it's uncontroversial that it is not in fact a large part of the last half-century of analytic English-language philosophy.], which are hard to detect by this method, and focus on the four largest topics that aren't listed here: logic, history of philosophy, philosophy of science, and political philosophy.
+What happens to articles that are not from the LEMME topics? The simple answer is that they are mostly not published in _Philosophical Studies_. That's part of what we learn from @tbl-mainly-out-ps. If there were more political philosophy papers, for example, we would see more citations to Rawls or Anderson.
 
-The most casual flick through the tables of contents for _Philosophical Studies_ is enough to see that logic and history of philosophy are not major parts of the journal. There are some papers on the boundary between logic and philosophy of language, and the model is happy to classify all of them with language papers. What few history papers there are get classified according to which part of philosophy they are from the history of. So "Was Kant a Nonconceptualist?" [@WOS000251971400006] is 99.98% likely to be a mind paper, and "Descartes' Debt To Teresa of Avila, or Why We Should Work on Women in the History of Philosophy" [@WOS000410736800011] is 83% likely to be an epistemology paper.
-
-There are very few political philosophy papers until recently. The few from earlier years, and the more frequent such papers from recent years, get slotted easily into ethics.
-
-The one that's a bit more complicated is philosophy of science. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five categories. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five categories. So we aren't losing much by not having a separate category for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
+Philosophy of science raises a complication though. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five topics. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five topics. So we aren't losing much by not having a separate topic for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
 
 ## Topics and Special Issues
 
-@tbl-categories-special shows the distribution of the five topics over the types of issues that _Philosophical Studies_ publishes.
+@tbl-topics-special shows the distribution of the five topics over the types of issues that _Philosophical Studies_ publishes.
 
 ```{r}
-#| label: tbl-categories-special
+#| label: tbl-topics-special
 #| tbl-cap: "Distribution of philosophical topics over types of issue."
 
 kable(topic_rate_by_type)
@@ -1301,7 +1286,7 @@ The differences between Oberlin and BSPC are striking, even if not surprising. B
 
 I've noted a few times that you see less epistemology in the journal than you might expect given the prominence of the editors in epistemology. Here we do see an effect. The one-off issues, where the editors have more say over the topic, lean more towards epistemology than the rest of the journal.
 
-## Categories and Citations
+## Topics and Citations
 
 @tbl-topics-cites shows how often, on average, articles in the different topics were cited.
 
@@ -1591,35 +1576,3 @@ I've focused largely on philosophy of language because the decline in importance
 There is a small uptick in epistemology articles in the journal in the 2000s. Interestingly, this matches a finding by Eugenio @Petrovich2024, who (using a different method) sees a notable uptick in epistemology in five other leading journals starting around 2000. As we'll see @sec-citations-topic, this is related to the notable increase in citations to _Philosophical Studies_ starting around the same time.
 
 And there is a trend upwards in ethics over the last few years, though it's only returning ethics to the position it was in earlier years. I'll have more to say about this in @sec-social; the short version is that what's happening inside ethics, and in particular the focus on social questions, is more interesting than the size of the category.
-
-## Trends
-
-# The LDA
-
-Build the model
-Note the five categories
-Graph the trends
-Flag the methodology
-
-# Language
-
-Find the 40 most cited in each topic over the 40 years (i.e., most cited per year)
-Look how often they are cited in PS
-Look how often they are cited across the 100
-See if the trends in PS track wider trends
-Find other journals that have similar trends (Analysis, PQ, AJP)
-
-# Metaphysics
-
-Note the two Schaffer papers, and differences in citing @WOS000368189400004
-Is that because little grounding
-There is some - see graph of words
-Maybe just count how 'modal' vs 'postmodal' the 2019 papers are
-Maybe do a small LDA of the metaphysics papers
-
-# Ethics
-
-Is there anything to say here?
-Does it go more political? Still not citing Anderson, but something?
-
-Delicate. Even happening.

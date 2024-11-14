@@ -42,7 +42,9 @@ ps_top_cites <- all_cites |>
   left_join(short_bib,
             by = c("old" = "id")) |>
   mutate(Citation = paste0("@", str_replace(old, ":", ""))) 
+
 ps_base_rate <- sum(ps_top_cites$ps_cites) / sum(ps_top_cites$all_cites)
+
 ps_top_cites <- ps_top_cites |>
   mutate(ps_prob = pbinom(ps_cites, all_cites, ps_base_rate)) |>
   arrange(ps_prob)
