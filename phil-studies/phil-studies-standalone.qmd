@@ -501,6 +501,32 @@ citations_by_topic <- short_bib_with_gamma |>
          Rate = round(rate, 2)) |>
   select(Topic, Articles, Citations, Rate)
 
+
+citations_by_topic_decade <- short_bib_with_gamma |>
+  mutate(decade = paste0(
+    floor(
+      year/10
+    ),
+    "0s"
+  )) |>
+  select(id, decade, cites, starts_with("lda")) |>
+  pivot_longer(cols = starts_with("lda"),
+               names_to = "topic",
+               values_to = "probability") |>
+  mutate(weighted_cites = cites * probability) |>
+  mutate(topic = str_replace(topic, "lda-", "")) |>
+  group_by(topic, decade) |>
+  summarise(cites = sum(weighted_cites), articles = sum(probability), .groups = "drop") |>
+  mutate(rate = cites/articles) |>
+  mutate(Topic = topic,
+         Decade = decade,
+         Articles = round(articles, 1),
+         Citations = round(cites, 1),
+         Rate = round(rate, 2)) |>
+  select(Topic,Decade, Rate) |>
+  pivot_wider(id_cols = Topic,
+              names_from = Decade,
+              values_from = Rate)
 ```
 
 ```{r}
@@ -1325,9 +1351,42 @@ There are very few political philosophy papers until recently. The few from earl
 
 The one that's a bit more complicated is philosophy of science. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five categories. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five categories. So we aren't losing much by not having a separate category for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
 
-## Categories and Special Issues
+## Topics and Special Issues
+
+@tbl-categories-special shows the distribution of the five topicsover the types of issues that _Philosophical Studies_ publishes.
+
+```{r}
+#| label: tbl-categories-special
+#| tbl-cap: "Distribution of philosophical topics over types of issue."
+
+kable(topic_rate_by_type)
+```
+
+The differences between Oberlin and BSPC are striking, even if the direction could be seen from a casual glance. BSPC was primarily an ethics and metaphysics conference, while Oberlin has focused more on philosophy of mind. The higher numbers for language in the normal issues is in part a factor of there just being more normal issues before the mid-1990s, when language was more central to the journal and perhaps the discipline.
+
+I've noted a few times that you see less epistemology in the journal than you might expect given the prominence of the editors in epistemology. Here we do see an effect. The one-off issues, where the editors have more say over the topic, lean more towards epistemology than the rest of the journal.
 
 ## Categories and Citations
+
+@tbl-topics-cites shows how often, on average, articles in the different topics were cited.
+
+```{r}
+#| label: tbl-topics-cites 
+#| tbl-cap: "Average citation rates for the five main topics."
+
+kable(citations_by_topic)
+```
+
+The differences are not as stark as in @tbl-citation-by-type, but they are still notable. Epistemology articles are cited, on average, about 50% more often than language articles. Now a simple explanation for that might be that epistemology articles appear on average later, and articles that appear later get cited more often. As @tbl-topics-cites-decades shows, that is partially right. But breaking up the citations by decades reveals something suprising.
+
+```{r}
+#| label: tbl-topics-cites-decades
+#| tbl-cap: "Average citation rates for the five main topics by decade."
+
+kable(citations_by_topic_decade)
+```
+
+The difference between the 2000s and every other decade in @tbl-topics-cites-decades is stark. But the lack of citations to language articles before the 2000s is also stark. I'll come back to this point in @sec-1990s-articles, as part of a broader look at how the topic distribution in _Philosophical Studies_ changed over time.
 
 # Words and Trends {#sec-words-trends}
 
@@ -1371,9 +1430,33 @@ word_graphs <- function(x, y){
     ggplot(aes(x = year, y = proportion)) +
     geom_point() +
     facet_wrap(vars(ngram), ncol = y) +
-    scale_x_continuous(limits = c(1980, 2019),
+    scale_x_continuous(limits = c(1979, 2020),
                        breaks = c(1990, 2010),
                        minor_breaks = 396:404 * 5) +
+    labs(x = element_blank(), y = element_blank())
+    
+}
+
+word_graphs_shaded <- function(x, y, d){
+  active_docs <- ps_uni |>
+    filter(ngram %in% x)
+  
+  active_docs |>
+    group_by(year, ngram) |>
+    summarise(#docs = n_distinct(wos_id), 
+              words = sum(count),
+              .groups = "drop") |>
+    left_join(word_count_by_year, by = "year") |>
+    mutate(proportion = words/wordcount) |>
+    ggplot(aes(x = year, y = proportion)) +
+    geom_rect(data = tibble(start = d-0.5, end = d+9.5), aes(xmin = start , xmax = end, ymin = -Inf, ymax = Inf),
+          inherit.aes=FALSE, alpha = 0.4, fill = rgb(249/300,255/300,255/300)) +
+    geom_point() +
+    facet_wrap(vars(ngram), ncol = y) +
+    scale_x_continuous(limits = c(1979.5, 2019.5),
+                       breaks = c(1990, 2010),
+                       minor_breaks = 396:404 * 5) +
+    scale_y_continuous(limits = c(0, NA)) +
     labs(x = element_blank(), y = element_blank())
     
 }
@@ -1442,7 +1525,7 @@ ps_uni_grouped |>
 
 I'll leave it for someone else to figure out what proportion of the change in @fig-gender-words is due to there being more references to particular women, and what proportion is due to philosophers using female pronouns for arbitrary or fictional characters.
 
-## 1980s
+## 1980s {#sec-1980s-articles}
 
 From the 1990s to at least the mid 2010s, the bulk of ethics papers in _Philosophical Studies_ were on fairly theoretical questions, with special focus on questions moral realism, moral motivation, and (a topic I'll return to) moral responsibility. But in the 1980s the ethics papers in the journal had a different focus. 
 
@@ -1476,7 +1559,9 @@ word_graphs(c("statement", "description", "reference"), 3)
 word_graphs(c("abortion", "donnellan", "fetus", "utilitarian", "attributive", "referential"), 3)
 ```
 
-## 1990s
+## 1990s {#sec-1990s-articles}
+
+
 
 - Still issues about content externalism. Now moved to mind, as 'arthritis', 'Fodor' and 'mentalese' show
 - But really lagging here. 'Arthritis' is at 16.2%, 'Mentalese' at 19.4%.
