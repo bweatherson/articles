@@ -501,6 +501,32 @@ citations_by_topic <- short_bib_with_gamma |>
          Rate = round(rate, 2)) |>
   select(Topic, Articles, Citations, Rate)
 
+
+citations_by_topic_decade <- short_bib_with_gamma |>
+  mutate(decade = paste0(
+    floor(
+      year/10
+    ),
+    "0s"
+  )) |>
+  select(id, decade, cites, starts_with("lda")) |>
+  pivot_longer(cols = starts_with("lda"),
+               names_to = "topic",
+               values_to = "probability") |>
+  mutate(weighted_cites = cites * probability) |>
+  mutate(topic = str_replace(topic, "lda-", "")) |>
+  group_by(topic, decade) |>
+  summarise(cites = sum(weighted_cites), articles = sum(probability), .groups = "drop") |>
+  mutate(rate = cites/articles) |>
+  mutate(Topic = topic,
+         Decade = decade,
+         Articles = round(articles, 1),
+         Citations = round(cites, 1),
+         Rate = round(rate, 2)) |>
+  select(Topic,Decade, Rate) |>
+  pivot_wider(id_cols = Topic,
+              names_from = Decade,
+              values_from = Rate)
 ```
 
 ```{r}
@@ -1260,13 +1286,46 @@ There are very few political philosophy papers until recently. The few from earl
 
 The one that's a bit more complicated is philosophy of science. There is a good sense in which _Philosophical Studies_ publishes a fair bit of philosophy of science; it publishes many papers that could easily appear in journals such as _Philosophy of Science_. Despite that, the five way classification used here makes sense. The important thing is that the philosophy of science articles that _Philosophical Studies_ publish also fall into one of those five categories. So there are a lot of articles on Bayesian epistemology, e.g., "Belief and the Problem of Ulysses and the Sirens" [@WOSA1995QE80400001], but it makes sense to count them in epistemology. There are also a lot of articles on the metaphysics of science, e.g., "Realism, Anti-foundationalism and the Enthusiasm for Natural Kinds" [@WOSA1991FC38500010], but we don't lose much if we count these as metaphysics. What _Philosophical Studies_ doesn't have (or, more precisely, doesn't have much of) are articles like "Thinking about Mechanisms" [@WOS000087305900001], that are clearly philosophy of science articles but not in one of these five categories. So we aren't losing much by not having a separate category for those articles. And we can see that by looking at the fact that "Thinking about Mechanisms", and several others like it, are cited rather rarely in _Philosophical Studies_.
 
-## Categories and Special Issues
+## Topics and Special Issues
+
+@tbl-categories-special shows the distribution of the five topics over the types of issues that _Philosophical Studies_ publishes.
+
+```{r}
+#| label: tbl-categories-special
+#| tbl-cap: "Distribution of philosophical topics over types of issue."
+
+kable(topic_rate_by_type)
+```
+
+The differences between Oberlin and BSPC are striking, even if not surprising. BSPC was primarily an ethics and metaphysics conference, while Oberlin has focused more on philosophy of mind. The higher numbers for language in the normal issues is in part a factor of there just being more normal issues before the mid-1990s, when language was more central to the journal and perhaps the discipline.
+
+I've noted a few times that you see less epistemology in the journal than you might expect given the prominence of the editors in epistemology. Here we do see an effect. The one-off issues, where the editors have more say over the topic, lean more towards epistemology than the rest of the journal.
 
 ## Categories and Citations
 
+@tbl-topics-cites shows how often, on average, articles in the different topics were cited.
+
+```{r}
+#| label: tbl-topics-cites 
+#| tbl-cap: "Average citation rates for the five main topics."
+
+kable(citations_by_topic)
+```
+
+The differences are not as stark as in @tbl-citation-by-type, but they are still notable. Epistemology articles are cited, on average, about 50% more often than language articles. Now a simple explanation for that might be that epistemology articles appear on average later, and articles that appear later get cited more often. As @tbl-topics-cites-decades shows, that is partially right. But breaking up the citations by decades reveals something suprising.
+
+```{r}
+#| label: tbl-topics-cites-decades
+#| tbl-cap: "Average citation rates for the five main topics by decade."
+
+kable(citations_by_topic_decade)
+```
+
+The difference between the 2000s and every other decade in @tbl-topics-cites-decades is stark. But the lack of citations to language articles before the 2000s is also stark. I'll come back to this point in @sec-1990s-articles, as part of a broader look at how the topic distribution in _Philosophical Studies_ changed over time.
+
 # Words and Trends {#sec-words-trends}
 
-Four of the five categories of articles make up a relatively stable proportion of papers in _Philosophical Studies_ over time, while philosophy of language falls away dramatically.  It's worth isolating that part of the graph to see how dramatic it is, as in @fig-language. I've also added a trend-line to make the pattern more visible.
+Four of the five topics retain a stable stable share of papers in _Philosophical Studies_ over time, while philosophy of language falls away dramatically. @fig-language isolates the language panel from @fig-five-topics, and adds a trendline, to make this more visible.
 
 ```{r}
 #| label: fig-language
@@ -1288,7 +1347,7 @@ ggplot(topic_rate_by_year |>
 
 ```
 
-If you don't trust black box methods like topic modeling, you can see a similar trend (possibly even more dramatic) just in the word usage. @fig-frege-russell shows how often the words "description" and "reference" appear in _Philosophical Studies_ each year, as a proportion of all the words in the articles.
+If you don't trust black box methods like topic modeling, you can see a similar trend just in the word usage. @fig-frege-russell shows the frequency of the words "description" and "reference" over time.
 
 ```{r}
 #| label: word-graphs
@@ -1312,6 +1371,30 @@ word_graphs <- function(x, y){
     labs(x = element_blank(), y = element_blank())
     
 }
+
+
+word_graphs_shaded <- function(x, y, d){
+  active_docs <- ps_uni |>
+    filter(ngram %in% x)
+  
+  active_docs |>
+    group_by(year, ngram) |>
+    summarise(#docs = n_distinct(wos_id), 
+              words = sum(count),
+              .groups = "drop") |>
+    left_join(word_count_by_year, by = "year") |>
+    mutate(proportion = words/wordcount) |>
+    ggplot(aes(x = year, y = proportion)) +
+    geom_rect(data = tibble(start = d-0.5, end = d+9.5), aes(xmin = start , xmax = end, ymin = -Inf, ymax = Inf),
+          inherit.aes=FALSE, alpha = 0.4, fill = rgb(249/300,255/300,255/300)) +
+    geom_point() +
+    facet_wrap(vars(ngram), ncol = y) +
+    scale_x_continuous(limits = c(1979.5, 2019.5),
+                       breaks = c(1990, 2010),
+                       minor_breaks = 396:404 * 5) +
+    scale_y_continuous(limits = c(0, NA)) +
+    labs(x = element_blank(), y = element_blank())
+}
 ```
 
 ```{r}
@@ -1321,27 +1404,25 @@ word_graphs <- function(x, y){
 word_graphs(c("reference", "description"), 2)
 ```
 
-The words don't disappear, that would be strange given how many uses they have, but clearly these classic questions about the relationship between reference and description are less central to what the journal is publishing.
+These trends in word usage are a more fine-grained guide to what is happening in _Philosophical Studies_ than the five topic model. I did use topic modeling to build many more fine-grained models for the journal, but there was too much variation between the models to use any one model as the basis for this section. I will refer to those models in passing, when there was a relevant feature they shared. But for this section I'll primarily rely on word distribution. I'll also look at the citations of articles that use a word.
 
-The aim of this section is to look at three questions. First, what more can we say about this fall in the frequency of philosophy of language articles? Second, what changes are there within the other four categories? Third, how much are the answers to the first two questions specific to _Philosophical Studies_, and how much do they reflect broader trends in philosophy.
+The main study I'll talk about looks at the relative frequency of the roughly 6000 most common word types over the four decades from 1980-2019. For each word, and each decade, I'll look at how improbable it is that the word is used that often in that decade, given how many words the journal printed that decade, and how often the word is used overall.
 
-I first tried answering these questions by using more topic models, i.e., by making five fine-grained topic models for just the articles in each of these five categories. This revealed some interesting things that I'll mention over the rest of the paper. But none of the models I built felt sufficiently stable to use as the center of the discussion; minor changes to the initial conditions led to dramatic changes in the outputs. That was not true for the model in @sec-topic-model, whose macro-properties were fairly stable in this sense. So I didn't want to base the discussion around any one model.
+This is easiest to work through with an example. The word "contextualism" is used 2282 times between 1980 and 2019, with 984 of those uses in the 2000s. Overall, 26.48% of the words published are in issues from the 2000s. A random process with 2282 trials (for each usage), and a 'success' probability 0f 26.48%, has a probability of roughly 10^-65^ of succeeding 984 or more times. That is, if the uses of 'contextualism' were distributed at random over the journal, the probability at least that many would appear in the 2000s is 10^-65^. Not surprisingly, we get the result papers using "contextualism" are concentrated in the 2000s. I'll use these probabilities as measures of concentration in what follows. When the decade is clear, I'll simply write the probability after the word, e.g., contextualism (10^-65^), to indicate how concentrated it is.
 
-Instead I'll use two simpler properties of the distributions of words in _Philosophical Studies_. 
+Second, I'll look at where articles that use a word are cited. On average, articles in _Philosophical Studies_ have about 14% of their citations in _Philosophical Studies_. But this proportion varies in systematic ways.
 
-First, I'll look at the relative frequency of the roughly 6000 most common word types over the four decades from 1980-2019. For each word, and each decade, I'll look at how far removed the word's frequency in the decade differs from its overall frequency, and how improbably that deviation is. So consider the word "contextualism", which you might expect would be more frequent in the 2000s than the other three decades. In fact that's so; 984 of its 2282 appearances are in the 2000s. It does appear more often in the 2010s, but _Philosophical Studies_ published more than twice as many words in the 2010s as the 2000s, so its appearance rate is lower. Overall, 26.48% of the words in _Philosophical Studies_ from 1980-2019 were published in the 2000s. If those 2282 appearances of "contextualism" were distributed at random, the probability that 984 (or more) of them would be in the 2000s, given that each one has probability 0.2648 of being in the 2000s, is about 10^-65^. So, as expected, uses of "contextualism" are heavily concentrated in the 2000s. In general, I'll use this improbability of the word appearing this often at random as a measure of concentration. When the decade is clear, I'll simply write the probability after the word, e.g., contextualism (10^-65^), to indicate how concentrated it is.
+For words associated with topics the journal does not concentrate on, the proportion is much lower. Articles that use the word "homeostatic" five or more times have 7.1% of their citations in _Philosophical Studies_. For "democratic", it's only 8.2%.
 
-Second, I'll look at the articles where a given word appears five or more times. If there are 10 or more such articles, I'll look at how often those articles were cited in _Philosophical Studies_, and how often they were cited across the 100 philosophy journals. This is a measure of how much of the discussion of the topics associated with those words is centered in _Philosophical Studies_.
+But for words associated with topics the journal does publish on frequently, the proportion is much higher. Articles using the word "Pereboom's" five or more times, most of which are discussing Derk Pereboom's free will scepticism, have 25.6% of their citations in _Philosophical Studies_.
 
-So consider the word "homeostatic". It appears five or more times in precisely 10 _Philosophical Studies_ articles. Those articles are fairly widely cited; between them they have 494 citations (in philosophy journals). Only 35 of those citations, or 7.1%, are in _Philosophical Studies_, indicating that the vast bulk of the discussion of them is elsewhere. A similar pattern occurs with "democratic". The 14 articles where it is used 5 or more times have 525 citations, but only 43 of them, 8.2%, are in _Philosophical Studies_. At the other extreme, the word "Pereboom's" appears five or more times in 14 articles, mostly discussing Derk Pereboom's free will scepticism. Those articles (many of which are quite recent) have 223 citations, of which 57, or 25.6%, are in _Philosophical Studies_. So here the discussion of the articles is much more centered in _Philosophical Studies_.
-
-On average, 13.8% of citations of _Philosophical Studies_ articles are in _Philosophical Studies_, so we're looking for whether this proportion of citations is above or below 13.8% to tell whether something is being discussed more inside or outside the journal, relative to its peers. In general, 7.1% of all citations of articles from 1980-2019 are in _Philosophical Studies_. But that's not the right baseline. Every journal cites its own articles more commonly than it cites arbitrary other journals. This could be because articles in the same journal are guaranteed to be in the area the journal publishes in, and (especially outside the US), it is often because there are geographic correlations between the journal's location, and the home institution of both the cited and citing authors. Articles in _Philosophical Studies_ are typically cited about twice as often in the journal as you'd expect from a random distribution of citations; for most journals that multiple is well above two. Anyway, the main thing to know is that 13.8% is the baseline, and we can compare articles to that to see what's distinctive to _Philosophical Studies_, and what's a wider trend.
+When a word appears particularly frequently at one point, this measure is helpful for distinguishing trends relatively specific to _Philosophical Studies_ from trends in the wider journal ecosystem.
 
 ## Miscellany
 
-Before getting into words that tell us about changes in the subject matter, I want to briefly note three small things we can see in the word count.
+Before getting into words that tell us about changes in the subject matter, I want to briefly note three other things we can see in the word count.
 
-The JSTOR set includes all the words in the article, including headers, footnotes, and bibliography. _Philosophical Studies_ gradually moved from footnote citations to author-text plus bibliography. So 'op' and 'cit' appear primarily in the 1980s dataset. More strikingly, "Oxford" is concentrated in the 2010s, with 17159 of its 24239 appearances being in the 2010s. The probability of that happening by chance is less than 10^-300^. This is in part a result of longer bibliographies in the 2010s, in part a consequence of the proliferation of Oxford Handbooks and Oxford Studies publications, but largely a sign of the dominance of philosophy book publishing in the 2010s by Oxford University Press. It also doesn't hurt that _Philosophical Studies_ through 2019 used addresses in the entries for books, so "Oxford" appears twice in every entry for Oxford University Press.
+The JSTOR set includes all the words in the article, including headers, footnotes, and bibliography. _Philosophical Studies_ gradually moved from footnote citations to author-text plus bibliography. So 'op' and 'cit' appear primarily in the 1980s dataset. More strikingly, "Oxford" is concentrated in the 2010s, with 17159 of its 24239 appearances being in the 2010s. The probability of that happening by chance is less than 10^-300^. This is in part a result of longer bibliographies in the 2010s, in part a consequence of the proliferation of Oxford Handbooks and Oxford Studies publications, but largely a sign of the dominance of philosophy book publishing in the 2010s by Oxford University Press.
 
 Another word that appears a lot in the 2010s is "thanks" (10^-60^). As @Petrovich2024 notes, one pattern in the 2010s is that acknowledgements footnotes became more frequent, and more informal. So papers will cite "Theodore Sider" and thank "Ted Sider". And they will not start with "I am grateful to..." but simply "Thanks to...".
 
