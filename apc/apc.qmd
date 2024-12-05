@@ -157,7 +157,7 @@ It is, however, important to distinguish the effects. @tbl-presidential shows th
 #| label: tbl-presidential
 #| tbl-cap: "Democratic share of the two-party vote in Presidential elections, via @BestKrueger2012."
 
-load("pres_exit_poll.RData")
+load("/Users/weath/Documents/articles/apc/pres_exit_poll.RData")
 kable(pres_exit_poll)
 ```
 
