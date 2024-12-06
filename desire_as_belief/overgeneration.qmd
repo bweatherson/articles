@@ -1,0 +1,88 @@
+---
+title: "Notes on Desire as Belief"
+abstract: |
+  An argument that Lewis's Desire as Belief arguments overgenerate
+date: today
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+number-sections: true
+author:
+  - name: TBD
+format:
+    html: default
+    docx:
+      reference-doc: my-template.docx
+    pdf: 
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mathfont: EB Garamond Math
+      mainfont: EB Garamond Math
+      sansfont: EB Garamond SemiBold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond SemiBold
+      fontsize: 12pt
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.75
+      link-citations: true
+      output-file: "Overgeneration Notes"
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+---
+
+David Lewis [-@Lewis1988; -@Lewis1996] argued that it was incoherent to satisfy (@dab):
+
+(@dab) V(A) = Pr(A*)
+
+Here, A* is the proposition that A is good. Intuitively, what Lewis is arguing against is the view that how much one desires something is solely determined by how good one thinks that thing is. That is, he is arguing against the view that one's desires, measured by V, are determined by ones beliefs, measured by Pr, about the good.
+
+As Lewis noted, someone who endorses the desire-as-belief view he's arguing against will probably also accept that some good things are better than others. (And some bad things are worse than others.) So the general form of the view he is arguing against should be given not by (@dab), but by (@dabg).
+
+(@dabg) V(A) = ∑~v~ vPr(g(A) = v)
+
+In (@dabg), the sum ranges over the possible values for v. Really to be fully general we should be integrating over the possible values, not summing, but that level of detail won't matter for what we're saying here, and we'll ignore it.
+
+Lewis intends to be arguing against a particular philosophical view connecting desire to beliefs about objective goodness. But the argument doesn't rely on any details about the view being argued against, beyond the fact that it satisfies (@dabg). Indeed, it doesn't rely on anything beyond the fact that it satisfies something with the _form_ of (@dabg). Any theory that satisfies (@dabg), under any interpretation, is a target of Lewis's argument.
+
+The point of this note is to argue that this must be mistaken, because it overgenerates. Such an argument would rule out theories that are well established. We should be more confident that such theories are correct, than that Lewis's short proof shows them to be wrong.
+
+Consider, for example, the basic theory of the firm you find in any introductory economics text. The firm is a profit maximiser. All it cares about is net profit. Or, more precisely, all it cares about is net expected profit. Let's assume the CEO of the firm makes decisions according to the decision theory David Lewis puts forward in "Causal Decision Theory" (@Lewis1981b). 
+
+There is a set of possible states K = {k~1~, ..., k~n~}, each of which is causally (though possibly not evidentially) independent of the chooser. In economics it's common to call these states, and more common to use 's' to pick one of them out. Lewis calls them causal dependency hypotheses, and uses 'k' to pick one of them out. We're splitting the difference, using the economists' language and Lewis's notation.
+
+There are a set of possible options O = {o~1~, ..., o~m~}. An option o~i~ plus a state k~j~ determines an outcome. Each outcome is associated with a known value, v~ij~. In the models we're working with, which is neutral enough to be compatible with both Lewis's decision theory and textbook economics, this value is known with certainty. That's not to say exactly what will happen is known with certainty. It might be that an outcome plus a state determines that the agent will get $100, but the agent doesn't know (due to uncertainty about inflation) how much $100 will be worth. Even still, they will have some expectations about the possible future inflation rates, and those credences will determine an expected value for the $100. That's what is known, with certainty.
+
+According to Lewis, the value of an option o is given by (@cdt).
+
+(@cdt) V(o) = ∑~k~ Pr(k) V(ok)
+
+That is, the value of an option is a sum over the possible states. For each state, we multiply the probability of the state, by the value of the option in that state. We then add all these up, and that's the value the agent should maximise.
+
+Coming back to our CEO, all that the CEO cares about is profit. So V(ok) will just be how much profit the firm makes if option o is chosen in state k. If Lewis's decision theory is right, the CEO should maximise V(o), as defined in (@cdt). If Humean belief-desire psychology, of the type Lewis defends on the first page of "Desire as Belief" is correct, the option the CEO chooses should be the one they most desire to choose. At least, as Lewis says, there should be some important sense of desire where that's the case, and that's the sense that's relevant to decision theory.
+
+Define a function g from O to real numbers, such that g(o) = v iff V(ok~@~) = v, where k~@~ is the state that actually obtains. Note that (@cdtdab) is true because the right hand side is just a rearrangement of the left hand side.
+
+(@cdtdab) ∑~k~ Pr(k) V(ok) = ∑~v~ ∑~\{k:V(ok)=v\}~ Pr(k) V(ok)
+
+Since ∑~\{k:V(ok)=v\}~ Pr(k) = Pr(g(o) = v), we can rewrite (@cdtdab) as (@cdtdabagain).
+
+(@cdtdabagain) ∑~k~ Pr(k) V(ok) = ∑~v~ v Pr(g(o) = v)
+
+Putting together (@cdt) and (@cdtdabagain), we get that for our CEO, (@uhoh) holds for all o.
+
+(@uhoh) V(o) = ∑~v~ vPr(g(o) = v)
+
+If Lewis's arguments against desire as belief work, since those arguments turn just on the form of the desire as belief thesis, they should also work against the decision theory that says the CEO should value options according to (@uhoh). But that's Lewis's own decision theory! So Lewis's argument must be wrong, since it is incompatible with his own theory of decision.
+
+-------
+
+Two points where Lewis might object.
+
+1. In (@uhoh), this is only shown for options o. It isn't (yet) shown for arbitrary propositions. I think it isn't too hard to extend it to disjunctions of options, but I'm not how general it can be.
+2. In the 1996 paper, there is a very strange argument against the argument in the paragraph starting 'Coming back to our CEO'. I don't know what exactly Lewis is up to there; it's part of the 'heading off' that I totally do not understand. It looks flatly inconsistent with everything else he says about belief-desire psychology, including in the 1988 paper.
+
+::: {.content-visible unless-format="html"}
+## References {-}
+:::
