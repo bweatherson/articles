@@ -1,0 +1,210 @@
+---
+title: "Finding the Generalist Journal"
+abstract: |
+  A look at which journals are most fully general, as judged by their citation stats
+date: today
+draft: false
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+categories:
+  - history of analytic
+  - unpublished
+  - in progress
+format: 
+    html:
+      theme: 
+        light: 
+          - solar
+          - html-fonts-light.scss
+          - book-light-defaults.scss
+      linestretch: 1.5
+      toc: true
+      number-sections: true
+      toc-depth: 3
+      toc-location: left
+      reference-location: margin
+      margin-header: "&nbsp;"
+      fontsize: 1.2em
+      include-in-header:
+        - text: |
+            <link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
+      mainfont: "ff-scala-sans-pro, sans-serif"
+      html-math-method: mathjax
+      self-contained: false
+format-links: [html]
+bibliography: 
+  - /Users/weath/Documents/citations-2025/autobib.bib
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+---
+
+```{r}
+#| label: packages
+#| cache: false
+
+for (ipkg in c("tidyverse", 
+               "tidytext", 
+               "tm", 
+               "topicmodels", 
+               "lsa",
+               "slider",
+               "knitr")) {
+  if (!require(ipkg, character.only = TRUE)) {
+    install.packages(ipkg)
+    library(ipkg, character.only = TRUE)
+  }
+}
+
+if (knitr::is_latex_output()) {
+  knitr::opts_chunk$set(dev = 'cairo_pdf')
+}
+
+options(knitr.kable.NA = '')
+
+# Graph Themes
+old <- theme_set(theme_minimal())
+theme_set(old)
+theme_update(plot.title = element_text(family = "Scala Pro", size = 24, face = "bold"),
+             plot.subtitle = element_text(family = "Scala Sans Pro", size = 20),
+             axis.text = element_text(family = "Scala Sans Pro", size = 18),
+             axis.title = element_text(family = "Scala Sans Pro", size = 18),
+             plot.background = element_rect(fill = "#F9FFFF"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "#F9FFFF"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "Scala Sans Pro", size = 20),
+             strip.text = element_text(family = "Scala Sans Pro", size = 20),
+             legend.key.spacing.y = unit(1, 'lines'),
+             legend.key.spacing.x = unit(1, 'cm')
+  )
+
+if (knitr::is_latex_output()) {
+theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
+             plot.subtitle = element_text(family = "EB Garamond", size = 11),
+             axis.text = element_text(family = "EB Garamond", size = 10),
+             axis.title = element_text(family = "EB Garamond", size = 10),
+             plot.background = element_rect(fill = "white"),
+             panel.background = element_rect(fill = "white"),
+             legend.background = element_rect(fill = "white"),
+             panel.grid = element_line(color = "grey92"),
+             legend.text = element_text(family = "EB Garamond", size = 11),
+             strip.text = element_text(family = "EB Garamond", size = 12),
+             legend.key.spacing.y = unit(-0.3, 'lines'),
+             legend.key.spacing.x = unit(0, 'cm')
+  )
+
+}
+```
+
+```{r}
+#| label: loader
+#| cache: true
+
+load("~/Documents/citations-2025/philo_cite.RData")
+load("~/Documents/citations-2025/philo_bib.RData")
+```
+
+```{r}
+#| label: commontibs
+#| cache: true
+
+philo_bib <- philo_bib |>
+  mutate(year = as.numeric(year))
+
+id_year_journal <- philo_bib |>
+  select(wos_id = id, year, journal)
+
+all_cites <- philo_cite |>
+  rename(old = refs, new = id) |>
+  left_join(id_year_journal, by = c("old" = "wos_id")) |>
+  rename(old_year = year, old_journal = journal) |>
+  left_join(id_year_journal, by = c("new" = "wos_id")) |>
+  rename(new_year = year, new_journal = journal) |>
+#  filter(old_year >= 1980, old_year <= 2019) |>
+  mutate(decade = paste0(floor(new_year/10),"0s"))
+  
+active_cites <- all_cites |>
+  filter(old_year >= 2010, new_year >= 2010)
+
+article_count <- philo_bib |>
+  ungroup() |>
+  filter(year >= 2010) |>
+  group_by(journal, year) |>
+  tally(name = "articles")
+
+journal_outbound_citation_count <-  active_cites |>
+    ungroup() |>
+    group_by(old_journal) |>
+    tally(name = "outbound")  |>
+    arrange(-outbound)
+
+journal_inbound_citation_count <-  active_cites |>
+    ungroup() |>
+    group_by(new_journal) |>
+    tally(name = "inbound")  |>
+    arrange(-inbound)
+
+journal_all_citation_count <- journal_outbound_citation_count |>
+  left_join(journal_inbound_citation_count, by = c("old_journal" = "new_journal")) |>
+  rename(Journal = old_journal) |>
+  filter(inbound >= 400, outbound >= 400)
+
+main_journal_list <- journal_all_citation_count$Journal
+
+cites_in_use <- active_cites |>
+    filter(old_journal %in% main_journal_list,
+         new_journal %in% main_journal_list)
+
+journal_outbound_citation_count <-  cites_in_use |>
+    ungroup() |>
+    group_by(old_journal) |>
+    tally(name = "outbound")  |>
+    arrange(-outbound)
+
+journal_inbound_citation_count <-  cites_in_use |>
+    ungroup() |>
+    group_by(new_journal) |>
+    tally(name = "inbound")  |>
+    arrange(-inbound)
+
+journal_all_citation_count <- journal_outbound_citation_count |>
+  left_join(journal_inbound_citation_count, by = c("old_journal" = "new_journal")) |>
+  rename(Journal = old_journal)
+
+the_denominator <- sum(journal_all_citation_count$inbound)
+
+cross_citation_count <- cites_in_use |>
+  filter(old_journal %in% main_journal_list,
+         new_journal %in% main_journal_list) |>
+  group_by(old_journal, new_journal) |>
+  tally(name = "citations") |>
+  left_join(journal_outbound_citation_count, by = "old_journal") |>
+  left_join(journal_inbound_citation_count, by = "new_journal") |>
+  mutate(ratio_score = citations * the_denominator / (inbound * outbound)) |>
+  mutate(binom_score_in = pbinom(citations, inbound, outbound/the_denominator, lower.tail = FALSE)) |>
+  mutate(binom_score_out = pbinom(citations, outbound, inbound/the_denominator, lower.tail = FALSE)) |>
+  mutate(binom_score = (binom_score_in + binom_score_out)/2)
+
+cross_citation_count_distinct <- cross_citation_count |>
+  filter(old_journal != new_journal)
+
+journal_article_count <-   article_count |>
+    ungroup() |>
+    group_by(journal) |>
+    summarise(Articles = sum(articles)) |>
+    rename(Journal = journal) |>
+    arrange(-Articles)
+
+journal_citation_rate <- left_join(
+  journal_article_count,
+  journal_outbound_citation_count,
+  by = "Journal") |>
+  mutate(`Citation Rate` = round(Citations/Articles, 2)) |>
+  arrange(desc(`Citation Rate`))
+```
