@@ -194,17 +194,5 @@ cross_citation_count <- cites_in_use |>
 cross_citation_count_distinct <- cross_citation_count |>
   filter(old_journal != new_journal)
 
-journal_article_count <-   article_count |>
-    ungroup() |>
-    group_by(journal) |>
-    summarise(Articles = sum(articles)) |>
-    rename(Journal = journal) |>
-    arrange(-Articles)
 
-journal_citation_rate <- left_join(
-  journal_article_count,
-  journal_outbound_citation_count,
-  by = "Journal") |>
-  mutate(`Citation Rate` = round(Citations/Articles, 2)) |>
-  arrange(desc(`Citation Rate`))
 ```

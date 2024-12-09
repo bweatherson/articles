@@ -12,7 +12,7 @@ author:
   - name: Anon
 format:
   html:
-    fig-format: svg
+    fig-format: png
     fig-width: 10
     fig-height: 7
   docx:
@@ -91,7 +91,7 @@ theme_update(plot.title = element_text(family = "Europa-Bold", size = 14),
 #| label: buildgraphs
 #| cache: false
 
-source("/Users/weath/Documents/citations-2024/5 - apc_scripts.R", local = knitr::knit_global())
+source("/Users/weath/Documents/citations-2025/apc-scripts.R", local = knitr::knit_global())
 ```
 
 # Introduction {#sec-introduction}
@@ -322,8 +322,11 @@ The key notion is what I'm going to call the *citation ratio*. This is a functio
 ```{r}
 #| label: paramsforratioexample
 
-sample_old <- 1991
-sample_new <- 1998
+#sample_old <- 1991
+#sample_new <- 1998
+sample_old <- 1985
+sample_new <- 1997
+
 num_of_num <- nrow(filter(citation_tibble, old_year == sample_old, new_year == sample_new))
 den_of_num <- nrow(filter(active_philo_bib, year == sample_old))
 num_of_den <- nrow(filter(citation_tibble, old_year >= sample_new - typical_high, old_year <= sample_new - typical_low, new_year == sample_new))
