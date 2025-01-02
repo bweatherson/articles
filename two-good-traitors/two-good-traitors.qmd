@@ -1,0 +1,57 @@
+---
+title: "Two Good Traitors"
+abstract: |
+  Bar Luzon argues that akrasia is irrational because it leads to violating a principle called **Avoid Treachery**. In response, I'll propose two counterexamples to Avoid Treachery. In each case, a proposition that the principle says is impermissible to believe is, intuitively, permissibly believed.
+date: today
+draft: false
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Anonymous
+categories:
+  - epistemology
+format: pdf
+bibliography: 
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+---
+
+In "Epistemic Akrasia and Treacherous Propositions", Bar @Luzon2025 argues for the following principle.
+
+Avoid Treachery (AT)
+:    For every proposition *p* and for every positive epistemic status *E*, if one knows that [*p* has *E* for one only if *p* is false], then one ought not believe *p*.
+
+From this she concludes that akrasia is impermissible. The latter inference seems reasonably sound, so if one wants to defend the kind of pro-akrasia line that @Lasonen-Aarnio2020 defends, one must reject **AT**. That's what I'll do here, using a pair of cases where it classifies as impermissible a belief that is intuitively permissible.
+
+First, let's define a very strong positive status, which I'll call *rational maximal certainty*. S is maximally certain that *p* iff for any *q*, S does not prefer a bet that pays £100 if *q* (and nothing otherwise) to a bet that pays $100 if *p* (and nothing otherwise). Intuitively, if there is such a *q*, S is more confident in *q* than *p*, so S is not maximally certain in *p*. Then S is rationally maximal certain that *p* if they rationally have this pattern of preferences.^[I assume here that S prefers £100 to nothing; if not change the definition to a prize that they do prefer to nothing.]
+
+Now imagine that S made a cup of coffee an hour ago, and left it in their locked office. Let *q* be that the coffee is now colder than when S left it. After a moment's reflection, S forms two beliefs. The first is *q*, and S concludes that new coffee may be needed. The second is that *q* is not rationally maximally certain. As S understands it, coffee cooling is a somewhat random process. Molecules move randomly, and since there are (many) more outcomes where the coffee and the surrounding environment have similar temperatures than outcomes where the coffee stays hotter, this tends to make coffee cool. Still, it is more likely that the heat boundary between the coffee and air remained throughout these random moves than that 0 started to equal 1, so *q* is not rationally maximally certain.
+
+To sum up, all three of these seem true.
+
+1. S reasonably believes *q*.
+2. S reasonably believes that, due to their beliefs about statistical mechanics, they are not rationally maximally certain that *q*.
+3. S knows that [*p* is rationally maximally certain for S only if *p* is false].
+
+If 1 is false, then we're deep into sceptical waters. If 2 is false, then S can't rationally believe this fairly standard story about the mechanics of cooling. Finally, 3 follows from *p* and a very weak closure principle for rational maximal certainty. The principle is that if a conjunction has that status, so does each conjunct. From this, it follows that if *p* if rationally maximally certain, so is *q*, which is its first conjunct. And that means that the second conjunct of *q* is false.
+
+Now to get the counterexample to **AT**, we need a slightly more contentious closure principle, but it is one that Luzon already uses, so should be acceptable in this context. It is that if it is reasonable to believe each of two conjuncts, it is reasonable to believe their conjunction. From that, plus 1 and 2, which state that each conjunct of *p* is reasonable to believe, it follows that *p* is reasonable to believe, contra *AT*.
+
+The second example is perhaps more contentious, as it involves self-reference. Let Fred be the following proposition:
+
+Fred
+:    S does not know Fred.
+
+I mean 'know' here to be propositional knowledge, not acquaintance knowledge. If you don't think that it's grammatical to read 'knows' that way and have the object be a noun phrase, let Fred be that S does not know that Fred is true. I'd rather avoid worries about truth in this context, so I'll stick with this definition.
+
+Fred is clearly true. Assume that S knows Fred. By the factivity of knowledge, this implies Fred, which is that S does not know Fred. This is a contradiction, so by reductio S does not know Fred. That is, Fred.
+
+Now imagine S rehearses the reasoning of the previous paragraph. The reasoning is fairly straightforward, and they follow it to conclude Fred. That seems like a good way to form a reasonable belief. If their belief in Fred is reasonable, that is, if forming a belief via the reasoning in the previous paragraph is reasonable, then we have another counterexample to **AT**. After all, it is clear from the definition of Fred that S knows Fred only if Fred is false. And knowledge is a positive epistemic status.
+
+I can imagine many people will be worried that Fred looks like a paradoxical claim. A full defense of its use here would require giving a theory of how the semantic paradoxes work, when it is reasonable to use self-referential claims to do philosophical work, and when, in contrast, the ice is too thin to safely play around. I'm not going to offer a full answer to any of these questions, but just gesture at how I'd like to answer them.
+
+Roy @Sorensen2001 [Ch. 11] argues that, unlike the Liar sentence, the Truth-teller sentence is unproblematic. (The Truth-teller is *This sentence is true*.) There are puzzles about the truth-teller. We can't know whether it is true or false. It's truth, or falsity, is ungrounded.^[Sorensen argues that it doesn't have a truth-maker, but I think his arguments, if successful, could be equally recast in grounding-theoretic language.] But these features are puzzling, not paradoxical unless one takes it to be a fixed point that all truths are knowable, or that all truths are grounded.^[This is not to say Sorensen's approach is right in all details. Patrick @Greenough2011 raises some important problems for it.] 
+
+Similarly, Fred is puzzling, not on its own paradoxical. S doesn't know Fred, although S has a rational, true, belief in Fred. So far that just shows we have a Gettier case, but it's puzzling why it should be a Gettier case. S's belief isn't derived from a false premise, or insensitive, or unsafe. If one insists that the truth or falsity of knowledge claims must be fully grounded in claims about truth, belief, rationality, sensitivity, safety, etc, then the case of S and Fred may look truly paradoxical. But the attempts to provide full grounds for knowledge over the years have not been a great success. If we accept that the full explanation of S not knowing Fred is that Fred's content precludes S knowing it, although it doesn't preclude anyone else knowing it, we avoid all paradox. So I think this is a reasonable case to use to raise doubts about **AT**, though there is of course much more to be said.
+
+What's common to the two cases is that **AT** rules out a belief being rational, while the believer knows that the belief fails to have some 
