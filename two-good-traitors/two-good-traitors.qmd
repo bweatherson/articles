@@ -1,7 +1,7 @@
 ---
 title: "Two Good Traitors"
 abstract: |
-  Bar Luzon argues that akrasia is irrational because it leads to violating a principle called **Avoid Treachery**. In response, I'll propose two counterexamples to Avoid Treachery. In each case, a proposition that the principle says is impermissible to believe is, intuitively, permissibly believed.
+  Bar Luzon argues that akrasia is irrational because it leads to violating a principle called **Avoid Treachery**. In response, I argue that Avoid Treachery is insufficiently motivated, and that there are models in which it is false.
 date: today
 draft: false
 execute:
@@ -16,42 +16,59 @@ bibliography:
   - /Users/weath/Documents/quarto-articles/brian-quarto.bib
 ---
 
-In "Epistemic Akrasia and Treacherous Propositions", Bar @Luzon2025 argues for the following principle.
+In "Epistemic Akrasia and Treacherous Propositions", Bar @Luzon2025 argues that akratic doxastic states^[For current purposes, an akratic doxastic state is a pair of beliefs in *p* and *It is irrational for me to believe p*, or some other claim about the belief in *p* failing to meet a similar standard] are irrational because they violate a principle called **Avoid Treachery**.
 
 Avoid Treachery (AT)
 :    For every proposition *p* and for every positive epistemic status *E*, if one knows that [*p* has *E* for one only if *p* is false], then one ought not believe *p*.
 
-From this she concludes that akrasia is impermissible. The latter inference seems reasonably sound, so if one wants to defend the kind of pro-akrasia line that @Lasonen-Aarnio2020 defends, one must reject **AT**. That's what I'll do here, using a pair of cases where it classifies as impermissible a belief that is intuitively permissible.
+Many arguments for the irrationality of akrasia simply appeal to an intuition that akratic states are irrational, or in some way weird, so it's very useful to see a theoretical argument for the anti-akrasia view put forward. But there are a few things those who want to defend the kind of pro-akrasia line that @Lasonen-Aarnio2020 defends can say in response.
 
-First, let's define a very strong positive status, which I'll call *rational maximal certainty*. S is maximally certain that *p* iff for any *q*, S does not prefer a bet that pays £100 if *q* (and nothing otherwise) to a bet that pays $100 if *p* (and nothing otherwise). Intuitively, if there is such a *q*, S is more confident in *q* than *p*, so S is not maximally certain in *p*. Then S is rationally maximal certain that *p* if they rationally have this pattern of preferences.^[I assume here that S prefers £100 to nothing; if not change the definition to a prize that they do prefer to nothing.]
+I've left off two important clarifications Luzon makes of AT which it's time to have on the table. First, the quantifier over statuses has a very restricted range; it just covers "epistemic justification, epistemic rationality, evidential support and epistemic permissibility" [@Luzon2025 1]. Second, the conditionals in it are material conditionals.
 
-Now imagine that S made a cup of coffee an hour ago, and left it in their locked office. Let *q* be that the coffee is now colder than when S left it. After a moment's reflection, S forms two beliefs. The first is *q*, and S concludes that new coffee may be needed. The second is that *q* is not rationally maximally certain. As S understands it, coffee cooling is a somewhat random process. Molecules move randomly, and since there are (many) more outcomes where the coffee and the surrounding environment have similar temperatures than outcomes where the coffee stays hotter, this tends to make coffee cool. Still, it is more likely that the heat boundary between the coffee and air remained throughout these random moves than that 0 started to equal 1, so *q* is not rationally maximally certain.
+The second clarification makes it clear why the first is needed. If I know that my belief in *p* is not *E*, **AT** implies that I ought not believe *p*. This can't be right if E ranges over all positive epistemic statues, and not just these four.
 
-To sum up, all three of these seem true.
+Let *E* be a very strong epistemic status, like Cartesian certainty. Let *p* be the proposition that the cup of coffee I left in my office an hour ago has gone cold. I can rationally believe *p*, and hence that I should make more coffee, while knowing that Cartesian certainty in *p* is uncalled for. After all, cooling is a somewhat random process, and there is some miniscule chance that the molecules have buzzed around in just the right way to keep the coffee warm. Or let E be sensitive knowledge, and let *p* be any of the counterexamples that @Kripke2011-Nozick gives to the sensitivity theory of knowledge put forward by @Nozick1981. In either case, I'll know that my belief is not *E*, and hence that it is *E* only if ¬*p*, so unrestricted **AT** implies, implausibly, I shouldn't believe it.
 
-1. S reasonably believes *q*.
-2. S reasonably believes that, due to their beliefs about statistical mechanics, they are not rationally maximally certain that *q*.
-3. S knows that [*p* is rationally maximally certain for S only if *p* is false].
+Now these aren't counterexamples to **AT** as stated, because it is restricted. But they do raise a problem for any argument for **AT**. The main argument is that if *E* violates **AT**, then *E* is not a good guide to truth. This can't be right in general, because Cartesian certainty and sensitive knowledge are excellent guides to truth, and they don't satisfy **AT**.
 
-If 1 is false, then we're deep into sceptical waters. If 2 is false, then S can't rationally believe this fairly standard story about the mechanics of cooling. Finally, 3 follows from *p* and a very weak closure principle for rational maximal certainty. The principle is that if a conjunction has that status, so does each conjunct. From this, it follows that if *p* if rationally maximally certain, so is *q*, which is its first conjunct. And that means that the second conjunct of *q* is false.
+In general, it isn't clear why a universal claim like **AT** is required for something to be a guide. If the properties of *being rationally believed* and *being true* are sufficiently positively correlated, then each is a guide to the other in one perfectly good sense of 'guide'. That can happen even if there are clear cases of one property obtaining without the other.
 
-Now to get the counterexample to **AT**, we need a slightly more contentious closure principle, but it is one that Luzon already uses, so should be acceptable in this context. It is that if it is reasonable to believe each of two conjuncts, it is reasonable to believe their conjunction. From that, plus 1 and 2, which state that each conjunct of *p* is reasonable to believe, it follows that *p* is reasonable to believe, contra *AT*.
+There is a stronger sense of 'guide' that Luzon might have in mind. (The discussion on page 7 comparing epistemic status to testifiers suggests this reading.) Say that feature F is a guide to truth just in case the inference from *Belief in p is F* to *p* is a reasonable inference, and a reasonable way to form for the first time a belief in *p*. In this sense, it won't matter if there are counterexamples to **AT** that turn on one knowing that the belief is not *E*, because they won't raise problems for this inference.
 
-The second example is perhaps more contentious, as it involves self-reference. Let Fred be the following proposition:
+Again, we might quibble here over whether a good guide has to be an infallible guide. But there is a deeper issue that is important here. A common pro-akrasia position, starting with Nomy @Arpaly2003, denies that this kind of inference is ever reasonable one. 
 
-Fred
-:    S does not know Fred.
+When all goes well, one's beliefs are supported by evidence, and they are rational because they are supported by evidence. But that does not mean that one infers that one's evidence supports *p*, and hence *p*. Rather, one simply infers *p* from that evidence. Perhaps one goes on to infer that one's evidence supports *p*, or one does not; it matters little. In the moral case, it is typically a vice and not a virtue to be motivated by normative considerations. A good friend is motivated by their friend's interests, not by the fact that doing something for their friend would be a manifestation of the virtue of friendship.
 
-I mean 'know' here to be propositional knowledge, not acquaintance knowledge. If you don't think that it's grammatical to read 'knows' that way and have the object be a noun phrase, let Fred be that S does not know that Fred is true. I'd rather avoid worries about truth in this context, so I'll stick with this definition.
+The anti-akrasia position follows more naturally from a position where inferences go via these normative considerations. This isn't an unheard of position. It's the picture behind Bigelow and Pargetter's argument that inductive arguments are valid [@BigelowPargetter199x]. They say that a typical instance of inductive reasoning goes like this.
 
-Fred is clearly true. Assume that S knows Fred. By the factivity of knowledge, this implies Fred, which is that S does not know Fred. This is a contradiction, so by reductio S does not know Fred. That is, Fred.
+1. I've seen lots of penguins, in lots of situations, and none of them have been able to fly.
+2. That's all my evidence.
+3. Therefore, it's rational for me to believe the next penguin I see won't be able to fly.
+4. Therefore, the next penguin I see won't be able to fly.
 
-Now imagine S rehearses the reasoning of the previous paragraph. The reasoning is fairly straightforward, and they follow it to conclude Fred. That seems like a good way to form a reasonable belief. If their belief in Fred is reasonable, that is, if forming a belief via the reasoning in the previous paragraph is reasonable, then we have another counterexample to **AT**. After all, it is clear from the definition of Fred that S knows Fred only if Fred is false. And knowledge is a positive epistemic status.
+They say that the inference from 1 and 2 to 3 is valid^[More carefully, the implication corresponding to this inference is valid.], and the inference from 3 to 4 has the nice feature that whenever the premise is true, the conclusion is rational. Now if one is reasoning this way, failures of **AT** will make the move from 3 to 4 rather questionable. Further, if one thinks that this is how inductive reasoning goes in general, it will be very bad if **AT** fails.
 
-I can imagine many people will be worried that Fred looks like a paradoxical claim. A full defense of its use here would require giving a theory of how the semantic paradoxes work, when it is reasonable to use self-referential claims to do philosophical work, and when, in contrast, the ice is too thin to safely play around. I'm not going to offer a full answer to any of these questions, but just gesture at how I'd like to answer them.
+The simplest reply to this is that 3 isn't a step that good reasoners do, or should, go through. The inference from 1 and 2 to 4 is at least as good, arguably better, than the one that goes via 3. Dialectically, it is bad to rely on a picture of reasoning that includes step 3 when it has long been part of the pro-akratic position that steps like these are at best redundant, and at worse a vice.
 
-Roy @Sorensen2001 [Ch. 11] argues that, unlike the Liar sentence, the Truth-teller sentence is unproblematic. (The Truth-teller is *This sentence is true*.) There are puzzles about the truth-teller. We can't know whether it is true or false. It's truth, or falsity, is ungrounded.^[Sorensen argues that it doesn't have a truth-maker, but I think his arguments, if successful, could be equally recast in grounding-theoretic language.] But these features are puzzling, not paradoxical unless one takes it to be a fixed point that all truths are knowable, or that all truths are grounded.^[This is not to say Sorensen's approach is right in all details. Patrick @Greenough2011 raises some important problems for it.] 
+This can feel like an impasse. There are two natural combinations of views.
 
-Similarly, Fred is puzzling, not on its own paradoxical. S doesn't know Fred, although S has a rational, true, belief in Fred. So far that just shows we have a Gettier case, but it's puzzling why it should be a Gettier case. S's belief isn't derived from a false premise, or insensitive, or unsafe. If one insists that the truth or falsity of knowledge claims must be fully grounded in claims about truth, belief, rationality, sensitivity, safety, etc, then the case of S and Fred may look truly paradoxical. But the attempts to provide full grounds for knowledge over the years have not been a great success. If we accept that the full explanation of S not knowing Fred is that Fred's content precludes S knowing it, although it doesn't preclude anyone else knowing it, we avoid all paradox. So I think this is a reasonable case to use to raise doubts about **AT**, though there is of course much more to be said.
+Anti-Akrasia
+:    Akratic doxastic states are irrational.
+:    Principles like **AT** have to hold universally for rationality to be properly connected to truth.
+:    Good reasoning can, and perhaps should, go through normative steps like 3.
 
-What's common to the two cases is that **AT** rules out a belief being rational, while the believer knows that the belief fails to have some 
+Pro-Akrasia
+:    Akratic doxastic states can be rational.
+:    Principles like **AT** should hold for most propositions, but they can fail occasionally without rationality coming too far apart from truth.
+:    Good reasoning need not, and perhaps should not, go through normative steps like 3.
+
+My best guess about the big philosophical is that these pictures are both internally coherent, and both have their attractions, and we shouldn't hold out much hope for a conclusive refutation of either picture. 
+
+I prefer the second picture, largely because of arguments like Arpaly's against the idea that morally good actions are based in beliefs about the morality of that very action.^[The analogy with ethics might cut both ways. If one was convinced by Zoë @JohnsonKing202x that Arpaly's view is wrong in ethics, that would be a reason to prefer the Anti-Akrasia side in epistemology.] By analogy, it seems we should be able to reason directly from beliefs about observed penguins to beliefs about unobserved penguins. If that's right, we don't need rationality to be a guide in the sense that we are directly guided by it in individual bits of reasoning, and the reason to accept **AT** doesn't work. 
+
+Every step of the reasoning in that last paragraph seems far from watertight, and it's easy to see the appeal of the Anti-Akrasia picture. As I noted at the start, one of the great virtues of Luzan's paper is that it makes clear what's motivating the Anti-Akrasia picture, and how it holds together.
+
+Still, it would be disappointing to end on an impasse. So I'll end with a new reason to prefer the Pro-Akrasia picture. As Luzon notes, one prominent recent motivation for the Pro-Akrasia picture has been the development of formal models like Williamson's unmarked clock [@Williamson2014]. That model has a couple of contentious features, and recent supporters of the Anti-Akrasia picture have rejected it because of those features. I'll present a model without those features.
+
+The formal model I'll use here is similar to the kind of model developed in @DorstEtAl2021. Start with a set *W* of worlds, a priori probability function π defined over them, and an epistemic accessibility relation *R*. Intuitively, *xRy* means that if *x* is actual, *y* is epistemically possible. That is, a person in *x* might, for all they know, be in *y*. Our hero will find themselves in some world *w* ∈ *W*, and learn the proposition {*w*: *xRw*}. They update on this, so their posterior probability is Pr(*p*) = π(*p* | {*w*: *xRw*}).
+
