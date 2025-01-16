@@ -1,0 +1,14 @@
+Submission Details for "Akrasia and Traitors"
+
+Author
+ - Brian Weatherson
+   brian@weatherson.org
+   University of Michigan
+   Male
+
+Abstract
+ - Bar Luzon argues that akrasia is irrational because it leads to violating a principle called **Avoid Treachery**. In response, I argue that Avoid Treachery is insufficiently motivated, that it presupposes a picture of rational inference that defenders of akrasia have independent reason to reject, and that there are models in which Avoid Treachery is false.
+
+Keywords: akrasia, rationality, epistemic logic, induction, nesting
+
+Word Count: 2834 (including abstract and bibliography)
