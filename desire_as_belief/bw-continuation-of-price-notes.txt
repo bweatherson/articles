@@ -1,0 +1,26 @@
+# The overgeneration objection
+
+So assume (following Price's last suggestion) that Servant is in charge of a large endowment, and is making investment decisions on behalf of Master. Master, we'll imagine is a rich and powerful university, let's say Hudson University. Servant has read @Friedman1953, and thinks that the only moral obligation of someone in his (for this Servant is surely male) position is to maximise the expected size of the endowment. This doesn't quite settle what Servant should do, because without saying whether Servant uses evidential or causal expectations we can't say how Servant will respond to Newcomb-like problems. We'll come back to this point presently, but for now let's stick with simple cases.
+
+Lewis (1988) mostly discusses the simple case where all actions are good or bad, all good actions are equally good, and all bad actions are equally bad. That is, as Lewis notes, a drastic simplification. Lewis also notes the fix to it. The final version of the desire as belief thesis he attributes to the anti-Humean is 
+
+(1) V(A) = ∑~v~ vPr(g(A) = v)
+
+That alone, plus some premises Lewis thinks should be uncontroversial, lead to a crisis. We'll get to the argument Lewis gives in a second, but all you need to know about the argument for now is that it is purely formal. It doesn't rest on any features specific to g. None of the extra premises are motivated by g being a measure of *goodness*, rather than anything else. So let's take g to measure *profit*. (In any case, Servant thinks profit is goodness, but this isn't strictly necessary for the argument we're making.) And let A be an arbitrary investment decision that Servant could make. 
+
+With those assumptions, Servant's valuation of A will be given by (1). After all, the right hand side of (1) is just the definition of expected utility. And Servant prefers options with higher expected utility to options with lower expected utility. Moreover, how much Servant prefers an option with greater expected utility is a function of how much greater the expected utility is. If Servant makes a calculation blunder and chooses an option with 99% of the expected utility of the best option, he'll feel a bit bad. If he makes a big calculation blunder and chooses an option with 1% of the expected utility of the best option, he'll feel awful. So it isn't that he values the utility maximising option at 1 and everything else at 0; the more expected utility an option returns, the more he wants it. Importantly, this 'want' is entirely downstream of his beliefs. If you fix Servant's beliefs about the investment returns of various options, you fix his values. For Servant, passions are slaves of reason; how much he wants something is a function of how much it grows the endowment.
+
+Servant, as described, seems coherent. He doesn't seem to have trivial, or irrational, beliefs. If Lewis's argument shows that (1) leads to a collision with decision theory, it shows that a simple story about diligent (if slightly narrow-minded) bursars is somehow incoherent. We think that's absurd; it's much more plausible that something has gone wrong with Lewis's argument than that the story about Servant is wrong.
+
+# What is wrong with Lewis's argument
+
+Still, it would be good to say something more about where Lewis's argument actually goes wrong, and how the story of Servant can help clarify that. That's what we'll turn to next.
+
+The first thing to note is that if we assume away Newcomb-problems, this is a story where the thesis Lewis (1996) calls *Desire By Necessity* is true. Lewis primarily defines Desire by Necessity under the assumption that everything is either good or bad, but it's easy enough to generalise the definition. Let I° be the proposition that things are good. Desire by Necessity says that V(A) = Pr(I°/A). It deserves the name because in the special case where A = I°, A is always desired. To keep with the assumption that things are good or bad, imagine that it is somehow known that the outcome of any investment choice by Servant will be that the endowment ends with a balance of 1 or 0. Let I° be the worlds where it ends with a balance of 1. Then if either (a) there are no Newcomb-like problems around, or (b) Servant uses Evidential Decision Theory to resolve them, it will be true that V(A) = Pr(I°/A). After all, that just means that how much Servant values A is a function of how likely A is to get the value 1.
+
+The only necessity here is that Servant takes it as fixed that it is better that the endowment be larger rather than smaller. There's nothing Servant could learn that would disabuse him of this belief. Maybe you think that's too strong. But remember Servant was meant to be an analogy. The case we're really interested in is where Servant is a servant of the good. It's very strange to think that in that case there is something wrong about being committed to the good, or that one is only 'non-trivial' if one takes it to be an open question whether one prefers the good or the bad.
+
+
+
+
+

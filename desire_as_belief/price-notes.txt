@@ -1,0 +1,43 @@
+Lewis on Desire-as-Belief: Revisiting Objection A
+
+
+In ‘Desire as Belief’ (Lewis 1988a), David Lewis defends a Humean view of motivation. His opponent, the anti-Humean, holds that beliefs may play a motivational role: some desires may be beliefs, or be necessary accompaniments to appropriate beliefs. Lewis calls this the Desire-as-Belief Thesis (DAB), and argues that it is incompatible with orthodox decision theory. 
+
+Decision Theory is an intuitively convincing and well worked-out formal theory of belief, desire, and what it means to serve our desires according to our beliefs. It is of course idealized, but surely it is fundamentally right. If an Anti-Humean Desire-as-Belief Thesis collides with Decision Theory, it is the Desire-as-Belief Thesis that must go. … I shall display the collision. (1988a, 325)
+
+The first published reply to Lewis seems to be (Price 1989). Price argues that the collision is avoided by a conditionalized version of Lewis’s own formulation of DAB. Lewis responds in ‘Desire as Belief II’ (Lewis 1996), one section of which is titled ‘Desire as conditional belief’.
+
+In recent work (Price 2024), Price reports that this was his second objection to Lewis’s argument. He had written an earlier reply with a different objection, and sent it both to Lewis and to Mind. Lewis’s response, dated 17 May 1988, appears in Lewis’s recently published correspondence (Lewis 1988b; Beebee and Fisher 2020, 456–66). ‘Mind turned that first piece down’, Price says, ‘but by that time I had a different response … published as Price (1989)’ (Price 2024, 19)
+
+What of Price’s first objection – Objection A, let us call it. Price himself does not seem to have returned to it, but it occurred recently to the present authors. It is simple, and has surely occurred to others, in the intervening thirty five years. But it doesn’t seem to have made it into print. This note aims to remedy that deficit. 
+1. Objection A
+
+Price writes about Objection A in a new extended edition of Facts and the Function of Truth (FFT). Noting that (Lewis 1988a) appeared in the same year as the first edition of FFT (Price 1988a), he continues:
+
+It seemed to me that Lewis’s argument proved too much. Simple examples such as FFT’s economic rationalist … showed that the idea of an agent in whom beliefs played the functional role of desires was not incoherent. I wrote a short response with a version of this argument, replacing the economic rationalist with a perfect servant, motivated solely by beliefs about the consequences of his actions for his master’s happiness. I sent it to Mind, … as well as to Lewis. (Price 2024, 19)
+
+This is the passage that Price has in mind in the first edition of FFT. 
+
+Consider … a classical economic rationalist, whose actions are based entirely on the profit motive. Such an agent forms intentions to perform those actions he believes will maximize his net monetary return. One might object that the rationalist wants to make a profit. But why should he? Why should his mind not simply be organized so that believing that an action would maximize his profits normally leads him to form the intention to undertake it (in just the way, and to whatever extent, belief/desire combinations are ordinarily supposed to lead to intentions)? (Price 1988a, 92)
+
+In his reply to Price in 1988 (Lewis 1988b), Lewis interpreted him as making a point about the possibility of having beliefs about one’s own desires. He says first that he takes decision theory to be constitutive, not descriptive, and that so understood it doesn’t require such reflexive beliefs. 
+
+Decision Theory … amounts to a definition of the notion 'behaviour that most effectively serves one's desires according to one's beliefs'; and thereby it plays a constitutive role since, roughly, the right way to interpret a total brain state as a system of belief and desire is to interpret the state so that the behaviour to which it typically disposes one is the behaviour that best serves the imputed desire according to the imputed belief. So understood, beliefs about one’s desires (and about one's expected values) needn't enter into it. They might be there, if the agent is blessed with self-knowledge; they might not. The notion of serving one's desires according to one's beliefs applies either way.  (Lewis 1988b)
+
+Still, could such reflexive beliefs, where they exist, serve the needs of the non-Humean? Lewis’s letter concludes like this. 
+
+I don't grant that one could be motivated by one's certainties about what one's desires are, instead of by those desires. Decision Theory is constitutive, so to be motivated to behave in such a way as to serve such-and-such desires is, ceteris paribus, to have and be motivated by such-and-such desires. But your idea needn't be that the desires are missing or idle; rather, that a desire is identical to one's certain belief that one has that very desire. So what do I think of that? -- Well, my first reaction is that it's just an interesting loophole in the definition of a non-Humean. That wasn't meant to be the idea! But how to formulate the idea properly to exclude the case? (Lewis 1988b)
+
+Price’s response to Lewis, dated 31 May 1988, survives in the Lewis archives at Princeton. Price says that his ‘perfect servant illustrates a more interesting possibility than you acknowledge.’
+
+If he has beliefs and desires constitutively then they are of a rather uninteresting sort: his only desire is to maximize his master's expected utility, and hence on any given occasion the relevant belief is always of the form 'Action A would maximize Master's expected utility.' So even if Decision Theory does apply to him constitutively at this level, it applies to him at another level as well – for it is the calculus by means of which he comes to beliefs of this form, given his judgements about his master's preferences and about other matters of fact. The second level is evidently much richer than the first (unless the master's preferences are as impoverished as those of the servant). (Price 1988b)
+
+Moreover, Price continues, 
+
+[t]he servant's evaluative judgements … are not judgements about his own preferences but about those of his master. And it is incidental (except to the demonstration that Humean agents imply the possibility of non-Humean agents) that these judgements are about preferences at all. With an appropriate reconfiguration of inputs the servant might be put to work as a broker, for example, maximizing profit on the futures market. (Price 1988b)
+
+Price’s last suggestion here presumably alludes to his example in FFT, of an agent solely concerned to maximise profit. It also takes us conveniently to the form of Objection A that occurred to the present authors – several decades into the future of these discussions.
+
+
+
+
