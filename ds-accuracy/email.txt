@@ -1,0 +1,19 @@
+Hi Jim, Sarah, Gabrielle
+
+I had a conjecture about accuracy and Dempster-Shafer functions while reading Gabrielle's chapter on truth-directedness, and I wondered if any of you had any thoughts about whether it seemed likely to be provable/counter-example-able. (This isn't, I fear, directly relevant to Gabrielle. I'll try saying something more relevant very soon.)
+
+Let I be some additive, strictly proper, accuract measure. By additive here, I(c, w) = ∑I(c, w, p), where c is a credence function, w a world, and p a variable over propositions in some algebra. It will be helpful to slightly relabel some familiar notions. Say c' does better than c by *balanced accuracy* iff I(c', w) < I(c, w), and c' *balanced dominates* c iff ∀w: I(c', w) < I(c, w). These are just the familiar notions of accuracy and dominance, but the adjective *balanced* will make what follows clearer.
+
+Say the *falsity-accuracy* of c at w (wrt I), is If(c, w) = ∑I(c, w, p), where the sum is just over false propositions p. So if I is the Brier score, If(c, w) will just be the sum of the squares of the credence c has in false propositions at w.
+
+Then c' does better than c by *falsity accuracy* iff If(c', w) < If(c, w), and c' *falsity dominates* c iff ∀w: If(c', w) < If(c, w).
+
+On its own, this is a boring notion. The credence function that assigns credence 0 to every proposition at least weakly falsity dominates every credence function.
+
+What's more interesting, I think, is when it's combined with balanced accuracy. Say that c' does better than c by *balanced-falsity accuracy* if c' does better by one of these two measures, and at least as well by the other. That is, either I(c', w) < I(c, w) & If(c', w) ⩽ If(c, w), or the other way around, I(c', w) ⩽ I(c, w) & If(c', w) < If(c, w). And c' *balanced-falsity dominates* c iff it is better by balanced-falsity accuracy in every world.
+
+OK, long setup. Here's the conjecture.
+
+A credence function c is never balanced-falsity dominated iff it is a Dempster-Shafer credence function.
+
+I'm moderately confident about the 'only if' part of that, i.e., that non-Dempster-Shafer functions are balanced-falsity dominated. I'm a little less confident about the 'if' part.
