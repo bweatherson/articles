@@ -10,6 +10,7 @@ bibliography:
  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
  - /Users/weath/Documents/citations-2025/autobib.bib
 number-sections: true
+keep-tex: true
 author:
   - name: Anon
 format:
@@ -33,7 +34,7 @@ format:
     colorlinks: false
     linestretch: 1.75
     link-citations: true
-    output-file: "Anti-Anti-Desire-As-Belief"
+    output-file: "Age Period Cohort.pdf"
     include-in-header:
       text: |
         \setlength\heavyrulewidth{0ex}
@@ -667,7 +668,7 @@ kable(who_cites_more)
 
 ```
 
-Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them [@WOS00057521040000] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.
+Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them [@WOS000575210400003] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.
 
 Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
 
