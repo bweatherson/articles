@@ -6,7 +6,9 @@ execute:
   echo: false
   warning: false
 date: February 12 2025
-bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+bibliography: 
+ - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+ - /Users/weath/Documents/citations-2025/autobib.bib
 number-sections: true
 author:
   - name: Anon
@@ -18,7 +20,7 @@ format:
   docx:
     reference-doc: my-template.docx
   pdf: 
-    geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+    geometry: "left=1in,right=1in,top=1in,bottom=1in"
     mathfont: EB Garamond Math
     mainfont: EB Garamond Math
     sansfont: EB Garamond SemiBold
@@ -551,7 +553,7 @@ In @fig-overall-age I've plotted the number of citations in the dataset with eac
 raw_age_plot
 ```
 
-In @fig-overall-median-mode I've plotted the median (on the left) and mode (on the right) age of citations in each year from 1980 onwards. Before that the numbers are even lower, but since I'm only looking at citations to articles published after 1955 (or later if Web of Science started indexing the journal later than that), this is arguably an artifact of how I'm collecting the data. From 1980 onwards, however, there are many older articles that could be, but are not, getting cited. The upwards trends in both graphs look like a real change in citation practices, and not in the direction I antecedently expected.
+In @fig-overall-median-mode I've plotted the median and mode age of citations in each year from 1980 onwards. Before that the numbers are even lower, but since I'm only looking at citations to articles published after 1955 (or later if Web of Science started indexing the journal later than that), this is arguably an artifact of how I'm collecting the data. From 1980 onwards, however, there are many older articles that could be, but are not, getting cited. The upwards trends in both graphs look like a real change in citation practices, and not in the direction I antecedently expected.
 
 ```{r}
 #| label: fig-overall-median-mode
@@ -559,7 +561,7 @@ In @fig-overall-median-mode I've plotted the median (on the left) and mode (on t
 #| fig-subcap: 
 #|   - "Median"
 #|   - "Mode"
-#| layout-ncol: 2
+#| layout-ncol: 1
 
 median_plot
 modal_plot
@@ -588,6 +590,131 @@ For most of our story, however, it helps just to have these three effects in min
 - The age effect is that articles get cited most when they are two to five years old, as shown in @fig-overall-age.
 - The period effect is that there are many more citations in recent years than in earlier years. This is in part because the number of articles published in these journals has been growing, and in part because the number of citations per article grew substantially over the 2000s and 2010s, and exploded in the 2020s.
 - The cohort effect is that articles from the 1970s and 2000s get cited more than you'd expect given these age and period effects, articles from before the late-1960s get barely cited at all, and articles from 1980 through the mid-1990s also get cited considerably less than articles either side of that period. I'll offer some speculations at the end of the paper about the philosophical causes of, and consequences of, these cohort effects.
+
+As I mentioned above, I'll go over the methodology in detail in @sec-methodology. But there is one point that is important to note before we start. I'm using data from Web of Science, and they typically don't start indexing journals until well after the journal is established. So the first year of citation data I have for _Analysis_ is 1975. Crucially, that means that "Is Knowledge Justified True Belief?" [@Gettier1963] is not included in this study. If it were, and in general if I had the data from _Analysis_ to work from, some of the results about the early 1960s would look less dramatic, though as far as I can tell, the direction of the results wouldn't change.
+
+# Period Effects {#sec-period}
+
+Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(all_citations_per_year, new_year == 2021)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
+
+```{r}
+#| label: fig-citationsperyear
+#| fig-cap: "The number of citations in the dataset made each year."
+
+all_citations_per_year_plot
+```
+
+What explains this dramatic growth? Part of the explanation is that more articles are being published, and more articles are being indexed. @fig-articlesperyear shows how many articles are in the dataset each year.
+
+```{r}
+#| label: fig-articlesperyear
+#| fig-cap: "The number of articles in the dataset published each year."
+
+articles_per_year_plot
+```
+
+That explains some of the growth, but not all of it. The curve in @fig-articlesperyear is not nearly as steep as the curve in @fig-citationsperyear. The number of (indexed) citations per article is also rising. In @fig-outboundcitations I've plotted the average number of citations to other articles in the dataset each year.
+
+```{r}
+#| label: fig-outboundcitations
+#| fig-cap: "The average number of citations to indexed articles each year."
+
+outbound_citations_plot
+```
+
+There are a few possible explanations for the shape of this graph.
+
+At the left-hand edge, there are obvious boundary effects. Since we're only counting citations to articles published since 1956, it isn't surprising that there aren't very many of them per article in the 1950s. Since articles rarely get unpublished, there are more articles available to cite every year.
+
+That can't explain the massive jumps we see at the right hand edge of @fig-outboundcitations. The jump there looks like the convergence of two cultural trends. One is a trend simply to greater numbers of citations. The most casual perusal of journals will confirm that trend. The other is a trend to greater citations of journals themselves, as opposed to books or edited volumes.
+
+A sharp jump like this is a warning sign that there is something wrong with the data. It's impractical to cross-check every entry, but those I have checked look correct. The change seems led by the most prestigious journals. For each journal I calculated the average number of outbound citations (to these hundred journal) for both the 2010s, and the first two years of the 2020s. The ten journals with the largest increase between the decades are shown in @tbl-large-growth.
+
+```{r}
+#| label: tbl-large-growth
+#| tbl-cap: "Mean outbound citations for some journals over the last two decades."
+
+who_cites_more <- citation_tibble |>
+  left_join(
+    select(
+      philo_bib,
+      id,
+      journal
+    ), by = c("new" = "id")
+  ) |>
+  filter(new_year >= 2010, new_year <= 2021) |>
+  mutate(period = case_when(
+    new_year < 2020 ~ "2010-2019",
+    TRUE ~ "2020-2021"
+  )) |>
+  group_by(journal, period) |>
+  summarise(articles = n_distinct(new), citations = n(), .groups = "drop") |>
+  mutate(name_len = str_length(journal)) |>
+  mutate(mean_cites = citations/articles) |>
+  pivot_wider(id_cols = c(journal, name_len), names_from = period, values_from = mean_cites) |>
+  mutate(diff = `2020-2021` - `2010-2019`) |>
+  mutate(Difference = round(diff, 1),
+         `2010-2019` = round(`2010-2019`, 1),
+         `2020-2021` = round(`2020-2021`, 1)) |>
+  arrange(-diff) |>
+  slice(1:10) |>
+  select(Journal = journal,
+         `2010-2019`,
+         `2020-2021`,
+         Difference)
+
+kable(who_cites_more)
+
+```
+
+Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them [@WOS00057521040000] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.
+
+Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
+
+```{r}
+#| label: fig-articlecounts
+#| fig-cap: "Article counts."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typically cited articles"
+#| layout-ncol: 1
+
+available_plot
+typical_plot
+```
+
+In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
+
+```{r}
+#| label: fig-citationcounts
+#| fig-cap: "Citation counts."
+#| fig-subcap: 
+#|   - "Citations to available articles"
+#|   - "Citations to typical articles"
+#| layout-ncol: 1
+
+available_citations_per_year_plot 
+typical_citations_per_year_plot
+```
+
+Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
+
+```{r}
+#| label: fig-citationrate
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typical articles"
+#| layout-ncol: 1
+
+available_citation_rate_per_year_plot 
+typical_citation_rate_per_year_plot 
+
+```
+
+Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
+
+The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them.
 
 <!--
 
@@ -631,7 +758,7 @@ After all that, we are left with `{r} nrow(article_years)` articles, from "Arist
 Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(all_citations_per_year, new_year == 2021)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
 
 ```{r}
-#| label: fig-citationsperyear
+#| label: fig-citationsperyear-draft
 #| fig-cap: "The number of citations in the dataset made each year."
 
 all_citations_per_year_plot
@@ -640,7 +767,7 @@ all_citations_per_year_plot
 What explains this dramatic growth? Part of the explanation is that more articles are being published, and more articles are being indexed. @fig-articlesperyear shows how many articles are in the dataset each year.
 
 ```{r}
-#| label: fig-articlesperyear
+#| label: fig-articlesperyear-draft
 #| fig-cap: "The number of articles in the dataset published each year."
 
 articles_per_year_plot
@@ -649,7 +776,7 @@ articles_per_year_plot
 That explains some of the growth, but not all of it. The curve in @fig-articlesperyear is not nearly as steep as the curve in @fig-citationsperyear. The number of (indexed) citations per article is also rising. In @fig-outboundcitations I've plotted the average number of citations to other articles in the dataset each year.
 
 ```{r}
-#| label: fig-outboundcitations
+#| label: fig-outboundcitations-draft
 #| fig-cap: "The average number of citations to indexed articles each year."
 
 outbound_citations_plot
@@ -670,7 +797,7 @@ There is a third factor I'd like to study, but again this dataset won't help muc
 Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
 
 ```{r}
-#| label: fig-articlecounts
+#| label: fig-articlecounts-draft
 #| column: screen-inset
 #| fig-cap: "Article counts."
 #| fig-subcap: 
@@ -686,7 +813,7 @@ typical_plot
 In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
 
 ```{r}
-#| label: fig-citationcounts
+#| label: fig-citationcounts-draft
 #| column: screen-inset
 #| fig-cap: "Citation counts."
 #| fig-subcap: 
@@ -702,7 +829,7 @@ typical_citations_per_year_plot
 Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
 
 ```{r}
-#| label: fig-citationrate
+#| label: fig-citationrate-draft
 #| column: screen-inset
 #| fig-cap: "Mean annual citations to different article kinds."
 #| fig-subcap: 
