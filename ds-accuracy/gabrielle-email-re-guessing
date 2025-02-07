@@ -1,0 +1,36 @@
+Hi Gabrielle,
+
+This looks really interesting, and really good. I had a few big picture thoughts on it that are probably the most helpful things I can contribute.
+
+# Dominance Arguments
+
+There were a few places where strong and weak dominance were being run together. The most notable of these was at the top of 3.1, where the intuitive argument that's given is for the normative significance of strong dominance, but the argument that follows is all about weak dominance. This matters, because the intuitive force of weak dominance arguments is considerably less than for strong dominance. It would be worthwhile going through all the references to dominance arguments and making clear which notion is in play at which point.
+
+# Safety
+
+I wasn't really convinced by the argument in 3.2, and it seemed notable that there was less formalism here than in the earlier sections. It just didn't seem true in general that higher probabilities were safer. Here's something like a counterexample. It's a bit convoluted, but hopefully there's an easy way to make it simpler.
+
+You and I both have credences in the proposition P = Jim will win a gamble this weekend. It's common knowledge between us that Jim has bet on the Eagles to win the Super Bowl. You have credence 0.6 that the Eagles will win, I have credence 0.4. The Eagles will win (in this example - who knows in real life!), so you're doing better.
+
+I have a false, unjustified belief in the following pair of propositions. First, Jim bought lottery ticket 48109 in this week's lottery, and ticket 48109 will win this week's lottery. So I have credence 1 in P, since I think Jim will surely win some bet, by winning the lottery, even if the Eagles lose.
+
+Now P is true, and I have a higher credence in it, but my belief is really unsafe. For every ticket other than 48109, learning that it wins will make my credence lower than yours. Intuitively, my credence in P is really unsafe, despite being higher than yours, and hence closer to the truth.
+
+# Expectations
+
+I got a little confused about the expectations around page 5, and the later stuff almost but not quite cleared it up. If I'm reading things correctly, you're making the following two moves.
+
+1. In section 2, the thought is that it's bad for a credence function to do worse in expectation than some other function. The expectations here are (this is the bit I'm not sure about) expectations in terms of chance, not in terms of the agent's own credences. If they were in terms of the agent's own credences, there would be the challenge of saying what expectations even are if the agent has non-probabilistic credences. As it is, there's the problem that you need the PP to make this be a problem that is worrying to the agent by the agent's own lights (as Jim's original accuracy argument is intended to be.)
+2. In section 3, you're worried about a different application of the PP, in particular in the use of the PP to get rid of the assumption that credences about the chance device match the chances, and that's where the alternative arguments come in.
+
+Have I got the dialectic right here? If so, I wonder if point 1 might be spelled out more, saying just what E is, and why it's significant.
+
+# "Associated with Every Real Number"
+
+This bit at the bottom of 7 is the thing I was talking about the other day. I think you can get around this the following way. (This might be frying pan -> fire, but maybe not.)
+
+First, I don't think you need every *real* number here. Every *rational* number would do, since the rationals are dense. There might be a little more math needed to show that this is enough, but I kinda bet that it is.
+
+Second, we can perhaps stipulate, following Ramsey, that to have credence m/n in a proposition just is to think that the proposition is a disjunction of m exclusive propositions, each of which is a member of a set of n exclusive and exhaustive and equally likely (by the agent's own lights) propositions. The trick (and this is why it is likely to be controversial) is to say that the connection between these conditions and having credence m/n is not normative, it's not like you should have credence m/n in these conditions, it's constitutive. That's just what numerical credences mean. I think numerical credences are very mystifying personally, so having something like this for them to mean is very reassuring. But people who find them less mysterious will probably not accept that this is a constitutive connection.
+
+Brian
