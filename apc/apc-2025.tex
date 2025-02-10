@@ -220,7 +220,7 @@ introductory classes; e.g., Frankfurt
 (\citeproc{ref-Frankfurt1969}{1969}), Thomson
 (\citeproc{ref-Thomson1971}{1971}), Singer
 (\citeproc{ref-Singer1972}{1972}), Lewis
-(\citeproc{ref-Lewis1973ben}{1973}). These aren't taught as history
+(\citeproc{ref-Lewis1973ben}{1973a}). These aren't taught as history
 papers, but as early entries into the contemporary philosophical debate.
 And, I thought, that's how we cite. Second, the technological changes of
 the last quarter century meant that this practice was being slowly
@@ -324,12 +324,12 @@ modality and towards grounding. We saw the growth of important fields of
 social philosophy, including social epistemology, social metaphysics,
 and social philosophy of language. Though there were some earlier papers
 that have become important to the latter two fields (e.g., Haslanger
-(\citeproc{ref-Haslanger2000}{2000}), and Langton
+(\citeproc{ref-Haslanger2000}{2000a}), and Langton
 (\citeproc{ref-Langton1993}{1993})), it would have been a stretch to
 even call them `fields' before 2010. Social epistemology was always a
 bit bigger, and you could point to earlier field defining work by, e.g.,
 Jennifer Lackey (\citeproc{ref-Lackey2008}{2008}) and Adam Elga
-(\citeproc{ref-Elga2007}{2007}). But it grew phenomenally in the 2010s.
+(\citeproc{ref-Elga2007}{2007a}). But it grew phenomenally in the 2010s.
 I'd predicted that would show up in higher citations to work in the
 2010s, as these changes were consolidated. The data are a bit messy, and
 it would be good to have much more data, but this does not look to have
@@ -426,11 +426,11 @@ direction of the results wouldn't change.
 
 \section{Period Effects}\label{sec-period}
 
-Those 397459 citations are not distributed evenly over time. Instead,
+Those 397368 citations are not distributed evenly over time. Instead,
 they grow rapidly. At the start, in 1956, there are only 5 citations.
 That's not too surprising; without the ability to cite preprints, there
 aren't going to be many citations of articles that have come out that
-year. By 2021, there are 56300. In Figure~\ref{fig-citationsperyear}, I
+year. By 2021, there are 56293. In Figure~\ref{fig-citationsperyear}, I
 show how these grew; the striking thing to me is the big jump between
 2020 and 2021.
 
@@ -533,16 +533,16 @@ Difference
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Philosophical Review & 14.8 & 26.4 & 11.6 \\
+Philosophical Review & 14.8 & 26.3 & 11.5 \\
 Philosophical Perspectives & 11.3 & 19.6 & 8.3 \\
 Philosophy and Phenomenological Research & 9.6 & 15.2 & 5.6 \\
-Journal of Philosophy & 9.0 & 13.7 & 4.7 \\
+Journal of Philosophy & 9.0 & 13.7 & 4.8 \\
 Philosophical Studies & 9.0 & 13.6 & 4.6 \\
 Noûs & 11.5 & 16.0 & 4.5 \\
 Philosophical Quarterly & 8.8 & 13.3 & 4.5 \\
 Philosophy & 4.0 & 8.3 & 4.3 \\
-Philosophy Compass & 11.2 & 15.4 & 4.2 \\
-Ethics & 8.4 & 12.3 & 3.8 \\
+Philosophy Compass & 11.2 & 15.4 & 4.3 \\
+Philosophia Mathematica & 6.3 & 10.1 & 3.8 \\
 
 \end{longtable}
 
@@ -691,7 +691,316 @@ norm.\footnote{In the long run the average number of times an article is
 
 The various period effects are substantial; to get an reliable picture
 of the trends in citation patterns, we're going to have to allow for
-them.
+them. The project here is to use citation data as a proxy for
+philosophical influence. It is, of course, a deeply imperfect proxy. But
+it is better than most other proxies; it is certainly better than going
+off of vibes, or of what one's friends are talking about.\footnote{In
+  North America, placement on graduate syllabi might be an even better
+  proxy, but that data is hard to collect, and we'd need a different
+  measure for other countries.} If we're going to use citations this way
+though, we need to think about how to take into account the changes
+shown in Figure~\ref{fig-citationsperyear}. I'm going to offer a
+proposal in terms of typical articles; to a first approximation, I'll
+measure an article's influence in a period by the ratio of how often it
+is cited to how often a typical article is cited. This is a little
+arbitrary, but I think it gets things at least roughly right. At the
+very least, it avoids the problems with three other natural proposals
+that I'll now present, and probably anything that avoids these problems
+will be fairly similar.
+
+Start with the non-proposal of just using citations per year as a
+measure of influence. Simply eyeballing
+Figure~\ref{fig-citationsperyear} makes that a little implausible; there
+would be so much more influence now. It also has some implausible
+particular consequences. Tyler Burge's ``Individualism and Psychology''
+(\citeproc{ref-WOSA1986AYX3200001}{Burge 1986}) was the fourth most
+cited paper of the 1990s, and if anything that understates its
+influence. In the 1990s (in these 100 journals) it had 68 citations, so
+6.8 per year. In 2021, it had 7 citations, so slightly more per year.
+Now Burge's paper is still influential, and it connects in interesting
+ways to the social turn in philosophy that I'll discuss below, but it's
+implausible to say that it was more influential in 2021 than it was in
+the 1990s. When there are so many articles published, and a much lower
+bar to citation, seven citations a year doesn't signify as much
+influence.
+
+A natural second proposal then is to measure what proportion of the
+year's citations any particular article has. By this measure,
+``Individualism and Psychology'' was about twenty times as influential
+in the 1990s as in 2021, which isn't obviously false.\footnote{To be
+  clear, the database contains about twice as many citations in 2021 as
+  in the whole of the 1990s.} Other cases, however, suggest this is too
+much of a correction. It's true that there are more citations now than
+there used to be. There are also more articles for these citations to be
+shared between. Holding fixed how influential an article is, you'd
+expect it to have a lower share of the citations when there are several
+times more articles available to be cited.
+
+Again, it's easiest to see this with some examples. In
+Table~\ref{tbl-comp-cite-rate}, I've shown the five most cited articles
+for the 1990s (on the top), and for 2021 (on the bottom). I've also
+shown how often each is cited per 1000 citations, i.e., the proportion
+of citations each article gets. And I've extended the first table to
+make it easier to compare the scales.
+
+\begin{table}
+
+\caption{\label{tbl-comp-cite-rate}Most cited articles in the 1990s, and
+in 2021.}
+
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-rate-1}1990s}
+
+\centering{
+
+\begin{tabular}{rlrr}
+\toprule
+Rank & Article & Citations & Citations per 1000\\
+\midrule
+1 & Frankfurt (\citeproc{ref-10.2307_2024717}{1971}) & 82 & 2.69\\
+2 & Kim (\citeproc{ref-WOSA1984TV24600001}{1984}) & 72 & 2.36\\
+3 & Nagel (\citeproc{ref-WOSA1974U469700001}{1974}) & 69 & 2.27\\
+4 & Burge (\citeproc{ref-WOSA1986AYX3200001}{1986}) & 68 & 2.23\\
+ & \ldots{} &  & \\
+10 & Kripke (\citeproc{ref-WOSA1975BF60000005}{1975}) & 52 & 1.71\\
+ & \ldots{} &  & \\
+34 & Hull (\citeproc{ref-WOSA1978FR68900001}{1978}) & 33 & 1.08\\
+35 & Lewis (\citeproc{ref-WOSA1979JB14500003}{1979}) & 33 & 1.08\\
+36 & Fraassen (\citeproc{ref-WOSA1984SS95000001}{1984}) & 33 & 1.08\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-rate-2}2021}
+
+\centering{
+
+\begin{tabular}{rlrr}
+\toprule
+Rank & Article & Citations & Citations per 1000\\
+\midrule
+1 & Lewis (\citeproc{ref-WOSA1983RR51600001}{1983}) & 96 & 1.71\\
+2 & Haslanger (\citeproc{ref-WOS000085841900002}{2000b}) & 60 & 1.07\\
+3 & Machamer, Darden, and Craver
+(\citeproc{ref-WOS000087305900001}{2000}) & 56 & 0.99\\
+4 & Clark and Chalmers
+(\citeproc{ref-WOS000073222300002}{1998}) & 54 & 0.96\\
+5 & Schaffer (\citeproc{ref-WOS000272855000002}{2010}) & 54 & 0.96\\
+6 & Elga (\citeproc{ref-WOS000249103800005}{2007b}) & 52 & 0.92\\
+7 & Lewis (\citeproc{ref-10.2307_2025310}{1973b}) & 51 & 0.91\\
+8 & Christensen (\citeproc{ref-WOS000207419300002}{2007}) & 50 & 0.89\\
+9 & Schaffer (\citeproc{ref-WOS000368189400004}{2016}) & 46 & 0.82\\
+10 & Nagel (\citeproc{ref-WOSA1974U469700001}{1974}) & 46 & 0.82\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+
+\end{table}%
+
+As influential as ``A Matter of Individuality'', ``Counterfactual
+Dependence and Time's Arrow'', and ``Belief and the Will'' were in the
+1990s, I don't think they were more influential than all but one article
+was in 2021. Haslanger's article became a foundational text for one of
+the biggest fields in philosophy: social metaphysics. A measure of
+influence that puts it behind how influential 36 articles were in the
+1990s seems wrong, and the intuitive reasoning about sharing citations
+around suggests why it is wrong.
+
+A natural next move is to scale the citations not to all citations, but
+to the average number of citations that available, i.e., already
+published, articles get. This would solve the problem I just presented
+in a simple way. Having 1 cite per 1000 citations means a lot more when
+there are 100,000 articles that could have received that citation than
+when there are 10,000 such articles.
+
+Again, this is an overcorrection. In theory, any article already
+published could be cited. In practice, long forgotten articles are long
+forgotten and hence not cited, and most articles are long forgotten.
+It's true that in 2021 articles have to `share' citation space with more
+other articles. But in practice that normally means they share the space
+with other \emph{recently published} articles.
+
+We can sort of see this by redoing the calculation from
+Table~\ref{tbl-comp-cite-rate}, instead using the ratio of citations
+this article receives to citations the average available article
+receives.\footnote{On the first part of Table~\ref{tbl-comp-cite-ratio},
+  I calculated this ratio for each year, and then displayed the average
+  over the decade.} I've done this in Table~\ref{tbl-comp-cite-ratio}.
+First, I've shown the articles that, across the 1990s, had the highest
+average ratio of citations they received to citations the average
+available article received, and second, I did the same calculation for
+2021.
+
+\begin{table}
+
+\caption{\label{tbl-comp-cite-ratio}Most cited articles in the 1990s
+compared to average citations, and in 2021.}
+
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-ratio-1}1990s}
+
+\centering{
+
+\begin{tabular}{rlr}
+\toprule
+Rank & Article & Ratio\\
+\midrule
+1 & Frankfurt (\citeproc{ref-10.2307_2024717}{1971}) & 102.45\\
+2 & Kim (\citeproc{ref-WOSA1984TV24600001}{1984}) & 90.15\\
+3 & Nagel (\citeproc{ref-WOSA1974U469700001}{1974}) & 85.95\\
+4 & Burge (\citeproc{ref-WOSA1986AYX3200001}{1986}) & 85.05\\
+5 & Perry (\citeproc{ref-WOSA1979HE39600001}{1979}) & 78.28\\
+6 & Lewis (\citeproc{ref-WOSA1983RR51600001}{1983}) & 76.01\\
+7 & Jackson (\citeproc{ref-WOSA1982NH65300003}{1982}) & 71.51\\
+8 & Kripke (\citeproc{ref-WOSA1975BF60000005}{1975}) & 65.91\\
+9 & Cummins (\citeproc{ref-WOSA1975BF60100001}{1975}) & 65.29\\
+10 & Lewis (\citeproc{ref-10.2307_2025310}{1973b}) & 64.95\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-ratio-2}2021}
+
+\centering{
+
+\begin{tabular}{rlr}
+\toprule
+Rank & Article & Ratio\\
+\midrule
+1 & Lewis (\citeproc{ref-WOSA1983RR51600001}{1983}) & 192.98\\
+2 & Haslanger (\citeproc{ref-WOS000085841900002}{2000b}) & 120.61\\
+3 & Machamer, Darden, and Craver
+(\citeproc{ref-WOS000087305900001}{2000}) & 112.57\\
+4 & Clark and Chalmers
+(\citeproc{ref-WOS000073222300002}{1998}) & 108.55\\
+5 & Schaffer (\citeproc{ref-WOS000272855000002}{2010}) & 108.55\\
+6 & Elga (\citeproc{ref-WOS000249103800005}{2007b}) & 104.53\\
+ & \ldots{} & \\
+12 & Plunkett and Sundell
+(\citeproc{ref-WOS000332023600001}{2013}) & 90.46\\
+ & \ldots{} & \\
+35 & Dorr (\citeproc{ref-WOS000397575900003}{2016}) & 66.34\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+
+\end{table}%
+
+None of the pairwise comparisons here seem obviously absurd. Was ``To be
+F is to be G'' more influential in 2021 than ``Causation'' was in the
+1990s? I wouldn't have thought so, but it's not as clear as in the
+previous set of comparisons. But it is clear that the numbers in the
+second table in Table~\ref{tbl-comp-cite-ratio} are considerably higher
+than the first table, especially at the very top end. That suggests that
+the intuition that including so many articles from long ago in the
+comparison class was a mistake, and it has systematically increased the
+measure we're using for later years in implausible ways.
+
+So what I've settled on is using the ratio of how often this article is
+cited in a year, to how often a \emph{typical} article is cited that
+year. By `typical' I mean an article three to ten years old; as we'll
+see in \textbf{?@sec-age}, those are the typical ages of cited articles.
+That deals with the intuitive problems of the previous measures, and it
+gets the results roughly right. In
+Table~\ref{tbl-comp-cite-ratio-typical}, I'll do one last comparison
+between the 1990s and 2021 to make the point.
+
+\begin{table}
+
+\caption{\label{tbl-comp-cite-ratio-typical}Most cited articles in the
+1990s compared to typical citations, and in 2021.}
+
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-ratio-typical-1}1990s}
+
+\centering{
+
+\begin{tabular}{rlr}
+\toprule
+Rank & Article & Ratio\\
+\midrule
+1 & Frankfurt (\citeproc{ref-10.2307_2024717}{1971}) & 71.87\\
+2 & Kim (\citeproc{ref-WOSA1984TV24600001}{1984}) & 63.99\\
+3 & Nagel (\citeproc{ref-WOSA1974U469700001}{1974}) & 60.03\\
+4 & Burge (\citeproc{ref-WOSA1986AYX3200001}{1986}) & 59.88\\
+5 & Perry (\citeproc{ref-WOSA1979HE39600001}{1979}) & 55.46\\
+6 & Lewis (\citeproc{ref-WOSA1983RR51600001}{1983}) & 53.21\\
+7 & Jackson (\citeproc{ref-WOSA1982NH65300003}{1982}) & 49.90\\
+8 & Kripke (\citeproc{ref-WOSA1975BF60000005}{1975}) & 46.45\\
+9 & Churchland (\citeproc{ref-WOSA1981LD54600001}{1981}) & 45.63\\
+10 & Lewis (\citeproc{ref-10.2307_2025310}{1973b}) & 45.25\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{tbl-comp-cite-ratio-typical-2}2021}
+
+\centering{
+
+\begin{tabular}{rlr}
+\toprule
+Rank & Article & Ratio\\
+\midrule
+1 & Lewis (\citeproc{ref-WOSA1983RR51600001}{1983}) & 120.04\\
+2 & Haslanger (\citeproc{ref-WOS000085841900002}{2000b}) & 75.02\\
+3 & Machamer, Darden, and Craver
+(\citeproc{ref-WOS000087305900001}{2000}) & 70.02\\
+4 & Clark and Chalmers
+(\citeproc{ref-WOS000073222300002}{1998}) & 67.52\\
+5 & Schaffer (\citeproc{ref-WOS000272855000002}{2010}) & 67.52\\
+6 & Elga (\citeproc{ref-WOS000249103800005}{2007b}) & 65.02\\
+7 & Lewis (\citeproc{ref-10.2307_2025310}{1973b}) & 63.77\\
+8 & Christensen (\citeproc{ref-WOS000207419300002}{2007}) & 62.52\\
+9 & Schaffer (\citeproc{ref-WOS000368189400004}{2016}) & 57.52\\
+10 & Nagel (\citeproc{ref-WOSA1974U469700001}{1974}) & 57.52\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{minipage}%
+
+\end{table}%
+
+The numbers in the second table are a little higher, but not overly so.
+In any case, one would expect the top end of a scale like this to be
+higher when just looking at a single year, where there is more
+variation, than at an average over a decade.\footnote{If I did the same
+  comparison year-by-year, there are individual years where ``Meaning''
+  (\citeproc{ref-WOSA1957CGZ6000005}{Grice 1957}), ``Justice as
+  Fairness: Political not Metaphysical''
+  (\citeproc{ref-WOSA1985APA8500001}{Rawls 1985}) and ``Concepts of
+  Supervenience'' (\citeproc{ref-WOSA1984TV24600001}{Kim 1984}) have a
+  higher ratio of citations to the average typical article than ``New
+  Work'' does in 2021.} So I'll take this as the measure of age-adjusted
+number of citations. That is, to factor out the age effect on citations,
+I'll divide the number of citations an article receives in a year by the
+average number that a typical, i.e., 3-10 year old, article receives
+that year.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
@@ -699,14 +1008,54 @@ them.
 Bump, Philip. 2023. \emph{The Aftermath: The Last Days of the Baby Boom
 and the Future of Power in America}. New York: Penguin Random House.
 
+\bibitem[\citeproctext]{ref-WOSA1986AYX3200001}
+Burge, Tyler. 1986. {``Individualism and Psychology.''}
+\emph{Philosophical Review} 95 (1): 3--45.
+\url{https://doi.org/10.2307/2185131}.
+
+\bibitem[\citeproctext]{ref-WOS000207419300002}
+Christensen, David. 2007. {``Epistemology of Disagreement: The Good
+News.''} \emph{Philosophical Review} 116 (2): 187--217.
+\url{https://doi.org/10.1215/00318108-2006-035}.
+
+\bibitem[\citeproctext]{ref-WOSA1981LD54600001}
+Churchland, Paul M. 1981. {``Eliminative Materialism and the
+Propositional Attitudes.''} \emph{Journal of Philosophy} 78 (2): 67--90.
+\url{https://doi.org/10.2307/2025900}.
+
+\bibitem[\citeproctext]{ref-WOS000073222300002}
+Clark, Andy, and David J. Chalmers. 1998. {``The Extended Mind.''}
+\emph{Analysis} 58 (1): 7--19.
+\url{https://doi.org/10.1111/1467-8284.00096}.
+
+\bibitem[\citeproctext]{ref-WOSA1975BF60100001}
+Cummins, Robert. 1975. {``Functional Analysis.''} \emph{Journal of
+Philosophy} 72 (20): 741--65. \url{https://doi.org/10.2307/2024640}.
+
+\bibitem[\citeproctext]{ref-WOS000397575900003}
+Dorr, Cian. 2016. {``To Be f Is to Be g.''} \emph{Philosophical
+Perspectives} 30 (1): 39--134. \url{https://doi.org/10.1111/phpe.12079}.
+
 \bibitem[\citeproctext]{ref-Elga2007}
-Elga, Adam. 2007. {``Reflection and Disagreement.''} \emph{No{û}s} 41
+Elga, Adam. 2007a. {``Reflection and Disagreement.''} \emph{No{û}s} 41
 (3): 478--502. \url{https://doi.org/10.1111/j.1468-0068.2007.00656.x}.
+
+\bibitem[\citeproctext]{ref-WOS000249103800005}
+---------. 2007b. {``Reflection and Disagreement.''} \emph{Noûs} 41 (3):
+478--502. \url{https://doi.org/10.1111/j.1468-0068.2007.00656.x}.
+
+\bibitem[\citeproctext]{ref-WOSA1984SS95000001}
+Fraassen, Bas C. van. 1984. {``Belief and the Will.''} \emph{Journal of
+Philosophy} 81 (5): 235--56.
 
 \bibitem[\citeproctext]{ref-Frankfurt1969}
 Frankfurt, Harry G. 1969. {``Alternate Possibilities and Moral
 Responsibility.''} \emph{Journal Of Philosophy} 66 (23): 829--39.
 \url{https://doi.org/10.2307/2023833}.
+
+\bibitem[\citeproctext]{ref-10.2307_2024717}
+---------. 1971. {``Freedom of the Will and the Concept of a Person.''}
+\emph{Journal of Philosophy} 68 (1): 5--20.
 
 \bibitem[\citeproctext]{ref-Gettier1963}
 Gettier, Edmund L. 1963. {``Is Justified True Belief Knowledge?''}
@@ -718,10 +1067,27 @@ Society, Reagan's Revolution, and Generations of Presidential Voting.''}
 \emph{American Journal of Political Science} 67 (3): 520--37.
 https://doi.org/\url{https://doi.org/10.1111/ajps.12713}.
 
+\bibitem[\citeproctext]{ref-WOSA1957CGZ6000005}
+Grice, H. P. 1957. {``Meaning.''} \emph{Philosophical Review} 66 (3):
+377--88. \url{https://doi.org/10.2307/2182440}.
+
 \bibitem[\citeproctext]{ref-Haslanger2000}
-Haslanger, Sally. 2000. {``Gender and Race: (What) Are They? (What) Do
+Haslanger, Sally. 2000a. {``Gender and Race: (What) Are They? (What) Do
 We Want Them to Be?''} \emph{No{û}s} 34 (1): 31--55.
 \url{https://doi.org/10.1111/0029-4624.00201}.
+
+\bibitem[\citeproctext]{ref-WOS000085841900002}
+---------. 2000b. {``Gender and Race: (What) Are They? (What) Do We Want
+Them to Be?''} \emph{Noûs} 34 (1): 31--55.
+\url{https://doi.org/10.1111/0029-4624.00201}.
+
+\bibitem[\citeproctext]{ref-WOSA1978FR68900001}
+Hull, David L. 1978. {``A Matter of Individuality.''} \emph{Philosophy
+of Science} 45 (3): 335--60. \url{https://doi.org/10.1086/288811}.
+
+\bibitem[\citeproctext]{ref-WOSA1982NH65300003}
+Jackson, Frank. 1982. {``Epiphenomenal Qualia.''} \emph{Philosophical
+Quarterly} 32 (127): 127--36. \url{https://doi.org/10.2307/2960077}.
 
 \bibitem[\citeproctext]{ref-KeyesEtAl2010}
 Keyes, Katherine M., Rebecca L. Utz, Whitney Robinson, and Guohua Li.
@@ -729,6 +1095,15 @@ Keyes, Katherine M., Rebecca L. Utz, Whitney Robinson, and Guohua Li.
 Methods for Modeling Cohort Effects in Obesity Prevalence in the United
 States, 1971--2006.''} \emph{Social Science \& Medicine} 70 (7):
 1100--1108. \url{https://doi.org/10.1016/j.socscimed.2009.12.018}.
+
+\bibitem[\citeproctext]{ref-WOSA1984TV24600001}
+Kim, Jaegwon. 1984. {``Concepts of Supervenience.''} \emph{Philosophy
+and Phenomenological Research} 45 (2): 153--76.
+\url{https://doi.org/10.2307/2107423}.
+
+\bibitem[\citeproctext]{ref-WOSA1975BF60000005}
+Kripke, Saul. 1975. {``Outline of a Theory of Truth.''} \emph{Journal of
+Philosophy} 72 (19): 690--716. \url{https://doi.org/10.2307/2024634}.
 
 \bibitem[\citeproctext]{ref-Lackey2008}
 Lackey, Jennifer. 2008. \emph{Learning from Words: Testimony as a Source
@@ -739,13 +1114,59 @@ Langton, Rae. 1993. {``Speech Acts and Unspeakable Acts.''}
 \emph{Philosophy \& Public Affairs} 22 (4): 293--330.
 
 \bibitem[\citeproctext]{ref-Lewis1973ben}
-Lewis, David. 1973. {``Causation.''} \emph{Journal of Philosophy} 70
+Lewis, David. 1973a. {``Causation.''} \emph{Journal of Philosophy} 70
 (17): 556--67. \url{https://doi.org/10.2307/2025310}.
+
+\bibitem[\citeproctext]{ref-10.2307_2025310}
+---------. 1973b. {``Causation.''} \emph{Journal of Philosophy} 70 (17):
+556--67.
+
+\bibitem[\citeproctext]{ref-WOSA1979JB14500003}
+---------. 1979. {``Counterfactual Dependence and Time's Arrow.''}
+\emph{Noûs} 13 (4): 455--76. \url{https://doi.org/10.2307/2215339}.
+
+\bibitem[\citeproctext]{ref-WOSA1983RR51600001}
+---------. 1983. {``New Work for a Theory of Universals.''}
+\emph{Australasian Journal of Philosophy} 61 (4): 343--77.
+\url{https://doi.org/10.1080/00048408312341131}.
+
+\bibitem[\citeproctext]{ref-WOS000087305900001}
+Machamer, Peter, Lindley Darden, and Carl F. Craver. 2000. {``Thinking
+about Mechanisms.''} \emph{Philosophy of Science} 67 (1): 1--25.
+\url{https://doi.org/10.1086/392759}.
+
+\bibitem[\citeproctext]{ref-WOSA1974U469700001}
+Nagel, Thomas. 1974. {``What Is It Like to Be a Bat.''}
+\emph{Philosophical Review} 83 (4): 435--50.
+\url{https://doi.org/10.2307/2183914}.
 
 \bibitem[\citeproctext]{ref-WOS000575210400003}
 Oberman, Kieran. 2020. {``Killing and Rescuing: Why Necessity Must Be
 Rethought.''} \emph{Philosophical Review} 129 (3): 433--63.
 \url{https://doi.org/10.1215/00318108-8311248}.
+
+\bibitem[\citeproctext]{ref-WOSA1979HE39600001}
+Perry, John. 1979. {``The Problem of the Essential Indexical.''}
+\emph{Noûs} 13 (1): 3--21. \url{https://doi.org/10.2307/2214792}.
+
+\bibitem[\citeproctext]{ref-WOS000332023600001}
+Plunkett, David, and Tim Sundell. 2013. {``Disagreement and the
+Semantics of Normative and Evaluative Terms.''} \emph{Philosophers'
+Imprint} 13 (23): 1--37.
+
+\bibitem[\citeproctext]{ref-WOSA1985APA8500001}
+Rawls, John. 1985. {``Justice as Fairness: Political Not
+Metaphysical.''} \emph{Philosophy \& Public Affairs} 14 (3): 223--51.
+
+\bibitem[\citeproctext]{ref-WOS000272855000002}
+Schaffer, Jonathan. 2010. {``Monism: The Priority of the Whole.''}
+\emph{Philosophical Review} 119 (1): 31--76.
+\url{https://doi.org/10.1215/00318108-2009-025}.
+
+\bibitem[\citeproctext]{ref-WOS000368189400004}
+---------. 2016. {``Grounding in the Image of Causation.''}
+\emph{Philosophical Studies} 173 (1): 49--100.
+\url{https://doi.org/10.1007/s11098-014-0438-1}.
 
 \bibitem[\citeproctext]{ref-Singer1972}
 Singer, Peter. 1972. {``Famine, Affluence, and Morality.''}

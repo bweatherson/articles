@@ -715,7 +715,327 @@ typical_citation_rate_per_year_plot
 
 Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
 
-The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them.
+The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them. The project here is to use citation data as a proxy for philosophical influence. It is, of course, a deeply imperfect proxy. But it is better than most other proxies; it is certainly better than going off of vibes, or of what one's friends are talking about.^[In North America, placement on graduate syllabi might be an even better proxy, but that data is hard to collect, and we'd need a different measure for other countries.] If we're going to use citations this way though, we need to think about how to take into account the changes shown in @fig-citationsperyear. I'm going to offer a proposal in terms of typical articles; to a first approximation, I'll measure an article's influence in a period by the ratio of how often it is cited to how often a typical article is cited. This is a little arbitrary, but I think it gets things at least roughly right. At the very least, it avoids the problems with three other natural proposals that I'll now present, and probably anything that avoids these problems will be fairly similar.
+
+Start with the non-proposal of just using citations per year as a measure of influence. Simply eyeballing @fig-citationsperyear makes that a little implausible; there would be so much more influence now. It also has some implausible particular consequences. Tyler Burge's "Individualism and Psychology" [@WOSA1986AYX3200001] was the fourth most cited paper of the 1990s, and if anything that understates its influence. In the 1990s (in these 100 journals) it had 68 citations, so 6.8 per year. In 2021, it had 7 citations, so slightly more per year. Now Burge's paper is still influential, and it connects in interesting ways to the social turn in philosophy that I'll discuss below, but it's implausible to say that it was more influential in 2021 than it was in the 1990s. When there are so many articles published, and a much lower bar to citation, seven citations a year doesn't signify as much influence.
+
+A natural second proposal then is to measure what proportion of the year's citations any particular article has. By this measure, "Individualism and Psychology" was about twenty times as influential in the 1990s as in 2021, which isn't obviously false.^[To be clear, the database contains about twice as many citations in 2021 as in the whole of the 1990s.] Other cases, however, suggest this is too much of a correction. It's true that there are more citations now than there used to be. There are also more articles for these citations to be shared between. Holding fixed how influential an article is, you'd expect it to have a lower share of the citations when there are several times more articles available to be cited.
+
+Again, it's easiest to see this with some examples. In @tbl-comp-cite-rate, I've shown the five most cited articles for the 1990s (on the top), and for 2021 (on the bottom). I've also shown how often each is cited per 1000 citations, i.e., the proportion of citations each article gets. And I've extended the first table to make it easier to compare the scales.
+
+```{r}
+#| label: tbl-comp-cite-rate
+#| tbl-cap: "Most cited articles in the 1990s, and in 2021."
+#| tbl-subcap: 
+#|   - "1990s"
+#|   - "2021"
+#| layout-ncol: 1
+
+nineties_cites_data <- citation_tibble |>
+  filter(new_year >= 1990, new_year <= 1999) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  mutate(all_cite = sum(citations)) |>
+  mutate(cite_rate = round(
+    citations*1000/all_cite,
+    2)) |>
+  arrange(-cite_rate) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Citations = citations,
+         `Citations per 1000` = cite_rate) 
+
+nineties_cites_kable <- nineties_cites_data |>
+  slice(1:4) |>
+  add_row(
+    Rank = NA,
+    Article = "...",
+    Citations = NA,
+    `Citations per 1000` = NA
+  ) |>
+  add_row(
+    nineties_cites_data |>
+      slice(10)
+  ) |>
+  add_row(
+    Rank = NA,
+    Article = "...",
+    Citations = NA,
+    `Citations per 1000` = NA
+  ) |>
+  add_row(
+    nineties_cites_data |>
+      slice(34:36)
+  )
+
+lastyear_cites_data <- citation_tibble |>
+  filter(new_year >= 2021, new_year <= 2021) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  mutate(all_cite = sum(citations)) |>
+  mutate(cite_rate = round(
+    citations*1000/all_cite,
+    2)) |>
+  arrange(-cite_rate) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Citations = citations,
+         `Citations per 1000` = cite_rate)
+
+lastyear_cites_kable <- lastyear_cites_data |>
+  slice(1:10)
+
+options(knitr.kable.NA = '')
+
+kable(nineties_cites_kable)
+kable(lastyear_cites_kable)
+```
+
+As influential as "A Matter of Individuality", "Counterfactual Dependence and Time's Arrow", and "Belief and the Will" were in the 1990s, I don't think they were more influential than all but one article was in 2021. Haslanger's article became a foundational text for one of the biggest fields in philosophy: social metaphysics. A measure of influence that puts it behind how influential 36 articles were in the 1990s seems wrong, and the intuitive reasoning about sharing citations around suggests why it is wrong.
+
+A natural next move is to scale the citations not to all citations, but to the average number of citations that available, i.e., already published, articles get. This would solve the problem I just presented in a simple way. Having 1 cite per 1000 citations means a lot more when there are 100,000 articles that could have received that citation than when there are 10,000 such articles.
+
+Again, this is an overcorrection. In theory, any article already published could be cited. In practice, long forgotten articles are long forgotten and hence not cited, and most articles are long forgotten. It's true that in 2021 articles have to 'share' citation space with more other articles. But in practice that normally means they share the space with other _recently published_ articles.
+
+We can sort of see this by redoing the calculation from @tbl-comp-cite-rate, instead using the ratio of citations this article receives to citations the average available article receives.^[On the first part of @tbl-comp-cite-ratio, I calculated this ratio for each year, and then displayed the average over the decade.] I've done this in @tbl-comp-cite-ratio. First, I've shown the articles that, across the 1990s, had the highest average ratio of citations they received to citations the average available article received, and second, I did the same calculation for 2021.
+
+```{r}
+#| label: tbl-comp-cite-ratio
+#| tbl-cap: "Most cited articles in the 1990s compared to average citations, and in 2021."
+#| tbl-subcap: 
+#|   - "1990s"
+#|   - "2021"
+#| layout-ncol: 1
+
+avail_90s_cites_data <- citation_tibble |>
+  filter(new_year >= 1990,
+         new_year <= 1999) |>
+  group_by(old, new_year) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  complete(old, new_year,
+           fill = list(citations = 0),
+           explicit = FALSE) |>
+  group_by(new_year) |>
+  mutate(all_cite = sum(citations)) |>
+  ungroup() |>
+  left_join(
+    select(
+      articles_per_year,
+      new_year = old_year,
+      available
+    ), by = "new_year"
+  ) |>
+  mutate(cite_ratio = citations * available /all_cite) |>
+  group_by(old) |>
+  summarise(cite_ratio = mean(cite_ratio)) |>
+  mutate(cite_ratio = round(cite_ratio, 2)) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  arrange(-cite_ratio) |>
+  slice(1:50) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Ratio = cite_ratio)
+
+avail_2021_cites_data <- citation_tibble |>
+  filter(new_year >= 2021,
+         new_year <= 2021) |>
+  group_by(old, new_year) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  complete(old, new_year,
+           fill = list(citations = 0),
+           explicit = FALSE) |>
+  group_by(new_year) |>
+  mutate(all_cite = sum(citations)) |>
+  ungroup() |>
+  left_join(
+    select(
+      articles_per_year,
+      new_year = old_year,
+      available
+    ), by = "new_year"
+  ) |>
+  mutate(cite_ratio = citations * available /all_cite) |>
+  group_by(old) |>
+  summarise(cite_ratio = mean(cite_ratio)) |>
+  mutate(cite_ratio = round(cite_ratio, 2)) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  arrange(-cite_ratio) |>
+  slice(1:50) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Ratio = cite_ratio)
+
+avail_90s_cites_kable <- avail_90s_cites_data |>
+  slice(1:10)
+
+avail_2021_cites_kable <- avail_2021_cites_data |>
+  slice(1:6) |>
+  add_row(
+    Rank = NA,
+    Article = "...",
+    Ratio = NA
+  ) |>
+  add_row(
+    avail_2021_cites_data |>
+      slice(12)
+  ) |>
+  add_row(
+    Rank = NA,
+    Article = "...",
+    Ratio = NA
+  ) |>
+  add_row(
+    avail_2021_cites_data |>
+      slice(35)
+  )
+
+kable(avail_90s_cites_kable)
+kable(avail_2021_cites_kable)
+
+```
+
+None of the pairwise comparisons here seem obviously absurd. Was "To be F is to be G" more influential in 2021 than "Causation" was in the 1990s? I wouldn't have thought so, but it's not as clear as in the previous set of comparisons. But it is clear that the numbers in the second table in @tbl-comp-cite-ratio are considerably higher than the first table, especially at the very top end. That suggests that the intuition that including so many articles from long ago in the comparison class was a mistake, and it has systematically increased the measure we're using for later years in implausible ways.
+
+So what I've settled on is using the ratio of how often this article is cited in a year, to how often a _typical_ article is cited that year. By 'typical' I mean an article three to ten years old; as we'll see in @sec-age, those are the typical ages of cited articles. That deals with the intuitive problems of the previous measures, and it gets the results roughly right. In @tbl-comp-cite-ratio-typical, I'll do one last comparison between the 1990s and 2021 to make the point.
+
+```{r}
+#| label: tbl-comp-cite-ratio-typical
+#| tbl-cap: "Most cited articles in the 1990s compared to typical citations, and in 2021."
+#| tbl-subcap: 
+#|   - "1990s"
+#|   - "2021"
+#| layout-ncol: 1
+
+typical_90s_cites_data <- citation_tibble |>
+  filter(new_year >= 1990,
+         new_year <= 1999) |>
+  group_by(old, new_year) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  complete(old, new_year,
+           fill = list(citations = 0),
+           explicit = FALSE) |>
+  left_join(
+    select(
+      typical_citation_rate_per_year,
+      new_year,
+      mean_cites),
+    by = "new_year") |>
+  mutate(cite_ratio = citations / mean_cites) |>
+  arrange(-cite_ratio) |>
+  group_by(old) |>
+  summarise(cite_ratio = mean(cite_ratio)) |>
+  mutate(cite_ratio = round(cite_ratio, 2)) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  arrange(-cite_ratio) |>
+  slice(1:50) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Ratio = cite_ratio)
+
+typical_2021_cites_data <- citation_tibble |>
+  filter(new_year >= 2021,
+         new_year <= 2021) |>
+  group_by(old, new_year) |>
+  tally(name = "citations") |>
+  ungroup() |>
+  complete(old, new_year,
+           fill = list(citations = 0),
+           explicit = FALSE) |>
+  left_join(
+    select(
+      typical_citation_rate_per_year,
+      new_year,
+      mean_cites),
+    by = "new_year") |>
+  mutate(cite_ratio = citations / mean_cites) |>
+  group_by(old) |>
+  summarise(cite_ratio = mean(cite_ratio)) |>
+  mutate(cite_ratio = round(cite_ratio, 2)) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  arrange(-cite_ratio) |>
+  slice(1:50) |>
+  mutate(Article = paste0(
+    "@",
+    str_replace_all(old,":","")
+  )) |>
+  mutate(Rank = row_number()) |>
+  select(Rank,
+         Article,
+         Ratio = cite_ratio)
+
+typical_90s_cites_kable <- typical_90s_cites_data |>
+  slice(1:10)
+
+typical_2021_cites_kable <- typical_2021_cites_data |>
+  slice(1:10)
+
+kable(typical_90s_cites_kable)
+kable(typical_2021_cites_kable)
+```
+
+The numbers in the second table are a little higher, but not overly so. In any case, one would expect the top end of a scale like this to be higher when just looking at a single year, where there is more variation, than at an average over a decade.^[If I did the same comparison year-by-year, there are individual years where "Meaning" [@WOSA1957CGZ6000005], "Justice as Fairness: Political not Metaphysical" [@WOSA1985APA8500001] and "Concepts of Supervenience" [@WOSA1984TV24600001] have a higher ratio of citations to the average typical article than "New Work" does in 2021.] So I'll take this as the measure of age-adjusted number of citations. That is, to factor out the age effect on citations, I'll divide the number of citations an article receives in a year by the average number that a typical, i.e., 3-10 year old, article receives that year.
 
 <!--
 
