@@ -563,9 +563,9 @@ articles are cited before publication, some articles that come out in
 December aren't in any real sense available to be cited in January. But
 it's close enough. Say an article is from a year that is
 \emph{typically} cited iff it is between 3 and 10 years before the
-citing year. This notion will play a big role in \textbf{?@sec-age}; I'm
-going to use these as a way of getting something like a base rate for
-citations in a given year. Using these definitions,
+citing year. This notion will play a big role in Section~\ref{sec-age};
+I'm going to use these as a way of getting something like a base rate
+for citations in a given year. Using these definitions,
 Figure~\ref{fig-articlecounts} shows how many articles are available to
 be cited each year, and are from years that are typically cited.
 
@@ -604,8 +604,8 @@ the available articles, and the `typical' articles are cited. The
 `available' graph is obviously similar to
 Figure~\ref{fig-citationsperyear}; under 1\% of citations are to
 articles published in future years. One thing that will be useful in
-\textbf{?@sec-age} is that the graphs in Figure~\ref{fig-citationcounts}
-have a similar shape.
+Section~\ref{sec-age} is that the graphs in
+Figure~\ref{fig-citationcounts} have a similar shape.
 
 \begin{figure}
 
@@ -917,9 +917,9 @@ measure we're using for later years in implausible ways.
 So what I've settled on is using the ratio of how often this article is
 cited in a year, to how often a \emph{typical} article is cited that
 year. By `typical' I mean an article three to ten years old; as we'll
-see in \textbf{?@sec-age}, those are the typical ages of cited articles.
-That deals with the intuitive problems of the previous measures, and it
-gets the results roughly right. In
+see in Section~\ref{sec-age}, those are the typical ages of cited
+articles. That deals with the intuitive problems of the previous
+measures, and it gets the results roughly right. In
 Table~\ref{tbl-comp-cite-ratio-typical}, I'll do one last comparison
 between the 1990s and 2021 to make the point.
 
@@ -1002,8 +1002,223 @@ I'll divide the number of citations an article receives in a year by the
 average number that a typical, i.e., 3-10 year old, article receives
 that year.
 
+\section{Age Effects}\label{sec-age}
+
+The simplest way to work out age effects would be to use the values in
+Figure~\ref{fig-overall-age}. For any two articles with age \emph{x} and
+\emph{y}, we should adjust for age-effects by taking their citations at
+that age as something like the proportion of all citations of articles
+with that age as shown in Figure~\ref{fig-overall-age}. Given how
+dramatic the period effects are, this makes no theoretical sense
+whatsoever. And it would get various details wrong. Somewhat
+surprisingly, it would nevertheless be roughly correct.
+
+The picture in Figure~\ref{fig-overall-age} is fairly intuitive.
+Articles rarely get cited before they are published.\footnote{Though in
+  ``Naive Validity, Internalization, and Substructural Approaches To
+  Paradox'' (\citeproc{ref-Rosenblatt2017}{Rosenblatt 2017}), there are
+  three citations to then forthcoming papers in Synthese which
+  eventually appeared in 2021, giving them an age of -4.} Then they take
+a little bit of time to get noticed, before hitting their peak citations
+between 2 and 5 years after publication. After that it's a rapid, and
+then a slow, decline. For the classic articles, citations never really
+stop; Anscombe (\citeproc{ref-Anscombe1956}{1956}) is cited by Izgin
+(\citeproc{ref-Izgin2020}{2020}). But most articles reach the end of
+their citation life sooner or, occasionally, later.
+
+Still, we'd like to be sure that what we're seeing in
+Figure~\ref{fig-overall-age} isn't just a side-effect of the period
+effects, or something about how the articles are aggregated. That's what
+I'll try to do in this section.
+
+The key notion is what I'm going to call the \emph{citation ratio}. This
+is a function that takes two years, which I'll call \emph{old} and
+\emph{new}, as input. Intuitively, it measures how often articles from
+\emph{old} are cited in \emph{new}, normalised for how many articles are
+published in \emph{old}, and what the citation practices are in
+\emph{new}. More formally, it is the following ratio:
+
+\begin{itemize}
+\tightlist
+\item
+  The numerator is how often the average article in \emph{old} is cited
+  in \emph{new}. So we search the articles published in \emph{new},
+  count up the number of citations of articles published in \emph{old},
+  and divide by the number of articles published in \emph{old}.
+\item
+  The denominator is the rate a `typical' article is cited in
+  \emph{new}. Remember that I'm defining, somewhat stipulatively, a
+  typical article to be published between 3 and 10 years before
+  \emph{new}. So again we search the articles published in \emph{new},
+  count the citations to articles published 3 to 10 years earlier, and
+  divide by the number of articles originally published 3 to 10 years
+  earlier.
+\end{itemize}
+
+Let's illustrate this with an example, using 1985 as \emph{old} and 1997
+as \emph{new}. In 1997, indexed articles from 1985 were cited 95 times.
+There are 1551 articles published in 1985 in the index, so the numerator
+for the citation ratio is 95 / 1551, i.e., about 0.061. In the 3 to 10
+years before 1985, there were 12276 indexed articles published. Those
+articles were, collectively, cited 1484 times in 1997. So the
+denominator, the average number of citations the typical article got in
+1997, is 1484 / 12276, i.e., about 0.121. Putting those together, the
+citation ratio for 1985 in 1997 is (about) 0.507.
+
+In Figure~\ref{fig-ageeffecttibble-early} and
+Figure~\ref{fig-ageeffecttibble-late} I've graphed this citation ratio
+for many pairs of years. In the graph, the individual graphs (the
+\emph{facets}), are for each value of \emph{old}, the x-axis is the
+value for \emph{new}, and the y-axis is the citation ratio. Note that
+before 1965, we can't calculate the citation ratio because there isn't
+enough data to calculate the typical citation rate. So the y-axis starts
+at 1965. And for most years there are no dots on the left side of the
+graph, because I haven't calculated the citation ratio in years where
+\emph{old} is later than \emph{new}; there are few enough of these cases
+that they are best left out.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-ageeffecttibble-early-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecttibble-early}Each facet shows the relative
+citation rate for articles published that year at different ages.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-ageeffecttibble-late-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecttibble-late}Each facet shows the relative
+citation rate for articles published that year at different ages.}
+
+\end{figure}%
+
+There are several notable things about
+Figure~\ref{fig-ageeffecttibble-early} and
+Figure~\ref{fig-ageeffecttibble-late}. The most important is that after
+some weird results in the early years, probably due to the small sample
+sizes, the graphs for each year look remarkably similar. The citation
+ratio takes a year or two to take off from zero, gets to its peak within
+two to four years after publication, and then declines. In earlier
+years, the rise and the fall are more rapid than in later years. This is
+actually a surprising result, and I'll come back in
+\textbf{?@sec-culture} to why it might be. Still, it doesn't change that
+the shape of the curves is common enough to talk sensibly about an
+average curve. In Figure~\ref{fig-ageeffecteverything}, I've put most of
+the data from those two figures, with the x-axis now being age not the
+citing year, and the line showing the mean citation ratio by age. I say
+`most' of the data because I didn't show the points for original
+publication years before 1975, where as you can see in the earlier
+graph, the data are much noisier with much smaller samples. But those
+years are used in the calculation of the average that's
+displayed.\footnote{The graph also includes some `jitter' to make the
+  different points more easily visible. I've put each year of original
+  publication in a different colour, with nearby years being in similar
+  colours. But there are too many colours there to detect individual
+  years, and we'll return to faceted graphs like
+  Figure~\ref{fig-ageeffecttibble-early} and
+  Figure~\ref{fig-ageeffecttibble-late} when I want to highlight
+  individual years.}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-ageeffecteverything-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecteverything}Age effects from 1970 onwards on
+a single graph, with the overall averrage shown.}
+
+\end{figure}%
+
+The mean curve in Figure~\ref{fig-ageeffecteverything} is really similar
+to the unadjusted age curve in Figure~\ref{fig-overall-age}. This is
+what I meant earlier by saying that after a lot of calculations, we'd
+get back to the same aging curve that we got from the simplest possibe
+measure.
+
+The calculations did have one really notable effect though. The
+unadjusted age numbers give us a sensible aging curve overall, but they
+give us an absurd aging curve for individual years. For most years in
+the dataset, the year they are most cited is not two to five years after
+initial publication; it is 2021. The point of the various adjustments in
+this section has been to make better sense of what's happening in
+individual years.
+
+The result is the striking lack of outliers in
+Figure~\ref{fig-ageeffecteverything}. All the individual data points are
+fairly close to the mean. There is some deviation, and there would be
+much more if I included the earlier years where the data is much
+noisier. The deviation there is will be the focus of much of the rest of
+this paper. Still, it's notable how consistent the age curve is, once we
+use citation ratio to account for period effects.
+
+To end this section, I wanted to highlight two features of
+Figure~\ref{fig-ageeffecttibble-early} and
+Figure~\ref{fig-ageeffecttibble-late} that are a little hard to see in
+the big graph. In Figure~\ref{fig-peakratio}, I've graphed the maximum
+value the citation ratio reaches for each year of initial publication.
+This is a bit misleading before 1965, because I don't have enough data
+to calculate citation ratios when the citing year is earlier than that,
+so it might have left off what would have been the high point. But from
+then on it's useful.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-peakratio-1.pdf}}
+
+}
+
+\caption{\label{fig-peakratio}The maximum citation ratio in each facet
+in Figure~\ref{fig-ageeffecttibble-early} and
+Figure~\ref{fig-ageeffecttibble-late}.}
+
+\end{figure}%
+
+After the initial jump upwards, and the very high numbers in the
+mid-1960s, the trend is a decline. In Figure~\ref{fig-peakratiotime}
+I've graphed out which age those peaks are hit at, for different years
+of initial publication starting in 1963.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-peakratiotime-1.pdf}}
+
+}
+
+\caption{\label{fig-peakratiotime}For each original publication year,
+the age it hits maximum citation ratio.}
+
+\end{figure}%
+
+In Figure~\ref{fig-peakratiotime}, the graph is going slightly upwards.
+Putting these last two figures together, we get the claim I was
+gesturing at earlier: citation curves are getting flatter. The peaks are
+coming later, and they are lower.
+
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Anscombe1956}
+Anscombe, Elizabeth. 1956. {``Aristotle and the Sea Battle.''}
+\emph{Mind} 65 (1): 1--15.
+\url{https://doi.org/doi.org/10.1093/mind/65.1.1}.
+
 \bibitem[\citeproctext]{ref-Bump2023}
 Bump, Philip. 2023. \emph{The Aftermath: The Last Days of the Baby Boom
 and the Future of Power in America}. New York: Penguin Random House.
@@ -1085,6 +1300,12 @@ Them to Be?''} \emph{Noûs} 34 (1): 31--55.
 Hull, David L. 1978. {``A Matter of Individuality.''} \emph{Philosophy
 of Science} 45 (3): 335--60. \url{https://doi.org/10.1086/288811}.
 
+\bibitem[\citeproctext]{ref-Izgin2020}
+Izgin, Christopher. 2020. {``Internal Negation and the Principles of
+Non-Contradiction and of Excluded Middle in Aristotle.''} \emph{History
+and Philosophy of Logic} 41 (1): 1--15.
+\url{https://doi.org/01445340.2019.1683793}.
+
 \bibitem[\citeproctext]{ref-WOSA1982NH65300003}
 Jackson, Frank. 1982. {``Epiphenomenal Qualia.''} \emph{Philosophical
 Quarterly} 32 (127): 127--36. \url{https://doi.org/10.2307/2960077}.
@@ -1157,6 +1378,11 @@ Imprint} 13 (23): 1--37.
 \bibitem[\citeproctext]{ref-WOSA1985APA8500001}
 Rawls, John. 1985. {``Justice as Fairness: Political Not
 Metaphysical.''} \emph{Philosophy \& Public Affairs} 14 (3): 223--51.
+
+\bibitem[\citeproctext]{ref-Rosenblatt2017}
+Rosenblatt, Lucas. 2017. {``Naive Validity, Internalization, and
+Substructural Approaches to Paradox.''} \emph{Ergo} 4 (4): 93--120.
+\url{https://doi.org/10.3998/ergo.12405314.0004.004}.
 
 \bibitem[\citeproctext]{ref-WOS000272855000002}
 Schaffer, Jonathan. 2010. {``Monism: The Priority of the Whole.''}
