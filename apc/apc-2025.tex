@@ -1165,7 +1165,7 @@ noisier. The deviation there is will be the focus of much of the rest of
 this paper. Still, it's notable how consistent the age curve is, once we
 use citation ratio to account for period effects.
 
-To end this section, I wanted to highlight two features of
+There are two particularly interesting features
 Figure~\ref{fig-ageeffecttibble-early} and
 Figure~\ref{fig-ageeffecttibble-late} that are a little hard to see in
 the big graph. In Figure~\ref{fig-peakratio}, I've graphed the maximum
@@ -1212,6 +1212,180 @@ Putting these last two figures together, we get the claim I was
 gesturing at earlier: citation curves are getting flatter. The peaks are
 coming later, and they are lower.
 
+Finally, I want to note how much variation there is hidden within all
+the graphs I've shown so far. I'm mostly here classifying articles
+simply by their publication year. If we used more fine-grained
+classifications, some of the results would look rather different. In
+Figure~\ref{fig-ageeffecteverything-high} and
+Figure~\ref{fig-ageeffecteverything-low} I've shown what happens to
+Figure~\ref{fig-ageeffecteverything} if we first restrict attention to
+articles with 15 or more citations, and then to articles with fewer than
+15 citations.\footnote{I picked this threshold because there are
+  approximately as many citations to articles with at least that many
+  citations as to the other articles.} Obviously in the first graph the
+values will be higher; highly cited articles are, indeed, cited more
+often. But what I want to highlight here is the different shape of the
+curves.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-ageeffecteverything-high-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecteverything-high}A version of
+Figure~\ref{fig-ageeffecteverything} just looking at highly cited
+articles}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-ageeffecteverything-low-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecteverything-low}A version of
+Figure~\ref{fig-ageeffecteverything} just looking at not so highly cited
+articles}
+
+\end{figure}%
+
+Both graphs rise rapidly to a peak two to five years after publication,
+and then descend. But from that similarity, the differences are
+striking. For the highly cited articles, there is barely any dropoff by
+years 8 to 10. For the others, the dropoff starts in earnest in year 4,
+and by year 10, the average value is half of the peak. That graph
+doesn't quite go to 0, but mostly these articles are not making much
+impact after a couple of decades. On the other hand, for the highly
+cited articles, the age effects are very gradual. Several decades after
+their publication, they are (on average) being cited 2/3 as often as at
+their peak (adjusting for period effects).
+
+I think there is an important lesson in this. If the way you think about
+citations in philosophy comes from looking the history of famous
+articles, you'll get a misleading impression. The citation pattern for a
+highly cited article isn't like the citation pattern for a regular
+article, just scaled up. It has a very different temporal structure.
+
+None of this a priori. There could be relatively rarely cited articles
+that get frequently cited long after their publication. Indeed, there
+are such papers in the database. Norman Malcolm's ``Dreaming and
+Scepticism'' (\citeproc{ref-WOSA1975KG87100002}{Curley 1975}) didn't get
+much attention in the journals when it was firs published, but has been
+picked up a bit recently because of an increase in work on dreams. And
+there could be articles that are the center of attention for a while
+then get fewer citations. Some papers on supervenience fit that
+description (e.g., Difrisco (\citeproc{ref-WOS000443474300002}{2018})),
+as well as some papers in philosophy of science. But in general, highly
+cited articles are highly cited not because they have a flurry of
+activity, but because they remain part of the conversation for years
+after publication.
+
+\section{Cohort Effects}\label{sec-cohort}
+
+So far we've seen how period effects and age effects between them can
+explain a lot of the trends we see in citation patterns. But there are
+systematic deviations from those patterns which remain. In
+Figure~\ref{fig-fourdeviations}, I've shown some of these. Each graph
+shows the citation ratio for articles published in a particular year, as
+compared to the average citation ratio at different ages.
+
+\begin{figure}
+
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-fourdeviations-1.pdf}}
+
+}
+
+\subcaption{\label{fig-fourdeviations-1}1961}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-fourdeviations-2.pdf}}
+
+}
+
+\subcaption{\label{fig-fourdeviations-2}1979}
+
+\end{minipage}%
+\newline
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-fourdeviations-3.pdf}}
+
+}
+
+\subcaption{\label{fig-fourdeviations-3}1985}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-fourdeviations-4.pdf}}
+
+}
+
+\subcaption{\label{fig-fourdeviations-4}2007}
+
+\end{minipage}%
+
+\caption{\label{fig-fourdeviations}Mean annual citations to different
+article kinds.}
+
+\end{figure}%
+
+In 1961 and 1985, the yearly values are predominantly below the mean
+line. In 1979 and 2007, they are predominantly above it, though this
+isn't true for the first few years of the 2007 data. Note that the
+graphs have different lengths. Everything stops in 2021. And the 1961
+data is cut off a little on the left because we only start calculating
+citation ratios in 1965. That's why the line showing the mean is
+differently shaped that year.
+
+For each of year of original publication, we can calculate the mean
+difference between the citation ratio for that year, and the mean
+citation ratio for articles that age. That tells us how often articles
+published that year are cited, compared to how often you'd expect them
+to be cited knowing just the age and period effects. The results are in
+Figure~\ref{fig-cohort}.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025_files/figure-pdf/fig-cohort-1.pdf}}
+
+}
+
+\caption{\label{fig-cohort}Cohort effects for different publication
+years.}
+
+\end{figure}%
+
+A couple of quick technical notes on Figure~\ref{fig-cohort}. I've added
+a smoothed curve over the graph to help make some of the features of it
+stand out. And in calculating the mean, I only included years where we
+had at least five years worth of data to calculate the mean age effect.
+So that means I haven't included what happens to 1955 papers when they
+are cited after 2016. There isn't nearly enough data to say what one
+would `expect' the usual aging curve to be at those points.
+
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-Anscombe1956}
@@ -1246,6 +1420,16 @@ Clark, Andy, and David J. Chalmers. 1998. {``The Extended Mind.''}
 \bibitem[\citeproctext]{ref-WOSA1975BF60100001}
 Cummins, Robert. 1975. {``Functional Analysis.''} \emph{Journal of
 Philosophy} 72 (20): 741--65. \url{https://doi.org/10.2307/2024640}.
+
+\bibitem[\citeproctext]{ref-WOSA1975KG87100002}
+Curley, EM. 1975. {``Dreaming and Conceptual Revision.''}
+\emph{Australasian Journal of Philosophy} 53 (2): 119--41.
+\url{https://doi.org/10.1080/00048407512341131}.
+
+\bibitem[\citeproctext]{ref-WOS000443474300002}
+Difrisco, James. 2018. {``Token Physicalism and Functional
+Individuation.''} \emph{European Journal for Philosophy of Science} 8
+(3): 309--29. \url{https://doi.org/10.1007/s13194-017-0188-y}.
 
 \bibitem[\citeproctext]{ref-WOS000397575900003}
 Dorr, Cian. 2016. {``To Be f Is to Be g.''} \emph{Philosophical

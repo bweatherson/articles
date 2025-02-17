@@ -548,18 +548,20 @@ year_by_year_with_effect <- year_in_year_out |>
 # This is more work because you have to calculate the 'other years' value again each time
 
 year_by_year_average <- year_by_year_with_effect |>
+  filter(age <= 7) |>
+#  filter(old_year != 1973) |>
   group_by(old_year) |>
   summarise(mean_surplus = mean(surplus))
 
 year_by_year_average_plot <- year_by_year_average |>
   ggplot(aes(x = old_year, y = mean_surplus)) +
-  geom_point()  +
-  geom_smooth() +
+  geom_point(color = point_col)  +
+  geom_smooth(color = point_col) +
   xlab(element_blank()) +
   ylab("Mean annual citations above average") +
   scale_y_continuous(labels = scales::percent)
 
-# year_by_year_average_plot + geom_smooth()
+#print(year_by_year_average_plot)
 
 effect_by_age_average <- function(early, late){
   age_effect_tibble |>
@@ -1231,6 +1233,42 @@ I think there is an important lesson in this. If the way you think about citatio
 
 None of this a priori. There could be relatively rarely cited articles that get frequently cited long after their publication. Indeed, there are such papers in the database. Norman Malcolm's "Dreaming and Scepticism" [@WOSA1975KG87100002] didn't get much attention in the journals when it was firs published, but has been picked up a bit recently because of an increase in work on dreams. And there could be articles that are the center of attention for a while then get fewer citations. Some papers on supervenience fit that description (e.g., @WOS000443474300002), as well as some papers in philosophy of science. But in general, highly cited articles are highly cited not because they have a flurry of activity, but because they remain part of the conversation for years after publication.
 
+# Cohort Effects {#sec-cohort}
+
+So far we've seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In @fig-fourdeviations, I've shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.
+
+```{r}
+#| label: fig-fourdeviations
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "1961"
+#|   - "1979"
+#|   - "1985"
+#|   - "2007"
+#| layout-ncol: 2
+
+year_to_mean_plot(1961)
+year_to_mean_plot(1979)
+year_to_mean_plot(1985)
+year_to_mean_plot(2007)
+```
+
+In 1961 and 1985, the yearly values are predominantly below the mean line. In 1979 and 2007, they are predominantly above it, though this isn't true for the first few years of the 2007 data. Note that the graphs have different lengths. Everything stops in `{r} end_year`. And the 1961 data is cut off a little on the left because we only start calculating citation ratios in `{r} start_year + typical_high`. That's why the line showing the mean is differently shaped that year.
+
+For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you'd expect them to be cited knowing just the age and period effects. The results are in @fig-cohort.
+
+```{r}
+#| label: fig-cohort
+#| fig-cap: "Cohort effects for different publication years."
+
+year_by_year_average_plot
+```
+
+A couple of quick technical notes on @fig-cohort. I've added a smoothed curve over the graph to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven't included what happens to `{r} start_year` papers when they are cited after `{r} end_year - min_data`. There isn't nearly enough data to say what one would 'expect' the usual aging curve to be at those points.
+
+
+
+
 <!--
 
 
@@ -1460,7 +1498,7 @@ In @fig-peakratiotime, the graph is going slightly upwards. Putting these last t
 So far we've seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In @fig-fourdeviations, I've shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.
 
 ```{r}
-#| label: fig-fourdeviations
+#| label: fig-fourdeviations-draft
 #| column: screen-inset
 #| fig-cap: "Mean annual citations to different article kinds."
 #| fig-subcap: 
@@ -1481,7 +1519,7 @@ In 1961 and 1985, the yearly values are predominantly below the mean line. In 19
 For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you'd expect them to be cited knowing just the age and period effects. The results are in @fig-cohort.
 
 ```{r}
-#| label: fig-cohort
+#| label: fig-cohort-draft
 #| fig-cap: "Cohort effects for different publication years."
 
 year_by_year_average_plot
