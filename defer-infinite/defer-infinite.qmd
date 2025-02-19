@@ -9,9 +9,10 @@ execute:
   warning: false
 numbersections: true
 author:
-  - name: Anonymous
+  - name: Brian Weatherson
 categories:
   - epistemology
+  - games and decisions
 format:
     pdf: 
       geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
@@ -56,7 +57,7 @@ Dmitri @Gallow2018 proved one important negative result here. He showed that the
 
 That is, C can't defer to both A and B individually, think that A and B might disagree, and in the event they do disagree, plan to take a fixed linear mixture of A's probability and B's probability as the probability of *p*. This result, unlike most I'll discuss in this paper, does not make any finiteness assumptions, but it does make a strong assumption about mixing, namely that the mixture will be linear.
 
-Snow @Zhang2025 recently proved a result that mostly generalises Gallow's result, though it does weaken it in one crucial respect.^[Zhang's result is reported in @PettigrewWeisberg2024. The full result Zhang proves is considerably more general than this one, but the version I'll discuss makes it easier to see the contrast between the finite and infinite case.] She shows that it is impossible for A, B and C to satisfy the following five constraints.
+Snow @Zhang2025 recently proved a result that considerably generalises Gallow's result, though it does add one crucial extra condition.^[Zhang's result is reported in @PettigrewWeisberg2024. The full result Zhang proves is much more general than this one, but the version I'll discuss makes it easier to see the contrast between the finite and infinite case.] She shows that it is impossible for A, B and C to satisfy the following five constraints.
 
 1. ∀*a*: C(*p* | A(*p*) = *a*) = *a*;
 2. ∀*b*: C(*p* | B(*p*) = *b*) = *b*;
@@ -267,7 +268,7 @@ First, for any O, W and Pr, if E~1~ is a refinement of E~2~, S~1~ is recommended
 
 Second, for any W, if E~1~ is not a refinement of E~2~, then for some O and Pr, there exists an S~1~ is recommended by E~1~ and S~2~ is recommended by E~2~ such that Exp(S~1~, Pr) < Exp(S~2~, Pr). That is, if E~1~ is not more informative than E~2~, then for some practical problem, it is better in expectation to perform E~2~ and carry out some strategy recommended by it.
 
-Blackwell isn't the first to connect the value of experiments to the relative value of strategies and options in this way; for some history of this idea see @Das2023 and @LeCam1996. But he works out the consequences of it in much more detail than anyone had before him. (The two results I've listed here don't go close to exhausting what he proved, but they are enough for our purposes.) Philosophers have primarily focussed on the first of these two results. And they have focussed largely on the special case when E~2~(*w*) = W; i.e., when 'performing' experiment E~2~ means getting no information at all.^[Further, they haven't always credited Blackwell (or the earlier results from Peirce and Ramsey that Das discusses) when they do discuss the results. I'm grateful to John Quiggin for pointing out to us the importance of Blackwell's results in this context.] In this section we'll also ignore the second result, but we will pay attention to the case where E~2~ isn't universal.
+Blackwell isn't the first to connect the value of experiments to the relative value of strategies and options in this way; for some history of this idea see @Das2023 and @LeCam1996. But he works out the consequences of it in much more detail than anyone had before him. (The two results I've listed here don't go close to exhausting what he proved, but they are enough for our purposes.) Philosophers have primarily focussed on the first of these two results. And they have focussed largely on the special case when E~2~(*w*) = W; i.e., when 'performing' experiment E~2~ means getting no information at all.^[Further, they haven't always credited Blackwell (or the earlier results from Peirce and Ramsey that Das discusses) when they do discuss the results. I'm grateful to John Quiggin for pointing out to me the importance of Blackwell's results in this context.] In this section we'll also ignore the second result, but we will pay attention to the case where E~2~ isn't universal.
 
 John @Geanakoplos1989 proved an interesting generalisation of this first result. As noted earlier, Blackwell's theorems presuppose that each experiment is partitional. Formally, E is partitional iff for all *w*, *w* ∈ E(*w*), and for all *w*, *v*, if *v* ∈ E(*w*), then E(*w*) = E(*v*). Geanakoplos shows something interesting about experiments that are reflexive, transitive, and nested. These are defined as follow (with leading quantifiers over worlds left implicit)
 
@@ -288,7 +289,7 @@ This result has had some influence on recent philosophical work. It suggests the
 2. Performing experiments is valuable iff experiments are nested.
 3. Therefore, experiments are nested.
 
-That's fairly crude as stated, but it's possible to develop it into a more sophisticated argument that has implications for what the correct epistemic logic should be. You can (more sophisticated) versions of this argument in @Spencer2018 and @Dorst2019, and criticisms of these arguments in @Williamson2019 and @Das2023.
+That's fairly crude as stated, but it's possible to develop it into a more sophisticated argument that has implications for what the correct epistemic logic should be. You can find (more sophisticated) versions of this argument in @Spencer2018 and @Dorst2019, and criticisms of these arguments in @Williamson2019 and @Das2023.
 
 The aim of this section is to show that two of the assumptions that Geanakoplos uses in proving these results are essential. First, E~2~ has to be partitional; it is not sufficient that it is reflexive, transitive, and nested. Second, it cannot be that both W and O are infinite. Both results arguably help the Williamson-Das side of the debate mentioned in the previous paragraph, but I won't go into that in more detail here. The aim is just to show the formal limits of Geanakoplos's result.
 
@@ -354,7 +355,7 @@ Call the following frame **Bentham**. Again, a coin will be flipped until it lan
 
 The Novice probability does not Totally Trust this frame. Let Y be a random variable such that Y(F = ∞) = 0, and for all finite *n*, Y(F = *n*) = 1 - 2^-*n*^. E(Y | {*w*: Exp(Y, P(*w*)) ⩾ ⅔}, π) = 0 < ⅔. The only world *w* where Exp(Y, P(*w*)) ⩾ ⅔ is F = ∞, and at F = ∞, Y = 0.
 
-On the other hand, π does Value this frame. To see this, for any set of options O, recommended strategy S, random variable X (all defined on W), and integer *n*, let W*n* be the set {F = 1, …, F = *n*}, O~*n*~, P~*n*~, S~*n*~ and X~*n*~ be the restrictions of O, P and S to worlds in W*n*. From the way P is constructed, i.e., by conditionalising on the set of worlds where F is no greater than it actually is, it follows that if S is recommended on ⟨W, P⟩, then S~*n*~ is recommended on ⟨W~*n*~, P~*n*~⟩. Since ⟨W~*n*~, P~*n*~⟩ is a finite prior frame where E is reflexive, transitive and nested, and Pr = π, it follows by the result of Geanakoplos described in @sec-nesting, that the expected return of S~*n*~ is greater than the expected return of any option in O~*n*~. For any random variable X, Exp(X, π) is the limit as *n* tends to ∞ of Exp(X~*n*~, π); this is because as *n* grows this covers all words in W except F = ∞, which has probability 0. If the expected return of S is the limit *n* tends to ∞ of the expected return of S*~n~*, and the expected return of an option in O is the limit as *n* tends to ∞ of its counterpart in O~*n*~, and S*~n~* is better (in expectation) than every option in O~*n*~, it follows that S is better (in expectation) than every option in O. So Value is satisfied, as required.
+On the other hand, π does Value this frame. To see this, for any set of options O, recommended strategy S, random variable X (all defined on W), and integer *n*, let W~*n*~ be the set {F = 1, …, F = *n*}, O~*n*~, P~*n*~, S~*n*~ and X~*n*~ be the restrictions of O, P and S to worlds in W~*n*~. From the way P is constructed, i.e., by conditionalising on the set of worlds where F is no greater than it actually is, it follows that if S is recommended on ⟨W, P⟩, then S~*n*~ is recommended on ⟨W~*n*~, P~*n*~⟩. Since ⟨W~*n*~, P~*n*~⟩ is a finite prior frame where E is reflexive, transitive and nested, and Pr = π, it follows by the result of Geanakoplos described in @sec-nesting, that the expected return of S~*n*~ is greater than the expected return of any option in O~*n*~. For any random variable X, Exp(X, π) is the limit as *n* tends to ∞ of Exp(X~*n*~, π); this is because as *n* grows this covers all worlds in W except F = ∞, which has probability 0. If the expected return of S is the limit *n* tends to ∞ of the expected return of S*~n~*, and the expected return of an option in O is the limit as *n* tends to ∞ of its counterpart in O~*n*~, and S*~n~* is better (in expectation) than every option in O~*n*~, it follows that S is better (in expectation) than every option in O. So Value is satisfied, as required.
 
 # Conclusion
 
