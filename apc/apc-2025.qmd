@@ -548,7 +548,7 @@ year_by_year_with_effect <- year_in_year_out |>
 # This is more work because you have to calculate the 'other years' value again each time
 
 year_by_year_average <- year_by_year_with_effect |>
-  filter(age <= 7) |>
+#  filter(age <= 7) |>
 #  filter(old_year != 1973) |>
   group_by(old_year) |>
   summarise(mean_surplus = mean(surplus))
