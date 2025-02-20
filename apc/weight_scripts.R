@@ -47,7 +47,7 @@ fun_single_article_short <- function(x){
 fun_single_article__long <- function(x){
   mean(
     filter(
-      fun_single_article_weight(x),
+      fun_single_article_weight(x), 
       age > 7
     )$weight
   )
