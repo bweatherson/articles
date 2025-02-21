@@ -558,6 +558,7 @@ year_by_year_average_plot <- year_by_year_average |>
   geom_point(color = point_col)  +
   geom_smooth(color = point_col) +
   xlab(element_blank()) +
+  scale_x_continuous(breaks = (498:500)*20) +
   ylab("Mean annual citations above average") +
   scale_y_continuous(labels = scales::percent)
 
@@ -1266,6 +1267,24 @@ year_by_year_average_plot
 
 A couple of quick technical notes on @fig-cohort. I've added a smoothed curve over the graph to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven't included what happens to `{r} start_year` papers when they are cited after `{r} end_year - min_data`. There isn't nearly enough data to say what one would 'expect' the usual aging curve to be at those points.
 
+On the face of it, there are five periods in the graph.
+
+1. Journal articles published before the mid-1960s are very rarely cited.
+2. After that, and especially in the early 1970s, a flurry of very highly cited articles are published.
+3. Then there is a period of stagnation, where things mostly don't return to the lows of per-1965, but are consistently below 0.
+4. There is an uptick starting in the mid-1990s, and peaking dramatically in 2007.
+5. Then there is a rather dramatic drop off, almost immediately after the high of 2007.
+
+The first couple of trends make sense; the latter three less so. The rest of this paper (before the methodology section) will be about explaining what's going on here, and seeing what it can tell us both about the history of philosophy, and the history of the philosophy profession.
+
+Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don't have "Is Knowledge Justified True Belief?" [@Gettier1963] because they don't index _Analysis_ until 1975, and we don't have Austin's two most important papers - "Ifs and Cans" and "A Plea for Excuses" [@Austin1956; @Austin1956b] because their venues aren't indexed as journals at all. We do have important papers by @WOSA1956CGZ5700001, @WOSA1958CDL1000001, and @WOSA1956CGZ5700001. But these made much less impact than books from the same time, especially _Word and Object_ [@Quine1960] and _The Structure of Scientific Revolutions_ [@Kuhn1962], or than books written by the authors of some of these papers, such as @Anscombe1957 and @Strawson1959.
+
+Then starting in the late 1960s, almost every area of philosophy got turned upside down, with much of the action happening in journals. The two most important works of the period, _A Theory of Justice_ [@Rawls1971] and _Naming and Necessity_ [@Kripke1980], were not in journals. But articles in journals did make revolutionary changes in many fields, including:
+
+- Free will [@WOSA1969Y444700002; @10.2307_2024717];
+- Practical ethics [@WOS:A1971Y116900003, @WOSA1972Z066400001];
+- Meaning and reference [@10.2307_2025079]
+- 
 
 
 
