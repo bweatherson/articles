@@ -558,7 +558,33 @@ year_by_year_average_plot <- year_by_year_average |>
   geom_point(color = point_col)  +
   geom_smooth(color = point_col) +
   xlab(element_blank()) +
-  scale_x_continuous(breaks = (498:500)*20) +
+  scale_x_continuous(breaks = (98:100)*20) +
+  ylab("Mean annual citations above average") +
+  scale_y_continuous(labels = scales::percent)
+
+year_by_year_average_plot_short <- year_by_year_with_effect |>
+  filter(age <= 7) |>
+#  filter(old_year != 1973) |>
+  group_by(old_year) |>
+  summarise(mean_surplus = mean(surplus)) |>
+  ggplot(aes(x = old_year, y = mean_surplus)) +
+  geom_point(color = point_col)  +
+  geom_smooth(color = point_col) +
+  xlab(element_blank()) +
+  scale_x_continuous(breaks = (98:100)*20) +
+  ylab("Mean annual citations above average") +
+  scale_y_continuous(labels = scales::percent)
+
+year_by_year_average_plot_long<- year_by_year_with_effect |>
+  filter(age > 7) |>
+#  filter(old_year != 1973) |>
+  group_by(old_year) |>
+  summarise(mean_surplus = mean(surplus)) |>
+  ggplot(aes(x = old_year, y = mean_surplus)) +
+  geom_point(color = point_col)  +
+  geom_smooth(color = point_col) +
+  xlab(element_blank()) +
+  scale_x_continuous(breaks = (98:100)*20) +
   ylab("Mean annual citations above average") +
   scale_y_continuous(labels = scales::percent)
 
@@ -1003,7 +1029,7 @@ kable(avail_2021_cites_kable)
 
 ```
 
-None of the pairwise comparisons here seem obviously absurd. Was "To be F is to be G" more influential in 2021 than "Causation" was in the 1990s? I wouldn't have thought so, but it's not as clear as in the previous set of comparisons. But it is clear that the numbers in the second table in @tbl-comp-cite-ratio are considerably higher than the first table, especially at the very top end. That suggests that the intuition that including so many articles from long ago in the comparison class was a mistake, and it has systematically increased the measure we're using for later years in implausible ways.
+None of the pairwise comparisons here seem obviously absurd. Was "To be F is to be G" more influential in 2021 than "Causation" was in the 1990s? I wouldn't have thought so, though it's not as clear as in the previous set of comparisons. What is clear is that the numbers in the second table in @tbl-comp-cite-ratio are considerably higher than the first table, especially at the very top end. That suggests that the intuition that including so many articles from long ago in the comparison class was a mistake, and it has systematically increased the measure we're using for later years in implausible ways.
 
 So what I've settled on is using the ratio of how often this article is cited in a year, to how often a _typical_ article is cited that year. By 'typical' I mean an article three to ten years old; as we'll see in @sec-age, those are the typical ages of cited articles. That deals with the intuitive problems of the previous measures, and it gets the results roughly right. In @tbl-comp-cite-ratio-typical, I'll do one last comparison between the 1990s and 2021 to make the point.
 
@@ -1277,16 +1303,89 @@ On the face of it, there are five periods in the graph.
 
 The first couple of trends make sense; the latter three less so. The rest of this paper (before the methodology section) will be about explaining what's going on here, and seeing what it can tell us both about the history of philosophy, and the history of the philosophy profession.
 
-Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don't have "Is Knowledge Justified True Belief?" [@Gettier1963] because they don't index _Analysis_ until 1975, and we don't have Austin's two most important papers - "Ifs and Cans" and "A Plea for Excuses" [@Austin1956; @Austin1956b] because their venues aren't indexed as journals at all. We do have important papers by @WOSA1956CGZ5700001, @WOSA1958CDL1000001, and @WOSA1956CGZ5700001. But these made much less impact than books from the same time, especially _Word and Object_ [@Quine1960] and _The Structure of Scientific Revolutions_ [@Kuhn1962], or than books written by the authors of some of these papers, such as @Anscombe1957 and @Strawson1959.
+```{r}
+#| label: find-old-high-cites
+
+old_high_cites <- citation_tibble |>
+  filter(old_year <= 1963) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  slice_max(order_by = citations, n = 20) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  filter(citations >= 150) |>
+  arrange(year) |>
+  mutate(the_cite = paste0(
+    "@",
+    str_replace_all(old, ":","")
+  ))
+
+list_of_old_high_cites <- knitr::combine_words(old_high_cites$the_cite)
+```
+
+Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don't have "Is Knowledge Justified True Belief?" [@Gettier1963] because they don't index _Analysis_ until 1975, and we don't have Austin's two most important papers - "Ifs and Cans" and "A Plea for Excuses" [@Austin1956; @Austin1956b] because their venues aren't indexed as journals at all. We do have important papers by `r list_of_old_high_cites`. But these made much less impact than books from the same time, especially _Intention_ [@Anscombe1957], _Word and Object_ [@Quine1960] and _The Structure of Scientific Revolutions_ [@Kuhn1962].
 
 Then starting in the late 1960s, almost every area of philosophy got turned upside down, with much of the action happening in journals. The two most important works of the period, _A Theory of Justice_ [@Rawls1971] and _Naming and Necessity_ [@Kripke1980], were not in journals. But articles in journals did make revolutionary changes in many fields, including:
 
 - Free will [@WOSA1969Y444700002; @10.2307_2024717];
-- Practical ethics [@WOS:A1971Y116900003, @WOSA1972Z066400001];
-- Meaning and reference [@10.2307_2025079]
-- 
+- Practical ethics [@WOSA1971Y116900003; @WOSA1972Z066400001];
+- Meaning and reference [@10.2307_2025079];
+- Philosophy of mathematics [@10.2307_2025075];
+- Causation [@10.2307_2025310; @10.2307_2025096]; and
+- Personal identity [@WOSA1971Y036400001]
 
+As well there were a surprising number of papers that weren't as influential straight away, but came to play a big role the later literature. This group includes papers by Fred @WOSA1970ZE33800001, David @WOSA1970ZE32700001, Kendall @WOSA1970Y384700002 and Larry @WOSA1973P242100001. That's all to say that the story that @fig-cohort tells about the early 1970s is plausible. There had never before been a period when there was such a quantity of high quality work being done in philosophy journals.
 
+To see what is happening after that time, though, we need to look a little more closely at the data. @fig-cohort-short is a version of @fig-cohort just focussing on the first seven years after publication. That is, for each publication year, it measures citations of articles published that year in the seven years after they were published, adjusted in the same way for age and period effects.
+
+```{r}
+#| label: fig-cohort-short
+#| fig-cap: A version of @fig-cohort restricted to citations from the first seven years after publication.
+
+year_by_year_average_plot_short 
+```
+
+@fig-cohort-short is measuring how often articles from a year are cited, soon after publication, compared to articles cited before them and, to a lesser extent, immediately after them. So the high numbers in the early 1960s are not showing that articles from that time were highly cited in an absolute sense, just that they were cited much more than articles from the 1950s were.
+
+After that boom, and the one-off year of 1973, things are reasonably steady through the mid-2000s. Then, especially after 2007, there is a massive drop. Why is that happening? Part of the answer is shown in @fig-cohort-long, which is the same measure but only for citations after the first seven years.
+
+```{r}
+#| label: fig-cohort-long
+#| fig-cap: A version of @fig-cohort restricted to citations from after the first seven years after publication.
+
+year_by_year_average_plot_long
+```
+
+The differences between @fig-cohort-short and @fig-cohort-long are striking. After both graphs go up in the early 1970s, and down in the early 1980s, they are strongly anti-correlated. Between the mid-1980s and mid-1990s, short term citations are up, and long term citations are down. After around 1995, short term citations start cratering, and long term citations are as high as ever?
+
+What could explain this pattern? In the next three sections, going to suggest three overlapping accounts: one involving technology, one involving content, and one involving culture.
+
+# Technology and Citations {@sec-technology}
+
+As I noted at the top, I feel a common view is that the primary role of electronic publication has been to speed up _distribution_. This view is not borne out by the data. If that were the case, you'd expect to see short term, especially very short term, citations rising over time.
+
+Printing and postage was a pretty mature technology by the late twentieth century. We weren't waiting for steam ships to bring the latest issues of journals to distant shores. The technology used for distributing philosophy journals was the same technology used for distributing journals in medicine and other fields where time was of the essence. From that perspective, the internet would only speed things up by weeks, maybe months, and this wouldn't really show on a graph in years.
+
+What is perhaps more surprising is that the prevalence of Online First, Early View, and other forms of quasi-publication haven't made more of a difference. They do show up in the data. Until recently, there were zero articles cited in an earlier year than their official publication year. If they were cited in manuscript form, as, e.g., "Demonstratives" [@Kaplan1989] often was, these citations didn't show up in indicies like the one I'm using. Articles cited in Early View do show up, so we start to see negative citation ages in the data. But we don't see enough of them to make much of a difference.
+
+The biggest effect of technology was not on distribution but on _search_. Before the widespread use of computers, there was a much better system for searching books than for searching journal articles. Classification systems meant books typically lived on shelves near other books on the same topic. Card catalogues would list subject matters for books. Even the title of the book could help track down what it was about. Finding a journal article on a relevant topic was much harder. And, it seems, it mostly wasn't done.
+
+My impression is that there was also a notable physical difference between the ways books and journals were stored and accessed. Almost every academic has a bookshelf; not as many have large collections of journals. Occasionally a department would have physical journals on hand, but often the best way to access journals was to walk across campus to a library. On the other hand, accessing a book might involve walking four steps to a shelf. This physical difference probably contributed to the relative prominence of books and articles in bibliographies.
+
+There often was an exception to this general claim about access. (At least, this was true in any pre-twentieth century department I was familiar with, but I think it was moderately widespread.) Departments would sometimes keep the latest issues of journals in a department library or common room. Those would be much more prominent, and easy to access. I'm not sure whether this explains why so many of the journal citations pre-1995 are to very recent journals, but it probably helped.
+
+So that I think is part of the story. Before the widespread adoption of computers, old journal articles were very hard to find. This changed a little with the advent of electronic, and hence easily searchable, versions of _Philosophers' Index_, and changed a lot when journals went online. And that's part of why older articles, and especially older articles that are not classics, are now more widely cited.
+
+# Content Changes {#sec-content}
+
+Another part of the story is that the centre of gravity of philosophy publishing changes over these 
 
 <!--
 
