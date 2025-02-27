@@ -1385,8 +1385,17 @@ So that I think is part of the story. Before the widespread adoption of computer
 
 # Content Changes {#sec-content}
 
-Another part of the story is that the centre of gravity of philosophy publishing changes over these 
+Another part of the story is that the centre of gravity of philosophy publishing changes over the time period we're looking at. And it does so in a way that turns out to matter for which kinds of articles are cited.
 
+Through at least the early 2000s, analytic philosophy is in what @Sider2020 [2] calls the "modal era". One aspect of this era, one that Sider particularly highlights, is that questions about essence were equated with questions about necessity in a way that they weren't either before or after the era.^[It was usual, during this era, to take the necessity of origins thesis and the origin essentialism thesis to not just be mutually supporting, but to be literally identical. I don't think that identity claim would be widely endorsed either before 1970 or after 2010.] This should be taken as a symptom of the era, not the definition of it. What's really defining of the era was the way modality became central to disputes across the discipline.
+
+Consider, for example, what Frank @Jackson1998 called the 'location problem', i.e., the problem of how to locate in the world something that the philosopher thinks exists, and is not fundamental. Jackson argues that saying how to locate the non-fundamental in the fundamental is a compulsory question for anyone doing 'serious metaphysics', and the one and only answer to it will involve modality. As he says,
+
+> When does a putative feature of our world have a place in the account some serious metaphysics tells of what our world is like? I have already mentioned one answer: if the feature is entailed by the account told in the terms favoured by the metaphysics in question, it has a place in the account told in the favoured terms. This is hardly controversial considered as a sufficient condition, but, I will now argue, it is also a necessary condition: the one and only way of having a place in an account told in some set of preferred terms is by being entailed by that account—a view I will refer to as the entry by entailment thesis. [@Jackson1998 5]
+
+Now Jackson went on to say other things about entailment that were not widely endorsed. But at this early stage in the book, I think he was largely expressing conventional wisdom.^[The only thing really puzzling about this passage is the claim about the relative controversialness of the necessity and sufficiency entailment as a solution to the location problem. After all, @WOSA1982NN35300003 had already raised problems for it. So too had @Fine1994b, in a way that would become very important a few years later, but that was not playing a major role in the literature, especially when Jackson delivered the Locke lectures this book was based on.] In a review that disagrees with many parts of the book, Stephen @Yablo2000Jackson [20] says "Not many eyebrows will be raised by Jackson’s view that metaphysics is committed to 'entry by entailment' theses." That is, the quoted parts are not controversial, especially the one that Jackson flags as being ever so slightly more controversial.
+
+[Insert some stuff about supervenience.]
 <!--
 
 
