@@ -628,15 +628,17 @@ year_to_mean_plot <- function(the_year){
     geom_point(aes(x = age, y = mean_effect), color = point_col, size = 0.4) +
     theme(legend.position = "none")
 }
+
+number_of_articles <- scales::label_comma()(nrow(active_philo_bib))
 ```
 
 # Introduction {#sec-introduction}
 
-Before looking at the data, here are two things I believed about philosophy citations. First, philosophers tend to cite very old papers. We still regularly teach a number of papers over half a century old in introductory classes; e.g., @Frankfurt1969, @Thomson1971, @Singer1972, @Lewis1973ben. These aren't taught as history papers, but as early entries into the contemporary philosophical debate. And, I thought, that's how we cite. Second, the technological changes of the last quarter century meant that this practice was being slowly reversed. The spread of electronic communication in the late 20th century, and then the rise of archives (e.g., Arxiv, SSRN, PhilPapers) and eventually journals publishing in EarlyView, meant that papers could now be cited even before they were published, and certainly without the delays involved in printing and posting journals around the world.
+Before looking at the data, here are two things I believed about philosophy citations. First, philosophers tend to cite very old papers. We still regularly teach a number of papers over half a century old in introductory classes; e.g., @WOSA1969Y444700002, @WOSA1971Y116900003, @WOSA1972Z066400001, @10.2307_2025310. These aren't taught as history papers, but as early entries into the contemporary philosophical debate. And, I thought, that's how we cite. Second, the technological changes of the last quarter century meant that this practice was being slowly reversed. The spread of electronic communication in the late 20th century, and then the rise of archives (e.g., Arxiv, SSRN, PhilPapers) and eventually journals publishing in EarlyView, meant that papers could now be cited even before they were published, and certainly without the delays involved in printing and posting journals around the world.
 
 Both of these thoughts were wrong. Historically, philosophy papers have tended, when they are citing other philosophy papers, to cite very recent ones. But this tendency is diminishing, not increasing, over time. I'll offer much more evidence for these claims as we go along, but to make them plausible, I'll start with two simple graphs.
 
-The data for the graphs come from citation data I downloaded concerning XXX papers published from 1955-2021,^[I would like to have more recent data, but this is the latest full year of data available through my university's contract with Web of Science. I do have substantial partial data for 2022, and it mostly confirms the trends shown here. But in this case I think it's better to leave off partial data than to try to correct for its incompleteness.] in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2021, and to one of these 100 journals between 1955 and 2021. (The details of the journals, including when they start getting indexed for this dataset, are in @sec-methodology.) In total, that gives us YYY citations.
+The data for the graphs come from citation data I downloaded concerning `r number_of_articles` papers published from 1955-2021,^[I would like to have more recent data, but this is the latest full year of data available through my university's contract with Web of Science. I do have substantial partial data for 2022, and it mostly confirms the trends shown here. But in this case I think it's better to leave off partial data than to try to correct for its incompleteness.] in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2021, and to one of these 100 journals between 1955 and 2021. (The details of the journals, including when they start getting indexed for this dataset, are in @sec-methodology.) In total, that gives us YYY citations.
 
 Say the *age* of a citation is the difference between the publication year of the citing article and the cited article. So if an article published in 1998 cites an article published in 1985, that's a 13 year old citation.
 
@@ -1136,7 +1138,7 @@ The numbers in the second table are a little higher, but not overly so. In any c
 
 The simplest way to work out age effects would be to use the values in  @fig-overall-age. For any two articles with age _x_ and _y_, we should adjust for age-effects by taking their citations at that age as something like the proportion of all citations of articles with that age as shown in @fig-overall-age. Given how dramatic the period effects are, this makes no theoretical sense whatsoever. And it would get various details wrong. Somewhat surprisingly, it would nevertheless be roughly correct.
 
-The picture in @fig-overall-age is fairly intuitive. Articles rarely get cited before they are published.^[Though in "Naive Validity, Internalization, and Substructural Approaches To Paradox" [@Rosenblatt2017], there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.] Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @Anscombe1956 is cited by @Izgin2020. But most articles reach the end of their citation life sooner or, occasionally, later.
+The picture in @fig-overall-age is fairly intuitive. Articles rarely get cited before they are published.^[Though in "Naive Validity, Internalization, and Substructural Approaches To Paradox" [@WOS000453528500004], there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.] Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @WOSA1956CHJ4200001 is cited by @WOS000497282400001. But most articles reach the end of their citation life sooner or, occasionally, later.
 
 Still, we'd like to be sure that what we're seeing in @fig-overall-age isn't just a side-effect of the period effects, or something about how the articles are aggregated. That's what I'll try to do in this section.
 
@@ -1367,7 +1369,7 @@ The differences between @fig-cohort-short and @fig-cohort-long are striking. Aft
 
 What could explain this pattern? In the next three sections, going to suggest three overlapping accounts: one involving technology, one involving content, and one involving culture.
 
-# Technology and Citations {@sec-technology}
+# Technology and Citations {#sec-technology}
 
 As I noted at the top, I feel a common view is that the primary role of electronic publication has been to speed up _distribution_. This view is not borne out by the data. If that were the case, you'd expect to see short term, especially very short term, citations rising over time.
 
@@ -1395,12 +1397,236 @@ Consider, for example, what Frank @Jackson1998 called the 'location problem', i.
 
 Now Jackson went on to say other things about entailment that were not widely endorsed. But at this early stage in the book, I think he was largely expressing conventional wisdom.^[The only thing really puzzling about this passage is the claim about the relative controversialness of the necessity and sufficiency entailment as a solution to the location problem. After all, @WOSA1982NN35300003 had already raised problems for it. So too had @Fine1994b, in a way that would become very important a few years later, but that was not playing a major role in the literature, especially when Jackson delivered the Locke lectures this book was based on.] In a review that disagrees with many parts of the book, Stephen @Yablo2000Jackson [20] says "Not many eyebrows will be raised by Jackson’s view that metaphysics is committed to 'entry by entailment' theses." That is, the quoted parts are not controversial, especially the one that Jackson flags as being ever so slightly more controversial.
 
-[Insert some stuff about supervenience.]
-<!--
+The idea that entailment, i.e., necessitation, had been central to understanding how the non-fundamental relates to the fundamental had been central to philosophy for many years by this point. (To be clear, Jackson isn't claiming great novelty at this point of his book; the big claim he's building towards is that the necessitation is a priori knowable.) We can see just how central it is by using a slightly different statistic to what I've used so far: grand-citations. 
+
+Say that the number of grand-citations an article *a* has is the number of triples ⟨*a*, *b*, *c*⟩ such that *c* cites *b* and *b* cites *a*. It's the sum of the number of citations of articles that cite *a*. If we look at grand-citations over time, they show David Lewis's centrality to the philosophy journals. Through 2021, six of the eight articles with the most grand-citations are by Lewis. If instead we look at particular times, we see the changing face of the journals. Grand-citations take some time to accrue, so I'll look at twenty year periods. In particular, for various years, I'll look at which articles published in the preceeding twenty years had the most grand-citations through that year.
+
+```{r}
+#| label: calculate-grand-cites
+#| cache: true
+
+# Grand cites at a time
+
+overall_grand_cites <- c()
+
+for (end_year in (199:202)*10){
+  temp_citation_count <- citation_tibble |>
+    filter(new_year <= end_year,
+           old_year >= end_year - 20) |>
+    group_by(old) |>
+    tally(name = "citations")
+  
+  temp_grand_cites <- citation_tibble |>
+    filter(new_year <= end_year,
+           old_year >= end_year - 20) |>
+    left_join(temp_citation_count,
+              by = c("new" = "old")) |>
+    replace_na(replace = list(citations = 0)) |>
+    group_by(old) |>
+    summarise(grand_cites = sum(citations)) |>
+    left_join(
+      select(
+        philo_bib,
+        old = id,
+        displayauth,
+        year,
+        title
+      ), by = "old"
+    ) |>
+    arrange(-grand_cites)
+  
+  temp_grand_cites_summary <- temp_grand_cites |>
+    slice(1:10) |>
+    left_join(
+      temp_citation_count,
+      by = "old"
+    ) |>
+    mutate(
+      Article = paste0(
+        displayauth,
+        " -@",
+        str_replace_all(old, ":",""),
+        " \"",
+        title,
+        "\""
+      )
+    ) |>
+    mutate(rank = row_number(),
+           as_of = end_year) |>
+    select(
+      `As Of` = as_of,
+      Rank = rank,
+      Article,
+      Citations = citations,
+      `Grand-Citations` = grand_cites
+    )
+  
+  overall_grand_cites <- overall_grand_cites |>
+    bind_rows(temp_grand_cites_summary)
+}
+
+```
+
+@tbl-grand-cite-2000 lists which articles, published from 1980 onwards, had the most grand-citations through 2000.
+
+```{r}
+#| label: tbl-grand-cite-2000
+#| tbl-cap: "The 10 articles from the 1980s and 1990s with the most grand-citations through 2000."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2000) |>
+    select(-`As Of`)
+)
+```
+
+I've included the names of the articles on this table to make vivid how central supervenience was to the literature at this time.^[The story of the relationship between twentieth century work on functions and twenty-first century work on mechanisms is interesting, but for another time.] Four of the articles here have the word 'supervenience' in the title! At the center of this literature stood Jaegwon Kim. The citation data I have somewhat _underestimates_ his influence, because people often cited his edited collection _Supervenience and Mind_ [@Kim1993], and those citations are usually not tracked by Web of Science.^[I had originally planned to include much more on how individual papers rise and fall in the citation indices, but this turned out to be less interesting than I thought. Most of the biggest 'falls' are just when a paper stops being cited because a book gets cited. Sometimes what gets cited is the reprint of the paper itself, as happened here. Sometimes the book supersedes the article. So you see a drop in citations to Rawls's article "Justice as Fairness: Political not Metaphysical" [@WOSA1985APA8500001] after his book _Justice as Fairness: A Restatement_ [@Rawls2001] came out. Looking at grand-citations somewhat mitigates these issues, since they still track how much the articles that originally cited the older article are being picked up.]
+
+When we move into the 2000s, the focus shifts dramatically, as we see in @tbl-grand-cite-2010.
+
+```{r}
+#| label: tbl-grand-cite-2010
+#| tbl-cap: "The 10 articles from the 1990s and 2000s with the most grand-citations through 2010."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2010) |>
+    select(-`As Of`)
+)
+```
+
+Even more than with the @tbl-grand-cite-2000, one complication with @tbl-grand-cite-2010 is that I'm using a counting statistic, so it is biased in favor of older papers with more time to accrue citations. That said, the top takeaway is fairly clear. The biggest single topic over this time was contextualism in epistemology, with the big papers by @WOSA1996VY21200001 and @WOSA1995RC31600001 at the center of things. What I want to focus particularly on, though, is another DeRose paper on that list: "Epistemic Possibilities". It has fewer cites than any other paper there, but the fourth most grand-cites. The way this came about is revealing of changes in the discipline, and particularly in citation practices.
+
+DeRose's paper is an important early contribution to debates about epistemic modals that became very active in the 2000s. This activity was partially due to the intrinsic interest of the subject. But it was also due to the way that epistemic modals sit at the intersection of three enormous debates that were going on at the time. One was epistemic contextualism, which you can see the impact of in @tbl-grand-cite-2010. The second was about the nature of context-sensitivity in language, with work by @WOS000088616400001 at the center of it.^[I won't include the full table, but if you created a table like @tbl-grand-cite-2010 for the twenty years through 2015, Stanley and Szabó's paper would be on it.] And the third was about the possibility of a modern form of relativism, with the central figure here being John @MacFarlane2014. Papers on epistemic modals were influenced by, and in turn influenced, all three of these debates.^[For particularly notable examples, see the papers by Andy @WOS000088616400001, Seth @WOS000251545300007, and Tamina @WOS000255667800003.]
+
+These debates had an impact on how citations worked in philosophy in a few ways. One was in virtue of the fact that they were largely new topics, there wasn't an established canon that writers could assume familiarity with. So they needed to cite more papers to establish the debate. It wasn't necessary to cite @10.2307_2025079 or @Kripke1980 every time you wanted to distinguish necessity from a priority; the reader in the 1990s could be assumed to know where the distinction came from. But the reader in the 2000s could not be assumed to know about work by Fred @WOSA1970ZE33800001, G. C. @WOSA1976EK38300003, or Stewart @WOSA1987K730800002.
+
+Perhaps more significant was that these debates, especially the second and third, were much more interdisciplinary than debates about modality had been. Many of the writers were primarily in linguistics, not philosophy, and the philosophers were reading more linguistics than ever before. The citation norms in linguistics, like in most other social sciences, required more citations than the norms in philosophy did. They didn't require more citation than the philosophy norms in the 2020s, but much more than philosophy in the 1990s. So these debates, which became important across a range of journals from the mid 2000s onwards, tended to have many more citations than before.
+
+To back up the claims in the last two paragraphs I need one more statistic. (The last one I'll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.^[I haven't used it above because using it doesn't help much in separating out the three effects.] For an article *a* published in year *y*, say that the **weight** of its citations in year *z* is the number of times it is cited in *z*, divided by the average number of citations that articles in year *y* get in *z*. So it's just the measure of how often the article is cited, compared to how often you'd expect it to be cited knowing just the publication year and citation year. We'll be interested in three statistics. The **overall weight** of an article is the average of its weight over each year between the year after its publication and 2021. The **short-term weight** is the average of its weight over the seven years after it was published. And the **long-term weight** is the average of its weight from eight years after publication to 2021. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that's not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.
+
+```{r}
+#| label: set-up-weight
+#| cache: TRUE
+
+weighted_citation_tibble <- citation_tibble |>
+  left_join(
+    select(
+      age_effect_tibble,
+      old_year,
+      new_year,
+      citations,
+      articles
+    ),
+    by = c("old_year", "new_year")
+  ) |>
+  mutate(weight = articles/citations) |>
+  mutate(age = new_year - old_year) |>
+  filter(age > 0, old_year <= 2010) |>
+  mutate(cite_type = case_when(
+    age >= 8 & age <= 300 ~ "long_weight",
+    age >= 1 & age <= 7 ~ "short_weight",
+    TRUE ~ "other")) |>
+  group_by(old, cite_type) |>
+  summarise(weight = sum(weight), .groups = "drop") |>
+  complete(old, cite_type, fill = list(weight = 0), explicit = FALSE) |>
+  pivot_wider(id_cols = old, names_from = cite_type, values_from = weight) |>
+  mutate(all_weight = short_weight + long_weight) |>
+  right_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  filter(year <= 2010) |>
+  replace_na(replace = list(short_weight = 0, long_weight = 0, all_weight = 0)) |>
+  mutate(short_weight = round(short_weight / 7, 2)) |>
+  mutate(long_weight = round(long_weight / (2014 - year), 2)) |>
+  mutate(all_weight = round(all_weight / (2021 - year), 2))
+
+
+short_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$short_weight
+  )
+}
+
+all_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$all_weight
+  )
+}
+
+long_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$long_weight
+  )
+}
+
+most_cites_by_2010 <- citation_tibble |>
+  filter(new_year <= 2010) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  arrange(-citations) |>
+  filter(citations >= 40) |>
+  left_join(
+    select(
+      philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  distinct(old, .keep_all = TRUE) |>
+  rowwise() |>
+  mutate(downstream_short = round(short_weight_of_citings(old), 2),
+         downstream_long  = round(long_weight_of_citings(old), 2),
+         downstream_all   = round(all_weight_of_citings(old), 2))|>
+  mutate(prod = downstream_short * downstream_long,
+         ratio = downstream_short/downstream_long)
+
+
+
+```
+
+This is a variant on grand-citations, and like grand-citations, it takes some time to 
+
+```{r}
+#| label: tbl-grand-cite-2020
+#| tbl-cap: "The 10 articles from the 1990s and 2000s with the most grand-citations through 2020."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2020) |>
+    select(-`As Of`)
+)
+```
 
 
 # Methodology {#sec-methodology}
-
+<!--
 As noted above, the study here is based on the Web of Science database, which my institution makes available with a subscription. That is, it lets members of the institution download the full database for research purposes. This is a rather large collection of files; after de-compression they come to over a terabyte. I selected records that were marked as _articles_ (as opposed to discussion notes, book reviews, editorial matters, and so on), and whose category was either Philosophy or History & Philosophy of Science. I then selected by hand the hundred journals with the most entries which were (a) primarily English language, (b) not primarily history of science and (c) broadly 'analytic' rather than 'continental'. These were somewhat subjective choices, but the result was a reasonable collection of the journals which are most important for telling the story of a certain kind of philosophy over the last several decades. The list of journals, as well as the dates covered by the index, is shown in @tbl-list-of-journals.
 
 ```{r}
