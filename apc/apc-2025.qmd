@@ -8,7 +8,7 @@ execute:
 date: February 12 2025
 bibliography: 
  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
- - /Users/weath/Documents/citations-2025/autobib.bib
+ - /Users/weath/Documents/citations-2025/cslbib.yaml
 number-sections: true
 keep-tex: true
 author:
