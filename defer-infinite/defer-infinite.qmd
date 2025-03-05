@@ -2,7 +2,7 @@
 title: "Deference and Infinite Frames"
 abstract: |
   This paper concerns three recent results concerning probabilistic deference. The results show interesting things about how various kinds of deference work on finite frames, but in each case the results do not naturally generalise to infinite frames. The non-generalisation raises interesting philosophical questions about the epistemological significance of the original results, and in the conclusion I briefly note reasons for thinking that epistemologists should be interested in what happens on infinite frames. The main priority, however, is simply showing that the finite and infinite frames behave differently in all three cases.
-date: today
+date: March 6 2025
 thanks: "This article grew out of discussions in Jim Joyce's epistemology seminar at the University of Michigan in Winter term 2024. Thanks to Jim and to the other seminar participants, especially Mitch Barrington, Paulina Ezquerra, Ina Jantgen, Gabrielle Kerbel, Calum McNamara, and Brett Thompson. Thanks also to a reviewer for the AJL who suggested several improvements to the paper."
 execute:
   echo: false
