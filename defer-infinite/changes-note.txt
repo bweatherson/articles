@@ -1,0 +1,15 @@
+Changes to this version
+
+Thanks to the reviewer for such nice comments, and for making several good suggestions. I've adopted *almost* all of them, as well as fixing a few other typos that I found.
+
+I've added an acknowledgments footnote at the start which would have been too close to identity revealing in the initial version.
+
+Otherwise I'll go through the points in the report.
+
+(1) I agree that taking A and B to be descriptions not names is a good way to think about what they mean. This was sloppy in the original, and I've now made it clear that they are descriptions. I also introduced the notions of novice and expert that become important later in the paper in the context of setting out this difference. I didn't take up the reviewer's suggestion to use completely different notation for the experts' credences as the novices, because it would have been a big change, and I think a bit of a discontinuity with the literature. Hopefully it is clear enough that A and B are for the experts, and C for the novice.
+
+(2-4) I've made these corrections.
+
+(5) This is a good point to note. It would be a massive change to work through what happens with all the different update rules on the market, and the theorems I'm considering all presuppose that update goes by conditionalisation. But reviewer is right that this isn't a universal assumption. I've added a few references, the ones the reviewer suggested and a couple more recent ones, to some useful contributions to this debate.
+
+(6) This was a dumb mistake on my part, and I've corrected it.
