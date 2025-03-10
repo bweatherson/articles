@@ -249,7 +249,7 @@ learning some information.
 
 The strongest way that a novice can defer to an expert (with respect to
 \emph{p}) is to take the expert to settle what the probability of
-\emph{p} is. Formally, it is that ∀\emph{a}:
+\emph{p} is. Formally, it is that $\forall$\emph{a}:
 C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a})~=~\emph{a}. Our first
 question is when C can defer in this strong sense to two different
 experts A and B.\footnote{As with A, B here is a description for the
@@ -259,9 +259,9 @@ There are two cases when this can happen quite easily. The first is when
 C is certain that A and B will agree, i.e., C(A~=~B)~=~1. The second is
 when C takes one or other of the functions to be superior, i.e., when
 they disagree to always go with what one particular function says. So if
-C takes A to be superior, then ∀\emph{a},~\emph{b}:
+C takes A to be superior, then $\forall$\emph{a},~\emph{b}:
 C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}
-∧~B(\emph{p})~=~\emph{b})~=~\emph{a}. But is there a third option? Can C
+$\wedge$~B(\emph{p})~=~\emph{b})~=~\emph{a}. But is there a third option? Can C
 think that A and B are both worthy of total deference, that they might
 disagree, and when they do the right thing to do is to land somewhere
 between their two credences?
@@ -274,14 +274,14 @@ functions C, A, B satisfying the following constraints.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  ∀\emph{a}: C(\emph{p} \textbar{} A(\emph{p}) = \emph{a}) = \emph{a};
+  $\forall$\emph{a}: C(\emph{p} \textbar{} A(\emph{p}) = \emph{a}) = \emph{a};
 \item
-  ∀\emph{b}: C(\emph{p} \textbar{} B(\emph{p}) = \emph{b}) = \emph{b};
+  $\forall$\emph{b}: C(\emph{p} \textbar{} B(\emph{p}) = \emph{b}) = \emph{b};
 \item
   C(A = B) \textless{} 1;
 \item
-  For some λ~∈~(0,1),
-  ∀\emph{a},\emph{b}:~C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b})~=~λ\emph{a}~+~(1-λ)\emph{b}.
+  For some $\lambda$~$\in$~(0,1),
+  $\forall$\emph{a},\emph{b}:~C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b})~=~$\lambda$\emph{a}~+~(1-$\lambda$)\emph{b}.
 \end{enumerate}
 
 That is, C can't defer to both A and B individually, think that A and B
@@ -304,18 +304,18 @@ B and C to satisfy the following five constraints.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  ∀\emph{a}: C(\emph{p} \textbar{} A(\emph{p}) = \emph{a}) = \emph{a};
+  $\forall$\emph{a}: C(\emph{p} \textbar{} A(\emph{p}) = \emph{a}) = \emph{a};
 \item
-  ∀\emph{b}: C(\emph{p} \textbar{} B(\emph{p}) = \emph{b}) = \emph{b};
+  $\forall$\emph{b}: C(\emph{p} \textbar{} B(\emph{p}) = \emph{b}) = \emph{b};
 \item
   C(A = B) \textless{} 1;
 \item
   For any
-  \emph{a},\emph{b}:~C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b})~is
+  \emph{a},\emph{b}:~C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b})~is
   strictly between \emph{a} and \emph{b}.
 \item
-  For some finite set of values S, C(A(\emph{p})~∈~S
-  ∧~B(\emph{p})~∈~S)~=~1.
+  For some finite set of values S, C(A(\emph{p})~$\in$~S
+  $\wedge$~B(\emph{p})~$\in$~S)~=~1.
 \end{enumerate}
 
 This section shows that the last constraint is essential; it is possible
@@ -330,7 +330,7 @@ of any two of them has distribution \(\mathcal{N}\)(0,2), and the sum of
 all three has distribution \(\mathcal{N}\)(0,3). Let \emph{p} be the
 proposition that this sum, X~+~Y~+~Z, is positive. Let C be a
 probability function that incorporates all these facts, but has no other
-direct information about X, Y, and Z. So C(\emph{p})~=~½, since in all
+direct information about X, Y, and Z. So C(\emph{p})~=~$\frac{1}{2}$, since in all
 respects C's opinions are symmetric around 0.
 
 C knows some things about A and B. Both of them know everything C knows
@@ -353,13 +353,13 @@ out.
 
 Assume for now that the coin landed heads, so H is true. We'll work out
 the joint density function for A and B. Then we can work out the same
-density function conditional on ¬H, and from those two facts work out
+density function conditional on $\neg$H, and from those two facts work out
 the posterior probability of H. Call this value \emph{h}. Conditional on
 A(\emph{p})~=~\emph{a}, and B(\emph{p})~=~\emph{b}, C's probability for
 p should be (1-\emph{h})\emph{a}~+~\emph{hb}. That's because conditional
 on A(\emph{p})~=~\emph{a}, B(\emph{p})~=~\emph{b} and H, C's probability
 for \emph{p} should be \emph{b}, while conditional on
-A(\emph{p})~=~\emph{a}, B(\emph{p})~=~\emph{b} and ¬H, C's probability
+A(\emph{p})~=~\emph{a}, B(\emph{p})~=~\emph{b} and $\neg$H, C's probability
 for \emph{p} should be \emph{a}. The short version of what follows is
 that since \emph{h} is a function of \emph{a} and \emph{b} and is always
 in (0,1), it follows that C obeys constraint 4.
@@ -392,7 +392,7 @@ Y~=~\(\Phi\)\textsuperscript{-1}(\emph{b}) -
 \(\phi\)(\emph{x}) for the density function for the standard normal
 distribution\footnote{i.e.,
   \(\phi(x) = \frac{e^{-\frac{x^2}{2}}}{\sqrt{2\pi}}\).}, the joint
-distribution for A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b} given H
+distribution for A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b} given H
 has density
 
 \[
@@ -400,14 +400,14 @@ has density
 \]
 
 \noindent By a parallel calculation, the joint density function for for
-A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b} given ¬H has density
+A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b} given $\neg$H has density
 
 \[
 \phi(\sqrt{2}\Phi^{-1}(b)) \phi(\Phi^{-1}(a) - \sqrt{2}\Phi^{-1}(b))
 \]
 
 \noindent  So given that
-A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b}, the probability of H is
+A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b}, the probability of H is
 
 \[
 \frac{
@@ -417,10 +417,10 @@ A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b}, the probability of H is
 }
 \]
 
-\noindent If we call that value λ, it follows that
-C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~∧~B(\emph{p})~=~\emph{b})~=~λ\emph{b}~+~(1-λ)\emph{a},
-and since λ~∈~(0,1), this means that C satisfies constraint 4. This is
-consistent with Gallow's result because λ is not a constant, it is a
+\noindent If we call that value $\lambda$, it follows that
+C(\emph{p}~\textbar~A(\emph{p})~=~\emph{a}~$\wedge$~B(\emph{p})~=~\emph{b})~=~$\lambda$\emph{b}~+~(1-$\lambda$)\emph{a},
+and since $\lambda$~$\in$~(0,1), this means that C satisfies constraint 4. This is
+consistent with Gallow's result because $\lambda$ is not a constant, it is a
 function of \emph{a} and \emph{b}. And it is consistent with Zhang's
 result because each of A(\emph{p}) and B(\emph{p}) can take infinitely
 many, in fact uncountably many, values. If one tries to make a similar
@@ -438,7 +438,7 @@ different values of \emph{b} holding fixed \emph{a}~=~0.75.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{defer-infinite_files/figure-pdf/fig-two-experts-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{fig-two-experts-1.pdf}}
 
 }
 
@@ -460,7 +460,7 @@ Figure~\ref{fig-two-experts-heads}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{defer-infinite_files/figure-pdf/fig-two-experts-heads-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{fig-two-experts-heads-1.pdf}}
 
 }
 
@@ -513,7 +513,7 @@ that needs clarifying though.
 
 Say E\textsubscript{1} is a \emph{refinement} of E\textsubscript{2} iff
 for all \emph{w},
-E\textsubscript{1}(\emph{w})~⊆~E\textsubscript{2}(\emph{w}). Formally,
+E\textsubscript{1}(\emph{w})~$\subseteq$~E\textsubscript{2}(\emph{w}). Formally,
 this is how I'll capture the intuitive notion of being more
 informative.\footnote{Note that comparisons here always include
   equality. An experiment is a refinement of itself, is more informative
@@ -528,7 +528,7 @@ they are bets, and the number is the return on each bet. I'll follow
 standard terminology in philosophy and say that a function from worlds
 to reals is a \emph{random variable}. Given a random variable X (defined
 on W) and a probability function Pr, we can define the expectation
-Exp(X, Pr) as ΣPr(\emph{w})X(\emph{w}), where the sum is across members
+Exp(X, Pr) as $\Sigma$Pr(\emph{w})X(\emph{w}), where the sum is across members
 of W.\footnote{This definition of expected value needs to be generalised
   in familiar ways if W is uncountable. I'm defining random variable and
   expected value the way they are usually defined in philosophy. In some
@@ -555,7 +555,7 @@ Finally, say that a strategy is \textbf{recommended}\footnote{This term
   is taken from Dorst et al. (\citeproc{ref-DorstEtAl2021}{2021})} by Pr
 (relative to E, O and W) just in case for all \emph{w} in W, and
 alternative options O\textsubscript{a} in O,
-Exp(S(\emph{w}),~Pr(•~\textbar~E(\emph{w})))~⩾~Exp(O\textsubscript{a},~Pr(•~\textbar~E(\emph{w}))).
+Exp(S(\emph{w}),~Pr($\cdot$~\textbar~E(\emph{w})))~$\geq$~Exp(O\textsubscript{a},~Pr($\cdot$~\textbar~E(\emph{w}))).
 In words, the option selected by S at \emph{w} has maximal expected
 utility out of the options in O, relative to the result of updating Pr
 on the evidence available at \emph{w}. Given these notions, we can state
@@ -565,7 +565,7 @@ First, for any O, W and Pr, if E\textsubscript{1} is a refinement of
 E\textsubscript{2}, S\textsubscript{1} is recommended by
 E\textsubscript{1} and S\textsubscript{2} is recommended by
 E\textsubscript{2}, then Exp(S\textsubscript{1},
-Pr)~⩾~Exp(S\textsubscript{2}, Pr). No matter what practical problem The
+Pr)~$\geq$~Exp(S\textsubscript{2}, Pr). No matter what practical problem The
 Experimenter is facing, and no matter what their priors are, they are
 better off adopting a strategy recommended by the more informative
 experiment.
@@ -601,7 +601,7 @@ John Geanakoplos (\citeproc{ref-Geanakoplos1989}{{[}1989{]} 2021})
 proved an interesting generalisation of this first result. As noted
 earlier, Blackwell's theorems presuppose that each experiment is
 partitional. Formally, E is partitional iff for all \emph{w},
-\emph{w}~∈~E(\emph{w}), and for all \emph{w},~\emph{v}, if \emph{v} ∈
+\emph{w}~$\in$~E(\emph{w}), and for all \emph{w},~\emph{v}, if \emph{v} $\in$
 E(\emph{w}), then E(\emph{w})~=~E(\emph{v}). Geanakoplos shows something
 interesting about experiments that are reflexive, transitive, and
 nested. These are defined as follow (with leading quantifiers over
@@ -610,12 +610,12 @@ worlds left implicit)
 \begin{description}
 \tightlist
 \item[Reflexive]
-\emph{w} ∈ E(\emph{w}).
+\emph{w} $\in$ E(\emph{w}).
 \item[Transitive]
-If \emph{v} ∈ E(\emph{w}), then E(\emph{w}) ⊆ E(\emph{v}).
+If \emph{v} $\in$ E(\emph{w}), then E(\emph{w}) $\subseteq$ E(\emph{v}).
 \item[Nested]
-Either E(\emph{w})~∩ E(\emph{v}) = ∅, or E(\emph{w}) ⊆ E(\emph{v}), or
-E(\emph{v}) ⊆ E(\emph{w}).
+Either E(\emph{w})~$\cap$ E(\emph{v}) = $\emptyset$, or E(\emph{w}) $\subseteq$ E(\emph{v}), or
+E(\emph{v}) $\subseteq$ E(\emph{w}).
 \end{description}
 
 He shows that both of Blackwell's results continue to hold when
@@ -663,7 +663,7 @@ reflexive, transitive, and nested.
   W = \{w\textsubscript{1}, w\textsubscript{2}, w\textsubscript{3}\}
 \item
   Pr(w\textsubscript{1})~=~Pr(w\textsubscript{2})~=~Pr(w\textsubscript{3})~=
-  ⅓
+  $\frac{1}{3}$
 \item
   O = \{O\textsubscript{1}, O\textsubscript{2}\}
 \item
@@ -709,7 +709,7 @@ anything.)
 Next I'll show the result does not hold when W and O are infinite. It
 pays to be careful here because it's easy to have a case where
 S\textsubscript{1} and S\textsubscript{2} are undefined. And it's not
-interesting that Exp(S\textsubscript{1},~Pr)~⩾~Exp(S\textsubscript{2},
+interesting that Exp(S\textsubscript{1},~Pr)~$\geq$~Exp(S\textsubscript{2},
 Pr) might sometimes fail to be true simply because one or other term in
 it isn't defined. So I'll restrict attention to cases where utilities
 are bounded, for any E and any \emph{w} there is an optimal strategy
@@ -719,7 +719,7 @@ defined.
 Let W be the reals in (0,1).
 E\textsubscript{1}(\emph{x})~=~{[}\emph{x},1), and
 E\textsubscript{2}(\emph{x})~=~(0,1). For any \emph{x} in {[}0,1{]}, let
-O\textsubscript{\emph{x}}(\emph{y}) be~-1 if \emph{x}~⩽~\emph{y}, and
+O\textsubscript{\emph{x}}(\emph{y}) be~-1 if \emph{x}~$\leq$~\emph{y}, and
 \emph{x} if \emph{x}~\textgreater~\emph{y}, and O be the set of all
 these O\textsubscript{\emph{x}}. And Pr is the flat distribution over
 (0,1); the only fact I'll need is that whenever
@@ -756,11 +756,11 @@ The Experimenter has after performing an experiment. This latter way of
 thinking is a helpful way to understand a striking recent result by
 Dorst et al. (\citeproc{ref-DorstEtAl2021}{2021}).
 
-Say a probability frame is an ordered pair ⟨W, P⟩ such that W is a set
+Say a probability frame is an ordered pair $\langle$W, P$\rangle$ such that W is a set
 (intuitively, of worlds), and P is a function from W to probability
 functions defined on w. One way to generate such a pair is to have some
 experiment E and prior probability Pr, each defined on W, and have
-P(\emph{w}) be Pr(•~\textbar~E(\emph{w})). But you can just cut out the
+P(\emph{w}) be Pr($\cdot$~\textbar~E(\emph{w})). But you can just cut out the
 E and Pr, and focus simply on W and P. As Dorst et al.
 (\citeproc{ref-DorstEtAl2021}{2021}) show, this turns out to be
 mathematically a very helpful move. It lets you see a lot more
@@ -777,22 +777,22 @@ claims formally, then explain my notation.)
 \begin{description}
 \tightlist
 \item[Total Trust]
-E(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~⩾~\emph{t}\},~π)~⩾~\emph{t}
+E(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~$\geq$~\emph{t}\},~$\pi$)~$\geq$~\emph{t}
 \item[Value]
 If O is a set of options, \emph{s} is a recommended strategy for O, and
-\emph{o} is a member of O, then Exp(\emph{s},~π)~⩾~E(\emph{o},~π).
+\emph{o} is a member of O, then Exp(\emph{s},~$\pi$)~$\geq$~E(\emph{o},~$\pi$).
 \end{description}
 
-There is a bit there to unpack. I'll follow them in using π for a
+There is a bit there to unpack. I'll follow them in using $\pi$ for a
 probability function that is outside the frame. I'll sometimes call it
 Novice's probability function, as opposed to P(\emph{w}) which is The
 Experimenter's probability function at \emph{w}.\footnote{When the frame
-  is a prior frame, it is natural to focus on the case where π~=~Pr, but
+  is a prior frame, it is natural to focus on the case where $\pi$~=~Pr, but
   again I'm not just looking at prior frames.} I'm generalising the
 notion of expectation a bit to allow for conditional expectations;
 Exp(X~\textbar~p,~Pr) is the expectation of X according to
-Pr(•~\textbar~p). So here's what Total Trust says. Take any random
-variable X. Update π by conditionalising on the proposition that
+Pr($\cdot$~\textbar~p). So here's what Total Trust says. Take any random
+variable X. Update $\pi$ by conditionalising on the proposition that
 consists of all and only worlds where The Experimenter at that world has
 an expected value for X at least equal to \emph{t}. After that update,
 Novice also expects X's value to be at least \emph{t}.
@@ -802,7 +802,7 @@ there is less to say about Value. What it says is that Novice does not
 expect any member of O to do better than any recommended strategy.
 
 One way Dorst et al put the equivalence between Total Trust and Value
-(on finite frames) is that π Totally Trusts a frame ⟨W, P⟩ iff it Values
+(on finite frames) is that $\pi$ Totally Trusts a frame $\langle$W, P$\rangle$ iff it Values
 that frame. What I'll show is that this equivalence breaks down without
 the finiteness assumptions. Indeed, it breaks down even when W is
 countably infinite.
@@ -813,25 +813,25 @@ F~=~\emph{x} iff the coin is flipped \emph{x} times. (If the coin never
 lands Tails, I'll stipulate that F~=~1. Since this has probability 0, it
 doesn't make a difference to the probabilities, but it will make a
 difference to the possible choices post-update.) Novice knows these
-facts about F, so π(F~=~\emph{x})~=~2\textsuperscript{-\emph{x}}. If
-F~=~\emph{x}, then The Experimenter learns F~⩾~\emph{x} and nothing
+facts about F, so $\pi$(F~=~\emph{x})~=~2\textsuperscript{-\emph{x}}. If
+F~=~\emph{x}, then The Experimenter learns F~$\geq$~\emph{x} and nothing
 else, and updates on that. That is,
-P(F~=~\emph{x})~=~π(•\textbar F~⩾~x). For any positive integer \emph{i},
+P(F~=~\emph{x})~=~$\pi$($\cdot$\textbar F~$\geq$~x). For any positive integer \emph{i},
 let O\textsubscript{i} be the random variable that takes value 0 at
-F~=~\emph{j}~when \emph{j}~⩽~\emph{i}, and value
+F~=~\emph{j}~when \emph{j}~$\leq$~\emph{i}, and value
 2\textsuperscript{\emph{i}} at F~=~\emph{j} when \emph{j}~\textgreater{}
 \emph{i}. Let O be the set of each O\textsubscript{\emph{i}}. The
 strategy \emph{s} such that
 \emph{s}(F~=~\emph{i})~=~O\textsubscript{\emph{i}} is recommended, as
-can be easily checked. But E(\emph{s})~=~0, while for any \emph{o} ∈~O,
-E(\emph{o},~π)~= ½. So Value fails on \textbf{Coin}.
+can be easily checked. But E(\emph{s})~=~0, while for any \emph{o} $\in$~O,
+E(\emph{o},~$\pi$)~= $\frac{1}{2}$. So Value fails on \textbf{Coin}.
 
-On the other hand, π does Totally Trust \textbf{Coin}. For any random
+On the other hand, $\pi$ does Totally Trust \textbf{Coin}. For any random
 variable X and threshold \emph{t}, say an integer \emph{k} is a cut-off
-if either Exp(X~\textbar~F~⩾~\emph{k},~π)~⩾~\emph{t} and
-Exp(X~\textbar~F~⩾~\emph{k}~+~1,~π)~\textless~\emph{t}, or
-Exp(X~\textbar~F~⩾~\emph{k},~π)~\textless~\emph{t} and
-Exp(X~\textbar~F~⩾~\emph{k}~+~1,~π)~⩾~\emph{t}. Let
+if either Exp(X~\textbar~F~$\geq$~\emph{k},~$\pi$)~$\geq$~\emph{t} and
+Exp(X~\textbar~F~$\geq$~\emph{k}~+~1,~$\pi$)~\textless~\emph{t}, or
+Exp(X~\textbar~F~$\geq$~\emph{k},~$\pi$)~\textless~\emph{t} and
+Exp(X~\textbar~F~$\geq$~\emph{k}~+~1,~$\pi$)~$\geq$~\emph{t}. Let
 c\textsubscript{\emph{i}} be the \emph{i}'th cutoff. Partition the
 integers into the regions between cutoffs. More precisely, do the
 following. If 1 is not a cutoff, the first cell of the partition is
@@ -840,29 +840,29 @@ following. If 1 is not a cutoff, the first cell of the partition is
 \{c,~c+1,~\ldots\}. Otherwise, each cell is
 \{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\}.
 Say a cell is \emph{positive} if for every \emph{k} in it,
-Exp(X~\textbar~F~⩾~\emph{k},~π)~⩾~\emph{t}, and negative otherwise. (By
+Exp(X~\textbar~F~$\geq$~\emph{k},~$\pi$)~$\geq$~\emph{t}, and negative otherwise. (By
 the construction of the cells,
-Exp(X~\textbar~F~⩾~\emph{k},~π)~⩾~\emph{t} is true for either all or
+Exp(X~\textbar~F~$\geq$~\emph{k},~$\pi$)~$\geq$~\emph{t} is true for either all or
 none of the members.)
 
 Let \{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\}
 be an arbitrary positive cell. By construction,
-Exp(X~\textbar~F~⩾~c\textsubscript{\emph{i}},~π) ⩾~\emph{t}, and
-Exp(X~\textbar~F~⩾~c\textsubscript{\emph{i}+1},~π)~\textless~\emph{t}.
-Since for some λ ∈ (0,1),
-Exp(X~\textbar~F~⩾~c\textsubscript{\emph{i}},~π) = λExp(X~\textbar~F~∈
-\{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\},~π)~+
-(1-λ)Exp(X~\textbar~F~⩾~c\textsubscript{\emph{i}+1},~π), it follows that
-Exp(X~\textbar~F~∈~\{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\},~π)
-⩾~\emph{t}. Since this was an arbitrary positive cell, it follows that
-Exp(X~\textbar~F~∈~I,~π)~⩾~\emph{t} for any positive cell I. Since
-Exp(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~⩾~\emph{t}\},~π) is a
-weighted average of the values of Exp(X~\textbar~F~∈~I,~π) where I is
+Exp(X~\textbar~F~$\geq$~c\textsubscript{\emph{i}},~$\pi$) $\geq$~\emph{t}, and
+Exp(X~\textbar~F~$\geq$~c\textsubscript{\emph{i}+1},~$\pi$)~\textless~\emph{t}.
+Since for some $\lambda$ $\in$ (0,1),
+Exp(X~\textbar~F~$\geq$~c\textsubscript{\emph{i}},~$\pi$) = $\lambda$Exp(X~\textbar~F~$\in$
+\{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\},~$\pi$)~+
+(1-$\lambda$)Exp(X~\textbar~F~$\geq$~c\textsubscript{\emph{i}+1},~$\pi$), it follows that
+Exp(X~\textbar~F~$\in$~\{c\textsubscript{\emph{i}},~\ldots,~c\textsubscript{\emph{i}+1}-1\},~$\pi$)
+$\geq$~\emph{t}. Since this was an arbitrary positive cell, it follows that
+Exp(X~\textbar~F~$\in$~I,~$\pi$)~$\geq$~\emph{t} for any positive cell I. Since
+Exp(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~$\geq$~\emph{t}\},~$\pi$) is a
+weighted average of the values of Exp(X~\textbar~F~$\in$~I,~$\pi$) where I is
 one or other of the positive cells, it follows that
-E(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~⩾~\emph{t}\},~π)~⩾~\emph{t},
+E(X~\textbar~\{\emph{w}:~Exp(X,~P(\emph{w}))~$\geq$~\emph{t}\},~$\pi$)~$\geq$~\emph{t},
 as required.
 
-So π Totally Trusts \textbf{Coin}, but doesn't Value it. So the
+So $\pi$ Totally Trusts \textbf{Coin}, but doesn't Value it. So the
 equivalence between Total Trust and Value fails here. But you might very
 reasonably object on two scores. First, the value function used to
 generate the counterexample was unbounded, and we know that unbounded
@@ -870,26 +870,26 @@ value functions lead to all sorts of paradoxes. Second, I didn't just
 make W infinite, I made O infinite as well, so this isn't a minimal
 generalisation of the original claim. It turns out that if we put both
 these constraints on, then the equivalence fails in the other direction:
-It is possible to get a frame that π Values, but does not Totally Trust.
+It is possible to get a frame that $\pi$ Values, but does not Totally Trust.
 
 Call the following frame \textbf{Bentham}. Again, a coin will be flipped
 until it lands Tails. If it ever lands Tails, F is the number of flips.
-If it never lands Tails, which has probability 0, then F~=~∞. Again,
+If it never lands Tails, which has probability 0, then F~=~$\infty$. Again,
 Novice knows these facts, and so far the case is just like
 \textbf{Coin}. But in this case, if F~=~\emph{x}, The Experimenter
-learns that F~⩽~\emph{x} and nothing else, and The Experimenter updates
-on that. So if F~=~∞, The Experimenter learns nothing, but otherwise
+learns that F~$\leq$~\emph{x} and nothing else, and The Experimenter updates
+on that. So if F~=~$\infty$, The Experimenter learns nothing, but otherwise
 they can rule out all but finitely many possibilities. More precisely,
-P(F~=~\emph{x})~=~π(•\textbar F~⩽~x).
+P(F~=~\emph{x})~=~$\pi$($\cdot$\textbar F~$\leq$~x).
 
 The Novice probability does not Totally Trust this frame. Let Y be a
-random variable such that Y(F~=~∞) = 0, and for all finite \emph{n},
+random variable such that Y(F~=~$\infty$) = 0, and for all finite \emph{n},
 Y(F~=~\emph{n}) = 1 - 2\textsuperscript{-\emph{n}}.
-E(Y~\textbar~\{\emph{w}:~Exp(Y,~P(\emph{w}))~⩾~⅔\},~π) =~0~\textless{}
-⅔. The only world \emph{w} where Exp(Y,~P(\emph{w}))~⩾~⅔ is F~=~∞, and
-at F~=~∞, Y~=~0.
+E(Y~\textbar~\{\emph{w}:~Exp(Y,~P(\emph{w}))~$\geq$~$\frac{2}{3}$\},~$\pi$) =~0~\textless{}
+$\frac{2}{3}$. The only world \emph{w} where Exp(Y,~P(\emph{w}))~$\geq$~$\frac{2}{3}$ is F~=~$\infty$, and
+at F~=~$\infty$, Y~=~0.
 
-On the other hand, π does Value this frame. To see this, for any set of
+On the other hand, $\pi$ does Value this frame. To see this, for any set of
 options O, recommended strategy S, random variable X (all defined on W),
 and integer \emph{n}, let W\textsubscript{\emph{n}} be the set \{F~=~1,
 \ldots, F~=~\emph{n}\}, O\textsubscript{\emph{n}},
@@ -897,21 +897,21 @@ P\textsubscript{\emph{n}}, S\textsubscript{\emph{n}} and
 X\textsubscript{\emph{n}} be the restrictions of O, P and S to worlds in
 W\textsubscript{\emph{n}}. From the way P is constructed, i.e., by
 conditionalising on the set of worlds where F is no greater than it
-actually is, it follows that if S is recommended on ⟨W,~P⟩, then
+actually is, it follows that if S is recommended on $\langle$W,~P$\rangle$, then
 S\textsubscript{\emph{n}} is recommended on
-⟨W\textsubscript{\emph{n}},~P\textsubscript{\emph{n}}⟩. Since
-⟨W\textsubscript{\emph{n}},~P\textsubscript{\emph{n}}⟩ is a finite prior
-frame where E is reflexive, transitive and nested, and Pr~=~π, it
+$\langle$W\textsubscript{\emph{n}},~P\textsubscript{\emph{n}}$\rangle$. Since
+$\langle$W\textsubscript{\emph{n}},~P\textsubscript{\emph{n}}$\rangle$ is a finite prior
+frame where E is reflexive, transitive and nested, and Pr~=~$\pi$, it
 follows by the result of Geanakoplos described in
 Section~\ref{sec-nesting}, that the expected return of
 S\textsubscript{\emph{n}} is greater than the expected return of any
 option in O\textsubscript{\emph{n}}. For any random variable X,
-Exp(X,~π) is the limit as \emph{n} tends to ∞ of
-Exp(X\textsubscript{\emph{n}},~π); this is because as \emph{n} grows
-this covers all worlds in W except F~=~∞, which has probability 0. If
-the expected return of S is the limit \emph{n} tends to ∞ of the
+Exp(X,~$\pi$) is the limit as \emph{n} tends to $\infty$ of
+Exp(X\textsubscript{\emph{n}},~$\pi$); this is because as \emph{n} grows
+this covers all worlds in W except F~=~$\infty$, which has probability 0. If
+the expected return of S is the limit \emph{n} tends to $\infty$ of the
 expected return of S\emph{\textsubscript{n}}, and the expected return of
-an option in O is the limit as \emph{n} tends to ∞ of its counterpart in
+an option in O is the limit as \emph{n} tends to $\infty$ of its counterpart in
 O\textsubscript{\emph{n}}, and S\emph{\textsubscript{n}} is better (in
 expectation) than every option in O\textsubscript{\emph{n}}, it follows
 that S is better (in expectation) than every option in O. So Value is
