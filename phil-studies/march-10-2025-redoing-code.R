@@ -1,3 +1,5 @@
+require(tidyverse)
+
 phil_studies_words <- read_csv("/Users/weath/Documents/lda-cites-unigrams-only/PS-unigrams.csv") |>
   mutate(jstor_id = paste0(
     "PS-",
@@ -12,8 +14,8 @@ phil_studies_words <- read_csv("/Users/weath/Documents/lda-cites-unigrams-only/P
 save(phil_studies_words, file = "phil_studies_words.RData")
 
 #load("phil_studies_words.RData")
-load("ps_join.RData")
-load("ps_meta.RData")
+load("/Users/weath/Documents/articles/phil-studies/ps_join.RData")
+load("/Users/weath/Documents/articles/phil-studies/ps_meta.RData")
 
 phil_studies_word_count <- phil_studies_words |>
   group_by(jstor_id) |>
@@ -96,7 +98,18 @@ words_by_decade <- common_ps_words |>
     count = sum(count),
     .groups = "drop") |>
   arrange(-z)
-  
+
+topic_rate <- words_by_decade |>
+  pivot_wider(
+    id_cols = "word",
+    names_from = "decade",
+    values_from = "topic_rate"
+  ) |>
+  mutate(surplus = 2*`1990s` - `1980s` - `2000s`) |>
+  filter(`1990s` > `1980s`,
+         `1990s` > `2000s`) |>
+  arrange(-surplus)
+ 
 # Words for 1990s
 # Lots of language related words: meaning, language, beliefs, sentences
 
