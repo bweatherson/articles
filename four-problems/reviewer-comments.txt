@@ -1,0 +1,51 @@
+Reviewer(s)' Comments to Author:
+
+Reviewer: 1
+
+Comments to the Author
+This paper puts forward a principle for decision theory it calls "the single choice principle", and argues that this principle has several significant implications for decision theory. As usual for a philosophy paper, by the end I find myself more inclined to reject the principle that seemed plausible at first, than to accept some of the conclusions it is used to argue for (though there are some conclusions I do accept) but I think it does nice work in unifying several disparate topics in decision theory, and in motivating the idea that decision theory and game theory should be considered more closely together.
+
+I didn't have any large recommendations of revisions, but I did have some small ones.
+
+I think it would be helpful to remind readers what some of the equilibrium concepts mean - while Nash equilibrium is a familiar concept, I don't think I could state what "dynamic equilibrium" means, and the way "strict equilibrium" was discussed later in the paper made me suspect there was more to it than I remembered (but maybe not).
+
+It is stated at several points later in the paper that a revisionary theory of conditionals is needed to reject the single-choice principle, but this wasn't at all clear to me, unless we are committed to certain formulations of strategies in terms of conditionals that really turn on the detailed semantics of conditionals. Notably, there is no citation to any of the literature on conditionals other than Ramsey, to clarify precisely which versions of the contemporary logic of conditionals endorse the principle that is needed here. I would incline towards moderating the claim, and just resting things on SCP itself, rather than trying to precisify the claim by digging through the logic of conditionals - but the main thing is that I don't think it's appropriate to claim that this follows from universally-accepted principles for conditionals. (I was particularly bothered by the way it is stated on p. 8, in terms of "it would be irrational to think" certain conditionals - "think" usually means "believe" in philosopher-speak, but here it seems to be used for something more like "intend", and it's not at all clear to me how some of the more complex contemporary semantics for conditionals might interact with intention or other attitudes than belief.)
+
+On p. 7 it is stated, "Every theorist moves freely between the dynamic and strategic form of Newcomb's Problem. This is evidence that everyone accepts SCP restricted to Newcomb's Problem." It seems to me that most theorists talk only about the strategic form of Newcomb's Problem and don't mention the dynamic form. And while SCP seems like something that most decision theorists would likely accept, I do think there have been some questions raised about it. Most explicitly, the dynamic inconsistency that this paper shows for Buchak's theory on p. 11 is one that Buchak herself discusses  - one of the chapters of her book is devoted to embracing this inconsistency, as is her work on the concept of "faith". But Easwaran also specifically questions this a principle very much like this in its application to Newcomb problems, in "A Classification of Newcomb Problems and Decision Theories". He refers to an "enkratic principle" claiming that rational strategies produce rational actions, and proposes a pluralist view that rejects this, on which rational *agents* are one-boxers, even though the rational *act* is two-boxing. This isn't explicitly about strategic and dynamic forms of the problem, but it seems relevantly similar.
+
+On p. 12, I was a bit confused by the statement of "Settling". Many discussions of causal and evidential decision theory state that causal decision theory rejects the claim that knowing the payouts and the conditional probabilities is sufficient to determine the choiceworthiness of acts - in particular, causal decision theory cares whether the correlation between acts and states is a result of the acts causing the states or is a result of the two stemming from a common cause. In this example, the causal structure is also specified - is that meant to be part of "Settling" as well?
+
+On p. 14 I'm worried that Table 9 is a mis-representation of the strategic form. It was argued earlier that Buchak's risk-weighting is not the correct way to deal with risk - but that is very distinct from what is appealed to here, namely that risky outcomes of certain branches of a decision tree can be replaced by certainty of their expected value with no change to the tree. I didn't see any argument for this claim, and it makes me worry that some of the later consequences of SCP depend on this.
+
+From p. 22 to the end, it seemed to me that "it's rational" is used to mean "it's rationally permissible", though I think it's equally often used in other literature to mean "it's rationally obligatory". I think it's best to spell out "it's rationally permissible" throughout. (Also, it might be worth mentioning at this point that some theorists, like Sarah Moss talking about imprecise probability, would deny 3.)
+
+On p. 24, there is a paragraph that begins "In the other direction, without SCP, Dual Mandate would be fairly implausible." This paragraph made to me what seem to be some sweeping claims, on relatively weak grounds. I also wasn't sure what role it played in the central claims.
+
+p. 26 - the last paragraph of Section 8 seems big and important - but I don't quite see how it relates to SCP itself.
+
+
+Minor points:
+
+p. 2 - in the paragraph describing coding chess programs, it seems worth emphasizing that only deterministic programs are considered here.
+
+p. 10 - I would probably split the first paragraph in two, one orthodox and one about Buchak. Also, I would clarify the quantification in the claim that Buchak's view reduces to the orthodox view "if f(x)=x for all x".
+
+p. 15 - It would be helpful to emphasize that in Table 10, the "b" and "c" that appear are *not* the original b and c.
+
+p. 19 - "As Sen (1971) shows, this formulation allows us to easily represent various options that are a bit more awkward to represent if we take preference as the central bit of ideology in our theory." It would be helpful to replace the word "options" here with something that makes it more clear you are talking at the level of the theorist, rather than the decision maker (where I think all other "options" have been).
+
+Minor typos:
+
+Abstract, line 27, "corect"
+
+p. 2 - "In particular, are the evaluations for the two games related in the following way." - should that have a question mark?
+
+p. 15 - "unknows"
+
+p. 23 - "It is never rational to an offer in Figure 1," a verb is missing. Also, this paragraph confused me as to whether it is describing the "textbook notion" or criticizing it.
+
+p. 25 - "If they play Down at stage 2, then since their belief they would play Gamble-Down is false, it can’t be knowledge." - I think one of the "Down" should be "Up".
+
+p. 26 - "The second way the theories could be in common" - I don't know what "be in common" means here!
+
+p. 27 - is "over" the right preposition? Also "attempts ... does" seems ungrammatical.
