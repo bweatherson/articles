@@ -134,7 +134,26 @@ With the argument in front of us, it's easy enough to see how the Aunties can re
 
 Let's start with Auntie E. She objects to Lewis's argument in the same way Huw @Price1989 does - by rejecting **Equation**. According to **Equation**, Auntie should value propositions according to her current evaluations of the goodness of the proposition. But Auntie E thinks that gets Peter's case wrong, and for a simple reason. How valuable a proposition is not a function of how likely it is to be good, but how likely it is that it would be good, were it true. That is, Auntie's view is not **Equation**, but V(A) = Pr(Å | A). This is exactly what Price recommended Auntie adopt immediately after Lewis's first paper on desire-as-belief came out.
 
-In the sequel paper Lewis has a response to Price's suggestion. As @Hajek2015 observes, it is very hard to understand what the response really is. Lewis states the kind of view Price endorses, makes a couple of observations about it, and then ends as if the question is settled. If it's meant to be a reductio, it's really not clear what the implausible conclusion is. Hàjek speculates that a paragraph or more simply went missing; the text is puzzling enough to take such speculations seriously.^[Since Hàjek's paper was published, we've had two volumes of correspondence by Lewis published [@LewisLetters1; @LewisLetters2]. But unfortunately nothing in them sheds light on this interpretative question.]
+Lewis's response to Auntie E is rather hard to follow.^[@Hajek2015 speculates that a paragraph or more simply went missing. That's not particularly plausible, especially for a paper that was reprinted twice in Lewis's lifetime, but it does speak to the oddness of the argument.] As he says in a letter to Michael McDermott [@Lewis-McDermott-06121993], he doesn't think Auntie E has a desire-as-belief theory. To see why, it helps to say more about Auntie E's view. 
+
+Following @Gibbard1990, she takes beliefs to be sets, and the members of those sets to be pairs. In particular, they are factual-normative pairs, and an arbitrary one is denoted by ⟨*f*, *n*⟩. Gibbard uses ⟨*w*, *n*⟩, but Auntie E worries that this leads to confusion about what a *world* is. After all, she thinks, worlds set the value of everything the decision maker needs, and the *w* part of Gibbard's pairs does not. Using *f* has the added advantage that if one is suspicious about a fact-value distinction here, you can let it stand for *fusion*; the first element of each pair is a fusion of things. It's the kind of thing @Lewis1986a thinks is a possible world.
+
+If we adopt the simplifying assumption that everything is GOOD or BAD, then *n* will be either 1 (for GOOD), or 0 (for BAD). Then there is a special proposition, which Lewis calls *G*. It is {⟨*f*, *n*⟩: *n* = 1}. As Lewis notes, Auntie E's theory is that by necessity, the agent will have a desire for *G*. This isn't reduced to belief because it is, as he says in the letter to McDermott, "independent of belief". (In the 1996 paper, Lewis )
+
+* Need to make them triples of facts, centers, and norms, not doubles
+* Need to say that the necessity here is 
+
+
+
+
+
+
+
+
+
+
+
+
 
 Now let's consider Auntie C. She thinks that **Additivity** is wrong because it gets Peter's case wrong. She thinks it gets the case wrong for a simple reason: it's the way evidential decision theorists value gambles, and she's a causal decision theorist, not an evidential decision theorist.^[So far Auntie C is following closely the argument in @Collins2015, though she will ultimately disagree with Collins on a point of detail: Auntie accepts **Restricted Conditionalisation**.]
 
