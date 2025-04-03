@@ -55,7 +55,7 @@ Before Peter acts, both Auntie's have the same credal distribution, satisfying t
 | A  |   0.56 |   0.14   |
 | ¬A |   0.03 |   0.27   |
 
-Auntie's credence that Peter will do a, and that it will be right. {#tbl-credence}
+Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
 
 Now you might think at this point that I've said enough to tell you what each Auntie hopes Peter will do. After all, I've told you everything relevant about each Auntie's credence in Å, and I've told you that their credences in propositions about goodness determine their values. But I haven't told you one thing extra - I haven't told you what decision theory the two Aunties follow.
 
