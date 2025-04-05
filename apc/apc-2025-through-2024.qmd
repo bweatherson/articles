@@ -1,0 +1,8 @@
+Here are two intuitively plausible claims about citation practices in philosophy.
+
+1. It is very common for philosophers to cite work from long ago. The typical citation is to a classic work from decades or even centuries earlier.
+2. This tendency is being mitigated by the speed of electronic communication, so these days it is more common to cite more recent work than it once was.
+
+It turns out that if we focus on citations of philosophy journals in philosophy journals, both of these claims are wrong. Historically, the norm was that most citations of journals in journals involved articles that had been published very recently. But the trend in recent years has been to cite fewer recent works, and more older works.
+
+This paper has two parts. In the first part I set out the data backing up what I said in the previous paragraph. This takes some work since citation practices have changed so much over the years that figuring out a way to sensibly compare citations at different times is a bit tricky. In the second part I look at some reasons why these changes have occurred. These 
