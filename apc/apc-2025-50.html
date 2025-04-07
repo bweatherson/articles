@@ -107,7 +107,7 @@ div.csl-indent {
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>Before looking at the data, here are two things I believed about philosophy citations. First, philosophers tend to cite very old papers. We still regularly teach a number of papers over half a century old in introductory classes; e.g., <span class="citation" data-cites="WOSA1969Y444700002">Frankfurt (<a href="#ref-WOSA1969Y444700002" role="doc-biblioref">1969a</a>)</span>, <span class="citation" data-cites="WOSA1971Y116900003">Thomson (<a href="#ref-WOSA1971Y116900003" role="doc-biblioref">1971</a>)</span>, <span class="citation" data-cites="WOSA1972Z066400001">Singer (<a href="#ref-WOSA1972Z066400001" role="doc-biblioref">1972</a>)</span>, <span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span>. These aren’t taught as history papers, but as early entries into the contemporary philosophical debate. And, I thought, that’s how we cite. Second, the technological changes of the last quarter century meant that this practice was being slowly reversed. The spread of electronic communication in the late 20th century, and then the rise of archives (e.g., Arxiv, SSRN, PhilPapers) and eventually journals publishing in EarlyView, meant that papers could now be cited even before they were published, and certainly without the delays involved in printing and posting journals around the world.</p>
 <p>Both of these thoughts were wrong. Historically, philosophy papers have tended, when they are citing other philosophy papers, to cite very recent ones. But this tendency is diminishing, not increasing, over time. I’ll offer much more evidence for these claims as we go along, but to make them plausible, I’ll start with two simple graphs.</p>
-<p>The data for the graphs come from citation data I downloaded concerning 82,418 papers published from 1955-2021,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2021, and to one of these 100 journals between 1955 and 2021. (The details of the journals, including when they start getting indexed for this dataset, are in <a href="#sec-methodology" class="quarto-xref">Section&nbsp;8</a>.) In total, that gives us YYY citations.</p>
+<p>The data for the graphs come from citation data I downloaded concerning 125,324 papers published from 1955-2024, in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2024, and to one of these 100 journals between 1955 and 2024. (The details of the journals, including when they start getting indexed for this dataset, are in <a href="#sec-methodology" class="quarto-xref">Section&nbsp;8</a>.) In total, that gives us YYY citations.</p>
 <p>Say the <em>age</em> of a citation is the difference between the publication year of the citing article and the cited article. So if an article published in 1998 cites an article published in 1985, that’s a 13 year old citation.</p>
 <p>In <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a> I’ve plotted the number of citations in the dataset with each possible age. As you can see, it’s very heavily tilted towards the left-hand edge. It is true that people still cite <span class="citation" data-cites="Frankfurt1969">Frankfurt (<a href="#ref-Frankfurt1969" role="doc-biblioref">1969b</a>)</span>. Indeed, it’s one of the most cited papers in the last ten years. But it’s just one paper; the bulk of citations are to recently published papers which, if history is any guide, will soon stop collecting citations.</p>
 <div class="cell">
@@ -158,7 +158,7 @@ Figure&nbsp;1: Number of citations with each age.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overall-median-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Summary statistics for outbound citations each year 1970-2021.
+Figure&nbsp;2: Summary statistics for outbound citations each year 1970-2024.
 </figcaption>
 </figure>
 </div>
@@ -183,7 +183,7 @@ Figure&nbsp;2: Summary statistics for outbound citations each year 1970-2021.
 </section>
 <section id="sec-period" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Period Effects</h1>
-<p>Those 334130 citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only 2 citations. That’s not too surprising; without the ability to cite preprints, there aren’t going to be many citations of articles that have come out that year. By 2021, there are 42338. In <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;3</a>, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.</p>
+<p>Those 509004 citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only 5 citations. That’s not too surprising; without the ability to cite preprints, there aren’t going to be many citations of articles that have come out that year. By 2024, there are 38507. In <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;3</a>, I show how these grew; the striking thing to me is XXXXXXXXXXXXXXX.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-citationsperyear" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -258,63 +258,63 @@ Table&nbsp;1: Mean outbound citations for some journals over the last two decade
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Philosophical Review</td>
-<td style="text-align: right;">13.7</td>
-<td style="text-align: right;">23.1</td>
-<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: right;">26.3</td>
+<td style="text-align: right;">11.5</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Philosophy and Phenomenological Research</td>
-<td style="text-align: right;">8.9</td>
-<td style="text-align: right;">14.0</td>
-<td style="text-align: right;">5.0</td>
+<td style="text-align: left;">Philosophical Perspectives</td>
+<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">7.9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Noûs</td>
-<td style="text-align: right;">10.8</td>
-<td style="text-align: right;">15.5</td>
-<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">6.9</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Journal of Philosophy</td>
-<td style="text-align: right;">8.4</td>
-<td style="text-align: right;">12.9</td>
-<td style="text-align: right;">4.5</td>
+<td style="text-align: left;">Philosophy and Phenomenological Research</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">6.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Philosophical Studies</td>
-<td style="text-align: right;">8.3</td>
-<td style="text-align: right;">12.8</td>
-<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">14.6</td>
+<td style="text-align: right;">5.6</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Philosophy</td>
-<td style="text-align: right;">3.4</td>
-<td style="text-align: right;">7.4</td>
-<td style="text-align: right;">4.0</td>
+<td style="text-align: left;">Journal of Philosophy</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">5.6</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Episteme</td>
-<td style="text-align: right;">7.5</td>
-<td style="text-align: right;">11.3</td>
-<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">Philosophy</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">4.9</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Erkenntnis</td>
-<td style="text-align: right;">9.0</td>
-<td style="text-align: right;">12.6</td>
-<td style="text-align: right;">3.6</td>
+<td style="text-align: left;">Episteme</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">12.9</td>
+<td style="text-align: right;">4.9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Philosophical Quarterly</td>
-<td style="text-align: right;">7.9</td>
-<td style="text-align: right;">11.3</td>
-<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: right;">4.7</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Philosophy Compass</td>
-<td style="text-align: right;">10.1</td>
-<td style="text-align: right;">13.4</td>
-<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">11.2</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">4.7</td>
 </tr>
 </tbody>
 </table>
@@ -323,7 +323,7 @@ Table&nbsp;1: Mean outbound citations for some journals over the last two decade
 </figure>
 </div>
 </div>
-<p>Since <em>Philosophical Review</em> only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn’t only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them <span class="citation" data-cites="WOS000575210400003">(<a href="#ref-WOS000575210400003" role="doc-biblioref">Oberman 2020</a>)</span> had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.</p>
+<p>Since <em>Philosophical Review</em> only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn’t only small sample size variation. <!--Of the 22 articles it published in 2020 and 2021, only one of them [@WOS000575210400003] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.--></p>
 <p>Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is <em>available</em> if it is published in a year iff it is published in or before that year. That’s not quite right in either direction; some articles are cited before publication, some articles that come out in December aren’t in any real sense available to be cited in January. But it’s close enough. Say an article is from a year that is <em>typically</em> cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in <a href="#sec-age" class="quarto-xref">Section&nbsp;4</a>; I’m going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, <a href="#fig-articlecounts" class="quarto-xref">Figure&nbsp;6</a> shows how many articles are available to be cited each year, and are from years that are typically cited.</p>
 <div id="fig-articlecounts" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -438,10 +438,10 @@ Figure&nbsp;8: Mean annual citations to different article kinds.
 </figcaption>
 </figure>
 </div>
-<p>Three things stand out about <a href="#fig-citationrate" class="quarto-xref">Figure&nbsp;8</a>. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a <em>decade</em>. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the ‘average article’ was being cited. Frequent citation is very much not the norm.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Three things stand out about <a href="#fig-citationrate" class="quarto-xref">Figure&nbsp;8</a>. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a <em>decade</em>. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the ‘average article’ was being cited. Frequent citation is very much not the norm.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we’re going to have to allow for them. The project here is to use citation data as a proxy for philosophical influence. It is, of course, a deeply imperfect proxy. But it is better than most other proxies; it is certainly better than going off of vibes, or of what one’s friends are talking about.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> If we’re going to use citations this way though, we need to think about how to take into account the changes shown in <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;3</a>. I’m going to offer a proposal in terms of typical articles; to a first approximation, I’ll measure an article’s influence in a period by the ratio of how often it is cited to how often a typical article is cited. This is a little arbitrary, but I think it gets things at least roughly right. At the very least, it avoids the problems with three other natural proposals that I’ll now present, and probably anything that avoids these problems will be fairly similar.</p>
-<p>Start with the non-proposal of just using citations per year as a measure of influence. Simply eyeballing <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;3</a> makes that a little implausible; there would be so much more influence now. It also has some implausible particular consequences. Tyler Burge’s “Individualism and Psychology” <span class="citation" data-cites="WOSA1986AYX3200001">(<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">Burge 1986</a>)</span> was the fourth most cited paper of the 1990s, and if anything that understates its influence. In the 1990s (in these 100 journals) it had 68 citations, so 6.8 per year. In 2021, it had 7 citations, so slightly more per year. Now Burge’s paper is still influential, and it connects in interesting ways to the social turn in philosophy that I’ll discuss below, but it’s implausible to say that it was more influential in 2021 than it was in the 1990s. When there are so many articles published, and a much lower bar to citation, seven citations a year doesn’t signify as much influence.</p>
-<p>A natural second proposal then is to measure what proportion of the year’s citations any particular article has. By this measure, “Individualism and Psychology” was about twenty times as influential in the 1990s as in 2021, which isn’t obviously false.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Other cases, however, suggest this is too much of a correction. It’s true that there are more citations now than there used to be. There are also more articles for these citations to be shared between. Holding fixed how influential an article is, you’d expect it to have a lower share of the citations when there are several times more articles available to be cited.</p>
+<p>Start with the non-proposal of just using citations per year as a measure of influence. Simply eyeballing <a href="#fig-citationsperyear" class="quarto-xref">Figure&nbsp;3</a> makes that a little implausible; there would be so much more influence now. It also has some implausible particular consequences. Tyler Burge’s “Individualism and Psychology” <span class="citation" data-cites="WOSA1986AYX3200001">(<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">Burge 1986</a>)</span> was the fourth most cited paper of the 1990s, and if anything that understates its influence.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>A natural second proposal then is to measure what proportion of the year’s citations any particular article has. By this measure, “Individualism and Psychology” was about twenty times as influential in the 1990s as in 2021, which isn’t obviously false.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Other cases, however, suggest this is too much of a correction. It’s true that there are more citations now than there used to be. There are also more articles for these citations to be shared between. Holding fixed how influential an article is, you’d expect it to have a lower share of the citations when there are several times more articles available to be cited.</p>
 <p>Again, it’s easiest to see this with some examples. In <a href="#tbl-comp-cite-rate" class="quarto-xref">Table&nbsp;2</a>, I’ve shown the five most cited articles for the 1990s (on the top), and for 2021 (on the bottom). I’ve also shown how often each is cited per 1000 citations, i.e., the proportion of citations each article gets. And I’ve extended the first table to make it easier to compare the scales.</p>
 <div id="tbl-comp-cite-rate" class="quarto-layout-panel anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -469,27 +469,27 @@ Table&nbsp;2: Most cited articles in the 1990s, and in 2021.
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">2.93</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">2.69</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">2.89</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">2.36</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">2.67</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">2.26</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">2.59</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">2.23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;"></td>
@@ -499,9 +499,9 @@ Table&nbsp;2: Most cited articles in the 1990s, and in 2021.
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1982NH65300003">Jackson (<a href="#ref-WOSA1982NH65300003" role="doc-biblioref">1982</a>)</span></td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">2.07</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60000005">Kripke (<a href="#ref-WOSA1975BF60000005" role="doc-biblioref">1975</a>)</span></td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">1.70</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;"></td>
@@ -511,21 +511,21 @@ Table&nbsp;2: Most cited articles in the 1990s, and in 2021.
 </tr>
 <tr class="even">
 <td style="text-align: right;">34</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1990EQ84600001">Davidson (<a href="#ref-WOSA1990EQ84600001" role="doc-biblioref">1990</a>)</span></td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">1.34</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1978FR68900001">Hull (<a href="#ref-WOSA1978FR68900001" role="doc-biblioref">1978</a>)</span></td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.08</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">35</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1990DA14600002">Crane and Mellor (<a href="#ref-WOSA1990DA14600002" role="doc-biblioref">1990</a>)</span></td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">1.25</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1979JB14500003">Lewis (<a href="#ref-WOSA1979JB14500003" role="doc-biblioref">1979a</a>)</span></td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.08</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">36</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1976BZ95100001">Lewis (<a href="#ref-WOSA1976BZ95100001" role="doc-biblioref">1976</a>)</span></td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">1.21</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1984SS95000001">van Fraassen (<a href="#ref-WOSA1984SS95000001" role="doc-biblioref">1984</a>)</span></td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.08</td>
 </tr>
 </tbody>
 </table>
@@ -555,62 +555,62 @@ Table&nbsp;2: Most cited articles in the 1990s, and in 2021.
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
-<td style="text-align: right;">81</td>
-<td style="text-align: right;">1.91</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">1.56</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000085841900002">Haslanger (<a href="#ref-WOS000085841900002" role="doc-biblioref">2000a</a>)</span></td>
-<td style="text-align: right;">56</td>
-<td style="text-align: right;">1.32</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">1.08</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">1.30</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">1.06</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">1.13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">1.09</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">1.06</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000207419300002">Christensen (<a href="#ref-WOS000207419300002" role="doc-biblioref">2007</a>)</span></td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">1.06</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
 <td style="text-align: left;"><span class="citation" data-cites="WOS000073222300002">Clark and Chalmers (<a href="#ref-WOS000073222300002" role="doc-biblioref">1998</a>)</span></td>
-<td style="text-align: right;">43</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">1.02</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">1.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000085841900002">Haslanger (<a href="#ref-WOS000085841900002" role="doc-biblioref">2000a</a>)</span></td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1963CEU0700001">Davidson (<a href="#ref-WOSA1963CEU0700001" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.86</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000262624000001">Hawthorne and Stanley (<a href="#ref-WOS000262624000001" role="doc-biblioref">2008</a>)</span></td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">0.99</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.86</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000332023600001">Plunkett and Sundell (<a href="#ref-WOS000332023600001" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HJ57600007">Lewis (<a href="#ref-WOSA1979HJ57600007" role="doc-biblioref">1979b</a>)</span></td>
 <td style="text-align: right;">42</td>
-<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.84</td>
 </tr>
 </tbody>
 </table>
@@ -625,7 +625,7 @@ Table&nbsp;2: Most cited articles in the 1990s, and in 2021.
 <p>As influential as “A Matter of Individuality”, “Counterfactual Dependence and Time’s Arrow”, and “Belief and the Will” were in the 1990s, I don’t think they were more influential than all but one article was in 2021. Haslanger’s article became a foundational text for one of the biggest fields in philosophy: social metaphysics. A measure of influence that puts it behind how influential 36 articles were in the 1990s seems wrong, and the intuitive reasoning about sharing citations around suggests why it is wrong.</p>
 <p>A natural next move is to scale the citations not to all citations, but to the average number of citations that available, i.e., already published, articles get. This would solve the problem I just presented in a simple way. Having 1 cite per 1000 citations means a lot more when there are 100,000 articles that could have received that citation than when there are 10,000 such articles.</p>
 <p>Again, this is an overcorrection. In theory, any article already published could be cited. In practice, long forgotten articles are long forgotten and hence not cited, and most articles are long forgotten. It’s true that in 2021 articles have to ‘share’ citation space with more other articles. But in practice that normally means they share the space with other <em>recently published</em> articles.</p>
-<p>We can sort of see this by redoing the calculation from <a href="#tbl-comp-cite-rate" class="quarto-xref">Table&nbsp;2</a>, instead using the ratio of citations this article receives to citations the average available article receives.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> I’ve done this in <a href="#tbl-comp-cite-ratio" class="quarto-xref">Table&nbsp;3</a>. First, I’ve shown the articles that, across the 1990s, had the highest average ratio of citations they received to citations the average available article received, and second, I did the same calculation for 2021.</p>
+<p>We can sort of see this by redoing the calculation from <a href="#tbl-comp-cite-rate" class="quarto-xref">Table&nbsp;2</a>, instead using the ratio of citations this article receives to citations the average available article receives.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> I’ve done this in <a href="#tbl-comp-cite-ratio" class="quarto-xref">Table&nbsp;3</a>. First, I’ve shown the articles that, across the 1990s, had the highest average ratio of citations they received to citations the average available article received, and second, I did the same calculation for 2021.</p>
 <div id="tbl-comp-cite-ratio" class="quarto-layout-panel anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comp-cite-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -651,53 +651,53 @@ Table&nbsp;3: Most cited articles in the 1990s compared to average citations, an
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
-<td style="text-align: right;">80.33</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
+<td style="text-align: right;">101.78</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
-<td style="text-align: right;">79.29</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
+<td style="text-align: right;">89.60</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
-<td style="text-align: right;">73.11</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
+<td style="text-align: right;">85.39</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
-<td style="text-align: right;">70.37</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
+<td style="text-align: right;">84.42</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
-<td style="text-align: right;">69.65</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HE39600001">Perry (<a href="#ref-WOSA1979HE39600001" role="doc-biblioref">1979</a>)</span></td>
+<td style="text-align: right;">77.75</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HE39600001">Perry (<a href="#ref-WOSA1979HE39600001" role="doc-biblioref">1979</a>)</span></td>
-<td style="text-align: right;">68.81</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
+<td style="text-align: right;">75.45</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60100001">Cummins (<a href="#ref-WOSA1975BF60100001" role="doc-biblioref">1975</a>)</span></td>
-<td style="text-align: right;">59.75</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1982NH65300003">Jackson (<a href="#ref-WOSA1982NH65300003" role="doc-biblioref">1982</a>)</span></td>
+<td style="text-align: right;">71.08</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1981LD54600001">Churchland (<a href="#ref-WOSA1981LD54600001" role="doc-biblioref">1981</a>)</span></td>
-<td style="text-align: right;">57.85</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60000005">Kripke (<a href="#ref-WOSA1975BF60000005" role="doc-biblioref">1975</a>)</span></td>
+<td style="text-align: right;">65.43</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
-<td style="text-align: right;">57.52</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60100001">Cummins (<a href="#ref-WOSA1975BF60100001" role="doc-biblioref">1975</a>)</span></td>
+<td style="text-align: right;">64.89</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60000005">Kripke (<a href="#ref-WOSA1975BF60000005" role="doc-biblioref">1975</a>)</span></td>
-<td style="text-align: right;">55.22</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
+<td style="text-align: right;">64.51</td>
 </tr>
 </tbody>
 </table>
@@ -726,32 +726,32 @@ Table&nbsp;3: Most cited articles in the 1990s compared to average citations, an
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
-<td style="text-align: right;">145.13</td>
+<td style="text-align: right;">174.97</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000085841900002">Haslanger (<a href="#ref-WOS000085841900002" role="doc-biblioref">2000a</a>)</span></td>
-<td style="text-align: right;">100.33</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
+<td style="text-align: right;">121.13</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
-<td style="text-align: right;">98.54</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
+<td style="text-align: right;">118.89</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
-<td style="text-align: right;">86.00</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000073222300002">Clark and Chalmers (<a href="#ref-WOS000073222300002" role="doc-biblioref">1998</a>)</span></td>
+<td style="text-align: right;">114.40</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
-<td style="text-align: right;">82.42</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: right;">114.40</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
-<td style="text-align: right;">80.63</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
+<td style="text-align: right;">100.94</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;"></td>
@@ -760,8 +760,8 @@ Table&nbsp;3: Most cited articles in the 1990s compared to average citations, an
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000368189400004">Schaffer (<a href="#ref-WOS000368189400004" role="doc-biblioref">2016</a>)</span></td>
-<td style="text-align: right;">73.46</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000262624000001">Hawthorne and Stanley (<a href="#ref-WOS000262624000001" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: right;">87.49</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;"></td>
@@ -770,8 +770,8 @@ Table&nbsp;3: Most cited articles in the 1990s compared to average citations, an
 </tr>
 <tr class="even">
 <td style="text-align: right;">35</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000360509700002">Skiles (<a href="#ref-WOS000360509700002" role="doc-biblioref">2015</a>)</span></td>
-<td style="text-align: right;">50.17</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000170434600004">Goldman (<a href="#ref-WOS000170434600004" role="doc-biblioref">2001</a>)</span></td>
+<td style="text-align: right;">65.05</td>
 </tr>
 </tbody>
 </table>
@@ -810,53 +810,53 @@ Table&nbsp;4: Most cited articles in the 1990s compared to typical citations, an
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
-<td style="text-align: right;">56.41</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
+<td style="text-align: right;">71.26</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
-<td style="text-align: right;">55.36</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1984TV24600001">Kim (<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">1984</a>)</span></td>
+<td style="text-align: right;">63.49</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2024717">Frankfurt (<a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span></td>
-<td style="text-align: right;">50.83</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
+<td style="text-align: right;">59.55</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HE39600001">Perry (<a href="#ref-WOSA1979HE39600001" role="doc-biblioref">1979</a>)</span></td>
-<td style="text-align: right;">48.59</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1986AYX3200001">Burge (<a href="#ref-WOSA1986AYX3200001" role="doc-biblioref">1986</a>)</span></td>
+<td style="text-align: right;">59.36</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
-<td style="text-align: right;">48.49</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HE39600001">Perry (<a href="#ref-WOSA1979HE39600001" role="doc-biblioref">1979</a>)</span></td>
+<td style="text-align: right;">55.00</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
 <td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
-<td style="text-align: right;">48.17</td>
+<td style="text-align: right;">52.74</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1981LD54600001">Churchland (<a href="#ref-WOSA1981LD54600001" role="doc-biblioref">1981</a>)</span></td>
-<td style="text-align: right;">40.57</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1982NH65300003">Jackson (<a href="#ref-WOSA1982NH65300003" role="doc-biblioref">1982</a>)</span></td>
+<td style="text-align: right;">49.51</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60100001">Cummins (<a href="#ref-WOSA1975BF60100001" role="doc-biblioref">1975</a>)</span></td>
-<td style="text-align: right;">40.27</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60000005">Kripke (<a href="#ref-WOSA1975BF60000005" role="doc-biblioref">1975</a>)</span></td>
+<td style="text-align: right;">46.05</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
-<td style="text-align: right;">39.49</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1981LD54600001">Churchland (<a href="#ref-WOSA1981LD54600001" role="doc-biblioref">1981</a>)</span></td>
+<td style="text-align: right;">45.21</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOSA1975BF60000005">Kripke (<a href="#ref-WOSA1975BF60000005" role="doc-biblioref">1975</a>)</span></td>
-<td style="text-align: right;">38.65</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
+<td style="text-align: right;">44.87</td>
 </tr>
 </tbody>
 </table>
@@ -885,52 +885,52 @@ Table&nbsp;4: Most cited articles in the 1990s compared to typical citations, an
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;"><span class="citation" data-cites="WOSA1983RR51600001">Lewis (<a href="#ref-WOSA1983RR51600001" role="doc-biblioref">1983</a>)</span></td>
-<td style="text-align: right;">84.45</td>
+<td style="text-align: right;">109.14</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000085841900002">Haslanger (<a href="#ref-WOS000085841900002" role="doc-biblioref">2000a</a>)</span></td>
-<td style="text-align: right;">58.39</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
+<td style="text-align: right;">75.56</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000087305900001">Machamer, Darden, and Craver (<a href="#ref-WOS000087305900001" role="doc-biblioref">2000</a>)</span></td>
-<td style="text-align: right;">57.35</td>
+<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
+<td style="text-align: right;">74.16</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
-<td style="text-align: right;">50.05</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000073222300002">Clark and Chalmers (<a href="#ref-WOS000073222300002" role="doc-biblioref">1998</a>)</span></td>
+<td style="text-align: right;">71.36</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
-<td style="text-align: right;">47.96</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000272855000002">Schaffer (<a href="#ref-WOS000272855000002" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: right;">71.36</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: left;"><span class="citation" data-cites="10.2307_2025310">Lewis (<a href="#ref-10.2307_2025310" role="doc-biblioref">1973</a>)</span></td>
-<td style="text-align: right;">46.92</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000249103800005">Elga (<a href="#ref-WOS000249103800005" role="doc-biblioref">2007b</a>)</span></td>
+<td style="text-align: right;">62.96</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000207419300002">Christensen (<a href="#ref-WOS000207419300002" role="doc-biblioref">2007</a>)</span></td>
-<td style="text-align: right;">46.92</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOS000085841900002">Haslanger (<a href="#ref-WOS000085841900002" role="doc-biblioref">2000a</a>)</span></td>
+<td style="text-align: right;">60.17</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000073222300002">Clark and Chalmers (<a href="#ref-WOS000073222300002" role="doc-biblioref">1998</a>)</span></td>
-<td style="text-align: right;">44.83</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1963CEU0700001">Davidson (<a href="#ref-WOSA1963CEU0700001" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: right;">60.17</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000262624000001">Hawthorne and Stanley (<a href="#ref-WOS000262624000001" role="doc-biblioref">2008</a>)</span></td>
-<td style="text-align: right;">43.79</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1974U469700001">Nagel (<a href="#ref-WOSA1974U469700001" role="doc-biblioref">1974</a>)</span></td>
+<td style="text-align: right;">60.17</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: left;"><span class="citation" data-cites="WOS000332023600001">Plunkett and Sundell (<a href="#ref-WOS000332023600001" role="doc-biblioref">2013</a>)</span></td>
-<td style="text-align: right;">43.79</td>
+<td style="text-align: left;"><span class="citation" data-cites="WOSA1979HJ57600007">Lewis (<a href="#ref-WOSA1979HJ57600007" role="doc-biblioref">1979b</a>)</span></td>
+<td style="text-align: right;">58.77</td>
 </tr>
 </tbody>
 </table>
@@ -942,19 +942,19 @@ Table&nbsp;4: Most cited articles in the 1990s compared to typical citations, an
 </div>
 </figure>
 </div>
-<p>The numbers in the second table are a little higher, but not overly so. In any case, one would expect the top end of a scale like this to be higher when just looking at a single year, where there is more variation, than at an average over a decade.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> So I’ll take this as the measure of age-adjusted number of citations. That is, to factor out the age effect on citations, I’ll divide the number of citations an article receives in a year by the average number that a typical, i.e., 3-10 year old, article receives that year.</p>
+<p>The numbers in the second table are a little higher, but not overly so. In any case, one would expect the top end of a scale like this to be higher when just looking at a single year, where there is more variation, than at an average over a decade.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> So I’ll take this as the measure of age-adjusted number of citations. That is, to factor out the age effect on citations, I’ll divide the number of citations an article receives in a year by the average number that a typical, i.e., 3-10 year old, article receives that year.</p>
 </section>
 <section id="sec-age" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Age Effects</h1>
 <p>The simplest way to work out age effects would be to use the values in <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a>. For any two articles with age <em>x</em> and <em>y</em>, we should adjust for age-effects by taking their citations at that age as something like the proportion of all citations of articles with that age as shown in <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a>. Given how dramatic the period effects are, this makes no theoretical sense whatsoever. And it would get various details wrong. Somewhat surprisingly, it would nevertheless be roughly correct.</p>
-<p>The picture in <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a> is fairly intuitive. Articles rarely get cited before they are published.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it’s a rapid, and then a slow, decline. For the classic articles, citations never really stop; <span class="citation" data-cites="WOSA1956CHJ4200001">Anscombe (<a href="#ref-WOSA1956CHJ4200001" role="doc-biblioref">1956</a>)</span> is cited by <span class="citation" data-cites="WOS000497282400001">Izgin (<a href="#ref-WOS000497282400001" role="doc-biblioref">2020</a>)</span>. But most articles reach the end of their citation life sooner or, occasionally, later.</p>
+<p>The picture in <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a> is fairly intuitive. Articles rarely get cited before they are published.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it’s a rapid, and then a slow, decline. For the classic articles, citations never really stop; <span class="citation" data-cites="WOSA1956CHJ4200001">Anscombe (<a href="#ref-WOSA1956CHJ4200001" role="doc-biblioref">1956</a>)</span> is cited by <span class="citation" data-cites="WOS000497282400001">Izgin (<a href="#ref-WOS000497282400001" role="doc-biblioref">2020</a>)</span>. But most articles reach the end of their citation life sooner or, occasionally, later.</p>
 <p>Still, we’d like to be sure that what we’re seeing in <a href="#fig-overall-age" class="quarto-xref">Figure&nbsp;1</a> isn’t just a side-effect of the period effects, or something about how the articles are aggregated. That’s what I’ll try to do in this section.</p>
 <p>The key notion is what I’m going to call the <em>citation ratio</em>. This is a function that takes two years, which I’ll call <em>old</em> and <em>new</em>, as input. Intuitively, it measures how often articles from <em>old</em> are cited in <em>new</em>, normalised for how many articles are published in <em>old</em>, and what the citation practices are in <em>new</em>. More formally, it is the following ratio:</p>
 <ul>
 <li>The numerator is how often the average article in <em>old</em> is cited in <em>new</em>. So we search the articles published in <em>new</em>, count up the number of citations of articles published in <em>old</em>, and divide by the number of articles published in <em>old</em>.</li>
 <li>The denominator is the rate a ‘typical’ article is cited in <em>new</em>. Remember that I’m defining, somewhat stipulatively, a typical article to be published between 3 and 10 years before <em>new</em>. So again we search the articles published in <em>new</em>, count the citations to articles published 3 to 10 years earlier, and divide by the number of articles originally published 3 to 10 years earlier.</li>
 </ul>
-<p>Let’s illustrate this with an example, using 1985 as <em>old</em> and 1997 as <em>new</em>. In 1997, indexed articles from 1985 were cited 70 times. There are 1096 articles published in 1985 in the index, so the numerator for the citation ratio is 70 / 1096, i.e., about 0.064. In the 3 to 10 years before 1985, there were 8839 indexed articles published. Those articles were, collectively, cited 1158 times in 1997. So the denominator, the average number of citations the typical article got in 1997, is 1158 / 8839, i.e., about 0.131. Putting those together, the citation ratio for 1985 in 1997 is (about) 0.488.</p>
+<p>Let’s illustrate this with an example, using 1985 as <em>old</em> and 1997 as <em>new</em>. In 1997, indexed articles from 1985 were cited 95 times. There are 1539 articles published in 1985 in the index, so the numerator for the citation ratio is 95 / 1539, i.e., about 0.062. In the 3 to 10 years before 1985, there were 12210 indexed articles published. Those articles were, collectively, cited 1478 times in 1997. So the denominator, the average number of citations the typical article got in 1997, is 1478 / 12210, i.e., about 0.121. Putting those together, the citation ratio for 1985 in 1997 is (about) 0.51.</p>
 <p>In <a href="#fig-ageeffecttibble-early" class="quarto-xref">Figure&nbsp;9</a> and <a href="#fig-ageeffecttibble-late" class="quarto-xref">Figure&nbsp;10</a> I’ve graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the <em>facets</em>), are for each value of <em>old</em>, the x-axis is the value for <em>new</em>, and the y-axis is the citation ratio. Note that before 1965, we can’t calculate the citation ratio because there isn’t enough data to calculate the typical citation rate. So the y-axis starts at 1965. And for most years there are no dots on the left side of the graph, because I haven’t calculated the citation ratio in years where <em>old</em> is later than <em>new</em>; there are few enough of these cases that they are best left out.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -984,7 +984,7 @@ Figure&nbsp;10: Each facet shows the relative citation rate for articles publish
 </div>
 </div>
 </div>
-<p>There are several notable things about <a href="#fig-ageeffecttibble-early" class="quarto-xref">Figure&nbsp;9</a> and <a href="#fig-ageeffecttibble-late" class="quarto-xref">Figure&nbsp;10</a>. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I’ll come back in <strong>?@sec-culture</strong> to why it might be. Still, it doesn’t change that the shape of the curves is common enough to talk sensibly about an average curve. In <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;11</a>, I’ve put most of the data from those two figures, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say ‘most’ of the data because I didn’t show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that’s displayed.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>There are several notable things about <a href="#fig-ageeffecttibble-early" class="quarto-xref">Figure&nbsp;9</a> and <a href="#fig-ageeffecttibble-late" class="quarto-xref">Figure&nbsp;10</a>. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I’ll come back in <strong>?@sec-culture</strong> to why it might be. Still, it doesn’t change that the shape of the curves is common enough to talk sensibly about an average curve. In <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;11</a>, I’ve put most of the data from those two figures, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say ‘most’ of the data because I didn’t show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that’s displayed.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ageeffecteverything" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1033,7 +1033,7 @@ Figure&nbsp;13: For each original publication year, the age it hits maximum cita
 </div>
 </div>
 <p>In <a href="#fig-peakratiotime" class="quarto-xref">Figure&nbsp;13</a>, the graph is going slightly upwards. Putting these last two figures together, we get the claim I was gesturing at earlier: citation curves are getting flatter. The peaks are coming later, and they are lower.</p>
-<p>Finally, I want to note how much variation there is hidden within all the graphs I’ve shown so far. I’m mostly here classifying articles simply by their publication year. If we used more fine-grained classifications, some of the results would look rather different. In <a href="#fig-ageeffecteverything-high" class="quarto-xref">Figure&nbsp;14</a> and <a href="#fig-ageeffecteverything-low" class="quarto-xref">Figure&nbsp;15</a> I’ve shown what happens to <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;11</a> if we first restrict attention to articles with 15 or more citations, and then to articles with fewer than 15 citations.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> Obviously in the first graph the values will be higher; highly cited articles are, indeed, cited more often. But what I want to highlight here is the different shape of the curves.</p>
+<p>Finally, I want to note how much variation there is hidden within all the graphs I’ve shown so far. I’m mostly here classifying articles simply by their publication year. If we used more fine-grained classifications, some of the results would look rather different. In <a href="#fig-ageeffecteverything-high" class="quarto-xref">Figure&nbsp;14</a> and <a href="#fig-ageeffecteverything-low" class="quarto-xref">Figure&nbsp;15</a> I’ve shown what happens to <a href="#fig-ageeffecteverything" class="quarto-xref">Figure&nbsp;11</a> if we first restrict attention to articles with 15 or more citations, and then to articles with fewer than 15 citations.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Obviously in the first graph the values will be higher; highly cited articles are, indeed, cited more often. But what I want to highlight here is the different shape of the curves.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ageeffecteverything-high" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1156,7 +1156,7 @@ Figure&nbsp;17: Cohort effects for different publication years.
 <li>Then there is a rather dramatic drop off, almost immediately after the high of 2007.</li>
 </ol>
 <p>The first couple of trends make sense; the latter three less so. The rest of this paper (before the methodology section) will be about explaining what’s going on here, and seeing what it can tell us both about the history of philosophy, and the history of the philosophy profession.</p>
-<p>Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don’t have “Is Knowledge Justified True Belief?” <span class="citation" data-cites="Gettier1963">(<a href="#ref-Gettier1963" role="doc-biblioref">Gettier 1963</a>)</span> because they don’t index <em>Analysis</em> until 1975, and we don’t have Austin’s two most important papers - “Ifs and Cans” and “A Plea for Excuses” <span class="citation" data-cites="Austin1956 Austin1956b">(<a href="#ref-Austin1956" role="doc-biblioref">Austin 1956a</a>, <a href="#ref-Austin1956b" role="doc-biblioref">1956b</a>)</span> because their venues aren’t indexed as journals at all. We do have important papers by <span class="citation" data-cites="WOSA1957CGZ6000005">Grice (<a href="#ref-WOSA1957CGZ6000005" role="doc-biblioref">1957</a>)</span>, <span class="citation" data-cites="WOSA1959CGZ6600001">Smart (<a href="#ref-WOSA1959CGZ6600001" role="doc-biblioref">1959</a>)</span>, and <span class="citation" data-cites="WOSA1963CEU0700001">Davidson (<a href="#ref-WOSA1963CEU0700001" role="doc-biblioref">1963</a>)</span>. But these made much less impact than books from the same time, especially <em>Intention</em> <span class="citation" data-cites="Anscombe1957">(<a href="#ref-Anscombe1957" role="doc-biblioref">Anscombe 1957</a>)</span>, <em>Word and Object</em> <span class="citation" data-cites="Quine1960">(<a href="#ref-Quine1960" role="doc-biblioref">Quine 1960</a>)</span> and <em>The Structure of Scientific Revolutions</em> <span class="citation" data-cites="Kuhn1962">(<a href="#ref-Kuhn1962" role="doc-biblioref">Kuhn 1962</a>)</span>.</p>
+<p>Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don’t have “Is Knowledge Justified True Belief?” <span class="citation" data-cites="Gettier1963">(<a href="#ref-Gettier1963" role="doc-biblioref">Gettier 1963</a>)</span> because they don’t index <em>Analysis</em> until 1975, and we don’t have Austin’s two most important papers - “Ifs and Cans” and “A Plea for Excuses” <span class="citation" data-cites="Austin1956 Austin1956b">(<a href="#ref-Austin1956" role="doc-biblioref">Austin 1956a</a>, <a href="#ref-Austin1956b" role="doc-biblioref">1956b</a>)</span> because their venues aren’t indexed as journals at all. We do have important papers by <span class="citation" data-cites="WOSA1956CHJ4400001">Frege (<a href="#ref-WOSA1956CHJ4400001" role="doc-biblioref">1956</a>)</span>, <span class="citation" data-cites="WOSA1956CEQ2500001">W. van O. Quine (<a href="#ref-WOSA1956CEQ2500001" role="doc-biblioref">1956</a>)</span>, <span class="citation" data-cites="WOSA1957CGZ6000005">Grice (<a href="#ref-WOSA1957CGZ6000005" role="doc-biblioref">1957</a>)</span>, <span class="citation" data-cites="WOSA1958CDL1000001">Anscombe (<a href="#ref-WOSA1958CDL1000001" role="doc-biblioref">1958</a>)</span>, <span class="citation" data-cites="WOSA1959CGZ6600001">Smart (<a href="#ref-WOSA1959CGZ6600001" role="doc-biblioref">1959</a>)</span>, and <span class="citation" data-cites="WOSA1963CEU0700001">Davidson (<a href="#ref-WOSA1963CEU0700001" role="doc-biblioref">1963</a>)</span>. But these made much less impact than books from the same time, especially <em>Intention</em> <span class="citation" data-cites="Anscombe1957">(<a href="#ref-Anscombe1957" role="doc-biblioref">Anscombe 1957</a>)</span>, <em>Word and Object</em> <span class="citation" data-cites="Quine1960">(<a href="#ref-Quine1960" role="doc-biblioref">W. V. O. Quine 1960</a>)</span> and <em>The Structure of Scientific Revolutions</em> <span class="citation" data-cites="Kuhn1962">(<a href="#ref-Kuhn1962" role="doc-biblioref">Kuhn 1962</a>)</span>.</p>
 <p>Then starting in the late 1960s, almost every area of philosophy got turned upside down, with much of the action happening in journals. The two most important works of the period, <em>A Theory of Justice</em> <span class="citation" data-cites="Rawls1971">(<a href="#ref-Rawls1971" role="doc-biblioref">Rawls 1971</a>)</span> and <em>Naming and Necessity</em> <span class="citation" data-cites="Kripke1980">(<a href="#ref-Kripke1980" role="doc-biblioref">Kripke [1972] 1980</a>)</span>, were not in journals. But articles in journals did make revolutionary changes in many fields, including:</p>
 <ul>
 <li>Free will <span class="citation" data-cites="WOSA1969Y444700002 10.2307_2024717">(<a href="#ref-WOSA1969Y444700002" role="doc-biblioref">Frankfurt 1969a</a>, <a href="#ref-10.2307_2024717" role="doc-biblioref">1971</a>)</span>;</li>
@@ -1214,12 +1214,12 @@ Figure&nbsp;19: A version of <a href="#fig-cohort" class="quarto-xref">Figure&nb
 <section id="sec-content" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Content Changes</h1>
 <p>Another part of the story is that the centre of gravity of philosophy publishing changes over the time period we’re looking at. And it does so in a way that turns out to matter for which kinds of articles are cited.</p>
-<p>Through at least the early 2000s, analytic philosophy is in what <span class="citation" data-cites="Sider2020">Sider (<a href="#ref-Sider2020" role="doc-biblioref">2020, 2</a>)</span> calls the “modal era”. One aspect of this era, one that Sider particularly highlights, is that questions about essence were equated with questions about necessity in a way that they weren’t either before or after the era.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> This should be taken as a symptom of the era, not the definition of it. What’s really defining of the era was the way modality became central to disputes across the discipline.</p>
+<p>Through at least the early 2000s, analytic philosophy is in what <span class="citation" data-cites="Sider2020">Sider (<a href="#ref-Sider2020" role="doc-biblioref">2020, 2</a>)</span> calls the “modal era”. One aspect of this era, one that Sider particularly highlights, is that questions about essence were equated with questions about necessity in a way that they weren’t either before or after the era.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> This should be taken as a symptom of the era, not the definition of it. What’s really defining of the era was the way modality became central to disputes across the discipline.</p>
 <p>Consider, for example, what Frank <span class="citation" data-cites="Jackson1998">Jackson (<a href="#ref-Jackson1998" role="doc-biblioref">1998</a>)</span> called the ‘location problem’, i.e., the problem of how to locate in the world something that the philosopher thinks exists, and is not fundamental. Jackson argues that saying how to locate the non-fundamental in the fundamental is a compulsory question for anyone doing ‘serious metaphysics’, and the one and only answer to it will involve modality. As he says,</p>
 <blockquote class="blockquote">
 <p>When does a putative feature of our world have a place in the account some serious metaphysics tells of what our world is like? I have already mentioned one answer: if the feature is entailed by the account told in the terms favoured by the metaphysics in question, it has a place in the account told in the favoured terms. This is hardly controversial considered as a sufficient condition, but, I will now argue, it is also a necessary condition: the one and only way of having a place in an account told in some set of preferred terms is by being entailed by that account—a view I will refer to as the entry by entailment thesis. <span class="citation" data-cites="Jackson1998">(<a href="#ref-Jackson1998" role="doc-biblioref">Jackson 1998, 5</a>)</span></p>
 </blockquote>
-<p>Now Jackson went on to say other things about entailment that were not widely endorsed. But at this early stage in the book, I think he was largely expressing conventional wisdom.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> In a review that disagrees with many parts of the book, Stephen <span class="citation" data-cites="Yablo2000Jackson">Yablo (<a href="#ref-Yablo2000Jackson" role="doc-biblioref">2000, 20</a>)</span> says “Not many eyebrows will be raised by Jackson’s view that metaphysics is committed to ‘entry by entailment’ theses.” That is, the quoted parts are not controversial, especially the one that Jackson flags as being ever so slightly more controversial.</p>
+<p>Now Jackson went on to say other things about entailment that were not widely endorsed. But at this early stage in the book, I think he was largely expressing conventional wisdom.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> In a review that disagrees with many parts of the book, Stephen <span class="citation" data-cites="Yablo2000Jackson">Yablo (<a href="#ref-Yablo2000Jackson" role="doc-biblioref">2000, 20</a>)</span> says “Not many eyebrows will be raised by Jackson’s view that metaphysics is committed to ‘entry by entailment’ theses.” That is, the quoted parts are not controversial, especially the one that Jackson flags as being ever so slightly more controversial.</p>
 <p>The idea that entailment, i.e., necessitation, had been central to understanding how the non-fundamental relates to the fundamental had been central to philosophy for many years by this point. (To be clear, Jackson isn’t claiming great novelty at this point of his book; the big claim he’s building towards is that the necessitation is a priori knowable.) We can see just how central it is by using a slightly different statistic to what I’ve used so far: grand-citations.</p>
 <p>Say that the number of grand-citations an article <em>a</em> has is the number of triples ⟨<em>a</em>, <em>b</em>, <em>c</em>⟩ such that <em>c</em> cites <em>b</em> and <em>b</em> cites <em>a</em>. It’s the sum of the number of citations of articles that cite <em>a</em>. If we look at grand-citations over time, they show David Lewis’s centrality to the philosophy journals. Through 2021, six of the eight articles with the most grand-citations are by Lewis. If instead we look at particular times, we see the changing face of the journals. Grand-citations take some time to accrue, so I’ll look at twenty year periods. In particular, for various years, I’ll look at which articles published in the preceeding twenty years had the most grand-citations through that year.</p>
 <p><a href="#tbl-grand-cite-2000" class="quarto-xref">Table&nbsp;5</a> lists which articles, published from 1980 onwards, had the most grand-citations through 2000.</p>
@@ -1314,7 +1314,7 @@ Table&nbsp;5: The 10 articles from the 1980s and 1990s with the most grand-citat
 </figure>
 </div>
 </div>
-<p>I’ve included the names of the articles on this table to make vivid how central supervenience was to the literature at this time.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> Four of the articles here have the word ‘supervenience’ in the title! At the center of this literature stood Jaegwon Kim. The citation data I have somewhat <em>underestimates</em> his influence, because people often cited his edited collection <em>Supervenience and Mind</em> <span class="citation" data-cites="Kim1993">(<a href="#ref-Kim1993" role="doc-biblioref"><em>Supervenience and Mind</em> 1993</a>)</span>, and those citations are usually not tracked by Web of Science.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<p>I’ve included the names of the articles on this table to make vivid how central supervenience was to the literature at this time.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> Four of the articles here have the word ‘supervenience’ in the title! At the center of this literature stood Jaegwon Kim. The citation data I have somewhat <em>underestimates</em> his influence, because people often cited his edited collection <em>Supervenience and Mind</em> <span class="citation" data-cites="Kim1993">(<a href="#ref-Kim1993" role="doc-biblioref"><em>Supervenience and Mind</em> 1993</a>)</span>, and those citations are usually not tracked by Web of Science.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
 <p>When we move into the 2000s, the focus shifts dramatically, as we see in <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a>.</p>
 <div class="cell">
 <div id="tbl-grand-cite-2010" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1408,10 +1408,10 @@ Table&nbsp;6: The 10 articles from the 1990s and 2000s with the most grand-citat
 </div>
 </div>
 <p>Even more than with the <a href="#tbl-grand-cite-2000" class="quarto-xref">Table&nbsp;5</a>, one complication with <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a> is that I’m using a counting statistic, so it is biased in favor of older papers with more time to accrue citations. That said, the top takeaway is fairly clear. The biggest single topic over this time was contextualism in epistemology, with the big papers by <span class="citation" data-cites="WOSA1996VY21200001">Lewis (<a href="#ref-WOSA1996VY21200001" role="doc-biblioref">1996</a>)</span> and <span class="citation" data-cites="WOSA1995RC31600001">DeRose (<a href="#ref-WOSA1995RC31600001" role="doc-biblioref">1995</a>)</span> at the center of things. What I want to focus particularly on, though, is another DeRose paper on that list: “Epistemic Possibilities”. It has fewer cites than any other paper there, but the fourth most grand-cites. The way this came about is revealing of changes in the discipline, and particularly in citation practices.</p>
-<p>DeRose’s paper is an important early contribution to debates about epistemic modals that became very active in the 2000s. This activity was partially due to the intrinsic interest of the subject. But it was also due to the way that epistemic modals sit at the intersection of three enormous debates that were going on at the time. One was epistemic contextualism, which you can see the impact of in <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a>. The second was about the nature of context-sensitivity in language, with work by <span class="citation" data-cites="WOS000088616400001">Stanley and Szabó (<a href="#ref-WOS000088616400001" role="doc-biblioref">2000</a>)</span> at the center of it.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> And the third was about the possibility of a modern form of relativism, with the central figure here being John <span class="citation" data-cites="MacFarlane2014">MacFarlane (<a href="#ref-MacFarlane2014" role="doc-biblioref">2014</a>)</span>. Papers on epistemic modals were influenced by, and in turn influenced, all three of these debates.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
+<p>DeRose’s paper is an important early contribution to debates about epistemic modals that became very active in the 2000s. This activity was partially due to the intrinsic interest of the subject. But it was also due to the way that epistemic modals sit at the intersection of three enormous debates that were going on at the time. One was epistemic contextualism, which you can see the impact of in <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a>. The second was about the nature of context-sensitivity in language, with work by <span class="citation" data-cites="WOS000088616400001">Stanley and Szabó (<a href="#ref-WOS000088616400001" role="doc-biblioref">2000</a>)</span> at the center of it.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> And the third was about the possibility of a modern form of relativism, with the central figure here being John <span class="citation" data-cites="MacFarlane2014">MacFarlane (<a href="#ref-MacFarlane2014" role="doc-biblioref">2014</a>)</span>. Papers on epistemic modals were influenced by, and in turn influenced, all three of these debates.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
 <p>These debates had an impact on how citations worked in philosophy in a few ways. One was in virtue of the fact that they were largely new topics, there wasn’t an established canon that writers could assume familiarity with. So they needed to cite more papers to establish the debate. It wasn’t necessary to cite <span class="citation" data-cites="10.2307_2025079">Putnam (<a href="#ref-10.2307_2025079" role="doc-biblioref">1973</a>)</span> or <span class="citation" data-cites="Kripke1980">Kripke (<a href="#ref-Kripke1980" role="doc-biblioref">[1972] 1980</a>)</span> every time you wanted to distinguish necessity from a priority; the reader in the 1990s could be assumed to know where the distinction came from. But the reader in the 2000s could not be assumed to know about work by Fred <span class="citation" data-cites="WOSA1970ZE33800001">Dretske (<a href="#ref-WOSA1970ZE33800001" role="doc-biblioref">1970</a>)</span>, G. C. <span class="citation" data-cites="WOSA1976EK38300003">Stine (<a href="#ref-WOSA1976EK38300003" role="doc-biblioref">1976</a>)</span>, or Stewart <span class="citation" data-cites="WOSA1987K730800002">Cohen (<a href="#ref-WOSA1987K730800002" role="doc-biblioref">1987</a>)</span>.</p>
 <p>Perhaps more significant was that these debates, especially the second and third, were much more interdisciplinary than debates about modality had been. Many of the writers were primarily in linguistics, not philosophy, and the philosophers were reading more linguistics than ever before. The citation norms in linguistics, like in most other social sciences, required more citations than the norms in philosophy did. They didn’t require more citation than the philosophy norms in the 2020s, but much more than philosophy in the 1990s. So these debates, which became important across a range of journals from the mid 2000s onwards, tended to have many more citations than before.</p>
-<p>To back up the claims in the last two paragraphs I need one more statistic. (The last one I’ll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> For an article <em>a</em> published in year <em>y</em>, say that the <strong>weight</strong> of its citations in year <em>z</em> is the number of times it is cited in <em>z</em>, divided by the average number of citations that articles in year <em>y</em> get in <em>z</em>. So it’s just the measure of how often the article is cited, compared to how often you’d expect it to be cited knowing just the publication year and citation year. We’ll be interested in three statistics. The <strong>overall weight</strong> of an article is the average of its weight over each year between the year after its publication and 2021. The <strong>short-term weight</strong> is the average of its weight over the seven years after it was published. And the <strong>long-term weight</strong> is the average of its weight from eight years after publication to 2021. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that’s not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.</p>
+<p>To back up the claims in the last two paragraphs I need one more statistic. (The last one I’ll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> For an article <em>a</em> published in year <em>y</em>, say that the <strong>weight</strong> of its citations in year <em>z</em> is the number of times it is cited in <em>z</em>, divided by the average number of citations that articles in year <em>y</em> get in <em>z</em>. So it’s just the measure of how often the article is cited, compared to how often you’d expect it to be cited knowing just the publication year and citation year. We’ll be interested in three statistics. The <strong>overall weight</strong> of an article is the average of its weight over each year between the year after its publication and 2024. The <strong>short-term weight</strong> is the average of its weight over the seven years after it was published. And the <strong>long-term weight</strong> is the average of its weight from eight years after publication to 2024. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that’s not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.</p>
 <p>This is a variant on grand-citations, and like grand-citations, it takes some time to</p>
 <div class="cell">
 <div id="tbl-grand-cite-2020" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1518,58 +1518,108 @@ As noted above, the study here is based on the Web of Science database, which my
 ::: {.cell-output-display}
 
 
-|Journal                                       | Articles| First Year| Most Recent Year|
-|:---------------------------------------------|--------:|----------:|----------------:|
-|Analysis                                      |     2498|       1975|             2020|
-|Australasian Journal of Philosophy            |     1502|       1975|             2020|
-|Biology and Philosophy                        |     1042|       1988|             2020|
-|British Journal for the Philosophy of Science |     1443|       1956|             2020|
-|British Journal of Aesthetics                 |     1305|       1975|             2020|
-|Canadian Journal of Philosophy                |     1439|       1975|             2020|
-|Economics and Philosophy                      |      487|       1986|             2020|
-|Episteme                                      |      404|       2005|             2020|
-|Erkenntnis                                    |     1248|       2000|             2020|
-|Ethical Theory and Moral Practice             |      700|       2008|             2020|
-|Ethics                                        |     1589|       1955|             2020|
-|European Journal for Philosophy of Science    |      285|       2011|             2020|
-|European Journal of Philosophy                |      710|       1998|             2020|
-|Hypatia                                       |      538|       2009|             2020|
-|Inquiry                                       |     1420|       1966|             2020|
-|Journal of Aesthetics and Art Criticism       |     1388|       1975|             2020|
-|Journal of Indian Philosophy                  |      983|       1975|             2020|
-|Journal of Philosophical Logic                |     1290|       1972|             2020|
-|Journal of Philosophy                         |     2665|       1956|             2020|
-|Journal of Political Philosophy               |      540|       1998|             2020|
-|Journal of Symbolic Logic                     |     4081|       1966|             2020|
-|Journal of Value Inquiry                      |     1222|       1980|             2020|
-|Linguistics and Philosophy                    |      749|       1979|             2020|
-|Metaphilosophy                                |     1379|       1975|             2020|
-|Mind                                          |     1837|       1956|             2020|
-|Mind & Language                               |      690|       1994|             2020|
-|Minds and Machines                            |      612|       1992|             2020|
-|Monist                                        |     1843|       1963|             2020|
-|Noûs                                          |     1318|       1975|             2020|
-|Pacific Philosophical Quarterly               |     1102|       1980|             2020|
-|Philosophers' Imprint                         |      299|       2010|             2020|
-|Philosophia                                   |     1711|       1975|             2020|
-|Philosophical Psychology                      |     1053|       1991|             2020|
-|Philosophical Quarterly                       |     1213|       1975|             2020|
-|Philosophical Review                          |      998|       1956|             2020|
-|Philosophical Studies                         |     4787|       1956|             2020|
-|Philosophy                                    |     1908|       1956|             2020|
-|Philosophy Compass                            |      402|       2015|             2020|
-|Philosophy and Phenomenological Research      |     2952|       1956|             2020|
-|Philosophy of Science                         |     2916|       1956|             2020|
-|Philosophy of the Social Sciences             |      910|       1975|             2020|
-|Phronesis                                     |      723|       1975|             2020|
-|Ratio                                         |      972|       1974|             2020|
-|Review of Symbolic Logic                      |      415|       2008|             2020|
-|Social Philosophy and Policy                  |      870|       1983|             2020|
-|Southern Journal of Philosophy                |     1844|       1976|             2020|
-|Studies in History and Philosophy of Science  |     1433|       1974|             2020|
-|Synthese                                      |     5062|       1966|             2020|
-|Theory and Decision                           |     1720|       1970|             2020|
-|Topoi                                         |      932|       1982|             2020|
+|Journal                                           | Articles| First Year| Most Recent Year|
+|:-------------------------------------------------|--------:|----------:|----------------:|
+|American Philosophical Quarterly                  |     1730|       1964|             2020|
+|Analysis                                          |     2498|       1975|             2020|
+|Analytic Philosophy                               |       91|       2016|             2020|
+|Archiv für Geschichte der Philosophie             |      591|       1975|             2020|
+|Australasian Journal of Philosophy                |     1502|       1975|             2020|
+|Biology and Philosophy                            |     1042|       1988|             2020|
+|British Journal for the History of Philosophy     |      624|       2007|             2020|
+|British Journal for the Philosophy of Science     |     1443|       1956|             2020|
+|British Journal of Aesthetics                     |     1305|       1975|             2020|
+|Bulletin of Symbolic Logic                        |      382|       1997|             2020|
+|Canadian Journal of Philosophy                    |     1432|       1975|             2020|
+|Croatian Journal of Philosophy                    |      301|       2007|             2020|
+|Dialogue                                          |     1423|       1975|             2020|
+|Economics and Philosophy                          |      487|       1986|             2020|
+|Episteme                                          |      404|       2005|             2020|
+|Ergo                                              |      165|       2016|             2020|
+|Erkenntnis                                        |     1240|       2000|             2020|
+|Ethical Theory and Moral Practice                 |      699|       2008|             2020|
+|Ethics                                            |     1589|       1955|             2020|
+|Ethics and Information Technology                 |      306|       2001|             2020|
+|European Journal for Philosophy of Science        |      285|       2011|             2020|
+|European Journal of Philosophy                    |      710|       1998|             2020|
+|Heythrop Journal                                  |     1322|       1975|             2020|
+|History and Philosophy of Logic                   |      431|       1992|             2020|
+|Hypatia                                           |      538|       2009|             2020|
+|Inquiry                                           |     1323|       1966|             2020|
+|International Journal for Philosophy of Religion  |     1043|       1975|             2020|
+|International Philosophical Quarterly             |     1511|       1961|             2020|
+|Journal of Aesthetics and Art Criticism           |     1388|       1975|             2020|
+|Journal of Applied Philosophy                     |      442|       2006|             2020|
+|Journal of Chinese Philosophy                     |     1188|       1973|             2020|
+|Journal of Consciousness Studies                  |     1278|       2000|             2020|
+|Journal of Indian Philosophy                      |      983|       1975|             2020|
+|Journal of Medical Ethics                         |     3775|       1975|             2020|
+|Journal of Moral Philosophy                       |      315|       2005|             2020|
+|Journal of Philosophical Logic                    |     1290|       1972|             2020|
+|Journal of Philosophical Research                 |      392|       2005|             2020|
+|Journal of Philosophy                             |     2665|       1956|             2020|
+|Journal of Political Philosophy                   |      540|       1998|             2020|
+|Journal of Social Philosophy                      |      372|       2008|             2020|
+|Journal of Symbolic Logic                         |     4081|       1966|             2020|
+|Journal of Value Inquiry                          |     1222|       1980|             2020|
+|Journal of the American Philosophical Association |      187|       2015|             2020|
+|Journal of the History of Ideas                   |     2097|       1956|             2020|
+|Journal of the History of Philosophy              |     1039|       1975|             2020|
+|Journal of the Philosophy of History              |      213|       2010|             2020|
+|Kant-Studien                                      |     1033|       1975|             2020|
+|Kantian Review                                    |      228|       2010|             2020|
+|Kennedy Institute of Ethics Journal               |      521|       1995|             2020|
+|Law and Philosophy                                |      759|       1982|             2020|
+|Linguistics and Philosophy                        |      749|       1979|             2020|
+|Logique et Analyse                                |      330|       2007|             2020|
+|Metaphilosophy                                    |     1379|       1975|             2020|
+|Mind                                              |     1837|       1956|             2020|
+|Mind & Language                                   |      690|       1994|             2020|
+|Minds and Machines                                |      612|       1992|             2020|
+|Monist                                            |     1843|       1963|             2020|
+|Notre Dame Journal of Formal Logic                |      378|       2009|             2020|
+|Noûs                                              |     1300|       1975|             2020|
+|Pacific Philosophical Quarterly                   |     1101|       1980|             2020|
+|Philosophers' Imprint                             |      299|       2010|             2020|
+|Philosophia                                       |     1710|       1975|             2020|
+|Philosophia Mathematica                           |      192|       2008|             2020|
+|Philosophical Explorations                        |      292|       2008|             2020|
+|Philosophical Forum                               |      772|       1971|             2020|
+|Philosophical Investigations                      |      611|       1983|             2020|
+|Philosophical Papers                              |      191|       2009|             2020|
+|Philosophical Perspectives                        |      251|       2007|             2020|
+|Philosophical Psychology                          |     1049|       1991|             2020|
+|Philosophical Quarterly                           |     1213|       1975|             2020|
+|Philosophical Review                              |      998|       1956|             2020|
+|Philosophical Studies                             |     4787|       1956|             2020|
+|Philosophy                                        |     1719|       1956|             2020|
+|Philosophy & Public Affairs                       |      675|       1971|             2020|
+|Philosophy Compass                                |      402|       2015|             2020|
+|Philosophy East and West                          |     1443|       1966|             2020|
+|Philosophy and Phenomenological Research          |     2952|       1956|             2020|
+|Philosophy and Rhetoric                           |      852|       1975|             2020|
+|Philosophy of Science                             |     2916|       1956|             2020|
+|Philosophy of the Social Sciences                 |      910|       1975|             2020|
+|Phronesis                                         |      723|       1975|             2020|
+|Politics, Philosophy and Economics                |      252|       2008|             2020|
+|Ratio                                             |      972|       1974|             2020|
+|Res Philosophica                                  |      256|       2013|             2020|
+|Review of Metaphysics                             |     1543|       1956|             2020|
+|Review of Symbolic Logic                          |      415|       2008|             2020|
+|Russell                                           |      321|       1981|             2020|
+|Social Epistemology                               |      287|       2011|             2020|
+|Social Philosophy and Policy                      |      870|       1983|             2020|
+|South African Journal of Philosophy               |      677|       1987|             2020|
+|Southern Journal of Philosophy                    |     1844|       1976|             2020|
+|Studia Logica                                     |      562|       2010|             2020|
+|Studies in History and Philosophy of Science      |     1433|       1974|             2020|
+|Synthese                                          |     5034|       1966|             2020|
+|Theoria                                           |      247|       2007|             2020|
+|Theory and Decision                               |     1720|       1970|             2020|
+|Thought                                           |      156|       2016|             2020|
+|Topoi                                             |      932|       1982|             2020|
+|Transactions of the Charles S. Peirce Society     |     1115|       1975|             2020|
+|Utilitas                                          |      302|       2009|             2020|
 
 
 :::
@@ -1593,11 +1643,11 @@ The way Web of Science handles the 'supplements' to _Noûs_, i.e., _Philosophica
 
 The other big problem is that for several journals, 1974 is missing from the index. In a couple of cases, 1973 is also missing. And in one very important case, 1971 and 1972 are missing as well. That 'important case' is _The Journal of Philosophy_. Between 1971 and 1974 it published groundbreaking articles by Harry @Frankfurt1971, George @Boolos1971, Paul @Benacerraf1973, Jaegwon @Kim1973, Michael @Friedman1974, Isaac @Levi1974, and David Lewis [-@Lewis1971cen; -@Lewis1973ben]. This seemed like a break in the data that needed fixing if I was going to tell the story correctly. So I used JSTOR to find a full list of articles (as opposed to notes or book reviews) in _Journal of Philosophy_ in those years, and then looked through the citations in articles in @tbl-list-of-journals to see which citations were to one of those articles. This did mean I was using a different classification of publications into articles and non-articles, and there are some odd choices.^[Notably, the JSTOR list seemed to exclude the symposium centered around Kenneth Arrow's "Some Ordinalist-Utilitarian Notes on Rawls’s Theory of Justice"; I'm not sure why that was.] And it meant I had to do a fair bit of data cleaning just to track down references to those four years.^[A non-trivial chunk of the cleaning was sorting through the many and varied ways that philosophers have spelled Brian O'Shaughnessy's name over the years.] While I've strived to make the data as consistent as possible with the other years, it's possible that I haven't succeeded, and some discontinuities around the early 1970s are due to this discontinuity in how the data was acquired.
 
-After all that, we are left with 82418 articles, from "Aristotle and the Sea Battle" [@Anscombe1956] to "Zooming Irresponsibly Down the Slippery Slope" [@Coren2021]. These articles collectively cite each other 334130 times.
+After all that, we are left with 125324 articles, from "Aristotle and the Sea Battle" [@Anscombe1956] to "Zooming Irresponsibly Down the Slippery Slope" [@Coren2021]. These articles collectively cite each other 509004 times.
 
 # Period Effects {#sec-period}
 
-Those  334130 citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only 2 citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are 42338. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
+Those  509004 citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only 5 citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are 49979. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
 
 
 
@@ -1770,7 +1820,7 @@ The key notion is what I'm going to call the *citation ratio*. This is a functio
 
 
 
-Let's illustrate this with an example, using 1985 as _old_ and 1997 as _new_. In 1997, indexed articles from 1985 were cited 70 times. There are 1096 articles published in 1985 in the index, so the numerator for the citation ratio is 70 / 1096, i.e., about 0.064. In the 3 to 10 years before 1985, there were 8839 indexed articles published. Those articles were, collectively, cited 1158 times in 1997. So the denominator, the average number of citations the typical article got in 1997, is 1158 / 8839, i.e., about 0.131. Putting those together, the citation ratio for 1985 in 1997 is (about) 0.488. 
+Let's illustrate this with an example, using 1985 as _old_ and 1997 as _new_. In 1997, indexed articles from 1985 were cited 95 times. There are 1539 articles published in 1985 in the index, so the numerator for the citation ratio is 95 / 1539, i.e., about 0.062. In the 3 to 10 years before 1985, there were 12210 indexed articles published. Those articles were, collectively, cited 1478 times in 1997. So the denominator, the average number of citations the typical article got in 1997, is 1478 / 12210, i.e., about 0.121. Putting those together, the citation ratio for 1985 in 1997 is (about) 0.51. 
 
 In @fig-ageeffecttibble I've graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the _facets_), are for each value of _old_, the x-axis is the value for _new_, and the y-axis is the citation ratio. Note that before 1965, we can't calculate the citation ratio because there isn't enough data to calculate the typical citation rate. So the y-axis starts at 1965. And for most years there are no dots on the left side of the graph, because I haven't calculated the citation ratio in years where _old_ is later than _new_; there are few enough of these cases that they are best left out.
 
@@ -1919,6 +1969,9 @@ Anscombe, G. E. M. 1956. <span>“Aristotle and the Sea Battle.”</span> <em>Mi
 <div id="ref-Anscombe1957" class="csl-entry" role="listitem">
 ———. 1957. <em>Intention</em>. Oxford: Basil Blackwell.
 </div>
+<div id="ref-WOSA1958CDL1000001" class="csl-entry" role="listitem">
+———. 1958. <span>“Modern Moral Philosophy.”</span> <em>Philosophy</em> 33 (124): 1–19. <a href="https://doi.org/10.1017/S0031819100037943">https://doi.org/10.1017/S0031819100037943</a>.
+</div>
 <div id="ref-Austin1956" class="csl-entry" role="listitem">
 Austin, J. L. 1956a. <span>“A Plea for Excuses.”</span> <em>Proceedings of the Aristotelian Society</em> 57 (1): 1–30. <a href="https://doi.org/10.1093/aristotelian/57.1.1">https://doi.org/10.1093/aristotelian/57.1.1</a>.
 </div>
@@ -1955,9 +2008,6 @@ Clark, Andy, and David J. Chalmers. 1998. <span>“The Extended Mind.”</span> 
 <div id="ref-WOSA1987K730800002" class="csl-entry" role="listitem">
 Cohen, Stewart. 1987. <span>“Knowledge, Context, and Social Standards.”</span> <em>Synthese</em> 73 (1): 3–26. <a href="https://doi.org/10.1007/BF00485440">https://doi.org/10.1007/BF00485440</a>.
 </div>
-<div id="ref-WOSA1990DA14600002" class="csl-entry" role="listitem">
-Crane, Tim, and D. H. Mellor. 1990. <span>“There Is No Question of Physicalism.”</span> <em>Mind</em> 99 (394): 185–206.
-</div>
 <div id="ref-WOSA1975BF60100001" class="csl-entry" role="listitem">
 Cummins, Robert. 1975. <span>“Functional Analysis.”</span> <em>Journal of Philosophy</em> 72 (20): 741–65. <a href="https://doi.org/10.2307/2024640">https://doi.org/10.2307/2024640</a>.
 </div>
@@ -1966,9 +2016,6 @@ Curley, EM. 1975. <span>“Dreaming and Conceptual Revision.”</span> <em>Austr
 </div>
 <div id="ref-WOSA1963CEU0700001" class="csl-entry" role="listitem">
 Davidson, Donald. 1963. <span>“Actions, Reasons, and Causes.”</span> <em>Journal of Philosophy</em> 60 (23): 685–700. <a href="https://doi.org/10.2307/2023177">https://doi.org/10.2307/2023177</a>.
-</div>
-<div id="ref-WOSA1990EQ84600001" class="csl-entry" role="listitem">
-———. 1990. <span>“The Structure and Content of Truth.”</span> <em>Journal of Philosophy</em> 87 (6): 279–328. <a href="https://doi.org/10.2307/2026863">https://doi.org/10.2307/2026863</a>.
 </div>
 <div id="ref-WOSA1991GL32100002" class="csl-entry" role="listitem">
 DeRose, Keith. 1991. <span>“Epistemic Possibilities.”</span> <em>Philosophical Review</em> 100 (4): 581–605. <a href="https://doi.org/10.2307/2185175">https://doi.org/10.2307/2185175</a>.
@@ -2000,6 +2047,9 @@ Fantl, Jeremy, and Matthew McGrath. 2002. <span>“Evidence, Pragmatics, and Jus
 <div id="ref-Fine1994b" class="csl-entry" role="listitem">
 Fine, Kit. 1994. <span>“Essence and Modality.”</span> <em>Philosophical Perspectives</em> 8: 1–16. <a href="https://doi.org/10.2307/2214160">https://doi.org/10.2307/2214160</a>.
 </div>
+<div id="ref-WOSA1984SS95000001" class="csl-entry" role="listitem">
+Fraassen, Bas C. van. 1984. <span>“Belief and the Will.”</span> <em>Journal of Philosophy</em> 81 (5): 235–56.
+</div>
 <div id="ref-Frankfurt1969" class="csl-entry" role="listitem">
 Frankfurt, Harry G. 1969b. <span>“Alternate Possibilities and Moral Responsibility.”</span> <em>Journal Of Philosophy</em> 66 (23): 829–39. <a href="https://doi.org/10.2307/2023833">https://doi.org/10.2307/2023833</a>.
 </div>
@@ -2009,11 +2059,17 @@ Frankfurt, Harry G. 1969b. <span>“Alternate Possibilities and Moral Responsibi
 <div id="ref-10.2307_2024717" class="csl-entry" role="listitem">
 ———. 1971. <span>“Freedom of the Will and the Concept of a Person.”</span> <em>Journal of Philosophy</em> 68 (1): 5–20.
 </div>
+<div id="ref-WOSA1956CHJ4400001" class="csl-entry" role="listitem">
+Frege, Gottlob. 1956. <span>“The Thought: A Logical Inquiry.”</span> <em>Mind</em> 65 (259): 289–311. <a href="https://doi.org/10.1093/mind/65.1.289">https://doi.org/10.1093/mind/65.1.289</a>.
+</div>
 <div id="ref-Gettier1963" class="csl-entry" role="listitem">
 Gettier, Edmund L. 1963. <span>“Is Justified True Belief Knowledge?”</span> <em>Analysis</em> 23 (6): 121–23. <a href="https://doi.org/10.2307/3326922">https://doi.org/10.2307/3326922</a>.
 </div>
 <div id="ref-GhitzaEtAl2023" class="csl-entry" role="listitem">
 Ghitza, Yair, Andrew Gelman, and Jonathan Auerbach. 2023. <span>“The Great Society, Reagan’s Revolution, and Generations of Presidential Voting.”</span> <em>American Journal of Political Science</em> 67 (3): 520–37. https://doi.org/<a href="https://doi.org/10.1111/ajps.12713">https://doi.org/10.1111/ajps.12713</a>.
+</div>
+<div id="ref-WOS000170434600004" class="csl-entry" role="listitem">
+Goldman, Alvin I. 2001. <span>“Experts: Which Ones Should You Trust?”</span> <em>Philosophy and Phenomenological Research</em> 63 (1): 85–110. <a href="https://doi.org/10.2307/3071090">https://doi.org/10.2307/3071090</a>.
 </div>
 <div id="ref-WOSA1957CGZ6000005" class="csl-entry" role="listitem">
 Grice, H. P. 1957. <span>“Meaning.”</span> <em>Philosophical Review</em> 66 (3): 377–88. <a href="https://doi.org/10.2307/2182440">https://doi.org/10.2307/2182440</a>.
@@ -2029,6 +2085,9 @@ Hawthorne, John, and Jason Stanley. 2008. <span>“Knowledge and Action.”</spa
 </div>
 <div id="ref-WOSA1982NN35300003" class="csl-entry" role="listitem">
 Horgan, Terrence. 1982. <span>“Supervenience and Microphysics.”</span> <em>Pacific Philosophical Quarterly</em> 63 (1): 29–43.
+</div>
+<div id="ref-WOSA1978FR68900001" class="csl-entry" role="listitem">
+Hull, David L. 1978. <span>“A Matter of Individuality.”</span> <em>Philosophy of Science</em> 45 (3): 335–60. <a href="https://doi.org/10.1086/288811">https://doi.org/10.1086/288811</a>.
 </div>
 <div id="ref-WOS000497282400001" class="csl-entry" role="listitem">
 Izgin, Christopher. 2020. <span>“Internal Negation and the Principles of Non-Contradiction and of Excluded Middle in Aristotle.”</span> <em>History and Philosophy of Logic</em> 41 (1): 1–15. <a href="https://doi.org/10.1080/01445340.2019.1683793">https://doi.org/10.1080/01445340.2019.1683793</a>.
@@ -2078,8 +2137,11 @@ Lewis, David. 1970. <span>“How To Define Theoretical Terms.”</span> <em>Jour
 <div id="ref-10.2307_2025310" class="csl-entry" role="listitem">
 ———. 1973. <span>“Causation.”</span> <em>Journal of Philosophy</em> 70 (17): 556–67.
 </div>
-<div id="ref-WOSA1976BZ95100001" class="csl-entry" role="listitem">
-———. 1976. <span>“Probabilities of Conditionals and Conditional Probabilities.”</span> <em>Philosophical Review</em> 85 (3): 297–315. <a href="https://doi.org/10.2307/2184045">https://doi.org/10.2307/2184045</a>.
+<div id="ref-WOSA1979JB14500003" class="csl-entry" role="listitem">
+———. 1979a. <span>“Counterfactual Dependence and Time’s Arrow.”</span> <em>Noûs</em> 13 (4): 455–76. <a href="https://doi.org/10.2307/2215339">https://doi.org/10.2307/2215339</a>.
+</div>
+<div id="ref-WOSA1979HJ57600007" class="csl-entry" role="listitem">
+———. 1979b. <span>“Scorekeeping in a Language Game.”</span> <em>Journal of Philosophical Logic</em> 8 (3): 339–59.
 </div>
 <div id="ref-WOSA1983RR51600001" class="csl-entry" role="listitem">
 ———. 1983. <span>“New Work for a Theory of Universals.”</span> <em>Australasian Journal of Philosophy</em> 61 (4): 343–77. <a href="https://doi.org/10.1080/00048408312341131">https://doi.org/10.1080/00048408312341131</a>.
@@ -2114,17 +2176,11 @@ Nagel, Thomas. 1974. <span>“What Is It Like To Be a Bat.”</span> <em>Philoso
 <div id="ref-WOSA1991FQ15000002" class="csl-entry" role="listitem">
 Neander, Karen. 1991. <span>“Functions as Selected Effects: The Conceptual Analyst’s Defense.”</span> <em>Philosophy of Science</em> 58 (2): 168–84. <a href="https://doi.org/10.1086/289610">https://doi.org/10.1086/289610</a>.
 </div>
-<div id="ref-WOS000575210400003" class="csl-entry" role="listitem">
-Oberman, Kieran. 2020. <span>“Killing and Rescuing: Why Necessity Must Be Rethought.”</span> <em>Philosophical Review</em> 129 (3): 433–63. <a href="https://doi.org/10.1215/00318108-8311248">https://doi.org/10.1215/00318108-8311248</a>.
-</div>
 <div id="ref-WOSA1971Y036400001" class="csl-entry" role="listitem">
 Parfit, Derek. 1971. <span>“Personal Identity.”</span> <em>Philosophical Review</em> 80 (1): 3–27. <a href="https://doi.org/10.2307/2184309">https://doi.org/10.2307/2184309</a>.
 </div>
 <div id="ref-WOSA1979HE39600001" class="csl-entry" role="listitem">
 Perry, John. 1979. <span>“The Problem of the Essential Indexical.”</span> <em>Noûs</em> 13 (1): 3–21. <a href="https://doi.org/10.2307/2214792">https://doi.org/10.2307/2214792</a>.
-</div>
-<div id="ref-WOS000332023600001" class="csl-entry" role="listitem">
-Plunkett, David, and Tim Sundell. 2013. <span>“Disagreement and the Semantics of Normative and Evaluative Terms.”</span> <em>Philosophers’ Imprint</em> 13 (23): 1–37.
 </div>
 <div id="ref-WOS000165361800002" class="csl-entry" role="listitem">
 Pryor, James. 2000. <span>“The Skeptic and the Dogmatist.”</span> <em>Noûs</em> 34 (4): 517–49. <a href="https://doi.org/10.1111/0029-4624.00277">https://doi.org/10.1111/0029-4624.00277</a>.
@@ -2134,6 +2190,9 @@ Putnam, Hilary. 1973. <span>“Meaning and Reference.”</span> <em>Journal of P
 </div>
 <div id="ref-Quine1960" class="csl-entry" role="listitem">
 Quine, W. V. O. 1960. <em>Word and Object</em>. Cambridge, MA.: MIT Press.
+</div>
+<div id="ref-WOSA1956CEQ2500001" class="csl-entry" role="listitem">
+Quine, Willard van Orman. 1956. <span>“Quantifiers and Propositional Attitudes.”</span> <em>Journal of Philosophy</em> 53 (5): 177–87. <a href="https://doi.org/10.2307/2022451">https://doi.org/10.2307/2022451</a>.
 </div>
 <div id="ref-Rawls1971" class="csl-entry" role="listitem">
 Rawls, John. 1971. <em>A Theory of Justice</em>. Cambridge, MA: Harvard University Press.
@@ -2153,17 +2212,11 @@ Rysiew, Patrick. 2001. <span>“The Context-Sensitivity of Knowledge Attribution
 <div id="ref-WOS000272855000002" class="csl-entry" role="listitem">
 Schaffer, Jonathan. 2010. <span>“Monism: The Priority of the Whole.”</span> <em>Philosophical Review</em> 119 (1): 31–76. <a href="https://doi.org/10.1215/00318108-2009-025">https://doi.org/10.1215/00318108-2009-025</a>.
 </div>
-<div id="ref-WOS000368189400004" class="csl-entry" role="listitem">
-———. 2016. <span>“Grounding in the Image of Causation.”</span> <em>Philosophical Studies</em> 173 (1): 49–100. <a href="https://doi.org/10.1007/s11098-014-0438-1">https://doi.org/10.1007/s11098-014-0438-1</a>.
-</div>
 <div id="ref-Sider2020" class="csl-entry" role="listitem">
 Sider, Theodore. 2020. <em>The Tools of Metaphysics and the Metaphysics of Science</em>. Oxford: Oxford University Press.
 </div>
 <div id="ref-WOSA1972Z066400001" class="csl-entry" role="listitem">
 Singer, Peter. 1972. <span>“Famine, Affluence, and Morality.”</span> <em>Philosophy &amp; Public Affairs</em> 1 (3): 229–43.
-</div>
-<div id="ref-WOS000360509700002" class="csl-entry" role="listitem">
-Skiles, Alexander. 2015. <span>“Against Grounding Necessitarianism.”</span> <em>Erkenntnis</em> 80 (4): 717–51. <a href="https://doi.org/10.1007/s10670-014-9669-y">https://doi.org/10.1007/s10670-014-9669-y</a>.
 </div>
 <div id="ref-WOSA1959CGZ6600001" class="csl-entry" role="listitem">
 Smart, J. J. C. 1959. <span>“Sensations and Brain Processes.”</span> <em>Philosophical Review</em> 68 (2): 141–56. <a href="https://doi.org/10.2307/2182164">https://doi.org/10.2307/2182164</a>.
@@ -2204,22 +2257,23 @@ Yalcin, Seth. 2007. <span>“Epistemic Modals.”</span> <em>Mind</em> 116 (464)
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>I would like to have more recent data, but this is the latest full year of data available through my university’s contract with Web of Science. I do have substantial partial data for 2022, and it mostly confirms the trends shown here. But in this case I think it’s better to leave off partial data than to try to correct for its incompleteness.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>XXXXX: Check how this looks with new data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn’t be too surprising that most article have just a handful of citations in philosophy journals.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>In North America, placement on graduate syllabi might be an even better proxy, but that data is hard to collect, and we’d need a different measure for other countries.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>To be clear, the database contains about twice as many citations in 2021 as in the whole of the 1990s.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>On the first part of <a href="#tbl-comp-cite-ratio" class="quarto-xref">Table&nbsp;3</a>, I calculated this ratio for each year, and then displayed the average over the decade.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>If I did the same comparison year-by-year, there are individual years where “Meaning” <span class="citation" data-cites="WOSA1957CGZ6000005">(<a href="#ref-WOSA1957CGZ6000005" role="doc-biblioref">Grice 1957</a>)</span>, “Justice as Fairness: Political not Metaphysical” <span class="citation" data-cites="WOSA1985APA8500001">(<a href="#ref-WOSA1985APA8500001" role="doc-biblioref">Rawls 1985</a>)</span> and “Concepts of Supervenience” <span class="citation" data-cites="WOSA1984TV24600001">(<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">Kim 1984</a>)</span> have a higher ratio of citations to the average typical article than “New Work” does in 2021.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>Though in “Naive Validity, Internalization, and Substructural Approaches To Paradox” <span class="citation" data-cites="WOS000453528500004">(<a href="#ref-WOS000453528500004" role="doc-biblioref">Rosenblatt 2017</a>)</span>, there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>The graph also includes some ‘jitter’ to make the different points more easily visible. I’ve put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we’ll return to faceted graphs like <a href="#fig-ageeffecttibble-early" class="quarto-xref">Figure&nbsp;9</a> and <a href="#fig-ageeffecttibble-late" class="quarto-xref">Figure&nbsp;10</a> when I want to highlight individual years.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>I picked this threshold because there are approximately as many citations to articles with at least that many citations as to the other articles.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>It was usual, during this era, to take the necessity of origins thesis and the origin essentialism thesis to not just be mutually supporting, but to be literally identical. I don’t think that identity claim would be widely endorsed either before 1970 or after 2010.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>The only thing really puzzling about this passage is the claim about the relative controversialness of the necessity and sufficiency entailment as a solution to the location problem. After all, <span class="citation" data-cites="WOSA1982NN35300003">Horgan (<a href="#ref-WOSA1982NN35300003" role="doc-biblioref">1982</a>)</span> had already raised problems for it. So too had <span class="citation" data-cites="Fine1994b">Fine (<a href="#ref-Fine1994b" role="doc-biblioref">1994</a>)</span>, in a way that would become very important a few years later, but that was not playing a major role in the literature, especially when Jackson delivered the Locke lectures this book was based on.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>The story of the relationship between twentieth century work on functions and twenty-first century work on mechanisms is interesting, but for another time.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>I had originally planned to include much more on how individual papers rise and fall in the citation indices, but this turned out to be less interesting than I thought. Most of the biggest ‘falls’ are just when a paper stops being cited because a book gets cited. Sometimes what gets cited is the reprint of the paper itself, as happened here. Sometimes the book supersedes the article. So you see a drop in citations to Rawls’s article “Justice as Fairness: Political not Metaphysical” <span class="citation" data-cites="WOSA1985APA8500001">(<a href="#ref-WOSA1985APA8500001" role="doc-biblioref">Rawls 1985</a>)</span> after his book <em>Justice as Fairness: A Restatement</em> <span class="citation" data-cites="Rawls2001">(<a href="#ref-Rawls2001" role="doc-biblioref">Rawls 2001</a>)</span> came out. Looking at grand-citations somewhat mitigates these issues, since they still track how much the articles that originally cited the older article are being picked up.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>I won’t include the full table, but if you created a table like <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a> for the twenty years through 2015, Stanley and Szabó’s paper would be on it.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>For particularly notable examples, see the papers by Andy <span class="citation" data-cites="WOS000088616400001">Stanley and Szabó (<a href="#ref-WOS000088616400001" role="doc-biblioref">2000</a>)</span>, Seth <span class="citation" data-cites="WOS000251545300007">Yalcin (<a href="#ref-WOS000251545300007" role="doc-biblioref">2007</a>)</span>, and Tamina <span class="citation" data-cites="WOS000255667800003">Stephenson (<a href="#ref-WOS000255667800003" role="doc-biblioref">2007</a>)</span>.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>I haven’t used it above because using it doesn’t help much in separating out the three effects.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>XXXXXX - old text I have to confirm: In the 1990s (in these 100 journals) it had 68 citations, so 6.8 per year. In 2021, it had 7 citations, so slightly more per year. Now Burge’s paper is still influential, and it connects in interesting ways to the social turn in philosophy that I’ll discuss below, but it’s implausible to say that it was more influential in 2021 than it was in the 1990s. When there are so many articles published, and a much lower bar to citation, seven citations a year doesn’t signify as much influence.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>To be clear, the database contains about twice as many citations in 2021 as in the whole of the 1990s.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>On the first part of <a href="#tbl-comp-cite-ratio" class="quarto-xref">Table&nbsp;3</a>, I calculated this ratio for each year, and then displayed the average over the decade.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>If I did the same comparison year-by-year, there are individual years where “Meaning” <span class="citation" data-cites="WOSA1957CGZ6000005">(<a href="#ref-WOSA1957CGZ6000005" role="doc-biblioref">Grice 1957</a>)</span>, “Justice as Fairness: Political not Metaphysical” <span class="citation" data-cites="WOSA1985APA8500001">(<a href="#ref-WOSA1985APA8500001" role="doc-biblioref">Rawls 1985</a>)</span> and “Concepts of Supervenience” <span class="citation" data-cites="WOSA1984TV24600001">(<a href="#ref-WOSA1984TV24600001" role="doc-biblioref">Kim 1984</a>)</span> have a higher ratio of citations to the average typical article than “New Work” does in 2021.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Though in “Naive Validity, Internalization, and Substructural Approaches To Paradox” <span class="citation" data-cites="WOS000453528500004">(<a href="#ref-WOS000453528500004" role="doc-biblioref">Rosenblatt 2017</a>)</span>, there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>The graph also includes some ‘jitter’ to make the different points more easily visible. I’ve put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we’ll return to faceted graphs like <a href="#fig-ageeffecttibble-early" class="quarto-xref">Figure&nbsp;9</a> and <a href="#fig-ageeffecttibble-late" class="quarto-xref">Figure&nbsp;10</a> when I want to highlight individual years.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>I picked this threshold because there are approximately as many citations to articles with at least that many citations as to the other articles.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>It was usual, during this era, to take the necessity of origins thesis and the origin essentialism thesis to not just be mutually supporting, but to be literally identical. I don’t think that identity claim would be widely endorsed either before 1970 or after 2010.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>The only thing really puzzling about this passage is the claim about the relative controversialness of the necessity and sufficiency entailment as a solution to the location problem. After all, <span class="citation" data-cites="WOSA1982NN35300003">Horgan (<a href="#ref-WOSA1982NN35300003" role="doc-biblioref">1982</a>)</span> had already raised problems for it. So too had <span class="citation" data-cites="Fine1994b">Fine (<a href="#ref-Fine1994b" role="doc-biblioref">1994</a>)</span>, in a way that would become very important a few years later, but that was not playing a major role in the literature, especially when Jackson delivered the Locke lectures this book was based on.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>The story of the relationship between twentieth century work on functions and twenty-first century work on mechanisms is interesting, but for another time.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>I had originally planned to include much more on how individual papers rise and fall in the citation indices, but this turned out to be less interesting than I thought. Most of the biggest ‘falls’ are just when a paper stops being cited because a book gets cited. Sometimes what gets cited is the reprint of the paper itself, as happened here. Sometimes the book supersedes the article. So you see a drop in citations to Rawls’s article “Justice as Fairness: Political not Metaphysical” <span class="citation" data-cites="WOSA1985APA8500001">(<a href="#ref-WOSA1985APA8500001" role="doc-biblioref">Rawls 1985</a>)</span> after his book <em>Justice as Fairness: A Restatement</em> <span class="citation" data-cites="Rawls2001">(<a href="#ref-Rawls2001" role="doc-biblioref">Rawls 2001</a>)</span> came out. Looking at grand-citations somewhat mitigates these issues, since they still track how much the articles that originally cited the older article are being picked up.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>I won’t include the full table, but if you created a table like <a href="#tbl-grand-cite-2010" class="quarto-xref">Table&nbsp;6</a> for the twenty years through 2015, Stanley and Szabó’s paper would be on it.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>For particularly notable examples, see the papers by Andy <span class="citation" data-cites="WOS000088616400001">Stanley and Szabó (<a href="#ref-WOS000088616400001" role="doc-biblioref">2000</a>)</span>, Seth <span class="citation" data-cites="WOS000251545300007">Yalcin (<a href="#ref-WOS000251545300007" role="doc-biblioref">2007</a>)</span>, and Tamina <span class="citation" data-cites="WOS000255667800003">Stephenson (<a href="#ref-WOS000255667800003" role="doc-biblioref">2007</a>)</span>.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>I haven’t used it above because using it doesn’t help much in separating out the three effects.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->

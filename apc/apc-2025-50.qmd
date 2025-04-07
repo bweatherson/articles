@@ -94,8 +94,8 @@ theme_update(axis.title = element_text(family = "EB Garamond", size = 11),
 #| label: buildgraphs
 #| cache: false
 
-load("/Users/weath/Documents/citations-2025/philo_bib_with_oa.RData")
-load("/Users/weath/Documents/citations-2025/philo_cite_with_oa.RData")
+load("/Users/weath/Documents/citations-2025/philo_bib_through_2024.RData")
+load("/Users/weath/Documents/citations-2025/philo_cite_through_2024.RData")
 load("/Users/weath/Documents/articles/apc/active_journal_list.RData")
 # # This is the summary data from OpenAlex
 # # We'll merge it to create a list of journals
@@ -144,12 +144,10 @@ typical_high <- 10
 
 point_col <- wes_palette("AsteroidCity1")[3]
 
-active_philo_bib <- philo_bib_with_oa |>
-  filter(year >= start_year, year <= end_year) |>
-  filter(journal %in% active_journal_list) |>
-  filter(!str_sub(id, end = 3) == "WOS" | !year == 2022)
+active_philo_bib <- philo_bib_through_2024 |>
+  filter(year >= start_year, year <= end_year)
 
-active_philo_cite <- philo_cite_with_oa |>
+active_philo_cite <- philo_cite_through_2024 |>
   filter(
     id %in% active_philo_bib$id,
     refs %in% active_philo_bib$id
@@ -674,7 +672,7 @@ Before looking at the data, here are two things I believed about philosophy cita
 
 Both of these thoughts were wrong. Historically, philosophy papers have tended, when they are citing other philosophy papers, to cite very recent ones. But this tendency is diminishing, not increasing, over time. I'll offer much more evidence for these claims as we go along, but to make them plausible, I'll start with two simple graphs.
 
-The data for the graphs come from citation data I downloaded concerning `r number_of_articles` papers published from 1955-2021,^[I would like to have more recent data, but this is the latest full year of data available through my university's contract with Web of Science. I do have substantial partial data for 2022, and it mostly confirms the trends shown here. But in this case I think it's better to leave off partial data than to try to correct for its incompleteness.] in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2021, and to one of these 100 journals between 1955 and 2021. (The details of the journals, including when they start getting indexed for this dataset, are in @sec-methodology.) In total, that gives us YYY citations.
+The data for the graphs come from citation data I downloaded concerning `r number_of_articles` papers published from 1955-2024, in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2024, and to one of these 100 journals between 1955 and 2024. (The details of the journals, including when they start getting indexed for this dataset, are in @sec-methodology.) In total, that gives us YYY citations.
 
 Say the *age* of a citation is the difference between the publication year of the citing article and the cited article. So if an article published in 1998 cites an article published in 1985, that's a 13 year old citation.
 
@@ -691,7 +689,7 @@ In @fig-overall-median-mode I've plotted the median and mode age of citations in
 
 ```{r}
 #| label: fig-overall-median-mode
-#| fig-cap: "Summary statistics for outbound citations each year 1970-2021."
+#| fig-cap: "Summary statistics for outbound citations each year 1970-2024."
 #| fig-subcap: 
 #|   - "Median"
 #|   - "Mode"
@@ -729,7 +727,7 @@ As I mentioned above, I'll go over the methodology in detail in @sec-methodology
 
 # Period Effects {#sec-period}
 
-Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(all_citations_per_year, new_year == 2021)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
+Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2024, there are `{r} filter(all_citations_per_year, new_year == 2024)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is XXXXXXXXXXXXXXX.
 
 ```{r}
 #| label: fig-citationsperyear
@@ -801,7 +799,7 @@ kable(who_cites_more)
 
 ```
 
-Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them [@WOS000575210400003] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.
+Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. <!--Of the 22 articles it published in 2020 and 2021, only one of them [@WOS000575210400003] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.-->
 
 Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
 
@@ -846,11 +844,11 @@ typical_citation_rate_per_year_plot
 
 ```
 
-Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
+Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021.^[XXXXX: Check how this looks with new data.] The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
 
 The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them. The project here is to use citation data as a proxy for philosophical influence. It is, of course, a deeply imperfect proxy. But it is better than most other proxies; it is certainly better than going off of vibes, or of what one's friends are talking about.^[In North America, placement on graduate syllabi might be an even better proxy, but that data is hard to collect, and we'd need a different measure for other countries.] If we're going to use citations this way though, we need to think about how to take into account the changes shown in @fig-citationsperyear. I'm going to offer a proposal in terms of typical articles; to a first approximation, I'll measure an article's influence in a period by the ratio of how often it is cited to how often a typical article is cited. This is a little arbitrary, but I think it gets things at least roughly right. At the very least, it avoids the problems with three other natural proposals that I'll now present, and probably anything that avoids these problems will be fairly similar.
 
-Start with the non-proposal of just using citations per year as a measure of influence. Simply eyeballing @fig-citationsperyear makes that a little implausible; there would be so much more influence now. It also has some implausible particular consequences. Tyler Burge's "Individualism and Psychology" [@WOSA1986AYX3200001] was the fourth most cited paper of the 1990s, and if anything that understates its influence. In the 1990s (in these 100 journals) it had 68 citations, so 6.8 per year. In 2021, it had 7 citations, so slightly more per year. Now Burge's paper is still influential, and it connects in interesting ways to the social turn in philosophy that I'll discuss below, but it's implausible to say that it was more influential in 2021 than it was in the 1990s. When there are so many articles published, and a much lower bar to citation, seven citations a year doesn't signify as much influence.
+Start with the non-proposal of just using citations per year as a measure of influence. Simply eyeballing @fig-citationsperyear makes that a little implausible; there would be so much more influence now. It also has some implausible particular consequences. Tyler Burge's "Individualism and Psychology" [@WOSA1986AYX3200001] was the fourth most cited paper of the 1990s, and if anything that understates its influence.^[XXXXXX - old text I have to confirm: In the 1990s (in these 100 journals) it had 68 citations, so 6.8 per year. In 2021, it had 7 citations, so slightly more per year. Now Burge's paper is still influential, and it connects in interesting ways to the social turn in philosophy that I'll discuss below, but it's implausible to say that it was more influential in 2021 than it was in the 1990s. When there are so many articles published, and a much lower bar to citation, seven citations a year doesn't signify as much influence.]
 
 A natural second proposal then is to measure what proportion of the year's citations any particular article has. By this measure, "Individualism and Psychology" was about twenty times as influential in the 1990s as in 2021, which isn't obviously false.^[To be clear, the database contains about twice as many citations in 2021 as in the whole of the 1990s.] Other cases, however, suggest this is too much of a correction. It's true that there are more citations now than there used to be. There are also more articles for these citations to be shared between. Holding fixed how influential an article is, you'd expect it to have a lower share of the citations when there are several times more articles available to be cited.
 
@@ -1539,7 +1537,7 @@ These debates had an impact on how citations worked in philosophy in a few ways.
 
 Perhaps more significant was that these debates, especially the second and third, were much more interdisciplinary than debates about modality had been. Many of the writers were primarily in linguistics, not philosophy, and the philosophers were reading more linguistics than ever before. The citation norms in linguistics, like in most other social sciences, required more citations than the norms in philosophy did. They didn't require more citation than the philosophy norms in the 2020s, but much more than philosophy in the 1990s. So these debates, which became important across a range of journals from the mid 2000s onwards, tended to have many more citations than before.
 
-To back up the claims in the last two paragraphs I need one more statistic. (The last one I'll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.^[I haven't used it above because using it doesn't help much in separating out the three effects.] For an article *a* published in year *y*, say that the **weight** of its citations in year *z* is the number of times it is cited in *z*, divided by the average number of citations that articles in year *y* get in *z*. So it's just the measure of how often the article is cited, compared to how often you'd expect it to be cited knowing just the publication year and citation year. We'll be interested in three statistics. The **overall weight** of an article is the average of its weight over each year between the year after its publication and 2021. The **short-term weight** is the average of its weight over the seven years after it was published. And the **long-term weight** is the average of its weight from eight years after publication to 2021. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that's not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.
+To back up the claims in the last two paragraphs I need one more statistic. (The last one I'll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.^[I haven't used it above because using it doesn't help much in separating out the three effects.] For an article *a* published in year *y*, say that the **weight** of its citations in year *z* is the number of times it is cited in *z*, divided by the average number of citations that articles in year *y* get in *z*. So it's just the measure of how often the article is cited, compared to how often you'd expect it to be cited knowing just the publication year and citation year. We'll be interested in three statistics. The **overall weight** of an article is the average of its weight over each year between the year after its publication and 2024. The **short-term weight** is the average of its weight over the seven years after it was published. And the **long-term weight** is the average of its weight from eight years after publication to 2024. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that's not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.
 
 ```{r}
 #| label: set-up-weight
@@ -1581,7 +1579,7 @@ weighted_citation_tibble <- citation_tibble |>
   replace_na(replace = list(short_weight = 0, long_weight = 0, all_weight = 0)) |>
   mutate(short_weight = round(short_weight / 7, 2)) |>
   mutate(long_weight = round(long_weight / (2014 - year), 2)) |>
-  mutate(all_weight = round(all_weight / (2021 - year), 2))
+  mutate(all_weight = round(all_weight / (2024 - year), 2))
 
 
 short_weight_of_citings <- function(article_id){
