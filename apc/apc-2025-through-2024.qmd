@@ -5,4 +5,47 @@ Here are two intuitively plausible claims about citation practices in philosophy
 
 It turns out that if we focus on citations of philosophy journals in philosophy journals, both of these claims are wrong. Historically, the norm was that most citations of journals in journals involved articles that had been published very recently. But the trend in recent years has been to cite fewer recent works, and more older works.
 
-This paper has two parts. In the first part I set out the data backing up what I said in the previous paragraph. This takes some work since citation practices have changed so much over the years that figuring out a way to sensibly compare citations at different times is a bit tricky. In the second part I look at some reasons why these changes have occurred. These 
+This paper has two parts. In the first part I set out the data backing up what I said in the previous paragraph. This takes some work since citation practices have changed so much over the years that figuring out a way to sensibly compare citations at different times is a bit tricky. In the second part I look at some reasons why these changes have occurred. These include cultural changes, technological changes, and changes in the subject matter of philosophy articles. The paper concludes with a look at what these changes tell us about the history of recent philosophy, with a particular focus on what was distinctive about philosophy in the 1980s and 1990s.
+
+# Sources {#sec-sources}
+
+The citation data here is almost wholly taken from Web of Science (hereafter WoS). Through [University X] I downloaded the XML file that contains all the citation data they have through mid-2022. (This is the most up-to-date file my university has access to.) Then I supplemented this through data available on their website. The final dataset I used was constructed in five steps.
+
+First, I looked at all the articles in the large dataset that were categorised as either Philosophy or as History and Philosophy of Science. The categorisation WoS uses is somewhat haphazard, and it wouldn't make sense to look at only articles in those categories. What I did do was use that initial screen to see which journals publish a lot of articles in those categories, and who cite, or are cited by, articles in those categories.
+
+From that list I narrowed things down to a list of 100 journals that have the following characteristics.
+
+- They both publish a lot of articles in those categories, and they publish a lot of articles that are cited by articles in those categores.
+- The data WoS has for them is relatively clean and up-to-date.
+- They are philosophy journals, not theology journals or history of science journals.
+
+The journals I chose that meet those criteria are listed in @tbl-the-journals.
+
+[Include list of journals]
+
+As you can tell from the fact that it's 100, the choices at the boundary were a bit arbitrary. There are some sources that I would have liked to include but the data in WoS was either non-existent (e.g., _Proceedings of the Aristotelian Society_) or poor quality (e.g., _Midwest Studies in Philosophy_). I've only included _Philosophical Perspectives_ once it became a standalone publication, not a special issue of _Noûs_, because the data doesn't include the citations for the first several years after publication of the special issues. This is particularly frustrating because of the importance of [Fine1994 - fill in] to the story of the last few years, but the data simply wasn't good enough.
+
+Second, I used the fact that when a source WoS indexes cites another source that it indexes, the citation entry includes the WoS index number for the cited article. So I first created a bibliography of articles WoS indexes from these 100 journals, then searched the citation lists for entries that matched that bibliography. That produced most of the data I used through 2021. (It had some 2022 data, but it was incomplete, and it was easier to keep to one source per year.)
+
+Third, there is a notable gap in WoS - it doesn't index _Journal of Philosophy_ from 1971 to 1974. Since there are so many important articles in the Journal those years, I ran another search through the XML file to find all citations where the source is listed as _Journal of Philosophy_ and the year is 1971-1974. After some cleaning up, in particular dealing with the many many ways philosophers have decided to spell Brian O'Shaughnessy's name, I matched these citations to a list of articles the Journal published in those years from JSTOR. This added several thousand more citations, because several of these articles are very widely cited.
+
+Fourth, via the WoS website I downloaded all the citations for those 100 journals from 2021 to 2024, and extracted all the citations that are to those 100 journals from 2021 to 2024. I used the data produced this was for 2021 to check that the two methods I was using produced similar results. The number of citations found via the website (and matched to journals in this set) was about 2% lower than found via the XML, so it wasn't perfect, but it was pretty close.
+
+Finally, I filtered the lists for what was genuinely an _article_. The main task here is to remove book reviews, though sometimes it also is important to remove corrections, editorial notes, even tables of contents. There are two tricky things here. One is what to do with discussion notes. WoS has a separate classification for them, but it isn't consistently applied. The other is that the book review category is a little inconsistently applied. Some applications are clearly mistakes; "The Priority of the Whole" [Schaffer article] is not a review! But some cases are harder. When is a critical notice a long review and when is it an article? Which parts of a book symposium are articles. To correct errors, and somewhat systematise the hard cases, I included anything marked as a discussion that was at least 15 pages, or anything marked as a review that was at least 20 pages, as an article. This is a bit arbitrary, but any choice around here will be a bit arbitrary.
+
+At a couple of points below I'll note some other sources I've used: word counts from JSTOR, and all the WoS cites for a few articles. But whenever I refer to 'the dataset' I mean the table produced by the five steps above.
+
+# Age, Period, Cohort {#sec-apc}
+
+In medicine, and in sociology, it's often helpful to distinguish age, period, and cohort, effects. Imagine that we see some striking behavior among teenagers in the late 1960s, and are wondering what could explain it. Here are three natural kinds of explanation.
+
+- The people are teenagers, perhaps they behave this way because teenagers do. If so, this would be an **age** effect.
+- It's the 1960s, and perhaps they behave this way because people in the 1960s do. If so, this would be a **period** effect.
+- These people are boomers, part of the post-war baby-boom. Perhaps they behave this way because boomers do. If so, this would be a **cohort** effect.
+
+When looking at voting data, the period effects are pretty clear: you look at who won. But distinguishing age effects from cohort effects has proven rather difficult.^[See @XXXX for a recent argument that age effects on voting direction are not that pronounced. On their view, not that many people get conservative as they get older, but cohort effects are substantial.] In general it's hard to tease these apart because there is a linear relationship between the variables. Age just is period minus cohort. A lot of familiar statistical tools don't do well when these linear relationships obtain.^[See @XXXX for a survey of attempts to handle this problem.] As we'll see, sometimes it isn't even conceptually clear what the difference between the effects is, especially when there is a steady change in age effects. Still, it's a helpful first pass conceptualisation.
+
+For our purposes, I'll use the terms as follows. Assume we have a citation in year *n* (for new) of an article in year *o* (for old). I'll say that the period is *n*, the age is *n*–*o*, and the cohort is *o*. And I'll analyse the effects in that order: period, then age, then cohort.
+
+# Period {#sec-period}
+
