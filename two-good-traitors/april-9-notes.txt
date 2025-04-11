@@ -1,0 +1,38 @@
+X is a random variable with a flat distribution over [0,1]
+If X=x, Hero knows X >= x.
+So this is reflexive, transitive, and nested
+Let p == X in (0.9, 0.99)
+Let E be Pr(p) >= 0.9
+
+Question, for various values of t, what is Pr(p | Pr(p) >= t)
+
+Assume t > 0.09, otherwise weird stuff happens.
+
+Let Pr(p) >= t be q
+
+At X=x (for x in [0, 0.9]), what's Pr(~p)?
+    It's (0.91-x)/(1-x)
+So Pr(p) is
+     1 -  (0.91-x)/(1-x) = (1-x - (0.91 - x))/1-x = 0.09/1-x
+So at Pr(p) = t, we have
+     0.09/1-x = t
+     0.09 = t-tx
+     tx = t - 0.09
+     x = 1 - 0.09/t
+Oh no is that a decreasing function of t? 
+
+At X=x (for x in (0.9, 0.99], what's Pr(~p)
+     It's 0.01/(1-x)
+     So Pr(p) = (1-x - 0.01)/(1-x)
+     It's (0.99-x)/(1-x)
+So at Pr(p) = t we have
+      (0.99-x)/(1-x) = t
+      0.99-x = t-tx
+      0.99 - t = x(1-t)
+      x = (0.99-t)/(1-t)
+      
+OK, according to the spreadsheet, it looks like for all t < 0.9, the value of Pr(p | Pr(p) >= t) is exactly t.
+
+I do not understand how this is possible. It seems absurd, and I need to actually do the proof somehow. But apparently that's true.
+
+I think I have to include that in the paper.
