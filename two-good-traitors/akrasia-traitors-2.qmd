@@ -88,3 +88,27 @@ The presupposition is that 1 and 3 are distinct. The reason that they are distin
 
 With that in place, the first argument for the anti-enkrasia view starts with anti-exceptionalism about epistemology.^[For anti-exceptionalism about logic, see @MartinHjortland2024. This kind of argument is particularly prominent in @Lasonen-Aarnio2020.] Just like hero might not descriptive facts like when the meeting is, she might not know epistemological facts like just why the email is a reason to believe its content. If hero can reasonably have false beliefs about descriptive facts, she can have false beliefs about what makes something a reason to believe.^[If, like Williamson, one denies that false beliefs can be reasonable, one will treat **SA** and **LA** differently. As noted earlier, I'm mostly ignoring that distinction here.] If those beliefs are *false*, she could reasonably believe that the meeting is today, while reasonably believing that 2 fails to obtain.
 
+The second argument relies on formal models, like the model of Williamson's unmarked clock, in which the formal translations of **SA** (or at least **LA**) are rationally believed. What's distinctive about these formal models is that while agents know the epistemic facts, they know what is rational to believe in what situation, they don't know what situation they are in. It makes the discussion clearer to have a concrete theory about what is rational in a situation, so I'll work with a very crude form of evidentialism. (Everything I say could, with some work, be repurposed for an argument that makes different assumptions about what facts about a situation are relevant, but this is an easy one to work with.) In particular I'll assume:
+
+- What's rational to believe supervenes on one's evidnce;
+- One's evidence is all and only what one knows.
+- It is rational for a person whose evidence is E to believe *p* iff Pr(*p* | E) > 0.9, where Pr is the evidential probability function.
+
+Again, I'm not saying this theory is true; in fact it's completely implausible. What matters is that (a) what's rational to believe varies from one situation to another, and (b) someone might not know precisely what situation they are in, just like they might be ignorant of any empirical fact.
+
+Assuming evidentialism lets us distinguish two ways in which one might be ignorant about one's situation.
+
+- One might know *p*, but not know one knows it.
+- One might not know *p*, but not know one doesn't know it.
+
+Williamson's models typically assume the first kind of ignorance, and this has been rather controversial. But as I'll discuss in @sec-model, we can get the problem going with just the second kind of ignorance.
+
+It makes sense that these are the two kinds of strategies anti-enkratic philosophers have pursued. If agents know which situation they are in, and know what's rational in every situation, they'll know what's rational for them. So they can't rationally believe *p* and not know they rationally believe it. But both strategies seem promising.
+
+# Other Statuses {#sec-status}
+
+The first reason to be sceptical of **AT** is that it doesn't hold for some nearby statuses a proposition might have. A simple case is that since one can rationally believe *p* without having Cartesian certainty that it's true, if we took E to be Cartesian certainty the principle, **AT** would be clearly false. That doesn't show it's false for the status Luzon talks about. But it does show that we should reject any argument for **AT** that would serve just as well as an argument for literally any positive epistemic status.
+
+More interestingly, consider the case where E is *is provable in Peano Arithmetic*. That's not really an *epistemic* status, since it doesn't refer to an agent. But it's interesting to note how it fails. If *p* is that Peano Arithmetic is consistent, then agent knows that *p* is E iff *p* is false. But that's no reason to reject *p*; indeed, agent should believe *p*.
+
+This case is interesting because it shows that **AT** can fail even in cases where E is genuinely a guide to truth, and where the antecedent does not merely hold in virtue of the agent being certain that E*p* is false.
