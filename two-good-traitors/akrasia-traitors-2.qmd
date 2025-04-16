@@ -132,4 +132,45 @@ The other big argument for **AT** is that if **AT** holds, a belief that *p* wou
 
 Whether **AT** implies this depends on what one thinks the aim of belief is. If it's truth, then **AT** doesn't have this implication. It could be that **AT** is true with E something like evidential support, and still *p* is true. Indeed, part of what's puzzling about enkratic arguments is that beliefs like *p and I'm irrational to believe p* could well be true. I often have irrational beliefs, and sometimes I'm lucky and they're true!
 
-So the argument must assume a stronger view about the aim of belief. A natural thought is that the aim of belief is knowledge.
+So the argument must assume a stronger view about the aim of belief. A natural thought is that the aim of belief is knowledge. Here I think the argument for **AT** does go through. If the aim of belief is knowledge, then if *p* satisfies the antecedent of **AT** it can't possibly satisfy it's aim, and it's irrational to do something that can't satisfy it's aim. So given that aim, Luzon's argument goes through, and the enktratic philosopher is right to say that belief of the form **SA** is irrational.
+
+But note this argument does not generalise. As can be seen from the fact that Williamson endorses knowledge as the aim of belief (and says that beliefs like **SA** are irration), but also says that beliefs like **LA** can be rational, there is a coherent position here which distinguishes **SA** from **LA**. We could go on to debate what akrasia or enkrasia *really* are, but it's probably best to just say that they come apart given this aim.
+
+# Formal Models {#sec-model}
+
+Williamson uses formal models to show that **LA** is compatible with the knowledge norm of belief. I think these arguments are perfectly sound, but they have been criticised in a number of ways. The following four stand out.
+
+1. The epistemic accessibility relation in the model is intransitive, so the the KK principle fails (@Greco?).
+2. The epistemic accessibility relation in the model is not nested, so intuitive principles about the value of evidence fail (@Geanokopoulos1989, @DorstEtA2021).
+3. The models are cases where the probability of the target proposition is not a good guide to its truth. (@Horowitz?)
+4. The models assume that updating is by conditionalisation on one's evidence, even when isn't sure precisely what one's evidence is (@Gallow?)
+
+I'm going to present a model where **AT** fails (and so do **SA** and **LA**) even though the model is modified to avoid the first three objections. That is, I'll present a model where epistemic accessibility is transitive and nested, and in a sense I'll make precise probability is a good guide to truth, but where **AT** is still false. I won't have anything to say about the fourth objection here; given the assumptions I made at the end of @sec-arguments it seems reasonable for the agent to update by conditionalising on the strongest thing they learn, but it would be a huge digression to respond to the arguments against that assumption.
+
+Onto the model. There is a random variable X whose prior probability is a uniform distribution over [0, 1]. If X = *x*, the agent will learn X $\leq$ *x*. That is, from the world X = *x*, all worlds X = *y* are possible, as long as *y* $\leq$ *x*. This accessibility relation is clearly transitive and nested.
+
+The agent will update on what they learn, i.e. X $\leq$ *x*. I'll use Pr for the initial probability of some proposition, and Cr for the agent's credence after learning X $\leq$ *x*.
+
+I'm going to focus primarily on propositions of the form X $\in$ (*a*, *b*), where 0 < *a* < *b* < 1. Call this proposition *i*, for interval. There are three interesting possibilities for *Cr*(*i*).
+
+1. If X $\leq$ *a*, then *Cr*(*i*) = 0, and *p* is false, so that's all good.
+2. If X = *b*, then *Cr*(*i*) is at its highest value, (*b* - *a*)/*b*. That's not great since *p* is false, but it's just one point.
+3. Otherwise *Cr*(*i*) is in ((*b* - *a*)/*b*, *b* - *a*).
+
+In the third case, there's a striking result we can prove about *Cr*.
+
+>    For any threshold *t* $\in$ ((*b* - *a*)/*b*, *b* - *a*), Pr(*i* | Cr(*i*) $\geq$ *t*) = *t*.
+
+That is, conditional on the agent inside the model having credence at least *t* in *i*, the probability that we should have in *i* from outside the model is *t*. That is, I think, a good sign that in this case the agent's credence in *i*, the evidential probability of *i* inside the model, is correlated with the truth of *i*. The correlation isn't perfect, the edge case in point 2 will become important, but in general the posterior probability of *i* is correlated with its truth.
+
+I won't go over the proof of this result here. It's a trivial but somewhat tedious bit of algebra.^[After I found a proof I was satisfied with, I asked ChatGPT to prove the result, and it came up with essentially the same proof after a little prodding. So if you'd like to confirm it yourself, this might work.] What's more interesting is to see how this affects **AT**.
+
+Consider the case where the interval is (0.03, 0.3). So *i* is that X is in that interval. And consider in particular the case where X is 0.3. In that case Cr(*i*) is 0.9, which we earlier assumed was the threshold for rational belief. Indeed, this is the only point where Cr(*i*) reaches that threshold. But in that case *i* is false. So the only case where it is rational to believe *i*, *i* is false. But still, this is a case where the constraints that enkratic philosophers have said should be put on Williamson-like models have been applied. Accessibility is transitive and nested, and in a good sense the evidential probability is a good (if not perfect) guide to truth.
+
+So if the anti-enkratic philosopher was moved in the first place by models like Williamson, then even taking on board the criticisms of those models, they have good reason to reject **AT**: it fails in cases like these.
+
+# Conclusion {#sec-conclusions}
+
+So much of the literature on enkrasia consists of raw appeals to the unintuitiveness of **SA** and **LA**. So I think it's great to see actual arguments from principles like **AT** for enkratic principles. But I don't think the anti-enkratic philosophers should be changing their minds over this.
+
+If one's initial motivation for anti-enkrasia was based in the metaphysical distinction between reasons and what makes something a reason, then there are good grounds for rejecting the idea that rationality can only be guiding if **AT** is true. And if one's initial motivation was based in the kinds of models that Williamson developed, then even taking on board the recent criticisms of those models, there are variants of his models that falsify **AT**.
