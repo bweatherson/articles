@@ -9,9 +9,11 @@ execute:
   warning: false
 author:
   - name: Anonymous
+number-sections: true
 categories:
   - epistemology
 format:
+    html: default
     pdf: 
       geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
       mainfont: EB Garamond Math
@@ -45,39 +47,39 @@ SA
 
 The _enkratic_ philosopher says all beliefs of that form are irrational. The _anti-enkratic_ philosopher says that they are sometimes rational.
 
-The debate here isn't always about **SA** (for Simple Akrasia), it could also be about **LA** (for Likely Akrasia).
+The debate here isn't always about **SA** (Simple Akrasia); some philosophers focus on **LA** (Likely Akrasia).
 
 LA
 :    *q* and it is probably irrational for me to believe *q*.
 
-The difference between these will occasionally be important, not least because Timothy Williamson [-@Williamson2000, -@Williamson2011, -@Williamson2014] has offered the most influential arguments for the anti-enkratic view about **LA**, but agrees with the enkratic view about **SA**.
+The difference between these will occasionally be important, not least because Timothy Williamson [-@Williamson2000; -@Williamson2011; -@Williamson2014] has offered the most influential arguments for the anti-enkrasia about **LA**, but agrees with the enkratic philosopher about **SA**.
 
-Recently in this journal, Bar @Luzon2025 has argued on the side of the enkratic philosophers about **SA**. She argues that the anti-enkratic philosophers say it is rational to violate the principle she calls **Avoid Treachery**.
+Recently in this journal, Bar @Luzon2025 has argued on the side of the enkratic philosophers about **SA**. Rather than start with a mere appeal to intuitions, as many in this debate do, she starts with a principle she calls **Avoid Treachery**.
 
 Avoid Treachery (AT)
 :    For every proposition *p* and for every positive epistemic status *E*, if one knows that [*p* has *E* for one only if *p* is false], then one ought not believe *p*.
 
-In this principle, E ranges over the statuses epistemic justification, epistemic rationality, evidential support and epistemic permissibility, and the conditional is a material conditional. The 'ought' is purely epistemic; if one thought belief in God was justified on Pascalian grounds one wouldn't be moved by an argument from **AT**. So I'll take 'one ought not believe *p*' to just be that it's (epistemically) irrational to believe that *p*. So we can formalise **AT** as follows, where KA is that hero knows A, for one of the four statuses at the start of this paragraph, EA is that *p* has that status for hero, and RA is that hero rationally believes A.
+In this principle, E ranges over the statuses epistemic justification, epistemic rationality, evidential support and epistemic permissibility, and the conditional is a material conditional. The 'ought' is purely epistemic; if one thought belief in God was justified on Pascalian grounds one wouldn't be moved by an argument from **AT**. So I'll take 'one ought not believe *p*' to just be that it's (epistemically) irrational to believe that *p*. So we can formalise **AT** as **AT Formalised**. In it, KA is that Hero knows A, RA is that Hero rationally beliefs A, and E picks out one of the four statuses from the start of the paragraph. Whichever one E picks out, EA is that *p* has that status for Hero.
 
 AT Formalised
 :    K¬(*p* ∧ E*p*) → ¬R*p*
 
-The argument for the irrationality of **SA** follows pretty quickly. Let *p* be (*q* ∧ ¬R*p*). Assume E(A ∧ B) implies EA, that RA implies EA, and that hero knows anything that can be proven in a few lines of logic. Then it's easy to show K¬(*p* ∧ E*p*), and hence ¬R*p*, which just is the enkratic view.
+The argument for the irrationality of **SA** follows pretty quickly. Let *p* be (*q* ∧ ¬R*q*). Assume E(A ∧ B) implies EA, that RA implies EA, and that Hero knows anything that can be proven in a few lines of logic. Then it's easy to show K¬(*p* ∧ E*p*), and hence ¬R*p*, which just is the enkratic view.
 
 The point of this note is to argue that the anti-enkratic philosopher mostly has good reasons to reject **AT**. I say mostly because there is one argument for **AT** that might work, but only if like Williamson one treats **SA** and **LA** differently.
 
-It would be too easy to say that the anti-enkratic view view implies **AT** is false. Of course it does, since Luzon's argument against from **AT** to the enkratic view is valid! What I want to argue is that the reasons behind the anti-enkratic view give us somewhat independent reason to reject **AT**. I'm going to offer the following arguments against **AT** in sections -@sec-math to -@sec-model.
+It would be too easy to say that the anti-enkratic view view implies **AT** is false. Of course it does, since Luzon's argument against from **AT** to the enkratic view is valid! What I want to argue is that the reasons behind the anti-enkratic view give us somewhat independent reason to reject **AT**. I'm going to offer the following arguments against **AT** in sections -@sec-status to -@sec-model.
 
 1. **AT** fails for other nearby values of E, and this undermines the motivation for believing it holds for these values.
-2. The main argument for **AT** turns on an idea about how evidence guides belief that the anti-enkratic philosopher rejects.
-3. An argument for **AT** from the goal of belief only supports the enkratic view about **SA**, not **LA**.
+2. The main argument for **AT** turns on an understanding of what it means to say evidence is a guide to truth that the anti-enkratic philosopher rejects.
+3. An argument for **AT** from the idea that beliefs violating **AT** would be 'self-undermining' at most supports the enkratic view about **SA**, not **LA**.
 4. There are plausible models for evidence and belief where **AT** fails.
 
 But first it helps to rehearse the arguments for the anti-enkratic view, to see how these objections flow from them.
 
 # The Arguments {#sec-arguments}
 
-Simplifying greatly, the anti-enkratic position relies on one presupposition, followed by one of two (independent) arguments. The presupposition is easiest to see with an example.
+Simplifying greatly, the anti-enkratic view relies on one presupposition, followed by one of two (independent) arguments. The presupposition is easiest to see with an example.
 
 Hero has a faculty meeting today, but they have forgotten about it. Fortunately, they just got a reminder email from their chair saying there's a meeting today. Now they believe, indeed know, there's a meeting today.
 
@@ -85,17 +87,17 @@ The presupposition is that the following three things are in principle distinct.
 
 1. Hero's reason for believing that there is a meeting today, i.e., the email they got from the chair.
 2. The facts that make the email from the chair a reason to believe there is a meeting today. Just what those are turns on the full theory of testimony, but presumably they include things like the chair's reliability, the frequency of emails being faked, and so on.
-3. The reasons hero has for believing that the email is a reason to believe there's a meeting today.
+3. The reasons Hero has for believing that the email is a reason to believe there's a meeting today.
 
-The presupposition is that 1 and 3 are distinct. The reason that they are distinct is that 1 and 2 are distinct, and 3 requires hero to have thoughts about (or at least sensitive to) 2, while 1 does not.
+The presupposition is that 1 and 3 are distinct. The reason that they are distinct is that 1 and 2 are distinct, and 3 requires Hero to have thoughts about (or at least sensitive to) 2, while 1 does not.
 
-With that in place, the first argument for the anti-enkrasia view starts with anti-exceptionalism about epistemology.^[For anti-exceptionalism about logic, see @MartinHjortland2024. This kind of argument is particularly prominent in @Lasonen-Aarnio2020.] Just like hero might not descriptive facts like when the meeting is, she might not know epistemological facts like just why the email is a reason to believe its content. If hero can reasonably have false beliefs about descriptive facts, she can have false beliefs about what makes something a reason to believe.^[If, like Williamson, one denies that false beliefs can be reasonable, one will treat **SA** and **LA** differently. As noted earlier, I'm mostly ignoring that distinction here.] If those beliefs are *false*, she could reasonably believe that the meeting is today, while reasonably believing that 2 fails to obtain.
+With that in place, the first argument for the anti-enkrasia view starts with anti-exceptionalism about epistemology.^[For anti-exceptionalism about logic, see @MartinHjortland2024. This kind of argument is particularly prominent in @Lasonen-Aarnio2020.] Just like Hero might not know descriptive facts like when the meeting is, she might not know epistemological facts like just why the email is a reason to believe its content. If Hero can reasonably have false beliefs about descriptive facts, she can have false beliefs about what makes something a reason to believe.^[If, like Williamson, one denies that false beliefs can be reasonable, one will treat **SA** and **LA** differently. As noted earlier, I'm mostly ignoring that distinction here.] If those beliefs are *false*, she could reasonably believe that the meeting is today, while reasonably believing that 2 fails to obtain.
 
 The second argument relies on formal models, like the model of Williamson's unmarked clock, in which the formal translations of **SA** (or at least **LA**) are rationally believed. What's distinctive about these formal models is that while agents know the epistemic facts, they know what is rational to believe in what situation, they don't know what situation they are in. It makes the discussion clearer to have a concrete theory about what is rational in a situation, so I'll work with a very crude form of evidentialism. (Everything I say could, with some work, be repurposed for an argument that makes different assumptions about what facts about a situation are relevant, but this is an easy one to work with.) In particular I'll assume:
 
 - What's rational to believe supervenes on one's evidnce;
 - One's evidence is all and only what one knows.
-- It is rational for a person whose evidence is E to believe *p* iff Pr(*p* | E) > 0.9, where Pr is the evidential probability function.
+- It is rational for a person whose evidence is E to believe *p* iff Pr(*p* | E) ⩾ 0.9, where Pr is the evidential probability function.
 
 Again, I'm not saying this theory is true; in fact it's completely implausible. What matters is that (a) what's rational to believe varies from one situation to another, and (b) someone might not know precisely what situation they are in, just like they might be ignorant of any empirical fact.
 
@@ -112,25 +114,25 @@ It makes sense that these are the two kinds of strategies anti-enkratic philosop
 
 The first reason to be sceptical of **AT** is that it doesn't hold for some nearby statuses a proposition might have. A simple case is that since one can rationally believe *p* without having Cartesian certainty that it's true, if we took E to be Cartesian certainty the principle, **AT** would be clearly false. That doesn't show it's false for the status Luzon talks about. But it does show that we should reject any argument for **AT** that would serve just as well as an argument for literally any positive epistemic status.
 
-More interestingly, consider the case where E is *is provable in Peano Arithmetic*. That's not really an *epistemic* status, since it doesn't refer to an agent. But it's interesting to note how it fails. If *p* is that Peano Arithmetic is consistent, then agent knows that *p* is E iff *p* is false. But that's no reason to reject *p*; indeed, hero should believe *p*.
+More interestingly, consider the case where E is *is provable in Peano Arithmetic*. That's not really an *epistemic* status, since it doesn't refer to an agent. But it's interesting to note how **AT** fails for this value of E. If *p* is that Peano Arithmetic is consistent, then Hero knows that *p* is E iff *p* is false. But that's no reason to reject *p*; indeed, Hero should believe *p*.
 
-This case is interesting because it shows that **AT** can fail even in cases where E is genuinely a guide to truth, and where the antecedent does not merely hold in virtue of the agent being certain that E*p* is false.
+This case is interesting because it shows that **AT** can fail even in cases where E is genuinely a guide to truth, and where the antecedent does not merely hold in virtue of Hero being certain that E*p* is false.
 
 # Guide {#sec-guide}
 
-The example of provability in Peano Arithmetic is relevant to the main argument Luzon gives for **AT**: That if **AT** fails then E can't be a good guide to truth. This can't be right in general because provability in Peano Arithmetic is a good guide to truth when discussing the natural numbers. It just isn't a good guide to some particular claims, such as the consistency of Peano Arithmetic.
+The example of provability in Peano Arithmetic is relevant to the main argument Luzon gives for **AT**. She argues that **AT** must be true for the values of E she presents because if it fails, E can't be a good guide to truth. Since justification, rationality, etc are guides to truth, **AT** must be true.
 
-Two lessons follow from this. One is that the notion of a good guide is holistic. What matters is that the guide mostly steers you right. The other is that **AT** can fail as long as E isn't the only way one gets to belief. If one thought the only way to get knowledge about Peano Arithmetic was to prove things (in first-order logic) from the axioms, one should not believe it is consistent. But as long as you think there is some other way to get knowledge, it can be rational to believe it is consistent. For instance, if you endorse Platonism about the natural numbers, and the existence of a power of intuition to detect certain properties of those Platonic entities, it is consistent to say that the consistency of Peano Arithmetic is unprovable but knowable. The point is not that this is a good approach to the metaphysics and epistemology of mathematics. Rather, it's that **AT** is only a constraint on E being a guide if E is the only guide.
+The simplest response is that this claim about **AT** can't be right in general because provability in Peano Arithmetic is a good guide to truth when discussing the natural numbers, but **AT** fails when E is provability in Peano Arithmetic. Provability is a good guide to arithmetic truth in general, even if there are cases where it is not in fact a good guide.
 
-But here you might think it matters that Luzon restricted E to things like evidential support. Surely the evidentialist does think that evidence is the only guide to truth. Here the presupposition I noted in @sec-arguments is important. When hero believes that there's a meeting today, her guide is not that she has evidence for this: it's the email. She's guided by the fact that she received this email, not by the fact that it's evidence. If she checks her computer and sees snow is forecast, her belief that it will snow is guided by something different.
+At this point you might think it matters that Luzon restricted E to things like evidential support. Surely the evidentialist does think that evidence is the only guide to truth. Here the presupposition I noted in @sec-arguments is important. When Hero believes that there's a meeting today, her guide is not that she has evidence for this: it's the email. She's guided by the fact that she received this email, not by the fact that it's evidence. If she checks her computer and sees snow is forecast, her belief that it will snow is guided by something different. That's so even though there are a few descriptions we can give which make it look like she is guided by the same thing. In both cases, for instance, she is guided by words on her computer screen. In the same sense, she is guided in both cases by her evidence. But in the most important sense, the email and the weather forecast are different guides. 
 
-This I suspect is ultimately the biggest difference between the enkratic and the anti-enkratic philosopher. The enkratic philosopher thinks that all beliefs are guided by the same thing: one's evidence. The anti-enkratic philosopher thinks different beliefs are guided by different things: the different pieces of evidence. **AT** is not, I say, a good constraint on E being a guide, but it is a good constraint on E being the only guide. So the anti-enkratic philosopher who distinguishes facts which constitute evidence from the fact that that fact is a piece of evidence, has good reason to reject **AT**.
+This I suspect is ultimately the biggest difference between the enkratic and the anti-enkratic philosopher. The enkratic philosopher thinks that all beliefs are guided by the same thing: one’s evidence. The anti-enkratic philosopher thinks different beliefs are guided by different things: the different pieces of evidence. **AT** is not, I say, a good constraint on E being a guide, but it is a good constraint on E being the only guide. So the anti-enkratic philosopher who distinguishes facts which constitute evidence from the fact that that fact is a piece of evidence, has good reason to reject AT.
 
-# Undermining {#sec-undermining}
+# Undermining
 
-The other big argument for **AT** is that if **AT** holds, a belief that *p* would be self-undermining, and hence irrational. Presumably this means that the belief couldn't achieve it's aim or goal. What it is to undermine someone is to stop them achieving their aim or goal, so to be self-undermining is to do this to yourself.
+The other big argument for **AT** is that if **AT** holds, a belief that *p* would be self-undermining, and hence irrational. Presumably this means that the belief couldn’t achieve it’s aim or goal. What it is to undermine someone is to stop them achieving their aim or goal, so to be self-undermining is to do this to yourself.
 
-Whether **AT** implies this depends on what one thinks the aim of belief is. If it's truth, then **AT** doesn't have this implication. It could be that **AT** is true with E something like evidential support, and still *p* is true. Indeed, part of what's puzzling about enkratic arguments is that beliefs like *p and I'm irrational to believe p* could well be true. I often have irrational beliefs, and sometimes I'm lucky and they're true!
+Whether **AT** implies this depends on what one thinks the aim of belief is. If it’s truth, then **AT** doesn’t have this implication. It could be that **AT** is true with E something like evidential support, and still *p* is true. Indeed, part of what’s puzzling about enkratic arguments is that beliefs like *p and I’m irrational to believe p* could well be true. I often have irrational beliefs, and sometimes I’m lucky and they’re true!
 
 So the argument must assume a stronger view about the aim of belief. A natural thought is that the aim of belief is knowledge. Here I think the argument for **AT** does go through. If the aim of belief is knowledge, then if *p* satisfies the antecedent of **AT** it can't possibly satisfy it's aim, and it's irrational to do something that can't satisfy it's aim. So given that aim, Luzon's argument goes through, and the enktratic philosopher is right to say that belief of the form **SA** is irrational.
 
@@ -140,28 +142,28 @@ But note this argument does not generalise. As can be seen from the fact that Wi
 
 Williamson uses formal models to show that **LA** is compatible with the knowledge norm of belief. I think these arguments are perfectly sound, but they have been criticised in a number of ways. The following four stand out.
 
-1. The epistemic accessibility relation in the model is intransitive, so the the KK principle fails (@Greco?).
-2. The epistemic accessibility relation in the model is not nested, so intuitive principles about the value of evidence fail (@Geanokopoulos1989, @DorstEtA2021).
-3. The models are cases where the probability of the target proposition is not a good guide to its truth. (@Horowitz?)
-4. The models assume that updating is by conditionalisation on one's evidence, even when isn't sure precisely what one's evidence is (@Gallow?)
+1. The epistemic accessibility relation in the model is intransitive, so the the KK principle fails (@DasSalow2019).
+2. The epistemic accessibility relation in the model is not nested, so intuitive principles about the value of evidence fail (@Geanakoplos1989, @DorstEtAl2021).
+3. The models are cases where the probability of the target proposition is not a good guide to its truth. (@Horowitz2014)
+4. The models assume that updating is by conditionalisation on one's evidence, even when isn't sure precisely what one's evidence is (@Gallow2021)
 
-I'm going to present a model where **AT** fails (and so do **SA** and **LA**) even though the model is modified to avoid the first three objections. That is, I'll present a model where epistemic accessibility is transitive and nested, and in a sense I'll make precise probability is a good guide to truth, but where **AT** is still false. I won't have anything to say about the fourth objection here; given the assumptions I made at the end of @sec-arguments it seems reasonable for the agent to update by conditionalising on the strongest thing they learn, but it would be a huge digression to respond to the arguments against that assumption.
+I'm going to present a model where **AT** fails (and so do **SA** and **LA**) even though the model is modified to avoid the first three objections. That is, I'll present a model where epistemic accessibility is transitive and nested, and in a sense I'll make precise probability is a good guide to truth, but where **AT** is still false. I won't have much to say about the fourth objection here; given the assumptions I made at the end of @sec-arguments it seems reasonable to assume that Hero should update by conditionalising on the strongest thing they learn, but it would be a huge digression to respond to the arguments against that assumption.
 
-Onto the model. There is a random variable X whose prior probability is a uniform distribution over [0, 1]. If X = *x*, the agent will learn X $\leq$ *x*. That is, from the world X = *x*, all worlds X = *y* are possible, as long as *y* $\leq$ *x*. This accessibility relation is clearly transitive and nested.
+Onto the model. There is a random variable X whose prior probability is a uniform distribution over [0, 1]. If X = *x*, Hero will learn X ⩽ *x*. That is, from the world X = *x*, all worlds X = *y* are possible, as long as *y* ⩽ *x*. This accessibility relation is clearly transitive and nested.
 
-The agent will update on what they learn, i.e. X $\leq$ *x*. I'll use Pr for the initial probability of some proposition, and Cr for the agent's credence after learning X $\leq$ *x*.
+Hero will update on what they learn, i.e. X ⩽ *x*. I'll use Pr for the initial probability of some proposition, and Cr for Hero's credence after learning X ⩽ *x*.
 
 I'm going to focus primarily on propositions of the form X $\in$ (*a*, *b*), where 0 < *a* < *b* < 1. Call this proposition *i*, for interval. There are three interesting possibilities for *Cr*(*i*).
 
-1. If X $\leq$ *a*, then *Cr*(*i*) = 0, and *p* is false, so that's all good.
+1. If X ⩽ *a*, then *Cr*(*i*) = 0, and *p* is false, so that's all good.
 2. If X = *b*, then *Cr*(*i*) is at its highest value, (*b* - *a*)/*b*. That's not great since *p* is false, but it's just one point.
 3. Otherwise *Cr*(*i*) is in ((*b* - *a*)/*b*, *b* - *a*).
 
 In the third case, there's a striking result we can prove about *Cr*.
 
->    For any threshold *t* $\in$ ((*b* - *a*)/*b*, *b* - *a*), Pr(*i* | Cr(*i*) $\geq$ *t*) = *t*.
+>    For any threshold *t* ∈ ((*b* - *a*)/*b*, *b* - *a*), Pr(*i* | Cr(*i*) ⩾ *t*) = *t*.
 
-That is, conditional on the agent inside the model having credence at least *t* in *i*, the probability that we should have in *i* from outside the model is *t*. That is, I think, a good sign that in this case the agent's credence in *i*, the evidential probability of *i* inside the model, is correlated with the truth of *i*. The correlation isn't perfect, the edge case in point 2 will become important, but in general the posterior probability of *i* is correlated with its truth.
+That is, conditional on Hero, who is inside the model, having credence at least *t* in *i*, the probability that we, who are outside the model, should have in *i* is *t*. That is, I think, a good sign that in this case Hero's credence in *i*, the evidential probability of *i* inside the model, is correlated with the truth of *i*. The correlation isn't perfect, the edge case in point 2 will become important, but in general the posterior probability of *i* is correlated with its truth.
 
 I won't go over the proof of this result here. It's a trivial but somewhat tedious bit of algebra.^[After I found a proof I was satisfied with, I asked ChatGPT to prove the result, and it came up with essentially the same proof after a little prodding. So if you'd like to confirm it yourself, this might work.] What's more interesting is to see how this affects **AT**.
 

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anon">
+<meta name="dcterms.date" content="2024-11-01">
+
+<title>Anti-Anti-Desire-As-Belief</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="may-2025-draft_files/libs/clipboard/clipboard.min.js"></script>
+<script src="may-2025-draft_files/libs/quarto-html/quarto.js"></script>
+<script src="may-2025-draft_files/libs/quarto-html/popper.min.js"></script>
+<script src="may-2025-draft_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="may-2025-draft_files/libs/quarto-html/anchor.min.js"></script>
+<link href="may-2025-draft_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="may-2025-draft_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="may-2025-draft_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="may-2025-draft_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="may-2025-draft_files/libs/bootstrap/bootstrap-e19dc0c07aeef78048e587c3f1edba7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="may-2025-draft.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="../Anti-Anti-Desire-As-Belief Revised Version.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Anti-Anti-Desire-As-Belief</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anon </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>David Lewis put forward a decision theoretic argument against there being a tight connection between desires and beliefs about the good. I argue that his argument fails twice over. It makes inconsistent background assumptions about his opponents’ views, and it over-generates so broadly that if it worked, it would also rule out some standard economic models. I end with a puzzle that arises from the response to Lewis. If one responds to moral uncertainty by saying one should maximise expected moral value, how does one treat cases where one’s action is evidence for or against the goodness of different actions?</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="sec-lewis" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Lewis’s Argument</h1>
+<p>David Lewis <span class="citation" data-cites="Lewis1988 Lewis1996">(<a href="#ref-Lewis1988" role="doc-biblioref">1988</a>, <a href="#ref-Lewis1996" role="doc-biblioref">1996</a>)</span> has an argument against the view that desires can be reduced to beliefs. I’m going to respond on behalf of the Desire-as-Belief (hereafter, DAB) thesis. In particular, I’m going to offer two responses. The responses themselves will not be particularly original; one is due to Huw <span class="citation" data-cites="Price1989">Price (<a href="#ref-Price1989" role="doc-biblioref">1989</a>)</span>, and the other to Jessica <span class="citation" data-cites="Collins2015">Collins (<a href="#ref-Collins2015" role="doc-biblioref">2015</a>)</span>. What will I hope be original is showing how they fit together. I’ll argue that given the other assumptions Lewis makes, the DAB theorist has independent reason to reject one or other of the premises Lewis offers.</p>
+<p>I’ll start with a presentation of Lewis’s argument, shorn of what seem to me to be extraneous details. This will look a little different to Lewis’s own presentation, but all the premises here are ones he uses, and its gets to the conclusion he wants, so it seems to be a fair representation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Assume that we have a finite set of worlds. We will use <em>w</em> as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. They are ‘small worlds’ in the sense of <span class="citation" data-cites="Savage1954">Savage (<a href="#ref-Savage1954" role="doc-biblioref">1954</a>)</span>, not possible worlds in the sense of <span class="citation" data-cites="Lewis1986a">Lewis (<a href="#ref-Lewis1986a" role="doc-biblioref">1986</a>)</span>. For the most part they are more coarse-grained than the concrete worlds of <em>Plurality</em>, but in one respect they are more fine-grained: they might differ from each other purely in normative features.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is desirable.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Let V be an agent’s value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V<sub>A</sub> and Pr<sub>A</sub> are the values of the value and credence functions after updating on A. Strictly speaking given how I’ve set this up, it is sets of worlds not individual worlds that get values. But I’ll sometimes write V(<em>w</em>) when strictly it should be V({<em>w</em>}); I don’t think this can lead to any confusion. (Later I’ll also write Pr(<em>w</em>) for the probability of Pr({<em>w</em>}); again it shouldn’t result in confusion.)</p>
+<p>Lewis’s argument against DAB uses six assumptions. In these assumptions B is an arbitrary proposition, and A is an arbitrary <em>descriptive</em> proposition.</p>
+<dl>
+<dt>Binary Desirability</dt>
+<dd>
+All worlds are either desirable or undesirable. If <em>w</em> is desirable, then V(<em>w</em>)&nbsp;=&nbsp;1, and otherwise V(<em>w</em>)&nbsp;=&nbsp;0.
+</dd>
+<dt>Equation</dt>
+<dd>
+Given <strong>Binary Desirability</strong>, the correct way to represent DAB is V(A)&nbsp;=&nbsp;Pr(Å).
+</dd>
+<dt>Additivity</dt>
+<dd>
+V(A)&nbsp;=&nbsp;Σ<sub><em>w</em></sub>V(<em>w</em>)Pr(<em>w</em>&nbsp;|&nbsp;A)
+</dd>
+<dt>Worldly Invariance</dt>
+<dd>
+V<sub>A</sub>(<em>w</em>)&nbsp;=&nbsp;V(<em>w</em>)
+</dd>
+<dt>Restricted Conditionalisation</dt>
+<dd>
+Pr<sub>A</sub>(B)&nbsp;=&nbsp;Pr(B&nbsp;|&nbsp;A)
+</dd>
+<dt>Possible Independence</dt>
+<dd>
+For some Å, Pr(Å) <span class="math inline">\(\neq\)</span> Pr(Å | A)
+</dd>
+</dl>
+<p>The first assumption is obviously absurd, but it is useful for setting out the argument. In any case, if the last five assumptions are true, then they should be consistent with <strong>Binary Desirability</strong>. Given those assumptions, here is Lewis’s argument. By <strong>Possible Independence</strong> there is an Å such that Pr(Å) <span class="math inline">\(\neq\)</span> Pr(Å | A). But given the other assumptions we can reason as follows.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 39%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Pr(Å)</td>
+<td style="text-align: left;">&nbsp;=&nbsp;V(A)</td>
+<td style="text-align: left;">(<strong>Binary Desirability</strong> + <strong>Equation</strong>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;Σ<sub><em>w</em></sub>V(<em>w</em>) Pr(<em>w</em>&nbsp;|&nbsp;A)</td>
+<td style="text-align: left;">(<strong>Additivity</strong>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;Σ<sub><em>w</em></sub>V<sub>A</sub>(<em>w</em>) Pr(<em>w</em>&nbsp;|&nbsp;A)</td>
+<td style="text-align: left;">(<strong>Worldly Invariance</strong>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;Σ<sub><em>w</em></sub>V<sub>A</sub>(<em>w</em>) Pr<sub>A</sub>(<em>w</em> |&nbsp;A)</td>
+<td style="text-align: left;">(<strong>Restricted Conditionalisation</strong>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;V<sub>A</sub>(A)</td>
+<td style="text-align: left;">(<strong>Additivity</strong>, applied to updated values)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;Pr<sub>A</sub>(Å)</td>
+<td style="text-align: left;">(<strong>Equation</strong>, again after updating)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">&nbsp;=&nbsp;Pr(Å&nbsp;|&nbsp;A)</td>
+<td style="text-align: left;">(<strong>Restriced Conditionalisation</strong>)</td>
+</tr>
+</tbody>
+</table>
+<p>And the last line contradicts our assumption. So not all six of these assumptions can be correct, if DAB is true. Since Lewis thinks they are all correct, he concludes DAB is false.</p>
+<p>As I said, this presentation doesn’t look a lot like Lewis’s argument. Most notably, <strong>Possible Independence</strong> isn’t an assumption for Lewis, it is something he derives from yet further premises. Much of the 1988 paper is devoted to spelling out the absurd consequences of denying <strong>Possible Independence</strong>. These arguments haven’t convinced everyone. They assume that conditionalisation is the right way to update on any new information, descriptive or normative. If normative propositions are centered worlds, as the picture in <span class="citation" data-cites="Lewis1989b">Lewis (<a href="#ref-Lewis1989b" role="doc-biblioref">1989</a>)</span> suggests, that seems like the wrong way to update. If the picture of self-locating belief that <span class="citation" data-cites="Lewis1979b">Lewis (<a href="#ref-Lewis1979b" role="doc-biblioref">1979</a>)</span> offers is correct, we can’t update our beliefs about the time by conditionalisation when the alarm clock goes off.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>But <strong>Possible Independence</strong> is surely true. Assume that A is a proposition about someone, call him Peter, might do. And assume that we desire that the morally good thing is done, that we don’t know whether A is good or not, but we are very confidence in Peter’s moral judgment. If Peter does A, that’s good evidence A is good. That all seems coherent, which is enough to support <strong>Possible Independence</strong>.</p>
+<p>While unrestricted conditionalisation is questionable, <strong>Restricted Conditionalisation</strong> seems fairly secure. In some presentations of the argument, Lewis uses a version of invariance that says the value of any proposition does not change on learning A. This is questionable, but <strong>Worldly Invariance</strong> seems fairly secure. It’s just the view that in a decision tree, the value of a terminal node doesn’t depend on where we are in the tree. That’s normally taken for granted in formal models of dynamic choice, and I think rightly so.</p>
+<p>If we treat <strong>Binary Desirability</strong> as a harmless simplification, that means the only substantive assumptions left are <strong>Equation</strong> and <strong>Additivity</strong>. Given those, the argument against DAB goes through. I’m going to argue that anyone sympathetic to DAB has independent reason to reject one or other of those claims. Part of the argument that this is an <em>independent</em> reason is that different sympathisers will reject one rather than the other. To show this, I’ll start with a short story.</p>
+</section>
+<section id="sec-auntie" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Auntie and Auntie</h1>
+<p>Our heroes are two anti-Humeans, called Auntie E and Auntie C, who both endorse a version of DAB. Both of them are aunts of Peter, the moral exemplar from <a href="#sec-lewis" class="quarto-xref">Section&nbsp;1</a>. Both Aunties E and Auntie C think that if Peter does something, it’s very likely to be the right thing to do. Indeed, they are fairly deferential to Peter in this respect; if Peter does something they thought was wrong, they take that as some (strong but inconclusive) reason to change their belief about the morality of the action. They are both moralists, and think something is desirable iff it is good.</p>
+<p>Let A be the Proposition that Peter does some action <em>a</em>, and Å that it is deisrable/good. Like Lewis does with <strong>Binary Desirability</strong>, I’ll make a simplifying assumption: it’s common knowledge that not doing <em>a</em> is good iff doing <em>a</em> is not good. That means ~Å can be read as either of the epistemically equivalent propositions <em>a is not good</em> and <em>not a is good</em>.</p>
+<p>Before Peter acts, both Auntie’s have the same credal distribution, satisfying these constraints.</p>
+<ul>
+<li>C(Å&nbsp;|&nbsp;A) = 0.8</li>
+<li>C(~Å | ~A) = 0.9</li>
+<li>C(A) = 0.7</li>
+</ul>
+<p><a href="#tbl-credence" class="quarto-xref">Table&nbsp;1</a> shows the credence each Auntie has in each of the four possibilities from crossing A with Å.</p>
+<div id="tbl-credence" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-credence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Auntie’s credence that Peter will do A, and that it will be right.
+</figcaption>
+<div aria-describedby="tbl-credence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Å</th>
+<th style="text-align: center;">¬Å</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">A</td>
+<td style="text-align: center;">0.56</td>
+<td style="text-align: center;">0.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">¬A</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">0.27</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Now you might think at this point that I’ve said enough to tell you what each Auntie hopes Peter will do. After all, I’ve told you everything relevant about each Auntie’s credence in Å, and I’ve told you that their credences in propositions about goodness determine their values. But I haven’t told you one thing extra - I haven’t told you what decision theory the two Aunties follow.</p>
+<p>Auntie E is an evidential decision theorist. For her, the value of an arbitrary action <em>x</em> is given by <strong>Auntie E’s Value</strong>. In this formula, where X is the proposition that <em>x</em> is performed, and D is the propositions that things are desirable.</p>
+<dl>
+<dt>Auntie E’s Value</dt>
+<dd>
+V(<em>x</em>) = C(D&nbsp;|&nbsp;X)
+</dd>
+</dl>
+<p>That is, she looks at Peter’s options, and hopes that he does the one that she is most confident is good, conditional on Peter doing it. That means she hopes Peter does not do <em>a</em>, since then she’ll have credence 0.9 that Peter has done the right thing. If Peter does <em>a</em>, she’ll only have credence 0.8 that he’ll have done the right thing, which isn’t as good.</p>
+<p>Auntie C endorses a version of causal decision theory, in particular something like the version supported by David <span class="citation" data-cites="Lewis1981bn">Lewis (<a href="#ref-Lewis1981bn" role="doc-biblioref">1981</a>)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> In particular, Auntie’s values are given by <strong>Auntie C’s Value</strong>. In the formula, C<sub><em>x</em></sub> be the result of <em>imaging</em> the credence function C on the proposition <em>x</em> is performed. Auntie C believes changing the moral facts is a bigger change to the world than changing any descriptive facts, so imaging always moves credences up or down in <a href="#tbl-credence" class="quarto-xref">Table&nbsp;1</a>, never left or right.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<dl>
+<dt>Auntie C’s Value</dt>
+<dd>
+V(<em>x</em>) = C<sub>X</sub>(D)
+</dd>
+</dl>
+<p>This resembles equation (11) in “Causal Decision Theory”. Indeed, after the first character, it just is the special case of that equation where the only possible values are 1 and 0. But the first character matters. Lewis is presenting a theory of usefulness, not of value. His formula is meant to measure the thing that a rational actor maximises. It is not measuring the thing an altruistic friend hopes is maximised. We’ll come back to this point in <a href="#sec-auntie-c" class="quarto-xref">Section&nbsp;4</a>. For now, I just want to note the similarities to Lewis’s own theory.</p>
+<p>Using this formula, Auntie C hopes that Peter does a iff C(Å) &gt; C(¬Å). Since C(Å)&nbsp;=&nbsp;0.59, and C(¬Å)&nbsp;=&nbsp;0.41, that means she does hope that Peter does A.</p>
+<p>The next two steps are to see why the Auntie’s reject Lewis’s argument.</p>
+</section>
+<section id="sec-auntie-e" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> DAB and EDT</h1>
+<p>The easier case is Auntie E. She rejects <strong>Equation</strong>. The relationship between desire and belief is not V(A)&nbsp;=&nbsp;Pr(Å), but V(A)&nbsp;=&nbsp;Pr(Å | A). Lewis is aware of this response, it’s developed by <span class="citation" data-cites="Price1989">Price (<a href="#ref-Price1989" role="doc-biblioref">1989</a>)</span>, and his response is that this isn’t a form of desire as <em>belief</em>. His thought, and this comes out a little more clearly in a recently published letter than in the papers <span class="citation" data-cites="Lewis-McDermott-06121993">(<a href="#ref-Lewis-McDermott-06121993" role="doc-biblioref">Lewis [1993] 2020</a>)</span>, is that belief isn’t load-bearing in Auntie E’s view.</p>
+<p>Everyone agrees that beliefs play a role in instrumental desires. If desires to take a pill because one believes it will cure one’s disease, that desire will go away if one loses either the belief that it’s a cure, or the belief that one is diseased. Lewis notes that Auntie E is committed to the existence of a proposition D consisting of all and only the desirable worlds, and to the claim that by necessity any agent with desires will desire it. Moreover, he argues, on Auntie E’s view this is the only non-instrumental desire an agent has. Beliefs don’t affect non-instrumental desires on this view, since everyone has the same non-instrumental desires. They just affect instrumental desires. But Humeans and anti-Humeans agree about the connection between belief and non-instrumental desires.</p>
+<p>I’ll offer three replies on Auntie E’s behalf. I’m not defending her view in general; I’m not an evidential decision theorist. I’m just defending the claim that this is a kind of desire as beleif.</p>
+<p>First, the simplifying assumption <strong>Binary Desirability</strong> looks less benign here. The construction of the necessarily desired proposition D requires this assumption. If some worlds are more desirable than others there are still preferences that Auntie E thinks are necessary (i.e., that a more desirable world is preferred to a less desirable one), but no desires.</p>
+<p>Second, the necessity claim Auntie E seems committed to looks less worrying once remember what kinds of things worlds are in this context. They are the elements of the contents of attitudes. That is, on Lewis’s view, they are centered worlds. Auntie E’s view is really that by necessity an agent desires that one of the centered worlds found desirable by the current center, i.e., that very agent, is actualised. That is, agents desire what they believe desirable. That’s not a surprising necessity claim; it’s the essence of the view Lewis is arguing against.</p>
+<p>Third, this is a very odd complaint from <em>David Lewis</em>. It’s agreed on all sides that on Auntie E’s view, what an agent desires supervenes on what they believe. Moreover, the reverse supervenience, of belief on desire, probably doesn’t hold. Lewis’s complaint here is that Auntie E hasn’t made desire depend on belief in the right way, even though she has ensured these supervenience claims hold. The only way to make this complaint work is to understand dependence using some hyperintensional notion like grounding. But there’s no sign of such a notion in Lewis’s work, and there are good reasons to think it couldn’t be added to his view <span class="citation" data-cites="MacBrideJL2022">(<a href="#ref-MacBrideJL2022" role="doc-biblioref">MacBride and Janssen-Lauret 2022</a>)</span>.</p>
+<p>So I think EDT offers a way out of Lewis’s argument. That’s not totally surprising; it’s not Lewis’s view. Things are trickier with Auntie C.</p>
+</section>
+<section id="sec-auntie-c" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> DAB and CDT</h1>
+<p>Auntie C says that the misstep in Lewis’s argument is <strong>Additivity</strong>. Following Collins, she says that this is something that only an adherent of EDT should accept. She’s mostly mystified about why Lewis, famously an enemy of EDT, would have accepted it in the first place.</p>
+<p>In the second DAB paper, Lewis has a response to this. Oddly, it’s in a parenthetical paragraph. After describing an action that’s essentially two-boxing in Newcomb’s problem, he writes</p>
+<blockquote class="blockquote">
+<p>Should you take that actions?—Yes … Do you desire to perform it?—No … [O]ur topic here is not choiceworthiness but desire … [so] we adopt an “evidential” conception of expected value … Choiceworthiness is governed by a different “causal” conception. <span class="citation" data-cites="Lewis1996">(<a href="#ref-Lewis1996" role="doc-biblioref">Lewis 1996, 303</a>)</span></p>
+</blockquote>
+<p>So Lewis thinks that Auntie C is confusing the two notions, and that she only rejects <strong>Aditivity</strong> because of this confusion. But there’s something important that can be said on Auntie C’s behalf.</p>
+<p>In the first DAB paper, Lewis sets out the notion of desire that he thinks is at issue. There, he is most concerned to distinguish it from a notion that is intuitively used in actions taken from duty. We might intuitively say that we did X from duty, though we desired to do Y. Lewis resists; he thinks that in any such case we also desire X. As he puts it,</p>
+<blockquote class="blockquote">
+<p>We are within our rights to construe ‘desire’ inclusively, to cover the entire range of states that move us. <span class="citation" data-cites="Lewis1988">(<a href="#ref-Lewis1988" role="doc-biblioref">Lewis 1988, 323</a>)</span></p>
+</blockquote>
+<p>This isn’t an optional move on Lewis’s part. If he doesn’t make this move, the Humean picture of action he wants to defend fails immediately.</p>
+<p>Now Auntie C says that if we’re modelling “the entire range of states that move us”, and we are, as Lewis recommends, moved to take two boxes in Newcomb’s Problem, we really better not insist that our model satisfies <strong>Additivity</strong>. We’d be left saying that the two-boxer acts against all desire, merely motivated by the duty to do what’s rational. This would be a violation of Lewis’s Humeanism. It would also be phenomenologically implausible. The two-boxer isn’t moved by duty, but by the desire for the extra $1000. So for both theoretical and phenomenological reasons, we need a notion of desire that violates <strong>Additivity</strong>.</p>
+<p>Indeed, she insists that it isn’t just in first-personal cases like Newcomb’s Problem that <strong>Additivity</strong> fails. Imagine that Peter faces the choice in <a href="#tbl-peter-second" class="quarto-xref">Table&nbsp;2</a>, where the values in the box now represent the moral value of the choice, and Auntie C thinks Peter choosing Up is excellent evidence for Left, while his choosing Down is excellent evidence for Right.</p>
+<div id="tbl-peter-second" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-peter-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Peter’s second choice
+</figcaption>
+<div aria-describedby="tbl-peter-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Left</th>
+<th style="text-align: center;">Right</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Up</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Down</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The first quote of Lewis’s suggests that both Auntie’s should desire that Peter choose Up, since that will be evidence that an outcome of value 3 will obtain. But it seems coherent to hope that he chooses Down. Several of the arguments for two-boxing seem replicable here. It’s weird to hope that Peter chooses Down conditional on Left, and hope he chooses Down conditional on Right, and unconditionally hope that he chooses Up.</p>
+<p>This is not to deny that there is a theoretical role for something like news-value. <span class="citation" data-cites="Joyce1999">Joyce (<a href="#ref-Joyce1999" role="doc-biblioref">1999</a>)</span> makes extensive use of that notion in developing a causal decision theory. It’s just that in the context of defending Humeanism about action, two-boxers like Lewis can’t equate news-value with desirability. So <strong>Addition</strong> has to fail, since as Lewis agrees, <strong>Addition</strong> entails that desirability goes with news value.</p>
+</section>
+<section id="sec-conclusion" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Conclusion</h1>
+<p>Any defender of DAB has to pick whether to take Auntie E’s side or Auntie C’s side in the original question about Peter. Whichever side they pick, they will have an independent reason to reject one of the premises Lewis puts forward in his argument against their view. So they have independent reason to reject Lewis’s argument.</p>
+<p>I’ve been stressing <em>independent</em> here because it’s not news that any defender of DAB has to reject some premise of Lewis’s argument. That follows from the fact that his argument is valid! For the response to be more than table-thumping, the proponent of DAB has to say which premise they reject, and why it is reasonable to reject it. The point of the examples involving Peter is to identify the premise in question, which will differ between different proponents, and say what that reason is. In the second DAB paper, Lewis offers responses to each of these reasons, and in the last two sections I’ve gone over why those responses don’t work. It’s somewhat ironic that in each case my analysis has rested in part on the view that Lewis’s response is inconsistent with what he says elsewhere: about the role of possible worlds in philosophy in <a href="#sec-auntie-e" class="quarto-xref">Section&nbsp;3</a>, and about the role of desire in producing action in <a href="#sec-auntie-c" class="quarto-xref">Section&nbsp;4</a>. I’ll leave to another day whether someone who was willing to abandon large parts of the Lewisian framework might be able to rescue his argument against DAB.</p>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Chalmers2011b" class="csl-entry" role="listitem">
+Chalmers, David. 2011. <span>“Frege’s Puzzle and the Objects of Credence.”</span> <em>Mind</em> 120 (479): 587–635. <a href="https://doi.org/10.1093/mind/fzr046">https://doi.org/10.1093/mind/fzr046</a>.
+</div>
+<div id="ref-Collins2015" class="csl-entry" role="listitem">
+Collins, Jessica. 2015. <span>“Decision Theory After Lewis.”</span> In <em>A Companion to David Lewis</em>, edited by Barry Loewer and Jonathan Schaffer, 446–58. John Wiley &amp; Sons.
+</div>
+<div id="ref-Hajek2015" class="csl-entry" role="listitem">
+Hàjek, Alan. 2015. <span>“On the Plurality of Lewis’s Triviality Results.”</span> In <em>A Companion to David Lewis</em>, edited by Barry Loewer and Jonathan Schaffer, 425–45. John Wiley &amp; Sons.
+</div>
+<div id="ref-Joyce1999" class="csl-entry" role="listitem">
+Joyce, James M. 1999. <em>The Foundations of Causal Decision Theory</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-Lewis1979b" class="csl-entry" role="listitem">
+Lewis, David. 1979. <span>“Attitudes <em>de Dicto</em> and <em>de Se</em>.”</span> <em>Philosophical Review</em> 88 (4): 513–43. <a href="https://doi.org/10.2307/2184646">https://doi.org/10.2307/2184646</a>.
+</div>
+<div id="ref-Lewis1981bn" class="csl-entry" role="listitem">
+———. 1981. <span>“Causal Decision Theory.”</span> <em>Australasian Journal of Philosophy</em> 59 (1): 5–30. <a href="https://doi.org/10.1080/00048408112340011">https://doi.org/10.1080/00048408112340011</a>.
+</div>
+<div id="ref-Lewis1986a" class="csl-entry" role="listitem">
+———. 1986. <em>On the Plurality of Worlds</em>. Oxford: Blackwell Publishers.
+</div>
+<div id="ref-Lewis1988" class="csl-entry" role="listitem">
+———. 1988. <span>“Desire as Belief.”</span> <em>Mind</em> 97 (387): 323–32. <a href="https://doi.org/10.1093/mind/xcvii.387.323">https://doi.org/10.1093/mind/xcvii.387.323</a>.
+</div>
+<div id="ref-Lewis1989b" class="csl-entry" role="listitem">
+———. 1989. <span>“Dispositional Theories of Value.”</span> <em>Aristotelian Society Supplementary Volume</em> 63 (1): 113–37. <a href="https://doi.org/10.1093/aristoteliansupp/63.1.89">https://doi.org/10.1093/aristoteliansupp/63.1.89</a>.
+</div>
+<div id="ref-Lewis1996" class="csl-entry" role="listitem">
+———. 1996. <span>“Desire as Belief <span>II</span>.”</span> <em>Mind</em> 105 (418): 303–13. <a href="https://doi.org/10.1093/mind/105.418.303">https://doi.org/10.1093/mind/105.418.303</a>.
+</div>
+<div id="ref-Lewis-McDermott-06121993" class="csl-entry" role="listitem">
+———. (1993) 2020. <span>“Letter to Michael McDermott, 6 December 1993.”</span> In <em>Philosophical Letters of David <span>K</span>. Lewis</em>, edited by Helen Beebee and A. R. J. Fisher, 2:508. Oxford: Oxford University Press.
+</div>
+<div id="ref-MacBrideJL2022" class="csl-entry" role="listitem">
+MacBride, Fraser, and Frederique Janssen-Lauret. 2022. <span>“Why Lewis Would Have Rejected Grounding.”</span> In <em>Perspectives on the Philosophy of <span>D</span>avid <span>K</span>. <span>L</span>ewis</em>, edited by Helen Beebee and A. R. J. Fisher, 66–91. <span>O</span>xford <span>U</span>niversity <span>P</span>ress. <a href="https://doi.org/10.1093/oso/9780192845443.003.0005">https://doi.org/10.1093/oso/9780192845443.003.0005</a>.
+</div>
+<div id="ref-Nissan-Rozen2015-NISATR" class="csl-entry" role="listitem">
+Nissan-Rozen, Ittay. 2015. <span>“A Triviality Result for the “Desire by Necessity”thesis.”</span> <em>Synthese</em> 192 (8): 2535–56.
+</div>
+<div id="ref-Oddie1994" class="csl-entry" role="listitem">
+Oddie, Graham. 1994. <span>“Harmony, Purity, Truth.”</span> <em>Mind</em> 103 (412): 451–72. <a href="https://doi.org/10.1093/mind/103.412.451">https://doi.org/10.1093/mind/103.412.451</a>.
+</div>
+<div id="ref-Price1989" class="csl-entry" role="listitem">
+Price, Huw. 1989. <span>“Defending Desire-as-Belief.”</span> <em>Mind</em> 98 (389): 119–27. <a href="https://doi.org/10.1093/mind/XCVIII.389.119">https://doi.org/10.1093/mind/XCVIII.389.119</a>.
+</div>
+<div id="ref-Savage1954" class="csl-entry" role="listitem">
+Savage, Leonard. 1954. <em>The Foundations of Statistics</em>. New York: John Wiley.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>I’m drawing here on presentations of the argument by <span class="citation" data-cites="Collins2015">Collins (<a href="#ref-Collins2015" role="doc-biblioref">2015</a>)</span>, <span class="citation" data-cites="Hajek2015">Hàjek (<a href="#ref-Hajek2015" role="doc-biblioref">2015</a>)</span>, and <span class="citation" data-cites="Nissan-Rozen2015-NISATR">Nissan-Rozen (<a href="#ref-Nissan-Rozen2015-NISATR" role="doc-biblioref">2015</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is a consequence of the point <span class="citation" data-cites="Chalmers2011b">Chalmers (<a href="#ref-Chalmers2011b" role="doc-biblioref">2011</a>)</span> makes that it is epistemic, not metaphysical, possibility that matters here, plus the assumption that our characters might be normatively uncertain.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>It’s more common here to let Å be that A is good, but I want to separate questions about the desire-belief relationship from questions about moral motivation, so my characters will be motivated to do something just to the extent they believe it desirable, leaving it as a further question whether all and only good things are desirable.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The point that conditionalisation isn’t the right way to update beliefs with centered worlds contents, and this raises a problem for Lewis, is made by Graham <span class="citation" data-cites="Oddie1994">Oddie (<a href="#ref-Oddie1994" role="doc-biblioref">1994</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Here I’m following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Recall here that the worlds are epistemic possibilities, not metaphysical ones, so it makes sense to talk about merely changing the moral facts.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

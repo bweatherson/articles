@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anonymous">
+<meta name="dcterms.date" content="2025-04-23">
+
+<title>Akrasia and Traitors</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="akrasia-traitors-2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="akrasia-traitors-2_files/libs/quarto-html/quarto.js"></script>
+<script src="akrasia-traitors-2_files/libs/quarto-html/popper.min.js"></script>
+<script src="akrasia-traitors-2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="akrasia-traitors-2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="akrasia-traitors-2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="akrasia-traitors-2_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="akrasia-traitors-2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="akrasia-traitors-2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="akrasia-traitors-2_files/libs/bootstrap/bootstrap-e19dc0c07aeef78048e587c3f1edba7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../Akrasia and Traitors Revised.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Akrasia and Traitors</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">epistemology</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anonymous </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 23, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Bar Luzon argues that akrasia is irrational because it leads to violating a principle called <strong>Avoid Treachery</strong>. In response, I argue that Avoid Treachery is insufficiently motivated, that it presupposes a picture of rational inference that defenders of akrasia have independent reason to reject, and that there are models in which Avoid Treachery is false.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="sec-intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> The Debate</h1>
+<p>A prominent debate in recent epistemology has been whether it can ever be rational to believe propositions of the form of <strong>SA</strong>, or of some similar forms.</p>
+<dl>
+<dt>SA</dt>
+<dd>
+<em>q</em> and it is irrational for me to believe <em>q</em>.
+</dd>
+</dl>
+<p>The <em>enkratic</em> philosopher says all beliefs of that form are irrational. The <em>anti-enkratic</em> philosopher says that they are sometimes rational.</p>
+<p>The debate here isn’t always about <strong>SA</strong> (Simple Akrasia); some philosophers focus on <strong>LA</strong> (Likely Akrasia).</p>
+<dl>
+<dt>LA</dt>
+<dd>
+<em>q</em> and it is probably irrational for me to believe <em>q</em>.
+</dd>
+</dl>
+<p>The difference between these will occasionally be important, not least because Timothy Williamson <span class="citation" data-cites="Williamson2000 Williamson2011 Williamson2014">(<a href="#ref-Williamson2000" role="doc-biblioref">2000</a>, <a href="#ref-Williamson2011" role="doc-biblioref">2011</a>, <a href="#ref-Williamson2014" role="doc-biblioref">2014</a>)</span> has offered the most influential arguments for the anti-enkrasia about <strong>LA</strong>, but agrees with the enkratic philosopher about <strong>SA</strong>.</p>
+<p>Recently in this journal, Bar <span class="citation" data-cites="Luzon2025">Luzon (<a href="#ref-Luzon2025" role="doc-biblioref">Forthcoming</a>)</span> has argued on the side of the enkratic philosophers about <strong>SA</strong>. Rather than start with a mere appeal to intuitions, as many in this debate do, she starts with a principle she calls <strong>Avoid Treachery</strong>.</p>
+<dl>
+<dt>Avoid Treachery (AT)</dt>
+<dd>
+For every proposition <em>p</em> and for every positive epistemic status <em>E</em>, if one knows that [<em>p</em> has <em>E</em> for one only if <em>p</em> is false], then one ought not believe <em>p</em>.
+</dd>
+</dl>
+<p>In this principle, E ranges over the statuses epistemic justification, epistemic rationality, evidential support and epistemic permissibility, and the conditional is a material conditional. The ‘ought’ is purely epistemic; if one thought belief in God was justified on Pascalian grounds one wouldn’t be moved by an argument from <strong>AT</strong>. So I’ll take ‘one ought not believe <em>p</em>’ to just be that it’s (epistemically) irrational to believe that <em>p</em>. So we can formalise <strong>AT</strong> as <strong>AT Formalised</strong>. In it, KA is that Hero knows A, RA is that Hero rationally beliefs A, and E picks out one of the four statuses from the start of the paragraph. Whichever one E picks out, EA is that <em>p</em> has that status for Hero.</p>
+<dl>
+<dt>AT Formalised</dt>
+<dd>
+K¬(<em>p</em> ∧ E<em>p</em>) → ¬R<em>p</em>
+</dd>
+</dl>
+<p>The argument for the irrationality of <strong>SA</strong> follows pretty quickly. Let <em>p</em> be (<em>q</em> ∧ ¬R<em>q</em>). Assume E(A ∧ B) implies EA, that RA implies EA, and that Hero knows anything that can be proven in a few lines of logic. Then it’s easy to show K¬(<em>p</em> ∧ E<em>p</em>), and hence ¬R<em>p</em>, which just is the enkratic view.</p>
+<p>The point of this note is to argue that the anti-enkratic philosopher mostly has good reasons to reject <strong>AT</strong>. I say mostly because there is one argument for <strong>AT</strong> that might work, but only if like Williamson one treats <strong>SA</strong> and <strong>LA</strong> differently.</p>
+<p>It would be too easy to say that the anti-enkratic view view implies <strong>AT</strong> is false. Of course it does, since Luzon’s argument against from <strong>AT</strong> to the enkratic view is valid! What I want to argue is that the reasons behind the anti-enkratic view give us somewhat independent reason to reject <strong>AT</strong>. I’m going to offer the following arguments against <strong>AT</strong> in sections <a href="#sec-status" class="quarto-xref">3</a> to <a href="#sec-model" class="quarto-xref">6</a>.</p>
+<ol type="1">
+<li><strong>AT</strong> fails for other nearby values of E, and this undermines the motivation for believing it holds for these values.</li>
+<li>The main argument for <strong>AT</strong> turns on an understanding of what it means to say evidence is a guide to truth that the anti-enkratic philosopher rejects.</li>
+<li>An argument for <strong>AT</strong> from the idea that beliefs violating <strong>AT</strong> would be ‘self-undermining’ at most supports the enkratic view about <strong>SA</strong>, not <strong>LA</strong>.</li>
+<li>There are plausible models for evidence and belief where <strong>AT</strong> fails.</li>
+</ol>
+<p>But first it helps to rehearse the arguments for the anti-enkratic view, to see how these objections flow from them.</p>
+</section>
+<section id="sec-arguments" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Arguments</h1>
+<p>Simplifying greatly, the anti-enkratic view relies on one presupposition, followed by one of two (independent) arguments. The presupposition is easiest to see with an example.</p>
+<p>Hero has a faculty meeting today, but they have forgotten about it. Fortunately, they just got a reminder email from their chair saying there’s a meeting today. Now they believe, indeed know, there’s a meeting today.</p>
+<p>The presupposition is that the following three things are in principle distinct.</p>
+<ol type="1">
+<li>Hero’s reason for believing that there is a meeting today, i.e., the email they got from the chair.</li>
+<li>The facts that make the email from the chair a reason to believe there is a meeting today. Just what those are turns on the full theory of testimony, but presumably they include things like the chair’s reliability, the frequency of emails being faked, and so on.</li>
+<li>The reasons Hero has for believing that the email is a reason to believe there’s a meeting today.</li>
+</ol>
+<p>The presupposition is that 1 and 3 are distinct. The reason that they are distinct is that 1 and 2 are distinct, and 3 requires Hero to have thoughts about (or at least sensitive to) 2, while 1 does not.</p>
+<p>With that in place, the first argument for the anti-enkrasia view starts with anti-exceptionalism about epistemology.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Just like Hero might not know descriptive facts like when the meeting is, she might not know epistemological facts like just why the email is a reason to believe its content. If Hero can reasonably have false beliefs about descriptive facts, she can have false beliefs about what makes something a reason to believe.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> If those beliefs are <em>false</em>, she could reasonably believe that the meeting is today, while reasonably believing that 2 fails to obtain.</p>
+<p>The second argument relies on formal models, like the model of Williamson’s unmarked clock, in which the formal translations of <strong>SA</strong> (or at least <strong>LA</strong>) are rationally believed. What’s distinctive about these formal models is that while agents know the epistemic facts, they know what is rational to believe in what situation, they don’t know what situation they are in. It makes the discussion clearer to have a concrete theory about what is rational in a situation, so I’ll work with a very crude form of evidentialism. (Everything I say could, with some work, be repurposed for an argument that makes different assumptions about what facts about a situation are relevant, but this is an easy one to work with.) In particular I’ll assume:</p>
+<ul>
+<li>What’s rational to believe supervenes on one’s evidnce;</li>
+<li>One’s evidence is all and only what one knows.</li>
+<li>It is rational for a person whose evidence is E to believe <em>p</em> iff Pr(<em>p</em> | E) ⩾ 0.9, where Pr is the evidential probability function.</li>
+</ul>
+<p>Again, I’m not saying this theory is true; in fact it’s completely implausible. What matters is that (a) what’s rational to believe varies from one situation to another, and (b) someone might not know precisely what situation they are in, just like they might be ignorant of any empirical fact.</p>
+<p>Assuming evidentialism lets us distinguish two ways in which one might be ignorant about one’s situation.</p>
+<ul>
+<li>One might know <em>p</em>, but not know one knows it.</li>
+<li>One might not know <em>p</em>, but not know one doesn’t know it.</li>
+</ul>
+<p>Williamson’s models typically assume the first kind of ignorance, and this has been rather controversial. But as I’ll discuss in <a href="#sec-model" class="quarto-xref">Section&nbsp;6</a>, we can get the problem going with just the second kind of ignorance.</p>
+<p>It makes sense that these are the two kinds of strategies anti-enkratic philosophers have pursued. If agents know which situation they are in, and know what’s rational in every situation, they’ll know what’s rational for them. So they can’t rationally believe <em>p</em> and not know they rationally believe it. But both strategies seem promising.</p>
+</section>
+<section id="sec-status" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Other Statuses</h1>
+<p>The first reason to be sceptical of <strong>AT</strong> is that it doesn’t hold for some nearby statuses a proposition might have. A simple case is that since one can rationally believe <em>p</em> without having Cartesian certainty that it’s true, if we took E to be Cartesian certainty the principle, <strong>AT</strong> would be clearly false. That doesn’t show it’s false for the status Luzon talks about. But it does show that we should reject any argument for <strong>AT</strong> that would serve just as well as an argument for literally any positive epistemic status.</p>
+<p>More interestingly, consider the case where E is <em>is provable in Peano Arithmetic</em>. That’s not really an <em>epistemic</em> status, since it doesn’t refer to an agent. But it’s interesting to note how <strong>AT</strong> fails for this value of E. If <em>p</em> is that Peano Arithmetic is consistent, then Hero knows that <em>p</em> is E iff <em>p</em> is false. But that’s no reason to reject <em>p</em>; indeed, Hero should believe <em>p</em>.</p>
+<p>This case is interesting because it shows that <strong>AT</strong> can fail even in cases where E is genuinely a guide to truth, and where the antecedent does not merely hold in virtue of Hero being certain that E<em>p</em> is false.</p>
+</section>
+<section id="sec-guide" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Guide</h1>
+<p>The example of provability in Peano Arithmetic is relevant to the main argument Luzon gives for <strong>AT</strong>. She argues that <strong>AT</strong> must be true for the values of E she presents because if it fails, E can’t be a good guide to truth. Since justification, rationality, etc are guides to truth, <strong>AT</strong> must be true.</p>
+<p>The simplest response is that this claim about <strong>AT</strong> can’t be right in general because provability in Peano Arithmetic is a good guide to truth when discussing the natural numbers, but <strong>AT</strong> fails when E is provability in Peano Arithmetic. Provability is a good guide to arithmetic truth in general, even if there are cases where it is not in fact a good guide.</p>
+<p>At this point you might think it matters that Luzon restricted E to things like evidential support. Surely the evidentialist does think that evidence is the only guide to truth. Here the presupposition I noted in <a href="#sec-arguments" class="quarto-xref">Section&nbsp;2</a> is important. When Hero believes that there’s a meeting today, her guide is not that she has evidence for this: it’s the email. She’s guided by the fact that she received this email, not by the fact that it’s evidence. If she checks her computer and sees snow is forecast, her belief that it will snow is guided by something different. That’s so even though there are a few descriptions we can give which make it look like she is guided by the same thing. In both cases, for instance, she is guided by words on her computer screen. In the same sense, she is guided in both cases by her evidence. But in the most important sense, the email and the weather forecast are different guides.</p>
+<p>This I suspect is ultimately the biggest difference between the enkratic and the anti-enkratic philosopher. The enkratic philosopher thinks that all beliefs are guided by the same thing: one’s evidence. The anti-enkratic philosopher thinks different beliefs are guided by different things: the different pieces of evidence. <strong>AT</strong> is not, I say, a good constraint on E being a guide, but it is a good constraint on E being the only guide. So the anti-enkratic philosopher who distinguishes facts which constitute evidence from the fact that that fact is a piece of evidence, has good reason to reject AT.</p>
+</section>
+<section id="undermining" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Undermining</h1>
+<p>The other big argument for <strong>AT</strong> is that if <strong>AT</strong> holds, a belief that <em>p</em> would be self-undermining, and hence irrational. Presumably this means that the belief couldn’t achieve it’s aim or goal. What it is to undermine someone is to stop them achieving their aim or goal, so to be self-undermining is to do this to yourself.</p>
+<p>Whether <strong>AT</strong> implies this depends on what one thinks the aim of belief is. If it’s truth, then <strong>AT</strong> doesn’t have this implication. It could be that <strong>AT</strong> is true with E something like evidential support, and still <em>p</em> is true. Indeed, part of what’s puzzling about enkratic arguments is that beliefs like <em>p and I’m irrational to believe p</em> could well be true. I often have irrational beliefs, and sometimes I’m lucky and they’re true!</p>
+<p>So the argument must assume a stronger view about the aim of belief. A natural thought is that the aim of belief is knowledge. Here I think the argument for <strong>AT</strong> does go through. If the aim of belief is knowledge, then if <em>p</em> satisfies the antecedent of <strong>AT</strong> it can’t possibly satisfy it’s aim, and it’s irrational to do something that can’t satisfy it’s aim. So given that aim, Luzon’s argument goes through, and the enktratic philosopher is right to say that belief of the form <strong>SA</strong> is irrational.</p>
+<p>But note this argument does not generalise. As can be seen from the fact that Williamson endorses knowledge as the aim of belief (and says that beliefs like <strong>SA</strong> are irration), but also says that beliefs like <strong>LA</strong> can be rational, there is a coherent position here which distinguishes <strong>SA</strong> from <strong>LA</strong>. We could go on to debate what akrasia or enkrasia <em>really</em> are, but it’s probably best to just say that they come apart given this aim.</p>
+</section>
+<section id="sec-model" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Formal Models</h1>
+<p>Williamson uses formal models to show that <strong>LA</strong> is compatible with the knowledge norm of belief. I think these arguments are perfectly sound, but they have been criticised in a number of ways. The following four stand out.</p>
+<ol type="1">
+<li>The epistemic accessibility relation in the model is intransitive, so the the KK principle fails (<span class="citation" data-cites="DasSalow2019">Das and Salow (<a href="#ref-DasSalow2019" role="doc-biblioref">2019</a>)</span>).</li>
+<li>The epistemic accessibility relation in the model is not nested, so intuitive principles about the value of evidence fail (<span class="citation" data-cites="Geanakoplos1989">Geanakoplos (<a href="#ref-Geanakoplos1989" role="doc-biblioref">[1989] 2021</a>)</span>, <span class="citation" data-cites="DorstEtAl2021">Dorst et al. (<a href="#ref-DorstEtAl2021" role="doc-biblioref">2021</a>)</span>).</li>
+<li>The models are cases where the probability of the target proposition is not a good guide to its truth. (<span class="citation" data-cites="Horowitz2014">Horowitz (<a href="#ref-Horowitz2014" role="doc-biblioref">2014</a>)</span>)</li>
+<li>The models assume that updating is by conditionalisation on one’s evidence, even when isn’t sure precisely what one’s evidence is (<span class="citation" data-cites="Gallow2021">Gallow (<a href="#ref-Gallow2021" role="doc-biblioref">2021</a>)</span>)</li>
+</ol>
+<p>I’m going to present a model where <strong>AT</strong> fails (and so do <strong>SA</strong> and <strong>LA</strong>) even though the model is modified to avoid the first three objections. That is, I’ll present a model where epistemic accessibility is transitive and nested, and in a sense I’ll make precise probability is a good guide to truth, but where <strong>AT</strong> is still false. I won’t have much to say about the fourth objection here; given the assumptions I made at the end of <a href="#sec-arguments" class="quarto-xref">Section&nbsp;2</a> it seems reasonable to assume that Hero should update by conditionalising on the strongest thing they learn, but it would be a huge digression to respond to the arguments against that assumption.</p>
+<p>Onto the model. There is a random variable X whose prior probability is a uniform distribution over [0, 1]. If X = <em>x</em>, Hero will learn X ⩽ <em>x</em>. That is, from the world X = <em>x</em>, all worlds X = <em>y</em> are possible, as long as <em>y</em> ⩽ <em>x</em>. This accessibility relation is clearly transitive and nested.</p>
+<p>Hero will update on what they learn, i.e.&nbsp;X ⩽ <em>x</em>. I’ll use Pr for the initial probability of some proposition, and Cr for Hero’s credence after learning X ⩽ <em>x</em>.</p>
+<p>I’m going to focus primarily on propositions of the form X <span class="math inline">\(\in\)</span> (<em>a</em>, <em>b</em>), where 0 &lt; <em>a</em> &lt; <em>b</em> &lt; 1. Call this proposition <em>i</em>, for interval. There are three interesting possibilities for <em>Cr</em>(<em>i</em>).</p>
+<ol type="1">
+<li>If X ⩽ <em>a</em>, then <em>Cr</em>(<em>i</em>) = 0, and <em>p</em> is false, so that’s all good.</li>
+<li>If X = <em>b</em>, then <em>Cr</em>(<em>i</em>) is at its highest value, (<em>b</em> - <em>a</em>)/<em>b</em>. That’s not great since <em>p</em> is false, but it’s just one point.</li>
+<li>Otherwise <em>Cr</em>(<em>i</em>) is in ((<em>b</em> - <em>a</em>)/<em>b</em>, <em>b</em> - <em>a</em>).</li>
+</ol>
+<p>In the third case, there’s a striking result we can prove about <em>Cr</em>.</p>
+<blockquote class="blockquote">
+<p>For any threshold <em>t</em> ∈ ((<em>b</em> - <em>a</em>)/<em>b</em>, <em>b</em> - <em>a</em>), Pr(<em>i</em> | Cr(<em>i</em>) ⩾ <em>t</em>) = <em>t</em>.</p>
+</blockquote>
+<p>That is, conditional on Hero, who is inside the model, having credence at least <em>t</em> in <em>i</em>, the probability that we, who are outside the model, should have in <em>i</em> is <em>t</em>. That is, I think, a good sign that in this case Hero’s credence in <em>i</em>, the evidential probability of <em>i</em> inside the model, is correlated with the truth of <em>i</em>. The correlation isn’t perfect, the edge case in point 2 will become important, but in general the posterior probability of <em>i</em> is correlated with its truth.</p>
+<p>I won’t go over the proof of this result here. It’s a trivial but somewhat tedious bit of algebra.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> What’s more interesting is to see how this affects <strong>AT</strong>.</p>
+<p>Consider the case where the interval is (0.03, 0.3). So <em>i</em> is that X is in that interval. And consider in particular the case where X is 0.3. In that case Cr(<em>i</em>) is 0.9, which we earlier assumed was the threshold for rational belief. Indeed, this is the only point where Cr(<em>i</em>) reaches that threshold. But in that case <em>i</em> is false. So the only case where it is rational to believe <em>i</em>, <em>i</em> is false. But still, this is a case where the constraints that enkratic philosophers have said should be put on Williamson-like models have been applied. Accessibility is transitive and nested, and in a good sense the evidential probability is a good (if not perfect) guide to truth.</p>
+<p>So if the anti-enkratic philosopher was moved in the first place by models like Williamson, then even taking on board the criticisms of those models, they have good reason to reject <strong>AT</strong>: it fails in cases like these.</p>
+</section>
+<section id="sec-conclusions" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Conclusion</h1>
+<p>So much of the literature on enkrasia consists of raw appeals to the unintuitiveness of <strong>SA</strong> and <strong>LA</strong>. So I think it’s great to see actual arguments from principles like <strong>AT</strong> for enkratic principles. But I don’t think the anti-enkratic philosophers should be changing their minds over this.</p>
+<p>If one’s initial motivation for anti-enkrasia was based in the metaphysical distinction between reasons and what makes something a reason, then there are good grounds for rejecting the idea that rationality can only be guiding if <strong>AT</strong> is true. And if one’s initial motivation was based in the kinds of models that Williamson developed, then even taking on board the recent criticisms of those models, there are variants of his models that falsify <strong>AT</strong>.</p>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-DasSalow2019" class="csl-entry" role="listitem">
+Das, Nilanjan, and Bernard Salow. 2019. <span>“Transparency and the <span>KK</span> Principle.”</span> <em>No<span>û</span>s</em> 52 (1): 3–23. <a href="https://doi.org/10.1111/nous.12158">https://doi.org/10.1111/nous.12158</a>.
+</div>
+<div id="ref-DorstEtAl2021" class="csl-entry" role="listitem">
+Dorst, Kevin, Benjamin A. Levinstein, Bernhard Salow, Brooke E. Husic, and Branden Fitelson. 2021. <span>“Deference Done Better.”</span> <em>Philosophical Perspectives</em> 35 (1): 99–150. <a href="https://doi.org/10.1111/phpe.12156">https://doi.org/10.1111/phpe.12156</a>.
+</div>
+<div id="ref-Gallow2021" class="csl-entry" role="listitem">
+Gallow, J. Dmitri. 2021. <span>“Updating for Externalists.”</span> <em>Noûs</em> 55 (3): 487–516. <a href="https://doi.org/10.1111/nous.12307">https://doi.org/10.1111/nous.12307</a>.
+</div>
+<div id="ref-Geanakoplos1989" class="csl-entry" role="listitem">
+Geanakoplos, John. (1989) 2021. <span>“Game Theory Without Partitions, and Applications to Speculation and Consensus.”</span> <em>The B.E. Journal of Theoretical Economics</em> 21 (2): 361–94. https://doi.org/<a href="https://doi.org/10.1515/bejte-2019-0010">https://doi.org/10.1515/bejte-2019-0010</a>.
+</div>
+<div id="ref-Horowitz2014" class="csl-entry" role="listitem">
+Horowitz, Sophie. 2014. <span>“Immoderately Rational.”</span> <em>Philosohical Studies</em> 167 (1): 41–56. <a href="https://doi.org/10.1007/s11098-013-0231-6">https://doi.org/10.1007/s11098-013-0231-6</a>.
+</div>
+<div id="ref-Lasonen-Aarnio2020" class="csl-entry" role="listitem">
+Lasonen-Aarnio, Maria. 2020. <span>“Enkrasia or Evidentialism? Learning to Love Mismatch.”</span> <em>Philosophical Studies</em> 177 (3): 597–632. <a href="https://doi.org/10.1007/s11098-018-1196-2">https://doi.org/10.1007/s11098-018-1196-2</a>.
+</div>
+<div id="ref-Luzon2025" class="csl-entry" role="listitem">
+Luzon, Bar. Forthcoming. <span>“Epistemic Akrasia and Treacherous Propositions.”</span> <em>Philosophical Quarterly</em>, Forthcoming.
+</div>
+<div id="ref-MartinHjortland2024" class="csl-entry" role="listitem">
+Martin, Ben, and Ole Thomassen Hjortland. 2024. <span>“Anti-Exceptionalism about Logic (Part i): From Naturalism to Anti-Exceptionalism.”</span> <em>Philosophy Compass</em> 19 (8): e13014. https://doi.org/<a href="https://doi.org/10.1111/phc3.13014">https://doi.org/10.1111/phc3.13014</a>.
+</div>
+<div id="ref-Williamson2000" class="csl-entry" role="listitem">
+Williamson, Timothy. 2000. <em><span class="nocase">Knowledge and its Limits</span></em>. Oxford University Press.
+</div>
+<div id="ref-Williamson2011" class="csl-entry" role="listitem">
+———. 2011. <span>“Improbable Knowing.”</span> In <em>Evidentialism and Its Discontents</em>, edited by Trent Dougherty, 147–64. Oxford: Oxford University Press.
+</div>
+<div id="ref-Williamson2014" class="csl-entry" role="listitem">
+———. 2014. <span>“Very Improbable Knowing.”</span> <em>Erkenntnis</em> 79 (5): 971–99. <a href="https://doi.org/10.1007/s10670-013-9590-9">https://doi.org/10.1007/s10670-013-9590-9</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For anti-exceptionalism about logic, see <span class="citation" data-cites="MartinHjortland2024">Martin and Thomassen Hjortland (<a href="#ref-MartinHjortland2024" role="doc-biblioref">2024</a>)</span>. This kind of argument is particularly prominent in <span class="citation" data-cites="Lasonen-Aarnio2020">Lasonen-Aarnio (<a href="#ref-Lasonen-Aarnio2020" role="doc-biblioref">2020</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If, like Williamson, one denies that false beliefs can be reasonable, one will treat <strong>SA</strong> and <strong>LA</strong> differently. As noted earlier, I’m mostly ignoring that distinction here.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>After I found a proof I was satisfied with, I asked ChatGPT to prove the result, and it came up with essentially the same proof after a little prodding. So if you’d like to confirm it yourself, this might work.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

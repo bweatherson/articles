@@ -25,7 +25,7 @@ format:
       colorlinks: false
       linestretch: 1.75
       link-citations: true
-      output-file: "Anti-Anti-Desire-As-Belief"
+      output-file: "Anti-Anti-Desire-As-Belief Revised Version"
       include-in-header:
         text: |
           \setlength\heavyrulewidth{0ex}
@@ -36,9 +36,9 @@ format:
 
 David Lewis [-@Lewis1988;-@Lewis1996] has an argument against the view that desires can be reduced to beliefs. I'm going to respond on behalf of the Desire-as-Belief (hereafter, DAB) thesis. In particular, I'm going to offer two responses. The responses themselves will not be particularly original; one is due to Huw @Price1989, and the other to Jessica @Collins2015. What will I hope be original is showing how they fit together. I'll argue that given the other assumptions Lewis makes, the DAB theorist has independent reason to reject one or other of the premises Lewis offers.
 
-I'll start with a presentation of Lewis's argument, shorn of what seem to me to be extraneous details. This will look a little different to Lewis's own presentation, but all the premises here are ones he uses, and its gets to the conclusion he wants, so it seems to be a fair representation.^[I'm drawing here on presentations of the argument by @Collins2015, @Hajek2015, and @Ittay201x.]
+I'll start with a presentation of Lewis's argument, shorn of what seem to me to be extraneous details. This will look a little different to Lewis's own presentation, but all the premises here are ones he uses, and its gets to the conclusion he wants, so it seems to be a fair representation.^[I'm drawing here on presentations of the argument by @Collins2015, @Hajek2015, and @Nissan-Rozen2015-NISATR.]
 
-Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. They are 'small worlds' in the sense of @Savage1954, not possible worlds in the sense of @Lewis1986. For the most part they are more coarse-grained than the concrete worlds of _Plurality_, but in one respect they are more fine-grained: they might differ from each other purely in normative features.^[This is a consequence of the point @Chalmers2011 makes that it is epistemic, not metaphysical, possibility that matters here, plus the assumption that our characters might be normatively uncertain.]
+Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. They are 'small worlds' in the sense of @Savage1954, not possible worlds in the sense of @Lewis1986a. For the most part they are more coarse-grained than the concrete worlds of _Plurality_, but in one respect they are more fine-grained: they might differ from each other purely in normative features.^[This is a consequence of the point @Chalmers2011b makes that it is epistemic, not metaphysical, possibility that matters here, plus the assumption that our characters might be normatively uncertain.]
 
 For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is desirable.^[It's more common here to let Å be that A is good, but I want to separate questions about the desire-belief relationship from questions about moral motivation, so my characters will be motivated to do something just to the extent they believe it desirable, leaving it as a further question whether all and only good things are desirable.] Let V be an agent's value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V~A~ and Pr~A~ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion. (Later I'll also write Pr(*w*) for the probability of Pr({*w*}); again it shouldn't result in confusion.)
 
@@ -77,7 +77,7 @@ The first assumption is obviously absurd, but it is useful for setting out the a
 
 And the last line contradicts our assumption. So not all six of these assumptions can be correct, if DAB is true. Since Lewis thinks they are all correct, he concludes DAB is false.
 
-As I said, this presentation doesn't look a lot like Lewis's argument. Most notably, **Possible Independence** isn't an assumption for Lewis, it is something he derives from yet further premises. Much of the 1988 paper is devoted to spelling out the absurd consequences of denying **Possible Independence**. These arguments haven't convinced everyone. They assume that conditionalisation is the right way to update on any new information, descriptive or normative. If normative propositions are centered worlds, as the picture in @Lewis1989 suggests, that seems like the wrong way to update. If the picture of self-locating belief that @Lewis1979 offers is correct, we can't update our beliefs about the time by conditionalisation when the alarm clock goes off.^[@Oddie1997 objects to Lewis's use of conditionalisation in this context.]
+As I said, this presentation doesn't look a lot like Lewis's argument. Most notably, **Possible Independence** isn't an assumption for Lewis, it is something he derives from yet further premises. Much of the 1988 paper is devoted to spelling out the absurd consequences of denying **Possible Independence**. These arguments haven't convinced everyone. They assume that conditionalisation is the right way to update on any new information, descriptive or normative. If normative propositions are centered worlds, as the picture in @Lewis1989b suggests, that seems like the wrong way to update. If the picture of self-locating belief that @Lewis1979b offers is correct, we can't update our beliefs about the time by conditionalisation when the alarm clock goes off.^[The point that conditionalisation isn't the right way to update beliefs with centered worlds contents, and this raises a problem for Lewis, is made by Graham @Oddie1994.]
 
 But **Possible Independence** is surely true. Assume that A is a proposition about someone, call him Peter, might do. And assume that we desire that the morally good thing is done, that we don't know whether A is good or not, but we are very confidence in Peter's moral judgment. If Peter does A, that's good evidence A is good. That all seems coherent, which is enough to support **Possible Independence**.
 
@@ -104,20 +104,21 @@ Before Peter acts, both Auntie's have the same credal distribution, satisfying t
 | A  |   0.56 |   0.14   |
 | ¬A |   0.03 |   0.27   |
 
-Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
+: Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
 
 Now you might think at this point that I've said enough to tell you what each Auntie hopes Peter will do. After all, I've told you everything relevant about each Auntie's credence in Å, and I've told you that their credences in propositions about goodness determine their values. But I haven't told you one thing extra - I haven't told you what decision theory the two Aunties follow.
 
-Auntie E is an evidential decision theorist. For her, the value of an arbitrary action *x* is given by this formula (where X is the proposition that *x* is performed).
+Auntie E is an evidential decision theorist. For her, the value of an arbitrary action *x* is given by **Auntie E's Value**. In this formula, where X is the proposition that *x* is performed, and D is the propositions that things are desirable.
 
-> V(x) = C(G | X)
+Auntie E's Value
+: V(*x*) = C(D | X)
 
 That is, she looks at Peter's options, and hopes that he does the one that she is most confident is good, conditional on Peter doing it. That means she hopes Peter does not do *a*, since then she'll have credence 0.9 that Peter has done the right thing. If Peter does *a*, she'll only have credence 0.8 that he'll have done the right thing, which isn't as good.
 
-Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981a.^[Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse.] In particular, Auntie's values are given by **Auntie C's Value**. In the formula, C~*x*~ be the result of _imaging_ the credence function C on the proposition *x* is performed. Auntie C believes changing the moral facts is a bigger change to the world than changing any descriptive facts, so imaging always moves credences up or down in @tbl-credence, never left or right.^[Recall here that the worlds are epistemic possibilities, not metaphysical ones, so it makes sense to talk about merely changing the moral facts.]
+Auntie C endorses a version of causal decision theory, in particular something like the version supported by David @Lewis1981bn.^[Here I'm following Collins, who notes that it is odd that Lewis attributes to Auntie a form of evidential decision theory, which Lewis himself does not endorse.] In particular, Auntie's values are given by **Auntie C's Value**. In the formula, C~*x*~ be the result of _imaging_ the credence function C on the proposition *x* is performed. Auntie C believes changing the moral facts is a bigger change to the world than changing any descriptive facts, so imaging always moves credences up or down in @tbl-credence, never left or right.^[Recall here that the worlds are epistemic possibilities, not metaphysical ones, so it makes sense to talk about merely changing the moral facts.]
 
 Auntie C's Value
-:    V(x) = C_X_(G)
+:    V(*x*) = C~X~(D)
 
 This resembles equation (11) in "Causal Decision Theory". Indeed, after the first character, it just is the special case of that equation where the only possible values are 1 and 0. But the first character matters. Lewis is presenting a theory of usefulness, not of value. His formula is meant to measure the thing that a rational actor maximises. It is not measuring the thing an altruistic friend hopes is maximised. We'll come back to this point in @sec-auntie-c. For now, I just want to note the similarities to Lewis's own theory.
 
@@ -127,7 +128,7 @@ The next two steps are to see why the Auntie's reject Lewis's argument.
 
 # DAB and EDT {#sec-auntie-e}
 
-The easier case is Auntie E. She rejects **Equation**. The relationship between desire and belief is not V(A) = Pr(Å), but V(A) = Pr(Å | A). Lewis is aware of this response, it's developed by @Price1989, and his response is that this isn't a form of desire as _belief_. His thought, and this comes out a little more clearly in a recently published letter than in the papers [@LewisMcDermottXXXX], is that belief isn't load-bearing in Auntie E's view.
+The easier case is Auntie E. She rejects **Equation**. The relationship between desire and belief is not V(A) = Pr(Å), but V(A) = Pr(Å | A). Lewis is aware of this response, it's developed by @Price1989, and his response is that this isn't a form of desire as _belief_. His thought, and this comes out a little more clearly in a recently published letter than in the papers [@Lewis-McDermott-06121993], is that belief isn't load-bearing in Auntie E's view.
 
 Everyone agrees that beliefs play a role in instrumental desires. If desires to take a pill because one believes it will cure one's disease, that desire will go away if one loses either the belief that it's a cure, or the belief that one is diseased. Lewis notes that Auntie E is committed to the existence of a proposition D consisting of all and only the desirable worlds, and to the claim that by necessity any agent with desires will desire it. Moreover, he argues, on Auntie E's view this is the only non-instrumental desire an agent has. Beliefs don't affect non-instrumental desires on this view, since everyone has the same non-instrumental desires. They just affect instrumental desires. But Humeans and anti-Humeans agree about the connection between belief and non-instrumental desires.
 
@@ -137,7 +138,7 @@ First, the simplifying assumption **Binary Desirability** looks less benign here
 
 Second, the necessity claim Auntie E seems committed to looks less worrying once remember what kinds of things worlds are in this context. They are the elements of the contents of attitudes. That is, on Lewis's view, they are centered worlds. Auntie E's view is really that by necessity an agent desires that one of the centered worlds found desirable by the current center, i.e., that very agent, is actualised. That is, agents desire what they believe desirable. That's not a surprising necessity claim; it's the essence of the view Lewis is arguing against.
 
-Third, this is a very odd complaint from _David Lewis_. It's agreed on all sides that on Auntie E's view, what an agent desires supervenes on what they believe. Moreover, the reverse supervenience, of belief on desire, probably doesn't hold. Lewis's complaint here is that Auntie E hasn't made desire depend on belief in the right way, even though she has ensured these supervenience claims hold. The only way to make this complaint work is to understand dependence using some hyperintensional notion like grounding. But there's no sign of such a notion in Lewis's work, and there are good reasons to think it couldn't be added to his view [@MacBrideXXXX].
+Third, this is a very odd complaint from _David Lewis_. It's agreed on all sides that on Auntie E's view, what an agent desires supervenes on what they believe. Moreover, the reverse supervenience, of belief on desire, probably doesn't hold. Lewis's complaint here is that Auntie E hasn't made desire depend on belief in the right way, even though she has ensured these supervenience claims hold. The only way to make this complaint work is to understand dependence using some hyperintensional notion like grounding. But there's no sign of such a notion in Lewis's work, and there are good reasons to think it couldn't be added to his view [@MacBrideJL2022].
 
 So I think EDT offers a way out of Lewis's argument. That's not totally surprising; it's not Lewis's view. Things are trickier with Auntie C.
 
@@ -166,7 +167,7 @@ Indeed, she insists that it isn't just in first-personal cases like Newcomb's Pr
 | Up  |  3   |    0   |
 | Down | 5   |    1   |
 
-Peter's second choice {#tbl-peter-second}
+: Peter's second choice {#tbl-peter-second}
 
 The first quote of Lewis's suggests that both Auntie's should desire that Peter choose Up, since that will be evidence that an outcome of value 3 will obtain. But it seems coherent to hope that he chooses Down. Several of the arguments for two-boxing seem replicable here. It's weird to hope that Peter chooses Down conditional on Left, and hope he chooses Down conditional on Right, and unconditionally hope that he chooses Up.
 
