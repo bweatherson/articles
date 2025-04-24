@@ -1,0 +1,45 @@
+---
+title: "Against Negative Dominance"
+abstract: |
+  Tarsney, Lederman, and Spears have recently argued against the possibility that lives, and worlds, can have incomparable value. Their argument turns on a principle they call Negative Dominance. In this note I argue that we should reject that principle.
+date: today
+draft: false
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+categories:
+  - ethics
+  - games and decisions
+format: 
+    html:
+      theme: 
+        light: 
+          - solar
+          - html-fonts-light.scss
+          - book-light-defaults.scss
+      linestretch: 1.5
+      toc: true
+      number-sections: true
+      toc-depth: 3
+      toc-location: left
+      reference-location: margin
+      margin-header: "&nbsp;"
+      fontsize: 1.2em
+      include-in-header:
+        - text: |
+            <link rel="stylesheet" href="https://use.typekit.net/uzz2drx.css">
+      mainfont: "ff-scala-sans-pro, sans-serif"
+      html-math-method: mathjax
+      self-contained: false
+format-links: [html]
+bibliography: 
+  - /Users/weath/Documents/citations-2025/autobib.bib
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+---
+
