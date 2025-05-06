@@ -1,0 +1,20 @@
+Referee Report
+
+Report 1
+
+“Akrasia and Traitors” raises three different worries about Luzon’s “Epistemic Akrasia and Treacherous Propositions”. First, the main principle of Luzon’s paper, Avoid Treachery (AT), and in particular its restriction to some but not all epistemic states, isn’t sufficiently motivated. Second, the principle presupposes a picture of rational inference that proponents of the rationality of epistemic akrasia should reject. Third, there are models in which the principle is violated.
+
+I recommend treating this paper as a discussion note, rather than an original paper, since it doesn’t make an independent contribution to the literature. I further recommend major revisions, regardless of whether the first recommendation is accepted. Let me explain why.
+
+First, the paper doesn’t really read as one cohesive paper. Rather, it reads like a list of different worries. Now, some of those worries are reasonable, and so the paper shouldn’t be outright rejected, but the author should either find a way to tie together their different worries, or decide what they take to be the main worry and try to make a serious case for that particular worry.
+
+Second, I have qualms about each of the worries raised in the paper.
+•	As for the first worry, I think that the author is right that Luzon doesn’t provide an explanation as to why she chose the particular states she did, and it is reasonable to put pressure on her choice, given that other epistemic states don’t obey AT. However, the worry doesn’t get serious enough treatment in the paper. Is there a reasonable way to tie those states together, and set them apart from states like Cartesian certainty? Here’s one initial suggestion: the states chosen by Luzon are those that when they don’t hold for a belief in a proposition p, one ought not believe that p. That’s clearly not the case for Cartesian certainty: we should believe many things that aren’t certain in the Cartesian sense. This is of course just a first suggestion, and there may be problems with it, but for the first worry of the author to be taken seriously, they must consider such suggestions and show why they’re lacking, or give some reasons to believe that any such suggestion would fail, or some such. Otherwise, this point isn’t developed enough.
+•	As for the second worry, I found it quite confusing. I agree that there are different notions of ‘good guide’ one can be using, and again I think that the author is right that Luzon doesn’t say much about her sense of ‘good guide’. But does she say anything to motivate the inferential notion that author proposes? I’d suggest that the author either provide reasons to think that this is the right way to understand Luzon, or drop this discussion altogether.
+•	As for the third worry, it is interesting that transitivity failure is not an essential feature of models such as Williamson 2014’s, and there may be independent interest in creating models that don’t have such problematic features. (Of course, it would be important to show there are real-life cases well-described by such a model, but not by the original models.) Furthermore, in her paper, Luzon doesn’t say much about why she herself rejects models such as Williamson’s, and so it is reasonable to request an explanation from her. But it is not clear Luzon rejects the original models because she accepts transitivity, and so it is not clear that the new model puts pressure on AT that wasn’t already provided by the original models.
+
+To be clear about my standards, I’d recommend accepting this paper after revisions if:
+1.	The first worry, which I take to be the most pressing one, is developed in more detail.
+2.	The rest of the worries are either better connected to their target or dropped.
+3.	If more than one worry remains, all worries are tied together as to merit being a part of the same paper.
+Alternatively, the author can try to convince me that one of worries 2 and 3 is the most pressing one, focus their paper on that worry instead, and develop it in accordance with my comments. But I am more skeptical of this alternative succeeding.
