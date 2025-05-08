@@ -14,6 +14,7 @@ categories:
   - epistemology
 format:
     html: default
+    docx: default
     pdf: 
       geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
       mainfont: EB Garamond Math
