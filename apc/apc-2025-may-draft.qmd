@@ -1161,6 +1161,22 @@ There often was an exception to this general claim about access. (At least, this
 
 So that I think is part of the story. Before the widespread adoption of computers, old journal articles were very hard to find. This changed a little with the advent of electronic, and hence easily searchable, versions of _Philosophers' Index_, and changed a lot when journals went online. And that's part of why older articles, and especially older articles that are not classics, are now more widely cited.
 
+# Culture Changes {#sec-culture}
+
+Two important cultural changes made a difference to the citation patterns, one to do with the role of journal articles, another to do with citation norms.
+
+If you look back to journals from a century ago, you sometimes see pieces that feel more like blog posts than what we'd now consider journal articles. Even more substantive pieces feel more like means to an end. The journal article is as much a trial run for a book as it is a report on a complete project.
+
+By the twenty-first century, all of that is changed. Articles are getting much longer, even in venues like _Analysis_. More importantly, they are often finished products, not draft runs for future books. There are prominent philosophers whose reputation is based largely, or even entirely, on articles (e.g., Jonathan Schaffer). There are large fields of philosophy, e.g., epistemic contextualism and metaphysical grounding, where the canonical texts of the field are almost entirely articles not books. This isn't entirely new, the post-Gettier literature on analysis of knowledge was largely article-based too, but it's a growing trend. This is partially why citations are getting older; if a field is based in articles, there will be more citations to older articles. That's especially true when those articles have not been superseded by books.^[The list of articles that were once widely cited but are rarely cited now is heavily populated with articles that formed the basis for widely cited books.]
+
+But the bigger trend is the increasing tendency of philosophers to include brief citations to work they aren't discussing in detail, but which locate the paper in a literature. Obviously if an article cites 26 other journal articles, as we saw in @tbl-large-growth the average recent _Philosophical Review_ paper does, it can't possibly be discussing every one of them in depth. (Remember this count excludes citations of books and articles in edited volumes.) For a long time a striking difference between philosophy and nearby disciplines was the lack of these citations that largely served to place a paper in a literature. Their growth partially explains why citations are getting older; if an author cites the history of their sub-field, that will include some older articles.
+
+But why did this change happen? Part of the story is technology, as discussed in @sec-technology. It's now much easier to do this. But this can't be the whole story, since the practice was more widespread in other fields before some of these technologies came on board. Part of the story is the growth of specialisation. If you're writing a paper on content externalism in the 1990s, you don't need to include a citation trail going back to Kripke and Putnam. Everyone knows the history of these debates, and it doesn't need to be rehashed. Since then, it's become a little less clear that there is any field that all readers will know the history of, so there's more need for background.
+
+But a big part of the story, I'll argue, was the growth of interdisciplinary work in the 2000s. This can be seen in a lot of fields, including the rise of experimental philosophy, and the increasing empirical sophistication in philosophy of mind. I'm going to focus on one other aspect of this growth: the move of philosophy of language towards debates that were also active inside linguistics. Part of what we see in the 2000s is the adoption of citation norms from linguistics into philosophy of language. I'm not going to argue for this next bit in any detail, but the timeline is consistent with those norms spreading from philosophy of language to the rest of the discipline.
+
+I'm going to use two measures to look at the rise of interdisciplinary philosophy of language in the 2000s. (Both of these measures will be important in the next section too.)
+
 # Content Changes {#sec-content}
 
 Another part of the story is that the centre of gravity of philosophy publishing changes over the time period we're looking at. And it does so in a way that turns out to matter for which kinds of articles are cited.
@@ -1320,7 +1336,7 @@ weighted_citation_tibble <- citation_tibble |>
   filter(year <= 2010) |>
   replace_na(replace = list(short_weight = 0, long_weight = 0, all_weight = 0)) |>
   mutate(short_weight = round(short_weight / 7, 2)) |>
-  mutate(long_weight = round(long_weight / (2014 - year), 2)) |>
+  mutate(long_weight = round(long_weight / (2017 - year), 2)) |>
   mutate(all_weight = round(all_weight / (2024 - year), 2))
 
 
