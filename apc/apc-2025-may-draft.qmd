@@ -1314,7 +1314,7 @@ weighted_citation_tibble <- citation_tibble |>
   ) |>
   mutate(weight = articles/citations) |>
   mutate(age = new_year - old_year) |>
-  filter(age > 0, old_year <= 2010) |>
+  filter(age > 0, old_year <= 2015) |>
   mutate(cite_type = case_when(
     age >= 8 & age <= 300 ~ "long_weight",
     age >= 1 & age <= 7 ~ "short_weight",
@@ -1376,8 +1376,8 @@ long_weight_of_citings <- function(article_id){
   )
 }
 
-most_cites_by_2010 <- citation_tibble |>
-  filter(new_year <= 2010) |>
+most_cites_by_2015 <- citation_tibble |>
+  filter(new_year <= 2015) |>
   group_by(old) |>
   tally(name = "citations") |>
   arrange(-citations) |>
