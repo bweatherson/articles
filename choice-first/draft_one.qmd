@@ -1,0 +1,13 @@
+# Introduction
+
+The outputs of a decision theory should include at least these three things. First, an account of the value of various choices, including choices of gambles. Second, an account of what preferences the chooser should have, again including cases where one of the relata is a gamble. Third, an account of what choices the chooser should make when presented with a large variety of options.
+
+One useful way to classify decision theorists is to ask which of these tasks they think should be done first. For instance, one kind of decision theorist says that the first task is to get a theory of value. Then we say that an option is preferred if it has higher value, and chosen if it has highest value. Call this the **value first** approach. Another kind of decision theorist starts with preferences, and perhaps derives values from them via some kind of representation theorem. Call this the **preference first** approach.
+
+I'm going to argue for instead taking a **choice first** approach. There are several hard cases where understanding choice in terms of either preference or value leads to implausible results, and the right way to understand the case is to take questions about which options should be chosen as primary.
+
+Just like the way representation theorems can get you from preference to value, provided you put some non-trivial constraints on preferences, there are familiar ways to get from choice to preference, by putting some non-trivial constraints on choices. If those constraints were satisfied, the choice first approach might be correct, but not particularly interesting. A big part of the storyline here will be arguing that those constraints are not satisfied, and so just how values and preferences should be understood is a rather hard question. In the case of preference, it isn't even clear it's a compulsory question; maybe saying which options should be chosen is enough.
+
+# Choice Theory
+
+Say we have a function C from sets to sets, such that C(A) = B means that when the agent's options are A, the choice-worthy options are in B. 
