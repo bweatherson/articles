@@ -1,0 +1,12 @@
+# Formalism
+
+I'm going to follow the formal version of choice theory due to Amartya @Sen19702018. This isn't the earliest formulation we could use. Paul @Samuelson193x has a version of choice theory, and some of Sen's principles are anticipated in @XXX195x. But Sen's version is systematic, and he's more sensitive to the philosophical issues, so I'll use it.
+
+Say C(Gamma) = Delta means that if agent's choices are Gamma, the choice-worthy options are all and only the members of Delta. If we have a numerical value function V, and use it to generate C, then C(Gamma) = Delta means that all and only members of Delta have maximal value among members of Gamma. If we have a preference function R such that aRb means a is at least as good as b, and use it to generate C, then C(Gamma) = Delta means that all and only members of Delta are at least as good as all options in Gamma.
+
+What Sen means by 'at least as good' isn't what philosophers typically represent by \geq. It doesn't mean that a is either better than or equal to b. In the terminology of contemporary decision theory, it means something more like b is not better than a. In choice-theoretic terms, it means a \in C({a, b}).
+
+The more distinctive case is where we don't start with either V or R, but just start with C, and with some constraints on it, and derive what we can from there. Sen provides three notable principles that we'll use a lot in what follows.
+
+Principle \alpha
+:    If a \in 
