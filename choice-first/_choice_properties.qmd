@@ -1,0 +1,51 @@
+---
+title: "Choice and Sets of Utility Functions"
+format:
+    pdf: 
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mathfont: EB Garamond Math
+      mainfont: EB Garamond Math
+      sansfont: EB Garamond SemiBold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond SemiBold
+      fontsize: 12pt
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.75
+      link-citations: true
+      output-file: "Choice Properties"
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+---
+
+We have a set of basic options. An option is some member of that set, or a lottery with known probabilities whose prizes are the basic options.
+
+We also have a set L of utility functions. Each utility function assigns a value to each basic option, and then values each lottery as the expected value of the basic options it contains.
+
+There is a choice function C that takes options as input and returns a subset of those options. The choice function is related to L in the following way. For any set S of options C(S) is the set of options in S that are chosen by at least one utility function in L. In other words, C(S) is the set of options that are preferred to at least one other option in S by at least one utility function in L.
+
+Here are four properties that a choice function might satisfy:
+
+α: (x ∈ C(S) ∧ x ∈ T ∧ T ⊆ S) → x ∈ C(T)
+
+- If x is chosen from S and T is a subset of S that contains x, then x is also chosen from T.
+
+β: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → (x ∈ C(S) ↔ y ∈ C(S))
+
+- If x and y are both chosen from T, and T is a subset of S, then x is chosen from S if and only if y is chosen from S.
+
+γ: (x ∈ C(S) ∧ x ∈ C(T)) → (x ∈ C(S ∪ T))
+
+- If x is chosen from both S and T, then x is chosen from the union of S and T.
+
+δ: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → ({y} ≠ C(S))
+
+- If x and y are both chosen from T, and T is a subset of S, then y is not the only option chosen from S.
+
+Question: Which of these properties are satisfied by the choice function C?
+
+Further question: What properties are satisfied by the choice function C if we assume that L is a set of utility functions that are all strictly increasing? What properties guarantee that there will be a set L of strictly increasing utility functions that satisfies the properties of C?
