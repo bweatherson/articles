@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {#sec-intro}
 
 The outputs of a decision theory should include at least these three things. First, an account of the value of various choices, including choices of gambles. Second, an account of what preferences the chooser should have, again including cases where one of the relata is a gamble. Third, an account of what choices the chooser should make when presented with a large variety of options.
 
@@ -8,6 +8,25 @@ I'm going to argue for instead taking a **choice first** approach. There are sev
 
 Just like the way representation theorems can get you from preference to value, provided you put some non-trivial constraints on preferences, there are familiar ways to get from choice to preference, by putting some non-trivial constraints on choices. If those constraints were satisfied, the choice first approach might be correct, but not particularly interesting. A big part of the storyline here will be arguing that those constraints are not satisfied, and so just how values and preferences should be understood is a rather hard question. In the case of preference, it isn't even clear it's a compulsory question; maybe saying which options should be chosen is enough.
 
-# Choice Theory
+# Mental States {#sec-mental}
 
-Say we have a function C from sets to sets, such that C(A) = B means that when the agent's options are A, the choice-worthy options are in B. 
+Historically, the question of whether preferences or choices was primary was tied up with bigger questions about the role of mental states in explanation. One major impetus for a choice-first approach was the view that both the thing to be explained, market outcomes, and the data we have to do the explaining, observed choices, are non-mental, so we shouldn't be positing mental states as extra explanatory variables. As Faruk Gul and Wolfgang Pesendorfer (quoted in @PreferencesSEP) put it:
+
+> Standard economics does not address mental processes and, as a result, economic abstractions are typically not appropriate for describing them. (@GulPesendorfer2008 21)
+
+On this view, preferences are revealed by observable choices, and hence choices are primary. It's easy to come away from views like this (and other views surveyed in @PreferencesSEP) with the picture that preferences are prior to choices iff mental states have a role in our best decision theory.
+
+This isn't the picture I'm assuming here. I'm assuming a broadly mentalist picture where we our theory of decision (and I'm including "standard economics" in this) does address mental states (if not necessarily mental processes). The question I'm interested in here is which kind of mental states are primary. Even once we've assumed mentalism, we still need to work out the relationship between:
+
+1. Preferences over pairs of options; and
+2. Beliefs about which options from a set are choiceworthy.
+
+The debate to this point has largely assumed that preferences are prior to beliefs about choiceworthiness. That's what I want to question, and ultimately reject, here.
+
+https://academic.oup.com/book/2119/chapter-abstract/142058523?redirectedFrom=fulltext
+
+# Priority {#sec-prior}
+
+
+
+
