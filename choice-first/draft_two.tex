@@ -1,0 +1,345 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[ItalicFont=EB Garamond Italic,BoldFont=EB Garamond
+SemiBold]{EB Garamond Math}
+  \setsansfont[]{EB Garamond SemiBold}
+  \setmathfont[]{EB Garamond Math}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0ex}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Choice First},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Choice First}
+\author{Brian Weatherson}
+\date{2025-05-28}
+\begin{document}
+\maketitle
+\begin{abstract}
+A decider usually has several options to choose from, but philosophical
+decision theory has very little to say about choices involving more than
+two options. The standard approach is to describe in great detail either
+a value function or a preference relation, and then say that they
+determine what is to be done when choosing from a larger set. This paper
+suggests that we should start with choices, or at least beliefs about
+hypothetical choices, and construct values and preferences from them.
+The resulting theory lets us solve, or perhaps dissolve, several
+problems about so-called incomplete preferences.
+\end{abstract}
+
+
+\setstretch{1.75}
+\section{Introduction}\label{sec-intro}
+
+Subjective decision theory concerns itself with three things, as they
+appear to the decider.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The value of different options.
+\item
+  Which options are better than others.
+\item
+  Which options are choiceworthy from an option set.
+\end{enumerate}
+
+One way to taxonomise decision theories is to ask which of these they
+take to be primary.\footnote{I'll assume throughout that the decider is
+  coherent and logically omniscient, so we can attribute to them a state
+  whenever its content is entailed by the contents of states we know
+  they have.}
+
+What I'll call \textbf{value-first} theories take the first to be
+primary. There is some function \emph{v} from options to a range,
+typically real numbers, which includes an intrinsic order. Given
+\emph{v}, we can define the other states easily. Option \emph{a} is
+better than \emph{b} iff
+\emph{v}(\emph{a})~\textgreater~\emph{v}(\emph{b}), and option \emph{a}
+is choiceworthy from a set S iff there is no option in S with a higher
+value than \emph{v}(\emph{a}).
+
+Value-first approaches are simple and intuitive, but they don't appear
+to be popular.\footnote{I say `appear' because decision theorists
+  typically don't express their views using the language of priority
+  that I'm adopting here. But it's often clear enough which theses about
+  priority are consistent with their views.} There are at least three
+problems with them. One is that the choice of range seems arbitrary.
+There is no simple reason why values should be real numbers, and the
+best arguments that they should be require taking preferences to be
+prior to values. Another is that there is no scale attached to these
+numbers, and no obvious way to generate a scale without once again
+taking preferences to be prior to values. And a third, more amorphous
+but ultimately more significant, is that values seem deeply comparative.
+It isn't clear what it even means to say that one good, in isolation,
+has value 17. What is meaningful is to say that it is more valuable than
+something else, or most valuable among some choices. The value-first
+approach doesn't respect the essentially comparative nature of value.
+
+The most popular view is what I'll call the \textbf{preference first}
+view. There are various ways to express this view, both in terms of what
+kinds of preferences we take as primary, and what notation we use. In
+both respects, I'll follow the approach of Amartya Sen
+(\citeproc{ref-Sen1970sec}{{[}1970{]} 2017, 55ff}). (I'll often be
+following Sen in this paper.) Start with a relation \emph{R}, where
+\emph{aRb} means \emph{a} is at least as good as \emph{b}.\footnote{Some
+  might prefer to understand this as meaning \emph{b} is not better than
+  \emph{a}.} We then define strict preference, \emph{P}, and
+indifference, \emph{I}, as follows.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  \emph{xPy} =\textsubscript{df} \emph{xRy} ∧ ¬\emph{yRx}
+\item
+  \emph{xIy} =\textsubscript{df} \emph{xRy} ∧ \emph{yRx}
+\end{enumerate}
+
+There is a fourth relation, of preferential equality, that we might want
+to later define. But for now these three will do.
+
+If we impose enough constraints on \emph{R}, we can prove a
+representation theorem relating preferences to values. Such a proof was
+sketched by Ramsey (\citeproc{ref-RamseyTruthProb}{1926}), and worked
+out in detail by Neumann and Morgenstern (\citeproc{ref-vNM1944}{1944}).
+The proof shows that such a \emph{v} exists, is a function to reals, and
+is defined up to positive affine transformation. This happily settles
+several of the worries about values that I raised earlier. The fact that
+values are reals falls out of the theorem, and the fact that values are
+only defined up to positive affine transformation explains why things
+like \emph{v}(\emph{a})~=~17 on their own don't make sense. But the
+``enough constraints'' are non-trivial. One of these constraints that
+we'll come back to frequently is that \emph{I} is transitive. Another
+constraint, one which Sen calls PI, is in (3).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (\emph{xPy} ∧ \emph{yIz}) → \emph{xPz}
+\end{enumerate}
+
+It's perhaps misleading to say that this is another constraint; as Sen
+shows, (3) is equivalent to the transitivity of \emph{I} if we assume
+that \emph{P} is transitive. As we'll see, there are cases where (3) is
+intuitively false, and finding something sensible to say about these
+cases will be a focus of this paper.
+
+If \emph{R} is acyclical, we can also define
+
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-vNM1944}
+Neumann, John von, and Oskar Morgenstern. 1944. \emph{Theory of Games
+and Economic Behavior}. Princeton, NJ: Princeton University Press.
+
+\bibitem[\citeproctext]{ref-RamseyTruthProb}
+Ramsey, Frank. 1926. {``Truth and Probability.''} In \emph{Philosophical
+Papers}, edited by D. H. Mellor, 52--94. Cambridge: Cambridge University
+Press.
+
+\bibitem[\citeproctext]{ref-Sen1970sec}
+Sen, Amartya. (1970) 2017. \emph{Collective Choice and Social Welfare:}
+An expanded edition. Cambridge, MA: Harvard University Press.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

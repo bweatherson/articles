@@ -1,0 +1,30 @@
+# Introduction {#sec-intro}
+
+Subjective decision theory concerns itself with three things, as they appear to the decider.
+
+1. The value of different options.
+2. Which options are better than others.
+3. Which options are choiceworthy from an option set.
+
+One way to taxonomise decision theories is to ask which of these they take to be primary.^[I'll assume throughout that the decider is coherent and logically omniscient, so we can attribute to them a state whenever its content is entailed by the contents of states we know they have.]
+
+What I'll call **value-first** theories take the first to be primary. There is some function *v* from options to a range, typically real numbers, which includes an intrinsic order. Given *v*, we can define the other states easily. Option *a* is better than *b* iff *v*(*a*) > *v*(*b*), and option *a* is choiceworthy from a set S iff there is no option in S with a higher value than *v*(*a*).
+
+Value-first approaches are simple and intuitive, but they don't appear to be popular.^[I say 'appear' because decision theorists typically don't express their views using the language of priority that I'm adopting here. But it's often clear enough which theses about priority are consistent with their views.] There are at least three problems with them. One is that the choice of range seems arbitrary. There is no simple reason why values should be real numbers, and the best arguments that they should be require taking preferences to be prior to values. Another is that there is no scale attached to these numbers, and no obvious way to generate a scale without once again taking preferences to be prior to values. And a third, more amorphous but ultimately more significant, is that values seem deeply comparative. It isn't clear what it even means to say that one good, in isolation, has value 17. What is meaningful is to say that it is more valuable than something else, or most valuable among some choices. The value-first approach doesn't respect the essentially comparative nature of value.
+
+The most popular view is what I'll call the **preference first** view. There are various ways to express this view, both in terms of what kinds of preferences we take as primary, and what notation we use. In both respects, I'll follow the approach of Amartya @Sen1970sec [55ff]. (I'll often be following Sen in this paper.) Start with a relation *R*, where *aRb* means *a* is at least as good as *b*.^[Some might prefer to understand this as meaning *b* is not better than *a*.] We then define strict preference, *P*, and indifference, *I*, as follows.
+
+(@P) *xPy* =~df~ *xRy* ∧ ¬*yRx*
+(@I) *xIy* =~df~ *xRy* ∧ *yRx*
+
+There is a fourth relation, of preferential equality, that we might want to later define. But for now these three will do.
+
+If we impose enough constraints on *R*, we can prove a representation theorem relating preferences to values. Such a proof was sketched by @RamseyTruthProb, and worked out in detail by @vNM1944. The proof shows that such a *v* exists, is a function to reals, and is defined up to positive affine transformation. This happily settles several of the worries about values that I raised earlier. The fact that values are reals falls out of the theorem, and the fact that values are only defined up to positive affine transformation explains why things like *v*(*a*) = 17 on their own don't make sense. But the "enough constraints" are non-trivial. One of these constraints that we'll come back to frequently is that *I* is transitive. Another constraint, one which Sen calls PI, is in (@PI).
+
+(@PI) (*xPy* ∧ *yIz*) → *xPz*
+
+It's perhaps misleading to say that this is another constraint; as Sen shows, (@PI) is equivalent to the transitivity of *I* if we assume that *P* is transitive. As we'll see, there are cases where (@PI) is intuitively false, and finding something sensible to say about these cases will be a focus of this paper.
+
+If *R* is complete^[Note that *R* being complete is not the same thing as philosophers normally mean by preferences being complete; it's more like asymmetry of strict preference] and acyclical, we can also define a choice function *c*. We'll be using these choice functions a lot. In general, *c*(*S*) = X, where *S* is a set of options, means that the members of X are all and only the choiceworthy members of *S*. We're interested in a subjective version of this, so we'll typically treat this as meaning that decider believes that these are the choiceworthy options; a more common interpretation is in terms of behavioral dispositions. Anyway, given complete and acyclical *R*, we can generate a choice function *c* via the equation in (@RtoC).^[Compare ]
+
+(@RtoC) 

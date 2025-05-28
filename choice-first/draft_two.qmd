@@ -1,0 +1,53 @@
+---
+title: "Choice First"
+abstract: |
+  A decider usually has several options to choose from, but philosophical decision theory has very little to say about choices involving more than two options. The standard approach is to describe in great detail either a value function or a preference relation, and then say that they determine what is to be done when choosing from a larger set. This paper suggests that we should start with choices, or at least beliefs about hypothetical choices, and construct values and preferences from them. The resulting theory lets us solve, or perhaps dissolve, several problems about so-called incomplete preferences.
+execute:
+  echo: false
+  warning: false
+date: May 28 2025
+bibliography: 
+ - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+ - /Users/weath/Documents/citations-2025/cslbib.yaml
+number-sections: true
+keep-tex: true
+author:
+  - name: Brian Weatherson
+    affiliation: 
+      - name: Department of Philosophy, University of Michigan
+        url: https://www.lsa.umich.edu/philosophy/
+    orcid: 0000-0002-1816-8700
+    email: weath@umich.edu
+format:
+  html:
+    fig-format: png
+    fig-width: 10
+    fig-height: 7
+  docx:
+    reference-doc: my-template.docx
+  pdf: 
+    geometry: "left=1in,right=1in,top=1in,bottom=1in"
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 12pt
+    linkcolor: black
+    urlcolor: black
+    colorlinks: false
+    linestretch: 1.75
+    link-citations: true
+    output-file: "Choice First.pdf"
+    include-in-header:
+      text: |
+        \setlength\heavyrulewidth{0ex}
+        \setlength\lightrulewidth{0ex}
+---
+
+{{< include _intro.qmd >}}
+
+::: {.content-visible unless-format="html"}
+## References {-}
+:::
