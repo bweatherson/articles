@@ -1,17 +1,39 @@
 # Properties of Choice Functions
 
-α: (x ∈ C(S) ∧ x ∈ T ∧ T ⊆ S) → x ∈ C(T)
+We're going to be interested in five properties of choice functions. For the first four, we'll use Sen's names (and indeed terminology).
 
-- If x is chosen from S and T is a subset of S that contains x, then x is also chosen from T.
+Property α
+:    (*x* ∈ *C*(*S*) ∧ *x* ∈ *T* ∧ *T* ⊆ *S*) → *x* ∈ *C*(*T*)
+:    If *x* is chosen from *S* and *T* is a subset of *S* that contains *x*, then *x* is also chosen from *T*.
 
-β: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → (x ∈ C(S) ↔ y ∈ C(S))
+This is sometimes called contraction consistency, or the Chernoff Condition after Herman @Chernoff1954. I'll assume from now on, unless stated otherwise, that choice functions satisfy α. That is, I'll set aside cases where removing an option can make one of the remaining options go from choiceworthy to unchoiceworthy.
 
-- If x and y are both chosen from T, and T is a subset of S, then x is chosen from S if and only if y is chosen from S.
+There are two natural ways to generate a preference relation *R* from a choice function *C*. They are presented here with the names @Sen1970sec [319] gives them.
 
-γ: (x ∈ C(S) ∧ x ∈ C(T)) → (x ∈ C(S ∪ T))
+Revealed preference relation
+:    *xRy* ↔︎ ∃*S*: [*x* ∈ *C*(*S*) ∧ *y* ∈ *S*]
+
+Base relation
+:    *xRy* ↔︎ *x* ∈ *C*({*x*, *y*})
+
+Conveniently, given α, these are equivalent, so we'll mostly use the second.
+
+Property β
+:    (*x* ∈ *C*(*T*) ∧ *y* ∈ *C*(*T*) ∧ *T* ⊆ *S*) → (*x* ∈ *C*(*S*) ↔ y ∈ *C*(*S*))
+:    If *x* and *y* are both chosen from *T*, and *T* is a subset of *S*, then *x* is chosen from *S* if and only if *y* is chosen from *S*.
+
+Here's one way to think about β intuitively. Say *x* and *y* are **equal** according to C iff for any *S* that they are both in, either neither is in *C*(*S*) or both are. There is no point at which C distinguishes the two of them. Given α, β says that if *x* and *y* are both choiceworthy, then they are equal.
+
+If we took a value-first approach, and generated C in the obvious way from *v*, the resulting function will satisfy α and β. That's because whenever *x* and *y* are both choice-worthy, they must have the same value, and if they have the same value they are equal in this sense.
+
+@Sen1970sec [64-5] proves if turn a preference relation *R* into a choice function *C* via (@RtoC), the resulting choice function will satisfy β iff the preference relation is PI-transitive, i.e., it satisfies (@PI). More generally, if *R* is transitive in general, then *C* will satisfy α and β, and for any *C* which satisfies α and β, if we use Base Relation to generate a preference relation from it, that preference relation will be transitive.
+
+
+
+γ: (x ∈ *C*(*S*) ∧ x ∈ *C*(*T*)) → (x ∈ *C*(S ∪ T))
 
 - If x is chosen from both S and T, then x is chosen from the union of S and T.
 
-δ: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → ({y} ≠ C(S))
+δ: (x ∈ *C*(*T*) ∧ y ∈ *C*(*T*) ∧ T ⊆ S) → ({y} ≠ *C*(*S*))
 
 - If x and y are both chosen from T, and T is a subset of S, then y is not the only option chosen from S.

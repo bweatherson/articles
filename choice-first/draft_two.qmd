@@ -48,6 +48,8 @@ format:
 
 {{< include _intro.qmd >}}
 
+{{< include _choice-properties.qmd >}}
+
 ::: {.content-visible unless-format="html"}
 ## References {-}
 :::
