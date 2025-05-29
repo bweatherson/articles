@@ -1,0 +1,17 @@
+# Properties of Choice Functions
+
+α: (x ∈ C(S) ∧ x ∈ T ∧ T ⊆ S) → x ∈ C(T)
+
+- If x is chosen from S and T is a subset of S that contains x, then x is also chosen from T.
+
+β: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → (x ∈ C(S) ↔ y ∈ C(S))
+
+- If x and y are both chosen from T, and T is a subset of S, then x is chosen from S if and only if y is chosen from S.
+
+γ: (x ∈ C(S) ∧ x ∈ C(T)) → (x ∈ C(S ∪ T))
+
+- If x is chosen from both S and T, then x is chosen from the union of S and T.
+
+δ: (x ∈ C(T) ∧ y ∈ C(T) ∧ T ⊆ S) → ({y} ≠ C(S))
+
+- If x and y are both chosen from T, and T is a subset of S, then y is not the only option chosen from S.
