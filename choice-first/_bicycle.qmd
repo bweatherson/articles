@@ -1,0 +1,68 @@
+Discussion of the bicycle bell example
+
+2024 
+https://ebooks.iospress.nl/pdf/doi/10.3233/FAIA240887
+Says that the example is in Lehrer and Wagner, and is "often attributed" to Armstrong
+
+2023
+https://onlinelibrary.wiley.com/doi/full/10.1002/bdm.2348
+Say that the example is in Wagner and is incorrectly attributed to Armstrong
+Also say this about Tversky (1972)
+Tversky (1972) gave a similar example involving two vacations, one to Paris and one to Rome, between which someone is indifferent. Adding a complimentary bottle of water to the Paris vacation will produce an option that is preferred to Paris without the water, yet the person remains indifferent between Paris + water and Rome. 
+
+2022
+"offered another famous example"
+https://link.springer.com/chapter/10.1007/978-3-030-89865-6_2
+
+2002
+Example is "found in Armstrong"
+https://d1wqtxts1xzle7.cloudfront.net/89700704/des_making-libre.pdf?1660575904=&response-content-disposition=inline%3B+filename%3DOrganizational_Behavior_and_Multicriteri.pdf&Expires=1748522425&Signature=PiXvqgEWQWGlJ6KdKmSLtZb5zV4ng-w6oZaFiQ3cwAl2a3Yg-BNxuKqjczQbQuxduiyXZSN4mj31cNGHSsg7paXAnLGr3dkaO5nAXDOx5zlpVvNBR-cYMVquQtEyUUKW9gUIVk2GqbutJ8kTBPQf9uzxl7dEdouPxA-0T1-FMyZ5lZukKRc6LbVuIcwQL2KEbyvHaE9CAlXBcjkO~7DCNpf2AZdNeKVS-0BZ3RSth4N1Kh9ZAOT9MHFKWb0ghid7oTlhz49T2E5YOkkMk9cfJOYWOCyKUHOCfND8YOeptNy~qu4vOVsXVtL4AA5qK3E6p-xqAUP64h3Uw0bY70xU3A__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
+https://iris.uniroma1.it/handle/11573/214549
+
+2007
+"given in Armstrong" "discussed in detail in Sileo (1995)"
+https://www.google.com/books/edition/Utility_Maximization_Choice_and_Preferen/lmkViSB6t9wC?hl=en&gbpv=1
+Also in the paper https://www.researchgate.net/profile/Fuad-Aleskerov/publication/267774743_Threshold_Utility_Maximization_and_Preference_in_Decision_Making/links/560cded408aea68653d38613/Threshold-Utility-Maximization-and-Preference-in-Decision-Making.pdf
+
+2002
+"He discussed the following example"
+https://www.sciencedirect.com/science/article/abs/pii/S0022249601913732
+
+1990s - unknown
+https://link.springer.com/chapter/10.1007/978-94-017-0456-4_4
+Should try in actual library - 	BC 6 .H361 1983
+1965 Luce and Suppes - also library - BF39 .L79
+
+1999
+"Discussed the following example"
+https://pure.mpg.de/rest/items/item_2102990/component/file_2102989/content
+
+2015
+https://www.aeaweb.org/conference/2015/retrieve.php?pdfid=3315&tk=389iNfBy
+In his review, Debreu (1960, 188) did not use dishes as examples but three
+recordings of classical music: a recording of the Debussy quarter, a recording of the
+eight symphony of Beethoven by a certain conductor, and a recording of the eight
+symphony of Beethoven by another conductor. A analogous point – based on a pony,
+a bicycle, and another bicycle endowed with a speedometer – was independently
+made by Savage in private correspondence with Luce; see Luce and Suppes 1965,
+
+1985
+The source of problem - use 'bike' not 'bicycle'
+https://www.jstor.org/stable/20116196?seq=1
+
+2004 - in Italian
+https://www.assioa.it/wp-content/uploads/2003-06.pdf
+Attributes it to Armstrong
+
+2008 - Etlin phd
+https://dspace.mit.edu/bitstream/handle/1721.1/45898/320525627-MIT.pdf?sequence=2&isAllowed=y
+page 16 attributes it to Armstrong
+
+1960
+https://www.aeaweb.org/conference/2015/retrieve.php?pdfid=3315&tk=389iNfBy
+
+
+Earlier intransitive
+Luce, R. D. (1956). Semiorders and a theory of utility discrimination. Econometrica, 24(2), 178. https://doi.org/10.2307/1905751 - Sorites sequence examples
+
+Poincare (1903) - cited in https://www.google.com/books/edition/Utility_Maximization_Choice_and_Preferen/lmkViSB6t9wC?hl=en&gbpv=1
