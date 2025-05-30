@@ -1,0 +1,36 @@
+Are Choices Binary?
+
+Decision theory is, as the name suggests, about how decisions should be made. In real life situations, a chooser has many options available. But the usual way decision theory is formulated gives special place to the chooser's thoughts either about individual options, or about pairs of options. Typically, it either says here's a value function, which maps options to values, and chooser should choose the one with highest value, or it says here's a preference relation, and chosoer should choose one to which no other option is preferred. In this paper, I'm going to argue both these approaches are mistaken. Decision theory has to pay attention to the distinctive features of choices involving more than two options. This is both interesting in its own right, and has implications for theories of so-called 'incomplete' preferences.
+
+# Historical Background
+
+There is a long tradition in both the economic literature (e.g., @Samuelson1938) and the psychological literature (e.g., @Luce1956), of taking choice dispositions to be the central focus of study, as opposed to values or preferences. Some of the reasons for this were based on behaviourist or positivist commitments. The theorists would have endorsed this recent statement of the irrelevance of mental states to economics.
+
+> Standard economics does not address mental processes and, as a result, economic abstractions are typically not appropriate for describing them. [@GulPesendorfer2008 24]
+
+That's not going to be my approach here. I'm going to start not with observable choice dispositions, like Samuelson, or choice frequencies, like Luce, but with chooser's beliefs about which options are choiceworthy. In familiar terminology^[See, for instance, @SEPPreferences, where I learned about the Gul and Pesendorfer quote], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from them. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec]. So I need to start with the way he talks about preferences in that book, which is slightly different to the current philosophical orthodoxy.
+
+Sen starts with a binary relation *R*, defined over options, which is glossed as *xRy* means that *x* is at least as good as *y*. This is potentially misleading. It does not mean that *x* is either better than *y*, or exactly as good as *y*. Rather, it means that *x* is no worse than *y*. Sen introduces two more binary relations, *xPy*, meaning *x* is preferred to *y*, and *xIy*, meaning the chooser is between *x* and *y*. These can both be defined in terms of *R*, as in (@RtoP) and (@RtoI). (Throughout, I'm leaving off wide scope universal quantifiers over free variables.)
+
+(@RtoP) *xPy* ↔︎ (*xRy* ∧ ¬*yRx*)
+(@RtoI) *xIy* ↔︎ (*xRy* ∧ *yRx*)
+
+A more common way of doing things in contemporary philosophy is to start with *P* and a fourth relation *E*, where *xEy* means that *x* and *y* are equally good. On this picture, both (@RtoP) and (@RtoI), but the explanatory direction in (@RtoP) is right-to-left. So *xRy* just is ¬*xPy*, and then *xIy* is still defined via (@RtoI). On the version Sen uses, it's a little trickier to define *E*, but (@EtoR) looks like a plausible conjecture.
+
+(@EtoR) *xEy* ↔︎ [(*xRz* ↔︎ *yRz*) ∧ (*zRx* ↔︎ *zRy*)]
+
+That is, two options are equally good iff they are substitutable in other preference relations. Given all these results, we can show that the following claims are all tightly connected.
+
+(@Tri) *xPy* ∨ *xEy* ∨ *yPx*
+(@PItrans) (*xPy* ∧ *yIz*) → *xPz*
+(@IItrans) (*xIy* ∧ *yIz*) → *xIz*
+
+(@Tri) is what @Chang2017 calls the trichotomy thesis. (@PItrans) is what Sen calls PI-transitivity, and (@IItrans) is what he calls II-transitivity. 
+
+Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this PP-transitivity.) @Sen1970sec [64??] proves that if *P* is transitive, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
+
+- What should we call (@Tri)
+- Many philosophers call it incompleteness. Indeed, Sen calls it this when writing primarily for philosophers, e.g., @Sen2004.
+- But in economics, sometimes 'completeness' means *xRy* ∨ *yRx*.
+- What economists more frequently discuss is the intransitivity of indifference - going back to Poincaré 1903, and Armstrong 1939. It doesn't really matter, because these are equivalent, as just proven. But the terminology is a mess.
+- This is a philosophy paper, so I'll use completeness for (@Tri), and simply assume that what the economists call completeness holds.
