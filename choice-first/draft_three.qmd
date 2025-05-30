@@ -2,7 +2,7 @@ Are Choices Binary?
 
 Decision theory is, as the name suggests, about how decisions should be made. In real life situations, a chooser has many options available. But the usual way decision theory is formulated gives special place to the chooser's thoughts either about individual options, or about pairs of options. Typically, it either says here's a value function, which maps options to values, and chooser should choose the one with highest value, or it says here's a preference relation, and chosoer should choose one to which no other option is preferred. In this paper, I'm going to argue both these approaches are mistaken. Decision theory has to pay attention to the distinctive features of choices involving more than two options. This is both interesting in its own right, and has implications for theories of so-called 'incomplete' preferences.
 
-# Historical Background
+# Historical Background {#sec-history}
 
 There is a long tradition in both the economic literature (e.g., @Samuelson1938) and the psychological literature (e.g., @Luce1956), of taking choice dispositions to be the central focus of study, as opposed to values or preferences. Some of the reasons for this were based on behaviourist or positivist commitments. The theorists would have endorsed this recent statement of the irrelevance of mental states to economics.
 
@@ -34,3 +34,70 @@ Sen makes very few assumptions about *R*, but it will simplify our discussion to
 - But in economics, sometimes 'completeness' means *xRy* ∨ *yRx*.
 - What economists more frequently discuss is the intransitivity of indifference - going back to Poincaré 1903, and Armstrong 1939. It doesn't really matter, because these are equivalent, as just proven. But the terminology is a mess.
 - This is a philosophy paper, so I'll use completeness for (@Tri), and simply assume that what the economists call completeness holds.
+
+# Defining Binaryness {#sec-defining}
+
+# Properties of Choice Functions {#sec-properties}
+
+# Property \alpha {#sec-alpha}
+
+# Assumptions {#sec-assumptions}
+
+It's a good time to put in one place the assumptions I'm making. These aren't intended to stack the deck in my favour; if any of them are false, I think it makes something like my view (a) more plausible, but (b) harder to state. Anyway, here's what has been assumed.
+
+1. *P* is transitive, i.e., *xRy* \wedge *yRz* \rightarrow *xRz*
+2. *R* is 'complete', i.e., *xRy* \vee *yRx*.
+3. *R* is reflexive, i.e., *xRx*.
+4. *C* is non-empty, i.e., *C*(*S*) \neq \null.
+5. *C* is defined everywhere, i.e., there is a universe of options *U* all subsets of *U* are in the domain of *C*.
+6. *C* satisfies \alpha.
+
+In @sec-alpha we saw one reason to reject 5, namely that we might want to individuate options in terms of what else is available. We'll see another in @sec-mixed when we get to games with no pure strategy equilibrium. But unless stated otherwise, I'll be assuming these six things without comment.
+
+# Property \beta
+
+- Intuitively, means that if *x* and *y* are both choiceworthy, they are equal
+- Better definition of *E* than in @sec-history
+- Holds if start with value
+- Holds if *R* satisfies trichotomy, and *C* = *I*(*R*)
+- The indistinguishable cases are intuitive counterexamples
+- And the Sartre cases are intuitive counterexamples
+- If *R* = *I*(*C*) and \beta fails, then trichotomy fails.
+- This is Chang's Small Improvement argument
+- My suggestion: \beta does fail, but *R* \neq *I*(*C*)
+
+# Properties \gamma and \delta {#sec-gamma}
+
+Assume *R* does not satisfy trichotomy, but the other assumptions all hold, and *C* = *I*(*R*). Then \beta will fail, but \gamma and \delta will hold.
+- We're not going to be very interested in \delta, but we will be very interested in \gamma.
+- Indeed, the core argument against binaryness will be that \gamma has intuitive counterexamples.
+- I don't know how to generate them from Poincaré's example.
+- But there is a way to generate them from Sartre's example. We'll come back to this in @sec-sartre.
+- If *C* satisfies \gamma and \delta then there is some *R*, satisfying the assumptions in @sec-assumptions, such that *C* = *I*(*R*). So in some sense, choice is still binary.
+- This is where the ballgame is.
+
+# Aizerman's Property {#sec-aiz}
+
+- Assume there is some set of orderings, each satisfying the assumptions.
+- Say *x* \in *C*(*S*) iff *x* is maximal according to one of these orderings.
+- Then *C* satisfies Aiz.
+- Conversely, if *C* satisfies Aiz, we can generate such a set.
+- This matters because it shows we can still put some substantive constraints on *C*.
+
+# Preference and Trade {#sec-trade}
+
+One reason for starting with preference is that we are interested in explaining trade, and the fundamental explanation of trade is that each prefers what the other has got. But this only really holds in a non-monetary economy. In a monetary economy, most trades are for money - Chooser will pay $100 for those shoes. At one level that means Chooser prefers the shoes to the $100. But $100 has exchange value, not use value. It's not of any value in itself, but only what it can buy. So really what explains the trade is that Chooser takes the shoes to be one of the choiceworthy things out of the things that cost $100. In a monetary economy, it's really choice, not preference, that explains most of the trading that we see.
+
+# Constraints on Preference {#sec-constraints}
+
+Another reason for taking preference to be primary is that it lets us state clearly some intuitive rational constraints, such as transitivity, and independence. 
+
+But we can do that for *C* as well.
+
+Boring way, just do it for choices from pair-sets.
+
+Better way, state the more general result.
+
+(I have this in one of the files.)
+
+
