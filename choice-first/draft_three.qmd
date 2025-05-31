@@ -56,27 +56,27 @@ In @sec-alpha we saw one reason to reject 5, namely that we might want to indivi
 
 With these six assumptions on board, it's easy to state what it is for a choice function to be binary. Without them there would be a lot of choice points in the definition, but now everything is simple.
 
-First, we'll define an inversion function *I* that maps preference relations to choice functions, and vice-versa. Both of these are sets of ordered pairs, and we'll define the ordered pairs directly. I'll assume that there is a universe *U* of options, and every option and set of options is drawn from it. 
+First, we'll define an inversion function *B* (for binary) that maps preference relations to choice functions, and vice-versa. Both of these are sets of ordered pairs, and we'll define the ordered pairs directly. I'll assume that there is a universe *U* of options, and every option and set of options is drawn from it. 
 
-If the input to *I* is a preference relation *R*:
+If the input to *B* is a preference relation *R*:
 
-(@IRtoC) *I*(*R*) = {\langle*S*, *x*\rangle: \forall*y*(*y* \in *S* \rightarrow *xRy*)}
+(@IRtoC) *B*(*R*) = {\langle*S*, *x*\rangle: \forall*y*(*y* \in *S* \rightarrow *xRy*)}
 
-That is, *I*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given the assumptions in @sec-assumptions.]
+That is, *B*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given the assumptions in @sec-assumptions.]
 
-If the input to *I* is a choice function *C*:
+If the input to *B* is a choice function *C*:
 
-(@ICtoR) *I*(*C*) = {\langle*x*, *y*\rangle: x \in *C*({*x*, *y*})}
+(@ICtoR) *B*(*C*) = {\langle*x*, *y*\rangle: x \in *C*({*x*, *y*})}
 
-That is, *I*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
+That is, *B*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
 
 A choice function *C* is **binary** if (@Bindef) holds^[Sen calls these functions 'basic binary', but the distinction he's drawing doesn't make a difference given our assumptions.]
 
-(@Bindef) *C* = *I*(*I*(*C*))
+(@Bindef) *C* = *B*(*B*(*C*))
 
 That is, if you convert *C* into a preference relation, and back into a choice function, you get the same thing back.
 
-The core claim of this paper is that there are rational choice functions which are not binary. A secondary claim is that the relationship between choice and preference is more complicated than the simple relationship in *I*, even if we keep the assumptions in @sec-assumptions. We'll start by looking at a debate which has presupposed these two claims are false.
+The core claim of this paper is that there are rational choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). We'll start by looking at a debate which has presupposed these coherence constraints should be applied.
 
 # Property \beta
 
@@ -86,26 +86,36 @@ If we start with choice functions, the definition of *E* in (@EtoR) is too simpl
 
 That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without \alpha, this is arguably a bit weak, since it doesn't entail that *x* and *y* are intersubstitutable. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on \beta: Two options are both choiceworthy iff they are equal.^[This gloss also assumes \alpha]
 
-To see this, think about choice functions that are defined by starting with numerical value functions, e.g., expected utility, and saying that the choiceworthy options are those with maximal value. If *x* and *y* are both choiceworthy in any set, they must have the same value. That means in any set where either is choiceworthy 
+To see this, think about choice functions that are defined by starting with numerical value functions, e.g., expected utility, and saying that the choiceworthy options are those with maximal value. If *x* and *y* are both choiceworthy in any set, they must have the same value. That means in any set where either is choiceworthy, i.e., either has maximal value, they both have maximal value, so both are choiceworthy.
 
-- Intuitively, means that if *x* and *y* are both choiceworthy, they are equal
-- Better definition of *E* than in @sec-history
-- Holds if start with value
-- Holds if *R* satisfies trichotomy, and *C* = *I*(*R*)
-- The indistinguishable cases are intuitive counterexamples
-- And the Sartre cases are intuitive counterexamples
-- If *R* = *I*(*C*) and \beta fails, then trichotomy fails.
-- This is Chang's Small Improvement argument
-- My suggestion: \beta does fail, but *R* \neq *I*(*C*)
+More generally, given the assumptions we're making, *C* satisfies \beta iff *B*(*C*) is trichotomous, which is equivalent to *B*(*C*) satisfying II-transitivity. Unsurprisingly, the two historically significant cases of intuitive counterexamples to II-transitivity also generate intuitive counterexamples to \beta.
+ 
+The first example, tracing back at least to @Poincare1903, involves distinct but indistinguishable options. Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
+
+> *x* = Coffee with 100 grains of sugar.    
+> *y* = Coffee with 106 grains of sugar.    
+> *z* = Coffee with 112 grains of sugar.
+
+This is said to be a counterexample to II-transitivity because Chooser is indifferent between *x* and *y*, and between *y* and *z*, but strictly prefers *z* to *x*. It's also a counterexample to \beta. Chooser would choose either from *x* and *y*, but when *z* is added, *y* is still choiceworthy but *z* is not.
+
+This example was historically important, but it's not discussed that much in the contemporary philosophical literature. It could be because philosophers were convinced by the argument in @Graff2001 [check this] that phenomenal indistinguishability is in fact transitive. But it did get widely discussed in economics. Poincaré's thought gets picked up in a series of papers by Wallace Armstrong [-@Armstrong1939; -@Armstrong19xx; -@Armstrong19xx], who used it as the basis of an argument against the orthodox choice theory of the day. Armstrong in turn influenced R. Duncan Luce [-@Luce1956; -@Luce1959], who used these examples to argue that preferences form a semi-order. In a review of Luce's book, Gerard @Debreu1960 argued that the model Luce developed for these cases wouldn't work for cases where the options differed along different dimensions.
+
+The class of cases Debreu discussed became central to the philosophical literature, though by this time to connection to choice functions had been dropped. Such cases are central to what Ruth @Chang1997 called the 'small improvement' argument against trichotomous preferences.^[See @Chang2017 [xxx] for a history of this.] Here's one example of the small improvement argument.^[This example is in @LehrerWagner1985, where it is mistakenly attributed to @Armstrong1939. (Many authors subsequently made the same attribution; if you want to see some examples, search for the word 'pony' among the citations of Armstrong's paper on Google Scholar.) Debreu has an example where two alternatives are basically equal, not marginally different. To the best of my knowledge, the earliest example with the small improvement structure  is (maybe Tversky, maybe Luce and Suppes - gotta finish this).] A boy is indifferent between receiving a bicycle and a pony for Christmas. He would prefer a bicycle with a bell to one without a bell, but he would be indifferent between either kind of bicycle and the pony. The usual way this case is analysed is as follows. 
+
+> *x* = Bicycle without bell   
+> *y* = Pony    
+> *z* = Bicycle with bell
+
+The boy is indifferent between *x* and *y*, and between *y* and *z*, but strictly prefers *z* to *x*. I want to resist this reading. The core intuition here, I think, is that \beta fails. The boy would choose either option from {*x*, *y*}, but if *z* is added as an option, *x* becomes unchoiceworthy. If we add the assumption that *R* = *B*(*C*), then the usual analysis returns, and both trichotomy and II-intransitivity fail. Without the assumption that *R* = *B*(*C*), it's not so clear this is a counterexample to those principles, even if it is a counterexample to \beta. We'll return to this in @sec-dorr.
 
 # Properties \gamma and \delta {#sec-gamma}
 
-Assume *R* does not satisfy trichotomy, but the other assumptions all hold, and *C* = *I*(*R*). Then \beta will fail, but \gamma and \delta will hold.
+Assume *R* does not satisfy trichotomy, but the other assumptions all hold, and *C* = *B*(*R*). Then \beta will fail, but \gamma and \delta will hold.
 - We're not going to be very interested in \delta, but we will be very interested in \gamma.
 - Indeed, the core argument against binaryness will be that \gamma has intuitive counterexamples.
 - I don't know how to generate them from Poincaré's example.
 - But there is a way to generate them from Sartre's example. We'll come back to this in @sec-sartre.
-- If *C* satisfies \gamma and \delta then there is some *R*, satisfying the assumptions in @sec-assumptions, such that *C* = *I*(*R*). So in some sense, choice is still binary.
+- If *C* satisfies \gamma and \delta then there is some *R*, satisfying the assumptions in @sec-assumptions, such that *C* = *B*(*R*). So in some sense, choice is still binary.
 - This is where the ballgame is.
 
 # Aizerman's Property {#sec-aiz}
