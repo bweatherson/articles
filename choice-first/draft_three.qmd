@@ -35,8 +35,6 @@ Sen makes very few assumptions about *R*, but it will simplify our discussion to
 - What economists more frequently discuss is the intransitivity of indifference - going back to Poincaré 1903, and Armstrong 1939. It doesn't really matter, because these are equivalent, as just proven. But the terminology is a mess.
 - This is a philosophy paper, so I'll use completeness for (@Tri), and simply assume that what the economists call completeness holds.
 
-# Defining Binaryness {#sec-defining}
-
 # Properties of Choice Functions {#sec-properties}
 
 # Property \alpha {#sec-alpha}
@@ -54,7 +52,41 @@ It's a good time to put in one place the assumptions I'm making. These aren't in
 
 In @sec-alpha we saw one reason to reject 5, namely that we might want to individuate options in terms of what else is available. We'll see another in @sec-mixed when we get to games with no pure strategy equilibrium. But unless stated otherwise, I'll be assuming these six things without comment.
 
+# Defining Binaryness {#sec-defining}
+
+With these six assumptions on board, it's easy to state what it is for a choice function to be binary. Without them there would be a lot of choice points in the definition, but now everything is simple.
+
+First, we'll define an inversion function *I* that maps preference relations to choice functions, and vice-versa. Both of these are sets of ordered pairs, and we'll define the ordered pairs directly. I'll assume that there is a universe *U* of options, and every option and set of options is drawn from it. 
+
+If the input to *I* is a preference relation *R*:
+
+(@IRtoC) *I*(*R*) = {\langle*S*, *x*\rangle: \forall*y*(*y* \in *S* \rightarrow *xRy*)}
+
+That is, *I*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given the assumptions in @sec-assumptions.]
+
+If the input to *I* is a choice function *C*:
+
+(@ICtoR) *I*(*C*) = {\langle*x*, *y*\rangle: x \in *C*({*x*, *y*})}
+
+That is, *I*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
+
+A choice function *C* is **binary** if (@Bindef) holds^[Sen calls these functions 'basic binary', but the distinction he's drawing doesn't make a difference given our assumptions.]
+
+(@Bindef) *C* = *I*(*I*(*C*))
+
+That is, if you convert *C* into a preference relation, and back into a choice function, you get the same thing back.
+
+The core claim of this paper is that there are rational choice functions which are not binary. A secondary claim is that the relationship between choice and preference is more complicated than the simple relationship in *I*, even if we keep the assumptions in @sec-assumptions. We'll start by looking at a debate which has presupposed these two claims are false.
+
 # Property \beta
+
+If we start with choice functions, the definition of *E* in (@EtoR) is too simple. A better definition is in (@EtoC).
+
+(@EtoC) *xEy* \leftrightarrow \forall*S*({*x*, *y*} \subseteq *S* \rightarrow (*x* \in *C*(*S*) \leftrightarrow *y* \in *C*(*S*))
+
+That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without \alpha, this is arguably a bit weak, since it doesn't entail that *x* and *y* are intersubstitutable. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on \beta: Two options are both choiceworthy iff they are equal.^[This gloss also assumes \alpha]
+
+To see this, think about choice functions that are defined by starting with numerical value functions, e.g., expected utility, and saying that the choiceworthy options are those with maximal value. If *x* and *y* are both choiceworthy in any set, they must have the same value. That means in any set where either is choiceworthy 
 
 - Intuitively, means that if *x* and *y* are both choiceworthy, they are equal
 - Better definition of *E* than in @sec-history
