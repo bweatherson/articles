@@ -29,13 +29,42 @@ That is, two options are equally good iff they are substitutable in other prefer
 
 Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this PP-transitivity.) @Sen1970sec [64??] proves that if *P* is transitive, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
 
-- What should we call (@Tri)
-- Many philosophers call it incompleteness. Indeed, Sen calls it this when writing primarily for philosophers, e.g., @Sen2004.
-- But in economics, sometimes 'completeness' means *xRy* ∨ *yRx*.
-- What economists more frequently discuss is the intransitivity of indifference - going back to Poincaré 1903, and Armstrong 1939. It doesn't really matter, because these are equivalent, as just proven. But the terminology is a mess.
-- This is a philosophy paper, so I'll use completeness for (@Tri), and simply assume that what the economists call completeness holds.
+What should we call the principle (@Tri)? Most philosophers call it *completeness*, and its denial *incompleteness*. In his economic work, @Sen1970sec uses the term 'completeness' for a different property of preference relations, namely *xRy* ∨ *yRx*. This is a useful notion to have. If Chooser has never thought of *x*, there is a good sense in which *xRy* ∨ *yRx* is false, even though of course \neg*yPx* is true. Still, using the term for (@Tri) is more common in philosophy. When writing primarily for philosophers, @Sen2004 uses 'completeness' for (@Tri), and I'll do the same. I'll call use *definedness* for *xRy* ∨ *yRx*, and unless stated otherwise, will assume it holds.
+
+There isn't as much discussion of (@Tri) as such in the economics literature, but there is a long tradition of discussing (@IItrans), going back to important works by Henri @Poincare1903 and Wallace E. @Armstrong1939. In most of those works it is assumed that *P* is transitive, so (@Tri) and (@IItrans) are equivalent, so this is really discussing the same thing. Still, it makes the terminology confusing.
+
+When it makes it clearer, I'll use the term @Chang2017 suggests for (@Tri). That is, I'll say that preference relations for which this holds are *trichotomous*.
 
 # Properties of Choice Functions {#sec-properties}
+
+In philosophy we're familiar enough with possible properties of preference relations, e.g., that they are transitive, reflexive, acyclic, etc, that these terms don't need to be defined. We're mostly less familiar with properties of choice functions. So in this short section I'll simply lay out five properties that will be important in what follows. The first four are discussed in some detail by @Sen1970sec, and I'll use his terminology for them. The fifth is due to @Aizermann1981, and I'll use the term that has become standard for it.
+
+Property α
+:    (*x* ∈ *C*(*S*) ∧ *x* ∈ *T* ∧ *T* ⊆ *S*) → *x* ∈ *C*(*T*)
+
+That is, if *x* is choiceworthy in a larger set, then it is choiceworthy in any smaller set it is a member of. This is sometimes called the *Chernoff condition*, after Herman @Chernoff1954, and sometimes called *contraction consistency*.
+
+Property β
+:    (*x* ∈ *C*(*T*) ∧ *y* ∈ *C*(*T*) ∧ *T* ⊆ *S*) → (*x* ∈ *C*(*S*) ↔ *y* ∈ *C*(*S*))
+
+That is, if *x* and *y* are both choiceworthy in a smaller set, then in any larger set they are either both choiceworthy or neither is. Intuitively, if *x* is not chosen in the larger set because one of the new members is better than it, then the new member is also better than *y*.
+
+Property γ
+:    (*x* ∈ *C*(*S*) ∧ *x* ∈ *C*(*T*)) → (*x* ∈ *C*(*S* ∪ *T*))
+
+That is, if *x* is choiceworthy in two sets, it is choiceworthy in their union. This is sometimes called *expansion*, e.g., in @Moulin1985.
+
+Property δ
+:    (*x* ∈ *C*(*T*) ∧ *y* ∈ *C*(*T*) ∧ *T* ⊆ *S*) → ({*y*} ≠ *C*(*S*))
+
+This is a weakening of \beta. It says that if *x* and *y* are both choiceworthy in the smaller set, then after options are added, it can't be that only one of them is the only choiceworthy option remaining. If *x* is not choiceworthy in the larger set, that's because some other option, not *y*, is chosen in place of it.
+
+Property Aiz
+:    (*C*(*S*) \subseteq *T* \wedge *T* \subseteq *S*) \rightarrow *C*(*T*) \subseteq *C*(*S*)
+
+That is, if the smaller set contains all of the choiceworthy members of the larger set, then no option is choiceworthy in the smaller set but not the larger set. If *x* is a nonchoiceworthy member of *S*, then the only way to make it choiceworthy is by deleting choiceworthy members of *S*, not nonchoiceworthy ones.
+
+I'll describe the effects of these properties in more detail in subsequent sections.
 
 # Property \alpha {#sec-alpha}
 
@@ -44,7 +73,7 @@ Sen makes very few assumptions about *R*, but it will simplify our discussion to
 It's a good time to put in one place the assumptions I'm making. These aren't intended to stack the deck in my favour; if any of them are false, I think it makes something like my view (a) more plausible, but (b) harder to state. Anyway, here's what has been assumed.
 
 1. *P* is transitive, i.e., *xRy* \wedge *yRz* \rightarrow *xRz*
-2. *R* is 'complete', i.e., *xRy* \vee *yRx*.
+2. *R* is 'defined', i.e., *xRy* \vee *yRx*.
 3. *R* is reflexive, i.e., *xRx*.
 4. *C* is non-empty, i.e., *C*(*S*) \neq \null.
 5. *C* is defined everywhere, i.e., there is a universe of options *U* all subsets of *U* are in the domain of *C*.
