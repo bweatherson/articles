@@ -49,7 +49,7 @@ def process_file(input_path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python replace_latex_unicode.py <input_file>")
+        print("Usage: python3 replace_latex_unicode.py <input_file>")
     else:
         process_file(sys.argv[1])
 
