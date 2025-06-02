@@ -78,8 +78,11 @@ It's a good time to put in one place the assumptions I'm making. These aren't in
 4. *C* is non-empty, i.e., *C*(*S*) \neq \null.
 5. *C* is defined everywhere, i.e., there is a universe of options *U* all subsets of *U* are in the domain of *C*.
 6. *C* satisfies \alpha.
+7. The universe *U* of options, that *S* is a subset of, and *x* is drawn from, is finite.
 
 In @sec-alpha we saw one reason to reject 5, namely that we might want to individuate options in terms of what else is available. We'll see another in @sec-mixed when we get to games with no pure strategy equilibrium. But unless stated otherwise, I'll be assuming these six things without comment.
+
+When *R* satisfies 1-3, I'll follow @Luce1956 and call it a *semiorder*. When it also satisfies trichotomy, i.e., (@Tri), I'll follow standard practice and call it a *weak order*.
 
 # Defining Binaryness {#sec-defining}
 
@@ -91,7 +94,7 @@ If the input to *B* is a preference relation *R*:
 
 (@IRtoC) *B*(*R*) = {\langle*S*, *x*\rangle: \forall*y*(*y* \in *S* \rightarrow *xRy*)}
 
-That is, *B*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given the assumptions in @sec-assumptions.]
+That is, *B*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given *R* is a semiorder.]
 
 If the input to *B* is a choice function *C*:
 
@@ -99,13 +102,13 @@ If the input to *B* is a choice function *C*:
 
 That is, *B*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
 
-A choice function *C* is **binary** if (@Bindef) holds^[Sen calls these functions 'basic binary', but the distinction he's drawing doesn't make a difference given our assumptions.]
+A choice function *C* is **binary** if (@Bindef) holds^[Sen calls these functions 'basic binary', but the distinction he's drawing doesn't make a difference given *R* is a semi-order and \alpha.]
 
 (@Bindef) *C* = *B*(*B*(*C*))
 
 That is, if you convert *C* into a preference relation, and back into a choice function, you get the same thing back.
 
-The core claim of this paper is that there are rational choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). We'll start by looking at a debate which has presupposed these coherence constraints should be applied.
+The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). We'll start by looking at a debate which has presupposed these coherence constraints should be applied.
 
 # Property \beta
 
@@ -113,7 +116,7 @@ If we start with choice functions, the definition of *E* in (@EtoR) is too simpl
 
 (@EtoC) *xEy* \leftrightarrow \forall*S*({*x*, *y*} \subseteq *S* \rightarrow (*x* \in *C*(*S*) \leftrightarrow *y* \in *C*(*S*))
 
-That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without \alpha, this is arguably a bit weak, since it doesn't entail that *x* and *y* are intersubstitutable. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on \beta: Two options are both choiceworthy iff they are equal.^[This gloss also assumes \alpha]
+That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without \alpha, this is too weak, since it doesn't entail that *x* and *y* are intersubstitutable in general. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on \beta: Two options are both choiceworthy iff they are equal.^[This gloss also assumes \alpha]
 
 To see this, think about choice functions that are defined by starting with numerical value functions, e.g., expected utility, and saying that the choiceworthy options are those with maximal value. If *x* and *y* are both choiceworthy in any set, they must have the same value. That means in any set where either is choiceworthy, i.e., either has maximal value, they both have maximal value, so both are choiceworthy.
 
@@ -139,13 +142,13 @@ The boy is indifferent between *x* and *y*, and between *y* and *z*, but strictl
 
 # Properties \gamma and \delta {#sec-gamma}
 
-Assume *R* does not satisfy trichotomy, but the other assumptions all hold, and *C* = *B*(*R*). Then \beta will fail, but \gamma and \delta will hold.
-- We're not going to be very interested in \delta, but we will be very interested in \gamma.
-- Indeed, the core argument against binaryness will be that \gamma has intuitive counterexamples.
-- I don't know how to generate them from Poincaré's example.
-- But there is a way to generate them from Sartre's example. We'll come back to this in @sec-sartre.
-- If *C* satisfies \gamma and \delta then there is some *R*, satisfying the assumptions in @sec-assumptions, such that *C* = *B*(*R*). So in some sense, choice is still binary.
-- This is where the ballgame is.
+Assume *R* does not satisfy trichotomy, but is a semiorder, and *C* = *B*(*R*). Then \beta will fail, but \gamma and \delta will hold. Conversely, for any *C* where \gamma and \delta hold, there is a semiorder *R* such that *C* = *B*(*R*). We're not going to be very interested in \delta, but we will be very interested in \gamma. 
+
+The reason \gamma holds when *R* is a semiorder and *C* = *B*(*R*) is instructive. If *x* is choiceworthy among *S*, then nothing in *S* is better than *x*. Similarly, if *x* is choiceworthy among *T*, then nothing in *T* is better than *x*. So nothing in *S* \cup *T* is better than *x*. So *x* is choiceworthy among *S* \cup *T*.^[This argument doesn't appeal to *R* being a semiorder, but if it is not, most theorists would not define *B* this way.]
+
+Conversely, if there are cases where *C* should not satisfy \gamma, then we'll have an argument that *C* should not be based in some semiorder *R*. Showing that there are such cases will be one of the main tasks of the rest of this paper.
+
+We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Poincaré-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-sartre.
 
 # Aizerman's Property {#sec-aiz}
 
