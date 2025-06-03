@@ -27,7 +27,7 @@ That is, two options are equally good iff they are substitutable in other prefer
 
 (@Tri) is what @Chang2017 calls the trichotomy thesis. (@PItrans) is what Sen calls PI-transitivity, and (@IItrans) is what he calls II-transitivity. 
 
-Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this PP-transitivity.) @Sen1970sec [64??] proves that if *P* is transitive, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
+Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this quasi-transitivity.) @Sen1970sec [64??] proves that if *P* is transitive, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
 
 What should we call the principle (@Tri)? Most philosophers call it *completeness*, and its denial *incompleteness*. In his economic work, @Sen1970sec uses the term 'completeness' for a different property of preference relations, namely *xRy* ∨ *yRx*. This is a useful notion to have. If Chooser has never thought of *x*, there is a good sense in which *xRy* ∨ *yRx* is false, even though of course \neg*yPx* is true. Still, using the term for (@Tri) is more common in philosophy. When writing primarily for philosophers, @Sen2004 uses 'completeness' for (@Tri), and I'll do the same. I'll call use *definedness* for *xRy* ∨ *yRx*, and unless stated otherwise, will assume it holds.
 
@@ -37,7 +37,7 @@ When it makes it clearer, I'll use the term @Chang2017 suggests for (@Tri). That
 
 # Properties of Choice Functions {#sec-properties}
 
-In philosophy we're familiar enough with possible properties of preference relations, e.g., that they are transitive, reflexive, acyclic, etc, that these terms don't need to be defined. We're mostly less familiar with properties of choice functions. So in this short section I'll simply lay out five properties that will be important in what follows. The first four are discussed in some detail by @Sen1970sec, and I'll use his terminology for them. The fifth is due to @Aizermann1981, and I'll use the term that has become standard for it.
+In philosophy we're familiar enough with possible properties of preference relations, e.g., that they are transitive, reflexive, acyclic, etc, that these terms don't need to be defined. We're mostly less familiar with properties of choice functions. So in this short section I'll lay out six properties that will be important in what follows. The first four are discussed in some detail by @Sen1970sec, and I'll use his terminology for them. The fifth is due to @Aizermann1981, and is usually named after Aizerman. The sixth is discussed by @Platt1976.
 
 Property α
 :    (*x* ∈ *C*(*S*) ∧ *x* ∈ *T* ∧ *T* ⊆ *S*) → *x* ∈ *C*(*T*)
@@ -64,13 +64,28 @@ Property Aiz
 
 That is, if the smaller set contains all of the choiceworthy members of the larger set, then no option is choiceworthy in the smaller set but not the larger set. If *x* is a nonchoiceworthy member of *S*, then the only way to make it choiceworthy is by deleting choiceworthy members of *S*, not nonchoiceworthy ones.
 
+Path Independence
+:    *C*(*S* \cup *T*) = *C*(*C*(*S*) \cup *C*(*T*))
+
+The same options are choiceworthy from a union of two sets as are choiceworthy from the union of the choiceworthy members of those sets. This is a sort of independence of irrelevant alternatives principle; the availability or otherwise of nonchoiceworthy members of *S* and *T* doesn't affect what should be chosen from *S* \cup *T*. 
+
 I'll describe the effects of these properties in more detail in subsequent sections.
 
 # Property \alpha {#sec-alpha}
 
+This is the most commonly used constraint on choice functions, and it does seem intuitive. If *x* is choiceworthy from a larger set, deleting unchosen options shouldn't make it choiceworthy. @Sen1970sec [xx] discusses two possible counterexamples.
+
+One is where the presence of options on the menu gives Chooser relevant information. If the only two options are tea with a particular friend or staying home, Chooser will take tea. But if the option of cocaine with that friend is added, Chooser will stay home. The natural thing to say here is that when one gets new information, *C* changes, so there isn't really a single *C* here which violates \alpha.^[For a quick argument for that, if Chooser learns the only options are tea and staying home because the friend has just run out of cocaine, they might still stay home.]
+
+The more interesting case is where the value Chooser puts on options is dependent on what options are available. So imagine Chooser prefers more cake to less, but does not want to take the last slice. If the available options are zero slices or one slice of cake, Chooser will take zero. But if two slices of cake is an option, Chooser will take one, again violating \alpha.
+
+This is a trickier case, and the natural thing to say is that Chooser doesn't really have the same options in the two cases. Taking the last slice of cake isn't the same thing as taking one slice when two are available. But this move has costs. In particular, it makes it hard to say that *C* should be defined for any set of options. It doesn't clearly make sense to ask Chooser to pick between *taking one slice, which is the last*, and *taking three slices when five are available*.
+
+Still, I'm going to set those issues aside and assume, like most theorists do, and mostly assume that \alpha is a constraint on coherent choice functions, and that choice functions are defined over arbitrary sets of options. In @sec-mixed I'll come back to this last assumption, but otherwise I'll assume it is in place.
+
 # Assumptions {#sec-assumptions}
 
-It's a good time to put in one place the assumptions I'm making. These aren't intended to stack the deck in my favour; if any of them are false, I think it makes something like my view (a) more plausible, but (b) harder to state. Anyway, here's what has been assumed.
+I've said a few times I'm assuming this or that, so it's a good time to put in one place the assumptions I'm making. These aren't intended to stack the deck in my favour; if any of them are false, I think it makes something like my view (a) more plausible, but (b) harder to state. Anyway, here's what has been assumed.
 
 1. *P* is transitive, i.e., *xRy* \wedge *yRz* \rightarrow *xRz*
 2. *R* is 'defined', i.e., *xRy* \vee *yRx*.
@@ -150,6 +165,8 @@ Conversely, if there are cases where *C* should not satisfy \gamma, then we'll h
 
 We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Poincaré-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-sartre.
 
+It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is **rationalizable**, and when *R* is a partial order, that *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-game, it conflicts with what is called *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
+
 # Aizerman's Property {#sec-aiz}
 
 - Assume there is some set of orderings, each satisfying the assumptions.
@@ -173,5 +190,77 @@ Boring way, just do it for choices from pair-sets.
 Better way, state the more general result.
 
 (I have this in one of the files.)
+
+#  Degenerate Games {#sec-games}
+
+- Mention Pearce's result here
+- Also mention that deletion of dominated strategies looks like path independence
+
+# Choice Under Uncertainty {#sec-uncertainty}
+
+# Multiple Equilibria {#sec-multieq}
+
+- Start with game version
+- Then the version with a predictor, Skyrms's 'nice demon'
+- Then go on to Spencer/Gallow dispute
+- Note that Spencer's argument just needs that if one is completely certain that X is best, then it's irrational to do otherwise
+- Go to a four way version that includes (a) a 7,1 option that dominates, and (b) a 1,2 option that is dominated by mixtures.
+- This violates \beta and \gamma
+
+# Mixed Strategies {#sec-mixed}
+
+How can mixing be uniquely rational?
+Answer, it's the only ratifiable choice.
+Also, once one chooses it, all options are equally preferable
+Choice is fundamentally an ex ante notion, while preference is an ex post notion
+That's why any equation, like *C* = *B*(*R*) must be wrong - they concern different times
+
+# Multiple Attributes and Decisiveness {#sec-sartre}
+
+Simplified version of Sartre's example
+Intuition, can choose either, but should stick to it
+Not just for practical reasons (maybe cite Moss here?)
+Model, (10,0) or (0,10); optimal choice includes choosing which you care about
+Is that right everywhere? Maybe not, but it's something we can model.
+
+# \beta and Incompleteness {#sec-dorr}
+
+Sartre's example can be used for small improvement argument
+But what that really shows is that \beta fails
+If preference is about ex post, it doesn't show that completeness fails
+Could be that once one has chosen, one should have complete preferences
+If you think that completeness has to be true because of the nature of vagueness (a la Broome) or because of the nature of comparatives (a la Dorr), it doesn't follow that you can't have multi-attribute choice, or \beta failures. You just have to think that when preferences are defined ex post, they have to be complete.
+To be sure, I don't think Broome's or Dorr et al's arguments do work.
+I just want to note that it would be odd to, e.g., insist on \beta because of arguments about the semantics of comparatives.
+Taking choice to be ex ante and preference to be ex post means you don't have to.
+
+# Bad Compromises {#sec-badcomp}
+
+The resistance example
+Go through some options
+Intuitively, gamma could fail here, just like it fails in the games
+Doesn't seem that this should violate Path Independence though
+
+# Levi and Sen {#sec-levisen}
+
+Levi's secretaries examples
+Levi uses this to argue for constraint that must be best on some precisification
+That is, for pseudo-rationalizability
+Sen's objection
+The model he's using violates Lederman's unidimensional expectations
+Still, Levi's result isn't guaranteed by unidimensional expectations
+But it is coherent given it, and we should take that seriously
+
+# Negative Dominance {#sec-negdom}
+
+Lederman's argument using the Sartre/Levi examples
+Intuition - choice isn't binary, so it isn't explained by betterness
+Translate neg dom into choice theory and it *holds*
+What really motivates Lederman's examples is not negdom, but \gamma.
+And we've seen lots of reasons to be sceptical of \gamma.
+
+# Conclusion
+
+Say something clever
 
 
