@@ -1,4 +1,50 @@
-Are Choices Binary?
+---
+title: "Are Choices Binary?"
+abstract: |
+  TBC
+execute:
+  echo: false
+  warning: false
+date: May 28 2025
+bibliography: 
+ - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+ - /Users/weath/Documents/citations-2025/cslbib.yaml
+number-sections: true
+keep-tex: true
+author:
+  - name: Brian Weatherson
+    affiliation: 
+      - name: Department of Philosophy, University of Michigan
+        url: https://www.lsa.umich.edu/philosophy/
+    orcid: 0000-0002-1816-8700
+    email: weath@umich.edu
+format:
+  html:
+    fig-format: png
+    fig-width: 10
+    fig-height: 7
+  docx:
+    reference-doc: my-template.docx
+  pdf: 
+    geometry: "left=1in,right=1in,top=1in,bottom=1in"
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 12pt
+    linkcolor: black
+    urlcolor: black
+    colorlinks: false
+    linestretch: 1.75
+    link-citations: true
+    output-file: "Are Choices Binary"
+    include-in-header:
+      text: |
+        \setlength\heavyrulewidth{0ex}
+        \setlength\lightrulewidth{0ex}
+---
 
 Decision theory is, as the name suggests, about how decisions should be made. In real life situations, a chooser has many options available. But the usual way decision theory is formulated gives special place to the chooser's thoughts either about individual options, or about pairs of options. Typically, it either says here's a value function, which maps options to values, and chooser should choose the one with highest value, or it says here's a preference relation, and chosoer should choose one to which no other option is preferred. In this paper, I'm going to argue both these approaches are mistaken. Decision theory has to pay attention to the distinctive features of choices involving more than two options. This is both interesting in its own right, and has implications for theories of so-called 'incomplete' preferences.
 
@@ -101,7 +147,7 @@ When *R* satisfies 1-3, I'll follow @Luce1956 and call it a *semiorder*. When it
 
 # Defining Binaryness {#sec-defining}
 
-With these six assumptions on board, it's easy to state what it is for a choice function to be binary. Without them there would be a lot of choice points in the definition, but now everything is simple.
+With these seven assumptions on board, it's easy to state what it is for a choice function to be binary. Without them there would be a lot of choice points in the definition, but now everything is simple.
 
 First, we'll define an inversion function *B* (for binary) that maps preference relations to choice functions, and vice-versa. Both of these are sets of ordered pairs, and we'll define the ordered pairs directly. I'll assume that there is a universe *U* of options, and every option and set of options is drawn from it. 
 
@@ -117,7 +163,7 @@ If the input to *B* is a choice function *C*:
 
 That is, *B*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
 
-A choice function *C* is **binary** if (@Bindef) holds^[Sen calls these functions 'basic binary', but the distinction he's drawing doesn't make a difference given *R* is a semi-order and \alpha.]
+A choice function *C* is **binary** if (@Bindef) holds:^[Sen calls these functions 'basic binary', but the distinction he's drawing attention to by adding 'basic' doesn't make a difference given *R* is a semi-order and \alpha.]
 
 (@Bindef) *C* = *B*(*B*(*C*))
 
@@ -129,7 +175,7 @@ The core claim of this paper is that there are coherent choice functions which a
 
 If we start with choice functions, the definition of *E* in (@EtoR) is too simple. A better definition is in (@EtoC).
 
-(@EtoC) *xEy* \leftrightarrow \forall*S*({*x*, *y*} \subseteq *S* \rightarrow (*x* \in *C*(*S*) \leftrightarrow *y* \in *C*(*S*))
+(@EtoC) *xEy* \leftrightarrow \forall*S*({*x*, *y*} \subseteq *S* \rightarrow (*x* \in *C*(*S*) \leftrightarrow *y* \in *C*(*S*)))
 
 That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without \alpha, this is too weak, since it doesn't entail that *x* and *y* are intersubstitutable in general. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on \beta: Two options are both choiceworthy iff they are equal.^[This gloss also assumes \alpha]
 
@@ -137,7 +183,7 @@ To see this, think about choice functions that are defined by starting with nume
 
 More generally, given the assumptions we're making, *C* satisfies \beta iff *B*(*C*) is trichotomous, which is equivalent to *B*(*C*) satisfying II-transitivity. Unsurprisingly, the two historically significant cases of intuitive counterexamples to II-transitivity also generate intuitive counterexamples to \beta.
  
-The first example, tracing back at least to @Poincare1903, involves distinct but indistinguishable options. Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
+The first example involves distinct but indistinguishable options.^[The idea that humans can't distinguish similar options is important in @Fechner1860. The earlier connection I've found to indifferent being intransitive is in @Armstrong1939. Armstrong's example is rather confusing; the one I'll use here is based on @Luce1956.] Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
 
 > *x* = Coffee with 100 grains of sugar.    
 > *y* = Coffee with 106 grains of sugar.    
@@ -145,9 +191,9 @@ The first example, tracing back at least to @Poincare1903, involves distinct but
 
 This is said to be a counterexample to II-transitivity because Chooser is indifferent between *x* and *y*, and between *y* and *z*, but strictly prefers *z* to *x*. It's also a counterexample to \beta. Chooser would choose either from *x* and *y*, but when *z* is added, *y* is still choiceworthy but *z* is not.
 
-This example was historically important, but it's not discussed that much in the contemporary philosophical literature. It could be because philosophers were convinced by the argument in @Fara2001 [check this] that phenomenal indistinguishability is in fact transitive. But it did get widely discussed in economics. Poincaré's thought gets picked up in a series of papers by Wallace Armstrong [-@Armstrong1939; -@Armstrong1948; -@Armstrong1950], who used it as the basis of an argument against the orthodox choice theory of the day. Armstrong in turn influenced R. Duncan Luce [-@Luce1956; -@Luce1959], who used these examples to argue that preferences form a semi-order. In a review of Luce's book, Gerard @Debreu1960 argued that the model Luce developed for these cases wouldn't work for cases where the options differed along different dimensions.
+This example was historically important, but it's not discussed that much in the contemporary philosophical literature. It could be because philosophers were convinced by the argument in @Fara2001 that phenomenal indistinguishability is in fact transitive. But it did get widely discussed in economics, especially once it started being discussed by R. Duncan Luce [-@Luce1956; -@Luce1959], who used these examples to argue that preferences form a semi-order. In a review of Luce's book, Gerard @Debreu1960 argued that the model Luce developed for these cases wouldn't work for cases where the options differed along different dimensions.
 
-The class of cases Debreu discussed became central to the philosophical literature, though by this time to connection to choice functions had been dropped. Such cases are central to what Ruth @Chang1997 called the 'small improvement' argument against trichotomous preferences.^[See @Chang2017 [xxx] for a history of this.] Here's one example of the small improvement argument.^[This example is in @LehrerWagner1985, where it is mistakenly attributed to @Armstrong1939. (Many authors subsequently made the same attribution; if you want to see some examples, search for the word 'pony' among the citations of Armstrong's paper on Google Scholar.) Debreu has an example where two alternatives are basically equal, not marginally different. To the best of my knowledge, the earliest example with the small improvement structure  is (maybe Tversky, maybe Luce and Suppes - gotta finish this).] A boy is indifferent between receiving a bicycle and a pony for Christmas. He would prefer a bicycle with a bell to one without a bell, but he would be indifferent between either kind of bicycle and the pony. The usual way this case is analysed is as follows. 
+The class of cases Debreu discussed became central to the philosophical literature, though by this time to connection to choice functions had been dropped. Such cases are central to what Ruth @Chang1997 called the 'small improvement' argument against trichotomous preferences.^[See @Chang2017 [4n1] for a history of this.] Here's one example of the small improvement argument.^[This example is in @LehrerWagner1985, where it is mistakenly attributed to @Armstrong1939. (Many authors subsequently made the same attribution; if you want to see some examples, search for the word 'pony' among the citations of Armstrong's paper on Google Scholar.) Debreu has an example where two alternatives are basically equal, not marginally different. To the best of my knowledge, the earliest example with the small improvement structure  is (maybe Tversky, maybe Luce and Suppes - gotta finish this).] A boy is indifferent between receiving a bicycle and a pony for Christmas. He would prefer a bicycle with a bell to one without a bell, but he would be indifferent between either kind of bicycle and the pony. The usual way this case is analysed is as follows. 
 
 > *x* = Bicycle without bell   
 > *y* = Pony    
@@ -169,15 +215,28 @@ It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is
 
 # Aizerman's Property {#sec-aiz}
 
-- Assume there is some set of orderings, each satisfying the assumptions.
-- Say *x* \in *C*(*S*) iff *x* is maximal according to one of these orderings.
-- Then *C* satisfies Aiz.
-- Conversely, if *C* satisfies Aiz, we can generate such a set.
-- This matters because it shows we can still put some substantive constraints on *C*.
+The property Aiz is not particularly intuitive. Fortunately, it turns out to be equivalent, given our assumptions to one that is: Path-Independence.^[Unless stated otherwise, the results in this section, along with proofs, can be found in the helpful survey by Hervé @Moulin1985.] That principle says that to find what's choiceworthy from a union of sets, you only have to consider which options are choiceworthy in the smaller sets.
+
+Note that this isn't just saying that the options choiceworthy from the union are choiceworthy from one of the members. That is implied by \alpha. What it is saying is that whether the unchosen options from S and T are or aren't on the menu doesn't make a difference to which options are choiceworthy from the union.
+
+There is a very natural kind of model where \alpha and Path-Independence holds, but \beta and \gamma do not. Let *O* be a set of total orderings of *U*. (A total ordering is a relation *R* such that *xRy* \vee *yRx* \vee x=y.) Then *C*(*S*) is the set of Pareto-optimal members of *S* relative to those orderings. That is, it is the members of *S* such that no other member of *S* is better according to every member of the set of orderings.
+
+In fact, it turns out the converse of this is also true. If *C* satisfies \alpha and Aiz, then there is some set of total orderings such that *C*(*S*) is the set of Pareto optimal members of *S* according to that set.
+
+It might seem strange after all the talk of weak orderings and semiorders that we're now using total orders. Given that *U* is finite, this turns out to be unsurprising. Any semiorder, and hence any weak order, is such that there is some set of total orders such that *x* is strictly preferred to *y* in the semiorder iff it is preferred in all the total orders. (In fact we can put a sharp cap on how many such orders there must be.) So being Pareto optimal relative to some set of semiorders (or weak orders) is equivalent to being Pareto optimal relative to a larger set of total orders.
+
+If *C* is determined by a set of orders in this way, it is said to be **pseudorationalizable**. These choice functions are not always binary. Consider one simple example, where *U* is {*x*, *y*, *z*}, *C*(*U*) = {*x*, *z*}, and for any other *S*, *C*(*S*) = *S*. That is the choice function determined by the pair of orderings *x* > *y* > *z* and 
+*z* > *y* > *x*. This satisfies \alpha, \delta and Aiz, but not \beta or \gamma. And it isn't binary. *B*(*C*) is the universal relation *R*, since whenever *S* is a pair set, *C*(*S*) = *S*.
+
+I'm going to argue over subsequent sections that this is a coherent choice function, and not all choice functions are binary.
 
 # Preference and Trade {#sec-trade}
 
-One reason for starting with preference is that we are interested in explaining trade, and the fundamental explanation of trade is that each prefers what the other has got. But this only really holds in a non-monetary economy. In a monetary economy, most trades are for money - Chooser will pay $100 for those shoes. At one level that means Chooser prefers the shoes to the $100. But $100 has exchange value, not use value. It's not of any value in itself, but only what it can buy. So really what explains the trade is that Chooser takes the shoes to be one of the choiceworthy things out of the things that cost $100. In a monetary economy, it's really choice, not preference, that explains most of the trading that we see.
+Let's go back to why we might have wanted to focus on binary preference relations. One natural reason is that our primary aim in looking at preferene is to explain trade, and it is natural to give preferences a central role in explaining trade. If Chooser trades a cow for some magic beans, it's natural to explain that by saying Chooser preferred the magic beans.
+
+When we are looking to explain trade in a non-monetary economy, that seems like a good reason to give preferences a central role in the story. But very little trade these days involves barter like this. Most trade involves money. Money is primarily valuable instrumentally. If Chooser buys some shoes for $100, we could say that Chooser prefers the shoes to the money. But that doesn't seem like the end of the story, since there is a reason why Chooser values the money as they do. The deeper point is that the money Chooser has gives them a budget constraint, and Chooser really thinks that the shoes are a better use of the $100 than anything else available. That is, it seems more informative to describe Chooser as choosing the shoes from the menu of things that cost $100 than to describe them as preferring the shoes to the money, since it's the fact about choice that explains why they have that preference.
+
+Not everyone will think these kinds of pragmatic considerations about what we're aiming to explain should be relevant to what kinds of attitudes we take to be primary. If so, you should think this point about monetary economies is irrelevant to whether we should start with preferences or choices. But if you do think the pragmatic considerations are relevant, then you should think that choice functions are a better starting point than preference relations for explaining economic behaviour in monetary economies.
 
 # Constraints on Preference {#sec-constraints}
 
