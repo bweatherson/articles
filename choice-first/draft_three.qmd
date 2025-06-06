@@ -276,24 +276,43 @@ That's why any equation, like *C* = *B*(*R*) must be wrong - they concern differ
 
 # Multiple Attributes and Decisiveness {#sec-sartre}
 
-Simplified version of Sartre's example
-Intuition, can choose either, but should stick to it
-Not just for practical reasons (maybe cite Moss here?)
-Model, (10,0) or (0,10); optimal choice includes choosing which you care about
-Is that right everywhere? Maybe not, but it's something we can model.
+@Sartre1948 has a famous example of a young man, we'll call him Pierre, caught between two imperatives. The actual example is complicated in interesting ways, but we'll work with a very simple version of this. Pierre lives in occupied France during WWII, and feels torn between his duty to care for his ailing mother, and his duty to fight for his occupied country. What should he do?
+
+The case is horribly underdescribed, but the following verdicts have seemed plausible to many people. First, Pierre can rationally, and morally, choose what to do here. This are both noble impulses, and it's fine to follow other. Second, and this follows from the first and the fact the case is underdescribed, the options are not equally good. After all, a small improvement to either would not break a tie between them. Third, there is something wrong about Pierre going back and forth between the two choices; he should make a choice and stick to it. The intuition I'm interested in here is that there is something intrinsically good about settling on a choice and sticking to it. What makes this intuition less than fully clear is that in any practical version of the case, it will be very bad for Pierre to oscillate between the two views. He could spend the whole war travelling between England and France as he changes his mind on where he should be, and that would be bad. The intuition I want to press is that there is something good about taking a stance and committing to it, even outside of the practical costs of changing one's mind.^[As @Moss2015 points out, it is less clear this is intrinsically bad if there is more time between the reconsiderations; it makes more sense to change one's mind than to rapidly flip-flop. That is perhaps one way to support the intuition in the text. If Pierre resembles the young Thomas Schelling (as discussed by @Holton1999), firmly committing to one plan and then another over the course of successive nights, there's something wrong about that even if it isn't practically bad.]
+
+A very simple model, which captures these intuitions, is that Pierre's situation is surprisingly like the person playing @tbl-nice-demon. There are two options here, and either is acceptable, but once one is chosen, it becomes the preferred one. There are two good values here, caring for family and caring for country, and Pierre's fundamental choice is to adopt one of these as his value. As @Chang2024 puts it, he chooses to put 'his whole self' behind one of those values. Once that choice is made, his preferences and his actions follow naturally.
+
+I do not want to say this is the only way to understand this example. Perhaps Pierre could, as Chang puts it, _drift_ into one choice. Perhaps he could adopt one path and sometime later rationally regret his choice, because the other value strikes his later self as more important. All I mean to say is that it seems possible that Pierre could be someone for whom both choices are rational, but once he has committed to one of them, it would be irrational to turn around and do the other. If that's right, toy models like @tbl-nice-demon are surprisingly good models of real examples like this.
 
 # \beta and Incompleteness {#sec-dorr}
 
-Sartre's example can be used for small improvement argument
-But what that really shows is that \beta fails
-If preference is about ex post, it doesn't show that completeness fails
-Could be that once one has chosen, one should have complete preferences
-If you think that completeness has to be true because of the nature of vagueness (a la Broome) or because of the nature of comparatives (a la Dorr), it doesn't follow that you can't have multi-attribute choice, or \beta failures. You just have to think that when preferences are defined ex post, they have to be complete.
-To be sure, I don't think Broome's or Dorr et al's arguments do work.
-I just want to note that it would be odd to, e.g., insist on \beta because of arguments about the semantics of comparatives.
-Taking choice to be ex ante and preference to be ex post means you don't have to.
+The Pierre case in @sec-sartre is, if the intuitions I was prodding are correct, a straightforward counterexample to \beta. Just to spell it out,
+
+> *x* = Help mother
+> *y* = Fight Nazis
+> *z* = Help mother plus one extra ration book
+
+If the choices are *x* and *y*, either is acceptable. If the choices are *x*, *y* and *z*, *x* alone is unchoiceworthy. So \beta fails.
+
+This is the Small Improvement argument, and it is often thought to be an argument against completeness, i.e., (@Tri). The point of this section is to say why that argument might fail, even if the argument against \beta works.
+
+Imagine someone was convinced by the arguments in @DorrEtAl2023 that (@Tri) must be true. Their arguments turn on semantic properties of comparatives; since *R* is a comparative, they say it must be complete since all comparatives are complete.^[For what it's worth, I think this argument fails because of the case of 'stronger' in logic. They address this case, but I don't think their response works. But it would be a huge digression to follow that thread through.] Now it would be very strange if the semantics of comparatives in natural language entailed that these intuitions about \beta had to be false. And in fact these claims about semantics do not entail that.^[I'm focussing here on the argument in @DorrEtAl2023, but a similar response works if someone is convinced of (@Tri) by the argument in @Broome1991.]
+
+The following view seems to me to be coherent, and if so it shows why this view of comparatives does not raise a problem for \beta.
+
+- \beta fails in cases like Pierre's.
+- An option is choiceworthy for Pierre iff no option is *determinately* preferred to it.
+- To make a choice, Pierre must determine which value is really his.
+- Once he does that, his preferences will satisfy (@Tri).
+- Before he does that there are two possibilities. One is that his preferences aren't even defined over these options, so asking which is preferred is like asking whether the number 7 is taller, shorter, or the same height as justice. Another is that it is vague what Pierre's preferences are, but any resolution of the vagueness makes (@Tri) true. This latter option fits nicely with the idea that *C* should satisfy Aiz, since it should be determined by a set of orderings, each of them the possible precisifications, or determinations, of his current state.^[This view of preference mirrors the view of credence defended by @Carr2020.]
+
+One objection to this view is that it seems to imply that Pierre could rationally choose one option while he prefers, but does not determinately prefer, another. But this isn't what the view implies. Once Pierre makes the choice, he must, if he is rational, determine that his preferences match it. Preference, on this view, is fundamentally an ex post notion. Just like the player in @tbl-multiple-eqm must, if they are rational, form beliefs that make their choice optimal, what's true of Pierre is that he can make a choice while some other option being preferred is consistent with his *prior* preferences. But preference, on this view, is fundamentally an ex post notion. If Pierre is rational, he will choose what he prefers. It's just not true that he'll always choose what he preferred prior to the choice. Choice, on this picture, is prior to preference, both analytically and perhaps, in cases like this, causally.
+
+When I say this is coherent, I don't mean to half-heartedly say that it is correct. My preferred view is that Pierre could rationally drift (in Chang's sense) into either option, and if he does, (@Tri) would fail even ex post. All I mean to argue here is that the case against \beta doesn't turn on this view, and is compatible with preferences being complete.
 
 # Bad Compromises {#sec-badcomp}
+
+My version of the Pierre example was very 
 
 The resistance example
 Go through some options
@@ -321,5 +340,4 @@ And we've seen lots of reasons to be sceptical of \gamma.
 # Conclusion
 
 Say something clever
-
 
