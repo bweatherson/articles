@@ -169,7 +169,7 @@ A choice function *C* is **binary** if (@Bindef) holds:^[Sen calls these functio
 
 That is, if you convert *C* into a preference relation, and back into a choice function, you get the same thing back.
 
-The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). We'll start by looking at a debate which has presupposed these coherence constraints should be applied.
+The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). 
 
 # Property \beta
 
@@ -209,7 +209,7 @@ The reason \gamma holds when *R* is a semiorder and *C* = *B*(*R*) is instructiv
 
 Conversely, if there are cases where *C* should not satisfy \gamma, then we'll have an argument that *C* should not be based in some semiorder *R*. Showing that there are such cases will be one of the main tasks of the rest of this paper.
 
-We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Poincaré-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-sartre.
+We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Poincaré-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-badcomp.
 
 It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is **rationalizable**, and when *R* is a partial order, that *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-games, it conflicts with what is called *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
 
@@ -228,7 +228,7 @@ It might seem strange after all the talk of weak orderings and semiorders that w
 If *C* is determined by a set of orders in this way, it is said to be **pseudorationalizable**. These choice functions are not always binary. Consider one simple example, where *U* is {*x*, *y*, *z*}, *C*(*U*) = {*x*, *z*}, and for any other *S*, *C*(*S*) = *S*. That is the choice function determined by the pair of orderings *x* > *y* > *z* and 
 *z* > *y* > *x*. This satisfies \alpha, \delta and Aiz, but not \beta or \gamma. And it isn't binary. *B*(*C*) is the universal relation *R*, since whenever *S* is a pair set, *C*(*S*) = *S*.
 
-I'm going to argue over subsequent sections that this is a coherent choice function, and not all choice functions are binary.
+I'm going to argue over subsequent sections that this is a coherent choice function, and hence not all coherent choice functions are binary.
 
 # Preference and Trade {#sec-trade}
 
@@ -238,22 +238,48 @@ When we are looking to explain trade in a non-monetary economy, that seems like 
 
 Not everyone will think these kinds of pragmatic considerations about what we're aiming to explain should be relevant to what kinds of attitudes we take to be primary. If so, you should think this point about monetary economies is irrelevant to whether we should start with preferences or choices. But if you do think the pragmatic considerations are relevant, then you should think that choice functions are a better starting point than preference relations for explaining economic behaviour in monetary economies.
 
-# Constraints on Preference {#sec-constraints}
+[Find Sen moving from need some constraints to need rationalizability in 1971]
 
-Another reason for taking preference to be primary is that it lets us state clearly some intuitive rational constraints, such as transitivity, and independence. 
-
-But we can do that for *C* as well.
-
-Boring way, just do it for choices from pair-sets.
-
-Better way, state the more general result.
-
-(I have this in one of the files.)
+To be sure, if the original motivations for starting with preferences are bad, the original motivations for moving to choice functions might be worse. The focus on choice functions originally came from economists who thought that preferences were unobservable, and hence that we should focus on something observable like choice. If that's the best argument against taking preference to be the basic notion, and hence accepting *C* = *B*(*R*), I'd stick with preferences. But as we'll see, there are better reasons to be sceptical of this preference-first approach.
 
 #  Degenerate Games {#sec-games}
 
-- Mention Pearce's result here
-- Also mention that deletion of dominated strategies looks like path independence
+Say a two-player game is **degenerate** iff the payoffs to one of the players are constant in all outcomes of the game. For convenience, say Column is the player with a constant outcome. So @tbl-upmid, @tbl-middown and @tbl-allthree are degenerate games.
+
+|          |   Left   |  Right   |
+|---------:|:--------:|:--------:|
+|  Up      |   10,0   |   0,0    |
+|  Middle  |   1,0    |   1,0    |
+
+: A degenerate two-option game {@tbl-upmid}
+
+|          |   Left   |  Right   |
+|---------:|:--------:|:--------:|
+|  Middle  |   1,0    |   1,0    |
+|  Down    |   0,0    |   10,0   |
+
+: Another degenerate two-option game {@tbl-middown}
+
+|          |   Left   |  Right   |
+|---------:|:--------:|:--------:|
+|  Up      |   10,0   |   0,0    |
+|  Middle  |   1,0    |   1,0    |
+|  Down    |   0,0    |   10,0   |
+
+: A degenerate three-option game {@tbl-allthree}
+
+Start with the following two assumptions, which seem fairly weak relative to most practice in game theory.
+
+- If a move is part of a Nash equilibrium, it is choiceworthy.
+- A move is choiceworthy only if there is some probability distribution over the other player's moves such that the move maximises expected utility given that distribution.
+
+In degenerate games, these necessary and sufficient conditions for choiceworthiness coincide, but in general they are rather different.
+
+In @tbl-upmid and @tbl-middown, both options are choiceworthy by this standard. Middle-Right is a Nash equilibrium in @tbl-upmid, and Middle-Left is a Nash equilibrium in @tbl-middown. But in @tbl-allthree, the only choiceworthy options are Up and Down. Whatever probability Row assigns to Left/Right, Middle will not maximise expected utility. So this is a counterexample to \gamma. Middle is choiceworthy from {Up, Middle} and from {Middle, Down}, but not from their union.
+
+It follows immediately from Lemma 3 in @Pearce1984 that in degenerate games, a choice satisfies those conditions for being choiceworthy iff it is not strictly dominated, where this includes being dominated by mixed strategies. So in @tbl-allthree, Middle is strictly dominated by the 50/50 mixture of Up and Down. This means that the choices will satisfy Path-Independence. An option is not dominated by the options in *S* \cup *T* iff it is not dominated by the undominated options in *S* \cup *T*, i.e., by the options in *C*(*S*) \cup *C*(*T*). So removing options that are not choiceworthy in *S* and *T* from the union doesn't change what is undominated, i.e., choiceworthy.
+
+This last paragraph is the start of a pattern in the examples that follow. Although I'll be arguing against \gamma, I won't be arguing against Aiz/Path-Independence. I'm not going to offer anything like a conclusive argument for Aiz, but the pattern suggests that it is the right constraint to add to \alpha.
 
 # Choice Under Uncertainty {#sec-uncertainty}
 
@@ -340,4 +366,3 @@ And we've seen lots of reasons to be sceptical of \gamma.
 # Conclusion
 
 Say something clever
-
