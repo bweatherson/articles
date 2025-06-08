@@ -283,6 +283,8 @@ This last paragraph is the start of a pattern in the examples that follow. Altho
 
 # Choice Under Uncertainty {#sec-uncertainty}
 
+
+
 # Multiple Equilibria {#sec-multieq}
 
 - Start with game version
