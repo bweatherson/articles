@@ -1,0 +1,21 @@
+Reply to reviewer
+
+Thank you for the very helpful suggestions! I totally agree that the paper is not cohesive enough, and the new version tries to address this.
+
+I also agree that the second worry relied on a tendentious reading of Luzon, and I have removed it. I do still talk about arguments from the notion of a good guide, but hopefully in a more theoretically neutral way.
+
+The biggest change is that I've tried to clarify exactly what's going on in the first worry. The initial draft suggested the following argument, which I think the report didn't think was very good, and I should have been clearer that I wasn't committed to it:
+
+1. AT fails for Cartesian certainty.
+2. So, by analogy, AT fails for states like rationality.
+
+That's no good because there are so many disanalogies, as the report points out. Instead, what I want to argue is this:
+
+1. AT fails for Cartesian certainty.
+2. So, any argument that AT is true for rationality better rely on some respect in which rationality is not like Cartesian certainty. Otherwise, the argument overgenerates.
+
+So the point is not to directly argue against AT, but to argue that there isn't a good argument for it. The problem here is that it's really easy to slip into the following reasoning: If AT holds for rationality, my preferred position is false, so any argument for AT is question-begging. Of course that would be absurd; it would rule out any argument. So instead I go back to why people have been tempted to the anti-enkrasia position, and argue that given the reasons they've had for this temptation, we should think the argument does in fact overgenerate.
+
+In the course of setting this out more clearly, I noticed something else that was puzzling in Luzon's paper. One of the targets of the paper, I think the person named most frequently as a target, is Williamson. But Williamson agrees with the anti-akrasa position as Luzon states it. Now I don't think Luzon is wrong to target Williamson, since he does endorse some very similar anti-enkratic principles. But it was helpful to set out just what Williamson is and is not agreeing with, because I think a distinct argument Luzon gives, the argument from self-defeat, could be a good argument for exactly the position Williamson ends up with. That's the point of section 5 of the new paper.
+
+Finally, I did leave in the stuff about formal models, but I put a bit more work into saying why they aren't 
