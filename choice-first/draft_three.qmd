@@ -50,11 +50,11 @@ Decision theory is, as the name suggests, about how decisions should be made. In
 
 # Historical Background {#sec-history}
 
-There is a long tradition in both the economic literature (e.g., @Samuelson1938) and the psychological literature (e.g., @Luce1956), of taking choice dispositions to be the central focus of study, as opposed to values or preferences. Some of the reasons for this were based on behaviourist or positivist commitments. The theorists would have endorsed this recent statement of the irrelevance of mental states to economics.
+There is a long tradition in both the economic literature (e.g., @Samuelson1938) and the psychological literature (e.g., @Luce1956), of taking choice dispositions to be the central focus of study, as opposed to values or preferences. Some of the reasons for this were based on behaviourist or positivist commitments. Choices, unlike values or preferences, are observable, and so, went the theory, they are the appropriate subject matter for scientific inquiry. The theorists taking this line would have endorsed this recent statement of the irrelevance of mental states to economics.
 
 > Standard economics does not address mental processes and, as a result, economic abstractions are typically not appropriate for describing them. [@GulPesendorfer2008 24]
 
-That's not going to be my approach here. I'm going to start not with observable choice dispositions, like Samuelson, or choice frequencies, like Luce, but with chooser's beliefs about which options are choiceworthy. In familiar terminology^[See, for instance, @SEPPreferences, where I learned about the Gul and Pesendorfer quote], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from them. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec]. So I need to start with the way he talks about preferences in that book, which is slightly different to the current philosophical orthodoxy.
+That's not going to be my approach here. I'm going to start not with observable choice dispositions, like Samuelson, or choice frequencies, like Luce, but with chooser's beliefs about which options are choiceworthy. In familiar terminology^[See, for instance, @sep-preferences, where I learned about the Gul and Pesendorfer quote], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from them. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec]. So I need to start with the way he talks about preferences in that book, which is slightly different to the current philosophical orthodoxy.
 
 Sen starts with a binary relation *R*, defined over options, which is glossed as *xRy* means that *x* is at least as good as *y*. This is potentially misleading. It does not mean that *x* is either better than *y*, or exactly as good as *y*. Rather, it means that *x* is no worse than *y*. Sen introduces two more binary relations, *xPy*, meaning *x* is preferred to *y*, and *xIy*, meaning the chooser is between *x* and *y*. These can both be defined in terms of *R*, as in (@RtoP) and (@RtoI). (Throughout, I'm leaving off wide scope universal quantifiers over free variables.)
 
@@ -73,11 +73,11 @@ That is, two options are equally good iff they are substitutable in other prefer
 
 (@Tri) is what @Chang2017 calls the trichotomy thesis. (@PItrans) is what Sen calls PI-transitivity, and (@IItrans) is what he calls II-transitivity. 
 
-Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this quasi-transitivity.) @Sen1970sec [64??] proves that if *P* is transitive, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
+Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[In part this is because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), the theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. (Sen calls this quasi-transitivity.) @Sen1970sec [66] notes that if *P* is transitive and *R* is 'complete' in the sense of the next paragraph, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
 
 What should we call the principle (@Tri)? Most philosophers call it *completeness*, and its denial *incompleteness*. In his economic work, @Sen1970sec uses the term 'completeness' for a different property of preference relations, namely *xRy* ∨ *yRx*. This is a useful notion to have. If Chooser has never thought of *x*, there is a good sense in which *xRy* ∨ *yRx* is false, even though of course \neg*yPx* is true. Still, using the term for (@Tri) is more common in philosophy. When writing primarily for philosophers, @Sen2004 uses 'completeness' for (@Tri), and I'll do the same. I'll call use *definedness* for *xRy* ∨ *yRx*, and unless stated otherwise, will assume it holds.
 
-There isn't as much discussion of (@Tri) as such in the economics literature, but there is a long tradition of discussing (@IItrans), going back to important works by Henri @Poincare1903 and Wallace E. @Armstrong1939. In most of those works it is assumed that *P* is transitive, so (@Tri) and (@IItrans) are equivalent, so this is really discussing the same thing. Still, it makes the terminology confusing.
+There isn't as much discussion of (@Tri) as such in the economics literature, but there is a long tradition of discussing (@IItrans), going back to important works by Wallace E. Armstrong [-@Armstrong1939; -@Armstrong1948; -@Armstrong1950]. In most of those works it is assumed that *P* is transitive, so (@Tri) and (@IItrans) are equivalent, so this is really discussing the same thing. Still, it makes the terminology confusing.
 
 When it makes it clearer, I'll use the term @Chang2017 suggests for (@Tri). That is, I'll say that preference relations for which this holds are *trichotomous*.
 
@@ -119,7 +119,7 @@ I'll describe the effects of these properties in more detail in subsequent secti
 
 # Property \alpha {#sec-alpha}
 
-This is the most commonly used constraint on choice functions, and it does seem intuitive. If *x* is choiceworthy from a larger set, deleting unchosen options shouldn't make it choiceworthy. @Sen1970sec [xx] discusses two possible counterexamples.
+This is the most commonly used constraint on choice functions, and it does seem intuitive. If *x* is choiceworthy from a larger set, deleting unchosen options shouldn't make it choiceworthy. @Sen1970sec [323-326] discusses two possible counterexamples.
 
 One is where the presence of options on the menu gives Chooser relevant information. If the only two options are tea with a particular friend or staying home, Chooser will take tea. But if the option of cocaine with that friend is added, Chooser will stay home. The natural thing to say here is that when one gets new information, *C* changes, so there isn't really a single *C* here which violates \alpha.^[For a quick argument for that, if Chooser learns the only options are tea and staying home because the friend has just run out of cocaine, they might still stay home.]
 
@@ -161,7 +161,7 @@ If the input to *B* is a choice function *C*:
 
 (@ICtoR) *B*(*C*) = {\langle*x*, *y*\rangle: x \in *C*({*x*, *y*})}
 
-That is, *B*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319??] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
+That is, *B*(*R*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given \alpha. Since we're assuming \alpha, we'll use the simpler version.
 
 A choice function *C* is **binary** if (@Bindef) holds:^[Sen calls these functions 'basic binary', but the distinction he's drawing attention to by adding 'basic' doesn't make a difference given *R* is a semi-order and \alpha.]
 
@@ -183,7 +183,7 @@ To see this, think about choice functions that are defined by starting with nume
 
 More generally, given the assumptions we're making, *C* satisfies \beta iff *B*(*C*) is trichotomous, which is equivalent to *B*(*C*) satisfying II-transitivity. Unsurprisingly, the two historically significant cases of intuitive counterexamples to II-transitivity also generate intuitive counterexamples to \beta.
  
-The first example involves distinct but indistinguishable options.^[The idea that humans can't distinguish similar options is important in @Fechner1860. The earlier connection I've found to indifferent being intransitive is in @Armstrong1939. Armstrong's example is rather confusing; the one I'll use here is based on @Luce1956.] Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
+The first example involves distinct but indistinguishable options.^[The idea that humans can't distinguish similar options is important in @Fechner1860, a work which is discussed in @sep-fechner. The earliest connection I've found between this and indifference being intransitive is in @Armstrong1939. Armstrong's example is rather confusing; the one I'll use here is based on @Luce1956.] Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
 
 > *x* = Coffee with 100 grains of sugar.    
 > *y* = Coffee with 106 grains of sugar.    
@@ -195,23 +195,23 @@ This example was historically important, but it's not discussed that much in the
 
 The cases that were more important in the philosophical literature are what @Chang1997 call 'small improvement' cases. The earliest case I know of fitting this form is from @LuceRaiffa1957.^[I haven't found a case like this in Luce's sole-authored works, and indeed @Debreu1960 notes that a related case raises problems for one of the central assumptions of @Luce1959.] (In this, *P*(*x*,*y*) is the probability that Chooser will select *x* when *x* and *y* are both available.)
 
-> Suppose that *a* and *b* are two alternatives of roughly comparable value to some person, e.g., trips from New York City to Paris and to Rome. Let *c* be alternative a plus $20 and *d* be alternative *b* plus $20. Clearly, in general *P*(*a*, *c*) = 0 and *P*(*b*, *d*) = 0. It also seems perfectly plausible that for some people *P*(*b*, *c*) > 0 and *P*(*a*, *d*) > 0, in which event *a* and *b* are not comparable, and so axiom 2 [i.e., (@Tri)] is violated. [@LuceRaiffa1957 375]
+> Suppose that *a* and *b* are two alternatives of roughly comparable value to some person, e.g., trips from New York City to Paris and to Rome. Let *c* be alternative a plus $20 and *d* be alternative *b* plus $20. Clearly, in general *P*(*a*, *c*) = 0 and *P*(*b*, *d*) = 0. It also seems perfectly plausible that for some people *P*(*b*, *c*) > 0 and *P*(*a*, *d*) > 0, in which event *a* and *b* are not comparable, and so axiom 2 \[i.e., (@Tri)\] is violated. [@LuceRaiffa1957 375]
 
 An example with the same structure, involving a boy, a bicycle, and a bell, is discussed in @LehrerWagner1985, and mistakenly attributed to @Armstrong1939.^[Many authors subsequently made the same attribution; if you want to see some examples, search for the word 'pony' among the citations of Armstrong's paper on Google Scholar.] 
 
-The usual way these cases are discussed, starting with Luce and Raiffa, is that they violate a certain kind of comparability. I want to resist this reading. The core intuition here, I think, is that \beta fails. Chooser would choose either option from {*a*, *b*}, but if *c* is added as an option, *a* becomes unchoiceworthy. If we add the assumption that *R* = *B*(*C*), then the usual analysis returns, and both trichotomy and II-intransitivity fail. Without the assumption that *R* = *B*(*C*), it's not so clear this is a counterexample to those principles, even if it is a counterexample to \beta. We'll return to this in @sec-dorr.
+The usual way these cases are discussed, starting with Luce and Raiffa, is that they violate a certain kind of comparability. For example, Luce and Raiffa say there is a sense in which the two holidays are 'not comparable'. I want to resist this reading. The core intuition here, I think, is that \beta fails. Chooser would choose either option from {*a*, *b*}, but if *c* is added as an option, *a* becomes unchoiceworthy. If we add the assumption that *R* = *B*(*C*), then it does follow that trichotomy fails, and there is a sense in which they are incomparable. But without that assumption, it's consistent to say that these are counterexamples to \beta but not to trichotomy. We'll return to this point in @sec-dorr.
 
 # Properties \gamma and \delta {#sec-gamma}
 
-Assume *R* does not satisfy trichotomy, but is a semiorder, and *C* = *B*(*R*). Then \beta will fail, but \gamma and \delta will hold. Conversely, for any *C* where \gamma and \delta hold, there is a semiorder *R* such that *C* = *B*(*R*). We're not going to be very interested in \delta, but we will be very interested in \gamma. 
+Assume *R* does not satisfy trichotomy, but is a semiorder, and *C* = *B*(*R*). Then \beta will fail, but \gamma and \delta will hold. Conversely, for any *C* where \gamma and \delta hold, there is a semiorder *R* such that *C* = *B*(*R*) [@Sen1970sec 320]. We're not going to be very interested in \delta, but we will be very interested in \gamma. 
 
 The reason \gamma holds when *R* is a semiorder and *C* = *B*(*R*) is instructive. If *x* is choiceworthy among *S*, then nothing in *S* is better than *x*. Similarly, if *x* is choiceworthy among *T*, then nothing in *T* is better than *x*. So nothing in *S* \cup *T* is better than *x*. So *x* is choiceworthy among *S* \cup *T*.^[This argument doesn't appeal to *R* being a semiorder, but if it is not, most theorists would not define *B* this way.]
 
 Conversely, if there are cases where *C* should not satisfy \gamma, then we'll have an argument that *C* should not be based in some semiorder *R*. Showing that there are such cases will be one of the main tasks of the rest of this paper.
 
-We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Poincaré-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-badcomp.
+We had two kinds of counterexamples to \beta, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to \gamma that start with Fechner-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and pony example that generate intuitive counterexamples to \gamma. We'll come back to these in @sec-badcomp.
 
-It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is **rationalizable**, and when *R* is a partial order, that *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-games, it conflicts with what is called *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
+It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is **rationalizable**, and when *R* is a partial order, that *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-games, it conflicts with the notion of a choice being *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
 
 # Aizerman's Property {#sec-aiz}
 
@@ -269,9 +269,9 @@ Say a two-player game is **degenerate** iff the payoffs to one of the players ar
 Start with the following two assumptions, which seem fairly weak relative to most practice in game theory.
 
 - If a move is part of a Nash equilibrium, it is choiceworthy.
-- A move is choiceworthy only if there is some probability distribution over the other player's moves such that the move maximises expected utility given that distribution.
+- A move is choiceworthy only if there is some probability distribution over the other player's moves such that the move maximises expected utility given that distribution.^[The notion of a rationalizable choice, in the sense of @Blenheim1984 and @Pearce1984, slightly strengthens this. A choice is rationalizable iff it maximises expected utility relative to a probability assignment that only gives positive probability to the other player, or players, making rationalizable choices. That's circular as stated, but one can remove the circularity at the cost of making the definition somewhat less intuitive.]
 
-In degenerate games, these necessary and sufficient conditions for choiceworthiness coincide, but in general they are rather different.
+In degenerate games, these necessary and sufficient conditions for choiceworthiness coincide, but in general they are rather different.^[Since rationalizability is between these notions, it also coincides with them for degenerate games.]
 
 In @tbl-upmid and @tbl-middown, both options are choiceworthy by this standard. Middle-Right is a Nash equilibrium in @tbl-upmid, and Middle-Left is a Nash equilibrium in @tbl-middown. But in @tbl-allthree, the only choiceworthy options are Up and Down. Whatever probability Row assigns to Left/Right, Middle will not maximise expected utility. So this is a counterexample to \gamma. Middle is choiceworthy from {Up, Middle} and from {Middle, Down}, but not from their union.
 
@@ -281,9 +281,24 @@ This last paragraph is the start of a pattern in the examples that follow. Altho
 
 # Choice Under Uncertainty {#sec-uncertainty}
 
+@LuceRaiffa1957 discuss what they call choices under 'uncertainty', by which they mean choices where Chooser cannot assign probabilities to the states. @Petersen2017 calls these choices under 'ignorance'. None of the proposed decisive rules for choice under uncertainty/ignorance are particularly compelling; all lead to very strange outcomes. 
 
+The best approach, in my opinion, is to treat these choices like degenerate games. Indeed, degenerate games are really a paradigm of choice under ignornace; Row has no reason to assign any particular probability to Column's choice. Further, what the game theory textbooks say about degenerate games seems fairly plausible; any undominated option is choiceworthy. The same goes for choices under ignorance; any undominated option is choiceworthy.
+
+If that's right, then the three examples from @sec-games can be repurposed as examples of choice under uncertainty, replacing Left and Right with *p* and \neg*p*, and the same analysis will hold. Again \gamma will fail, because Middle is choiceworthy when there is one other option, but not when they are two. So there's no binary comparison of Middle with the other two options that explains the facts about what is choiceworthy in the three cases.
 
 # Multiple Equilibria {#sec-multieq}
+
+Let's go to a different kind of game. @tbl-asymmcoord is a slightly asymmetric coordination game.
+
+|         |   Left   |   Right  |
+|--------:|:--------:|:--------:|
+|   Up    |    6,1   |    0,0   |
+|  Down   |    0,0   |    4,4   |
+
+A coordination game {#tbl-asymmcoord}
+
+A natural thing to say about games like this is that since there are two Nash equilibria, there are choiceworthy options. The same is true 
 
 - Start with game version
 - Then the version with a predictor, Skyrms's 'nice demon'
@@ -302,7 +317,7 @@ That's why any equation, like *C* = *B*(*R*) must be wrong - they concern differ
 
 # Multiple Attributes and Decisiveness {#sec-sartre}
 
-@Sartre1948 has a famous example of a young man, we'll call him Pierre, caught between two imperatives. The actual example is complicated in interesting ways, but we'll work with a very simple version of this. Pierre lives in occupied France during WWII, and feels torn between his duty to care for his ailing mother, and his duty to fight for his occupied country. What should he do?
+@Sartre1946 has a famous example of a young man, we'll call him Pierre, caught between two imperatives. The actual example is complicated in interesting ways, but we'll work with a very simple version of this. Pierre lives in occupied France during WWII, and feels torn between his duty to care for his ailing mother, and his duty to fight for his occupied country. What should he do?
 
 The case is horribly underdescribed, but the following verdicts have seemed plausible to many people. First, Pierre can rationally, and morally, choose what to do here. This are both noble impulses, and it's fine to follow other. Second, and this follows from the first and the fact the case is underdescribed, the options are not equally good. After all, a small improvement to either would not break a tie between them. Third, there is something wrong about Pierre going back and forth between the two choices; he should make a choice and stick to it. The intuition I'm interested in here is that there is something intrinsically good about settling on a choice and sticking to it. What makes this intuition less than fully clear is that in any practical version of the case, it will be very bad for Pierre to oscillate between the two views. He could spend the whole war travelling between England and France as he changes his mind on where he should be, and that would be bad. The intuition I want to press is that there is something good about taking a stance and committing to it, even outside of the practical costs of changing one's mind.^[As @Moss2015 points out, it is less clear this is intrinsically bad if there is more time between the reconsiderations; it makes more sense to change one's mind than to rapidly flip-flop. That is perhaps one way to support the intuition in the text. If Pierre resembles the young Thomas Schelling (as discussed by @Holton1999), firmly committing to one plan and then another over the course of successive nights, there's something wrong about that even if it isn't practically bad.]
 
@@ -314,15 +329,15 @@ I do not want to say this is the only way to understand this example. Perhaps Pi
 
 The Pierre case in @sec-sartre is, if the intuitions I was prodding are correct, a straightforward counterexample to \beta. Just to spell it out,
 
-> *x* = Help mother
-> *y* = Fight Nazis
+> *x* = Help mother    
+> *y* = Fight Nazis    
 > *z* = Help mother plus one extra ration book
 
 If the choices are *x* and *y*, either is acceptable. If the choices are *x*, *y* and *z*, *x* alone is unchoiceworthy. So \beta fails.
 
 This is the Small Improvement argument, and it is often thought to be an argument against completeness, i.e., (@Tri). The point of this section is to say why that argument might fail, even if the argument against \beta works.
 
-Imagine someone was convinced by the arguments in @DorrEtAl2023 that (@Tri) must be true. Their arguments turn on semantic properties of comparatives; since *R* is a comparative, they say it must be complete since all comparatives are complete.^[For what it's worth, I think this argument fails because of the case of 'stronger' in logic. They address this case, but I don't think their response works. But it would be a huge digression to follow that thread through.] Now it would be very strange if the semantics of comparatives in natural language entailed that these intuitions about \beta had to be false. And in fact these claims about semantics do not entail that.^[I'm focussing here on the argument in @DorrEtAl2023, but a similar response works if someone is convinced of (@Tri) by the argument in @Broome1991.]
+Imagine someone was convinced by the arguments in @DorrEtAl2023 that (@Tri) must be true. Their arguments turn on semantic properties of comparatives; since *R* is a comparative, they say it must be complete since all comparatives are complete.^[For what it's worth, I think this argument fails because of the case of 'stronger' in logic. They address this case, but I don't think their response works. But it would be a huge digression to follow that thread through.] Now it would be very strange if the semantics of comparatives in natural language entailed that these intuitions about \beta had to be false. And in fact these claims about semantics do not entail that.^[I'm focussing here on the argument in @DorrEtAl2023, but a similar response works if someone is convinced of (@Tri) by the argument in @Broome1997.]
 
 The following view seems to me to be coherent, and if so it shows why this view of comparatives does not raise a problem for \beta.
 
