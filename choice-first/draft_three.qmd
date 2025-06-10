@@ -353,14 +353,31 @@ When I say this is coherent, I don't mean to half-heartedly say that it is corre
 
 # Bad Compromises {#sec-badcomp}
 
-My version of the Pierre example was very 
+My version of the Pierre example was very simple, but it allows for some interesting complications. As stated, you might think Pierre isn't thinking through his choices well enough. He should join the local resistance, so he can stay close enough to his mother to help, while also fighting the Nazis.
 
-The resistance example
-Go through some options
-Intuitively, gamma could fail here, just like it fails in the games
-Doesn't seem that this should violate Path Independence though
+But maybe that's a terrible option. We can easily imagine that the resistance is either so useless that it does practically nothing, or so good at recruiting that it has little useful work. It's just as easy to imagine that it creates busywork that dramatically reduces how much he can care for his mother, while not doing much to help the war effort. At risk of trivialising the issue, we can imagine that Pierre's options look like this, where the two columns represent how much each option respects/promotes the relevant value.
+
+|                    |  Care for mother |  Fight Nazis  |
+|-------------------:|:----------------:|:-------------:|
+|   Stay Home        |       10         |     0         |
+|   Join resistance  |        1         |     1         |
+|   Join Free French |        0         |     10        |
+
+: Pierre's options, including resistance {#tbl-pierreresist}
+
+I'll come back to whether this is plausible in the next two sections, but for now I'll just report an intuition that Pierre should not join the resistance; it's almost the worst of both worlds.
+
+But the case might still be a counterexample to \gamma. Consider these two variants on the case.
+
+> **No exit**: While Pierre is deliberating, he hears that the options for getting to the Free French have been decisively cut off. (In the original, he worries this might happen.) Now his only two options are to stay home, or to join the reistance.
+
+> **Promise**: Pierre's brother Jean is fighting the Nazis. Pierre has promised Jean that if Jean is killed, Pierre will take up the fight in some way. Sadly, Jean is killed, and Pierre regards this promise as binding. Now his only options are to join the resistance, or join the Free French.
+
+In either case, the resistance seems choiceworthy. In both cases, it is the option that does best of the remaining choices on one of the criteria. Pierre could decide he endorses that criteria as his own, and acts accordingly. So the resistance is choiceworthy amongst either pair of options, but not amongst their union.
 
 # Levi and Sen {#sec-levisen}
+
+
 
 Levi's secretaries examples
 Levi uses this to argue for constraint that must be best on some precisification
