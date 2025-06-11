@@ -46,7 +46,7 @@ format:
         \setlength\lightrulewidth{0ex}
 ---
 
-Decision theory is, as the name suggests, about how decisions should be made. In real life situations, a chooser has many options available. But the usual way decision theory is formulated gives special place to the chooser's thoughts either about individual options, or about pairs of options. Typically, it either says here's a value function, which maps options to values, and chooser should choose the one with highest value, or it says here's a preference relation, and chosoer should choose one to which no other option is preferred. In this paper, I'm going to argue both these approaches are mistaken. Decision theory has to pay attention to the distinctive features of choices involving more than two options. This is both interesting in its own right, and has implications for theories of so-called 'incomplete' preferences.
+Decision theory is, as the name suggests, about how rational decisions should be made. In real life situations, a chooser has many options available. But the usual way decision theory is formulated gives special place to the chooser's thoughts either about individual options, or about pairs of options. Typically, it either says here's a value function, which maps options to values, and chooser should choose the one with highest value, or it says here's a preference relation, and chosoer should choose one to which no other option is preferred. In this paper, I'm going to argue both these approaches are mistaken. Decision theory has to pay attention to the distinctive features of choices involving more than two options. This is both interesting in its own right, and has implications for theories of so-called 'incomplete' preferences.
 
 # Historical Background {#sec-history}
 
@@ -402,17 +402,17 @@ This case is a counterexample to \gamma, but it does not seem to generate counte
 
 In _Hard Choices_, Isaac @Levi1986 defended a view where the choiceworthy options are only those that maximise value on some resolution of the incompleteness in the agent's values. Levi also had views about what further constraints there should be on choice, so he did not defen the view I've been discussing where any option that is maximal on any resolution is choiceworthy. But his views are still relevant here, because this requirement that a choice be maximal on a resolution meant that he was committed to \gamma failing, and choices not being binary.
 
-A central example which he uses, and which @Sen2004 picks up on, involves an executive looking to hire a secretary. I'll follow Sen and call the executive Ms. Jones. She is looking for a secretary with good typing skills and good stenography skills. (This is the 1980s.) We'll conceive of these, a bit arbitrarily, as distinct values. There are three candidates: Jane, Dolly, and Lilly, and their value on each measure is given in @tbl-secretaries. (I've slightly adjusted the numbers to match the earlier examples.)
+A central example which he uses, and which @Sen2004 picks up on, involves an executive looking to hire a secretary. I'll follow Sen and call the executive Ms. Jones.^[I've also changed the secretaries' names.] She is looking for a secretary with good typing skills and good stenography skills. (This is the 1980s.) We'll conceive of these, a bit arbitrarily, as distinct values. There are three candidates: Jack, Danny, and Luke, and their value on each measure is given in @tbl-secretaries. (I've slightly adjusted the numbers to match the earlier examples.)
 
 |        |  Typing Skill  |  Stenography Skill  |
 |-------:|:--------------:|:-------------------:|
-| Jane   |     10         |     0               |
-| Dolly  |      1         |     1               |
-| Lilly  |      0         |     10              |
+| Jack   |     10         |     0               |
+| Danny  |      1         |     1               |
+| Luke  |      0         |     10              |
 
 Three candidates for a secretarial position {#tbl-secretaries}
 
-Levi argues that if the numbers are like this, and Dolly is barely better than the other two on each metric, she is not choiceworthy. That's true even though she might be choiceworthy if one or the other candidates was unavailable.
+Levi argues that if the numbers are like this, and Danny is barely better than the other two on each metric, he is not choiceworthy. That's true even though he might be choiceworthy if one or the other candidates was unavailable.
 
 Sen argues that the right choice theory in this case should be "inarticulate", and say that any of the three is choiceworthy. He responds to the intuition Levi presents with a dilemma. 
 
@@ -434,7 +434,7 @@ Unidimensional Expectations (UE)
 
 That is, the value of a lottery where the possible outcomes agree on one dimension also has the same value on that dimension, and has the expected value of the other dimension. If the lottery does not involve value conflict, old fashioned expected value maximisation is the way to go.
 
-This is enough to rule out the example Sen has in mind on the first horn, where a secretary with skill 1 on either dimension is more than half as valuable as a secretary with skill 10. But it's not enough to say that Ms. Jones should not hire Dolly. Unidimensional Expectations is consistent with one resolution of her indeterminate value being that the value of \langle*x*,*y*\rangle is *xy*. If that's a permissible resolution, then there will be a resolution on which Dolly is maximally valuable. But there are further principles that do rule out Dolly. The most intuitive argument I know uses the following.
+This is enough to rule out the example Sen has in mind on the first horn, where a secretary with skill 1 on either dimension is more than half as valuable as a secretary with skill 10. But it's not enough to say that Ms. Jones should not hire Danny. Unidimensional Expectations is consistent with one resolution of his indeterminate value being that the value of \langle*x*,*y*\rangle is *xy*. If that's a permissible resolution, then there will be a resolution on which Danny is maximally valuable. But there are further principles that do rule out Danny. The most intuitive argument I know uses the following.
 
 Substitution of Identicals (SI) 
 :    If *x* = *y*, then *Lxz* = *Lyz* and *Lzx* = *Lzy*.
@@ -468,12 +468,55 @@ There are several assumptions here, and any one of them could be the subject of 
 
 # Negative Dominance {#sec-negdom}
 
-Lederman's argument using the Sartre/Levi examples
-Intuition - choice isn't binary, so it isn't explained by betterness
-Translate neg dom into choice theory and it *holds*
-What really motivates Lederman's examples is not negdom, but \gamma.
-And we've seen lots of reasons to be sceptical of \gamma.
+Harvey @Lederman2025 notes that the picture I've developed, where Danny is unchoiceworthy, has the following strange consequence. It violates what he calls **Negative Dominance**. This is the version of Negative Dominance most relevant to the case.^[In all the quotes I'll change the names and example to match the one I'm using.]
+
+Negative Dominance (Goodness)
+:     If one game of chance is better for [Ms. Jones] than another, some prize in the first game is better for her than some prize in the second. [@Lederman2025 13]
+
+This does look like a plausible principle, but there are a few reasons for thinking we be comfortable with a theory, like Levi's, which rejects it. The fundamental one is that it assumes that facts about which lotteries are choiceworthy is determined entirely by facts about which of the prizes are choiceworthy _from menus with exactly two items_. It's true that the choiceworthiness of lotteries is determined by, and grounded in, facts about the choiceworthiness of various prizes. But we shouldn't think that choiceworthiness from pairs, which is what preferences in situations that are not Newcomb-like fundamentally amount to, is a sufficient basis for all choiceworthiness facts.
+
+So when Lederman says,
+
+> a strict preference for one game of chance over another must be explained by a strict preference for one of the _prizes_ of the first, by comparison to one of the prizes of the second [@Lederman2025 18, emphasis in original]
+
+we should question the uses of 'one'. What's true at most is that a strict preference for game of chance over another should be explained by a preference for _some_ of the prizes of the first over _some_ of the prizes of the second. In particular, we should accept this choice-theoretic version of the principle:
+
+Negative Dominance for Choices
+:     If one game of chance is choiceworthy when another is available, there must be some prize in the second that is not choiceworthy when all the prizes in the first are available.
+
+Given \alpha and \gamma, this will entail Lederman's version of the principle. But without them, it does not.
+
+Another argument Lederman gives more explicitly assumes \gamma. He says (with several changes made to match the examples):
+
+> it would be bizarre if in a three-way choice [Ms. Jones] is rationally
+permitted to choose any of the certain outcomes (a) [Danny], (b) [Jack], (c) [Luke], but, in a two-way choice between (a) and a coin toss over (b) and (c), she is rationally required to choose the coin toss. [@Lederman2025 18]
+
+That would be bizarre, but violating Negative Dominance does not imply that it is rationally permitted. To get that it is, you need \gamma, since you need that if (a) is choiceworthy from {(a), (b)} and from {(a), (c)}, it is choiceworthy from {(a), (b), (c)}.
+
+But the biggest argument Lederman gives is that we need to explain why Ms. Jones prefers the Jack/Luke lottery to Danny, and that to offer the fact that the lottery does better _in expectation_ on both values is to "fetishize global features of games" [@Lederman2025 22]. Now I think the explanation for why the lottery is better is that Danny \notin *C*({Jack, Danny, Luke}), and I'm not sure why that's a "global" feature of a game while facts that Lederman takes to be reasonable grounds, such as which secretaries are in *C*(*S*) for various pair sets, is not. But set that aside; there is a cleaner explanation to offer, as follows:
+
+1. Ms. Jones has two values, and it is indeterminate how they should be balanced. This means both that she hasn't decided how to balance them, and maybe it is unnecessary, or even inadvisable, to balance them.
+2. Given Unidirectional Expectations and No Trade-Offs (as discussed in @sec-lotteries), the permissible only trade-offs are linear mixtures of the values.
+3. Given the result from @Pearce1984 discussed in @sec-games (his Lemma 3), a choice is best on no linear resolution of the indecision in point 1 iff some lottery over other choices is better in expectation on every value.
+4. A prize is choiceworthy from a menu of other prizes iff it is optimal on some permissible resolution of this indecision.
+5. Negative Dominance for Choices holds.
+
+By 5, Danny is choiceworthy from {Danny, L(Jack)(Luke)} iff he is choiceworthy from {Danny, Jack, Luke}. By 4, holds only if Danny is best on some permissible resolution of Ms. Jones's indeterminate values. By 2, that means he is best on some linear mixture of the two values. By 3, this argument generalises to any secretary whose actual values are worse, on each dimension, than the expected values of L(Jack)(Luke).
+
+In short, the focus on expected values comes not from any particular importance on expectations as such, but from the thought that permissible reactions to indeterminacy in values are constrained by permissible reactions to resolutions of that indeterminacy, combined with (a) constraints on resolutions like Unidimensional Expectations and No Trade-Offs, and (b) Pearce's result linking expected value to linear mixtures of values.
 
 # Conclusion
 
-Say something clever
+This paper has been ultimately about the grounding of facts about rational choice. I've been mostly concerned to argue against a popular, if largely implicit, view: rational choice is grounded in rational preference. If Chooser wants a holiday, and is choosing where to go, which destinations are rationally choiceworthy is grounded in Chooser's (rational) preferences over pairs of choices. I've rejected this for three reasons:
+
+1. As argued in @sec-multieq and @sec-mixed, choiceworthiness is an ex ante concept, and preference is an ex post concept, and hence choiceworthiness is analytically prior to preference, so should not be grounded in preference.
+2. When there are no Newcomb-like considerations, and so the ex ante/ex post distinction doesn't matter, preferences are just choiceworthiness judgments with respect to pair sets, and pair sets aren't normatively distinctive.
+3. Any choice function that violates \gamma cannot be generated from a preference relation, and there are many reasons for endorsing choice functions which violate \gamma.
+
+If choiceworthiness is not grounded in preferences, what is it grounded in? Here there are a few options. 
+
+We could say that there are a special class of options, call them outcomes, and choiceworthiness in general is grounded in choiceworthiness with respect to sets of these outcomes, or perhaps in sets of outcomes and simple bets involving outcomes. This would mirror the approach to subjective decision theory that grounds everything in special classes of preferences, i.e., preferences over outcomes and simple bets.
+
+I'd prefer to ground choiceworthiness in values, plurally, and the subject's identification with some of these values. What makes joining the resistance unchoiceworthy for Pierre is that he has two values, and there is no way of balancing these values which makes joining the resistance optimal. But the other two options are both choiceworthy because they are both valuable, and Pierre could decide that one of the values they represent is one of his value, or even that it is something good to do while working out what his values really are.
+
+That's to say, once we drop the idea that binary comparisons, i.e., preferences, have a special role in grounding rational choice, it could make sense to focus on more general comparisons, e.g., choiceworthiness from sets of options, or from properties of individual options, i.e., values. Whichever way we go, it will be easier to defend the intuitive idea that hard choices like Pierre's violate \beta than if we start try to ground choiceworthiness in preference.
