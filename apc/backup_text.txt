@@ -1,0 +1,966 @@
+Historically, philosophy papers have tended, when they are citing other philosophy papers, to cite very recent ones. Classic papers are different from the bulk of papers not just in how often they are cited, but in the shape of their citations over time. But this tendency is diminishing, not increasing, over time. I'll offer much more evidence for these claims as we go along, but to make them plausible, I'll start with two simple graphs.
+
+The data for the graphs come from citation data I downloaded concerning `r number_of_articles` papers published from 1955-2024, in one hundred leading philosophy journals. I focussed on the citations to and from journals in this dataset. So every citation is from one of these 100 journals between 1955 and 2024, and to one of these 100 journals between 1955 and 2024. (The details of the journals, including when they start getting indexed for this dataset, are in @sec-methodology.) In total, that gives us `r number_of_citations` citations.
+
+Say the *age* of a citation is the difference between the publication year of the citing article and the cited article. So if an article published in 1998 cites an article published in 1985, that's a 13 year old citation.
+
+In @fig-overall-age I've plotted the number of citations in the dataset with each possible age. As you can see, it's very heavily tilted towards the left-hand edge. It is true that people still cite @Frankfurt1969. Indeed, it's one of the most cited papers in the last ten years. But it's just one paper; the bulk of citations are to recently published papers which, if history is any guide, will soon stop collecting citations.
+
+```{r}
+#| label: fig-overall-age
+#| fig-cap: "Number of citations with each age."
+
+raw_age_plot
+```
+
+In @fig-overall-median-mode I've plotted the median and mode age of citations in each year from 1980 onwards. Before that the numbers are even lower, but since I'm only looking at citations to articles published after 1955 (or later if Web of Science started indexing the journal later than that), this is arguably an artifact of how I'm collecting the data. From 1980 onwards, however, there are many older articles that could be, but are not, getting cited. The upwards trends in the first graph looks like a real change in citation practices, and not in the direction I antecedently expected. The second graph also trends slowly upwards until 2020, then suddenly drops.
+
+```{r}
+#| label: fig-overall-median-mode
+#| fig-cap: "Summary statistics for outbound citations each year 1970-2024."
+#| fig-subcap: 
+#|   - "Median"
+#|   - "Mode"
+#| layout-ncol: 1
+
+median_plot
+modal_plot
+```
+
+There is a third surprise in the data, but it's a little more equivocal, and I'm not sure what to make of it. After adjusting for the different number of articles published in different eras, and different citation practices in different eras, it looks like articles published in the 2000s are cited somewhat more than articles published earlier or later. The data here are a bit more equivocal, and even getting to this result requires making some modeling choices, but it looks like there is something there. I'll come back to why this might be at the end.
+
+# Age, Period, and Cohort {#sec-apc-described}
+
+To help understand the citation patterns, I'll borrow some terminology that's common in both sociology and medicine. Imagine that we see, in the historical record, some interesting patterns among teenagers in the late 1960s, and we're wondering what could explain the pattern. Two types of pattern spring immediately to mind, along with ways to test them.
+
+First, the behaviour could be explained by the fact the people involved are teenagers. If so, it is an **age effect**. The natural way to test this is to see if similar patterns show up with teenagers at different times.
+
+Second, the behaviour could be explained by the fact that it was the 1960s, and lots of striking things happened in the 1960s. If so, it is a **period effect**. The natural way to test this is to see if the same pattern shows up with non-teenagers in the 1960s.
+
+There is an important third kind of explanation. The people involved are born in the early 1950s, so they are part of the post-war baby boom. Colloquially, they are boomers. Maybe that could explain the pattern we see. If so, it is a **cohort effect**. The natural way to test this is to see if the same pattern shows up if we look at the same people in other stages of their life.
+
+It's easy to overlook the importance of cohort effects. Sometimes they simply look like age effects. @GhitzaEtAl2023 argue that many hypotheses about age effects on voting, e.g., that older people are more naturally conservative, are really just cohort effects. @Bump2023 argues that understanding the distinctive role the boomers in particular play is crucial for understanding many aspects of modern American life.
+
+There are mathematical reasons that it is hard to tease these effects apart too. Many statistical techniques for separating out influences start to fall apart when there are linear correlations between combinations of variables. In this case there is as tight a correlation as is possible. By definition, cohort plus age equals period. There are some things you can do to get around this problem - see @KeyesEtAl2010 for a useful survey of some of the options - but it remains a challenge.
+
+Even conceptually, it is hard to separate out these three effects in cases where there is evidence that the strength of the effects changes over time. As I noted at the start, the natural way to test hypotheses about which effect is strongest involve looking at other times. That works well when the age effects are constant. When they are not (and they might not be here), it is harder.
+
+For most of our story, however, it helps just to have these three effects in mind. Using them, we can summarise the data reasonably quickly.
+
+- The age effect is that articles get cited most when they are two to five years old, as shown in @fig-overall-age.
+- The period effect is that there are many more citations in recent years than in earlier years. This is in part because the number of articles published in these journals has been growing, and in part because the number of citations per article grew substantially over the 2000s and 2010s, and exploded in the 2020s.
+- The cohort effect is that articles from the 1970s and 2000s get cited more than you'd expect given these age and period effects, while articles from other times, most especially before 1965, but also around 1990, get cited less. The reasons for this are more complicated, and I'll return to them below.
+
+As I mentioned above, I'll go over the methodology in detail in @sec-methodology. But there is one point that is important to note before we start. I'm using data from Web of Science, and they typically don't start indexing journals until well after the journal is established. So the first year of citation data I have for _Analysis_ is 1975. Crucially, that means that "Is Knowledge Justified True Belief?" [@Gettier1963] is not included in this study. If it were, and in general if I had the data from _Analysis_ to work from, some of the results about the early 1960s would look less dramatic, though as far as I can tell, the direction of the results wouldn't change.
+
+# Period Effects {#sec-period}
+
+Those `r number_of_citations` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `r citations_1956` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2024, there are `r citations_2024`. In @fig-citationsperyear, I show how these grew.
+
+```{r}
+#| label: fig-citationsperyear
+#| fig-cap: "The number of citations in the dataset made each year."
+
+all_citations_per_year_plot
+```
+
+While I'll explain the full methodology later, it's worth pausing over one point here. I used a slightly different method to extract the citations from 2022 onwards. It's possible that the drop between 2021 and 2022 is a consequence of that change. However I don't think it is for two reasons. First, it's more likely that 2021 is just an outlier; it's a consequence largely of _Synthese_ publishing `r synthese_2021` articles in 2021, then a relatively few `r synthese_2022` articles in 2022. Second, I applied the method I'm using for 2022-2024 to 2020 and 2021, and got a fairly close agreement (within 1-2%) with each year.
+
+What explains this dramatic growth, at least through 2021? Part of the explanation is that more articles are being published, and more articles are being indexed. @fig-articlesperyear shows how many articles are in the dataset each year.
+
+```{r}
+#| label: fig-articlesperyear
+#| fig-cap: "The number of articles in the dataset published each year."
+
+articles_per_year_plot
+```
+
+That explains some of the growth, but not all of it. The curve in @fig-articlesperyear is not nearly as steep as the curve in @fig-citationsperyear. The number of (indexed) citations per article is also rising. In @fig-outboundcitations I've plotted the average number of citations to other articles in the dataset each year.
+
+```{r}
+#| label: fig-outboundcitations
+#| fig-cap: "The average number of citations to indexed articles each year."
+
+outbound_citations_plot
+```
+
+There are a few possible explanations for the shape of this graph.
+
+At the left-hand edge, there are obvious boundary effects. Since we're only counting citations to articles published since 1956, it isn't surprising that there aren't very many of them per article in the 1950s. Since articles rarely get unpublished, there are more articles available to cite every year.
+
+That can't explain the massive jumps we see at the right hand edge of @fig-outboundcitations. The jump there looks like the convergence of two cultural trends. One is a trend simply to greater numbers of citations. The most casual perusal of journals will confirm that trend. The other is a trend to greater citations of journals themselves, as opposed to books or edited volumes.
+
+A sharp jump like this is a warning sign that there is something wrong with the data, and so the data should be checked. It's impractical to cross-check every entry, but those I have checked look correct. The change seems led by the most prestigious journals. For each journal I calculated the average number of outbound citations (to these hundred journal) for both the 2010s, and the first two years of the 2020s. The ten journals with the largest increase between the decades are shown in @tbl-large-growth.
+
+```{r}
+#| label: tbl-large-growth
+#| tbl-cap: "Mean outbound citations for some journals over the last two decades."
+
+who_cites_more <- citation_tibble |>
+  left_join(
+    select(
+      active_philo_bib,
+      id,
+      journal
+    ), by = c("new" = "id")
+  ) |>
+  filter(new_year >= 2010, new_year <= 2024) |>
+  mutate(period = case_when(
+    new_year < 2020 ~ "2010-2019",
+    TRUE ~ "2020-2024"
+  )) |>
+  group_by(journal, period) |>
+  summarise(articles = n_distinct(new), citations = n(), .groups = "drop") |>
+  mutate(name_len = str_length(journal)) |>
+  mutate(mean_cites = citations/articles) |>
+  pivot_wider(id_cols = c(journal, name_len), names_from = period, values_from = mean_cites) |>
+  mutate(diff = `2020-2024` - `2010-2019`) |>
+  mutate(Difference = round(diff, 1),
+         `2010-2019` = round(`2010-2019`, 1),
+         `2020-2024` = round(`2020-2024`, 1)) |>
+  arrange(-diff) |>
+  slice(1:10) |>
+  select(Journal = journal,
+         `2010-2019`,
+         `2020-2024`,
+         Difference)
+
+kable(who_cites_more)
+
+```
+
+Since _Philosophical Review_ only publishes 10 to 12 articles per year, it is not surprising that it shows the most variation on this list. Still, the change in the 2010s isn't only small sample size variation. Of the 22 articles it published in 2020 and 2021, only one of them [@WOS000575210400003] had fewer than 14.8 outbound citations. With a sample of just 22 anything could happen, but it would be surprising to have all but one end up on the same side of the historical average by chance.
+
+Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in what follows. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
+
+```{r}
+#| label: fig-articlecounts
+#| fig-cap: "Article counts."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typically cited articles"
+#| layout-ncol: 1
+
+available_plot
+typical_plot
+```
+
+In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
+
+```{r}
+#| label: fig-citationcounts
+#| fig-cap: "Citation counts."
+#| fig-subcap: 
+#|   - "Citations to available articles"
+#|   - "Citations to typical articles"
+#| layout-ncol: 1
+
+available_citations_per_year_plot 
+typical_citations_per_year_plot
+```
+
+Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
+
+```{r}
+#| label: fig-citationrate
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typical articles"
+#| layout-ncol: 1
+
+available_citation_rate_per_year_plot 
+typical_citation_rate_per_year_plot 
+
+```
+
+Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021, before returning to their long term trend. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
+
+The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them. The project here is to use citation data as a proxy for philosophical influence. It is, of course, a deeply imperfect proxy. But it is better than most other proxies; it is certainly better than going off of vibes, or of what one's friends are talking about.^[In North America, placement on graduate syllabi might be an even better proxy, but that data is hard to collect, and we'd need a different measure for other countries.] If we're going to use citations this way though, we need to think about how to take into account the changes shown in @fig-citationsperyear. 
+
+The measure I'll use is this: an article's influence in a period is the ratio of how often it is cited (in that period), to how often a typical article is cited (in that period), where 'typical' here means 3-10 years old. This is a little arbitrary, but I think it gets things roughly right. I tried several other measures, and they all either led to implausible trends in the data, or to comparative judgments about the influence of various papers that didn't seem remotely plausible. This measure had the nice consequence that how influential the leading 50 articles from a period were 10-20 years after that period was reasonably stable, suggesting that it does correct for period effects reasonably well.
+
+# Age Effects {#sec-age}
+
+The simplest way to work out age effects just uses the values in @fig-overall-age. For any two articles with age _x_ and _y_, we should adjust for age-effects by taking their citations at that age as something like the proportion of all citations of articles with that age as shown in @fig-overall-age. Given how dramatic the period effects are, this makes no theoretical sense whatsoever. And it would get various details wrong. Somewhat surprisingly, it would nevertheless be roughly correct.
+
+The picture in @fig-overall-age is fairly intuitive. Articles rarely get cited before they are published. Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @WOSA1956CEQ2500001 is cited by @WOS000784599200001. But most articles reach the end of their citation life sooner or, occasionally, later.
+
+Still, we'd like to be sure that what we're seeing in @fig-overall-age isn't just a side-effect of the period effects, or something about how the articles are aggregated. That's what I'll try to do in this section.
+
+The key notion is what I'm going to call the *citation ratio*. This is a function that takes two years, which I'll call _old_ and _new_, as input. Intuitively, it measures how often articles from _old_ are cited in _new_, normalised for how many articles are published in _old_, and what the citation practices are in _new_. More formally, it is the following ratio:
+
+- The numerator is how often the average article in _old_ is cited in _new_. So we search the articles published in _new_, count up the number of citations of articles published in _old_, and divide by the number of articles published in _old_.
+- The denominator is the rate a 'typical' article is cited in _new_. Remember that I'm defining, somewhat stipulatively, a typical article to be published between `{r} typical_low` and `{r} typical_high` years before _new_. So again we search the articles published in _new_, count the citations to articles published `{r} typical_low` to `{r} typical_high` years earlier, and divide by the number of articles originally published `{r} typical_low` to `{r} typical_high` years earlier.
+
+```{r}
+#| label: paramsforratioexample
+
+#sample_old <- 1991
+#sample_new <- 1998
+sample_old <- 1985
+sample_new <- 1997
+
+num_of_num <- nrow(filter(citation_tibble, old_year == sample_old, new_year == sample_new))
+den_of_num <- nrow(filter(active_philo_bib, year == sample_old))
+num_of_den <- nrow(filter(citation_tibble, old_year >= sample_new - typical_high, old_year <= sample_new - typical_low, new_year == sample_new))
+den_of_den <- nrow(filter(active_philo_bib, year >= sample_new - typical_high, year <= sample_new - typical_low))
+num_of_cite <- num_of_num / den_of_num
+den_of_cite <- num_of_den / den_of_den
+overall_cite <- num_of_cite / den_of_cite
+```
+
+Let's illustrate this with an example, using `{r} sample_old` as _old_ and `{r} sample_new` as _new_. In `{r} sample_new`, indexed articles from `{r} sample_old` were cited `{r} num_of_num` times. There are `{r} den_of_num` articles published in `{r} sample_old` in the index, so the numerator for the citation ratio is `{r} num_of_num` / `{r} den_of_num`, i.e., about `{r} round(num_of_cite, 3)`. In the `{r} typical_low` to `{r} typical_high` years before `{r} sample_old`, there were `{r} den_of_den` indexed articles published. Those articles were, collectively, cited `{r} num_of_den` times in `{r} sample_new`. So the denominator, the average number of citations the typical article got in `{r} sample_new`, is `{r} num_of_den` / `{r} den_of_den`, i.e., about `{r} round(den_of_cite, 3)`. Putting those together, the citation ratio for `{r} sample_old` in `{r} sample_new` is (about) `{r} round(overall_cite,3)`. 
+
+In @fig-ageeffecttibble-early and @fig-ageeffecttibble-late I've graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the _facets_), are for each value of _old_, the x-axis is the value for _new_, and the y-axis is the citation ratio. Note that before `{r} start_year + typical_high`, we can't calculate the citation ratio because there isn't enough data to calculate the typical citation rate. So the y-axis starts at `{r} start_year + typical_high`. And for most years there are no dots on the left side of the graph, because I haven't calculated the citation ratio in years where _old_ is later than _new_; there are few enough of these cases that they are best left out.
+
+```{r}
+#| label: fig-ageeffecttibble-early
+#| fig-cap: "Each facet shows the relative citation rate for articles published that year at different ages."
+#| fig-height: 7
+#| fig-width: 7
+
+age_effect_tibble |>
+  filter(old_year >= start_year + 1, old_year <= end_year - min_data, new_year >= start_year) |>
+  filter(old_year >= 1956, old_year <= 1985) |>
+  ggplot(aes(x = new_year, y = cite_ratio)) +
+  geom_point(size = 0.25, color = point_col) +
+  facet_wrap(~old_year, ncol = 5) +
+  xlab(element_blank()) +
+  ylab(element_blank()) +
+  theme(axis.text = element_text(size = 10),
+        strip.text = element_text(size = 12))
+```
+
+```{r}
+#| label: fig-ageeffecttibble-late
+#| fig-cap: "Each facet shows the relative citation rate for articles published that year at different ages."
+#| fig-height: 7
+#| fig-width: 7
+age_effect_tibble |>
+  filter(old_year >= start_year + 1, old_year <= end_year - min_data, new_year >= start_year) |>
+  filter(old_year >= 1986, old_year <= 2015) |>
+  ggplot(aes(x = new_year, y = cite_ratio)) +
+  geom_point(size = 0.25, color = point_col) +
+  facet_wrap(~old_year, ncol = 6) +
+  xlab(element_blank()) +
+  ylab(element_blank()) +
+  theme(axis.text = element_text(size = 10),
+        strip.text = element_text(size = 12))  +
+  scale_x_continuous(breaks = c(1990,2010))
+
+```
+
+There are several notable things about @fig-ageeffecttibble-early and @fig-ageeffecttibble-late. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I'll come back in @sec-culture to why it might be. Still, it doesn't change that the shape of the curves is common enough to talk sensibly about an average curve. In @fig-ageeffecteverything, I've put most of the data from those two figures, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say 'most' of the data because I didn't show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that's displayed.^[The graph also includes some 'jitter' to make the different points more easily visible. I've put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we'll return to faceted graphs like @fig-ageeffecttibble-early and @fig-ageeffecttibble-late when I want to highlight individual years.]
+
+```{r}
+#| label: fig-ageeffecteverything
+#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall average shown."
+
+age_effect_everything_plot
+```
+
+The mean curve in @fig-ageeffecteverything is really similar to the unadjusted age curve in @fig-overall-age. This is what I meant earlier by saying that after a lot of calculations, we'd get back to the same aging curve that we got from the simplest possibe measure.
+
+The calculations did have one really notable effect though. The unadjusted age numbers give us a sensible aging curve overall, but they give us an absurd aging curve for individual years. For most years in the dataset, the year they are most cited is not two to five years after initial publication; it is 2021. The point of the various adjustments in this section has been to make better sense of what's happening in individual years. 
+
+The result is the striking lack of outliers in @fig-ageeffecteverything. All the individual data points are fairly close to the mean. There is some deviation, and there would be much more if I included the earlier years where the data is much noisier. The deviation there is will be the focus of much of the rest of this paper. Still, it's notable how consistent the age curve is, once we use citation ratio to account for period effects.
+
+There are two particularly interesting features @fig-ageeffecttibble-early and @fig-ageeffecttibble-late that are a little hard to see in the big graph. In @fig-peakratio, I've graphed the maximum value the citation ratio reaches for each year of initial publication. This is a bit misleading before `{r} start_year + typical_high`, because I don't have enough data to calculate citation ratios when the citing year is earlier than that, so it might have left off what would have been the high point. But from then on it's useful.
+
+```{r}
+#| label: fig-peakratio
+#| fig-cap: "The maximum citation ratio in each facet in @fig-ageeffecttibble-early and @fig-ageeffecttibble-late."
+
+max_ratio_finder
+```
+
+After the initial jump upwards, and the very high numbers in the mid-1960s, the trend is a decline. In @fig-peakratiotime I've graphed out which age those peaks are hit at, for different years of initial publication starting in `{r} start_year + typical_high - 2`. 
+
+```{r}
+#| label: fig-peakratiotime
+#| fig-cap: "For each original publication year, the age it hits maximum citation ratio."
+
+age_at_max_ratio_plot
+```
+
+In @fig-peakratiotime, the graph is going slightly upwards. Putting these last two figures together, we get the claim I was gesturing at earlier: citation curves are getting flatter. The peaks are coming later, and they are lower.
+
+Finally, while I've stressed how little variation there is between years, I'll end this section by noting how much variation is between papers. In @fig-ageeffecteverything-high and @fig-ageeffecteverything-low I've shown what happens to @fig-ageeffecteverything if we first restrict attention to articles with `r high_threshold` or more citations, and then to articles with fewer than `r high_threshold` citations.^[I picked this threshold because there are approximately as many citations to articles with at least that many citations as to the other articles.] Obviously in the first graph the values will be higher; highly cited articles are, indeed, cited more often. But what I want to highlight here is the different shape of the curves.
+
+```{r}
+#| label: fig-ageeffecteverything-high
+#| fig-cap: "A version of @fig-ageeffecteverything just looking at highly cited articles"
+
+age_effect_everything_plot_high
+```
+
+```{r}
+#| label: fig-ageeffecteverything-low
+#| fig-cap: "A version of @fig-ageeffecteverything just looking at not so highly cited articles"
+
+age_effect_everything_plot_low
+```
+
+Both graphs rise rapidly to a peak two to five years after publication, and then descend. But from that similarity, the differences are striking. For the highly cited articles, there is barely any dropoff by years 8 to 10. For the others, the dropoff starts in earnest in year 4, and by year 10, the average value is half of the peak. That graph doesn't quite go to 0, but mostly these articles are not making much impact after a couple of decades. On the other hand, for the highly cited articles, the age effects are very gradual. Several decades after their publication, they are (on average) being cited 2/3 as often as at their peak (adjusting for period effects).
+
+I think there is an important lesson in this. If the way you think about citations in philosophy comes from looking the history of famous articles, you'll get a misleading impression. The citation pattern for a highly cited article isn't like the citation pattern for a regular article, just scaled up. It has a very different temporal structure.
+
+None of this a priori. There could be relatively rarely cited articles that get frequently cited long after their publication. Indeed, there are such papers in the database. Norman Malcolm's "Dreaming and Scepticism" [@WOSA1975KG87100002] didn't get much attention in the journals when it was first published, but has been picked up a bit recently because of an increase in work on dreams. And there could be articles that are the center of attention for a while then get many fewer citations after a decade. Some papers on supervenience fit that description (e.g., @WOS000443474300002), as well as some papers in philosophy of science, where there is perhaps more rapid progress. But in general, highly cited articles are highly cited not because they have a flurry of activity, but because they remain part of the conversation for years after publication.
+
+# Cohort Effects {#sec-cohort}
+
+So far we've seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In @fig-fourdeviations, I've shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.
+
+```{r}
+#| label: fig-fourdeviations
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "1961"
+#|   - "1979"
+#|   - "1985"
+#|   - "2007"
+#| layout-ncol: 2
+
+year_to_mean_plot(1961)
+year_to_mean_plot(1979)
+year_to_mean_plot(1985)
+year_to_mean_plot(2007)
+```
+
+In 1961 and 1985, the yearly values are predominantly below the mean line. In 1979 and 2007, they are predominantly above it, though this isn't true for the first few years of the 2007 data. Note that the graphs have different lengths. Everything stops in `{r} end_year`. And the 1961 data is cut off a little on the left because we only start calculating citation ratios in `{r} start_year + typical_high`. That's why the line showing the mean is differently shaped that year.
+
+For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you'd expect them to be cited knowing just the age and period effects. The results are in @fig-cohort.
+
+```{r}
+#| label: fig-cohort
+#| fig-cap: "Cohort effects for different publication years."
+
+year_by_year_average_plot
+```
+
+A couple of quick technical notes on @fig-cohort. I've added a line showing the rolling average (four years either side of the point, or as much of those four years are available) to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven't included what happens to `{r} start_year` papers when they are cited after `{r} end_year - min_data`. There isn't nearly enough data to say what one would 'expect' the usual aging curve to be at those points.
+
+On the face of it, there are five periods in the graph.
+
+1. Journal articles published before the mid-1960s are very rarely cited.
+2. After that, and especially in the early 1970s, a flurry of very highly cited articles are published.
+3. Then there is a period of stagnation, where things mostly don't return to the lows of per-1965, but are consistently below 0.
+4. There is an uptick starting in the mid-1990s, and peaking dramatically in 2007.
+5. Then there is a rather dramatic drop off, almost immediately after the high of 2007.
+
+The first couple of trends make sense; the latter three less so. The rest of this paper (before the methodology section) will be about explaining what's going on here, and seeing what it can tell us both about the history of philosophy, and the history of the philosophy profession.
+
+```{r}
+#| label: find-old-high-cites
+
+old_high_cites <- citation_tibble |>
+  filter(old_year <= 1963) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  slice_max(order_by = citations, n = 20) |>
+  left_join(
+    select(
+      active_philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  filter(citations >= 150) |>
+  arrange(year) |>
+  mutate(the_cite = paste0(
+    "@",
+    str_replace_all(old, ":","")
+  ))
+
+list_of_old_high_cites <- knitr::combine_words(old_high_cites$the_cite)
+```
+
+Before 1965, the philosophical work with the most lasting significance was not done in journals. And those works of lasting significance that were in things one might call journals often are not indexed by Web of Science. So we don't have "Is Knowledge Justified True Belief?" [@Gettier1963] because they don't index _Analysis_ until 1975, and we don't have Austin's two most important papers - "Ifs and Cans" and "A Plea for Excuses" [@Austin1956; @Austin1956b] because their venues aren't indexed as journals at all. We do have important papers by `r list_of_old_high_cites`. But these made much less impact than books from the same time, especially _Intention_ [@Anscombe1957], _Word and Object_ [@Quine1960] and _The Structure of Scientific Revolutions_ [@Kuhn1962].
+
+Then starting in the late 1960s, almost every area of philosophy got turned upside down, with much of the action happening in journals. The two most important works of the period, _A Theory of Justice_ [@Rawls1971] and _Naming and Necessity_ [@Kripke1980], were not in journals. But articles in journals did make revolutionary changes in many fields, including:
+
+- Free will [@WOSA1969Y444700002; @10.2307_2024717];
+- Practical ethics [@WOSA1971Y116900003; @WOSA1972Z066400001];
+- Meaning and reference [@10.2307_2025079];
+- Philosophy of mathematics [@10.2307_2025075];
+- Causation [@10.2307_2025310; @10.2307_2025096]; and
+- Personal identity [@WOSA1971Y036400001]
+
+As well there were a surprising number of papers that weren't as influential straight away, but came to play a big role the later literature. This group includes papers by Fred @WOSA1970ZE33800001, David @WOSA1970ZE32700001, Kendall @WOSA1970Y384700002 and Larry @WOSA1973P242100001. That's all to say that the story that @fig-cohort tells about the early 1970s is plausible. There had never before been a period when there was such a quantity of high quality work being done in philosophy journals.
+
+To see what is happening after that time, though, we need to look a little more closely at the data. @fig-cohort-short is a version of @fig-cohort just focussing on the first seven years after publication. That is, for each publication year, it measures citations of articles published that year in the seven years after they were published, adjusted in the same way for age and period effects.
+
+```{r}
+#| label: fig-cohort-short
+#| fig-cap: A version of @fig-cohort restricted to citations from the first seven years after publication.
+
+year_by_year_average_plot_short 
+```
+
+@fig-cohort-short is measuring how often articles from a year are cited, soon after publication, compared to articles cited before them and, to a lesser extent, immediately after them. So the high numbers in the early 1960s are not showing that articles from that time were highly cited in an absolute sense, just that they were cited much more than articles from the 1950s were.
+
+After that boom, and the one-off year of 1973, things are reasonably steady through the mid-2000s. Then, especially after 2007, there is a massive drop. Why is that happening? Part of the answer is shown in @fig-cohort-long, which is the same measure but only for citations after the first seven years.
+
+```{r}
+#| label: fig-cohort-long
+#| fig-cap: A version of @fig-cohort restricted to citations from after the first seven years after publication.
+
+year_by_year_average_plot_long
+```
+
+The differences between @fig-cohort-short and @fig-cohort-long are striking. After both graphs go up in the early 1970s, and down in the early 1980s, they are strongly anti-correlated. Between the mid-1980s and mid-1990s, short term citations are up, and long term citations are down. After around 1995, short term citations start cratering, and long term citations are as high as ever.
+
+So what we're seeing on the right hand edge of @fig-cohort is primarily an artifact of two things. On the one hand, citations are getting older, which means that the typical article is getting more of its citations long after publication. On the other hand, for articles published fairly recently, we simply don't have the data for that time 'long after publication'; it hasn't happened yet.
+
+This doesn't quite explain everything. The graph in @fig-cohort-long does seem to stop rising in the 2010s. But it explains most of the graph. The main reason @fig-cohort falls away so fast at the end is not that articles in the 2010s are getting cited at historically low rates. It's that citations are shifting from the first few years after publication to later in time, and for those articles, our data includes the period the citations are shifted from, and not the period the citations are shifted to.
+
+Even if that's right, there are still some questions to answer. 
+
+Why is this temporal shift in citations happening? Shouldn't technology be causing the shift to happen in the other direction? I'll discuss this in @sec-technology.
+
+Why are citations in general rising so much, even after allowing for increases in the number of articles published? Some of the reason for that will become clear in @sec-technology, but there are two cultural factors that I'll discuss in @sec-culture.
+
+Finally, why do the times around 1990 and 2005 stand out? Around 1990 we see an upward spike in @fig-cohort-short, and a low point in @fig-cohort-long. Around 2005, both graphs are above their long term trends. The answers here are partially due to the technological factors discussed in @sec-technology, and the cultural factors discussed in @sec-culture. But they are also due to an important change in which topics were philosophically central. There is a hint here of an important discontinuity between twentieth and twenty-first century philosophy, and I'll say more about that in @sec-content.
+
+# Technology and Citations {#sec-technology}
+
+As I noted at the top, I feel a common view is that the primary role of electronic publication has been to speed up _distribution_. This view is not borne out by the data. If that were the case, you'd expect to see short term, especially very short term, citations rising over time.
+
+Printing and postage was a pretty mature technology by the late twentieth century. We weren't waiting for steam ships to bring the latest issues of journals to distant shores. The technology used for distributing philosophy journals was the same technology used for distributing journals in medicine and other fields where time was of the essence. From that perspective, the internet would only speed things up by weeks, maybe months, and this wouldn't really show on a graph in years.
+
+What is perhaps more surprising is that the prevalence of Online First, Early View, and other forms of quasi-publication haven't made more of a difference. They do show up a little in the data, in that occasionally articles are cited before their official publication. But there are few enough of these citations that they make little difference.
+
+The biggest effect of technology was not on distribution but on _search_. Before the widespread use of computers, there was a much better system for searching books than for searching journal articles. Classification systems meant books typically lived on shelves near other books on the same topic. Card catalogues would list subject matters for books. Even the title of the book could help track down what it was about. Finding a journal article on a relevant topic was much harder. And, it seems, it mostly wasn't done.
+
+My impression is that there was also a notable physical difference between the ways books and journals were stored and accessed. Almost every academic has a bookshelf; not as many have large collections of journals. Occasionally a department would have physical journals on hand, but often the best way to access journals was to walk across campus to a library. On the other hand, accessing a book might involve walking four steps to a shelf. This physical difference probably contributed to the relative prominence of books and articles in bibliographies.
+
+There often was an exception to this general claim about access. (At least, this was true in any pre-twentieth century department I was familiar with, but I think it was moderately widespread.) Departments would sometimes keep the latest issues of journals in a department library or common room. Those would be much more prominent, and easy to access. I'm not sure whether this explains why so many of the journal citations pre-1995 are to very recent journals, but it probably helped.
+
+So that I think is part of the story. Before the widespread adoption of computers, old journal articles were very hard to find. This changed a little with the advent of electronic, and hence easily searchable, versions of _Philosophers' Index_, and changed a lot when journals went online. And that's part of why older articles, and especially older articles that are not classics, are now more widely cited.
+
+# Culture Changes {#sec-culture}
+
+Two important cultural changes made a difference to the citation patterns, one to do with the role of journal articles, another to do with citation norms.
+
+If you look back to journals from a century ago, you sometimes see pieces that feel more like blog posts than what we'd now consider journal articles. Even more substantive pieces feel more like means to an end. The journal article is as much a trial run for a book as it is a report on a complete project.
+
+By the twenty-first century, all of that is changed. Articles are getting much longer, even in venues like _Analysis_. More importantly, they are often finished products, not draft runs for future books. There are prominent philosophers whose reputation is based largely, or even entirely, on articles (e.g., Jonathan Schaffer). There are large fields of philosophy, e.g., epistemic contextualism and metaphysical grounding, where the canonical texts of the field are almost entirely articles not books. This isn't entirely new, the post-Gettier literature on analysis of knowledge was largely article-based too, but it's a growing trend. This is partially why citations are getting older; if a field is based in articles, there will be more citations to older articles. That's especially true when those articles have not been superseded by books.^[The list of articles that were once widely cited but are rarely cited now is heavily populated with articles that formed the basis for widely cited books.]
+
+But the bigger trend is the increasing tendency of philosophers to include brief citations to work they aren't discussing in detail, but which locate the paper in a literature. Obviously if an article cites 26 other journal articles, as we saw in @tbl-large-growth the average recent _Philosophical Review_ paper does, it can't possibly be discussing every one of them in depth. (Remember this count excludes citations of books and articles in edited volumes.) For a long time a striking difference between philosophy and nearby disciplines was the lack of these citations that largely served to place a paper in a literature. Their growth partially explains why citations are getting older; if an author cites the history of their sub-field, that will include some older articles.
+
+But why did this change happen? Part of the story is technology, as discussed in @sec-technology. It's now much easier to do this. But this can't be the whole story, since the practice was more widespread in other fields before some of these technologies came on board. Part of the story is the growth of specialisation. If you're writing a paper on content externalism in the 1990s, you don't need to include a citation trail going back to Kripke and Putnam. Everyone knows the history of these debates, and it doesn't need to be rehashed. Since then, it's become a little less clear that there is any field that all readers will know the history of, so there's more need for background.
+
+But a big part of the story, I'll argue, was the growth of interdisciplinary work in the 2000s. This can be seen in a lot of fields, including the rise of experimental philosophy, and the increasing empirical sophistication in philosophy of mind. I'm going to focus on one other aspect of this growth: the move of philosophy of language towards debates that were also active inside linguistics. Part of what we see in the 2000s is the adoption of citation norms from linguistics into philosophy of language. I'm not going to argue for this next bit in any detail, but the timeline is consistent with those norms spreading from philosophy of language to the rest of the discipline.
+
+I'm going to use two measures to look at the rise of interdisciplinary philosophy of language in the 2000s. (Both of these measures will be important in the next section too.)
+
+# Content Changes {#sec-content}
+
+Another part of the story is that the centre of gravity of philosophy publishing changes over the time period we're looking at. And it does so in a way that turns out to matter for which kinds of articles are cited.
+
+Through at least the early 2000s, analytic philosophy is in what @Sider2020 [2] calls the "modal era". One aspect of this era, one that Sider particularly highlights, is that questions about essence were equated with questions about necessity in a way that they weren't either before or after the era.^[It was usual, during this era, to take the necessity of origins thesis and the origin essentialism thesis to not just be mutually supporting, but to be literally identical. I don't think that identity claim would be widely endorsed either before 1970 or after 2010.] This should be taken as a symptom of the era, not the definition of it. What's really defining of the era was the way modality became central to disputes across the discipline.
+
+Consider, for example, what Frank @Jackson1998 called the 'location problem', i.e., the problem of how to locate in the world something that the philosopher thinks exists, and is not fundamental. Jackson argues that saying how to locate the non-fundamental in the fundamental is a compulsory question for anyone doing 'serious metaphysics', and the one and only answer to it will involve modality. As he says,
+
+> When does a putative feature of our world have a place in the account some serious metaphysics tells of what our world is like? I have already mentioned one answer: if the feature is entailed by the account told in the terms favoured by the metaphysics in question, it has a place in the account told in the favoured terms. This is hardly controversial considered as a sufficient condition, but, I will now argue, it is also a necessary condition: the one and only way of having a place in an account told in some set of preferred terms is by being entailed by that account—a view I will refer to as the entry by entailment thesis. [@Jackson1998 5]
+
+Now Jackson went on to say other things about entailment that were not widely endorsed. But at this early stage in the book, I think he was largely expressing conventional wisdom. In a review that disagrees with many parts of the book, Stephen @Yablo2000Jackson [20] says "Not many eyebrows will be raised by Jackson’s view that metaphysics is committed to 'entry by entailment' theses." That is, the quoted parts are not controversial, especially the one that Jackson flags as being ever so slightly more controversial.
+
+The idea that entailment, i.e., necessitation, had been central to understanding how the non-fundamental relates to the fundamental had been central to philosophy for many years by this point. (To be clear, Jackson isn't claiming great novelty at this point of his book; the big claim he's building towards is that the necessitation is a priori knowable.) We can see just how central it is by using a slightly different statistic to what I've used so far: grand-citations. 
+
+Say that the number of grand-citations an article *a* has is the number of triples ⟨*a*, *b*, *c*⟩ such that *c* cites *b* and *b* cites *a*. It's the sum of the number of citations of articles that cite *a*. If we look at grand-citations over time, they show David Lewis's centrality to the philosophy journals. Through 2021, six of the eight articles with the most grand-citations are by Lewis. If instead we look at particular times, we see the changing face of the journals. Grand-citations take some time to accrue, so I'll look at twenty year periods. In particular, for various years, I'll look at which articles published in the preceeding twenty years had the most grand-citations through that year.
+
+```{r}
+#| label: calculate-grand-cites
+#| cache: true
+
+# Grand cites at a time
+
+overall_grand_cites <- c()
+
+for (end_year in (199:202)*10){
+  temp_citation_count <- citation_tibble |>
+    filter(new_year <= end_year,
+           old_year >= end_year - 20) |>
+    group_by(old) |>
+    tally(name = "citations")
+  
+  temp_grand_cites <- citation_tibble |>
+    filter(new_year <= end_year,
+           old_year >= end_year - 20) |>
+    left_join(temp_citation_count,
+              by = c("new" = "old")) |>
+    replace_na(replace = list(citations = 0)) |>
+    group_by(old) |>
+    summarise(grand_cites = sum(citations)) |>
+    left_join(
+      select(
+        active_philo_bib,
+        old = id,
+        displayauth,
+        year,
+        title
+      ), by = "old"
+    ) |>
+    arrange(-grand_cites)
+  
+  temp_grand_cites_summary <- temp_grand_cites |>
+    slice(1:10) |>
+    left_join(
+      temp_citation_count,
+      by = "old"
+    ) |>
+    mutate(
+      Article = paste0(
+        displayauth,
+        " -@",
+        str_replace_all(old, ":",""),
+        " \"",
+        title,
+        "\""
+      )
+    ) |>
+    mutate(rank = row_number(),
+           as_of = end_year) |>
+    select(
+      `As Of` = as_of,
+      Rank = rank,
+      Article,
+      Citations = citations,
+      `Grand-Citations` = grand_cites
+    )
+  
+  overall_grand_cites <- overall_grand_cites |>
+    bind_rows(temp_grand_cites_summary)
+}
+
+```
+
+@tbl-grand-cite-2000 lists which articles, published from 1980 onwards, had the most grand-citations through 2000.
+
+```{r}
+#| label: tbl-grand-cite-2000
+#| tbl-cap: "The 10 articles from the 1980s and 1990s with the most grand-citations through 2000."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2000) |>
+    select(-`As Of`)
+)
+```
+
+I've included the names of the articles on this table to make vivid how central supervenience was to the literature at this time.^[The story of the relationship between twentieth century work on functions and twenty-first century work on mechanisms is interesting, but for another time.] Four of the articles here have the word 'supervenience' in the title! At the center of this literature stood Jaegwon Kim. The citation data I have somewhat _underestimates_ his influence, because people often cited his edited collection _Supervenience and Mind_ [@Kim1993], and those citations are usually not tracked by Web of Science.^[The most common explanation for a widely cited article to stop being cited is not that the focus of the literature moves away, but that the article is superseded by something else that author wrote.]
+
+When we move into the 2000s, the focus shifts dramatically, as we see in @tbl-grand-cite-2010.
+
+```{r}
+#| label: tbl-grand-cite-2010
+#| tbl-cap: "The 10 articles from the 1990s and 2000s with the most grand-citations through 2010."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2010) |>
+    select(-`As Of`)
+)
+```
+
+The biggest single topic over this time was contextualism in epistemology, with the big papers by @WOSA1996VY21200001 and @WOSA1995RC31600001 at the center of things. What I want to focus particularly on, though, is another DeRose paper on that list: "Epistemic Possibilities". It has fewer cites than any other paper there, but the fourth most grand-cites. The way this came about is revealing of changes in the discipline, and particularly in citation practices.
+
+DeRose's paper is an important early contribution to debates about epistemic modals that became very active in the 2000s. This activity was partially due to the intrinsic interest of the subject. But it was also due to the way that epistemic modals sit at the intersection of three enormous debates that were going on at the time. One was epistemic contextualism, which you can see the impact of in @tbl-grand-cite-2010. The second was about the nature of context-sensitivity in language, with work by @WOS000088616400001 at the center of it.^[I won't include the full table, but if you created a table like @tbl-grand-cite-2010 for the twenty years through 2015, Stanley and Szabó's paper would be on it.] And the third was about the possibility of a modern form of relativism, with the central figure here being John @MacFarlane2014. Papers on epistemic modals were influenced by, and in turn influenced, all three of these debates.^[For particularly notable examples, see the papers by Andy @WOS000088616400001, Seth @WOS000251545300007, and Tamina @WOS000255667800003.]
+
+These debates had an impact on how citations worked in philosophy in a few ways. One was in virtue of the fact that they were largely new topics, there wasn't an established canon that writers could assume familiarity with. So they needed to cite more papers to establish the debate. It wasn't necessary to cite @10.2307_2025079 or @Kripke1980 every time you wanted to distinguish necessity from a priority; the reader in the 1990s could be assumed to know where the distinction came from. But the reader in the 2000s could not be assumed to know about work by Fred @WOSA1970ZE33800001, G. C. @WOSA1976EK38300003, or Stewart @WOSA1987K730800002.
+
+Perhaps more significant was that these debates, especially the second and third, were much more interdisciplinary than debates about modality had been. Many of the writers were primarily in linguistics, not philosophy, and the philosophers were reading more linguistics than ever before. The citation norms in linguistics, like in most other social sciences, required more citations than the norms in philosophy did. They didn't require more citation than the philosophy norms in the 2020s, but much more than philosophy in the 1990s. So these debates, which became important across a range of journals from the mid 2000s onwards, tended to have many more citations than before.
+
+To back up the claims in the last two paragraphs I need one more statistic. (The last one I'll introduce in this essay!) This is a way of adjusting for age, period, and cohort effects all at once.^[I haven't used it above because using it doesn't help much in separating out the three effects.] For an article *a* published in year *y*, say that the **weight** of its citations in year *z* is the number of times it is cited in *z*, divided by the average number of citations that articles in year *y* get in *z*. So it's just the measure of how often the article is cited, compared to how often you'd expect it to be cited knowing just the publication year and citation year. We'll be interested in three statistics. The **overall weight** of an article is the average of its weight over each year between the year after its publication and 2024. The **short-term weight** is the average of its weight over the seven years after it was published. And the **long-term weight** is the average of its weight from eight years after publication to 2024. For individual articles, this measure is too noisy to be particularly meaningful. If we take the averages of all articles published in a year, the average weight at any time is, by definition, 1. So that's not much help either. But for medium sized classes of articles, the average weights can be interesting. In particular, looking at the average weights of articles which cite some particular prominent article are interesting.
+
+```{r}
+#| label: set-up-weight
+#| cache: TRUE
+
+weighted_citation_tibble <- citation_tibble |>
+  left_join(
+    select(
+      age_effect_tibble,
+      old_year,
+      new_year,
+      citations,
+      articles
+    ),
+    by = c("old_year", "new_year")
+  ) |>
+  mutate(weight = articles/citations) |>
+  mutate(age = new_year - old_year) |>
+  filter(age > 0, old_year <= 2015) |>
+  mutate(cite_type = case_when(
+    age >= 8 & age <= 300 ~ "long_weight",
+    age >= 1 & age <= 7 ~ "short_weight",
+    TRUE ~ "other")) |>
+  group_by(old, cite_type) |>
+  summarise(weight = sum(weight), .groups = "drop") |>
+  complete(old, cite_type, fill = list(weight = 0), explicit = FALSE) |>
+  pivot_wider(id_cols = old, names_from = cite_type, values_from = weight) |>
+  mutate(all_weight = short_weight + long_weight) |>
+  right_join(
+    select(
+      active_philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  filter(year <= 2010) |>
+  replace_na(replace = list(short_weight = 0, long_weight = 0, all_weight = 0)) |>
+  mutate(short_weight = round(short_weight / 7, 2)) |>
+  mutate(long_weight = round(long_weight / (2017 - year), 2)) |>
+  mutate(all_weight = round(all_weight / (2024 - year), 2))
+
+
+short_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$short_weight
+  )
+}
+
+all_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$all_weight
+  )
+}
+
+long_weight_of_citings <- function(article_id){
+  mean(
+    filter(
+      weighted_citation_tibble,
+      old %in% filter(
+        citation_tibble,
+        old == article_id
+      )$new
+    )$long_weight
+  )
+}
+
+most_cites_by_2015 <- citation_tibble |>
+  filter(new_year <= 2015) |>
+  group_by(old) |>
+  tally(name = "citations") |>
+  arrange(-citations) |>
+  filter(citations >= 40) |>
+  left_join(
+    select(
+      active_philo_bib,
+      old = id,
+      displayauth,
+      year,
+      title
+    ), by = "old"
+  ) |>
+  distinct(old, .keep_all = TRUE) |>
+  rowwise() |>
+  mutate(downstream_short = round(short_weight_of_citings(old), 2),
+         downstream_long  = round(long_weight_of_citings(old), 2),
+         downstream_all   = round(all_weight_of_citings(old), 2))|>
+  mutate(prod = downstream_short * downstream_long,
+         ratio = downstream_short/downstream_long)
+
+
+
+```
+
+This is a variant on grand-citations, and like grand-citations, it takes some time to 
+
+```{r}
+#| label: tbl-grand-cite-2020
+#| tbl-cap: "The 10 articles from the 1990s and 2000s with the most grand-citations through 2020."
+
+kable(
+  overall_grand_cites |>
+    filter(`As Of` == 2020) |>
+    select(-`As Of`)
+)
+```
+
+
+# Methodology {#sec-methodology}
+<!--
+As noted above, the study here is based on the Web of Science database, which my institution makes available with a subscription. That is, it lets members of the institution download the full database for research purposes. This is a rather large collection of files; after de-compression they come to over a terabyte. I selected records that were marked as _articles_ (as opposed to discussion notes, book reviews, editorial matters, and so on), and whose category was either Philosophy or History & Philosophy of Science. I then selected by hand the hundred journals with the most entries which were (a) primarily English language, (b) not primarily history of science and (c) broadly 'analytic' rather than 'continental'. These were somewhat subjective choices, but the result was a reasonable collection of the journals which are most important for telling the story of a certain kind of philosophy over the last several decades. The list of journals, as well as the dates covered by the index, is shown in @tbl-list-of-journals.
+
+```{r}
+#| label: tbl-list-of-journals
+#| tbl-cap: "The journals included in this study."
+
+require(knitr)
+temp <- active_philo_bib |>
+  filter(year >= start_year, year <= end_year) |>
+  filter(id != "gettier1963") |>
+  group_by(journal) |> 
+  summarise(Articles = n(), `First Year` = min(year), `Most Recent Year` = max(year)) |>
+  rename(Journal = journal)
+kable(temp)
+```
+
+The column 'First Year' is *not* the first year the journal published; it is the first year that Web of Science indexed the journal. This often makes a difference; because _Analysis_ isn't indexed before 1975, we don't get "Is Knowledge Justified True Belief?" [@Gettier1963], or much of the initial literature it generated. Still, we do have a lot of information to work with, as long as we're careful about the limitations. Similarly, the column 'Last Year' is not the last year the journal was published; thankfully most of these journals are still in operation. It's not even the last year that Web of Science has records for. For most of the journals, there were records for 2022, and even occasional records for 2023. But I stopped the study in 2021 because it was the last year we had something that felt close enough to a full year's data. 
+
+The database is supposed to tell you, for each indexed article, which things it cites. The reliability of this is mixed, especially with citations that are in footnotes rather than in a bibliography. And the data needs a huge amount of cleaning. Eugenio @Petrovich2024 did a similar study to this one focussing on five high profile journals, and his first step was a rather extensive bit of data cleaning.^[See section 4.2.4 of his book for more details on the challenges he faced.]
+
+That said, for one important class of citations the data seems fairly reliable (at least as far as I could check), and not in need of much cleaning. When the citation is to another article that Web of Science indexes, the database includes the internal reference number of the cited article. By simply filtering for references that have an internal reference of this kind, we can quickly get a fairly accurate record of when the articles in @tbl-list-of-journals cite other articles on the table.
+
+The upside of this approach, as opposed to the more thorough approach that Petrovich used, is that it makes it practical to study a hundred journals over sixty years. The downside is that it means we don't see citations to anything other than journal articles, and articles in these journals in particular. Obviously a full study of the citations in philosophy journals would want to pay some attention to citations of _Philosophical Investigations_, _A Theory of Justice_, _On the Plurality of Worlds_, and many many other books. This is not that 'full study'. Instead it's an attempt to analyse an important part of the citation data; a part that happens to be much easier to access.
+
+So for the most part the method used here is that I downloaded hundreds of XML files from Web of Science and ran some filters on them. This took a few hours – even modern computers struggle to analyse a terabyte's worth of information quickly – but it wasn't that sophisticated. There were only two other things I had to do to fix the data.
+
+The way Web of Science handles the 'supplements' to _Noûs_, i.e., _Philosophical Perspectives_ and _Philosophical Issues_, was a little uneven. Some years these are recorded as being their own thing, i.e., with a source name of _Philosophical Perspectives_ or _Philosophical Issues_; and some years they are recorded as special issues of _Noûs_. When they were listed as special issues, the citations were extremely unreliable. Some high profile articles are recorded as having no citations until several years after publication. The bibliographic information for the articles themselves was also spotty. So I've manually removed all records that were listed as special or supplementary issues of _Noûs_ (and similarly removed the citations to those article that did get tracked).
+
+The other big problem is that for several journals, 1974 is missing from the index. In a couple of cases, 1973 is also missing. And in one very important case, 1971 and 1972 are missing as well. That 'important case' is _The Journal of Philosophy_. Between 1971 and 1974 it published groundbreaking articles by Harry @Frankfurt1971, George @Boolos1971, Paul @Benacerraf1973, Jaegwon @Kim1973, Michael @Friedman1974, Isaac @Levi1974, and David Lewis [-@Lewis1971cen; -@Lewis1973ben]. This seemed like a break in the data that needed fixing if I was going to tell the story correctly. So I used JSTOR to find a full list of articles (as opposed to notes or book reviews) in _Journal of Philosophy_ in those years, and then looked through the citations in articles in @tbl-list-of-journals to see which citations were to one of those articles. This did mean I was using a different classification of publications into articles and non-articles, and there are some odd choices.^[Notably, the JSTOR list seemed to exclude the symposium centered around Kenneth Arrow's "Some Ordinalist-Utilitarian Notes on Rawls’s Theory of Justice"; I'm not sure why that was.] And it meant I had to do a fair bit of data cleaning just to track down references to those four years.^[A non-trivial chunk of the cleaning was sorting through the many and varied ways that philosophers have spelled Brian O'Shaughnessy's name over the years.] While I've strived to make the data as consistent as possible with the other years, it's possible that I haven't succeeded, and some discontinuities around the early 1970s are due to this discontinuity in how the data was acquired.
+
+After all that, we are left with `{r} nrow(article_years)` articles, from "Aristotle and the Sea Battle" [@Anscombe1956] to "Zooming Irresponsibly Down the Slippery Slope" [@Coren2021]. These articles collectively cite each other `{r} nrow(citation_tibble)` times.
+
+# Period Effects {#sec-period}
+
+Those  `{r} nrow(citation_tibble)` citations are not distributed evenly over time. Instead, they grow rapidly. At the start, in 1956, there are only `{r} filter(all_citations_per_year, new_year == 1956)$citations` citations. That's not too surprising; without the ability to cite preprints, there aren't going to be many citations of articles that have come out that year. By 2021, there are `{r} filter(all_citations_per_year, new_year == 2021)$citations`. In @fig-citationsperyear, I show how these grew; the striking thing to me is the big jump between 2020 and 2021.
+
+```{r}
+#| label: fig-citationsperyear-draft
+#| fig-cap: "The number of citations in the dataset made each year."
+
+all_citations_per_year_plot
+```
+
+What explains this dramatic growth? Part of the explanation is that more articles are being published, and more articles are being indexed. @fig-articlesperyear shows how many articles are in the dataset each year.
+
+```{r}
+#| label: fig-articlesperyear-draft
+#| fig-cap: "The number of articles in the dataset published each year."
+
+articles_per_year_plot
+```
+
+That explains some of the growth, but not all of it. The curve in @fig-articlesperyear is not nearly as steep as the curve in @fig-citationsperyear. The number of (indexed) citations per article is also rising. In @fig-outboundcitations I've plotted the average number of citations to other articles in the dataset each year.
+
+```{r}
+#| label: fig-outboundcitations-draft
+#| fig-cap: "The average number of citations to indexed articles each year."
+
+outbound_citations_plot
+```
+
+There are a few possible explanations for the shape of this graph.
+
+At the left-hand edge, there are obvious boundary effects. Since we're only counting citations to articles published since 1956, it isn't surprising that there aren't very many of them per article in the 1950s. Since articles rarely get unpublished, there are more articles available to cite every year.
+
+The next three explanations are a bit more speculative, and I've put them in increasing order of speculativeness.
+
+First, the most casual perusal of philosophy journals over time will tell you that the number of citations is increasing. It is now commonplace to have bibliographies several pages long. This was considerably less common a few decades ago. There are more citations to indexed philosophy journals in part because there are more citations.
+
+Second, it feels like the relative importance of _journals_, as opposed to books or edited volumes, in journal articles is growing. This study can't verify that, since I filtered out all citations to things other than journals. But the same kind of casual perusal that tells you three page bibliographies are more common than they used to be, also suggests that a greater percentage of those bibliographies consists of other journals.
+
+There is a third factor I'd like to study, but again this dataset won't help much with it. Antecedently, I'd have guessed that the rate of citation of _non_-philosophy journals was increasing. In particular, philosophers seem to spend a lot more time discussing results in psychology now than they used to do. If that were true, it would encourage generate a downwards slope in @fig-outboundcitations, which obviously isn't what we see at the end. But maybe the rate of citations to all journals is growing even more rapidly than the rate of citations to philosophy journals. That will be left as a study for another day.
+
+Although the number of citations is going up, the number of articles available to be cited is also going up. Say an article is _available_ if it is published in a year iff it is published in or before that year. That's not quite right in either direction; some articles are cited before publication, some articles that come out in December aren't in any real sense available to be cited in January. But it's close enough. Say an article is from a year that is _typically_ cited iff it is between 3 and 10 years before the citing year. This notion will play a big role in @sec-age; I'm going to use these as a way of getting something like a base rate for citations in a given year. Using these definitions, @fig-articlecounts shows how many articles are available to be cited each year, and are from years that are typically cited.
+
+```{r}
+#| label: fig-articlecounts-draft
+#| column: screen-inset
+#| fig-cap: "Article counts."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typically cited articles"
+#| layout-ncol: 2
+#| fig-column: screen-inset
+
+available_plot
+typical_plot
+```
+
+In @fig-citationcounts, I've shown how often, in each year, the available articles, and the 'typical' articles are cited. The 'available' graph is obviously similar to @fig-citationsperyear; under 1% of citations are to articles published in future years. One thing that will be useful in @sec-age is that the graphs in @fig-citationcounts have a similar shape.
+
+```{r}
+#| label: fig-citationcounts-draft
+#| column: screen-inset
+#| fig-cap: "Citation counts."
+#| fig-subcap: 
+#|   - "Citations to available articles"
+#|   - "Citations to typical articles"
+#| layout-ncol: 2
+#| fig-column: screen-inset
+
+available_citations_per_year_plot 
+typical_citations_per_year_plot
+```
+
+Putting all these together we can work out how often, on average, available articles, and typical articles, are cited in each year. The results are in @fig-citationrate.
+
+```{r}
+#| label: fig-citationrate-draft
+#| column: screen-inset
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "Available articles"
+#|   - "Typical articles"
+#| layout-ncol: 2
+
+
+available_citation_rate_per_year_plot 
+typical_citation_rate_per_year_plot 
+
+```
+
+Three things stand out about @fig-citationrate. One is that the two graphs have pretty similar shapes. Using citations from 3 to 10 years prior to the citing year is a pretty good proxy for all citations, and it turns out to be stable in other ways. A second is that both graphs are fairly flat for a long time. Between the mid 1970s and early 2000s they bounce around without moving much. Then they take off, and go through the roof in 2021. The other thing is that these are low numbers. For most of this study, an arbitrary article in one of these hundred journals was cited in one of those journals once a _decade_. Actually, since citation rates are extremely long-tailed, and mean rates are well above medians, that somewhat overstates how often the 'average article' was being cited. Frequent citation is very much not the norm.^[In the long run the average number of times an article is cited equals the average number of citations per article. So it shouldn't be too surprising that most article have just a handful of citations in philosophy journals.]
+
+The various period effects are substantial; to get an reliable picture of the trends in citation patterns, we're going to have to allow for them.
+
+# Age Effects {#sec-age}
+
+The size of the period effects would suggest that we can't work out age effects by simply taking averages over the whole dataset. Surprisingly, if we do use the simplest possible method of working out age effects, we get roughly the right result.
+
+Let's start with that simplest possible method. Say the _age_ of a citation is the time in years between the publication date of the citing article, and the publication date of the cited article. Then we can calculate the number of citations with each possible age. The result of that is shown in @fig-rawage.
+
+```{r}
+#| label: fig-rawage-draft
+#| fig-cap: "The age distribution of citations in the dataset."
+
+raw_age_plot
+```
+
+The picture in @fig-rawage is fairly intuitive. Articles rarely get cited before they are published.^[Though in "Naive Validity, Internalization, and Substructural Approaches To Paradox" [@Rosenblatt2017], there are three citations to then forthcoming papers in Synthese which eventually appeared in 2021, giving them an age of -4.] Then they take a little bit of time to get noticed, before hitting their peak citations between 2 and 5 years after publication. After that it's a rapid, and then a slow, decline. For the classic articles, citations never really stop; @Anscombe1956 is cited by @Izgin2020. But most articles reach the end of their citation life sooner or, occasionally, later.
+
+But the fact that @fig-rawage looks plausible shouldn't obscure the fact that this is a lousy methodology. Given how many of the citations are in the last few years, what this graph tells us is largely what citation practices with respect to age have been like in recent times. It could be that the overall picture is very different, once we look closely.
+
+As it turns out though, this is roughly the right picture. I'll show that with some graphs that are a bit more careful about adjusting for the period effect.
+
+The key notion is what I'm going to call the *citation ratio*. This is a function that takes two years, which I'll call _old_ and _new_, as input. Intuitively, it measures how often articles from _old_ are cited in _new_, normalised for how many articles are published in _old_, and what the citation practices are in _new_. More formally, it is the following ratio:
+
+- The numerator is how often the average article in _old_ is cited in _new_. So we search the articles published in _new_, count up the number of citations of articles published in _old_, and divide by the number of articles published in _old_.
+- The denominator is the rate a 'typical' article is cited in _new_. Remember that I'm defining, somewhat stipulatively, a typical article to be published between `{r} typical_low` and `{r} typical_high` years before _new_. So again we search the articles published in _new_, count the citations to articles published `{r} typical_low` to `{r} typical_high` years earlier, and divide by the number of articles originally published `{r} typical_low` to `{r} typical_high` years earlier.
+
+```{r}
+#| label: paramsforratioexample-draft
+
+#sample_old <- 1991
+#sample_new <- 1998
+sample_old <- 1985
+sample_new <- 1997
+
+num_of_num <- nrow(filter(citation_tibble, old_year == sample_old, new_year == sample_new))
+den_of_num <- nrow(filter(active_philo_bib, year == sample_old))
+num_of_den <- nrow(filter(citation_tibble, old_year >= sample_new - typical_high, old_year <= sample_new - typical_low, new_year == sample_new))
+den_of_den <- nrow(filter(active_philo_bib, year >= sample_new - typical_high, year <= sample_new - typical_low))
+num_of_cite <- num_of_num / den_of_num
+den_of_cite <- num_of_den / den_of_den
+overall_cite <- num_of_cite / den_of_cite
+```
+
+Let's illustrate this with an example, using `{r} sample_old` as _old_ and `{r} sample_new` as _new_. In `{r} sample_new`, indexed articles from `{r} sample_old` were cited `{r} num_of_num` times. There are `{r} den_of_num` articles published in `{r} sample_old` in the index, so the numerator for the citation ratio is `{r} num_of_num` / `{r} den_of_num`, i.e., about `{r} round(num_of_cite, 3)`. In the `{r} typical_low` to `{r} typical_high` years before `{r} sample_old`, there were `{r} den_of_den` indexed articles published. Those articles were, collectively, cited `{r} num_of_den` times in `{r} sample_new`. So the denominator, the average number of citations the typical article got in `{r} sample_new`, is `{r} num_of_den` / `{r} den_of_den`, i.e., about `{r} round(den_of_cite, 3)`. Putting those together, the citation ratio for `{r} sample_old` in `{r} sample_new` is (about) `{r} round(overall_cite,3)`. 
+
+In @fig-ageeffecttibble I've graphed this citation ratio for many pairs of years. In the graph, the individual graphs (the _facets_), are for each value of _old_, the x-axis is the value for _new_, and the y-axis is the citation ratio. Note that before `{r} start_year + typical_high`, we can't calculate the citation ratio because there isn't enough data to calculate the typical citation rate. So the y-axis starts at `{r} start_year + typical_high`. And for most years there are no dots on the left side of the graph, because I haven't calculated the citation ratio in years where _old_ is later than _new_; there are few enough of these cases that they are best left out.
+
+```{r}
+#| label: fig-ageeffecttibble-draft
+#| fig-cap: "Each facet shows the relative citation rate for articles published that year at different ages."
+#| fig-column: screen-inset
+
+age_effect_tibble_plot +
+    theme(
+        axis.text = element_text(family = "Scala Sans Pro", size = 8),
+        axis.title = element_text(family = "Scala Sans Pro", size = 5),
+        strip.text.x = element_text(family = "Scala Sans Pro", size = 8, margin = margin(0,0,0,0, "cm"))
+    )
+```
+
+There are several notable things about @fig-ageeffecttibble. The most important is that after some weird results in the early years, probably due to the small sample sizes, the graphs for each year look remarkably similar. The citation ratio takes a year or two to take off from zero, gets to its peak within two to four years after publication, and then declines. In earlier years, the rise and the fall are more rapid than in later years. This is actually a surprising result, and I'll come back in @sec-culture to why it might be. Still, it doesn't change that the shape of the curves is common enough to talk sensibly about an average curve. In @fig-ageeffecteverything, I've put most of the data from @fig-ageeffecttibble, with the x-axis now being age not the citing year, and the line showing the mean citation ratio by age. I say 'most' of the data because I didn't show the points for original publication years before 1975, where as you can see in the earlier graph, the data are much noisier with much smaller samples. But those years are used in the calculation of the average that's displayed.^[The graph also includes some 'jitter' to make the different points more easily visible. I've put each year of original publication in a different colour, with nearby years being in similar colours. But there are too many colours there to detect individual years, and we'll return to faceted graphs like @fig-ageeffecttibble when I want to highlight individual years.]
+
+```{r}
+#| label: fig-ageeffecteverything-draft
+#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall averrage shown."
+
+age_effect_everything_plot
+```
+
+The mean curve in @fig-ageeffecteverything is really similar to the unadjusted age curve in @fig-rawage. This is what I meant earlier by saying that after a lot of calculations, we'd get back to the same aging curve that we got from the simplest possibe measure.
+
+The calculations did have one really notable effect though. The unadjusted age numbers give us a sensible aging curve overall, but they give us an absurd aging curve for individual years. For most years in the dataset, the year they are most cited is not two to five years after initial publication; it is 2021. The point of the various adjustments in this section has been to make better sense of what's happening in individual years. 
+
+The result is the striking lack of outliers in @fig-ageeffecteverything. All the individual data points are fairly close to the mean. There is some deviation, and there would be much more if I included the earlier years where the data is much noisier. The deviation there is will be the focus of much of the rest of this paper. Still, it's notable how consistent the age curve is, once we use citation ratio to account for period effects.
+
+To end this section, I wanted to highlight two features of @fig-ageeffecttibble that are a little hard to see in the big graph. In @fig-peakratio, I've graphed the maximum value the citation ratio reaches for each year of initial publication. This is a bit misleading before `{r} start_year + typical_high`, because I don't have enough data to calculate citation ratios when the citing year is earlier than that, so it might have left off what would have been the high point. But from then on it's useful.
+
+```{r}
+#| label: fig-peakratio-draft
+#| fig-cap: "The maximum citation ratio in each facet in @fig-ageeffecttibble."
+
+max_ratio_finder
+```
+
+After the initial jump upwards, and the very high numbers in the mid-1960s, the trend is a decline. In @fig-peakratiotime I've graphed out which age those peaks are hit at, for different years of initial publication starting in `{r} start_year + typical_high - 2`. 
+
+```{r}
+#| label: fig-peakratiotime-draft
+#| fig-cap: "For each original publication year, the age it hits maximum citation ratio."
+
+age_at_max_ratio_plot
+```
+
+In @fig-peakratiotime, the graph is going slightly upwards. Putting these last two figures together, we get the claim I was gesturing at earlier: citation curves are getting flatter. The peaks are coming later, and they are lower.
+
+# Cohort Effects {#sec-cohort}
+
+So far we've seen how period effects and age effects between them can explain a lot of the trends we see in citation patterns. But there are systematic deviations from those patterns which remain. In @fig-fourdeviations, I've shown some of these. Each graph shows the citation ratio for articles published in a particular year, as compared to the average citation ratio at different ages.
+
+```{r}
+#| label: fig-fourdeviations-draft
+#| column: screen-inset
+#| fig-cap: "Mean annual citations to different article kinds."
+#| fig-subcap: 
+#|   - "1961"
+#|   - "1979"
+#|   - "1985"
+#|   - "2007"
+#| layout-ncol: 2
+
+year_to_mean_plot(1961)
+year_to_mean_plot(1979)
+year_to_mean_plot(1985)
+year_to_mean_plot(2007)
+```
+
+In 1961 and 1985, the yearly values are predominantly below the mean line. In 1979 and 2007, they are predominantly above it, though this isn't true for the first few years of the 2007 data. Note that the graphs have different lengths. Everything stops in `{r} end_year`. And the 1961 data is cut off a little on the left because we only start calculating citation ratios in `{r} start_year + typical_high`. That's why the line showing the mean is differently shaped that year.
+
+For each of year of original publication, we can calculate the mean difference between the citation ratio for that year, and the mean citation ratio for articles that age. That tells us how often articles published that year are cited, compared to how often you'd expect them to be cited knowing just the age and period effects. The results are in @fig-cohort.
+
+```{r}
+#| label: fig-cohort-draft
+#| fig-cap: "Cohort effects for different publication years."
+
+year_by_year_average_plot
+```
+
+A couple of quick technical notes on @fig-cohort. I've added a smoothed curve over the graph to help make some of the features of it stand out. And in calculating the mean, I only included years where we had at least five years worth of data to calculate the mean age effect. So that means I haven't included what happens to `{r} start_year` papers when they are cited after `{r} end_year - min_data`. There isn't nearly enough data to say what one would 'expect' the usual aging curve to be at those points.
+
+
+
+
+# Technical Explanations {#sec-technical}
+
+# Cultural Explanations {#sec-culture}
+
+# Substantive Explanations {#sec-substantive}
+
+# Conclusion {#sec-conclusion}
+
+-->
