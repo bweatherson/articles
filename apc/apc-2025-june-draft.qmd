@@ -718,11 +718,18 @@ synthese_2022 <- scales::label_comma()(
 
 Before looking at the data, here are two things I believed about philosophy citations. First, philosophers tend to cite very old papers. We still regularly teach a number of papers over half a century old in introductory classes; e.g., @WOSA1969Y444700002, @WOSA1971Y116900003, @WOSA1972Z066400001, and @10.2307_2025310. These aren't taught as history papers, but as early entries into the contemporary philosophical debate. While most papers aren't cited as much as these papers are, I thought the pattern that old papers keep being cited extended to their less famous counterparts. Second, the technological changes of the last quarter century meant that this practice was being slowly reversed. A series of technological innovations made it easier to cite newer and newer works. These innovations included the spread of email, the rise of preprint archives (e.g., arXiv, SSRN, PhilPapers), and eventually official preprints in things like EarlyView. So, I thought, citations should be getting younger, because the delay between publishing and getting widely known was removed.
 
-Both of these thoughts were wrong. 
+Both of these thoughts were wrong.
 
 On the first point, the generalisation I made from those famous papers was just wrong. Normal papers differ from famous papers not just in how often they are cited, but in the shape of their citations. The main evidence I'll use for this is something I'll call the _citation ratio_. The citation ratio of year _o_ in year _n_ is the mean number of citations, in year _n_, of articles published in year _o_, divided by the mean number of citations, in year _n_, of articles published in years _n_-10 to _n_-3. (I'll say much more about why I'm using this measure in what follows.) @fig-master-citation-ratio shows the average citation ratio for different _ages_, of citations, i.e., the number of years between _o_ and _n_.
 
+```{r}
+#| label: fig-master-citation-ratio
+#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall average shown."
 
+age_effect_everything_plot
+```
+
+Each dot 
 
 Historically, philosophy papers have tended, when they are citing other philosophy papers, to cite very recent ones. Classic papers are different from the bulk of papers not just in how often they are cited, but in the shape of their citations over time. But this tendency is diminishing, not increasing, over time. I'll offer much more evidence for these claims as we go along, but to make them plausible, I'll start with two simple graphs.
 
@@ -981,7 +988,7 @@ There are several notable things about @fig-ageeffecttibble-early and @fig-ageef
 
 ```{r}
 #| label: fig-ageeffecteverything
-#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall averrage shown."
+#| fig-cap: "Age effects from 1970 onwards on a single graph, with the overall average shown."
 
 age_effect_everything_plot
 ```
