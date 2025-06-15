@@ -1,0 +1,162 @@
+# Tibble for raw citation age
+
+raw_age_tibble <- citation_tibble |>
+  mutate(age = new_year - old_year) |>
+  group_by(age) |>
+  tally(name = "count")
+
+raw_age_plot <- raw_age_tibble |>
+  ggplot(aes(x = age, y = count)) +
+  geom_point(color = point_col) + # Using geom_line makes it not obvious how many points there are, because it is *so* straight
+  xlab('Age of citation') +
+  ylab('Number of citations')
+
+  # How many articles each year are never cited 
+
+list_of_cited_articles <- citation_tibble |> group_by(old) |> tally() |> arrange(old)
+
+never_cites <- active_philo_bib |>
+  arrange(id) |>
+  anti_join(list_of_cited_articles, by = c("id" = "old")) |>
+  group_by(year) |>
+  tally(name = "never_cited") |>
+  rename(old_year = year)
+
+never_cites_graph <- never_cites |>
+  ggplot(aes(x = old_year, y = never_cited)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) +
+  ylab("Number of uncited articles published each year.")
+
+never_cited_total <- sum(never_cites$never_cited)
+
+percent_uncited <- never_cites |>
+  left_join(articles_per_year, by = "old_year") |>
+  mutate(uncited_ratio = never_cited/articles)
+
+percent_uncited_plot <- percent_uncited |>
+  ggplot(aes(x = old_year, y = uncited_ratio)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) +
+  ylab("Proportion of uncited articles each year") +
+  ylim(c(0,1))
+
+# Plot how often articles are cited - final graph is log on both dimensions, and some jitter added
+
+article_times_cited <- citation_tibble |>
+  group_by(old) |>
+  tally(name = "citations")
+
+count_of_citations <- article_times_cited |>
+  ungroup() |>
+  group_by(citations) |>
+  tally(name = "number_of_articles")
+
+count_of_citations_plot <- count_of_citations |>
+  ggplot(aes(x = citations, y = number_of_articles)) +
+  xlab("Number of times cited") +
+  ylab("Number of articles") +
+  scale_x_log10() +
+  scale_y_log10() +
+  geom_jitter(height = 0.05, color = point_col)
+
+# Same for number of outbound citations in each article
+
+article_times_citing <- citation_tibble |>
+  group_by(new) |>
+  tally(name = "citations")
+
+count_of_citations_out <- article_times_citing |>
+  ungroup() |>
+  group_by(citations) |>
+  tally(name = "number_of_articles")
+
+count_of_citations_out_plot <- count_of_citations_out |>
+  ggplot(aes(x = citations, y = number_of_articles)) +
+  xlab("Number of outbound citations") +
+  ylab("Number of articles") +
+  scale_y_log10() +
+  geom_jitter(height = 0.05, color = point_col)
+
+max_ratio_finder <- age_effect_tibble |>
+  group_by(old_year) |>
+  summarise(maxrat = max(cite_ratio)) |>
+  ggplot(aes(x = old_year, y = maxrat)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) +
+  ylab("Maximum citation ratio") +
+  ylim(c(0, 3))
+
+age_at_max_ratio <- age_effect_tibble |>
+  group_by(old_year) |>
+  filter(cite_ratio == max(cite_ratio))
+
+age_at_max_ratio_plot <- age_at_max_ratio |>
+  filter(old_year <= 2016, old_year >= start_year + typical_high - 2) |>
+  ggplot(aes(x = old_year, y = age)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) + 
+  ylab("Age at maximum citation ratio") +
+  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
+
+# Function for finding Mode that I got from Stack Exchange
+# https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode
+
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+median_age_each_year <- citation_tibble |>
+  mutate(age = new_year - old_year) |>
+  group_by(new_year) |>
+  summarise(med_age = median(age),
+            mod_age = Mode(age))
+
+
+median_plot <- median_age_each_year |>
+  filter(new_year >= 1970) |>
+  ggplot(aes(x = new_year, y = med_age)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) + 
+  ylab("Median age of citations each year") +
+  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
+
+modal_plot <- median_age_each_year |>
+  filter(new_year >= 1970) |>
+  ggplot(aes(x = new_year, y = mod_age)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) + 
+  ylab("Modal age of citations each year") +
+  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
+
+age_effect_everything_plot <- age_effect_tibble_adj |>
+  filter(old_year >= 1975, old_year != 1973) |>
+  ggplot(aes(x = age, y = cite_ratio, color = as.factor(old_year))) +
+  geom_jitter(size = 0.5, alpha = 0.7) +
+  xlab("Age of cited articles") +
+  ylab("Citation ratio") +
+  geom_line(aes(x = age, y = mean_effect), color = point_col) +
+  geom_point(aes(x = age, y = mean_effect), color = point_col, size = 0.4) +
+  theme(legend.position = "none")
+
+age_effect_everything_plot_high <- age_effect_tibble_adj |>
+  filter(old_year >= 1975, old_year != 1973) |>
+  ggplot(aes(x = age, y = high_cite_ratio, color = as.factor(old_year))) +
+  geom_jitter(size = 0.5, alpha = 0.7) +
+  xlab("Age of cited articles") +
+  ylab("Citation ratio") +
+  geom_line(aes(x = age, y = high_mean_effect), color = point_col) +
+  geom_point(aes(x = age, y = high_mean_effect), color = point_col, size = 0.4) +
+  theme(legend.position = "none")
+
+age_effect_everything_plot_low <- age_effect_tibble_adj |>
+  filter(old_year >= 1975, old_year != 1973) |>
+  ggplot(aes(x = age, y = low_cite_ratio, color = as.factor(old_year))) +
+  geom_jitter(size = 0.5, alpha = 0.7) +
+  xlab("Age of cited articles") +
+  ylab("Citation ratio") +
+  geom_line(aes(x = age, y = low_mean_effect), color = point_col) +
+  geom_point(aes(x = age, y = low_mean_effect), color = point_col, size = 0.4) +
+  theme(legend.position = "none")
+

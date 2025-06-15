@@ -53,6 +53,10 @@ require(knitr)
 require(lsa)
 require(wesanderson)
 
+load("/Users/weath/Documents/citations-2025/philo_bib_through_2024.RData")
+load("/Users/weath/Documents/citations-2025/philo_cite_through_2024.RData")
+load("/Users/weath/Documents/articles/apc/active_journal_list.RData")
+
 if(knitr::is_latex_output()) {
   knitr::opts_chunk$set(dev = 'cairo_pdf')
 }
@@ -95,39 +99,6 @@ theme_update(axis.title = element_text(family = "EB Garamond", size = 11),
 #| label: buildgraphs
 #| cache: true
 
-load("/Users/weath/Documents/citations-2025/philo_bib_through_2024.RData")
-load("/Users/weath/Documents/citations-2025/philo_cite_through_2024.RData")
-load("/Users/weath/Documents/articles/apc/active_journal_list.RData")
-# # This is the summary data from OpenAlex
-# # We'll merge it to create a list of journals
-# #load("the_journals.RData")
-# 
-# cite_with_journals <- philo_cite |>
-#   left_join(
-#     select(
-#       philo_bib,
-#       refs = id,
-#       old_journal = journal
-#     ),
-#     by = "refs"
-#   ) |>
-#   group_by(old_journal) |>
-#   tally(name = "all_citations") |>
-#   arrange(
-#     desc(
-#       all_citations
-#     )
-#   ) |>
-#   left_join(the_journals, by =  c("old_journal" = "Journal")) |>
-#   filter(all_citations > 10000 | (Articles > 60 & all_citations > 1000)) |>
-#   filter(old_journal != "American Philosophical Quarterly",
-#          old_journal != "Journal of Medical Ethics",
-#          old_journal != "Philosophy & Public Affairs",
-#          old_journal != "Journal of Consciousness Studies")
-# 
-# active_journal_list <- slice(cite_with_journals, 1:50)$old_journal
-# save(active_journal_list, file = "active_journal_list.RData")
-
 start_year <- 1955
 end_year <- 2024
 min_data <- 5
@@ -154,16 +125,15 @@ active_philo_cite <- philo_cite_through_2024 |>
     refs %in% active_philo_bib$id
   )
 
-article_years <- active_philo_bib |>
-  as_tibble() |>
-  select(id, year)
-
 citation_tibble <- active_philo_cite |>
   as_tibble() |>
   rename(new = id, old = refs) |>
-  left_join(article_years, by = c("old" = "id")) |>
+  left_join(active_philo_bib |>
+            select(id, year), 
+            by = c("old" = "id")) |>
   rename(old_year = year)  |>
-  left_join(article_years, by = c("new" = "id")) |>
+  left_join(active_philo_bib |>
+            select(id, year), by = c("new" = "id")) |>
   rename(new_year = year) |>
   filter(old_year >= start_year,
          new_year <= end_year,
@@ -184,7 +154,6 @@ highly_cited_per_year <- active_philo_bib |>
   filter(id %in% highly_cited$id) |>
   group_by(year) |>
   tally(name = "high_articles") 
-
 
 # Now a tibble of how many times articles in year x are cited in year y
 
@@ -213,27 +182,6 @@ citations_in_typical_year <- year_in_year_out |>
   group_by(new_year) |>
   summarise(typical_citations = sum(citations)) 
 
-# This works out how many citations there are each year to non-negative age articles
-
-citations_in_available_year <- year_in_year_out |>
-  mutate(age = new_year - old_year) |>
-  filter(age >= 0) |>
-  group_by(new_year) |>
-  summarise(available_citations = sum(citations)) 
-
-# Tibble for raw citation age
-
-raw_age_tibble <- citation_tibble |>
-  mutate(age = new_year - old_year) |>
-  group_by(age) |>
-  tally(name = "count")
-
-raw_age_plot <- raw_age_tibble |>
-  ggplot(aes(x = age, y = count)) +
-  geom_point(color = point_col) + # Using geom_line makes it not obvious how many points there are, because it is *so* straight
-  xlab('Age of citation') +
-  ylab('Number of citations')
-
 # I'm going to count the 'typical' articles as those published between 3 and 10 years before the citing year
 # The 'available' articles are those published before the time
 
@@ -255,12 +203,6 @@ articles_per_year_plot <- articles_per_year |>
   xlab(element_blank()) +
   ylab("Number of indexed articles")
 
-available_plot <- articles_per_year |>
-  ggplot(aes(x = old_year, y = available)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Number of available indexed articles")
-
 typical_plot <- articles_per_year |>
   ggplot(aes(x = old_year, y = typical_articles)) +
   geom_point(color = point_col) +
@@ -278,17 +220,6 @@ all_citations_per_year_plot <- all_citations_per_year |>
   geom_point(color = point_col) +
   xlab(element_blank()) +
   ylab("Citations to indexed articles")
-
-available_citations_per_year <- citation_tibble |>
-  filter(new_year >= old_year) |>
-  group_by(new_year) |>
-  tally(name = "citations") 
-
-available_citations_per_year_plot <- available_citations_per_year |>
-  ggplot(aes(x = new_year, y = citations)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Citations to available indexed articles")
 
 typical_citations_per_year <- citation_tibble |>
   filter(new_year >= old_year + typical_low, new_year <= old_year + typical_high) |>
@@ -345,73 +276,6 @@ typical_citation_rate_per_year_plot <- typical_citation_rate_per_year |>
   xlab(element_blank()) +
   ylab("Annual citation rate of typical articles.")
 
-# How many articles each year are never cited 
-
-list_of_cited_articles <- citation_tibble |> group_by(old) |> tally() |> arrange(old)
-
-never_cites <- active_philo_bib |>
-  arrange(id) |>
-  anti_join(list_of_cited_articles, by = c("id" = "old")) |>
-  group_by(year) |>
-  tally(name = "never_cited") |>
-  rename(old_year = year)
-
-never_cites_graph <- never_cites |>
-  ggplot(aes(x = old_year, y = never_cited)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Number of uncited articles published each year.")
-
-never_cited_total <- sum(never_cites$never_cited)
-
-percent_uncited <- never_cites |>
-  left_join(articles_per_year, by = "old_year") |>
-  mutate(uncited_ratio = never_cited/articles)
-
-percent_uncited_plot <- percent_uncited |>
-  ggplot(aes(x = old_year, y = uncited_ratio)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Proportion of uncited articles each year") +
-  ylim(c(0,1))
-
-# Plot how often articles are cited - final graph is log on both dimensions, and some jitter added
-
-article_times_cited <- citation_tibble |>
-  group_by(old) |>
-  tally(name = "citations")
-
-count_of_citations <- article_times_cited |>
-  ungroup() |>
-  group_by(citations) |>
-  tally(name = "number_of_articles")
-
-count_of_citations_plot <- count_of_citations |>
-  ggplot(aes(x = citations, y = number_of_articles)) +
-  xlab("Number of times cited") +
-  ylab("Number of articles") +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_jitter(height = 0.05, color = point_col)
-
-# Same for number of outbound citations in each article
-
-article_times_citing <- citation_tibble |>
-  group_by(new) |>
-  tally(name = "citations")
-
-count_of_citations_out <- article_times_citing |>
-  ungroup() |>
-  group_by(citations) |>
-  tally(name = "number_of_articles")
-
-count_of_citations_out_plot <- count_of_citations_out |>
-  ggplot(aes(x = citations, y = number_of_articles)) +
-  xlab("Number of outbound citations") +
-  ylab("Number of articles") +
-  scale_y_log10() +
-  geom_jitter(height = 0.05, color = point_col)
-
 # All citations to typical articles in a year
 ct_all <- citation_tibble |>
   filter(new_year >= old_year + typical_low, new_year <= old_year + typical_high) |>
@@ -451,58 +315,6 @@ age_effect_tibble_plot <- age_effect_tibble |>
   theme(axis.text = element_text(size = 10),
         strip.text = element_text(size = 12))
 
-max_ratio_finder <- age_effect_tibble |>
-  group_by(old_year) |>
-  summarise(maxrat = max(cite_ratio)) |>
-  ggplot(aes(x = old_year, y = maxrat)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Maximum citation ratio") +
-  ylim(c(0, 3))
-
-age_at_max_ratio <- age_effect_tibble |>
-  group_by(old_year) |>
-  filter(cite_ratio == max(cite_ratio))
-
-age_at_max_ratio_plot <- age_at_max_ratio |>
-  filter(old_year <= 2016, old_year >= start_year + typical_high - 2) |>
-  ggplot(aes(x = old_year, y = age)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) + 
-  ylab("Age at maximum citation ratio") +
-  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
-
-# Function for finding Mode that I got from Stack Exchange
-# https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode
-
-Mode <- function(x) {
-  ux <- unique(x)
-  ux[which.max(tabulate(match(x, ux)))]
-}
-
-median_age_each_year <- citation_tibble |>
-  mutate(age = new_year - old_year) |>
-  group_by(new_year) |>
-  summarise(med_age = median(age),
-            mod_age = Mode(age))
-
-
-median_plot <- median_age_each_year |>
-  filter(new_year >= 1970) |>
-  ggplot(aes(x = new_year, y = med_age)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) + 
-  ylab("Median age of citations each year") +
-  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
-
-modal_plot <- median_age_each_year |>
-  filter(new_year >= 1970) |>
-  ggplot(aes(x = new_year, y = mod_age)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) + 
-  ylab("Modal age of citations each year") +
-  scale_y_continuous(limits = c(0, 14), breaks = 1:4 * 4)
-
 age_effect_grouped <- age_effect_tibble |>
   filter(new_year >= old_year) |>
   filter(new_year <= old_year + end_year - start_year + 1 - min_data) |>
@@ -522,45 +334,6 @@ age_effect_grouped_plot <- age_effect_grouped |>
   geom_point() +
   xlab("Article age") +
   ylab("Mean citation ratio")
-
-age_effect_everything_plot <- age_effect_tibble_adj |>
-  filter(old_year >= 1975, old_year != 1973) |>
-  ggplot(aes(x = age, y = cite_ratio, color = as.factor(old_year))) +
-  geom_jitter(size = 0.5, alpha = 0.7) +
-  # geom_jitter(aes(size=(old_year==2008 | old_year == 1985), shape = (old_year==2008)), alpha = 1) +
-  #  geom_jitter(aes(size=(old_year %in% c(1978, 1980, 1985, 1987)), alpha = 1)) +
-  # scale_size_manual(values=c(0.3,2)) +
-  xlab("Age of cited articles") +
-  ylab("Citation ratio") +
-  geom_line(aes(x = age, y = mean_effect), color = point_col) +
-  geom_point(aes(x = age, y = mean_effect), color = point_col, size = 0.4) +
-  theme(legend.position = "none")
-
-age_effect_everything_plot_high <- age_effect_tibble_adj |>
-  filter(old_year >= 1975, old_year != 1973) |>
-  ggplot(aes(x = age, y = high_cite_ratio, color = as.factor(old_year))) +
-  geom_jitter(size = 0.5, alpha = 0.7) +
-  # geom_jitter(aes(size=(old_year==2008 | old_year == 1985), shape = (old_year==2008)), alpha = 1) +
-  #  geom_jitter(aes(size=(old_year %in% c(1978, 1980, 1985, 1987)), alpha = 1)) +
-  # scale_size_manual(values=c(0.3,2)) +
-  xlab("Age of cited articles") +
-  ylab("Citation ratio") +
-  geom_line(aes(x = age, y = high_mean_effect), color = point_col) +
-  geom_point(aes(x = age, y = high_mean_effect), color = point_col, size = 0.4) +
-  theme(legend.position = "none")
-
-age_effect_everything_plot_low <- age_effect_tibble_adj |>
-  filter(old_year >= 1975, old_year != 1973) |>
-  ggplot(aes(x = age, y = low_cite_ratio, color = as.factor(old_year))) +
-  geom_jitter(size = 0.5, alpha = 0.7) +
-  # geom_jitter(aes(size=(old_year==2008 | old_year == 1985), shape = (old_year==2008)), alpha = 1) +
-  #  geom_jitter(aes(size=(old_year %in% c(1978, 1980, 1985, 1987)), alpha = 1)) +
-  # scale_size_manual(values=c(0.3,2)) +
-  xlab("Age of cited articles") +
-  ylab("Citation ratio") +
-  geom_line(aes(x = age, y = low_mean_effect), color = point_col) +
-  geom_point(aes(x = age, y = low_mean_effect), color = point_col, size = 0.4) +
-  theme(legend.position = "none")
 
 year_by_year_with_effect <- year_in_year_out |>
   filter(new_year >= old_year) |>
