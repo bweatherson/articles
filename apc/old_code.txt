@@ -160,3 +160,14 @@ age_effect_everything_plot_low <- age_effect_tibble_adj |>
   geom_point(aes(x = age, y = low_mean_effect), color = point_col, size = 0.4) +
   theme(legend.position = "none")
 
+available_citation_rate_per_year <- available_citations_per_year |>
+  left_join(articles_per_year, by = c("new_year" = "old_year")) |>
+  #filter(new_year >= start_year + typical_high) |>
+  left_join(citations_in_available_year, by = "new_year") |>
+  mutate(mean_cites = available_citations/available)
+
+available_citation_rate_per_year_plot <- available_citation_rate_per_year |>
+  ggplot(aes(x = new_year, y = mean_cites)) +
+  geom_point(color = point_col) +
+  xlab(element_blank()) +
+  ylab("Annual citation rate of available articles.")

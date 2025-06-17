@@ -1,0 +1,52 @@
+# Appendix: Summary Statistics {#sec-statistics}
+
+The paper uses the journals shown in @apptbl-statistics.
+
+```{r}
+#| label: tbl-statistics
+#| tbl-cap: "Journals used in this paper"
+
+journal_summary <- active_philo_bib %>%
+  group_by(journal) %>%
+  summarise(
+    earliest_year = min(year, na.rm = TRUE),
+    latest_year = max(year, na.rm = TRUE),
+    n_articles = n()
+  )
+
+# Outbound citations: join articles to their journal, count refs per journal
+outbound_cites <- active_philo_cite %>%
+  left_join(active_philo_bib %>% select(id, journal), by = "id") %>%
+  group_by(journal) %>%
+  summarise(outbound_citations = n())
+
+# Inbound citations: join refs to their journal, count refs per journal
+inbound_cites <- active_philo_cite %>%
+  left_join(active_philo_bib %>% select(id, journal), by = c("refs" = "id")) %>%
+  group_by(journal) %>%
+  summarise(inbound_citations = n())
+
+# Combine all summaries
+journal_summary <- journal_summary %>%
+  left_join(outbound_cites, by = "journal") %>%
+  left_join(inbound_cites, by = "journal") %>%
+  replace_na(list(outbound_citations = 0, inbound_citations = 0)) |>
+  rename(
+    Journal = journal,
+    `First Year` = earliest_year,
+    `Last Year` = latest_year,
+    `Articles` = n_articles,
+    `Inbound Citations` = inbound_citations,
+    `Outbound Citations` = outbound_citations
+  )
+
+kable(journal_summary)
+```
+
+What I've called an _article_ here is anything that either (a) marked as an article or research-article by WoS, or (b) marked as a review, discussion, or note by WoS and is at least 15 pages long. I needed to include (b) because some very important works (e.g., @WOSA1963CEU0700001 and @WOS000272855000002) were not recorded as articles by WoS.
+
+The years here are **not** the first and last years that the journals published, but the earliest and latest years that are in the WoS index (as of the time I pulled the data). As mentioned in the main text, this makes a big difference for some journals, especially _Analysis_.
+
+The way WoS handles the 'supplements' to _Noûs_, i.e., _Philosophical Perspectives_ and _Philosophical Issues_, is a little uneven. Some years these are recorded as being their own thing, i.e., with a source name of _Philosophical Perspectives_ or _Philosophical Issues_; and some years they are recorded as special issues of _Noûs_. When they were listed as special issues, the citations were extremely unreliable. Some high profile articles are recorded as having no citations until several years after publication. The bibliographic information for the articles themselves was also spotty. So I've manually removed all records that were listed as special or supplementary issues of _Noûs_ (and similarly removed the citations to those articles that did get tracked). What you see here are just the standalone issues of _Philosophical Perspectives_.
+
+

@@ -11,6 +11,13 @@ bibliography:
  - /Users/weath/Documents/citations-2025/cslbib.yaml
 number-sections: true
 keep-tex: true
+crossref:
+  custom:
+    - kind: float
+      key: apptbl
+      latex-env: apptbl
+      reference-prefix: Table A
+      space-before-numbering: false
 author:
   - name: Anon
 format:
@@ -99,7 +106,7 @@ theme_update(axis.title = element_text(family = "EB Garamond", size = 11),
 #| label: buildgraphs
 #| cache: true
 
-start_year <- 1955
+start_year <- 1956
 end_year <- 2024
 min_data <- 5
 
@@ -251,18 +258,6 @@ outbound_citations_plot <- outbound_citations |>
   ylab("Outbound citations per indexed articles")
 
 # Citations per typical article
-
-available_citation_rate_per_year <- available_citations_per_year |>
-  left_join(articles_per_year, by = c("new_year" = "old_year")) |>
-  #filter(new_year >= start_year + typical_high) |>
-  left_join(citations_in_available_year, by = "new_year") |>
-  mutate(mean_cites = available_citations/available)
-
-available_citation_rate_per_year_plot <- available_citation_rate_per_year |>
-  ggplot(aes(x = new_year, y = mean_cites)) +
-  geom_point(color = point_col) +
-  xlab(element_blank()) +
-  ylab("Annual citation rate of available articles.")
 
 typical_citation_rate_per_year <- typical_citations_per_year |>
   left_join(articles_per_year, by = c("new_year" = "old_year")) |>
@@ -625,3 +620,33 @@ The rest of this paper has two aims.
 First, I'm going to set out the methodology behind these graphs, go over the choices I made in building them, and argue that these were at least defensible choices. The intended conclusion is that these graphs really show what I say they do, that traditionally citations were mostly to very recent articles, but they are now more frequently to older articles. 
 
 Second, I'm going to look citations from various years, after adjusting for these typical citation rates, and see which years have been more influential in the later literature. I suspect readers will not be surprised that the early 1970s stand out as being particularly influential. What might be more surprising is that the next most influential period, in terms of how often articles from then are cited compared to the overall trends, is the 2000s. There are a few possible reasons for this, but I suspect the main one is the rising importance at that time of epistemology. (This is something Eugenio @Petrovich2024 also found using a somewhat different data set.) More generally, looking at citations from different periods, and especially looking at which articles make up those citations, is a useful guide to the history of those periods. Most work on the history of analytic philosophy doesn't get beyond the early 1970s; this is an early attempt to quantify what happens in the years after the changes brought about by Kripke, Lewis, Rawls and others in those years.
+
+# Age of Citations {#sec-age}
+
+## Methodology {#sec-methodology}
+
+The data for this study comes from Web of Science (hereafter, WoS). In this section I'll go over which data I chose to use, and how I patched it together.
+
+The bulk of the data comes from the XML files that WoS makes available to subscribing institutions. Until recently, that included my own, so that's where most of the data through 2021 comes from. That subscription has not been renewed, so the data since 2021 comes from the WoS API.^[This is also via a susbcription through my institution; the XML is more expensive.]
+
+The XML file is rather large. After de-compression it's over a terabyte. To make it manageable, I filtered down to _articles_ (as opposed to discussion notes, book reviews, editorial matters, and so on), and whose category was either Philosophy or History & Philosophy of Science. I then selected by hand the hundred journals with the most inbound citations (among articles in these categories) which were (a) primarily English language, (b) not primarily history of science and (c) broadly 'analytic' rather than 'continental'. These were somewhat subjective choices, but the result was a reasonable collection of the journals which are most important for telling the story of a certain kind of philosophy over the last several decades.
+
+The list of journals being used, as well as some basic statistical information about them, is in @sec-statistics. Once I had those journals, I included all articles (and notes/reviews over 15 pages) from them. I did not restrict the study to pieces that were labelled as Philosophy or History & Philosophy of Science. For interdisciplinary journals, especially _Mind and Language_, those labels seemed very unreliable on a paper-by-paper basis, and I preferred to have a full picture of each journal I was using.
+
+The data from the XML was supplemented in two ways. First, WoS does not index _The Journal of Philosophy_ between 1971 and 1974. It is missing a few other journals in 1974 in particular, but this gap was the longest and most important, and I thought I needed to fix it.
+
+Between 1971 and 1974 the Journal published groundbreaking articles by Harry @Frankfurt1971, George @Boolos1971, Paul @Benacerraf1973, Jaegwon @Kim1973, Michael @Friedman1974, Isaac @Levi1974, and David Lewis [-@Lewis1971cen; -@Lewis1973ben]. Leaving all of those papers out seemed like it undermined the story. So I used JSTOR to find a full list of articles (as opposed to notes or book reviews) in _Journal of Philosophy_ in those years, and then looked through the citations in articles in @tbl-list-of-journals to see which citations were to one of those articles. This did mean I was using a different classification of publications into articles and non-articles, and there are some odd choices.^[Notably, the JSTOR list seemed to exclude the symposium centered around Kenneth Arrow's "Some Ordinalist-Utilitarian Notes on Rawls’s Theory of Justice"; I'm not sure why that was.] And it meant I had to do a fair bit of data cleaning just to track down references to those four years.^[A non-trivial chunk of the cleaning was sorting through the many and varied ways that philosophers have spelled Brian O'Shaughnessy's name over the years.] While I've strived to make the data as consistent as possible with the other years, it's possible that I haven't succeeded, and some discontinuities around the early 1970s are due to this discontinuity in how the data was acquired.
+
+The tables in @sec-introduction start in 1975 in part because I'm concerned about the consistency of the data that had to be complied in two different ways, but largely because WoS only starts indexing _Analysis_ in 1975. Without _Analysis_, and especially without the papers on the analysis of knowledge and on inferentialism, you don't get a particularly complete picture of how citations work in those years. I've included 1956-1974 in some of the studies below, but the data presented there is much less complete, and hence they aren't as useful for figuring out larger trends.
+
+The other way I supplemented the XML relates to the fact that the XML I have only goes through mid-2022. Using the WoS website, I downloaded all the articles in, and citations in, articles in these 100 journals from 2021-2024. I processed these using the bibliometrix package (@bibliometrix). I used the 2021 data to check that this method yielded roughly the same results as the XML. The differences were not great - well under 1% for the number of articles, and a little over 1% for the number of citations. So it's not a perfect match, but it's fairly close. The data used in this study for 2022-2024 comes from the website via bibliometrix.
+
+
+
+
+
+{{< include _appendix.qmd >}}
+
+:::{.content-visible unless-format="html"}
+## References {-}
+:::
