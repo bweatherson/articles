@@ -1,6 +1,6 @@
 # Appendix: Summary Statistics {#sec-statistics}
 
-The paper uses the journals shown in @apptbl-statistics.
+The paper uses the journals shown in @tbl-statistics.
 
 ```{r}
 #| label: tbl-statistics
