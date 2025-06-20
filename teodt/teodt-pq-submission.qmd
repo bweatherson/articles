@@ -1,0 +1,484 @@
+---
+title: "The End of Decision Theory"
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+abstract: What question are decision theorists trying to answer, and why is it worth trying to answer it? A lot of philosophers talk as if the aim of decision theory is to describe how we should make decisions, and the reason to do this is to help us make better decisions. I disagree on both fronts. The aim of the decision theory is to describe how a certain kind of idealised decider does in fact decide. And the reason to do this is that this idealisation, like many other idealisations, helps generate explanations of real-world behaviour. We shouldn't do what these ideal deciders do, or try to be more like them, because a lot of what they do only makes sense because of the differences between us and them. Still, sometimes those differences are small enough that they can be ignored in explanations, and that's when decision theory is useful.
+number-sections: true
+author: Anon
+format:
+    html: default
+    docx:
+      reference-doc: my-template.docx
+    pdf: 
+      classoption: twoside
+      geometry: "left=1.2in,
+                 right=1.2in,
+                 top=1.2in,
+                 bottom=1.2in,
+                 paperheight=11.69in,
+                 paperwidth=8.27in,
+                 includemp=TRUE,
+                 marginparwidth=0in,
+                 marginparsep=0in"
+      mathspec: false
+      mathfont: Garamond-Math
+      mainfont: EB Garamond Math
+      sansfont: Europa-Bold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond Bold
+      fontsize: 12pt
+      indent: true
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.7
+      link-citations: true
+      keep-tex: true
+      pdf-engine: xelatex
+      date-format: "YYYY"
+      output-file: "The End of Decision Theory - Philosophical Quarterly"
+      include-in-header:
+        - file: quarto2024.tex
+        - text: |
+            \setlength\heavyrulewidth{0ex}
+            \setlength\lightrulewidth{0ex}
+---
+
+# What is Decision Theory a Theory Of?
+
+If you're reading a paper like this, you're probably familiar with seeing papers defending this or that decision theory.^[Word count. Body text plus footnotes: 5692; Abstract: 150; References: 538.] Familiar decision theories include:
+
+- Causal Decision Theory [@GibbardHarper1978; @Lewis1981b; @Skyrms1990; @Joyce1999];
+- Evidential Decision Theory [@Ahmed2014];
+- Benchmark theory [@Wedgwood2013a];
+- Risk-Weighted theory [@BuchakRisk];
+- Tournament Decision Theory [@Podgorski2022]; and
+- Functional Decision Theory [@LevinsteinSoares2020]
+
+Other theories haven't had snappy 'isms' applied to them, such as the non-standard version of Causal Decision Theory that Dmitri @Gallow2020 defends, or the pluralist decision theory that Jack @Spencer2021 defends, or the broadly ratificationist theory that Melissa @Fusco2024 defends.
+
+This paper isn't going to take sides between these nine or more theories.^[The arguments here are intended to support a theory like Fusco's, but in a fairly roundabout way, but the connection between what I say here and Fusco's theory would take a paper as long as this one to set out.] Rather it is going to ask a prior pair of questions.
+
+1. If these are the possible answers, what is the question? That is, what is the question to which decision theories are possible answers?
+2. Why is that an interesting question? What do we gain by answering it?
+
+On 1, I will argue that decision theories are answers to a question about what an ideal decider would do. The 'ideal' here is like the 'ideal' in a scientific idealisation, not the ideal in something like an ideal advisor moral theory. That is, the ideal decider is an idealisation in the sense of being simple, not in the sense of being perfect. The ideal decision maker is ideal in the same way that the point-masses in the ideal gas model are ideal; they are (relatively) simple to work with. The main opponent I have in mind is someone who says that in some sense decision theory tells us what decisions we should make.
+
+On 2, I will argue that the point of asking this question is that these idealisations play important roles in explanatorily useful models of social interactions, such as the model of the used car market that George @Akerlof1970 described. Here, the main opponent I have in mind is someone who says that decision theory is useful because it helps us make better decisions.
+
+There is another pair of answers to this question which is interesting, but which I won't have a lot to say about here. David Lewis held that "central question of decision theory is: which choices are the ones that serve one’s desires according to one's beliefs?" [@Lewis-Gorman-19041989 472]. That's not far from the view I have, though I'd say it's according to one's evidence. But I differ a bit more from Lewis as to the point of this activity. For him, a central role for decision theory is supplying a theory of constitutive rationality to an account of mental content [@Lewis1994b 321-2]. I think the resulting theory is too idealised to help there, and that's before we get to questions about whether we should accept the approach to mental content that requires constitutive rationality. That said, the view I'm defending is going to be in many ways like Lewis's: the big task of decision theory is describing an idealised system, not yet recommending it.
+
+The nine theories I mentioned above disagree about a lot of things. In philosophy we typically spend our time looking at cases where theories agree. Not here! I will focus almost exclusively on two cases where those nine theories all say the same thing. I'll assume that whatever question they are asking, the correct answer to it in those two cases must agree with all nine theories. That will be enough to defend the view I want to defend, which is that a decision theory is correct iff is true in the right kind of idealisation.
+
+The resulting theory has a lot in common with the view that Joe Roussos has defended about ethics (@Roussos2022) and, especially, formal epistemology (@Roussos2025). He says that we should think of philosophical work in these areas as modeling rather than theorizing. I agree. If decision theory is a theory of anything, it's a theory of how some very strange creatures behave. Why we care about those creatures is rather unclear. If it is a model of how humans behave when certain constraints are not significant, then it is clear what we are doing. I'm calling this idealisation rather than modeling, but this is as much a terminological difference as anything else; I agree with Roussos's main claims. If anything, I think the case for a view like his is even stronger in decision theory than in ethics or formal epistemology, and the point of this paper is to make that case.
+
+# Two Cases
+
+## Betting
+
+Chooser has \$110, and is in a sports betting shop. There is a basketball game about to start, between two teams they know to be equally matched. Chooser has three options: bet the \$110 on Home, bet it on Away, keep money. If they bet and are right, they win \$100 (plus get the money back they bet), if they are wrong, they lose the money. Given standard assumptions about how much Chooser likes money, all the decision theories I'm discussing say Chooser should not bet.
+
+From this it follows that decision theory is not in the business of answering this question: *What action will produce the best outcome?*. We know, and so does Chooser, that the action that produces the best outcome is to bet on the winning team. Keeping their money in their pocket is the only action they know will be sub-optimal. And it's what decision theory says to do.
+
+This is to say, decision theory is not axiology. It's not a theory of evaluating outcomes, and saying which is best. Axiology is a very important part of philosophy, but it's not what decision theorists are up to.
+
+So far this will probably strike you, dear reader, as obvious. But there's another step, that I think will strike some people as nearly as obvious, that I'm at pains to resist. Some might say that decision theorists don't tell Chooser to bet on the winner because this is lousy advice. Chooser can't bet on the winner, at least not as such. That, I'll argue, would be a misstep. Decision theorists do not restrict themselves to answers that can be practically carried out.
+
+## Salesman
+
+We'll focus on a version of what Julia @Robinson1949 called the travelling salesman problem.^[For a thorough history of the problem, see @Schrijver2005. For an accessible history of the problem, which includes these references, see the Wikipedia article on the @wiki-salesman.] Given some points on a map, find the shortest path through them. We'll focus on the 257 cities shown on the map in @fig-map.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false 
+#| cache: true
+#| label: fig-map
+#| fig-cap: "257 American cites; our task is to find the shortest path that goes through all of them."
+
+require(tidyverse)
+require(TSP)
+require(maps)
+
+theme_map <- function(base_size=9, base_family="") {
+  require(grid)
+  theme_bw(base_size = base_size, base_family = base_family) %+replace%
+    theme(axis.line = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.background = element_blank(),
+          panel.border = element_blank(),
+          panel.grid = element_blank(),
+          panel.spacing = unit(0, "lines"),
+          plot.background = element_blank(),
+          legend.justification = c(0,0),
+          legend.position = c(0,0)
+    )
+}
+
+theme_set(theme_map())
+
+all_states <- map_data("state") %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  select(state = region)
+
+all_states$code <- c("AL", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+                     "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", 
+                     "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", 
+                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
+                     "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+
+used_states <- 1:49
+
+long_states <- all_states$state[used_states]
+short_states <- all_states$code[used_states]
+
+data("USCA312")
+data("USCA312_GPS")
+
+cities <- as_tibble(as.matrix(USCA312))
+
+city_numbers <- tibble(
+  id = 1:312,
+  thecities = colnames(cities)
+) %>% 
+  mutate(used_city = case_when(str_sub(thecities, -2) %in% short_states  ~ 1,
+                               TRUE ~ 0))
+
+the_city_numbers <- filter(city_numbers, used_city == 1)$id
+
+
+our_cities <- cities %>% 
+  select(all_of(the_city_numbers)) %>% 
+  slice(the_city_numbers)
+
+our_gps <- USCA312_GPS %>% 
+  slice(the_city_numbers) %>% 
+  rowid_to_column()
+
+city_matrix <- as.matrix(our_cities)
+
+rownames(city_matrix) <- filter(city_numbers, used_city == 1)$thecities
+
+## Fine tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="farthest_insertion")
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+
+## Not good tour
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="cheapest_insertion", start = 17) # - Very messy
+
+## Generate tour by longitude - really bad
+#tour_line <- TOUR(arrange(our_gps, long)$rowid, tsp = as.TSP(city_matrix))
+
+## Best tour
+load("tour_line.RData")
+
+#tour_line <- TOUR(bad_path, tsp = as.TSP(city_matrix))
+#tour_line <- solve_TSP(as.TSP(city_matrix), method="two_opt", tour = tour_line)
+#tour_length(tour_line)
+
+# Turn tour to map path
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 24, property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+state_map_data <- map_data("state") %>%
+  #  filter(subregion != "north" | is.na(subregion)) %>%
+  filter(region %in% long_states) 
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+#  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  labs(x = "") +
+  theme(axis.title.x = element_text())
+#tour_length(tour_line)
+tour_map
+
+#str_c(our_gps$name, sep = "; ", collapse = "; ")
+```
+
+The task is to find the shortest path through those 257 cities.^[The 257 cities are the cities in the lower 48 states from the 312 cities in North America that John @Burkhart2011 mapped in his dataset USCA312.]
+
+All nine of the decision theories I mentioned, and as far as I know every competitor to them in the philosophical literature, say the thing to do here is to draw whichever of the 256! possible paths is shortest. That is not particularly helpful advice. Unless you know a lot about problems like this, you can't draw the shortest path through the map. And least, you can't draw it as such. You can't draw it in the way that you can't enter the correct code on a locked phone [@MandelkernEtAl2017].
+
+One of the striking things about this puzzle is that it turns out there are some helpful things that can be said. One helpful bit of advice to someone trying to solve a problem like this is to use a Farthest Insertion Algorithm.^[To implement both this algorithm and the optimisation I'll mention below, I've used the TSP package by Michael Hashler and Kurt Hornik [-@HashlerHornik2007]. The description of the two steps owes a lot to their summaries in the package documentation.] Insertion algorithms say to start with a random city, then add cities to the path one at a time, at each time finding the point to insert the city into the existing path that adds the least distance. The Farthest Insertion Algorithm says that the city added at each stage is the one farthest from the existing path. Insertion algorithms in general produce pretty good paths in a very short amount of time - at least on normal computers. And the Farthest Insertion Algorithm is, most of the time, the best Insertion Algorithm to use. @fig-farthest shows the result of one output of this algorithm.^[The algorithm is silent on which city you start with, and usually chooses this randomly.]
+
+```{r}
+#| echo: false
+#| cache: true
+#| warning: false
+#| message: false 
+#| label: fig-farthest
+#| fig-cap: "An output of the Farthest Insertion Algorithm, with a length of 21075 miles."
+theme_set(theme_map())
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+
+The path in @fig-farthest is not bad, but with only a bit of extra computational work, one can do better. A fairly simple optimisation algorithm takes a map as input, and then deletes pairs of edges at a time, and finds the shortest path of all possible paths with all but those two edges. The process continues until no improvements can be made by deleting two edges at a time, at which point you've found a somewhat resilient local minimum. @fig-two-opt is the output from applying this strategy to the path in @fig-farthest.
+
+```{r}
+#| echo: false
+#| cache: true
+#| label: fig-two-opt
+#| fig-cap: "The output of an optimisation process, which reduced the path length to 20891 miles."
+#| warning: false
+#| message: false 
+theme_set(theme_map())
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "farthest_insertion", start = 1)
+tour_line <- solve_TSP(as.TSP(city_matrix), method = "two_opt", tour = tour_line)
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+```
+
+This optimisation tends to produce paths that look a lot like the original, but are somewhat shorter. For most practical purposes, the best advice you could give someone faced with a problem like this is to use a Farthest Insertion Algorithm, then optimise it in this way. Or, if they have a bit more time, they could do this a dozen or so times, and see if different starting cities led to slightly shorter paths.
+
+While this is good advice, and indeed it's what most people should do, it's not typically what is optimal to do. For that reason, it's not what our nine decision theories would say to do. If one had unlimited and free computing power available, hacks like these would be pointless. One would simply look at all the possible paths, and see which was shortest. I do not have free, unlimited computing power, so I didn't do this. Using some black box algorithms I did not particularly understand, I was able to find a shorter path, however. It took some time, both of mine and my computer's, and for most purposes it would not have been worth the hassle of finding it. Still, just to show it exists, I've plotted it as @fig-best.
+
+
+```{r}
+#| echo: false
+#| cache: true
+#| label: fig-best
+#| warning: false
+#| message: false
+#| fig-cap: "The shortest path I could find, with a distance of 20301 miles."
+my_list <- as.integer(unlist(strsplit("0,84,59,240,13,198,121,58,102,89,170,20,212,135,231,127,136,107,147,17,151,97,24,142,162,228,87,229,194,206,116,138,244,158,61,108,207,44,54,11,132,9,55,143,26,86,103,47,117,7,96,216,46,251,95,184,69,179,250,174,153,183,242,15,99,119,110,181,248,4,249,164,10,234,71,148,109,152,161,246,222,42,33,150,137,149,100,219,252,175,78,34,30,38,123,130,134,57,173,171,12,16,144,36,32,168,235,2,208,239,25,226,186,35,74,254,167,223,245,39,1,51,256,45,8,56,221,60,98,50,124,129,31,146,159,77,230,118,104,145,83,125,232,6,65,81,19,189,120,106,18,92,112,215,90,49,115,178,139,210,94,133,187,163,28,43,238,62,218,192,53,220,111,82,237,156,73,247,196,233,113,114,191,126,157,213,214,64,243,41,105,67,185,70,225,68,193,140,190,79,141,27,166,180,211,23,93,101,37,169,155,197,176,29,217,241,253,21,209,227,172,195,75,76,22,154,201,204,202,224,188,182,40,85,14,203,128,160,199,200,255,122,80,165,236,72,205,3,88,91,48,63,52,177,66,5,131",",")))
+my_list_adj <- my_list + 1
+tour_line <- TOUR(my_list_adj, tsp = as.TSP(city_matrix))
+
+theme_set(theme_map())
+
+paths <- tribble(
+  ~step, ~property, ~rowid, ~long, ~lat
+)
+
+for (i in 1:nrow(our_gps)){
+  x <- tour_line[i]
+  first_city <- our_gps %>% slice(x)
+  next_city <- our_gps %>% slice(x %% 31)
+  paths <- paths %>%
+    add_row(step = i, property = "from", rowid = first_city$rowid[1], long = first_city$long[1], lat = first_city$lat[1])# %>%
+  #    add_row(step = i, property = "to", rowid = next_city$rowid[1], long = next_city$long[1], lat = next_city$lat[1])
+}
+
+x <- tour_line[1]
+
+paths <- paths %>% add_row(step = 1 + nrow(our_gps), property = "from", rowid = our_gps$rowid[x], long = our_gps$long[x], lat = our_gps$lat[x])
+
+
+tour_map <- ggplot(state_map_data, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey90") + 
+  geom_point(data = our_gps %>% select(long, lat), aes(x = long, y = lat), size = 0.25, inherit.aes = FALSE) +
+  geom_path(data = paths %>% select(long, lat), aes(x = long, y = lat), inherit.aes = FALSE, colour = "grey30", alpha = 0.5 ) + 
+  coord_quickmap() +
+#  labs(x = paste0("Tour length: ", tour_length(tour_line), " miles.")) +
+  labs(x = "") +
+  theme(axis.title.x = element_text())
+tour_map
+
+```
+
+I'm not sure if @fig-best is as short as possible, but I couldn't find a shorter one. Still, for many purposes it wouldn't have been worth the trouble it took to find this map.
+
+## The Two Cases
+
+@tbl-examples summarises the examples from the last two sections.
+
+|                 |    Betting    |     Salesman     |
+|-----------------|:-------------:|:----------------:|
+| Best outcome    | Bet on winner |  Shortest path   |
+| Decision theory |     Pass      |  Shortest path   |
+| Best advice     |     Pass      | Learn algorithms |
+
+: How three approaches to decision theory handle the two cases {#tbl-examples}
+
+The first row says which action would produce the best outcome in the two cases. The third row says what advice one ought give someone who had to choose in the two cases. And the middle row says what all the decision theories say about the two cases. Notably, it agrees with neither the first nor third row. Decision theory is neither in the business of saying what will produce the best result, nor with giving the most useful advice. So what is it doing?
+
+# Decision Theory as Idealisation
+
+Imagine a version of Chooser with, as Rousseau might have put it, their knowledge as it is, and their computational powers as they might be. That is, a version of Chooser who has unlimited, and free, computational powers, but no more knowledge of the world than the actually have - save what they learn by performing deductions from their existing knowledge.
+
+Decision theories describe what that version of Chooser would do in the problem that Chooser is facing. In the betting case, adding unlimited computing power doesn't tell you who is going to win the game. So that version of Chooser will still avoid betting. But in the Salesman case, adding unlimited computing power is enough to solve the problem. They don't even have to use any fancy techniques. To find the shortest path, all it takes is finding the length of each path, and sorting the results. The first requires nothing more that addition; at least if, as was the case here, we provided the computer with the distances between any pairs of cities as input. The second just requires being able to do a bubble sort, which is technically extremely simple. To be sure, doing all these additions, then doing a bubble sort on the results, will take longer than most human lives on the kinds of computers most people have available to them. But a version of Chooser with unlimited, free, computational power will do these computations no problem at all.
+
+If we say that Chooser should maximise expected utility, and we expect them to compute that, then we're asking Chooser to perform a task that is one step harder than calculating the shortest path in a Salesman problem. To calculate an expected utility, for each option one looks up a probability and a utility for each state^[Exactly which probability it is, or indeed whether it even strictly is a probability, varies by which theory one chooses. But the basic idea that Chooser multiples something probability like by a utility is common across theories], multiplies the two together, then adds the results to get a value for the option. One repeats that for each state, and finds an extreme value. Calculating the shortest path is exactly the same, except one only has to look up one number (a distance) rather than two (a probability and a utility), and there is no multiplication. Solving for the shortest path is strictly easier than finding the maximum expected utility. And yet finding the shortest path is practically impossible.
+
+This is one reason I focussed on Salesman problems rather than other mathematical claims that Chooser is, in the standard models, assumed to know. I didn't ask Chooser to bet on the Twin Primes conjecture. It's possible one could come up with a model where finding the maximum expected utility is typically possible but resolving the Twin Primes conjecture is not; it's really hard to see how an agent who could always calculate expected utilities couldn't solve a Salesman problem.
+
+There are two other things that are distinctively interesting about this problem which I'll simply note here, and defer longer discussion of them to another day. First, it is possible to give practical useful advice about how to solve Salesman problems. I've repeated some of the better advice I've heard in the previous section. Second, when someone follows this advice and does badly, as can happen with carefully designed maps, it seems they are unlucky in just the same way that someone who maximises expected utility but gets a low amount of actual utility is unlucky. This raises some interesting questions about the normative significance of expected utility maximisation that will be in the background of the rest of the discussion here; hopefully I'll return to them in later work.
+
+At this point you might complain that I've talked about decision theories asking Chooser to *calculate* expected utilities. They do no such thing. This is a point that Frank Knight made a century ago.
+
+> Let us take Marshall's example of a boy gathering and eating berries ... We can hardly suppose that the boy goes through such mental operations as drawing curves or making estimates of utility and disutility scales. [@Knight1921 66-7]
+
+And Knight does not say this is irrational. As long as the boy gets enough berries, he's doing fine. In other terminology, we might say that decision theory provides a criteria of rightness, not a deliberation procedure.^[I'm taking this distinction from Peter @Railton1984, though his isn't the earliest use of the distinction. Alastair @Norcross1997 notes that the phrase "criterion of rightness" is used in the context of drawing this distinction by Sidgwick [-@Sidgwick1907 Book 4, Chapter 1, §1].] As long as one follows the rules of decision theory, even if one follows them largely instinctually like Marshall's boy, one is rational.
+
+This move just brings us back to the original problem. It's easy to understand the distinction in Sidgwick. The criterion of rightness is that one actually produces the best outcome. Which decision procedure actually produces that outcome is hard to determine in advance, though there are good reasons for suspecting that aiming for the best outcome as such is not the optimal procedure. Why, however, should we think that maximising _expected_ utility is a criteria of rightness? What benefits does it have, over the standard of maximising actual utility, as such a criteria? It is a somewhat easier rule to use, which makes it a better deliberation procedure. Unfortunately, as the Salesman cases show, there are other procedures that are better again qua deliberation procedures too. So what benefit does it have?
+
+One possible answer to this challenge is that expected utility maximisation, or whatever one's favourite decision theory endorses, is a goal; it is something we should try to achieve. On this picture, decision theory is relevant because it tells us what idealised people are like, and it recommends we try to be like them. In practice we can't always be like them, as in the Salesman problem, but we should try.
+
+The problem with this answer is that it is not, in general, good to try to be like the ideal. The key point goes back to Lipsey and Lancaster's _General Theory of the Second Best_ [@LipseyLancaster]. Often times, the right thing to do is something whose value consists in mitigating the costs of our other flaws. It's not true in general, indeed it's rather rare that it's true in practice, that approaches which differ from the ideal in one respect are better than all approaches which differ from the ideal in two respects. For example, us non-ideal agents should, especially in high stakes settings, stop and have a little think before acting. The ideal agent of decision theory never stops to have a think. After all, stopping is costly, and the ideal agent gets no gain from incurring that cost.
+
+In general, we differ from the ideal agent in any number of ways. Some of these are respects in which we'd be better off being more like them. For example, they correctly hedge against costly but realistic risks. But some of these are respects in which we'd be worse off being more like them. For instance, they never stop to have a think, or put in effort to get better at calculations. Knowing that the ideal agent is *F* doesn't tell us whether we should try to be *F* unless we also know that *F* is more like hedging rather than more like never trying to get better at calculating. That, unfortunately, is not something which we can really figure out from within the idealised approach to decision theory that is standard these days.
+
+# Idealisations as Models
+
+At the start I said that the word 'idealised' gets used differently in ethics and in philosophy of science. The main claim I want to make in this section is that we should understand the idealisations in decision theory in the latter sense. In particular, we should understand them as simplifications. Michael @Weisberg2007 identifies three kinds of idealisations in science: Galilean, which distort the situation to make computation easier; minimalist, which only include the factors one takes to be causally significant to a situation; and multiple models, where one tries to understand a situation by considering different minimal idealisations with different strengths and weaknesses. The idealisations in decision theory are the second kind. They aren't particularly computationally tractable, unlike the Galilean idealisations, and there is typically just the one of them.
+
+Another way to put this is that the idealisations in, say, ideal gas theory are *simplifications* rather than *perfections*. We do not think that having volume is an imperfection. Maybe some religious traditions think this, but it isn't baked into introductory chemistry. Nor do we think that they are things we should aim for. Introductory chemistry does not imply a *Smaller the better!* rule for molecules. Rather, it says that volumeless molecules with perfectly elastic collisions are simpler to work with, and that some of the phenomena of real gases can be explained by looking at this simpler model.
+
+Decision theory is engaged in the same kind of project. Just like the point masses we use in the ideal gas law, they say not what should happen, but what would happen in the absence of certain complications. The idealisation here is not a perfection, for two reasons. First, allocating zero seconds to hard but important math problems is not a perfection, it's a practical vice. Yet it's what the ideal agent does. Second, the idealised self is not in fact absolutely perfect. They have similar informational limitations to what we do.
+
+This is the point of the basketball example. The idealised self that gets used in decision theory is god-like god-like in one respect - computational ability - but human-like in another - informational awareness. That's a common feature of idealised models; one doesn't idealised away from absolutely everything.
+
+Why do we use these models? Part of the answer here comes back to the much discussed question of why we use models at all. I'm going to assume that part of the answer is that minimal models are explanatorily powerful when the difference between the minimal model and reality is not relevant to predicting, explaining, or understanding what happens in the real world. So my hypothesis is that the idealised models of decision theory are, at least sometimes, relevant to predicting, explaining, or understanding what happens in the real world.
+
+It's tempting to identify the situations where decision theory is relevant with high stakes situations. After all, in high-stakes situations deciders are disposed to throw enough computational resources at the problem that the differences between ordinary people and ideal agents shrinks. But that is isn't quite right. After all, in many high stakes cases, the decider also throws enough investigative resources at the problem that holding actual knowledge fixed is a bad modelling assumption.
+
+To find a case where decision theory is relevant, we need are cases where there are principled limitations to the decider's informational capacities. There are two kinds of cases that are relevant here. One is where the information concerns the future, and the decision must be made now. And the other is where the information that someone else has (or at least may have) just as much incentive to suppress the information as the decider has to find it. Most textbook examples of the usefulness of decision theory concern the first kind, though they don't always make explicit why it matters that the case is future directed. I'm going to work through a case of the second kind that I think is enlightening about the way decision theory is valuable.
+
+Until very recently, used cars sold at a huge discount to new cars, even when the cars were just a few months old with almost no usage. For a long time there was no agreed upon explanation for this phenomena. The most common theory was that it reflected a preference, or perhaps a prejudice, on the part of buyers. George @Akerlof1970 showed how this discount could be explained in a model of perfectly rational agents. His model makes the following assumptions.
+
+1. Cars vary a lot in quality, even cars that come from the same production line.
+2. Sellers of used cars know how good the particular car they are selling is.
+3. Buyers of used cars do not know how good the car is; they only know how good that model of cars generally is.
+4. People rarely sell cars they just bought.
+5. Everyone involved is an expected utility maximiser.
+
+Based on these five assumptions, Akerlof built a formal model of the market for recently used cars. In the model, the most common reason to sell a car one just bought is the discovery that it was a bad instance of that kind of car. Knowing this, buyers of used cars demanded a big discount in exchange for the possibility they were buying a dud. But as long as there are enough forced sellers of good recently purchased cars, who prefer whatever money they can get for their car to keeping the car, there can be an equilibrium where lightly used cars sell at a heavy discount to new cars, and it is rational for (some) owners to sell into this market, and for (some) buyers to buy in this market.
+
+If Akerlof was right, and I think he was largely correct, you'd expect the used car discount to fall if either of the following things happened. First, it would fall if production lines got more reliable, and cars off the same line were more similar to one another. And second, it would fall if buyers had access to better tools^[Better that is than a drive around the block test drive.] to judge the quality of used cars. By 2020 both of those things had happened, and the used car discount was almost zero.^[Then during the pandemic very strange things happened in the used car market and the 'discount' arguably went negative. Whatever was happening there was not explained by the Akerlof model.]
+
+The philosophical significance of this is that one can't build models like Akerlof's without a theory of rational action under uncertainty. The big payoff of philosophical decision theory is that it's an essential input to useful models, like the Akerlof model. Since those models are useful, getting the inputs to them right is useful.
+
+# Conclusions
+
+This has largely been a work of meta-philosophy. I've argued that decision theorists are building idealisations in the sense of simple models. And I've argued that this is a good project not because it issues in advice, or evaluation, but because it provides inputs to explanations. In particular, decision theoretic explanations are often accurate when people can behave somewhat like computationally ideal agents, but must still behave like informationally limited agents.
+
+If I'm right, there are several consequences for first-order decision theory. I'll end the paper going over four of them.
+
+## The Value of Limited Theories
+
+We use different styles of explanations for different phenomena. If a product routinely sells for $7.99, we might use a rational choice explanation for why the price is roughly $8 rather than roughly $10, and then a very different kind of explanation for why it is $7.99 rather than $8.01. It isn't always a weakness of an explanation that it does not generalise to as many cases as one might have hoped.
+
+This matters for decision theory. If a decision theory goes silent on a certain kind of case, that isn't necessarily a bad thing. One sometimes hears theorists talk as if the fact that a theory doesn't say what to do in a particular situation is very bad, because the point of decision theory is to provide advice. But if decision theory goes silent on cases where we don't think decision theoretic explanations are likely to be good, that's not necessarily a bad thing.
+
+## The Ideal Agent
+
+I've left off a lot of details about exactly what the ideal agent is like. I said they are computationally good, but informationally limited. This leaves open a lot of questions. Do they have perfect information about their own beliefs and desires, or about their own plans? Are they able to stick to a plan, and if so, which kinds of plans can they stick to?
+
+One way to try answering these questions is by asking whether the inability to know one of these things, or do one of these things, is a kind of imperfection. If it is, we've discovered a new feature of the ideal, perfect agent. 
+
+If I'm right, that's the wrong way to go about answering the question. We should ask instead if assuming that the ideal decider has these features makes them too dissimilar to real people for explanatory purposes. For instance, I think we should allow that ideal deciders can play mixed strategies, because being able to play mixed strategies does not make the ideal decider that different to real people. In circumstances where real deciders have sufficient computational resources that ideal deciders are good models for them, real deciders also have sufficient resources to play mixed strategies.
+
+Whether I'm right or wrong about mixed strategies, the point I want to really stress is the approach to answering these questions about idealisations. The right idealisation does not describe what we should be like, but rather what it is helpful to model us as being like.
+
+## Non-Ideal Theory
+
+If actual decision theory is a kind of ideal theory, that means there is a space for a non-ideal theory. And there are a bunch of interesting philosophical questions about it. I think the right non-ideal theory will be some kind of reliabilism. Even if that's right, it hardly settles matters. There are, after all, many different kinds of reliabilism, and we'd need to have answers to the decision theoretic equivalents of the generality problem, and the new evil demon problem. Still, these feel like answerable questions, and there are interesting projects to work on here.
+
+## Reconciliation
+
+If two types of theory exist, both ideal and non-ideal, some reconciliation possibilities open up. Perhaps the right thing to say about Newcomb's Problem is that there is a sense in which one should take one box, and there is a sense in which one should take two boxes. One way to get this result would be to endorse the following three claims.
+
+1. The right ideal decision theory is some broadly causal decision theory.
+2. The right non-ideal decision theory is some kind of reliabilism.
+3. In Newcomb's Problem, one boxers and two boxers are in the same reference class, so the right thing to do is the thing that, on average, produces the best results in that large class.
+
+I don't want to endorse all these; I'm particularly sceptical of 3. The point is just that when we distinguish ideal from non-ideal theories we open up some new options in what might seem like stale debates.
+
+## Other Idealisations
+
+The most interesting question that opens up from this way of thinking about decision theory is whether we could develop any other idealisations that are explanatorily powerful. As Weisberg notes, an important kind of idealisation involves developing many models that help explain different phenomena. Here that might involve changing what information the ideal agent has, or what computational powers they have.
+
+In economics there has been some interesting projects along these lines. One that's particularly relevant here is the development of cursed equilibrium models (@EysterRabin2005). In cursed equilibrium models, agents maximise expected utility with respect to some information, but not the information they actually have. In particular, they don't always take fully into account what they can figure out about other people's information from observing the acts other people perform. It's a bit more complicated than this in practice, but roughly it's as if people ignore what other people are doing.
+
+These models are relevant here for two reasons. One is that the main example I used of decision theory working, Akerlof's model for used cars, involved people making just the kind of inference that they do not make in cursed equilibrium models. The reason the used car market settles at such a discount, in an Akerlof model, is that buyers reason from the fact that sellers are choosing to sell that sellers have private information. That inference, from observed behaviour to conclusions about the private information the other person has, is exactly what agents do not make in cursed equilibrium models. This matters because in a bunch of experimental settings, cursed equilibrium models make more accurate predictions than rational choice models.
+
+This doesn't on its own show the Akerlof explanation is wrong. It might just show that explanation was incomplete. To complete the explanation we could simply add the premises that cars are expensive, and that people act more carefully when making expensive purchases. The first premise is clearly true, cars are indeed expensive, and there is some evidence for the second. Still, thinking about cursed equilibrium models, which are still incredibly idealised, helps both explain new phenomena, and appreciate more fully the explanations that rational choice models make.
+
+Cursed equilibrium models have not been developed nearly as fully as rational choice models; it's only very recently that fully dynamic versions of them have been put forward [@CohenLi2023; @Fong2023]. I certainly don't want to say this is the only way to modify the idealisations in standard decision theory, or even the best such way. What I do want to say is that thinking about decision theory as the project of building good simplified models suggests that the project of building multiple models of decision could have some value.
+
+## Alt Text for Diagrams {-}
+
+- @fig-map: "A map of the 48 contiguous states of the USA, with dots at the locations of 257 major cities."
+- @fig-farthest: "@fig-map plus a jagged path through the 257 cities."
+- @fig-two-opt: "A similar drawing to @fig-farthest with a smoother path."
+- @fig-best: "Another path through the 257 cities with a different path, the shortest one the author knows."
+
+::: {.content-visible unless-format="html"}
+## References {-}
+:::
