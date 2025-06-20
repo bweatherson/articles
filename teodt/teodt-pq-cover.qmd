@@ -1,0 +1,29 @@
+---
+title: "Cover sheet for _The End of Decision Theory_"
+format: docx
+---
+
+## Author {-}
+
+| Brian Weatherson
+| University of Michigan, Ann Arbor
+| weath@umich.edu
+| he/him/his
+
+## Abstract {-}
+
+What question are decision theorists trying to answer, and why is it worth trying to answer it? A lot of philosophers talk as if the aim of decision theory is to describe how we should make decisions, and the reason to do this is to help us make better decisions. I disagree on both fronts. The aim of the decision theory is to describe how a certain kind of idealised decider does in fact decide. And the reason to do this is that this idealisation, like many other idealisations, helps generate explanations of real-world behaviour. We shouldn't do what these ideal deciders do, or try to be more like them, because a lot of what they do only makes sense because of the differences between us and them. Still, sometimes those differences are small enough that they can be ignored in explanations, and that's when decision theory is useful.
+
+## Keywords {-}
+
+decision theory, model, idealisation, advice, second-best.
+
+## Word Count {-}
+
+Total: 6608. Body text plus footnotes: 5816; Abstract: 150; References: 552; Other: 90.
+
+## Alt Text {-}
+
+I couldn't figure out how to get the alt text for the graphics next to the diagrams, as the instructions said. The alt text for the four graphics is at the end of the document. The words in them are included in 'other' in the word count.
+
+This paper is submitted to the special issue on The Philosophy of Uncertainty.

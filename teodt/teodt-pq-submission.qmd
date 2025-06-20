@@ -1,9 +1,18 @@
 ---
 title: "The End of Decision Theory"
 bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
-abstract: What question are decision theorists trying to answer, and why is it worth trying to answer it? A lot of philosophers talk as if the aim of decision theory is to describe how we should make decisions, and the reason to do this is to help us make better decisions. I disagree on both fronts. The aim of the decision theory is to describe how a certain kind of idealised decider does in fact decide. And the reason to do this is that this idealisation, like many other idealisations, helps generate explanations of real-world behaviour. We shouldn't do what these ideal deciders do, or try to be more like them, because a lot of what they do only makes sense because of the differences between us and them. Still, sometimes those differences are small enough that they can be ignored in explanations, and that's when decision theory is useful.
+abstract: |
+  What question are decision theorists trying to answer, and why is it worth trying to answer it? A lot of philosophers talk as if the aim of decision theory is to describe how we should make decisions, and the reason to do this is to help us make better decisions. I disagree on both fronts. The aim of the decision theory is to describe how a certain kind of idealised decider does in fact decide. And the reason to do this is that this idealisation, like many other idealisations, helps generate explanations of real-world behaviour. We shouldn't do what these ideal deciders do, or try to be more like them, because a lot of what they do only makes sense because of the differences between us and them. Still, sometimes those differences are small enough that they can be ignored in explanations, and that's when decision theory is useful.
+
+  **Keywords**: decision theory, model, idealisation, advice, second-best.
 number-sections: true
 author: Anon
+keywords:
+  - decision theory
+  - model
+  - idealisation
+  - advice
+  - second-best
 format:
     html: default
     docx:
@@ -46,7 +55,7 @@ format:
 
 # What is Decision Theory a Theory Of?
 
-If you're reading a paper like this, you're probably familiar with seeing papers defending this or that decision theory.^[Word count. Body text plus footnotes: 5692; Abstract: 150; References: 538.] Familiar decision theories include:
+If you're reading a paper like this, you're probably familiar with seeing papers defending this or that decision theory.^[Word count. Total: 6608. Body text plus footnotes: 5816; Abstract: 150; References: 552; Other: 90.] Familiar decision theories include:
 
 - Causal Decision Theory [@GibbardHarper1978; @Lewis1981b; @Skyrms1990; @Joyce1999];
 - Evidential Decision Theory [@Ahmed2014];
@@ -464,7 +473,9 @@ I don't want to endorse all these; I'm particularly sceptical of 3. The point is
 
 The most interesting question that opens up from this way of thinking about decision theory is whether we could develop any other idealisations that are explanatorily powerful. As Weisberg notes, an important kind of idealisation involves developing many models that help explain different phenomena. Here that might involve changing what information the ideal agent has, or what computational powers they have.
 
-In economics there has been some interesting projects along these lines. One that's particularly relevant here is the development of cursed equilibrium models (@EysterRabin2005). In cursed equilibrium models, agents maximise expected utility with respect to some information, but not the information they actually have. In particular, they don't always take fully into account what they can figure out about other people's information from observing the acts other people perform. It's a bit more complicated than this in practice, but roughly it's as if people ignore what other people are doing.
+One natural further idealisation is to model deciders as having not just rational credences, but true beliefs, about certain domains. In practice we do this a bit. Standard models of consumer choice assume consumers know the prices of different goods, and know their own preference structure, rather than merely assuming they have rational beliefs about these things. Standard practice in decision theory is to assume that the decider knows what options are available. If we try to have that fall out of a general practice of assuming they are rational, we end up with difficult choices about what counts as an option [@Hedden2012]. It's simpler to treat knowledge of options as a distinct, but useful, idealisation.
+
+Could we weaken the assumption of costless and perfect computation? In economics there has been some interesting projects along these lines. One that's particularly relevant here is the development of cursed equilibrium models (@EysterRabin2005). In cursed equilibrium models, agents maximise expected utility with respect to some information, but not the information they actually have. In particular, they don't always take fully into account what they can figure out about other people's information from observing the acts other people perform. It's a bit more complicated than this in practice, but roughly it's as if people ignore what other people are doing.
 
 These models are relevant here for two reasons. One is that the main example I used of decision theory working, Akerlof's model for used cars, involved people making just the kind of inference that they do not make in cursed equilibrium models. The reason the used car market settles at such a discount, in an Akerlof model, is that buyers reason from the fact that sellers are choosing to sell that sellers have private information. That inference, from observed behaviour to conclusions about the private information the other person has, is exactly what agents do not make in cursed equilibrium models. This matters because in a bunch of experimental settings, cursed equilibrium models make more accurate predictions than rational choice models.
 
