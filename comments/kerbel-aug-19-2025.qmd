@@ -116,6 +116,8 @@ Page 2, line 31
 
 Page 2, line 32
 :    The second argument is less compelling, especially if one is sympathetic to the kind of permissivism I was sketching above.
+    
+    By the way, if my response in -@Weatherson2015-WEAFBR to the immodesty argument that Gordon made in -@Belot2013 works, certain contractions can't be allowed. That's a very big *if* though.
 
 Page 3, line 7
 :    If there are multiple standards, couldn't one change which one was being used, and hence violate RATMAX.
@@ -127,14 +129,14 @@ Page 5, line 22
 :    It's amusing to take the model to be that rational people are interested in *everything*.
 
 Page 6, line 7
-:    Introducing comparativism this far in seemed like a big thing to do.
+:    Introducing comparativism this far in seemed like a big thing to do. I also worry that it leads to a tension, though I'm not sure I understand the suggestion in 3.1, so I'm not sure exactly how it affects you. Anyway, assume that *p* has maximally imprecise credence, and *q* has precise credence 0.45. You now have to make a guess out of {*p*, ¬*p*, *q*}. Is it permissible to guess *q*? Here are two arguments. On the one hand, there is no *Pr* in the representor where *q* is maximal, so no. On the other hand, there is no alternative that you think *q* is less likely than, so yes. Comparativism, I think, pushes you to the second answer. But it's sort of in tension with the sets of credence functions approach.
 
 Page 6, line 27
 :    I mentioned above that I don't think this argument is connected enough to guessing, but I also don't understand it on its own merts. How can you abstain from guessing in these cases; I thought it was a forced choice?    
     
     Besides, does it even make sense to abstain. If the rule is that you get 1 point for a correct guess, and 0 points for abstain/incorrect guess, then abstain away.
 
-    Also, in three way choices, abstaining might be a very bad idea. What if you have to guess between *p*, *q* and *r*, and in fact *p* and *q* are true while *r* is false, and you have high overlapping credences in *p*, *q*, while you have low credence in *r*. Abstaining seems very bad - you should just pick *p* or *q* arbitrarily. (I'll come back to 3-way, and *n*-way, guesses in what follows.)
+    Also, in three way choices, abstaining might be a very bad idea. What if you have to guess between *p*, *q* and *r*, and in fact *p* and *q* are true while *r* is false, and you have high overlapping credences in *p*, *q*, while you have low credence in *r*. Abstaining seems very bad - you should just pick *p* or *q* arbitrarily.
 
 Page 7, line 10
 :    I didn't understand this paragraph. Do they dilate to a point where there is a function where *cr*(*J*) > *cr*(*S*)? That seems extreme. I think I just didn't follow what was going on.
@@ -146,17 +148,31 @@ Page 7, line 26
 
 OK, the points from here on are just if you are bored/have too much time on your hands. They certainly aren't things to be done before this year's job market. They probably aren't things to be done before any job market and/or tenure. But maybe they'll be of interest down the track.
 
-I thought the guessing framework had a way of stating something like the Negative Dominance principle that Harvey @Lederman2025 has been worried about. Here's how I'd state it for guessing.
+I thought the guessing framework had a way of stating something like the Negative Dominance principle that Harvey @Lederman2025 has been worried about. Here's how I'd state it for guessing. 
+
+First, assume that we have some set of lottery propositions *L*~1~, ..., *L~n~*, which are exclusive, exhaustive, and known to be independent of everything else Guesser cares about. (Sort of like the chance propositions you use in _Finding Truth-Directedness_.) The following two games seem similar.
+
+> **Game One**    
+>    
+> There are two sequences of propositions *P* = ⟨*p*~1~, ..., *p~n~*⟩, and Q = ⟨*q*~1~, ..., *q~n~*⟩. You have to guess either *P* or *Q*, and then we'll work out which *L~i~* is true, and if you guess *P*, you win if *p~i~* is true, while if you guess *Q*, you win if *q~i~* is true.
+
+> **Game Two**    
+>    
+> Let *P* = ((*L*~1~ ∧ *p*~1~) ∨ … ∨ (*L~n~* ∧ *p~n~*)), while *Q* = ((*L*~1~ ∧ *q*~1~) ∨ … ∨ (*L~n~* ∧ *q~n~*)). You have to guess which of *P* and *Q* is true.
+
+**Game Two** is exactly the kind of guessing game Sophie talks about, but it will make better sense of what Harvey has in mind to talk about **Game One**. But I think they're equivalent, so that's ok.
 
 > **Negative Dominance (Guessing)**    
 >    
-> Let *A*, *B* be disjoint, and *C*, *D* be disjoint. Assume that given a choice between guessing *A* ∨ *B*, or guessing *C* ∨ *D*, Guesser strictly prefers guessing *A* ∨ *B*. Then in at least one of the pairs (*A*, *C*), (*A*, *D*), (*B*, *C*), (*B*, *D*), Guesser strictly prefers guessing the first to the second.
+> If in **Game One** you'd strictly prefer to guess *P* rather than *Q*, then there is some pair *p~i~*, *q~j~* such that given a choice of guessing between these two, you'd strictly prefer to guess *p~i~*.
 
-As I understand it, the imprecise framework violates this. Let *A* be something Guesser is maximally uncertain about, let *B* be ¬*A*, and let *C* and *D* be incompatible propositions with chance (and precise credence) 0.45. Then they will definitely guess *A* ∨ *B* rather than *C* ∨ *D*, but in any of the four pairs, they will either abstain, or pick randomly, or something.
+As I understand it, the imprecise framework violates this. Let *u* be some maximally uncertain proposition, and let *c* be a chancy proposition with known chance 0.45. And let *L*~1~ and *L*~2~ each have chance 0.5; they are outcomes of a fair coin flip. Finally, let *P* be ⟨*u*, ¬*u*⟩, while *Q* is ⟨*c*, *c*⟩. That is, *Q* is just a guess on *c*. In every function in the representor, (*L*~1~ ∧ *u*) ∨ (*L*~2~ ∧ ¬*u*) has probability 0.5, so it's higher than *Q*, so it's the uniquely permissible guess. But neither *u* nor ¬*U* is uniquely permissible when the only other option is *c*.
 
-Harvey has some arguments for this principle for action which I think could be translated fairly easily into arguments for the Guessing version. I have some doubts about those, but they are pretty interesting arguments I think. If you are doing a longer project on guessing and imprecise credence, it feels like something to maybe consider - but not right away!
+As Harvey says, there is something odd about this. Why think that the lottery that *P* represents is strictly better than the lottery that *Q* represents when none of the prizes in *P* is strictly better than any of the prizes in *Q*? I think there are things to say here, but it's a good challenge. If you are doing a longer project on guessing and imprecise credence, it feels like something to maybe consider - but not right away!
 
-(Very tenuous connection: I kind of think the right way to respond to Harvey's arguments maybe might make arbitrary contraction more attractive. But I'm *really* unsure about that; I'm more sure it's an interesting argument.)
+There is a bit of literature on a principle stronger than what Harvey uses where we ask whether choosing *P* over *Q* in **Game One** requires that for some *p~i~* and *q~i~* (note same subscript) we should choose the *p~i~*. Harvey has these arguments that I'm not sure I follow that that's too strong a constraint, but his weaker one is not. The modern literature on this starts from a paper by Casper @hare2010take, and Miriam @schoenfield2014decision has an important role in it; perhaps she has worked on the connection between this and guessing.
+
+(Very tenuous connection back to your paper: I kind of think the right way to respond to Harvey's arguments maybe might make arbitrary contraction more attractive. But I'm *really* unsure about that; I'm more sure Harvey's argument is interesting.)
 
 ## Digression Two: Guessing Functions
 
@@ -183,3 +199,17 @@ So far, not so interesting. What he found, and here I'm really going from memory
 This construction, I think, was a big part of why Walley didn't like the representor language. This state wasn't just a set of credence functions, because it was rational and it would be represented as a set of irrational functions. It would also be an argument against arbitrary contraction - after all contracting would take you to mere finite additivity.
 
 Now I don't think it's worth getting into finite vs countable in this paper, and unless you have something that already works, probably not in anything you do at UM. That's really a down the line task. But there may be something here connecting contraction/dilation to countable/finite additivity.
+
+## Digression Four: Linking the digressions up
+
+So I have a quarter-baked idea for how to resolve some of the issues in the last three digressions, and in the process develop a possibly new theory. If I'd got your paper from a colleague, I'd suggest we work it up together. But since there is 0% chance that anything would come of this by the time the job market stuff is due (i.e., in a few weeks), and frankly only a slightly higher chance that anything would be ready for next year's job market, I think it would be a bad idea for you to work on it. Still, here's the idea in case you're interested.
+
+As I've always understood Sophie's position, the metaphysics of precise/imprecise credences are meant to be taken care of before we get to guessing. We have these credences, determined somehow, and the guessing framework is a set of normative constraints on them. (That's how I've understood Jim's view more or less as well.) Idea: what if we flipped that around, and said the guessing framework was part of the metaphysical grounding of credences?
+
+The idea is basically a generalisation of the comparativist framework. One kind of comparativist says (following roughly Ramsey), that having credence 2/3 in *p* just is having equal credence in *p* as in *q*~1~ ∨ *q*~2~, where *q*~1~, *q*~2~, and *q*~3~ are exclusive, exhaustive, and equal credence. That's a reduction of numerical credence to comparative credence, and I think it is plausible.
+
+The guessing framework takes that further. What it is to have a certain imprecise credence just is to have some view about the permissibility of certain guesses. Just what that is might be tricky, and I really don't have the details. If we add in something like β as a coherence constraint on guesses, we get back to the standard comparativist framework. But if we don't add that in, we potentially get a very novel kind of imprecise view, that isn't committed to imprecise credences being sets of precise credences. If you pick the right constraints on guessing patterns, you can probably get around a lot of the puzzles I was just mentioning.
+
+The upside of this is that no one has worked on this, and there are a lot of places where you have a free shot at a view no one has worked out. The downside is that the search space is huge, and when no one has worked on something, it sometimes happens that no one cares about the exploration. That's a really good reason for a grad student to not put too many resources into it. And of course it really might not work. (Also a good reason for someone who can see the job market to work on projects with a higher expected return.) But I suspect there's something novel here; it wasn't always true that imprecise credence just meant sets of credence functions, and maybe the guessing framework can open up new alternatives.
+
+## References {-}
