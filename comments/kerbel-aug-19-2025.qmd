@@ -1,0 +1,185 @@
+---
+title: "Two papers by Gabrielle Kerbel"
+date: 19 August 2025
+author: Brian Weatherson
+bibliography: 
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+format:
+  pdf:
+    geometry: "left=1in,right=1in,top=1in,bottom=1in"
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 12pt
+    linkcolor: black
+    urlcolor: black
+    colorlinks: false
+---
+
+# Finding Truth-Directedness in the Guessing Framework
+
+This looks to be in pretty good shape to me, and the main changes I'd make are cosmetic. That said, I had some ideas for what to change.
+
+Page 2, third para
+:    This will come up later, so it might be worth noting that the argument that the guessing framework endorses Matthew's judgments assumes the only guess on the table has as options *R* and ¬*R*.
+
+Page 3, after inset
+:    Saying they made true guesses seemed odd. They made guesses that were the true side of 0.5; is that all that's meant?
+
+Page 3, last para
+:    This is perhaps the biggest point. Having read the paper, I see why this isn't a problem. But when I read this I thought it was very odd to bring expectations in here. After all, we're meant to not be supposing that these credences are probabilities. And if they aren't, then expectations aren't even defined.    
+    
+    Now I take is that the expectations here are kind of objective. The point is not that either party has a higher expected accuracy rate given their own credences. That wouldn't be defined if they aren't probabilities, and would lead everyone to say that they are doing the best if it is defined. It's rather that given these (somewhat fictional) chance processes, and given the determined facts about rest stops, Susan on average does better than Matthew at a certain class of tasks.
+
+    I'm not sure exactly what the right way to frame this should be. But maybe it's worth noting that the expectations here are not subjective. I don't have a great wording for that which isn't too clunky. I'd be kind of tempted to say that Susan does better than Matthew *on average* across a certain range of tasks, but maybe that's misleading in a different way.
+
+    One other thing to note. Imagine that *R* is a proposition about a chance process, and it's common knowledge that the chance is 0.7. We still want to say that by accuracy standards, Susan does better on this question than Matthew. How do we say this on your view?
+
+Page 7, last paragraph
+:    It's not like any of the major views does well in the infinite case. Getting Jim's accuracy approach to say anything about finite vs countable additivity is not trivial.
+
+Page 7, footnote 7
+:    This is where my concern on page 3 really started to worry me. I get that you're not going to require these things, but the picture I had of your view from the intro made it sound like you would be caught in the same net as Sophie here.
+
+Page 8, after heading
+:    Should *P* be a **field** of propositions? I think strange things happen if it's an arbitrary set.
+
+Page 9, last paragraph
+:    This could be that I'm old, but I think saying that they should maximise expected accuracy is odd when the paper that started the whole accuracy approach, Jim's Non-Pragmatic Vindication, didn't give any role to expectations. And rightly so, since they aren't defined in some cases.
+
+Page 17, last paragraph
+:    What does it mean to say *R* and *S* are **independent**? Are they logically independent, causally independent, chance independent, credence independent? If the last, how is that defined if credences aren't probabilities? I think the term 'independent' is too polysemous to use without qualification.
+
+Page 18, lines 2-3
+:    These are very striking credence functions. They both assign credence greater than 0.5 to the true atom! I'm not sure that what we say about such weird cases will generalise further.
+
+Page 19, third paragraph
+:    Here's the start of something I felt a few times for the rest of the paper. There are some sweeping claims being made here that I'd like to see (a) made precise, and (b) proven.    
+    
+    Here are two things that seem not so clear to me. First, if Adrienne has credence greater than 0.5 in the true atom, there is some true information she can get which will make her have higher credence in some falsehood than some truth. Second, if *cr* starts with a higher credence in the truth than *cr*^\*^, then it is less vulnerable to malicious informing than *cr*^\*^. I'm not sure you really believe either of those things, but the text suggests both of them, and it would be good to be clearer about what you're claiming here.
+
+Page 20, first inset
+:    This feels like it should have a proof. Also, I'm not sure what *fewer* means here, given the possibility of infinite domains that you were worrying about earlier. (Same for *more* ways half way down the page.)
+
+Page 22, inset
+:    I don't know what uniformly closer to the truth means. Is it that for any true proposition, you have at least as high a credence, and for any false proposition, you have at most as high a credence? That's a really strong requirement, that is really only met in some edge-like cases.
+    
+    I also found the discussion of 'changing' in the next paragraph odd. This isn't a dynamic setting. Maybe stating more formally what DOMINANCE amounts to would resolve this.
+
+# Dilating and Contracting Non-Arbitrarily
+
+## Against Contraction
+
+This felt like it needed a bit more. The big thing was that the argument in 3.1 felt really fast. I could sort of see (though only just) how it was an argument that arbitrary contractions would look bad from the perspective of the pre-contracting state. But that's not really using the guessing framework, and it's nothing like the argument that's given in section 3.2.
+
+This matters because that's the really tough one. Being arbitrarily uncertain about whether grass is green seems a little odd. (Though Descartes might have views about that.) But it's just tough to say what's wrong with arbitrary contraction.
+
+At a superficial level, it's odd that the argument about what looks like the hard case goes by so fast while you spend much longer on what looks like the easy case. More substantively, I think the contraction case needs to be linked more closely to the guessing framework for the paper to work.
+
+## Against Contraction?
+
+The background to all this is whether there is anything wrong with arbitrary contraction. The tonk like argument suggested that it is very very bad to allow both arbitrary dilation and arbitrary contraction. But it wasn't an argument against going in just one way.
+
+Here's an argument that arbitrary contraction is fine. The point of credences is to guide guesses. When a person has imprecise credences, sometimes they have to guess arbitrarily. They should have a plan for how to do this, or they'll do dumb things. (It's bad to guess *q* when *p* is available, then guess *p* ∧ *r* when *q* is available, even if each individual guess might be licenced by something in the representor.) Once they have a plan, it's fine to adopt credences that make that plan the only permissible plan.
+
+That's really quick, and I'm sure there are a million things wrong with it, but it's a better argument than can be given for arbitrary dilation, and it's worth having something to say about why arguments like it fail.
+
+## Permissivism
+
+One thing that feels like it is bubbling under the surface here is a connection to debates in epistemology/philosophy of science about permissivism and values. 
+
+Start with a familiar case of inductive risk. Let's say we know *a* is *F*, and that 70% of *F*s are *G*s. We also know some extra things about *a*, but none of them are obviously relevant to being *G*. So let's say you conclude, permissibly, that there is no other relevant evidence, so we should just have credence 0.7 that *a* is *G*. But I'm an inductive wimp, and I think we don't know that none of these things are relevant quite yet. So my credence that *a* is *G* is [0.65, 0.75]. But after a bit more thought, I decide we do know that all the extra features of *a* are irrelevant, and come to have your credence as well.
+
+This isn't quite an *arbitrary* contraction, but it is a contraction, and one that I think makes sense from the inside. Concluding that this really is a random, or representative, *F*, is the kind of thing that we need evidence for, and some people are more inductively cautious than others. But also, there's no one right answer here. Someone could decide that they didn't feel like being as cautious as they had been.
+
+This comes up in RATMAX. Is this really a good rule? Why can't I change because I have become a bit more inductively risk-tolerant? That's not an accuracy increasing change; I don't actually know how to compare the accuracy of 0.7 and [0.65, 0.75]. But it feels like a reasonable, maybe rational, change.
+
+## Smaller Points
+
+Page 2, line 12
+:    Is it that *cr* has a degree of confidence, or that the person with *cr* does?
+
+Page 2, line 13
+:    It wasn't clear what was being allowed in via the parenthetical. Is it non-probabilistic credence functions?
+
+Page 2, line 16
+:    I'm not sure what compatibility means here. Maybe this relates to the point about permissivism above.
+
+Page 2, line 22
+:    There are other ways to dilate and contract than that I'd say. Going from *cr*(*p*) in [0.2, 0.8] to it in [0.4, 0.6] is a contraction.
+
+Page 2, line 31
+:    This is reminiscent of Arthur Prior's *tonk* operator.
+
+Page 2, line 32
+:    The second argument is less compelling, especially if one is sympathetic to the kind of permissivism I was sketching above.
+
+Page 3, line 7
+:    If there are multiple standards, couldn't one change which one was being used, and hence violate RATMAX.
+
+Page 3, line 10
+:    I don't get the 'and' in this heading. One version permits dilating; another permits contracting. No version was permitting arbitrary contraction **and** dilation.
+
+Page 5, line 22
+:    It's amusing to take the model to be that rational people are interested in *everything*.
+
+Page 6, line 7
+:    Introducing comparativism this far in seemed like a big thing to do.
+
+Page 6, line 27
+:    I mentioned above that I don't think this argument is connected enough to guessing, but I also don't understand it on its own merts. How can you abstain from guessing in these cases; I thought it was a forced choice?    
+    
+    Besides, does it even make sense to abstain. If the rule is that you get 1 point for a correct guess, and 0 points for abstain/incorrect guess, then abstain away.
+
+    Also, in three way choices, abstaining might be a very bad idea. What if you have to guess between *p*, *q* and *r*, and in fact *p* and *q* are true while *r* is false, and you have high overlapping credences in *p*, *q*, while you have low credence in *r*. Abstaining seems very bad - you should just pick *p* or *q* arbitrarily. (I'll come back to 3-way, and *n*-way, guesses in what follows.)
+
+Page 7, line 10
+:    I didn't understand this paragraph. Do they dilate to a point where there is a function where *cr*(*J*) > *cr*(*S*)? That seems extreme. I think I just didn't follow what was going on.
+
+Page 7, line 26
+:    Using opportunity costs like this seems like the right way to go, though as I mentioned above, it gets messy when there are multiple options.
+
+## Digression One: Negative Dominance
+
+OK, the points from here on are just if you are bored/have too much time on your hands. They certainly aren't things to be done before this year's job market. They probably aren't things to be done before any job market and/or tenure. But maybe they'll be of interest down the track.
+
+I thought the guessing framework had a way of stating something like the Negative Dominance principle that Harvey @Lederman2025 has been worried about. Here's how I'd state it for guessing.
+
+> **Negative Dominance (Guessing)**    
+>    
+> Let *A*, *B* be disjoint, and *C*, *D* be disjoint. Assume that given a choice between guessing *A* ∨ *B*, or guessing *C* ∨ *D*, Guesser strictly prefers guessing *A* ∨ *B*. Then in at least one of the pairs (*A*, *C*), (*A*, *D*), (*B*, *C*), (*B*, *D*), Guesser strictly prefers guessing the first to the second.
+
+As I understand it, the imprecise framework violates this. Let *A* be something Guesser is maximally uncertain about, let *B* be ¬*A*, and let *C* and *D* be incompatible propositions with chance (and precise credence) 0.45. Then they will definitely guess *A* ∨ *B* rather than *C* ∨ *D*, but in any of the four pairs, they will either abstain, or pick randomly, or something.
+
+Harvey has some arguments for this principle for action which I think could be translated fairly easily into arguments for the Guessing version. I have some doubts about those, but they are pretty interesting arguments I think. If you are doing a longer project on guessing and imprecise credence, it feels like something to maybe consider - but not right away!
+
+(Very tenuous connection: I kind of think the right way to respond to Harvey's arguments maybe might make arbitrary contraction more attractive. But I'm *really* unsure about that; I'm more sure it's an interesting argument.)
+
+## Digression Two: Guessing Functions
+
+So I've been spending the spring and summer working through some stuff by Amartya Sen, especially his @Sen1970sec. And a big part of that book is the idea that we should at least supplement, and *maybe* replace, preference relations with choice functions. As he uses them, a choice function *C* takes a menu of options *O*, and returns a (non-empty) set of permissible alternatives from that menu.
+
+Now this should sound a lot like the guessing game. We can imagine a function *G* that takes a menu of propositions *M*, and returns a set *P* of permissible guesses. The thing is, there is no reason to only consider the case where *M* is a pair-set. And it is a very interesting question whether *G* can/should be solely characterised by the values it takes when *M* is a pair-set. Over these two papers, I didn't see any examples where there were more than two options. But these cases are quite interesting.
+
+One immediate benefit of doing things this way is that we get a quick characterisation of imprecision. Consider the following principle (roughly what Sen calls principle β).
+
+> Assume that for some *M*, *G*(*M*) includes both *p* and *q*. Then for any *N* that includes both *p* and *q*, *p* is in *G*(*N*) iff *q* is.
+
+Intuitively, this holds for precise representors, and fails for imprecise representors. Now one possibility (for future, future research) is whether the talk of representors could be dropped altogether, and we could just define precision/imprecision in terms of something like this principle. That's (sorta kinda) what Sen does for values.
+
+This is more of a rabbit warren than a rabbit hole in terms of how many questions open up once you go this way. I might do something at EWIP later this term on some of this stuff. It all seems like it fits well with the guessing framework, but also isn't obviously relevant to *this* paper.
+
+## Digression Three: Imprecision and Representors
+
+This is all from memory, and I might be misremembering a key detail. But if I recall correctly, there is a different kind of argument against contraction in Walley's huge 1991 book. It goes something like this.
+
+Walley was an arch-pragmatist. Every constraint was done in terms of Dutch Book/sure loss considerations. That was normal enough then, I guess a little less so now. For Walley, that includes countable Dutch Books. So he accepted countable additivity, because there is a countable Dutch Book against merely finitely additive credences.
+
+So far, not so interesting. What he found, and here I'm really going from memory, was a set of merely finitely additive credence functions which, when taken as a representor, was not Dutch Bookable. And, this was the bizarre part, there was no way to represent it as a set of countably additive functions. I have no idea how this construction went (and I'm only 80% sure I'm recalling these properties correctly), but it led to some interesting claims.
+
+This construction, I think, was a big part of why Walley didn't like the representor language. This state wasn't just a set of credence functions, because it was rational and it would be represented as a set of irrational functions. It would also be an argument against arbitrary contraction - after all contracting would take you to mere finite additivity.
+
+Now I don't think it's worth getting into finite vs countable in this paper, and unless you have something that already works, probably not in anything you do at UM. That's really a down the line task. But there may be something here connecting contraction/dilation to countable/finite additivity.
