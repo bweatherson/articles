@@ -1,0 +1,51 @@
+---
+title: "Dossier Report: Sophia Wushanley"
+date: 21 August 2025
+author: Brian Weatherson
+bibliography: 
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+format:
+  pdf:
+    geometry: "left=1.2in,right=1.2in,top=1.2in,bottom=1.2in"
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 12pt
+    linkcolor: black
+    urlcolor: black
+    colorlinks: false
+    linestretch: 1.3
+---
+
+## Recommendation
+
+I recommend Sophia Wushanley's dossier be approved.
+
+## Summary of Thesis Plan
+
+Sophia plans to write a thesis on privacy in three or four chapters.
+
+The first chapter takes up the argument in Thomson (1975) that privacy is too unclear and disjunctive a notion to do serious philosophical work. Sophia argues, in effect, that there was something right about Thomson's critique. In particular, she argues that what she calls "content-based accounts" of privacy have systematically failed to respond successfully to Thomson. These are accounts that identify privacy with a particular interest that individuals have, such as control over presentation, or freedom from intrusion. She argues that any one of these interests doesn't capture all we care about in privacy, and a disjunction of them is ad hoc. So far, this looks like Thomson's critique. Her positive suggestion is that privacy norms play a particular function. Privacy isn't a particular interest people have, rather, privacy norms are norms that constrain information flows to protect individuals.
+
+The second chapter spells out this positive account of privacy. She calls this a functional account. A norm is a privacy norm if it stops the flow of information about individuals. Importantly, aboutness here is not defined in semantic or syntactic terms, but in terms of what kind of individualised treatment would be possible were the information spread around. Privacy norms include both the actual norms a society has that fit this description (i.e., preventing the flow of information about individuals) and the norms that a society should have.
+
+The third chapter compares Sophia's view with the most similar view in the existing literature, Helen Nissenbaum's contextual integrity view. Sophia argues that her view is preferable for two reasons. One is that Nissenbaum incorrectly flags as a privacy violation cases where people fail to follow norms that require them to spread information. The other, more important, one is that she argues Nissenbaum gives too much weight to the norms a society currently has, and too little weight to how they possibly should be revised.
+
+A potential fourth chapter, very briefly sketched, considers expanding the view to allow for people having a privacy interest in not being exposed to other information. This seemed interesting, and potentially worth developing, but it did seem like a big departure from the rest of the view.
+
+## Summary of Sample Chapter
+
+The sample chapter is the second one. Since the first and third chapters are much more about the literature, this was the right choice to have as the sample.
+
+Section 1 of the paper sets up the three tasks the theory aims to solve. (These are also, I suspect, covered in chapter 1.) These are that privacy covers a wide range of cases, that people have conflicting intuitions about privacy, that privacy norms differ widely across cultures, and that privacy norms vary across time, especially with technological change.
+
+Section 2 sets out the positive theory. Privacy is about norms on the flow of information about individuals. These norms include both existing norms, and the norms we think should be in a just society. And something is about an individual, relative to a recipient of the information, if it lets the recipient individuate how the individual is treated.
+
+Section 3 is about the justification for the norms, and about when they are not justified. The stress here is on when the norms are just, so there is an extended discussion of when asymmetries in how people are protected makes for unfair norms.
+
+## Recommendations
+
+This looks like a promising project, and I think the dossier should be approved. That said, I had a number of questions about the 
