@@ -48,4 +48,26 @@ Section 3 is about the justification for the norms, and about when they are not 
 
 ## Recommendations
 
-This looks like a promising project, and I think the dossier should be approved. That said, I had a number of questions about the 
+This looks like a promising project, and I think the dossier should be approved. That said, I had a number of questions and suggestions about how to proceed.
+
+There was something odd about the focus of section 3 of the writing sample. The discussion is primarily about why the norms identified in section 2 are good norms, and perhaps when they are not. But just as important a question is whether these are the *privacy* norms. After all, the debate here has not just been about whether privacy is a good thing, but about exactly what it is. And there is less defence of this claim than of the norms themselves.
+
+I was particularly puzzled by the claim that privacy is tightly tied to informational *justice*. Some norms can be justified on much more instrumental, consequentialist grounds. Perhaps some privacy norms remove a certain disincentive to risk taking; the risk of being embarrassed by failure. And the reason for having such a norm might not be the intrinsic right to take risks, but because there is a social benefit in having people try out different things. There is already in the paper some discussion of what feel like consequentialist considerations, in the context of discussing the value of having predictable actions, but I wondered whether there could be more on this, and on whether this raised any questions about whether the account was descriptively adequate.
+
+This was briefly mentioned in a footnote, but I thought the account needed more to say about cases when privacy interests are legitimately outweighed. It seems coherent to say that X is best to do all things considered, but it does involve some sacrifice of legitimate privacy interests. It can be tricky to get a norms-first account to do that. There can't be an all things considered norm saying don't do X; by hypothesis it's the right thing to do all things considered. I suspect we need the norms here to be something like defeasible generalisations; things that tell you what you shouldn't, in general do. Then it could make sense to say that X is a kind of thing one shouldn't in general do, but it's ok to do here.
+
+On that note, I thought the paper could do with more on exactly what norms are. What mix of social regularity, social expectation, and moral requirement, goes into norm as understood here. It might be worth engaging with Bicchieri and others who talk about the development of social norms in this context. Footnote 5 made some progress on this, but still left open the question of what it was to accept a norm. Is it to (a) feel bound by it, (b) feel like one can criticise others for not conforming to it, (c) predict that others will conform to it, or, more likely, some combination of these. It feels like there is a lot to say here.
+
+More generally, there were many fewer citations in this paper than I expected. I don't mean that the paper should include more citations just to pad it out, but that it could engage more with things like what norms are, what it means for a norm to be operative but outweighed, and so on. There is also an incomplete citation in footnote 6.
+
+The discussion of group privacy interests in footnote 8 was interesting, and could be developed. Could very small groups, like marriages, have privacy interests?
+
+I thought it was worth flagging earlier, and not in a footnote, that while only individuals have privacy rights, they have them against both individuals and non-individuals (corporations, states, etc.)
+
+The claim that privacy norms provide protection against blackmail seemed odd to me. If the norms weren't there, there may be *less* opportunity for blackmail because the information would already be out there.
+
+Starting around page 15, I got a bit confused about how pro tanto was being used, and what it was for something to have pro tanto value. On page 19 the suggestion seems to be that anything that meets the descriptive criteria of a privacy norm has pro tanto value. This seemed like a very strong claim to me; if the norm is seriously unjust, then it seems like it should not have any value. It isn't just outweighed by other considerations, and it certainly isn't something that leaves a moral remainder when it isn't followed.
+
+Finally, while I thought the view in chapter 4 was promising, I do worry about how it fits the overall project. The positive view I took it was that privacy norms are norms that, for all A, prevent the flow of information about A for the sake of protecting A. But the privacy cases in chapter 4 don't have this structure; they prevent the flow of information about some individuals for the sake of protecting other individuals. The possibility of such cases is interesting, but it's a challenge to the adequency of the view that such cases are possible. So this might require some tinkering to the overall project.
+
+
