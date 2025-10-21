@@ -1,0 +1,41 @@
+---
+title: "Multi-Author Example"
+format:
+  pdf:
+    documentclass: ergoclass
+    template-partials:
+      - before-body.tex
+      - title-multi.tex
+    include-in-header:
+      - preamble.tex
+    keep-tex: true
+    cite-method: natbib
+    biblio-style: "apalike"
+filters:
+  - ergodescription.lua
+# For multi-author papers, use the ergo-authors structure
+ergo-authors:
+  - name: "First Author"
+    affiliation: "First Affiliation"
+    email: "first@institution.edu"
+  - name: "Second Author"
+    affiliation: "Second Affiliation"
+    email: "second@institution.edu"
+  - name: "Third Author"
+    affiliation: "Third Affiliation"
+    email: ""  # Leave blank if no contact info
+abstract: |
+  This is the abstract for a multi-author paper.
+ergo:
+  volume: "1"
+  issue: "1"
+  year: "2025"
+  doi: "https://doi.org/---"
+  startpage: 1
+  authornote: "Author note text can go here"
+bibliography: references.bib
+---
+
+# Introduction
+
+Content here...

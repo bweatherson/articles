@@ -1,0 +1,60 @@
+---
+title: "When are Philosophy Articles Cited?"
+abstract: |
+  It's natural to believe that philosophy citations are typically to long ago pieces. We're still talking about philosophers from millenia ago. More strikingly, we're still talking about papers from half a century ago not as historical papers, but as part of the contemporary debate. But a systematic look at the citation data shows that these cases are outliers. Most citations are to recently published works. Surprisingly, this is less true in recent years than it used to be. The effect of electronic publishing and communication has been to make citations, on average, older. After we adjust for the typical age of philosophy citations, and this changing trend, it turns out that the 2000s were a particularly influential time in philosophy publishing. Articles published in that decade are cited more than earlier or later articles, once we adjust for the typical times articles are cited, and the changing patterns of citation. This is arguably related to broad changes in the interests of philosophers, towards social philosophy, and epistemology.
+execute:
+  echo: false
+  warning: false
+date: today
+bibliography: 
+ - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+ - /Users/weath/Documents/citations-2025/autobib.bib
+number-sections: true
+keep-tex: true
+ergo:
+  volume: "TBC"
+  issue: "TBC"
+  year: "2025"
+  doi: "https://doi.org/TBC"
+  startpage: 1
+crossref:
+  custom:
+    - kind: float
+      key: apptbl
+      latex-env: apptbl
+      reference-prefix: Table A
+      space-before-numbering: false
+author:
+  - name: "Your Name"
+    affiliation: "Your Affiliation"
+    email: "your.email@institution.edu"
+format:
+  html:
+    fig-format: png
+    fig-width: 10
+    fig-height: 7
+  docx:
+    reference-doc: my-template.docx
+  pdf: 
+    pdf-engine: pdflatex
+    documentclass: ergoclass
+    fontfamily: mathpazo  # This tells Quarto to use mathpazo instead of lmodern
+    template-partials:
+      - before-body.tex
+      - title.tex
+    include-in-header:
+      - preamble.tex
+    keep-tex: true
+    cite-method: natbib
+    biblio-style: "apalike"
+    output-file: "Test.pdf"
+---
+
+Hello world. What font am I in? @Lewis1973a
+
+```{=latex}
+$$
+r(o, n) = \left(\frac{c(o, n)}{a(o)}\right) / \left(\frac{\sum\limits_{i = n-10}^{n-3}c(i, n)}{\sum\limits_{i = n-10}^{n-3}a(i)}\right)
+$$
+```
+

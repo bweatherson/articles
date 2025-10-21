@@ -1,9 +1,9 @@
 # Appendix: Summary Statistics {#sec-statistics}
 
-The paper uses the journals shown in @tbl-statistics.
+The paper uses the journals shown in @tbl-list-of-journals.
 
 ```{r}
-#| label: tbl-statistics
+#| label: tbl-list-of-journals
 #| tbl-cap: "Journals used in this paper"
 
 journal_summary <- active_philo_bib %>%

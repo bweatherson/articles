@@ -1,0 +1,50 @@
+\documentclass{ergoclass}
+\usepackage{lipsum}
+\usepackage{color}
+
+\definecolor{mygrey}{gray}{0.6}
+\newcommand{\gripsum}[1]{\textcolor{mygrey}{\lipsum[#1]}}
+
+\title{Title}
+\author{Name}
+\affiliation{Affiliation}
+\contact{name@affilation.com}% This field can be left blank, 
+
+%% If there are multiple authors, use this command. It allows as many as three authors.
+%% However, it absolutely should not be used for only one author.
+%% The contact information can be included or left out on a contributor by contributor basis.
+%
+%\multiauthor{First Author}{affilation}{contact}{Second Author}{affiliation}{contact}{}{}{}
+
+\textofabstract{%
+The abstract should be included here. \gripsum{143}
+}%
+
+\articledoi{https://doi.org/---}
+\volumeissueyear{1}{1}{2015}%
+\setcounter{page}{1}% This sets the starting page number
+
+\begin{document}
+
+\maketitle
+
+\lettrine{F}{or} articles starting without a section, this gives a drop cap. \gripsum{2}
+
+\section{Section}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+The familiar section and subsection commands can be used. \gripsum{3}
+\subsection{Cases}
+And cases can be described:
+\begin{ergodescription}
+\item[Trolley.] \gripsum{121}
+\item[Case 1:] \gripsum{130}
+\end{ergodescription}
+\gripsum{4}
+\begin{ergodescription}[Cases Can Be Titled]
+\item[Trolley.] \gripsum{121}
+\item[Case 1:] \gripsum{130}
+\end{ergodescription}
+
+\gripsum{5}
+\end{document}

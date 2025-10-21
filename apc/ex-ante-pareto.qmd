@@ -1,0 +1,67 @@
+---
+title: "Your Article Title"
+format:
+  pdf:
+    documentclass: ergoclass
+    pdf-engine: pdflatex
+    template-partials:
+      - before-body.tex
+      - title.tex
+    include-in-header:
+      - preamble.tex
+    keep-tex: true
+    cite-method: natbib
+    biblio-style: "apalike"
+filters:
+  - ergodescription.lua
+author:
+  - name: "Your Name"
+    affiliation: "Your Affiliation"
+    email: "your.email@institution.edu"
+abstract: |
+  This is where your abstract goes. It can span multiple lines and will be properly formatted according to the Ergo style.
+ergo:
+  volume: "1"
+  issue: "1"
+  year: "2025"
+  doi: "https://doi.org/---"
+  startpage: 1
+bibliography: references.bib
+---
+
+# Introduction
+
+Your article content goes here. You can write in Markdown and it will be converted to the appropriate LaTeX.
+
+## Subsection
+
+More content here.
+
+### Subsubsection
+
+Even more content.
+
+## Cases with Description Lists
+
+You can use Pandoc's definition list syntax, which will be converted to `ergodescription` environments:
+
+Trolley
+:   This is the trolley case description. It will be formatted with the ergodescription environment.
+
+Case 1
+:   This is another case with its description.
+
+Or you can use titled descriptions by adding `{.ergodescription title="Cases Can Be Titled"}` after the list:
+
+Trolley
+:   This is the trolley case description.
+
+Case 2
+:   Another case description.
+
+{.ergodescription title="My Custom Title"}
+
+# References
+
+::: {#refs}
+:::

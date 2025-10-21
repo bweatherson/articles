@@ -2,14 +2,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  12pt,
-  letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+]{ergoclass}
 \usepackage{xcolor}
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{5}
 \usepackage{iftex}
@@ -22,13 +19,9 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
+\usepackage[]{mathpazo}
 \ifPDFTeX\else
   % xetex/luatex font selection
-  \setmainfont[ItalicFont=EB Garamond Italic,BoldFont=EB Garamond
-SemiBold]{EB Garamond Math}
-  \setsansfont[]{EB Garamond SemiBold}
-  \setmathfont[]{EB Garamond Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -36,7 +29,16 @@ SemiBold]{EB Garamond Math}
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -89,39 +91,6 @@ SemiBold]{EB Garamond Math}
 \makeatother
 
 
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 
@@ -133,11 +102,16 @@ SemiBold]{EB Garamond Math}
 
 
  
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
 
 
-\setlength\heavyrulewidth{0ex}
-\setlength\lightrulewidth{0ex}
-\KOMAoption{captions}{tableheading}
+% Additional packages can be loaded here if needed
+% The ergoclass already loads most necessary packages
+
+% Uncomment if you need these:
+% \usepackage{booktabs}
+% \usepackage{longtable}
 \makeatletter
 \@ifpackageloaded{float}{}{\usepackage{float}}
 \floatstyle{plain}
@@ -196,16 +170,22 @@ SemiBold]{EB Garamond Math}
 \hypersetup{
   pdftitle={When are Philosophy Articles Cited?},
   pdfauthor={Anon},
-  hidelinks,
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
 
 \title{When are Philosophy Articles Cited?}
+
 \author{Anon}
-\date{2025-10-21}
-\begin{document}
-\maketitle
-\begin{abstract}
+\affiliation{Anon Institution}
+\contact{anon@institution.edu}
+
+
+\textofabstract{%
 It's natural to believe that philosophy citations are typically to long
 ago pieces. We're still talking about philosophers from millenia ago.
 More strikingly, we're still talking about papers from half a century
@@ -222,10 +202,17 @@ once we adjust for the typical times articles are cited, and the
 changing patterns of citation. This is arguably related to broad changes
 in the interests of philosophers, towards social philosophy, and
 epistemology.
-\end{abstract}
+}%
 
+\articledoi{https://doi.org/TBC}
 
-\setstretch{1.75}
+\volumeissueyear{TBC}{TBC}{2025}%
+
+\setcounter{page}{1}%
+
+\begin{document}
+\maketitle
+
 \section{Introduction}\label{sec-introduction}
 
 This paper is about the patterns of citations of philosophy journal
@@ -240,22 +227,20 @@ generalisations are surprising.
 Before looking at the data, here are two things I believed about
 philosophy citations. First, philosophers tend to cite very old papers.
 We still regularly teach a number of papers over half a century old in
-introductory classes; e.g., H. G. Frankfurt
-(\citeproc{ref-WOSA1969Y444700002}{1969}), Thomson
-(\citeproc{ref-WOSA1971Y116900003}{1971}), Singer
-(\citeproc{ref-WOSA1972Z066400001}{1972}), and Lewis
-(\citeproc{ref-10.2307_2025310}{1973a}). These aren't taught as history
-papers, but as early entries into the contemporary philosophical debate.
-While most papers aren't cited as much as these papers are, I thought
-the pattern that old papers keep being cited extended to their less
-famous counterparts. Second, the technological changes of the last
-quarter century meant that this practice was being slowly reversed. A
-series of technological innovations made it easier to cite newer and
-newer works. These innovations included the spread of email, the rise of
-preprint archives (e.g., arXiv, SSRN, PhilPapers), and eventually
-official preprints in things like EarlyView. So, I thought, citations
-should be getting younger, because the delay between publishing and
-getting widely known was removed.
+introductory classes; e.g., \citet{WOSA1969Y444700002},
+\citet{WOSA1971Y116900003}, \citet{WOSA1972Z066400001}, and
+\citet{10.2307_2025310}. These aren't taught as history papers, but as
+early entries into the contemporary philosophical debate. While most
+papers aren't cited as much as these papers are, I thought the pattern
+that old papers keep being cited extended to their less famous
+counterparts. Second, the technological changes of the last quarter
+century meant that this practice was being slowly reversed. A series of
+technological innovations made it easier to cite newer and newer works.
+These innovations included the spread of email, the rise of preprint
+archives (e.g., arXiv, SSRN, PhilPapers), and eventually official
+preprints in things like EarlyView. So, I thought, citations should be
+getting younger, because the delay between publishing and getting widely
+known was removed.
 
 Both of these thoughts were wrong.
 
@@ -281,7 +266,7 @@ between \emph{o} and \emph{n}.\footnote{The graph also includes some
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-master-citation-ratio-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-master-citation-ratio-1.pdf}}
 
 }
 
@@ -307,7 +292,7 @@ percentage of the citations.)
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-ageeffecteverything-high-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-ageeffecteverything-high-1.pdf}}
 
 }
 
@@ -350,7 +335,7 @@ age over 20.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-decades-cite-ratio-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-decades-cite-ratio-1.pdf}}
 
 }
 
@@ -362,7 +347,7 @@ age over 20.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-decades-cite-ratio-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-decades-cite-ratio-2.pdf}}
 
 }
 
@@ -374,7 +359,7 @@ age over 20.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-decades-cite-ratio-3.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-decades-cite-ratio-3.pdf}}
 
 }
 
@@ -386,7 +371,7 @@ age over 20.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-june-draft_files/figure-pdf/fig-decades-cite-ratio-4.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-decades-cite-ratio-4.pdf}}
 
 }
 
@@ -408,7 +393,7 @@ second graph.
 \item
   The peaks are getting later. In the first two graphs, the line is
   clearly heading down by age 5; in the last one it is barely off the
-  peak.
+  peak at that time.
 \item
   The peaks are getting lower. In the last graph we barely see it cross
   1.
@@ -440,17 +425,16 @@ influential. What might be more surprising is that the next most
 influential period, in terms of how often articles from then are cited
 compared to the overall trends, is the 2000s. There are a few possible
 reasons for this, but I suspect the main one is the rising importance at
-that time of epistemology. (This is something Eugenio Petrovich
-(\citeproc{ref-Petrovich2024}{2024}) also found using a somewhat
-different data set.) More generally, looking at citations from different
-periods, and especially looking at which articles make up those
-citations, is a useful guide to the history of those periods. Most work
-on the history of analytic philosophy doesn't get beyond the early
-1970s; this is an early attempt to quantify what happens in the years
-after the changes brought about by Kripke, Lewis, Rawls and others in
-those years.
+that time of epistemology. (This is something Eugenio
+\citet{Petrovich2024} also found using a somewhat different data set.)
+More generally, looking at citations from different periods, and
+especially looking at which articles make up those citations, is a
+useful guide to the history of those periods. Most work on the history
+of analytic philosophy doesn't get beyond the early 1970s; this is an
+early attempt to quantify what happens in the years after the changes
+brought about by Kripke, Lewis, Rawls and others in those years.
 
-\section{Age of Citations}\label{sec-age}
+\section{Age of Citations}\label{sec-age-of-citations}
 
 \subsection{Methodology}\label{sec-methodology}
 
@@ -490,23 +474,19 @@ The data from the XML was supplemented in two ways. First, WoS does not
 index \emph{The Journal of Philosophy} between 1971 and 1974. It is
 missing a few other journals in 1974 in particular, but this gap was the
 longest and most important, and I thought I needed to fix it. Between
-1971 and 1974 the Journal published groundbreaking articles by Harry H.
-Frankfurt (\citeproc{ref-Frankfurt1971}{1971}), George Boolos
-(\citeproc{ref-Boolos1971}{1971}), Paul Benacerraf
-(\citeproc{ref-Benacerraf1973}{1973}), Jaegwon Kim
-(\citeproc{ref-Kim1973}{1973}), Michael Friedman
-(\citeproc{ref-Friedman1974}{1974}), Isaac Levi
-(\citeproc{ref-Levi1974}{1974}), and David Lewis
-(\citeproc{ref-Lewis1971cen}{1971}, \citeproc{ref-Lewis1973ben}{1973b}).
-Leaving all of those papers out seemed like it undermined the story. So
-I used JSTOR to find a full list of articles (as opposed to notes or
-book reviews) in \emph{Journal of Philosophy} in those years, and then
-looked through the citations in articles in
-\textbf{?@tbl-list-of-journals} to see which citations were to one of
-those articles. This did mean I was using a different classification of
-publications into articles and non-articles, and there are some odd
-choices.\footnote{Notably, the JSTOR list seemed to exclude the
-  symposium centered around Kenneth Arrow's ``Some
+1971 and 1974 the Journal published groundbreaking articles by Harry
+\citet{Frankfurt1971}, George \citet{Boolos1971}, Paul
+\citet{Benacerraf1973}, Jaegwon \citet{Kim1973}, Michael
+\citet{Friedman1974}, Isaac \citet{Levi1974}, and David Lewis
+\citetext{\citeyear{Lewis1971cen}; \citeyear{Lewis1973ben}}. Leaving all
+of those papers out seemed like it undermined the story. So I used JSTOR
+to find a full list of articles (as opposed to notes or book reviews) in
+\emph{Journal of Philosophy} in those years, and then looked through the
+citations in articles in Table~\ref{tbl-list-of-journals} to see which
+citations were to one of those articles. This did mean I was using a
+different classification of publications into articles and non-articles,
+and there are some odd choices.\footnote{Notably, the JSTOR list seemed
+  to exclude the symposium centered around Kenneth Arrow's ``Some
   Ordinalist-Utilitarian Notes on Rawls's Theory of Justice''; I'm not
   sure why that was.} And it meant I had to do a fair bit of data
 cleaning just to track down references to those four years.\footnote{A
@@ -530,15 +510,15 @@ hence they aren't as useful for figuring out larger trends.
 The other way I supplemented the XML relates to the fact that the XML I
 have only goes through mid-2022. Using the WoS website, I downloaded all
 the articles in, and citations in, articles in these 100 journals from
-2021-2024. I processed these using the bibliometrix package (Aria and
-Cuccurullo (\citeproc{ref-bibliometrix}{2017})). I used the 2021 data to
-check that this method yielded roughly the same results as the XML. The
-differences were not great - well under 1\% for the number of articles,
-and a little over 1\% for the number of citations. So it's not a perfect
-match, but it's fairly close. The data used in this study for 2022-2024
-comes from the WoS website via bibliometrix.
+2021-2024. I processed these using the bibliometrix package
+(\citet{bibliometrix}). I used the 2021 data to check that this method
+yielded roughly the same results as the XML. The differences were not
+great - well under 1\% for the number of articles, and a little over 1\%
+for the number of citations. So it's not a perfect match, but it's
+fairly close. The data used in this study for 2022-2024 comes from the
+WoS website via bibliometrix.
 
-\subsection{Journal to Journal}\label{journal-to-journal}
+\subsection{Journal to Journal}\label{sec-journal-to-journal}
 
 As noted earlier, this study is restricted to a particular kind of
 citation: when a philosophy journal article is cited in another
@@ -562,14 +542,14 @@ to spell names) or even publication years. Cleaning this is a lot of
 work. In practice, restricting attention to cases where WoS includes an
 ID number for the cited article does not avoid this problem as much as
 delegate it to WoS. Otherwise, doing this is a huge amount of work. A
-similar study to this one was earlier done by Eugenio Petrovich
-(\citeproc{ref-Petrovich2024}{2024}); he looked at all citations in five
-leading philosophy journals. It wasn't practical for him to look at more
-than five because of how much work it was to clean all those citations.
-I'm losing some comprehensiveness compared to his study, but covering
-twenty times more journals. This isn't to say that one of the ways of
-doing things is right and the other wrong; rather that by looking at
-slightly different things, the two studies should complement each other.
+similar study to this one was earlier done by Eugenio
+\citet{Petrovich2024}; he looked at all citations in five leading
+philosophy journals. It wasn't practical for him to look at more than
+five because of how much work it was to clean all those citations. I'm
+losing some comprehensiveness compared to his study, but covering twenty
+times more journals. This isn't to say that one of the ways of doing
+things is right and the other wrong; rather that by looking at slightly
+different things, the two studies should complement each other.
 
 Second, looking at journals allows for a kind of comprehensiveness. To
 find out how often the average philosophy book from a particular year
@@ -584,11 +564,11 @@ everything.
 Third, dealing with whole journals makes the challenge of demarcating
 philosophy from non-philosophy a little more manageable. At the very
 least, I can show you what I mean by a philosophy journal; I mean the
-journals listed in Table~\ref{tbl-statistics}. If I had to go through
-book-by-book, or chapter-by-chapter, making decisions on which were
-inside philosophy, it would be a massive task, and it would be nearly as
-massive a task for anyone to double check. The key thing here is that
-I'm not attempting to quantify philosophy articles published in
+journals listed in Table~\ref{tbl-list-of-journals}. If I had to go
+through book-by-book, or chapter-by-chapter, making decisions on which
+were inside philosophy, it would be a massive task, and it would be
+nearly as massive a task for anyone to double check. The key thing here
+is that I'm not attempting to quantify philosophy articles published in
 journals, but articles published in philosophy journals. The demarcation
 problem is still incredibly challenging; for instance, should I have
 included \emph{Cognition} in this study? Invariably some arbitrary
@@ -607,10 +587,10 @@ published cite primary sources, and more recent books, more than other
 journal articles. This kind of work offers essentially zero insight into
 developments in the history of philosophy. Also, and this will become
 important later, often citations to books are to much older works than
-citations to articles. Petrovich (\citeproc{ref-Petrovich2024}{2024})
-notes that through the 1990s, Quine, Wittgenstein and Davidson are
-amongst the most cited authors. None of them show up as near the top if
-you just look at cited journal articles.
+citations to articles. \citet{Petrovich2024} notes that through the
+1990s, Quine, Wittgenstein and Davidson are amongst the most cited
+authors. None of them show up as near the top if you just look at cited
+journal articles.
 
 Davidson, in particular, raises another issue about citations to journal
 articles. A citation is only recorded as being to a journal article if
@@ -636,12 +616,13 @@ often journals are cited outside philosophy. It doesn't show how often
 they are cited in books either, but that's less of a problem, I believe,
 because citations in books and citations in journals have similar
 patterns. But citations inside philosophy are a very poor guide to
-citations outside philosophy. If you look at Table~\ref{tbl-statistics},
-you'll see that the articles in \emph{Journal of Medical Ethics} are,
-collectively, cited very rarely. This is almost entirely a consequence
-of my excluding medical journals where that journal is cited more often.
-The data in Table~\ref{tbl-statistics} tells you something. If you
-wanted confirmation that `core' philosophy journals don't publish much
+citations outside philosophy. If you look at
+Table~\ref{tbl-list-of-journals}, you'll see that the articles in
+\emph{Journal of Medical Ethics} are, collectively, cited very rarely.
+This is almost entirely a consequence of my excluding medical journals
+where that journal is cited more often. The data in
+Table~\ref{tbl-list-of-journals} tells you something. If you wanted
+confirmation that `core' philosophy journals don't publish much
 bioethics, the citation numbers for \emph{Journal of Medical Ethics} are
 evidence for that. But they are not evidence for anything about the
 overall impact of the journal; we just aren't looking in the right place
@@ -674,24 +655,21 @@ is to see if the same pattern shows up if we look at the same people in
 other stages of their life.
 
 It's easy to overlook the importance of cohort effects. Sometimes they
-simply look like age effects. Ghitza, Gelman, and Auerbach
-(\citeproc{ref-GhitzaEtAl2023}{2023}) argue that many hypotheses about
-age effects on voting, e.g., that older people are more naturally
-conservative, are really just cohort effects. Bump
-(\citeproc{ref-Bump2023}{2023}) argues that understanding the
-distinctive role the boomers in particular play is crucial for
-understanding many aspects of modern American life.
+simply look like age effects. \citet{GhitzaEtAl2023} argue that many
+hypotheses about age effects on voting, e.g., that older people are more
+naturally conservative, are really just cohort effects. \citet{Bump2023}
+argues that understanding the distinctive role the boomers in particular
+play is crucial for understanding many aspects of modern American life.
 
 There are mathematical reasons that it is hard to tease these effects
 apart too. Many statistical techniques for separating out influences
 start to fall apart when there are linear correlations between
 combinations of variables. In this case there is as tight a correlation
 as is possible. By definition, cohort plus age equals period. There are
-some things you can do to get around this problem - see Keyes et al.
-(\citeproc{ref-KeyesEtAl2010}{2010}) for a useful survey of some of the
-options, and see (\citeproc{ref-Rohrer2025}{\textbf{Rohrer2025?}}) for
-some recent scepticism about general solutions to it - but it remains a
-challenge.
+some things you can do to get around this problem - see
+\citet{KeyesEtAl2010} for a useful survey of some of the options, and
+see \citet{Rohrer2025} for some recent scepticism about general
+solutions to it - but it remains a challenge.
 
 Even conceptually, it is hard to separate out these three effects in
 cases where there is evidence that the strength of the effects changes
@@ -708,7 +686,7 @@ quickly.
 \tightlist
 \item
   The age effect is that articles get cited most when they are two to
-  five years old, as shown in \textbf{?@fig-overall-age}.
+  five years old.
 \item
   The period effect is that there are many more citations in recent
   years than in earlier years. This is in part because the number of
@@ -727,9 +705,345 @@ The period effect is the largest, and in some ways the least
 interesting, so I'll start the analysis by quantifying it, and arguing
 for a particular way to screen it off.
 
+\section{Period Effects}\label{sec-period}
+
+The database contains 508,996 citations, but they are not distributed
+evenly over time. Instead, they grow rapidly. At the start, in 1956,
+there are only 4 citations. That's not too surprising; without the
+ability to cite preprints, there aren't going to be many citations of
+articles that have come out that year. By 2024, there are 38,507. In
+Figure~\ref{fig-citationsperyear}, I show how these grew.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-citationsperyear-1.pdf}}
+
+}
+
+\caption{\label{fig-citationsperyear}The number of citations in the
+dataset made each year.}
+
+\end{figure}%
+
+As noted in Section~\ref{sec-methodology}, I used a slightly different
+method to extract the citations from 2022 onwards. It's possible that
+the drop between 2021 and 2022 is a consequence of that change. However
+I don't think it is for two reasons. First, it's more likely that 2021
+is just an outlier; it's a consequence largely of \emph{Synthese}
+publishing 1,439 articles in 2021, then a relatively few 509 articles in
+2022. Second, I applied the method I'm using for 2022-2024 to 2020 and
+2021, and got a fairly close agreement (within 1-2\%) with each year.
+
+What explains this dramatic growth, at least through 2021? Part of the
+explanation is that more articles are being published, and more articles
+are being indexed. Figure~\ref{fig-articlesperyear} shows how many
+articles are in the dataset each year.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-articlesperyear-1.pdf}}
+
+}
+
+\caption{\label{fig-articlesperyear}The number of articles in the
+dataset published each year.}
+
+\end{figure}%
+
+That explains some of the growth, but not all of it. The curve in
+Figure~\ref{fig-articlesperyear} is not nearly as steep as the curve in
+Figure~\ref{fig-citationsperyear}. The number of (indexed) citations per
+article is also rising. In Figure~\ref{fig-outboundcitations} I've
+plotted the average number of citations to other articles in the dataset
+each year.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-outboundcitations-1.pdf}}
+
+}
+
+\caption{\label{fig-outboundcitations}The average number of citations to
+indexed articles each year.}
+
+\end{figure}%
+
+There are a few possible explanations for the shape of this graph.
+
+At the left-hand edge, there are obvious boundary effects. Since we're
+only counting citations to articles published since 1956, it isn't
+surprising that there aren't very many of them per article in the 1950s.
+Since articles rarely get unpublished, there are more articles available
+to cite every year.
+
+That can't explain the massive jumps we see at the right hand edge of
+Figure~\ref{fig-outboundcitations}. The jump there looks like the
+convergence of two cultural trends. One is a trend simply to greater
+numbers of citations. The most casual perusal of journals will confirm
+that trend. The other is a trend to greater citations of journals
+themselves, as opposed to books or edited volumes.
+
+A sharp jump like this is a warning sign that there is something wrong
+with the data, and so the data should be checked. It's impractical to
+cross-check every entry, but those I have checked look correct. The
+change seems led by the most prestigious journals. For each journal I
+calculated the average number of outbound citations (to these hundred
+journal) for both the 2010s, and the first two years of the 2020s. The
+ten journals with the largest increase between the decades are shown in
+Table~\ref{tbl-large-growth}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5694}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1389}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1389}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1528}}@{}}
+
+\caption{\label{tbl-large-growth}Mean outbound citations for some
+journals over the last two decades.}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Journal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2010-2019
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2020-2024
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Difference
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Philosophical Review & 14.8 & 26.3 & 11.5 \\
+Philosophical Perspectives & 11.3 & 19.2 & 7.9 \\
+Noûs & 11.5 & 18.4 & 6.9 \\
+Philosophy and Phenomenological Research & 9.6 & 15.8 & 6.2 \\
+Philosophical Studies & 9.0 & 14.6 & 5.6 \\
+Journal of Philosophy & 9.0 & 14.5 & 5.6 \\
+Philosophy & 4.0 & 8.9 & 4.9 \\
+Episteme & 8.1 & 12.9 & 4.9 \\
+Philosophical Quarterly & 8.8 & 13.6 & 4.7 \\
+Philosophy Compass & 11.2 & 15.9 & 4.7 \\
+
+\end{longtable}
+
+Since \emph{Philosophical Review} only publishes 10 to 12 articles per
+year, it is not surprising that it shows the most variation on this
+list. Still, the change in the 2010s isn't only small sample size
+variation. Of the 22 articles it published in 2020 and 2021, only one of
+them \citep{WOS000575210400003} had fewer than 14.8 outbound citations.
+With a sample of just 22 anything could happen, but it would be
+surprising to have all but one end up on the same side of the historical
+average by chance.
+
+We could just ask what proportion of all citations accrue to an article
+in a given year. But that would be an overcorrection. In the 2020s there
+are more citations to be shared around, but also more articles to share
+them between. We need to adjust for both things. Here's the way I'll do
+it.
+
+Say an article is from a year that is one of the \emph{typically} cited
+articles iff it is between 3 and 10 years before the citing year. As we
+saw in Figure~\ref{fig-master-citation-ratio}, that is when citations
+typically peak. Using this definition, Figure~\ref{fig-articlecounts}
+shows how many of these typically cited articles there are at any given
+time. (So for 2000, it shows the number of articles published
+1990-1997.)
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-articlecounts-1.pdf}}
+
+}
+
+\caption{\label{fig-articlecounts}Typically cited articles.}
+
+\end{figure}%
+
+In Figure~\ref{fig-citationcounts}, I've shown how often, in each year,
+these `typical' articles are cited, and in Figure~\ref{fig-citationrate}
+I've shown the mean number of citations to these typical articles there
+are in each year.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-citationcounts-1.pdf}}
+
+}
+
+\caption{\label{fig-citationcounts}Citations to typical articles.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-citationrate-1.pdf}}
+
+}
+
+\caption{\label{fig-citationrate}Mean annual citations to typical
+articles.}
+
+\end{figure}%
+
+Two things stand out about Figure~\ref{fig-citationrate}. The graph is
+fairly flat for a long time. Between the mid 1970s and early 2000s it
+bounces around without moving much. Then it takes off, and go through
+the roof in 2021, before returning to the long term trend. The other
+thing is that the numbers are never high. For most of this study, even
+articles from this peak citation age, three to ten years old, are cited
+in one of these hundred journals once a \emph{decade}. Actually, since
+citation rates are extremely long-tailed, and mean rates are well above
+medians, that somewhat overstates how often the `average article' was
+being cited. Frequent citation is very much not the norm.\footnote{In
+  the long run the average number of times an article is cited equals
+  the average number of citations per article. So it shouldn't be too
+  surprising that most article have just a handful of citations in
+  philosophy journals.}
+
+My first pass measure of an article's influence at a time is how often
+it is cited at that time, divided by how often the typical article is
+cited at that time. This is a little arbitrary; I could have picked
+other ranges than three to ten years, but I think it gets things roughly
+right. I tried several other measures, and they all either led to
+implausible trends in the data, or to comparative judgments about the
+influence of various papers that didn't seem remotely plausible. This
+measure had the nice consequence that how influential the leading 50
+articles from a period were 10-20 years after that period was reasonably
+stable, suggesting that it does correct for period effects reasonably
+well.
+
+\section{Age Effects}\label{sec-age}
+
+The next task is to work out how the age of an article affects how often
+it is cited. The simplest thing to do here would be to look at a typical
+year, and see how often articles from that year have been cited over
+time. That would, unfortunately, be completely wrong.
+Figure~\ref{fig-1990-outbound-citations} shows how often articles from
+1990 have been cited over time.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-1990-outbound-citations-1.pdf}}
+
+}
+
+\caption{\label{fig-1990-outbound-citations}Citations to articles
+published in 1990.}
+
+\end{figure}%
+
+If we're using citations as a measure of influence,
+Figure~\ref{fig-1990-outbound-citations} suggests that, collectively,
+articles from 1990 were most influential in 2021. That's not really
+true; they were most influential two to four years after they were
+published, like most articles. It's just that there are so many articles
+published in the 2020s, and each of them cite so many pieces, that
+citations to three decade old articles get lifted by the rising tide.
+
+A more intuitive way of measuring influence uses the notion of typical
+articles from the Section~\ref{sec-period}. Let's adjust
+Figure~\ref{fig-1990-outbound-citations} by dividing each value by two
+things. First, by the citation rate of typical articles, as shown in
+Figure~\ref{fig-citationrate}, to adjust for period effects. Second, by
+the number of articles published in 1990, so we're getting a measure of
+influence per article. The result what I earlier called the citation
+ratio, and the graph for 1990's citation ratio is
+Figure~\ref{fig-1990-outbound-citations-norm}.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-1990-outbound-citations-norm-1.pdf}}
+
+}
+
+\caption{\label{fig-1990-outbound-citations-norm}Normalised measure of
+citations to articles published in 1990.}
+
+\end{figure}%
+
+There are two reasons to think that the graph in
+Figure~\ref{fig-1990-outbound-citations-norm} is a more plausible
+measure of influence than the one in
+Figure~\ref{fig-1990-outbound-citations}. One is just an appeal to
+intuition. I know how often work from 1990 came up in discussions in the
+1990s and in the 2020s, and it was a lot higher in the former than in
+the latter. While that kind of intuitive evidence should be given some
+weight, it's obviously unreliable on its own. The better reason is that
+we get a very similar shaped graph to
+Figure~\ref{fig-1990-outbound-citations-norm} no matter which initial
+year we pick. This was already visible in
+Figure~\ref{fig-decades-cite-ratio}, but it's worth seeing how stable it
+is.
+
+I've used the expression `citation ratio' a few times; it's worth being
+more precise about what it is. Let \emph{c}(\emph{o},~\emph{n}) be the
+number of citations of articles from year \emph{o} (the old year) in
+year \emph{n} (the new year). Let \emph{a}(\emph{o}) be the number of
+articles published in year \emph{o}. Then the citation ratio
+\emph{r}(\emph{o}, \emph{n}) is:
+
+\[
+r(o, n) = \left(\frac{c(o, n)}{a(o)}\right) / \left(\frac{\sum\limits_{i = n-10}^{n-3}c(i, n)}{\sum\limits_{i = n-10}^{n-3}a(i)}\right)
+\]
+
+In Figure~\ref{fig-ageeffecttibble-early} and
+Figure~\ref{fig-ageeffecttibble-late} each facet is a different value
+for \emph{o}, the x-axis is \emph{n}, and the \emph{y} axis is
+\emph{r}(\emph{o}, \emph{n}). The key thing to note is how steady these
+graphs are. I have cheated a little; if I'd shown earlier years the
+shapes would not have been the same. There are so few citations in the
+1960s that the noise overwhelms the signal. Since then, we get a
+reasonably steady pattern.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-ageeffecttibble-early-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecttibble-early}Citation rates for articles
+published 1968-1992.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{apc-2025-october-draft_files/figure-pdf/fig-ageeffecttibble-late-1.pdf}}
+
+}
+
+\caption{\label{fig-ageeffecttibble-late}Citation rates for articles
+published 1993-2017.}
+
+\end{figure}%
+
 \section{Appendix: Summary Statistics}\label{sec-statistics}
 
-The paper uses the journals shown in Table~\ref{tbl-statistics}.
+The paper uses the journals shown in Table~\ref{tbl-list-of-journals}.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.4274}}
@@ -739,7 +1053,7 @@ The paper uses the journals shown in Table~\ref{tbl-statistics}.
   >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1624}}
   >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1538}}@{}}
 
-\caption{\label{tbl-statistics}Journals used in this paper}
+\caption{\label{tbl-list-of-journals}Journals used in this paper}
 
 \tabularnewline
 
@@ -880,10 +1194,9 @@ Utilitas & 2009 & 2024 & 391 & 2480 & 1147 \\
 What I've called an \emph{article} here is anything that either (a)
 marked as an article or research-article by WoS, or (b) marked as a
 review, discussion, or note by WoS and is at least 15 pages long. I
-needed to include (b) because some very important works (e.g., Davidson
-(\citeproc{ref-WOSA1963CEU0700001}{1963}) and Schaffer
-(\citeproc{ref-WOS000272855000002}{2010})) were not recorded as articles
-by WoS.
+needed to include (b) because some very important works (e.g.,
+\citet{WOSA1963CEU0700001} and \citet{WOS000272855000002}) were not
+recorded as articles by WoS.
 
 The years here are \textbf{not} the first and last years that the
 journals published, but the earliest and latest years that are in the
@@ -905,102 +1218,8 @@ or supplementary issues of \emph{Noûs} (and similarly removed the
 citations to those articles that did get tracked). What you see here are
 just the standalone issues of \emph{Philosophical Perspectives}.
 
-\subsection*{References}\label{references}
-\addcontentsline{toc}{subsection}{References}
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-bibliometrix}
-Aria, Massimo, and Corrado Cuccurullo. 2017. {``Bibliometrix: An r-Tool
-for Comprehensive Science Mapping Analysis.''} \emph{Journal of
-Informetrics} 11 (4): 959--75.
-\url{https://doi.org/10.1016/j.joi.2017.08.007}.
-
-\bibitem[\citeproctext]{ref-Benacerraf1973}
-Benacerraf, Paul. 1973. {``Mathematical Truth.''} \emph{Journal of
-Philosophy} 70 (19): 661--79.
-
-\bibitem[\citeproctext]{ref-Boolos1971}
-Boolos, George. 1971. {``The Iterative Conception of Set.''}
-\emph{Journal of Philosophy} 68 (8): 215--31.
-
-\bibitem[\citeproctext]{ref-Bump2023}
-Bump, Philip. 2023. \emph{The Aftermath: The Last Days of the Baby Boom
-and the Future of Power in America}. New York: Penguin Random House.
-
-\bibitem[\citeproctext]{ref-WOSA1963CEU0700001}
-Davidson, Donald. 1963. {``Actions, Reasons, and Causes.''}
-\emph{Journal of Philosophy} 60 (23): 685--700.
-\url{https://doi.org/10.2307/2023177}.
-
-\bibitem[\citeproctext]{ref-Frankfurt1971}
-Frankfurt, Harry. 1971. {``Freedom of the Will and the Concept of a
-Person.''} \emph{Journal of Philosophy} 68 (1): 5--20.
-\url{https://doi.org/10.2307/2024717}.
-
-\bibitem[\citeproctext]{ref-WOSA1969Y444700002}
-Frankfurt, Harry G. 1969. {``Alternate Possibilities and Moral
-Responsibility.''} \emph{Journal of Philosophy} 66 (23): 829--39.
-\url{https://doi.org/10.2307/2023833}.
-
-\bibitem[\citeproctext]{ref-Friedman1974}
-Friedman, Michael. 1974. {``Explanation and Scientific Understanding.''}
-\emph{Journal of Philosophy} 71 (1): 5--19.
-\url{https://doi.org/10.2307/2024924}.
-
-\bibitem[\citeproctext]{ref-GhitzaEtAl2023}
-Ghitza, Yair, Andrew Gelman, and Jonathan Auerbach. 2023. {``The Great
-Society, Reagan's Revolution, and Generations of Presidential Voting.''}
-\emph{American Journal of Political Science} 67 (3): 520--37.
-https://doi.org/\url{https://doi.org/10.1111/ajps.12713}.
-
-\bibitem[\citeproctext]{ref-KeyesEtAl2010}
-Keyes, Katherine M., Rebecca L. Utz, Whitney Robinson, and Guohua Li.
-2010. {``What Is a Cohort Effect? Comparison of Three Statistical
-Methods for Modeling Cohort Effects in Obesity Prevalence in the United
-States, 1971--2006.''} \emph{Social Science \& Medicine} 70 (7):
-1100--1108. \url{https://doi.org/10.1016/j.socscimed.2009.12.018}.
-
-\bibitem[\citeproctext]{ref-Kim1973}
-Kim, Jaegwon. 1973. {``Causes and Counterfactuals.''} \emph{Journal of
-Philosophy} 70 (17): 570--72. \url{https://doi.org/10.2307/2025312}.
-
-\bibitem[\citeproctext]{ref-Levi1974}
-Levi, Isaac. 1974. {``On Indeterminate Probabilities.''} \emph{Journal
-of Philosophy} 71 (13): 391--418. \url{https://doi.org/10.2307/2025161}.
-
-\bibitem[\citeproctext]{ref-Lewis1971cen}
-Lewis, David. 1971. {``Counterparts of Persons and Their Bodies.''}
-\emph{Journal of Philosophy} 68 (7): 203--11.
-\url{https://doi.org/10.2307/2024902}.
-
-\bibitem[\citeproctext]{ref-Lewis1973ben}
----------. 1973b. {``Causation.''} \emph{Journal of Philosophy} 70 (17):
-556--67. \url{https://doi.org/10.2307/2025310}.
-
-\bibitem[\citeproctext]{ref-10.2307_2025310}
----------. 1973a. {``Causation.''} \emph{Journal of Philosophy} 70 (17):
-556--67.
-
-\bibitem[\citeproctext]{ref-Petrovich2024}
-Petrovich, Eugenio. 2024. \emph{A Quantitative Portrait of Analytic
-Philosophy: Looking Through the Margins}. Cham: Springer.
-
-\bibitem[\citeproctext]{ref-WOS000272855000002}
-Schaffer, Jonathan. 2010. {``Monism: The Priority of the Whole.''}
-\emph{Philosophical Review} 119 (1): 31--76.
-\url{https://doi.org/10.1215/00318108-2009-025}.
-
-\bibitem[\citeproctext]{ref-WOSA1972Z066400001}
-Singer, Peter. 1972. {``Famine, Affluence, and Morality.''}
-\emph{Philosophy \& Public Affairs} 1 (3): 229--43.
-
-\bibitem[\citeproctext]{ref-WOSA1971Y116900003}
-Thomson, Judith Jarvis. 1971. {``A Defense of Abortion.''}
-\emph{Philosophy \& Public Affairs} 1 (1): 47--66.
-
-\end{CSLReferences}
-
+\bibliography{/Users/weath/Documents/quarto-articles/brian-quarto.bib,/Users/weath/Documents/citations-2025/autobib.bib}
 
 
 

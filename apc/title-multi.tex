@@ -1,0 +1,49 @@
+$if(ergo-authors)$
+$-- Multi-author setup --$
+$if(ergo-authors.0)$
+$if(ergo-authors.1)$
+$-- Two or three authors --$
+\multiauthor{$ergo-authors.0.name$}{$ergo-authors.0.affiliation$}{$if(ergo-authors.0.email)$$ergo-authors.0.email$$endif$}{$ergo-authors.1.name$}{$ergo-authors.1.affiliation$}{$if(ergo-authors.1.email)$$ergo-authors.1.email$$endif$}{$if(ergo-authors.2)$$ergo-authors.2.name$$endif$}{$if(ergo-authors.2)$$ergo-authors.2.affiliation$$endif$}{$if(ergo-authors.2.email)$$ergo-authors.2.email$$endif$}
+$else$
+$-- Single author in ergo-authors format --$
+\author{$ergo-authors.0.name$}
+\affiliation{$ergo-authors.0.affiliation$}
+$if(ergo-authors.0.email)$
+\contact{$ergo-authors.0.email$}
+$endif$
+$endif$
+$endif$
+$else$
+$-- Fallback to standard author field --$
+$if(author)$
+\author{$author.name$}
+$if(author.affiliation)$
+\affiliation{$author.affiliation$}
+$endif$
+$if(author.email)$
+\contact{$author.email$}
+$endif$
+$endif$
+$endif$
+
+$if(ergo.authornote)$
+\authornote{$ergo.authornote$}
+$endif$
+
+$if(abstract)$
+\textofabstract{%
+$abstract$
+}%
+$endif$
+
+$if(ergo.doi)$
+\articledoi{$ergo.doi$}
+$endif$
+
+$if(ergo.volume)$
+\volumeissueyear{$ergo.volume$}{$ergo.issue$}{$ergo.year$}%
+$endif$
+
+$if(ergo.startpage)$
+\setcounter{page}{$ergo.startpage$}%
+$endif$
