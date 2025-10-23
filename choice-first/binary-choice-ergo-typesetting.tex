@@ -1,0 +1,2507 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10.5pt,
+  twoside]{article}
+\usepackage{xcolor}
+\usepackage[paperheight=10in,,paperwidth=7in,,top=1in,bottom=1in,inner=0.8in,outer=0.8in,headsep=0.25in,headheight=1in,footskip=0.35in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[ItalicFont=EB Garamond Italic,BoldFont=EB Garamond
+SemiBold]{EB Garamond Math}
+  \setsansfont[]{EB Garamond SemiBold}
+  \setmathfont[]{EB Garamond Math}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Custom title page mimicking Ergo class style
+% Add this to your Quarto YAML with:
+% format:
+%   pdf:
+%     include-in-header:
+%       - maketitle.tex
+
+\makeatletter
+
+% Redefine \maketitle to match Ergo style
+\renewcommand\maketitle{
+  \begingroup
+  \setlength{\parskip}{0pt plus 0pt minus 0pt}
+  \long\def\@makefntext##1{\parindent 1em\noindent
+          \hb@xt@1.8em{%
+             \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+  \newpage
+  \null
+  \noindent{}\begin{minipage}[l]{4in}
+    \vskip 53.3pt plus 0pt minus 0pt
+    {\LARGE \textsc{\@title}\par}% Title in large small caps
+    \vskip 15pt plus 0pt minus 0pt
+    {\Huge\MakeUppercase{\@author}\par}% Author in huge uppercase
+    \vskip 5pt plus 0pt minus 0pt
+    {\normalsize\textit{University of Michigan}\par}% Date in normal size italics (or affiliation)
+  \end{minipage}
+  \vskip 12pt plus 0pt minus 0pt
+  \thispagestyle{plain}
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\@thanks\@empty
+  \global\let\@date\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+
+% Redefine abstract to match Ergo style with margins
+\renewenvironment{abstract}
+ {\list{}{
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+  }
+  \item\relax
+  \small}
+ {\vskip -3pt plus 0pt minus 0pt\null\endlist}
+
+% Font size adjustments to match Ergo
+\renewcommand\normalsize{\@setfontsize\normalsize{10.5pt}{14pt}}
+\renewcommand\small{\@setfontsize\small{9pt}{13pt}}
+\renewcommand\LARGE{\@setfontsize\LARGE{18pt}{22pt}}
+\renewcommand\Huge{\@setfontsize\Huge{9.5pt}{13.5pt}}
+
+\makeatother
+% Body text and heading styles mimicking Ergo class
+% Add this to your Quarto YAML with:
+% format:
+%   pdf:
+%     include-in-header:
+%       - body-style.tex
+
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\cehead{
+  Brian Weatherson
+  }
+\cohead{
+  Are Choices Binary?
+  }
+\ohead{\bfseries \pagemark}
+\cfoot{}
+
+\makeatletter
+
+% Paragraph indentation and spacing
+\setlength{\parindent}{.25in}
+\setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Section numbering with periods and spacing
+\renewcommand*{\@seccntformat}[1]{%
+  \csname the#1\endcsname.$\:$%
+}
+
+% Section styles (matching Ergo)
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-4.6ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex}%                      % space after
+  {\normalfont\Large\bfseries}}            % Large, bold
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-2.3ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex \@minus 0ex}%         % space after
+  {\normalfont\large\itshape}}             % large, italic
+
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-2.3ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex \@minus 0ex}%         % space after
+  {\normalfont\large}}                     % large, normal
+
+% Font sizes (matching Ergo)
+\renewcommand\normalsize{\@setfontsize\normalsize{10.5pt}{14pt}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{9pt}{11.5pt}}
+\renewcommand\small{\@setfontsize\small{9pt}{13pt}}
+\renewcommand\large{\@setfontsize\large{11.5pt}{12pt}}
+\renewcommand\Large{\@setfontsize\Large{12pt}{14pt}}
+
+% Quotation and quote environments with Ergo spacing
+\renewenvironment{quotation}
+  {\list{}{
+    \setlength{\listparindent}{.25in}%
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+    \setlength{\parsep}{0in plus 0in minus 0in}
+    \item\relax
+    \let\item\relax}
+  }
+  {\endlist}
+
+\renewenvironment{quote}
+  {\vskip 5pt%
+   \list{}{
+    \setlength{\listparindent}{.25in}
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+    \setlength{\parsep}{0in plus 0in minus 0in}
+    }
+    \item\relax
+    \let\item\relax}
+  {\endlist\vskip 5pt}
+
+% Footnote rule styling
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width 1in height .4pt
+  \kern 2.5pt
+}
+
+% Non-superscript numerals for footnote text numbering
+\renewcommand\@makefntext[1]{%
+  \parindent .25in%
+  \@thefnmark.~#1}%
+
+% Figure and table captions with period separator
+\renewcommand\@makecaption[2]{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1. #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1. #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+% Enumerate environment with extra vertical space
+\let\oldenumerate\enumerate
+\let\endoldenumerate\endenumerate
+\renewenvironment{enumerate}
+  {\vskip 5pt\oldenumerate}
+  {\endoldenumerate\vskip 5pt}
+
+\let\olddescription\description
+\let\endolddescription\enddescription
+\renewenvironment{description}
+  {\vskip 5pt\olddescription}
+  {\endolddescription\vskip 5pt}
+
+\let\olditemize\itemize
+\let\endolditemize\enditemize
+\renewenvironment{itemize}
+  {\vskip 5pt\olditemize}
+  {\endolditemize\vskip 5pt}
+
+\newcommand*\NoIndentAfterEnv[1]{%
+  \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+\NoIndentAfterEnv{itemize}
+\NoIndentAfterEnv{enumerate}
+\NoIndentAfterEnv{description}
+\NoIndentAfterEnv{quote}
+\NoIndentAfterEnv{equation}
+\NoIndentAfterEnv{longtable}
+
+\makeatother
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0ex}
+\usepackage[lines=2]{lettrine}
+\cehead{EWIP Draft}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Are Choices Binary?},
+  pdfauthor={Brian Weatherson},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Are Choices Binary?}
+\author{Brian Weatherson}
+\date{2025-10-23}
+\begin{document}
+\maketitle
+\begin{abstract}
+There is a natural view of the relationship between preference and
+choice: an option is choiceworthy if and only if no alternative is
+strictly preferred to it. I argue against this view on two grounds.
+First, it makes false predictions about which options are choiceworthy
+in games and in multi-dimensional choice settings. Second, it conflates
+two distinct attitudes: choiceworthiness, which is assessed ex ante, and
+preference, which is assessed ex post. I explore the consequences of
+rejecting this natural view, including how it simplifies the
+relationship between game theory and decision theory, and how it
+complicates debates about what Ruth Chang calls `parity' between
+options.
+\end{abstract}
+
+
+\setstretch{1}
+\lettrine{S}{ubjective} decision theory concerns norms about three
+concepts: values of options, preferences between pairs of options, and
+choices out of sets of options. A common assumption, often implicit, is
+that norms about preferences are prior to norms on values and choices.
+One way to put this assumption, following Amartya Sen
+(\citeproc{ref-Sen1970sec}{{[}1970{]} 2017}), is that choice functions
+are \emph{binary}; they are grounded in binary relations of preference
+and indifference.
+
+I'm going to argue against this for two reasons. First, preferences,
+being binary comparisons, don't provide a rich enough base to ground all
+the norms. Sometimes decision theorists need to take as primitive
+comparisons the chooser (hereafter, Chooser) makes between larger sets
+of options. Second, preference is an ex post notion, in a sense to be
+made clearer starting in Section~\ref{sec-multieq}, while
+choiceworthiness is an ex ante notion. And ex ante norms are not
+grounded in ex post ones.
+
+\section{Choice and Choiceworthiness}\label{sec-choice}
+
+Choice gets less attention in philosophical decision theory than one
+might expect. The focus is usually on either value (e.g., this has value
+17 and that has value 12) or preference (e.g., this is preferable to
+that). Standard presentations treat norms on choice as almost an
+afterthought. After a long discussion of values, preferences, or both,
+the typical theorist breezily says that the norm is to choose the most
+valuable or most preferred option.
+
+There is a long tradition in economics, going back to Paul Samuelson
+(\citeproc{ref-Samuelson1938}{1938}) and Herman Chernoff
+(\citeproc{ref-Chernoff1954}{1954}), of taking choice to be primary.
+Some of this literature rested on largely behaviourist or positivist
+assumptions: it was better to theorize with and about choice because,
+unlike preferences or values, it was observable. The picture was not
+dissimilar to this recently expressed view:
+
+\begin{quote}
+Standard economics does not address mental processes and, as a result,
+economic abstractions are typically not appropriate for describing them.
+(\citeproc{ref-GulPesendorfer2008}{Gul and Pesendorfer 2008, 24})
+\end{quote}
+
+That's not going to be my approach here. I'm going to start not with
+observable choice dispositions, like the economists, or with choice
+frequencies, as psychologists like R. Duncan Luce
+(\citeproc{ref-Luce1959}{1959}) do, but with judgments about
+choiceworthiness. In familiar terminology\footnote{See, for instance,
+  Hansson and Grüne-Yanoff (\citeproc{ref-sep-preferences}{2024}), where
+  I learned about the Gul and Pesendorfer quote.}, I'm taking a
+mentalist approach not a behaviourist approach. Much of the formal work
+on choice theory has been done by theorists from the behaviourist side,
+and I'll inevitably draw from their work. But the most important source
+I'll be using is someone much more sympathetic to mentalism: Amartya
+Sen.~In particular, I'll draw heavily on his ``Collective Choice and
+Social Welfare'' (\citeproc{ref-Sen1970sec}{Sen {[}1970{]} 2017}), and
+also on the literature that grew out of that book.
+
+I'm not going to take a stance on the metaphysics of choiceworthiness
+judgments. I'll sometimes talk as if they are beliefs. However, if
+someone wanted to maintain a sharp belief-desire split and hold that
+choiceworthiness involves an interplay of the two (like preference), I
+wouldn't object. The key assumption is that choiceworthiness ascriptions
+involve the same kind of mental state as preference ascriptions. The
+biggest difference is that choiceworthiness relates to sets of any size,
+while preference relates to pairs.
+
+\section{Values First?}\label{sec-values}
+
+Both to clarify what kind of question I'm asking, and to set aside one
+kind of answer, I'm going to start looking not at preferences or
+choices, but at numerical values. At first glance, it might seem that
+many decision theorists take values to ground the other norms. One
+should prefer the more valuable. So we get theorists discussing
+Newcomb's Problem largely by offering theories about the value of
+uncertain outcomes (like taking both boxes) in terms of the values and
+probabilities of those outcomes.
+
+On second glance, though, there are at least four reasons it is
+implausible that values are really what ground the other attitudes.
+
+First, it's surprising to have a numerical measure like this not have a
+unit. We sometimes say an outcome has value 17 \emph{utils}, but `util'
+is a placeholder, not a real unit like kilograms or volts. This is
+related to the next reason.
+
+Second, the orthodox view is that these values are only defined up to a
+positive affine transformation. If it's appropriate to represent Chooser
+with value function \emph{v}, it's appropriate to represent them with
+any value function \emph{f} where
+\emph{f}(\emph{o})~=~\emph{av}(\emph{o})~+~\emph{b}, for positive
+\emph{a}. This transformation is allowed because values merely reflect
+Chooser's preferences over outcomes and lotteries, which the
+transformation preserves. In other words, the transformation is allowed,
+and the definedness claim is true, because values are grounded in
+comparatives.
+
+Third, it's not at all obvious why values should be anything like
+numbers. Indeed, treating values as numbers creates problems in cases
+involving infinite goods.\footnote{See, e.g., Nover and Hàjek
+  (\citeproc{ref-Nover2004}{2004}), or Goodman and Lederman
+  (\citeproc{ref-GoodmanLederemanArXiV}{2024}).} Why should values have
+the topology of the reals rather than any number of other possible
+topologies? Why aren't they, for example, quintuples of rational numbers
+ordered lexicographically? If one takes preferences to be primary, and
+generates utility functions via representation theorems, as in Ramsey
+(\citeproc{ref-RamseyTruthProb}{1926}) or von Neumann and Morgenstern
+(\citeproc{ref-vNM1944yaml}{1944}), there is a reason for why values
+should be numbers. But if values are primitive, it seems like an
+unanswered and I'd say unanswerable question.
+
+Finally, there is something very strange about the idea of values that
+are not in any way comparative. Value appears to be inherently
+comparative, reflecting how options compare to their alternatives.
+
+The argument of this section will not be, I suspect, particularly
+contentious. It's a widespread view, if often implicit, that that
+values, and norms on values, are ultimately grounded in comparatives.
+What is going to be contentious is the claim that preferences can't do
+the job of grounding values and preferences. Instead, that task will
+have to be done by judgments of, and norms about, choiceworthiness.
+
+\section{Coherence}\label{sec-coherence}
+
+There is one other striking thing about the picture we get in von
+Neumann and Morgenstern (\citeproc{ref-vNM1944yaml}{1944}), which I
+think is still broadly endorsed by decision theorists. The aim is to put
+norms on preference, and hence on values and choices. But these norms
+are almost always defined in terms of other preferences. For example, if
+one strictly prefers \emph{x} to \emph{y}, and \emph{y} to \emph{z}, one
+should prefer \emph{x} to \emph{z}. It seems circular to ground
+normative facts about preference in other preferences. It looks like the
+grounding relation will be at least cyclic, and possibly intransitive.
+
+There are two (related) responses to this circularity. One is to take
+the view, which perhaps Hume held, that the only constraints on
+preference are coherence constraints. Another response allows for
+non-coherence constraints on preference---for example, it may be wrong
+to prefer the world's destruction to one's finger getting
+scratched---but treats these as part of a separate subject from decision
+theory. The result is the same: decision theory largely is about what it
+takes for various preferences to cohere with one another.
+
+I don't particularly agree with this picture, but I'm going to accept
+half of it for the purposes of this paper. That is, I'll assume it's not
+the role of decision theory to criticize the person who prefers the
+destruction of the world to the scratching of their finger. That person
+either violates no norms, or violates a different kind of norm from
+those of decision theory. Decision theory, on the latter view, takes
+Chooser's preferences over ends as given and judges Chooser on how well
+their instrumental preferences serve these preferences over ends.
+
+I'll argue that even if decision theory is about coherence, it should be
+about coherence between choiceworthiness judgments. So the central
+question shifts. Instead of asking whether preferences should satisfy
+transitivity or independence, we ask whether choiceworthiness judgments
+should satisfy conditions like those described in
+Section~\ref{sec-properties}. As we'll see, the questions about which
+conditions are genuine coherence constraints on choiceworthiness are
+tied up with the metaphysical question about the priority of preferences
+and choices.
+
+\section{Sen on Preference}\label{sec-sen}
+
+The main binary relation Sen uses, which he denotes \emph{R}, is such
+that \emph{xRy} means that Chooser either prefers \emph{x} to \emph{y},
+or is indifferent between them. The first disjunct obtains if
+¬\emph{yRx}; the second disjunct obtains if \emph{yRx}. (As he sometimes
+puts it, these are the symmetric and asymmetric parts of the relation.)
+We'll write these two disjuncts as \emph{xPy} and \emph{xIy}. Formally,
+they are defined in terms of \emph{R} in (1) and (2). (Throughout, I'm
+leaving off wide scope universal quantifiers over free variables.)
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  \emph{xPy}~↔︎~(\emph{xRy}~∧~¬\emph{yRx})
+\item
+  \emph{xIy}~↔︎~(\emph{xRy}~∧~\emph{yRx})
+\end{enumerate}
+
+It is important not to conflate indifference with equality. It is not
+assumed that \emph{I} is transitive; indeed Sen makes great use of
+models where it is not. If we take transitivity to be part of the
+definition of equality, it is misleading to gloss \emph{xRy} as that
+\emph{x} is greater than \textbf{or equal} to \emph{y} (for Chooser).
+For this reason I won't use ≿ to denote it, since that is most naturally
+read as that \emph{x} is better than or equal to \emph{y}.\footnote{Indeed,
+  I'll use \emph{x}~≿~\emph{y} to explicitly mean that \emph{x} is
+  better than or equal to \emph{y}, where equality is understood in the
+  sense of the next paragraph.}
+
+Contemporary philosophy more commonly starts with \emph{P} and a fourth
+relation \emph{E}, where \emph{xEy} means that \emph{x} and \emph{y} are
+equally good. On this picture, both (1) and (2) are true, but the
+explanatory direction in both cases is right-to-left. So \emph{xRy} just
+is ¬\emph{yPx}, and then \emph{xIy} is still defined via (2). On the
+version Sen uses, it's a little trickier to define \emph{E}, but (3) is
+plausible.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \emph{xEy}~↔︎~{[}(\emph{xRz}~↔︎~\emph{yRz})~∧~(\emph{zRx}~↔︎~\emph{zRy}){]}
+\end{enumerate}
+
+That is, two options are equally good iff they are substitutable in
+other preference relations. Given all these results, we can show that
+the following claims are all tightly connected.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \emph{xPy}~∨~\emph{xEy}~∨~\emph{yPx}
+\item
+  (\emph{xPy}~∧~\emph{yIz})~→ \emph{xPz}
+\item
+  (\emph{xIy}~∧~\emph{yIz})~→ \emph{xIz}
+\end{enumerate}
+
+(4) is what Ruth Chang (\citeproc{ref-Chang2017}{2017}) calls the
+trichotomy thesis. (5) is what Sen calls PI-transitivity, and (6) is
+what he calls II-transitivity.
+
+Sen makes very few assumptions about \emph{R}, but it will simplify our
+discussion to start introducing some assumptions here.\footnote{He makes
+  few assumptions because he was interested in exploring what
+  assumptions about preference are crucial to the impossibility theorem
+  that Arrow (\citeproc{ref-Arrow1951}{1951}) derives. He initially
+  noticed that without (6), Arrow's theorem didn't go through. This
+  turned out to be less significant than it seemed, because Allan
+  Gibbard (\citeproc{ref-Gibbard2014}{2014}) proved that a very similar
+  theorem can be proven even without (6). See Sen
+  (\citeproc{ref-Sen1969}{1969}) for the original optimism that this
+  might lead to an interesting way out of the Arrovian results, and Sen
+  (\citeproc{ref-Sen1970sec}{{[}1970{]} 2017}) for a more pessimistic
+  assessment in light of Gibbard's result. Sen reports that Gibbard
+  originally proved his result in a term paper for a seminar at Harvard
+  in 1969 that he co-taught with Arrow and Rawls. Much of what I'm
+  saying in this paper can be connected in various ways to the
+  literature on Arrow's impossibility theorem, but I won't draw out
+  those connections here.} We'll assume that \emph{R} is reflexive,
+everything is at least as good as itself, and that \emph{P} is
+transitive. Sen (\citeproc{ref-Sen1970sec}{{[}1970{]} 2017, 66}) notes
+that if \emph{P} is transitive and \emph{R} is `complete' in the sense
+that \emph{xRy}~∨~\emph{yRx} holds for arbitrary \emph{x} and \emph{y},
+then (5) and (6) are equivalent. It's also easy to show that given (3)
+plus these assumptions, (4) and (6) are equivalent.\footnote{Proof:
+  Assume (4) is false. So the right hand side of (3) is false. Without
+  much loss of generality, assume that \emph{xRz}~∧~¬\emph{yRz}; the
+  other cases all go much the same way. So all the disjuncts are false.
+  From ¬\emph{xPy} and ¬\emph{yPx} we get \emph{yRx}~∧~\emph{xRy}, i.e.,
+  \emph{xIy}. And \emph{xRz} implies \emph{zIx}. So we have a
+  counterexample to II-transitivity, since \emph{zIx} and \emph{xIy},
+  but since ¬\emph{yRz}, \emph{yIz} is false. So if (4) is false, (6) is
+  false. In the other direction, assume we have a counterexample to (6),
+  i.e., \emph{xIy} and \emph{yIz} but not \emph{xIz}. From \emph{xIy} we
+  immediately get that the two outer disjuncts of (4) are false. From
+  \emph{yIz} we get \emph{yRz} and \emph{zRy}. So if \emph{xEy}, (3)
+  implies that \emph{xRz} and \emph{zRx}, i.e., \emph{xIz}. But we
+  assumed that ¬\emph{xIz}. So all three disjuncts of (4) are false.
+  That is, if (6) fails, so does (4), completing the proof that they are
+  equivalent.}
+
+What should we call the principle (4)? The terminology around here gets
+potentially confusing. If we define \emph{x}~≿~\emph{y} to just mean the
+disjunction \emph{xPy}~∨~\emph{xEy}, and assume that \emph{E} is
+symmetric, then (4) is equivalent to
+\emph{x}~≿~\emph{y}~∨~\emph{y}~≿~\emph{x}. That's what Gustafsson
+(\citeproc{ref-Gustafsson2025}{forthcoming}) calls \emph{completeness},
+and I feel that's often what philosophers understand by `completeness'.
+In his economic work, Sen (\citeproc{ref-Sen1970sec}{{[}1970{]} 2017})
+uses the term `completeness' for a slightly different property of
+preference relations, namely \emph{xRy}~∨~\emph{yRx}. In both cases the
+claim is that some preference relation is guaranteed to hold in one
+direction or other. The issue is whether that relation is the
+disjunction of \emph{P} and \emph{E}, or the disjunction of \emph{P} and
+\emph{I}.
+
+Both of these notions are useful to have. There has been a huge amount
+of literature on (4), i.e., \emph{x}~≿~\emph{y}~∨~\emph{y}~≿~\emph{x},
+less so on \emph{xRy}~∨~\emph{yRx}. But the latter is useful because
+various interesting possibilities open up both in social choice theory
+and in the relationship between preference and choice, if it is
+dropped.\footnote{On the latter, see Bradley
+  (\citeproc{ref-Bradley2015}{2015}).}
+
+While philosophers widely discuss (4), the economics literature
+discusses it less often under that formulation. That literature does
+contain several works discussing (6), starting with important works by
+Wallace E. Armstrong (\citeproc{ref-Armstrong1939}{1939},
+\citeproc{ref-Armstrong1948}{1948}, \citeproc{ref-Armstrong1950}{1950}).
+In most of those works it is assumed that \emph{P} is transitive and
+that \emph{xRy}~∨~\emph{yRx}, so (4) and (6) are equivalent. But the
+different focus leads to more terminological confusion.
+
+More generally, using `completeness' for either \emph{x} ≿ \emph{y} ∨
+\emph{y} ≿ \emph{x} or \emph{xRy} ∨ \emph{yRx} is potentially confusing,
+since readers may not know which property the author intends. So I'll
+follow Chang (\citeproc{ref-Chang2017}{2017}) and say that relations
+satisfying (4) are \emph{trichotomous}, and use \emph{definedness} for
+\emph{xRy}~∨~\emph{yRx}.
+
+\section{Properties of Choice Functions}\label{sec-properties}
+
+In philosophy, we're sufficiently familiar with properties of preference
+relations (transitivity, reflexivity, acyclicity, etc.) that these terms
+don't need defining. We're mostly less familiar with properties of
+choice functions. A choice function takes a set of options as input and
+returns a non-empty subset of that set as output. The elements of the
+output are the choiceworthy members of the original set. So
+\emph{C}(\{\emph{a},~\emph{b},~\emph{c},~\emph{d}\})~=~\{\emph{a},~\emph{c}\}
+means that if Chooser has to pick from \emph{a}, \emph{b}, \emph{c} and
+\emph{d}, then \emph{a} and \emph{c} are choiceworthy, and \emph{b} and
+\emph{d} are not.
+
+I'll present six important properties that choice functions may have.
+The first four are discussed in some detail by Sen
+(\citeproc{ref-Sen1970sec}{{[}1970{]} 2017}), and I'll use his
+terminology for them. The fifth is due to Aizerman and Malishevski
+(\citeproc{ref-Aizerman1981}{1981}), and is usually named after
+Aizerman. The sixth is discussed by Blair et al.
+(\citeproc{ref-Blair1976}{1976}).
+
+\begin{description}
+\tightlist
+\item[Property α]
+(\emph{x}~∈~\emph{C}(\emph{S})~∧~\emph{x}~∈~\emph{T}~∧~\emph{T}~⊆~\emph{S})~→
+\emph{x}~∈~\emph{C}(\emph{T})
+\end{description}
+
+That is, if \emph{x} is choiceworthy in a larger set, it remains
+choiceworthy in any smaller set containing it. This is sometimes called
+the \emph{Chernoff condition}, after Herman Chernoff
+(\citeproc{ref-Chernoff1954}{1954}), and sometimes called
+\emph{contraction consistency}.
+
+\begin{description}
+\tightlist
+\item[Property β]
+(\emph{x}~∈~\emph{C}(\emph{T})~∧~\emph{y}~∈~\emph{C}(\emph{T})~∧~\emph{T}~⊆~\emph{S})~→
+(\emph{x}~∈~\emph{C}(\emph{S}) ↔ \emph{y}~∈~\emph{C}(\emph{S}))
+\end{description}
+
+That is, if \emph{x} and \emph{y} are both choiceworthy in a smaller
+set, then in any larger set they are either both choiceworthy or neither
+is. Intuitively, if \emph{x} and \emph{y} are both choiceworthy
+together, then anything better than \emph{x} is also better than
+\emph{y}.
+
+\begin{description}
+\tightlist
+\item[Property γ]
+(\emph{x}~∈~\emph{C}(\emph{S})~∧~\emph{x}~∈~\emph{C}(\emph{T}))~→
+(\emph{x}~∈~\emph{C}(\emph{S}~∪~\emph{T}))
+\end{description}
+
+That is, if \emph{x} is choiceworthy in two sets, it is choiceworthy in
+their union. This is sometimes called \emph{expansion}, e.g., by Hervé
+Moulin (\citeproc{ref-Moulin1985}{1985}).
+
+\begin{description}
+\tightlist
+\item[Property δ]
+(\emph{x}~∈~\emph{C}(\emph{T})~∧~\emph{y}~∈~\emph{C}(\emph{T})~∧~\emph{T}~⊆~\emph{S})~→
+(\{\emph{y}\} ≠ \emph{C}(\emph{S}))
+\end{description}
+
+This is a weakening of β. It says that if \emph{x} and \emph{y} are both
+choiceworthy in the smaller set, then after options are added, it can't
+be that \emph{y} alone is choiceworthy. If \emph{x} is not choiceworthy
+in the larger set, that's because some other option, not \emph{y}, is
+chosen in place of it.
+
+\begin{description}
+\tightlist
+\item[Property Aiz]
+(\emph{C}(\emph{S})~⊆~\emph{T}~∧~\emph{T}~⊆~\emph{S})~→
+\emph{C}(\emph{T})~⊆~\emph{C}(\emph{S})
+\end{description}
+
+That is, if the smaller set contains all of the choiceworthy members of
+the larger set, then no option is choiceworthy in the smaller set but
+not the larger set. If \emph{x} is an unchoiceworthy member of \emph{S},
+then it can only become choiceworthy by deleting choiceworthy members of
+\emph{S}, not other unchoiceworthy ones.
+
+\begin{description}
+\tightlist
+\item[Path Independence]
+\emph{C}(\emph{S}~∪~\emph{T}) =
+\emph{C}(\emph{C}(\emph{S})~∪~\emph{C}(\emph{T}))
+\end{description}
+
+The choiceworthy options from a union of two sets equal the choiceworthy
+options from the union of each set's choiceworthy members. This is a
+kind of independence of irrelevant alternatives principle; the presence
+or absence of unchoiceworthy members of \emph{S} and \emph{T} doesn't
+affect what should be chosen from \emph{S} ∪ \emph{T}.
+
+I'll describe the effects of these properties in more detail in
+subsequent sections.
+
+\section{Property α}\label{sec-alpha}
+
+This is the most commonly used constraint on choice functions, and it
+seems intuitive. If \emph{x} is choiceworthy from a larger set, deleting
+unchosen options shouldn't make it unchoiceworthy. Sen
+(\citeproc{ref-Sen1970sec}{{[}1970{]} 2017, 323--26}) discusses two
+possible counterexamples.
+
+One is where the presence of options on the menu gives Chooser relevant
+information. If the only two options are having tea with a particular
+friend or staying home, Chooser will choose tea. But if the option of
+taking cocaine with that friend is added, Chooser will stay home. The
+natural thing to say here is that when one gets new information,
+\emph{C} changes, so there isn't really a single \emph{C} here which
+violates α.\footnote{For a quick argument for that, if Chooser learns
+  the only options are tea and staying home because the friend has just
+  run out of cocaine, they might still stay home.}
+
+The more interesting case is where the value Chooser puts on options is
+dependent on what options are available. So imagine Chooser prefers more
+cake to less, but does not want to take the last slice. If the available
+options are zero slices or one slice of cake, Chooser will choose zero.
+But if two slices of cake is an option, Chooser will choose one, again
+violating α.
+
+This is a trickier case, and the natural thing to say is that Chooser
+doesn't really have the same options in the two cases. Taking the last
+slice of cake isn't the same thing as taking one slice when two are
+available. But this move has costs. In particular, it makes it hard to
+say that \emph{C} should be defined for any set of options. It doesn't
+clearly make sense to ask Chooser to pick between \emph{taking one
+slice, which is the last}, and \emph{taking three slices when five are
+available}.
+
+Still, I'll set these individuation issues aside and assume, following
+most theorists, that α constrains coherent choice functions and that
+choice functions are defined over arbitrary sets of options.
+
+\section{Assumptions}\label{sec-assumptions}
+
+I've said a few times I'm assuming this or that, so it's a good time to
+put in one place the assumptions I'm making. These aren't intended to
+stack the deck in my favour; if any of these assumptions are false,
+their falsity makes the view that choices are not binary (a) more
+plausible, but (b) harder to state. Anyway, here's what has been
+assumed.
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  \emph{P} is transitive, i.e., \emph{xPy}~∧~\emph{yPz}~→ \emph{xPz}
+\item
+  \emph{R} is `defined', i.e., \emph{xRy}~∨~\emph{yRx}.
+\item
+  \emph{R} is reflexive, i.e., \emph{xRx}.
+\item
+  \emph{C} is non-empty, i.e., \emph{C}(\emph{S}) ≠ ∅.
+\item
+  \emph{C} is defined everywhere, i.e., there is a universe of options
+  \emph{U} and all subsets of \emph{U} are in the domain of \emph{C}.
+\item
+  \emph{C} satisfies α.
+\item
+  The universe \emph{U} of options, that \emph{S} is a subset of, and
+  \emph{x} is drawn from, is finite.
+\end{enumerate}
+
+In Section~\ref{sec-alpha} we saw one reason to reject (v), namely that
+we might want to individuate options in terms of what else is available.
+The cases we'll discuss in Section~\ref{sec-mixed} provide another, but
+rather than explore that, I'll follow standard practice and assume (v)
+throughout this paper.
+
+When \emph{R} satisfies (i)-(iii), I'll follow Luce
+(\citeproc{ref-Luce1956}{1956}) and call it a \emph{semiorder}. When it
+also satisfies trichotomy, i.e., (4), I'll call it a \emph{weak order}.
+
+\section{Defining Binariness}\label{sec-defining}
+
+With these seven assumptions on board, it's easy to state what it is for
+a choice function to be binary.
+
+First, we'll define an inversion function \emph{B} (for binary) that
+maps preference relations to choice functions, and vice-versa. Both of
+these are sets of ordered pairs, and we'll define the ordered pairs
+directly. I'll assume that there is a universe \emph{U} of options, and
+every option and set of options is drawn from it.
+
+If the input to \emph{B} is a preference relation \emph{R}:
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  \emph{B}(\emph{R}) = \{⟨\emph{S}, \emph{x}⟩:
+  ∀\emph{y}(\emph{y}~∈~\emph{S}~→ \emph{xRy})\}
+\end{enumerate}
+
+That is, \emph{B}(\emph{R}) is the choice function which for any set
+\emph{S} selects what Sen calls `maximal' members, those members to
+which nothing is strictly preferred.\footnote{Hansson
+  (\citeproc{ref-Hansson2009}{2009}) calls this the `liberal
+  maximisation' rule. He contrasts it with five other rules, which are
+  distinct in general but equivalent given \emph{R} is a semiorder.}
+
+If the input to \emph{B} is a choice function \emph{C}:
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  \emph{B}(\emph{C}) = \{⟨\emph{x}, \emph{y}⟩:
+  \emph{x}~∈~\emph{C}(\{\emph{x}, \emph{y}\})\}
+\end{enumerate}
+
+That is, \emph{B}(\emph{C}) is the preference relation which says that
+in any choices from pair sets, an element is chosen only if it is at
+least as good as the other member. Sen
+(\citeproc{ref-Sen1970sec}{{[}1970{]} 2017, 319}) calls this the `base
+relation' as opposed to a more complicated `revealed preference
+relation', and notes that the two are equivalent given α. Since we're
+assuming α, we'll use the simpler version.
+
+A choice function \emph{C} is \textbf{binary} iff (9) holds:\footnote{Sen
+  calls these functions `basic binary', but the distinction he's drawing
+  attention to by adding `basic' doesn't make a difference given
+  \emph{R} is a semiorder and α.}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  \emph{C} = \emph{B}(\emph{B}(\emph{C}))
+\end{enumerate}
+
+That is, if you convert \emph{C} into a preference relation, and back
+into a choice function, you get the same thing back.
+
+The core claim of this paper is that there are coherent choice functions
+which are not binary. A related claim is that a plausible pair of
+coherence constraints that you can state using \emph{B} do not in fact
+hold. The constraints are that if \emph{C} and \emph{R} are an agent's
+choice function and preference relation, then \emph{C} =
+\emph{B}(\emph{R}), and \emph{R} = \emph{B}(\emph{C}).
+
+\section{Property β}\label{property-ux3b2}
+
+If we start with choice functions, the definition of \emph{E} in (3) is
+too simple. A better definition is in (10).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  \emph{xEy} ↔ {[}∀\emph{S}(\{\emph{x}, \emph{y}\}~⊆~\emph{S}~→
+  (\emph{x}~∈~\emph{C}(\emph{S}) ↔ \emph{y}~∈~\emph{C}(\emph{S}))){]}
+\end{enumerate}
+
+That is, \emph{x} and \emph{y} are equal iff one is never chosen when
+the other is not.\footnote{Without α, this is too weak, since it doesn't
+  entail that \emph{x} and \emph{y} are intersubstitutable in general.
+  But we won't worry about that.} Given this notion of equality, there
+is an intuitive gloss on β: Two options are both choiceworthy iff they
+are equal.\footnote{This gloss also assumes α.}
+
+If choice functions are grounded in numerical values, then β holds
+almost automatically. Assume there is some function \emph{v} from
+options to numbers, and \emph{o} is choiceworthy iff \emph{v}(\emph{o})
+is maximal. Then if \emph{x} and \emph{y} are both choiceworthy, they
+must have the same value, so in any set they will either both be
+choiceworthy (if no alternative is more valuable), or neither will be
+(if some alternative is more valuable).
+
+More generally, given the assumptions from
+Section~\ref{sec-assumptions}, \emph{C} satisfies β iff
+\emph{B}(\emph{C}) is trichotomous, which is equivalent to
+\emph{B}(\emph{C}) satisfying II-transitivity. Unsurprisingly, the two
+historically significant cases of intuitive counterexamples to
+II-transitivity also generate intuitive counterexamples to β.
+
+The first example involves distinct but indistinguishable
+options.\footnote{The idea that humans can't distinguish similar options
+  is important in Fechner (\citeproc{ref-Fechner1860}{1860}), a work
+  which is discussed in Beiser (\citeproc{ref-sep-fechner}{2024}). The
+  earliest connection I've found between this and indifference being
+  intransitive is in Armstrong (\citeproc{ref-Armstrong1939}{1939}).
+  Armstrong's example is rather confusing; the one I'll use here is
+  based on Luce (\citeproc{ref-Luce1956}{1956}).} Assume that Chooser
+prefers more sugar in their coffee to less, but can only tell two
+options apart if they differ by 10 grains of sugar or more. Now consider
+these three options:
+
+\begin{quote}
+\emph{x} = Coffee with 100 grains of sugar.\\
+\emph{y} = Coffee with 106 grains of sugar.\\
+\emph{z} = Coffee with 112 grains of sugar.
+\end{quote}
+
+This is said to be a counterexample to II-transitivity because Chooser
+is indifferent between \emph{x} and \emph{y}, and between \emph{y} and
+\emph{z}, but strictly prefers \emph{z} to \emph{x}. It's also a
+counterexample to β. Chooser would choose either from \emph{x} and
+\emph{y}, but when \emph{z} is added, \emph{y} is still choiceworthy but
+\emph{x} is not.
+
+This example was historically important, but it's not discussed that
+much in the contemporary philosophical literature. It could be because
+philosophers were convinced by the argument by Delia Graff Fara
+(\citeproc{ref-Fara2001}{2001}) that phenomenal indistinguishability is
+in fact transitive. But it did get widely discussed in economics,
+especially once it started being discussed by Luce
+(\citeproc{ref-Luce1956}{1956}, \citeproc{ref-Luce1959}{1959}), who used
+similar examples to argue that preferences form a semiorder.
+
+The cases that were more important in the philosophical literature are
+what Chang (\citeproc{ref-Chang1997}{1997}) calls `small improvement'
+cases. The earliest case I know of fitting this form is from Luce and
+Raiffa (\citeproc{ref-LuceRaiffa1957}{1957}).\footnote{I haven't found a
+  case like this in Luce's sole-authored works, and indeed Debreu
+  (\citeproc{ref-Debreu1960}{1960}) notes that a related case raises
+  problems for one of the central assumptions of Luce
+  (\citeproc{ref-Luce1959}{1959}).} In their notation,
+\emph{P}(\emph{x},\emph{y}) represents the probability that Chooser will
+select \emph{x} when \emph{x} and \emph{y} are both available.
+
+\begin{quote}
+Suppose that \emph{a} and \emph{b} are two alternatives of roughly
+comparable value to some person, e.g., trips from New York City to Paris
+and to Rome. Let \emph{c} be alternative a plus \$20 and \emph{d} be
+alternative \emph{b} plus \$20. Clearly, in general \emph{P}(\emph{a},
+\emph{c}) = 0 and \emph{P}(\emph{b}, \emph{d}) = 0. It also seems
+perfectly plausible that for some people \emph{P}(\emph{b}, \emph{c})
+\textgreater{} 0 and \emph{P}(\emph{a}, \emph{d}) \textgreater{} 0, in
+which event \emph{a} and \emph{b} are not comparable, and so axiom 2
+{[}i.e., (4){]} is violated. (\citeproc{ref-LuceRaiffa1957}{Luce and
+Raiffa 1957, 375})
+\end{quote}
+
+An example with the same structure, involving a boy, a bicycle, and a
+bell, is discussed by Lehrer and Wagner
+(\citeproc{ref-LehrerWagner1985}{1985}), and mistakenly attributed to
+Armstrong (\citeproc{ref-Armstrong1939}{1939}).\footnote{Many authors
+  subsequently made the same attribution; if you want to see some
+  examples, search for the word `bicycle' among the citations of
+  Armstrong's paper on Google Scholar.}
+
+The usual way these cases are discussed, starting with Luce and Raiffa,
+is that they violate a certain kind of comparability. For example, Luce
+and Raiffa say there is a sense in which the two holidays are `not
+comparable'. I want to resist this reading. The core intuition in small
+improvement cases is that β fails. Chooser would choose either option
+from \{\emph{a}, \emph{b}\}, but if \emph{a}\textsuperscript{+} is added
+as an option, \emph{a} becomes unchoiceworthy. If we add the assumption
+that \emph{R} = \emph{B}(\emph{C}), then it does follow that trichotomy
+fails, and there is a sense in which they are incomparable. But without
+that assumption, it's consistent to say that these are counterexamples
+to β but not to trichotomy. We'll return to this point in
+Section~\ref{sec-dorr}.
+
+\section{Properties γ and δ}\label{sec-gamma}
+
+Assume \emph{R} does not satisfy trichotomy, but is a semiorder, and
+\emph{C} = \emph{B}(\emph{R}). Then β will fail, but γ and δ will hold.
+Conversely, for any \emph{C} where γ and δ hold, there is a semiorder
+\emph{R} such that \emph{C} = \emph{B}(\emph{R})
+(\citeproc{ref-Sen1970sec}{Sen {[}1970{]} 2017, 320}). We're not going
+to be very interested in δ, but we will be very interested in γ.
+
+The reason γ holds when \emph{R} is a semiorder and \emph{C} =
+\emph{B}(\emph{R}) is instructive. If \emph{x} is choiceworthy among
+\emph{S}, then nothing in \emph{S} is better than \emph{x}. Similarly,
+if \emph{x} is choiceworthy among \emph{T}, then nothing in \emph{T} is
+better than \emph{x}. So nothing in \emph{S}~∪~\emph{T} is better than
+\emph{x}. So \emph{x} is choiceworthy among \emph{S}~∪~\emph{T}.
+
+Conversely, if there are cases where \emph{C} should not satisfy γ, then
+we'll have an argument that \emph{C} should not be based in some
+semiorder \emph{R}. Showing that there are such cases will be one of the
+main tasks of the rest of this paper.
+
+We had two kinds of counterexamples to β, but only one of them will be
+relevant here. I don't think there are any intuitive counterexamples to
+γ that start with Fechner-style reflections on the intransitivity of
+indifference. But there are going to be variations on the bicycle and
+bell example that generate intuitive counterexamples to γ. We'll come
+back to these in Section~\ref{sec-badcomp}.
+
+It is common to say that when \emph{C} = \emph{B}(\emph{R}) for some
+semiorder \emph{R}, that \emph{C} is \textbf{rationalizable}, and when
+\emph{R} is a partial order, that \emph{C} is \textbf{rationalizable by
+a partial order}. I find this terminology tendentious - why should
+semiorders be the only things that can make \emph{C} rational? And as
+we'll see in Section~\ref{sec-games}, it conflicts with the notion of a
+choice being \emph{rationalizable} in game theory. But it's a common
+enough terminology that I wanted to mention it here.
+
+\section{Aizerman's Property}\label{sec-aiz}
+
+The property Aiz is not particularly intuitive. Fortunately, it turns
+out to be equivalent, given our assumptions, to one that is: Path
+Independence.\footnote{Unless stated otherwise, the results in this
+  section, along with proofs, can be found in the helpful survey by
+  Moulin (\citeproc{ref-Moulin1985}{1985}).} Path Independence says that
+to find what's choiceworthy from a union of sets, you only have to
+consider which options are choiceworthy in the smaller sets.
+
+Note that this isn't just saying that the options choiceworthy from the
+union are choiceworthy from one of the members. That is implied by α.
+What it is saying is that whether the unchosen options from S and T are
+or aren't on the menu doesn't make a difference to which options are
+choiceworthy from the union.
+
+There is a very natural kind of model where α and Path Independence
+hold, but β and γ do not. Let \emph{O} be a set of total orderings of
+\emph{U}. (A total ordering is a relation \emph{R} such that
+\emph{xRy}~∨~\emph{yRx}~∨~x=y.) Further, let \emph{C}(\emph{S}) be the
+set of Pareto optimal members of \emph{S} relative to those orderings.
+That is, it is the set of members of \emph{S} such that no other member
+of \emph{S} is better according to every member of the set of orderings.
+Every such model satisfies α and Path Independence, but some violate β
+and γ.
+
+There is a further relation between Path Independence and these models.
+For any \emph{C} that satisfies α and Path Independence, there is some
+set of total orderings over \emph{S} such that \emph{C}(\emph{S}) is the
+set of Pareto optimal members of \emph{S} according to that set of
+orderings.
+
+It might seem strange after all the talk of weak orderings and
+semiorders that we're now using total orders. Given that \emph{U} is
+finite, this turns out to be unsurprising. Any semiorder with a finite
+domain, and hence any such weak order, is such that there is some set of
+total orders such that \emph{x} is strictly preferred to \emph{y} in the
+semiorder iff it is preferred in all the total orders. (In fact we can
+put a sharp cap on how many such orders there must be.) So being Pareto
+optimal relative to some set of semiorders (or weak orders) is
+equivalent to being Pareto optimal relative to a larger set of total
+orders.
+
+If \emph{C} is determined by a set of orders in this way, it is said to
+be \textbf{pseudorationalizable}. These choice functions are not always
+binary. Consider one simple example, where \emph{U} is
+\{\emph{x},~\emph{y},~\emph{z}\},
+\emph{C}(\emph{U})~=~\{\emph{x},~\emph{z}\}, and for any other \emph{S},
+\emph{C}(\emph{S})~=~\emph{S}. That is the choice function determined by
+the pair of orderings \emph{x}~≻~\emph{y}~≻~\emph{z}~and
+\emph{z}~≻~\emph{y}~≻~\emph{x}. This satisfies α, δ and Aiz, but not β
+or γ. And it isn't binary. \emph{B}(\emph{C}) is the universal relation
+\emph{R}, since whenever \emph{S} is a pair set,
+\emph{C}(\emph{S})~=~\emph{S}.
+
+The approach discussed here is obviously similar to what is called the
+``multi-utility'' approach to representing incomplete preferences (Evren
+and Ok (\citeproc{ref-EvrenOk2011}{2011})). In this approach we find a
+set of utility functions and say \emph{xRy} iff
+\emph{u}(\emph{x})~≿~\emph{u}(\emph{y}) for all \emph{u} in the set.
+
+I'm going to argue over subsequent sections that this is a coherent
+choice function, and hence not all coherent choice functions are binary.
+
+\section{Preference and Trade}\label{sec-trade}
+
+Let's go back to why we might have wanted to focus on binary preference
+relations. One natural reason is that our primary aim in looking at
+preference is to explain trade, and it is natural to give preferences a
+central role in explaining trade. If Chooser trades a cow for some magic
+beans, it's natural to explain that by saying Chooser preferred the
+magic beans to the cow.
+
+In the monetary economies we live in, very little trade involves barter.
+Most trade involves money. Money is primarily valuable instrumentally.
+If Chooser buys some shoes for \$100, we could say that Chooser prefers
+the shoes to the money. But that doesn't seem like the end of the story,
+since there is a reason why Chooser values the money as they do. The
+deeper point is that the money Chooser has gives them a budget
+constraint, and Chooser thinks that the shoes are a better use of the
+\$100 than anything else available. That is, it seems more informative
+to describe Chooser as choosing the shoes from the menu of things that
+cost \$100 than to describe them as preferring the shoes to the money.
+In general, choiceworthiness seems more relevant to explaining market
+behaviour in monetary economies than preference, unless choiceworthiness
+can be defined in terms of preference. So let's turn to some reasons to
+think that it cannot.
+
+\section{Degenerate Games}\label{sec-games}
+
+Say a two-player game is \textbf{degenerate} iff the payoffs to one of
+the players are constant in all outcomes of the game. For convenience,
+say Column is the player with a constant outcome. So
+Table~\ref{tbl-upmid}, Table~\ref{tbl-middown} and
+Table~\ref{tbl-allthree} are degenerate games.
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{A degenerate two-option game}\label{tbl-upmid}\tabularnewline
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Up & 10,0 & 0,0 \\
+Middle & 1,0 & 1,0 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{Another degenerate two-option
+game}\label{tbl-middown}\tabularnewline
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Middle & 1,0 & 1,0 \\
+Down & 0,0 & 10,0 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{A degenerate three-option
+game}\label{tbl-allthree}\tabularnewline
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Left & Right \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Up & 10,0 & 0,0 \\
+Middle & 1,0 & 1,0 \\
+Down & 0,0 & 10,0 \\
+\end{longtable}
+
+Start with the following two assumptions, which seem fairly plausible
+for games like these.
+
+\begin{itemize}
+\tightlist
+\item
+  If a move is part of a Nash equilibrium, it is choiceworthy.
+\item
+  A move is choiceworthy only if there is some probability distribution
+  over the other player's moves such that the move maximizes expected
+  utility given that distribution.\footnote{The notion of a
+    rationalizable choice, in the sense of B. Douglas Bernheim
+    (\citeproc{ref-Bernheim1984}{1984}) and David Pearce
+    (\citeproc{ref-Pearce1984}{1984}), slightly strengthens this
+    constraint. A choice is rationalizable iff it maximizes expected
+    utility relative to a probability assignment that only gives
+    positive probability to the other player, or players, making
+    rationalizable choices. That's circular as stated, but one can
+    remove the circularity at the cost of making the definition somewhat
+    less intuitive.}
+\end{itemize}
+
+In degenerate games, these necessary and sufficient conditions for
+choiceworthiness coincide, but in general they are rather
+different.\footnote{Since rationalizability is between these notions, it
+  also coincides with them for degenerate games.}
+
+In Table~\ref{tbl-upmid} and Table~\ref{tbl-middown}, both options are
+choiceworthy by this standard. The Nash equilibria of
+Table~\ref{tbl-upmid} are Up-Left and Middle-Right, while the Nash
+equilibria of Table~\ref{tbl-middown} are Middle-Left and Down-Right. So
+each option is choiceworthy for each player in each game. But in
+Table~\ref{tbl-allthree}, the only choiceworthy options for Row are Up
+and Down. Whatever probability Row assigns to Left/Right, Middle will
+not maximize expected utility. So this is a counterexample to γ. Middle
+is choiceworthy from \{Up, Middle\} and from \{Middle, Down\}, but not
+from their union.
+
+It follows immediately from Lemma 3 in Pearce
+(\citeproc{ref-Pearce1984}{1984}) that in degenerate games, a choice
+satisfies those conditions for being choiceworthy iff it is not strictly
+dominated, where this includes being dominated by mixed strategies. (In
+Table~\ref{tbl-allthree}, Middle is strictly dominated by the 50/50
+mixture of Up and Down.) This means that the choices will satisfy Path
+Independence. An option is not dominated by the options in
+\emph{S}~∪~\emph{T} iff it is not dominated by the undominated options
+in \emph{S}~∪~\emph{T}, i.e., by the options in
+\emph{C}(\emph{S})~∪~\emph{C}(\emph{T}). So removing options that are
+not choiceworthy in \emph{S} and \emph{T} from the union doesn't change
+what is undominated, i.e., choiceworthy.
+
+This last paragraph is the start of a pattern in the examples that
+follow. Although I'll be arguing against γ, I won't be arguing against
+Aiz/Path Independence. I'm not going to offer anything like a conclusive
+argument for Aiz, but the pattern suggests that it is the right
+constraint to add to α to be a fundamental constraint on coherent
+choiceworthiness.
+
+\section{Choice Under Uncertainty}\label{sec-uncertainty}
+
+Luce and Raiffa (\citeproc{ref-LuceRaiffa1957}{1957}) discuss what they
+call choices under `uncertainty', by which they mean choices where
+Chooser cannot assign probabilities to the states. Martin Peterson
+(\citeproc{ref-Peterson2017}{2017}) calls these choices under
+`ignorance'. None of the proposed decisive rules for choice under
+uncertainty/ignorance are particularly compelling; all lead to very
+strange outcomes.
+
+The best approach, in my opinion, is to treat these choices like
+degenerate games. Indeed, degenerate games are really a paradigm of
+choice under ignorance; Row has no reason to assign any particular
+probability to Column's choice. Further, what the game theory textbooks
+say about degenerate games seems fairly plausible; any undominated
+option is choiceworthy. The same goes for choices under ignorance; any
+undominated option is choiceworthy.
+
+If that's right, then the three examples from Section~\ref{sec-games}
+can be repurposed as examples of choice under uncertainty, replacing
+Left and Right with \emph{p} and ¬\emph{p}, and the same analysis will
+hold. Again γ will fail, because Middle is choiceworthy when there is
+one other option, but not when there are two. So there's no binary
+comparison of Middle with the other two options that explains the facts
+about what is choiceworthy in the three cases.
+
+\section{Multiple Equilibria}\label{sec-multieq}
+
+This is a decision theory paper, so we need to introduce a demon who can
+reliably predict Chooser's choices. We'll start with a version of what
+Skyrms (\citeproc{ref-Skyrms1982}{1982}) calls `Nice Demon'; we'll just
+call them Demon. In Table~\ref{tbl-nice-demon}, Chooser selects Up or
+Down, and Demon either predicts Up (PU), or predicts Down (PD). Whatever
+Chooser does, Demon is very likely to have predicted correctly.
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{First version of Nice
+Demon}\label{tbl-nice-demon}\tabularnewline
+\toprule\noalign{}
+& PU & PD \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& PU & PD \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Up & 6 & 0 \\
+Down & 0 & 4 \\
+\end{longtable}
+
+Jack Spencer (\citeproc{ref-Spencer2023}{2023}) argues against views,
+like the one defended by Dmitri Gallow
+(\citeproc{ref-Gallow2020}{2020}), which say only Up is choiceworthy in
+Table~\ref{tbl-nice-demon}.\footnote{Evidential decision theory also
+  says that only Up is choiceworthy in Table~\ref{tbl-nice-demon}.
+  What's distinctive about Gallow's position is that it says only Up is
+  choiceworthy here, although only two-boxing is choiceworthy in the
+  original Newcomb Problem.} Spencer's argument relies on a simple
+principle. If Chooser plans to play Down, then Chooser knows Down will
+have the best return, and it's not irrational to make a choice if one
+knows, when one makes it, that the choice will have the best return.
+Gallow (\citeproc{ref-Gallow2024}{2024}) replies that in some cases,
+especially those involving high stakes, it isn't always rational to do
+what one knows will produce the best return. Since I think it's a
+fundamental feature of knowledge that it does rationalize action in the
+way Spencer suggests (Weatherson
+(\citeproc{ref-WeathersonKAHIS}{2024})), I think Spencer has the better
+of this exchange. So I'll follow him and assume that both options are
+choiceworthy in games like Table~\ref{tbl-nice-demon} where multiple
+options are self-verifying.\footnote{The version of causal decision
+  theory set out by David Lewis (\citeproc{ref-Lewis1981bn}{1981}) has a
+  more complicated verdict on Table~\ref{tbl-nice-demon}. It says the
+  uniquely rational choice is whatever choice Chooser believes they will
+  make. This isn't the view I'm assuming, since I take both options to
+  be permissible. But it's very close to the picture I present, without
+  endorsing, in Section~\ref{sec-dorr}. On that view, once Chooser
+  commits to a choice, it becomes the only permissible one, so the view
+  isn't far from Lewis's.}
+
+Now add a third option, Exit, which has a guaranteed return of 1. So the
+game table looks like Table~\ref{tbl-nice-demon-exit}.
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{Second version of Nice
+Demon}\label{tbl-nice-demon-exit}\tabularnewline
+\toprule\noalign{}
+& PU & PD \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& PU & PD \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Up & 6 & 0 \\
+Exit & 1 & 1 \\
+Down & 0 & 4 \\
+\end{longtable}
+
+In Table~\ref{tbl-nice-demon-exit}, Exit is not choiceworthy. Whatever
+credences Chooser has about what Demon has done, it is better in
+expectation to choose one of Up or Down. But if either Up or Down were
+unavailable, Exit would be a permissible choice, given the earlier
+assumption that any self-verifying choice in cases like
+Table~\ref{tbl-nice-demon} is choiceworthy. So like in
+Section~\ref{sec-games} and Section~\ref{sec-uncertainty}, we have a
+counterexample to γ.
+
+There is an important general lesson from this case. What makes an
+option choiceworthy in cases like this is that it is utility maximizing
+\emph{once it is chosen}. We'll turn next to a more dramatic
+illustration of this point.
+
+\section{Mixed Strategies}\label{sec-mixed}
+
+Demon has stopped being nice, and now wants to play Rock-Paper-Scissors
+with Chooser. Given Demon's powers, this could go badly for Chooser.
+Happily, Chooser can choose to randomize\footnote{I'm not going to argue
+  for this here, but I think it is part of being ideally practically
+  rational that one is able to randomize, just like it is part of being
+  ideally practically rational that one can make calculations
+  costlessly.}, and all Demon can predict is the probability that
+Chooser's random process will come up with any option. So the best thing
+for Chooser to do is to pick one of the three options at random. That
+alone will maximize expected utility conditional on being chosen.
+
+Not coincidentally, the only Nash equilibrium of Rock-Paper-Scissors is
+for each player to randomize. Nash equilibria are arguably the only
+sensible strategies if one assumes that every other player has
+Demon-like abilities to detect what one is doing. But it's a
+long-running puzzle in game theory how it can be uniquely rational to
+randomize. Why can choosing randomly be better than choosing one of the
+things one is randomizing between? To turn this rhetorical question into
+an argument, note that the following three principles are inconsistent.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  randomizing is the only choiceworthy strategy in Rock-Paper-Scissors.
+\item
+  If only one choice is choiceworthy, it is rationally preferred to all
+  other choices.
+\item
+  It is irrational to prefer a random mixture of some choices to every
+  one of the choices.
+\end{enumerate}
+
+Since (11) is a standard view in game theory, (12) is a standard view in
+choice theory, and (13) is a standard view in preference-based decision
+theory, it is a little disconcerting to see they are inconsistent.
+
+The example in Section~\ref{sec-multieq} shows how to steer through this
+trilemma. Choiceworthiness is fundamentally an ex ante notion, and
+preference is fundamentally an ex post notion. The reason Spencer's view
+about Table~\ref{tbl-nice-demon} is right is not that the rational
+chooser is indifferent between Up and Down. Rather, choosers don't have
+preferences between these choices until they have chosen, and once they
+choose, they prefer their choice.
+
+Similarly in Rock-Paper-Scissors (especially against a Demon), what's
+true is that prior to deciding, the only rational choice is to
+randomize. Before the choice, there is no such thing as Chooser's
+preferences over the options; what I earlier called definedness fails.
+Once one has chosen, one should be strictly indifferent between the
+options; they each have the same expected utility. In particular, one
+should not prefer to re-randomize rather than put into effect the result
+of the random process.
+
+So we should reject (12) in its most natural interpretation. randomizing
+in Rock-Paper-Scissors is the only choiceworthy option, but until a
+choice is made, Chooser simply shouldn't have preferences over these
+options.
+
+Most of the arguments in this paper against the binariness of choice
+turn on counterexamples to γ, but this is a distinct argument.
+Sometimes, as in Rock-Paper-Scissors, there are grounds for rational
+choice, but no grounds for rational preference. The only preferences
+that would ground the choice would violate (13). So rational
+choiceworthiness cannot be grounded in rational preference.
+
+This is the deepest reason why \emph{C} = \emph{B}(\emph{R}) must be
+wrong; \emph{C} and \emph{R} are fundamentally about different kinds of
+attitudes. \emph{C} is about what is rational prior to making a choice,
+\emph{R} is a constraint that must be satisfied once a choice is made.
+Outside of Newcomb-like cases, this distinction won't often matter, but
+it is another reason that the equation fails.
+
+\section{Multiple Attributes and Decisiveness}\label{sec-sartre}
+
+Sartre (\citeproc{ref-Sartre1946}{1946/2007}) has a famous example of a
+young man, we'll call him Pierre, caught between two imperatives. The
+actual example Sartre gives is complicated in interesting ways, but
+we'll work with a very simple version of the story. Pierre lives in
+occupied France during WWII, and feels torn between his duty to care for
+his ailing mother, and his duty to fight for his occupied country. What
+should he do?
+
+The case is horribly underdescribed, but the following verdicts have
+seemed plausible to many people. First, Pierre can rationally, and
+morally, choose either option. Caring for his mother and fighting Nazis
+are both noble goals, and it's fine to pursue either. Second, and this
+follows from the first and the fact that the case is underdescribed, the
+options are not equally good. After all, a small improvement to either
+would not break a tie between them.
+
+A third intuition is more contentious, but perhaps plausible: there is
+something wrong about Pierre going back and forth between the two
+choices; he should make a choice and stick to it. On this view, there is
+something intrinsically good about settling on a choice and sticking to
+it. What makes this intuition less than fully clear is that in any
+practical version of the case, it will be very bad for Pierre to
+oscillate between the two views. He could spend the whole war travelling
+between England and France as he changes his mind on where he should be,
+and that would be bad. The intuition I have in mind is that there is
+something good about taking a stance and committing to it, even outside
+of the practical costs of changing one's mind.\footnote{As Moss
+  (\citeproc{ref-Moss2015}{2015}) points out, it is less clear this is
+  intrinsically bad if there is more time between the reconsiderations;
+  it makes more sense to change one's mind than to rapidly flip-flop.
+  Conversely, if Pierre resembles the young Thomas Schelling (as
+  discussed by Holton (\citeproc{ref-Holton1999}{1999})), firmly
+  committing to one plan and then another over the course of successive
+  nights, he's doing something wrong even if it has no practical
+  downsides.}
+
+A very simple model for these intuitions is that Pierre's situation is
+surprisingly like the person playing Table~\ref{tbl-nice-demon}. There
+are two options here, and either is acceptable, but once one is chosen,
+it becomes the preferred one. There are two good values here, caring for
+family and caring for country, and Pierre's fundamental choice is to
+adopt one of these as his value. As Chang
+(\citeproc{ref-Chang2024}{2024}) puts it, he chooses to put `his whole
+self' behind one of those values. Once that choice is made, his
+preferences and his actions follow naturally.
+
+It is easy enough to reject the third intuition. Perhaps Pierre could
+rationally, as Chang (\citeproc{ref-Chang2024}{2024}) puts it,
+\emph{drift} into one choice. Perhaps he could adopt one path and
+sometime later rationally regret his choice, because the other value
+strikes his later self as more important. Still, if one holds all three
+intuitions, toy models like Table~\ref{tbl-nice-demon} capture a
+surprising amount of what's going on with Pierre. And those models are
+incompatible with choiceworthiness being binary.
+
+\section{β and Incompleteness}\label{sec-dorr}
+
+The Pierre case in Section~\ref{sec-sartre} is, even without the third
+intuition, a straightforward counterexample to β. Just to spell it out,
+
+\begin{quote}
+\emph{x} = Help mother\\
+\emph{y} = Fight Nazis\\
+\emph{z} = Help mother plus one extra ration book
+\end{quote}
+
+If the choices are \emph{x} and \emph{y}, either is acceptable. If the
+choices are \emph{x}, \emph{y} and \emph{z}, \emph{x} alone is
+unchoiceworthy. So β fails.
+
+This is the Small Improvement argument, and it is often thought to be an
+argument against completeness, i.e., (4). The point of this section is
+to say why the small improvement argument against (4) might fail, even
+if the small improvement argument against β works.
+
+Imagine someone was convinced by the arguments in Dorr, Nebel, and Zuehl
+(\citeproc{ref-DorrEtAl2023}{2023}) that (4) must be true. Their
+arguments turn on semantic properties of comparatives; since \emph{R} is
+a comparative, they say it must be trichotomous since all comparatives
+are trichotomous.\footnote{For what it's worth, I think this argument
+  fails because of the case of `stronger' in logic. They address this
+  case, but I don't think their response works. But it would be a huge
+  digression to follow that thread through.} Now it would be very
+strange if the semantics of comparatives in natural language entailed
+that some intuitions about three-way choice had to be false. And in fact
+these claims about semantics are consistent with β failing in cases like
+Pierre's.\footnote{I'm focussing here on the argument in Dorr, Nebel,
+  and Zuehl (\citeproc{ref-DorrEtAl2023}{2023}), but a similar response
+  works if someone is convinced of (4) by the argument in Broome
+  (\citeproc{ref-Broome1997}{1997}).}
+
+The following view is coherent, and its coherence shows that Dorr et
+al's view of comparatives does not entail β.
+
+\begin{itemize}
+\tightlist
+\item
+  β fails in cases like Pierre's.
+\item
+  An option is choiceworthy for Pierre iff no option is
+  \emph{determinately} preferred to it.
+\item
+  To make a choice, Pierre must determine which value is really his.
+\item
+  Once he does that, his preferences will satisfy (4).
+\item
+  Before he does that, there are two possibilities. One is that his
+  preferences aren't even defined over these options, so asking which
+  option is preferred is like asking whether the number 7 is taller,
+  shorter, or the same height as justice. Another is that it is vague
+  what Pierre's preferences are, but any resolution of the vagueness
+  makes (4) true. This latter option fits nicely with the idea that
+  \emph{C} should satisfy Aiz, since it should be determined by a set of
+  orderings, each of them the possible precisifications, or
+  determinations, of his current state.\footnote{This view of preference
+    mirrors the view of credence defended by Carr
+    (\citeproc{ref-Carr2020}{2020}).}
+\end{itemize}
+
+One objection to this view is that it seems to imply that Pierre could
+rationally choose one option while he prefers, but does not
+determinately prefer, another. But this isn't what the view implies.
+Once Pierre makes the choice, he must, if he is rational, determine that
+his preferences match it. Preference, as I argued in
+Section~\ref{sec-mixed}, is fundamentally an ex post notion. That is,
+(14) is true, while (15) is false.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{13}
+\tightlist
+\item
+  Once Pierre chooses an option, there must not be some other option he
+  strictly prefers to it.
+\item
+  Before an option is choiceworthy for Pierre, it must be better or just
+  as good (given his preferences) as any other option.
+\end{enumerate}
+
+What (14) says is that if Pierre is rational, he will choose what he
+prefers. That does not mean, as (15) claims, that rational choices are
+those that are preferred prior to the choice. Choice, on this picture,
+is prior to preference, both analytically and, in this case, causally.
+
+When I say this is coherent, I don't mean to half-heartedly say that it
+is correct. My preferred view is that Pierre could rationally drift (in
+Chang's sense) into either option, and if he does, (4) would fail even
+ex post. All I mean to argue here is that the case against β doesn't
+turn on this view, and one can coherently reject β while endorsing
+trichotomy.
+
+\section{Bad Compromises}\label{sec-badcomp}
+
+My version of the Pierre example was very simple, but it allows for some
+interesting complications. As stated, you might think Pierre isn't
+thinking through his choices well enough. He should join the local
+resistance, so he can stay close enough to his mother to help, while
+also fighting the Nazis.
+
+But maybe that's a terrible option. We can easily imagine that the
+resistance is either so useless that it does practically nothing, or so
+good at recruiting that it has little useful work. It's just as easy to
+imagine that it creates busywork that dramatically reduces how much he
+can care for his mother, while not doing much to help the war effort. At
+risk of trivialising the issue, we can imagine that Pierre's options
+look like this, where the two columns represent how much each option
+respects/promotes the relevant value.
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{Pierre's options, including
+resistance}\label{tbl-pierreresist}\tabularnewline
+\toprule\noalign{}
+& Caring value & Fighting value \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Caring value & Fighting value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Stay Home & 10 & 0 \\
+Join resistance & 1 & 1 \\
+Join Free French & 0 & 10 \\
+\end{longtable}
+
+Intuitively, if these are Pierre's options he should not join the
+resistance; it's almost the worst of both worlds. We don't want to rest
+on an intuition, and I'll argue for the view that Pierre should shun the
+resistance in the next two sections. If it is irrational to join the
+resistance in Table~\ref{tbl-pierreresist}, this is another
+counterexample to γ. To see this, consider these two variants of the
+case.
+
+\begin{quote}
+\textbf{No exit}: While Pierre is deliberating, he hears that the
+options for getting to the Free French have been decisively cut off. (In
+the original, he worries this might happen.) Now his only two options
+are to stay home, or to join the resistance.
+\end{quote}
+
+\begin{quote}
+\textbf{Promise}: Pierre's brother Jean is fighting the Nazis. Pierre
+has promised Jean that if Jean is killed, Pierre will take up the fight
+in some way. Sadly, Jean is killed, and Pierre regards this promise as
+binding. Now his only options are to join the resistance, or join the
+Free French.
+\end{quote}
+
+In either case, joining the resistance seems choiceworthy. In both
+cases, it is the option that does best of the remaining choices on one
+of the criteria. Pierre could decide he endorses that criterion as his
+own, and acts accordingly. So the resistance is choiceworthy amongst
+either pair of options, but not amongst their union.
+
+\section{Levi and Sen}\label{sec-levisen}
+
+In \emph{Hard Choices}, Isaac Levi (\citeproc{ref-Levi1986}{1986})
+defended a view where the choiceworthy options are only those that
+maximize value on some resolution of the incompleteness in the agent's
+values. (He doesn't use this language, but so far this is similar to the
+multi-utility approach discussed in Section~\ref{sec-aiz}.) Levi also
+had views about what further constraints there should be on choice, so
+he did not defend the view I've been discussing where any option that is
+maximal on any resolution is choiceworthy. But his views are still
+relevant here, because this requirement that a choice be maximal on a
+resolution meant that he was committed to γ failing, and choices not
+being binary.
+
+A central example which he uses, and which Sen
+(\citeproc{ref-Sen2004}{2004}) picks up on, involves an executive
+looking to hire a secretary. I'll follow Sen and call the executive
+Ms.~Jones.\footnote{I've also changed the secretaries' names.} She is
+looking for a secretary with good typing skills and good stenography
+skills. (This is the 1980s.) We'll conceive of these skills, a bit
+arbitrarily, as distinct values. There are three candidates: Jack,
+Danny, and Luke, and their value on each measure is given in
+Table~\ref{tbl-secretaries}. (I've slightly adjusted the numbers to
+match the earlier examples.)
+
+\begin{longtable}[]{@{}rcc@{}}
+\caption{Three candidates for a secretarial
+position}\label{tbl-secretaries}\tabularnewline
+\toprule\noalign{}
+& Typing Skill & Stenography Skill \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Typing Skill & Stenography Skill \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Jack & 10 & 0 \\
+Danny & 1 & 1 \\
+Luke & 0 & 10 \\
+\end{longtable}
+
+Levi argues that if the numbers are like this, and Danny is barely
+better than the worst of the other two on each metric, he is not
+choiceworthy. That's true even though he might be choiceworthy if one or
+the other candidates was unavailable.
+
+Sen argues that the right choice theory in this case should be
+``inarticulate'', and say that any of the three is choiceworthy. He
+responds to the intuition Levi presents with a dilemma.
+
+On the first horn, we understand these numbers as representing an
+objective measure of the skills of the candidates at each of the tasks.
+As Sen points out, it's easy to imagine situations where someone who is
+not abysmal at either half of the job is more useful than someone who is
+an expert on one, and abysmal on the other.
+
+On the other horn, we measure the ``importance''
+(\citeproc{ref-Sen2004}{Sen 2004, 53}) of each skill for the task at
+hand. Sen argues, by analogy with the difficulty in establishing a
+social welfare function out of the welfare of each individual, that
+there will be no way to do this. Let's turn to how we might go about it.
+
+\section{Lotteries, Choices, and Values}\label{sec-lotteries}
+
+In this section I'll offer a response, on Levi's behalf, to Sen's
+dilemma. The example will draw heavily on recent work by Harvey Lederman
+(\citeproc{ref-Lederman2025}{forthcoming}).\footnote{See also Lederman
+  (\citeproc{ref-Lederman2023}{2023}), and Tarsney, Lederman, and Spears
+  (\citeproc{ref-LedermanEtAl2025}{forthcoming}). This is not to say
+  Lederman would endorse anything like this response; as we'll see in
+  the next section he is sympathetic to Sen's view that the
+  multi-utility approach is mistaken. But every principle I'll use here
+  is discussed, one way or another, in his work, and I've drawn heavily
+  on that discussion in what follows.} We'll start by imagining that
+Ms.~Jones might have a choice not of secretaries, but of agencies, and
+she has a reasonable credal distribution over the skills of the people a
+particular agency might send. That is, each choice of agency will be a
+choice of a \emph{lottery}, where she doesn't choose a package of
+skills, but a probability distribution over some outcomes, where each
+outcome is a secretary with a numerical skill on each attribute.
+
+To set this up, I'll need three new bits of notation. I'll write
+\emph{Lxy} for a lottery that has equal chance of returning outcomes
+\emph{x} and \emph{y}, where these might be secretaries or further
+lotteries. I'll write \emph{x}~=~\emph{y} for what I've previously
+written as \emph{xEy}. It means that \emph{x} and \emph{y} are equally
+good by Ms.~Jones's lights. It's perhaps suboptimal to introduce new
+notation for an old concept, but the mix of L's and E's became hard to
+read. Finally, I'll write ⟨\emph{x}, \emph{y}⟩ for a secretary with
+skill \emph{x} at typing and skill \emph{y} at stenography.
+
+If the numbers in Table~\ref{tbl-secretaries} measure importance, then
+Ms.~Jones's preferences should satisfy (a special case of) what Lederman
+calls \textbf{Unidimensional Expectations}.
+
+\begin{description}
+\tightlist
+\item[Unidimensional Expectations (UE)]
+~\newline~ \emph{L}⟨\emph{x}\textsubscript{1},
+\emph{y}⟩⟨\emph{x}\textsubscript{2}, \emph{y}⟩ =
+⟨(\emph{x}\textsubscript{1} + x\textsubscript{2})/2, \emph{y}⟩
+
+\emph{L}⟨\emph{x}, \emph{y}\textsubscript{1}⟩⟨\emph{x},
+\emph{y}\textsubscript{2}⟩ = ⟨\emph{x}, (\emph{y}\textsubscript{1} +
+\emph{y}\textsubscript{2})/2⟩
+\end{description}
+
+That is, the value of a lottery where the possible outcomes agree on one
+dimension also has the same value on that dimension, and has the
+expected value of the other dimension. If the lottery does not involve
+value conflict, old-fashioned expected value maximisation is the way to
+go.
+
+This is enough to rule out the example Sen has in mind on the first
+horn, where a secretary with skill 1 on either dimension is more than
+half as valuable as a secretary with skill 10. But it's not enough to
+say that Ms.~Jones should not hire Danny. Unidimensional Expectations is
+consistent with one resolution of his indeterminate value being that the
+value of ⟨\emph{x},\emph{y}⟩ is \emph{xy}. If that's a permissible
+resolution, then there will be a resolution on which Danny is maximally
+valuable. But there are further principles that do rule out Danny. The
+most intuitive argument I know uses the following.
+
+\begin{description}
+\tightlist
+\item[Substitution of Identicals (SI)]
+If \emph{x} = \emph{y}, then \emph{Lxz} = \emph{Lyz} and \emph{Lzx} =
+\emph{Lzy}.
+\item[No Trade-Off (NT)]
+\emph{L}⟨\emph{x}, \emph{x}⟩⟨\emph{y}, \emph{y}⟩ = ⟨(\emph{x} +
+\emph{y})/2,(\emph{x} + \emph{y})/2⟩
+\item[Rearrangement of Outcomes (RO)]
+\emph{L}(\emph{Lxy})(\emph{Lvw}) = \emph{L}(\emph{Lxw})(\emph{Lvy})
+\item[Weak Independence (WI)]
+If \emph{x} = \emph{Lxy} then \emph{x} = \emph{y}
+\end{description}
+
+Substitution of Identicals follows naturally from the idea that the
+outcomes are truly equal, so it doesn't matter whether a lottery has an
+outcome that results in one or the other. No Trade-Off, like
+Unidimensional Expectations, says that when we are just considering
+strictly better and worse options, so there are no relevant
+complications about resolving indeterminacy, we're back in the land of
+expected utility maximisation. Rearrangement of Outcomes follows from
+the fact that the compound lotteries on either side of the identity sign
+each have probability 1/4 of returning one of those four outcomes. And
+Weak Independence, which is probably the most contentious of the lot,
+says that if \emph{y} is not exactly as good as \emph{x}, then a 1/2
+chance of \emph{y} should not be exactly as good as \emph{x}. Given
+these principles, we can argue as follows.
+
+\begin{longtable}[]{@{}rll@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1. & ⟨5, 5⟩ = \emph{L}⟨10, 5⟩⟨0,5⟩ & UD \\
+2. & ⟨10, 5⟩ = \emph{L}⟨10, 10⟩⟨10,0⟩ & UD \\
+3. & ⟨0, 5⟩ = \emph{L}⟨0, 10⟩⟨0,0⟩ & UD \\
+4. & ⟨5, 5⟩ = \emph{L}(\emph{L}⟨10, 10⟩⟨10,0⟩)⟨0,5⟩ & 1,3 SI \\
+5. & ⟨5, 5⟩ = \emph{L}(\emph{L}⟨10, 10⟩⟨10,0⟩)(\emph{L}⟨0, 10⟩⟨0,0⟩) &
+2, 4 SI \\
+6. & ⟨5, 5⟩ = \emph{L}(\emph{L}⟨10, 10⟩⟨0,0⟩)(\emph{L}⟨0, 10⟩⟨10,0⟩) & 5
+RO \\
+7. & ⟨5, 5⟩ = \emph{L}⟨10, 10⟩⟨0,0⟩ & NT \\
+8. & ⟨5, 5⟩ = \emph{L}⟨5, 5⟩(\emph{L}⟨0, 10⟩⟨10,0⟩) & 6, 7 SI \\
+9. & ⟨5, 5⟩ = \emph{L}⟨0, 10⟩⟨10,0⟩ & 8 WI \\
+\end{longtable}
+
+To complete the argument, we need two plausible principles. First,
+\emph{x} is not choiceworthy from \emph{S} when \emph{x} is not
+choiceworthy from the set consisting of \emph{x} and \emph{Lyz}, for
+\emph{y}, \emph{z} in \emph{S}. Second, \emph{x} is not choiceworthy
+from \emph{S} when an option that is strictly better on every dimension
+is in \emph{S}.
+
+There are several assumptions here, and any one of them could be the
+subject of a whole paper. But they each seem very plausible, and they
+show how we can ground the intuition that the multi-utility approach is
+on the right track, and sometimes an option is not choiceworthy because
+it is close to the worst option on every dimension we care about.
+
+\section{Negative Dominance}\label{sec-negdom}
+
+Harvey Lederman (\citeproc{ref-Lederman2025}{forthcoming}) notes that
+the picture I've developed, where Danny is unchoiceworthy, appears to
+violate a plausible principle which he calls \textbf{Negative
+Dominance}. Lederman gives a few versions of this principle, the
+following is the version most relevant to the case.\footnote{In all the
+  quotes I'll change the names and example to match the one I'm using.}
+
+\begin{description}
+\tightlist
+\item[Negative Dominance (Goodness)]
+If one game of chance is better for {[}Ms.~Jones{]} than another, some
+prize in the first game is better for her than some prize in the second.
+(\citeproc{ref-Lederman2025}{Lederman forthcoming, 13})
+\end{description}
+
+The main application of this is to reject the idea that
+\emph{L}(Jack)(Luke) is better than Danny.
+
+I said the picture from previous sections `appears to violate' Negative
+Dominance because one more assumption is needed to generate the tension.
+The assumption is that when Chooser has only two options, preference and
+choiceworthiness are closely related. In particular, \emph{xPy} iff
+\emph{C}(\{\emph{x}, \emph{y}\})~=~\{\emph{x}\}. I've been arguing
+against principles linking preference and choice throughout this paper,
+but I've mostly accepted that they are tightly connected when there are
+only two options on the menu. Still, without some assumption linking
+choice and preference, the picture in the previous sections implies
+nothing about preference, hence it says nothing that contradicts
+Negative Dominance. For now, let's assume \emph{xPy} iff
+\emph{C}(\{\emph{x}, \emph{y}\})~=~\{\emph{x}\}, and I'll return at the
+end to what happens without that assumption.
+
+Negative Dominance seems like a very plausible principle if (and I think
+only if) one thinks that the role of decision theory is to come up with
+coherence constraints on \emph{preferences}. Centering decision theory
+on preference follows naturally from the idea that values and choices
+are ultimately grounded in preferences. As Lederman argues, preferences
+about lotteries have to be grounded in something about their prizes, and
+if preferences are fundamental, presumably they have to be grounded in
+preferences over their prizes. The key response I'm making is that if
+choiceworthiness is prior to preference, this last step doesn't follow.
+
+So when Lederman says,
+
+\begin{quote}
+a strict preference for one game of chance over another must be
+explained by a strict preference for one of the \emph{prizes} of the
+first, by comparison to one of the prizes of the second
+(\citeproc{ref-Lederman2025}{Lederman forthcoming, 18}, emphasis in
+original)
+\end{quote}
+
+we should question the uses of `one'. What's true is that attitudes
+towards games of chance should be somehow explained by attitudes towards
+the prizes, but these attitudes need not be \emph{preferences}. For
+instance, the fact that \emph{L}(Jack)(Luke) is better than Danny could
+be grounded in the fact that Danny is not choiceworthy from \{Jack,
+Danny, Luke\}.
+
+But there are more complicated cases where Lederman's challenge of how
+to properly ground attitudes to lotteries is more pressing. The
+following case mixes Levi's case with the main example in Tarsney,
+Lederman, and Spears (\citeproc{ref-LedermanEtAl2025}{forthcoming}).
+Ms.~Jones is now trying to hire a programmer, and she has four
+candidates, each of which has the skills in the four languages she cares
+about shown in Table~\ref{tbl-programmers}.
+
+\begin{longtable}[]{@{}rcccc@{}}
+\caption{Four programmers, and their
+skills}\label{tbl-programmers}\tabularnewline
+\toprule\noalign{}
+& Python & Java & C & Ruby \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Python & Java & C & Ruby \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Jane & 6 & 6 & 0 & 0 \\
+Dolly & 0 & 0 & 6 & 6 \\
+Lily & 5 & 0 & 5 & 0 \\
+Suzy & 0 & 5 & 0 & 5 \\
+\end{longtable}
+
+When the menu consists of any set of the programmers, all the options
+are choiceworthy. But Ms.~Jones strictly prefers \emph{L}(Jane)(Dolly)
+to \emph{L}(Lily)(Suzy), since the former lottery is better in
+expectation on all four dimensions. Lederman is right that this needs to
+be explained, that it should be explained in terms of evaluative
+features of the prizes (i.e., the programmers), and if the explanation
+uses expected value, we should explain why expected value matters. No
+explanation in terms of the choiceworthiness of some options will work
+to explain why one lottery is strictly better than another.
+
+The fact to be explained is that when \emph{L}(Jane)(Dolly) and
+\emph{L}(Lily)(Suzy) are available, only the former is choiceworthy.
+Here's how I explain it:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ms.~Jones has four values, and it is indeterminate how they should be
+  balanced. This means both that she hasn't decided how to balance them,
+  and maybe it is unnecessary, or even inadvisable, to balance them.
+\item
+  Given Unidimensional Expectations and No Trade-Off (as discussed in
+  Section~\ref{sec-lotteries}), the only permissible balancings are
+  linear mixtures of the values.
+\item
+  Given the result from Pearce (\citeproc{ref-Pearce1984}{1984})
+  discussed in Section~\ref{sec-games} (his Lemma 3), a lottery is best
+  on no linear resolution of the indecision in point 1 iff some
+  available lottery over other choices is better in expectation on every
+  value.
+\item
+  A lottery is choiceworthy from a menu of other lotteries (or options)
+  iff it is optimal on some permissible resolution of this indecision.
+\end{enumerate}
+
+If \emph{L}(Lily)(Suzy) were choiceworthy, by 4 it would have to be best
+on some resolution of Ms.~Jones's values. By 1 and 2, this means that it
+is best on some linear mixture of these values. By 3, that means it is
+better in expectation on one of these values. But it is not; on all four
+dimensions \emph{L}(Jane)(Dolly) has expected value 3, and
+\emph{L}(Lily)(Suzy) has expected value 2.5. Even though Ms.~Jones has
+not resolved the indeterminacy in her values, the fact that any
+resolution would mean she prefers the first lottery is enough reason to
+prefer the first lottery.
+
+In short, the focus on expected values comes not from any particular
+importance on expectations as such, but from the thought that
+permissible reactions to indeterminacy in values are constrained by
+permissible reactions to resolutions of that indeterminacy, combined
+with (a) constraints on resolutions like Unidimensional Expectations and
+No Trade-Off, and (b) Pearce's result linking expected value to linear
+mixtures of values.
+
+I'll end with two related objections to this reasoning. One comes from
+Jamie Dreier (\citeproc{ref-Dreier2022}{2022}). He is discussing which
+options are better and worse, not more or less preferred, but a
+translated version of this objection has bite. He writes,
+
+\begin{quote}
+To say,``Right, but no matter how we got rid of parity {[}i.e., the
+denial of trichotomy{]} in favor of the usual relations, this prospect
+would turn out to be better than that prospect, so really it must just
+\emph{be} better,'' just seems to be a non sequitur. It's as though,
+having heard that the number six has no spatial location at all, someone
+replied, ``Right, but no matter how we assigned it a spatial location,
+it would be reachable from Tucson in some finite amount of time by a
+light wave, so we can conclude that it just is reachable from Tucson in
+a finite amount of time.'' (\citeproc{ref-Dreier2022}{Dreier 2022}: 124)
+\end{quote}
+
+Relatedly, we might ask why the fact that Ms.~Jones would prefer one
+lottery to another on any way of balancing her values should mean that
+she has that preference now. Why should features of some other value
+function, one not her own, constrain what she now values?\footnote{Compare
+  the objection to supervaluationism in Fodor and Lepore
+  (\citeproc{ref-Fodor1996}{1996}).}
+
+My reply is that choice functions are meant to play a certain role, they
+are meant to guide action. But they can't do this on their own. If
+\emph{x} and \emph{y} are both in \emph{C}(\emph{S}), and Chooser must
+choose from \emph{S}, Chooser needs something more. Chooser needs a
+\emph{plan}. Ideally she would have what Gibbard
+(\citeproc{ref-Gibbard2003}{2003}) calls a \emph{hyperplan}. A hyperplan
+\emph{H} is a function that takes a menu of options \emph{S}, and
+returns a member of \emph{S}. It is a very plausible constraint on
+\emph{C} such that there is some coherent \emph{H} such that for all
+\emph{S}, \emph{H}(\emph{S})~∈~\emph{C}(\emph{S}). I conjecture, though
+I don't have a complete proof of this, that there are plausible
+constraints on \emph{H}, similar to Unidimensional Expectations and No
+Trade-Off, which imply that \emph{H} is coherent only if there is some
+utility function such that \emph{H}(\emph{S}) is an element of \emph{S}
+with maximal expected utility. That's far from a complete argument, but
+it's the direction I think a reply to Dreier's good objection should
+take.
+
+The other objection also comes from Dreier's work. He notes that
+principles like that some choice is choiceworthy iff it is optimal on
+some permissible resolution of the incompleteness in the values are
+plausible if we view incompleteness in value as a kind of indeterminacy.
+So the explanation of Ms.~Jones's choice dispositions I gave in
+Section~\ref{sec-negdom} goes through very smoothly if we say it is
+indeterminate how she values different skills.
+
+On this way of thinking, it's natural to reject the assumption with
+which I started this section, i.e., \emph{xPy} iff \emph{C}(\{\emph{x},
+\emph{y}\})~=~\{\emph{x}\}. What's more plausibly true is that \emph{x}
+is \textbf{determinately} preferred to \emph{y} iff \emph{C}(\{\emph{x},
+\emph{y}\})~=~\{\emph{x}\}. But if \emph{C}(\{\emph{x},
+\emph{y}\})~=~\{\emph{x}, \emph{y}\}, then it is indeterminate what
+preferences Ms.~Jones has.
+
+This leads back naturally to positions similar to the one discussed in
+Section~\ref{sec-dorr}. For example, we could say that preferences are
+defined not in terms of choice functions, but in terms of hyperplans.
+For a chooser with choice function \emph{C} and hyperplan \emph{H}, they
+prefer \emph{x} to \emph{y} iff \emph{H}(\{\emph{x},
+\emph{y}\})~=~\emph{x}. For more normal choosers, who have not
+determined a hyperplan, it is indeterminate what their preferences are;
+the preferences don't exist until (that part of) the hyperplan does.
+
+On this view Ms.~Jones does not violate Negative Dominance because it
+isn't true that she is indifferent between the four programmers. Rather,
+it is indeterminate which of them she prefers. What's true of her
+preferences is simply what is true on all ways of turning her choice
+function into a hyperplan. That will include that her preferences are
+trichotomous.\footnote{Indeed, the way I've set things up, her
+  preferences satisfy \emph{xPy}~∨~\emph{yRx}; there are various ways to
+  allow for equality in this framework, and hence preserving trichotomy
+  while rejecting \emph{xPy}~∨~\emph{yRx}.}
+
+The striking thing is that, like in Section~\ref{sec-dorr}, we can say
+all this while saying all the things which trichotomy was supposed to
+rule out. Ms.~Jones can rationally select any of the programmers, and
+this remains true even if any of them improves by ε on any skill, but
+she cannot rationally choose \emph{L}(Lily)(Suzy) when
+\emph{L}(Jane)(Dolly) is available. The resulting position is one where
+preferences are largely disconnected from rational choice.
+
+The position set out in the last two paragraphs is not a compulsory
+consequence of the arguments in the rest of the paper. We could simply
+reject Negative Dominance (Goodness) and say that Ms.~Jones is indeed
+indifferent between the programmers. But we, as theorists, have some
+options here. Once we say that preferences are analytically posterior to
+choiceworthiness judgments, there are a lot of ways to understand what
+preferences are. Some important arguments, like Lederman's, are not
+quite arguments against a particular view of choice, but the conjunction
+of that view with a way of understanding preference. It could be we're
+best off simply understanding preference a different way.
+
+\section{Conclusion}\label{sec-conclusion}
+
+This paper has been ultimately about the grounding of facts about
+rational choice. I've been mostly concerned to argue against a popular,
+if largely implicit, view: rational choice is grounded in rational
+preference. If Chooser wants a holiday, and is choosing where to go,
+which destinations are rationally choiceworthy is grounded in Chooser's
+(rational) preferences over pairs of choices. I've rejected this
+primarily for two reasons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  As argued in Section~\ref{sec-multieq} and Section~\ref{sec-mixed},
+  choiceworthiness is an ex ante concept, and preference is an ex post
+  concept, and hence choiceworthiness is analytically prior to
+  preference, so should not be grounded in preference.
+\item
+  Any choice function that violates γ cannot be generated from a
+  preference relation, and there are many reasons for endorsing choice
+  functions which violate γ.
+\end{enumerate}
+
+If rational choiceworthiness is not grounded in preferences, what is it
+grounded in? There are two natural options here.
+
+A subjectivist theory, as flagged in Section~\ref{sec-coherence}, says
+that norms on choiceworthiness are just coherence norms. In particular,
+the key norms are α and Aiz. What makes this choiceworthiness judgment
+rational just is that it fits well with the other choiceworthiness
+judgments. There are tricky metaphysical questions about just how
+instances of coherence norms are grounded, and whether it will mean we
+have to give up widely accepted principles like that grounding is
+acyclic. But these questions aren't different in kind from ones that
+we'd face on the more mainstream view that decision theory is largely
+about preferences, and norms on preference are coherence norms.
+
+A more objectivist view is also possible, and I'll end by just stating
+it. The world is full of values, many of them. All of these values are
+orderings (or perhaps semiorderings) of outcomes. An option is
+rationally choiceworthy iff it does best, given Chooser's evidence, on
+some permissible mixture of some of these values. If all goes well, the
+values can be measured numerically, and the permissible mixtures are
+linear mixtures, but as noted in Section~\ref{sec-values}, we need some
+good arguments about why they should be numerical. If they are, the
+argument in Section~\ref{sec-lotteries} should generalize to argue that
+the permissible mixtures are linear mixtures. Whether those last two
+sentences work or not, the picture is that the rationality of a choice
+is grounded in something external to the agent, i.e., values in the
+world.
+
+I'm going to leave arguments about which of these views is correct, or
+which positions between them might be preferable to another day. All I
+hoped to do in this final section is to sketch ways in which the core
+thesis of the paper, that the rationality of choices is prior to the
+rationality of preferences, could be true.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Aizerman1981}
+Aizerman, M., and A. Malishevski. 1981. {``General Theory of Best
+Variants Choice: Some Aspects.''} \emph{IEEE Transactions on Automatic
+Control} 26 (5): 1030--40.
+\url{https://doi.org/10.1109/TAC.1981.1102777}.
+
+\bibitem[\citeproctext]{ref-Armstrong1939}
+Armstrong, W. E. 1939. {``The Determinateness of the Utility
+Function.''} \emph{The Economic Journal} 49 (195): 453--67.
+\url{https://doi.org/10.2307/2224802}.
+
+\bibitem[\citeproctext]{ref-Armstrong1948}
+---------. 1948. {``Uncertainty and the Utility Function.''} \emph{The
+Economic Journal} 58 (229): 1--10.
+\url{https://doi.org/10.2307/2226342}.
+
+\bibitem[\citeproctext]{ref-Armstrong1950}
+---------. 1950. {``A Note on the Theory of Consumer's Behaviour.''}
+\emph{Oxford Economic Papers} 2 (1): 119--22.
+\url{https://doi.org/10.1093/oxfordjournals.oep.a041384}.
+
+\bibitem[\citeproctext]{ref-Arrow1951}
+Arrow, Kenneth J. 1951. \emph{Social Choice and Individual Values}. New
+York: John Wiley \& Sons.
+
+\bibitem[\citeproctext]{ref-sep-fechner}
+Beiser, Frederick C. 2024. {``{Gustav Theodor Fechner}.''} In \emph{The
+{Stanford} Encyclopedia of Philosophy}, edited by Edward N. Zalta and
+Uri Nodelman, {S}ummer 2024.
+\url{https://plato.stanford.edu/archives/sum2024/entries/fechner/};
+Metaphysics Research Lab, Stanford University.
+
+\bibitem[\citeproctext]{ref-Bernheim1984}
+Bernheim, B. Douglas. 1984. {``Rationalizable Strategic Behavior.''}
+\emph{Econometrica} 52 (4): 1007--28.
+\url{https://doi.org/10.2307/1911196}.
+
+\bibitem[\citeproctext]{ref-Blair1976}
+Blair, Douglas H, George Bordes, Jerry S Kelly, and Kotaro Suzumura.
+1976. {``Impossibility Theorems Without Collective Rationality.''}
+\emph{Journal of Economic Theory} 11 (3): 361--79.
+\url{https://doi.org/10.1016/0022-0531(76)90047-8}.
+
+\bibitem[\citeproctext]{ref-Bradley2015}
+Bradley, Richard. 2015. {``A Note on Incompleteness, Transitivity and
+Suzumura Consistency.''} In \emph{Individual and Collective Choice and
+Social Welfare: Essays in Honor of Nick Baigent}, edited by Constanze
+Binder, Giulio Codognato, Miriam Teschl, and Yongsheng Xu, 31--47.
+Berlin: Springer.
+
+\bibitem[\citeproctext]{ref-Broome1997}
+Broome, John. 1997. {``Is Incommensurability Vagueness?''} In
+\emph{Incommensurability, Comparability and Practical Reason}, edited by
+Ruth Chang, 67--89. Cambridge, MA: Harvard University Press.
+
+\bibitem[\citeproctext]{ref-Carr2020}
+Carr, Jennifer Rose. 2020. {``Imprecise Evidence Without Imprecise
+Credences.''} \emph{Philosophical Studies} 177 (9): 2735--58.
+\url{https://doi.org/10.1007/s11098-019-01336-7}.
+
+\bibitem[\citeproctext]{ref-Chang1997}
+Chang, Ruth. 1997. {``Introduction.''} In \emph{Incommensurability,
+Incomparability and Practical Reason.}, edited by Ruth Chang, 1--34.
+Cambridge, MA: Harvard University Press.
+
+\bibitem[\citeproctext]{ref-Chang2017}
+---------. 2017. {``Hard Choices.''} \emph{Journal of the American
+Philosophical Association} 3 (1): 1--21.
+\url{https://doi.org/10.1017/apa.2017.7}.
+
+\bibitem[\citeproctext]{ref-Chang2024}
+---------. 2024. {``What's so Hard about Hard Choices?''} \emph{Erasmus
+Journal for Philosophy and Economics} 17 (1): 272--86.
+\url{https://doi.org/10.23941/ejpe.v17i1.872}.
+
+\bibitem[\citeproctext]{ref-Chernoff1954}
+Chernoff, Herman. 1954. {``Rational Selection of Decision Functions.''}
+\emph{Econometrica} 22 (4): 422--43.
+\url{https://doi.org/10.2307/1907435}.
+
+\bibitem[\citeproctext]{ref-Debreu1960}
+Debreu, Gerard. 1960. {``Review of \emph{Individual Choice Behavior: A
+Theoretical Analysis}, by {R. Duncan Luce}.''} \emph{American Economic
+Review} 50 (1): 186--88.
+
+\bibitem[\citeproctext]{ref-DorrEtAl2023}
+Dorr, Cian, Jacob M. Nebel, and Jake Zuehl. 2023. {``The Case for
+Comparability.''} \emph{Noûs} 57 (2): 414--53.
+\url{https://doi.org/10.1111/nous.12407}.
+
+\bibitem[\citeproctext]{ref-Dreier2022}
+Dreier, Jamie. 2022. {``Blessed Lives, Bright Prospects, Incomplete
+Orderings.''} \emph{Oxford Studies in Normative Ethics} 12: 105--26.
+\url{https://doi.org/10.1093/oso/9780192868886.003.0006}.
+
+\bibitem[\citeproctext]{ref-EvrenOk2011}
+Evren, Özgür, and Efe A. Ok. 2011. {``On the Multi-Utility
+Representation of Preference Relations.''} \emph{Journal of Mathematical
+Economics} 47 (4): 554--63.
+\url{https://doi.org/10.1016/j.jmateco.2011.07.003}.
+
+\bibitem[\citeproctext]{ref-Fara2001}
+Fara, Delia Graff. 2001. {``Phenomenal Continua and the Sorites.''}
+\emph{Mind} 110 (440): 905--36.
+\url{https://doi.org/10.1093/mind/110.440.905}.
+
+\bibitem[\citeproctext]{ref-Fechner1860}
+Fechner, Gustav. 1860. \emph{Elemente Der Psychophysik}. Leipzig:
+Breitkopf und H{ä}rtel.
+
+\bibitem[\citeproctext]{ref-Fodor1996}
+Fodor, Jerry A., and Ernest Lepore. 1996. {``What Cannot Be Valuated
+Cannot Be Valuated, and It Cannot Be Supervaluated Either.''}
+\emph{Journal of Philosophy} 93 (10): 516--35.
+\url{https://doi.org/10.5840/jphil1996931013}.
+
+\bibitem[\citeproctext]{ref-Gallow2020}
+Gallow, J. Dmitri. 2020. {``The Causal Decision Theorist's Guide to
+Managing the News.''} \emph{The Journal of Philosophy} 117 (3): 117--49.
+\url{https://doi.org/10.5840/jphil202011739}.
+
+\bibitem[\citeproctext]{ref-Gallow2024}
+---------. 2024. {``It Can Be Irrational to Knowingly Choose the
+Best.''} \emph{Australasian Journal of Philosophy} 103 (2): 540--46.
+\url{https://doi.org/10.1080/00048402.2024.2310197}.
+
+\bibitem[\citeproctext]{ref-Gibbard2003}
+Gibbard, Allan. 2003. \emph{Thinking How to Live}. Cambridge, MA:
+Harvard University Press.
+
+\bibitem[\citeproctext]{ref-Gibbard2014}
+---------. 2014. {``Social Choice and the Arrow Conditions.''}
+\emph{Economics and Philosophy} 30 (3): 269--84.
+\url{https://doi.org/10.1017/S026626711400025X}.
+
+\bibitem[\citeproctext]{ref-GoodmanLederemanArXiV}
+Goodman, Jeremy, and Harvey Lederman. 2024. {``Maximal Social Welfare
+Relations on Infinite Populations Satisfying Permutation Invariance.''}
+\url{https://arxiv.org/abs/arXiv:2408.05851}.
+
+\bibitem[\citeproctext]{ref-GulPesendorfer2008}
+Gul, Faruk, and Wolfgang Pesendorfer. 2008. {``The Case for Mindless
+Economics.''} In \emph{Foundations of Positive and Normative Economics},
+edited by Andrew Caplin and Andrew Schotter, 2--40. Oxford: Oxford
+University Press.
+\url{https://doi.org/10.1093/acprof:oso/9780195328318.003.0001}.
+
+\bibitem[\citeproctext]{ref-Gustafsson2025}
+Gustafsson, Johan E. forthcoming. {``A Behavioural Money-Pump Argument
+for Completeness.''} \emph{Theory and Decision}, forthcoming.
+\url{https://doi.org/10.1007/s11238-025-10025-3}.
+
+\bibitem[\citeproctext]{ref-Hansson2009}
+Hansson, Sven Ove. 2009. {``Preference-Based Choice Functions: A
+Generalized Approach.''} \emph{Synthese} 171 (2): 257--69.
+\url{https://doi.org/10.1007/s11229-009-9650-5}.
+
+\bibitem[\citeproctext]{ref-sep-preferences}
+Hansson, Sven Ove, and Till Grüne-Yanoff. 2024. {``{Preferences}.''} In
+\emph{The {Stanford} Encyclopedia of Philosophy}, edited by Edward N.
+Zalta and Uri Nodelman, {W}inter 2024.
+\url{https://plato.stanford.edu/archives/win2024/entries/preferences/};
+Metaphysics Research Lab, Stanford University.
+
+\bibitem[\citeproctext]{ref-Holton1999}
+Holton, Richard. 1999. {``Intention and Weakness of Will.''} \emph{The
+Journal of Philosophy} 96 (5): 241--62.
+\url{https://doi.org/10.2307/2564667}.
+
+\bibitem[\citeproctext]{ref-Lederman2025}
+Lederman, Harvey. forthcoming. {``Of Marbles and Matchsticks.''}
+\emph{Oxford Studies in Epistemology}, forthcoming.
+
+\bibitem[\citeproctext]{ref-Lederman2023}
+---------. 2023. {``Incompleteness, Independence, and Negative
+Dominance.''} \url{https://philpapers.org/archive/LEDIIA.pdf}.
+
+\bibitem[\citeproctext]{ref-LehrerWagner1985}
+Lehrer, Keith, and Carl Wagner. 1985. {``Intransitive Indifference: The
+Semi-Order Problem.''} \emph{Synthese} 65: 249--56.
+\url{https://doi.org/10.1007/BF00869302}.
+
+\bibitem[\citeproctext]{ref-Levi1986}
+Levi, Isaac. 1986. \emph{Hard Choices}. Cambridge: Cambridge University
+Press.
+
+\bibitem[\citeproctext]{ref-Lewis1981bn}
+Lewis, David. 1981. {``Causal Decision Theory.''} \emph{Australasian
+Journal of Philosophy} 59 (1): 5--30.
+\url{https://doi.org/10.1080/00048408112340011}.
+
+\bibitem[\citeproctext]{ref-Luce1956}
+Luce, R. Duncan. 1956. {``Semiorders and a Theory of Utility
+Discrimination.''} \emph{Econometrica} 24 (2): 178--91.
+\url{https://doi.org/10.2307/1905751}.
+
+\bibitem[\citeproctext]{ref-Luce1959}
+---------. 1959. \emph{Individual Choice Behavior: A Theoretical
+Analysis}. New York: Wiley.
+
+\bibitem[\citeproctext]{ref-LuceRaiffa1957}
+Luce, R. Duncan, and Howard Raiffa. 1957. \emph{Games and Decisions:
+Introduction and Critical Survey}. New York: Wiley.
+
+\bibitem[\citeproctext]{ref-Moss2015}
+Moss, Sarah. 2015. {``Time-Slice Epistemology and Action Under
+Indeterminacy.''} \emph{Oxford Studies in Epistemology} 5: 172--94.
+\url{https://doi.org/10.1093/acprof:oso/9780198722762.003.0006}.
+
+\bibitem[\citeproctext]{ref-Moulin1985}
+Moulin, Hervé. 1985. {``Choice Functions over a Finite Set: A
+Summary.''} \emph{Social Choice and Welfare} 2 (2): 147--60.
+\url{https://doi.org/10.1007/BF00437315}.
+
+\bibitem[\citeproctext]{ref-vNM1944yaml}
+Neumann, John von, and Oskar Morgenstern. 1944. \emph{Theory of Games
+and Economic Behavior}. Princeton, NJ: Princeton University Press.
+
+\bibitem[\citeproctext]{ref-Nover2004}
+Nover, Harris, and Alan Hàjek. 2004. {``Vexing Expectations.''}
+\emph{Mind} 113 (450): 237--49.
+\url{https://doi.org/10.1093/mind/113.450.237}.
+
+\bibitem[\citeproctext]{ref-Pearce1984}
+Pearce, David G. 1984. {``Rationalizable Strategic Behavior and the
+Problem of Perfection.''} \emph{Econometrica} 52 (4): 1029--50.
+\url{https://doi.org/10.2307/1911197}.
+
+\bibitem[\citeproctext]{ref-Peterson2017}
+Peterson, Martin. 2017. \emph{An Introduction to Decision Theory}.
+Second. Cambridge: Cambridge University Press.
+\url{https://doi.org/10.1017/9781316585061}.
+
+\bibitem[\citeproctext]{ref-RamseyTruthProb}
+Ramsey, Frank. 1926. {``Truth and Probability.''} In \emph{Philosophical
+Papers}, edited by D. H. Mellor, 52--94. Cambridge: Cambridge University
+Press.
+
+\bibitem[\citeproctext]{ref-Samuelson1938}
+Samuelson, Paul A. 1938. {``A Note on the Pure Theory of Consumer's
+Behaviour.''} \emph{Econometrica} 5 (17): 61--71.
+\url{https://doi.org/10.2307/2548836}.
+
+\bibitem[\citeproctext]{ref-Sartre1946}
+Sartre, Jean-Paul. 1946/2007. {``Existentialism Is a Humanism.''} In
+\emph{Existentialism Is a Humanism}, translated by Annie Cohen-Solal,
+17--72. New Haven: Yale University Press.
+
+\bibitem[\citeproctext]{ref-Sen1969}
+Sen, Amartya. 1969. {``Quasi-Transitivity, Rational Choice and
+Collective Decisions.''} \emph{The Review of Economic Studies} 36 (3):
+381--93. \url{https://doi.org/10.2307/2296434}.
+
+\bibitem[\citeproctext]{ref-Sen2004}
+---------. 2004. {``Incompleteness and Reasoned Choice.''}
+\emph{Synthese} 140 (1-2): 43--59.
+\url{https://doi.org/10.1023/B:SYNT.0000029940.51537.b3}.
+
+\bibitem[\citeproctext]{ref-Sen1970sec}
+---------. (1970) 2017. \emph{Collective Choice and Social Welfare:} An
+expanded edition. Cambridge, MA: Harvard University Press.
+\url{https://doi.org/10.4159/9780674974616}.
+
+\bibitem[\citeproctext]{ref-Skyrms1982}
+Skyrms, Brian. 1982. {``Causal Decision Theory.''} \emph{Journal of
+Philosophy} 79 (11): 695--711. \url{https://doi.org/10.2307/2026547}.
+
+\bibitem[\citeproctext]{ref-Spencer2023}
+Spencer, Jack. 2023. {``Can It Be Irrational to Knowingly Choose the
+Best?''} \emph{Australasian Journal of Philosophy} 101 (1): 128--39.
+\url{https://doi.org/10.1080/00048402.2021.1958880}.
+
+\bibitem[\citeproctext]{ref-LedermanEtAl2025}
+Tarsney, Christian, Harvey Lederman, and Dean Spears. forthcoming. {``A
+Dominance Argument Against Incompleteness.''} \emph{Philosophical
+Review}, forthcoming. \url{https://doi.org/10.48550/arXiv.2403.17641}.
+
+\bibitem[\citeproctext]{ref-WeathersonKAHIS}
+Weatherson, Brian. 2024. \emph{Knowledge: A Human Interest Story}.
+Cambridge: Open Book Publishers.
+\url{https://doi.org/10.11647/obp.0425}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
