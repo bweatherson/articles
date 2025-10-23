@@ -1,67 +1,40 @@
 ---
-title: "Are Choices Binary?"
+title: "Is Choice Binary?"
 abstract: |
-    There is a natural view of the relationship between preference and choice: an option is choiceworthy if and only if no alternative is strictly preferred to it. I argue against this view on two grounds. First, it makes false predictions about which options are choiceworthy in games and in multi-dimensional choice settings. Second, it conflates two distinct attitudes: choiceworthiness, which is assessed ex ante, and preference, which is assessed ex post. I explore the consequences of rejecting this natural view, including how it simplifies the relationship between game theory and decision theory, and how it complicates debates about what Ruth Chang calls 'parity' between options.
-execute:
-  echo: false
-  warning: false
-date: October 22, 2025
-bibliography: 
- - /Users/weath/Documents/quarto-articles/brian-quarto.bib
- - /Users/weath/Documents/quarto-articles/vonbib.yml
-number-sections: true
-keep-tex: true
+  There is a natural view of the relationship between preference and choice: an option is choiceworthy if and only if no alternative is strictly preferred to it. I argue against this view on two grounds. First, it makes false predictions about which options are choiceworthy in games and in multi-dimensional choice settings. Second, it conflates two distinct attitudes: choiceworthiness, which is assessed ex ante, and preference, which is assessed ex post. I explore the consequences of rejecting this natural view, including how it simplifies the relationship between game theory and decision theory, and how it complicates debates about what Ruth Chang calls 'parity' between options.
 author:
-  - name: Brian Weatherson
-    affiliation: 
-      - name: Department of Philosophy, University of Michigan
-        url: https://www.lsa.umich.edu/philosophy/
-    orcid: 0000-0002-1816-8700
-    email: weath@umich.edu
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+date: today
+image: ../../images/1695247875-crop.jpeg
+draft: false
+citation: false
+bibliography: 
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+  - /Users/weath/Documents/quarto-articles/vonbib.yml
+categories:
+  - epistemology
+  - games and decisions
+  - in progress
 format:
+  docx: default
   html:
-    fig-format: png
-    fig-width: 10
-    fig-height: 7
-  docx:
-    reference-doc: my-template.docx
-  pdf: 
-    documentclass: article
-    classoption: twoside
-    geometry:
-      - paperheight=10in,
-      - paperwidth=7in,
-      - top=1in
-      - bottom=1in
-      - inner=0.8in
-      - outer=0.8in
-      - headsep=0.25in
-      - headheight=1in
-      - footskip=0.35in
-    pdf-engine: xelatex
-    mathfont: EB Garamond Math
-    mainfont: EB Garamond Math
-    sansfont: EB Garamond SemiBold
-    mainfontoptions: 
-      - ItalicFont=EB Garamond Italic
-      - BoldFont=EB Garamond SemiBold
-    fontsize: 10.5pt
-    linkcolor: blue
-    urlcolor: blue
-    colorlinks: true
-    linestretch: 1
-    link-citations: true
-    output-file: "Are Choices Binary"
+    css: ../trad_defn.css
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: ergoclass
+    template-partials:
+      - before-body.tex
+      - title.tex
     include-in-header:
-      - maketitle.tex
-      - body-style.tex
-      - text: |
-          \setlength\heavyrulewidth{0ex}
-          \setlength\lightrulewidth{0ex}
-          \usepackage[lines=2]{lettrine}
+      - preamble.tex
+    keep-tex: true
 ---
 
-\lettrine{S}{ubjective} decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, at least implicitly, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
+Subjective decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, at least implicitly, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
 
 I'm going to argue against this for two reasons. First, preferences, being binary comparisons, don't provide a rich enough base to ground all the norms. Sometimes decision theorists need to take as primitive comparisons the chooser (hereafter, Chooser) makes between larger sets of options. Second, preference is an ex post notion, in a sense to be made clearer starting in @sec-multieq, while choiceworthiness is an ex ante notion. And ex ante norms are not grounded in ex post ones.
 
@@ -73,7 +46,7 @@ There is a long tradition in economics, going back to Paul @Samuelson1938 and He
 
 > Standard economics does not address mental processes and, as a result, economic abstractions are typically not appropriate for describing them. [@GulPesendorfer2008 24]
 
-That's not going to be my approach here. I'm going to start not with observable choice dispositions, like the economists, or with choice frequencies, as psychologists like R. Duncan @Luce1959 do, but with judgments about choiceworthiness. In familiar terminology^[See, for instance, @sep-preferences, where I learned about the Gul and Pesendorfer quote.], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from their work. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec], and also on the literature that grew out of that book.
+That's not going to be my approach here. I'm going to start not with observable choice dispositions, like the economists, or with choice frequencies, as psychologists like R. Dunacn @Luce1959 do, but with judgments about choiceworthiness. In familiar terminology^[See, for instance, @sep-preferences, where I learned about the Gul and Pesendorfer quote.], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from their work. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec], and also on the literature that grew out of that book.
 
 I'm not going to take a stance on the metaphysics of choiceworthiness judgments. I'll sometimes talk as if they are beliefs. However, if someone wanted to maintain a sharp belief-desire split and hold that choiceworthiness involves an interplay of the two (like preference), I wouldn't object. The real assumption is that the mental state being ascribed in choiceworthiness ascriptions is the same kind of state as that being ascribed in preference ascriptions. The biggest difference between choice and preference is that choiceworthiness is a relation to an arbitrarily sized set of options, while preference is a relation to a pair of options.
 
@@ -110,7 +83,7 @@ The main binary relation Sen uses, which he denotes *R*, is such that *xRy* mean
 (@RtoP) *xPy* ↔︎ (*xRy* ∧ ¬*yRx*)
 (@RtoI) *xIy* ↔︎ (*xRy* ∧ *yRx*)
 
-It is important that indifference not be understood as equality. It is not assumed that *I* is transitive; indeed Sen makes great use of models where it is not. If we take transitivity to be part of the definition of equality, it is misleading to gloss *xRy* as that *x* is greater than **or equal** to *y* (for Chooser). For this reason I won't use ≿ to denote it, since that is most naturally read as that *x* is better than or equal to *y*.^[Indeed, I'll use *x* ≿ *y* to explicitly mean that *x* is better than or equal to *y*, where equality is understood in the sense of the next paragraph.]
+It is important that indifference not be understood as equality. It is not assumed that *I* is transitive; indeed Sen makes great use of models where it is not. If we take transitivity to be part of the definition of equality, it is misleading to gloss *xRy* as that *x* is greater than **or equal** to *y* (for Chooser). For this reason I won't use ⩾ to denote it, since that is most naturally read as that *x* is better than or equal to *y*.^[Indeed, I'll use *x* ⩾ *y* to explicitly mean that *x* is better than or equal to *y*, where equality is understood in the sense of the next paragraph.]
 
 A more common way of doing things in contemporary philosophy is to start with *P* and a fourth relation *E*, where *xEy* means that *x* and *y* are equally good. On this picture, both (@RtoP) and (@RtoI) are true, but the explanatory direction in both cases is right-to-left. So *xRy* just is ¬*yPx*, and then *xIy* is still defined via (@RtoI). On the version Sen uses, it's a little trickier to define *E*, but (@EtoR) looks like a plausible conjecture.
 
@@ -126,13 +99,13 @@ That is, two options are equally good iff they are substitutable in other prefer
 
 Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[He makes few assumptions because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), Arrow's theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. @Sen1970sec [66] notes that if *P* is transitive and *R* is 'complete' in the sense that *xRy* ∨ *yRx* holds for arbitrary *x* and *y*, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
 
-What should we call the principle (@Tri)? The terminology around here gets potentially confusing. If we define *x* ≿ *y* to just mean the disjunction *xPy* ∨ *xEy*, and assume that *E* is symmetric, then (@Tri) is equivalent to *x* ≿ *y* ∨ *y* ≿ *x*. That's what @Gustafsson2025 calls *completeness*, and I feel that's often what philosophers understand by 'completeness'. In his economic work, @Sen1970sec uses the term 'completeness' for a slightly different property of preference relations, namely *xRy* ∨ *yRx*. In both cases the claim is that some preference relation is guaranteed to hold in one direction or other. The issue is whether that relation is the disjunction of *P* and *E*, or the disjunction of *P* and *I*.
+What should we call the principle (@Tri)? The terminology around here gets potentially confusing. If we define *x* ⩾ *y* to just mean the disjunction *xPy* ∨ *xEy*, and assume that *E* is symmetric, then (@Tri) is equivalent to *x* ⩾ *y* ∨ *y* ⩾ *x*. That's what @Gustafsson2025 calls *completeness*, and I feel that's often what philosophers understand by 'completeness'. In his economic work, @Sen1970sec uses the term 'completeness' for a slightly different property of preference relations, namely *xRy* ∨ *yRx*. In both cases the claim is that some preference relation is guaranteed to hold in one direction or other. The issue is whether that relation is the disjunction of *P* and *E*, or the disjunction of *P* and *I*.
 
-Both of these notions are useful to have. There has been a huge amount of literature on (@Tri), i.e., *x* ≿ *y* ∨ *y* ≿ *x*, less so on *xRy* ∨ *yRx*. But the latter is useful because various interesting possibilities open up both in social choice theory, and in the relationship between preference and choice, if it is dropped.^[On the latter, see @Bradley2015.]
+Both of these notions are useful to have. There has been a huge amount of literature on (@Tri), i.e., *x* ⩾ *y* ∨ *y* ⩾ *x*, less so on *xRy* ∨ *yRx*. But the latter is useful because various interesting possibilities open up both in social choice theory, and in the relationship between preference and choice, if it is dropped.^[On the latter, see @Bradley2015.]
 
 While (@Tri) is widely discussed in philosophy, it isn't often discussed as such in the economics literature. That literature does contain several works discussing (@IItrans), starting with important works by Wallace E. Armstrong [-@Armstrong1939; -@Armstrong1948; -@Armstrong1950]. In most of those works it is assumed that *P* is transitive and *xRy* ∨ *yRx*, so (@Tri) and (@IItrans) are equivalent. But the different focus leads to more terminological confusion.
 
-More generally, I find using 'completeness' to denote either *x* ≿ *y* ∨ *y* ≿ *x* or *xRy* ∨ *yRx* potentially confusing, since in either case it is easy to mistakenly believe the author is talking about the other property. So I'll follow @Chang2017 and say that relations satisfying (@Tri) are *trichotomous*, and use *definedness* for *xRy* ∨ *yRx*.
+More generally, I find using 'completeness' to denote either *x* ⩾ *y* ∨ *y* ⩾ *x* or *xRy* ∨ *yRx* potentially confusing, since in either case it is easy to mistakenly believe the author is talking about the other property. So I'll follow @Chang2017 and say that relations satisfying (@Tri) are *trichotomous*, and use *definedness* for *xRy* ∨ *yRx*.
 
 # Properties of Choice Functions {#sec-properties}
 
@@ -163,7 +136,7 @@ This is a weakening of β. It says that if *x* and *y* are both choiceworthy in 
 Property Aiz
 :    (*C*(*S*) ⊆ *T* ∧ *T* ⊆ *S*) → *C*(*T*) ⊆ *C*(*S*)
 
-That is, if the smaller set contains all of the choiceworthy members of the larger set, then no option is choiceworthy in the smaller set but not the larger set. If *x* is an unchoiceworthy member of *S*, then it can only become choiceworthy by deleting choiceworthy members of *S*, not other unchoiceworthy ones.
+That is, if the smaller set contains all of the choiceworthy members of the larger set, then no option is choiceworthy in the smaller set but not the larger set. If *x* is an unchoiceworthy member of *S*, then it can only become choiceworthy by deleting choiceworthy members of *S*, not other unchoiceworthy ones..
 
 Path Independence
 :    *C*(*S* ∪ *T*) = *C*(*C*(*S*) ∪ *C*(*T*))
@@ -172,7 +145,7 @@ The same options are choiceworthy from a union of two sets as are choiceworthy f
 
 I'll describe the effects of these properties in more detail in subsequent sections.
 
-# Property α {#sec-alpha}
+# Property $\alpha$ {#sec-alpha}
 
 This is the most commonly used constraint on choice functions, and it does seem intuitive. If *x* is choiceworthy from a larger set, deleting unchosen options shouldn't make it unchoiceworthy. @Sen1970sec [323-326] discusses two possible counterexamples.
 
@@ -226,7 +199,7 @@ That is, if you convert *C* into a preference relation, and back into a choice f
 
 The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). 
 
-# Property β
+# Property $\beta$
 
 If we start with choice functions, the definition of *E* in (@EtoR) is too simple. A better definition is in (@EtoC).
 
@@ -256,7 +229,7 @@ An example with the same structure, involving a boy, a bicycle, and a bell, is d
 
 The usual way these cases are discussed, starting with Luce and Raiffa, is that they violate a certain kind of comparability. For example, Luce and Raiffa say there is a sense in which the two holidays are 'not comparable'. I want to resist this reading. The core intuition in small improvement cases is that β fails. Chooser would choose either option from {*a*, *b*}, but if *a*^+^ is added as an option, *a* becomes unchoiceworthy. If we add the assumption that *R* = *B*(*C*), then it does follow that trichotomy fails, and there is a sense in which they are incomparable. But without that assumption, it's consistent to say that these are counterexamples to β but not to trichotomy. We'll return to this point in @sec-dorr.
 
-# Properties γ and δ {#sec-gamma}
+# Properties $\gamma$ and $\delta$ {#sec-gamma}
 
 Assume *R* does not satisfy trichotomy, but is a semiorder, and *C* = *B*(*R*). Then β will fail, but γ and δ will hold. Conversely, for any *C* where γ and δ hold, there is a semiorder *R* such that *C* = *B*(*R*) [@Sen1970sec 320]. We're not going to be very interested in δ, but we will be very interested in γ. 
 
@@ -280,10 +253,10 @@ There is a further relation between Path Independence and these models. For any 
 
 It might seem strange after all the talk of weak orderings and semiorders that we're now using total orders. Given that *U* is finite, this turns out to be unsurprising. Any semiorder with a finite domain, and hence any such weak order, is such that there is some set of total orders such that *x* is strictly preferred to *y* in the semiorder iff it is preferred in all the total orders. (In fact we can put a sharp cap on how many such orders there must be.) So being Pareto optimal relative to some set of semiorders (or weak orders) is equivalent to being Pareto optimal relative to a larger set of total orders.
 
-If *C* is determined by a set of orders in this way, it is said to be **pseudorationalizable**. These choice functions are not always binary. Consider one simple example, where *U* is {*x*, *y*, *z*}, *C*(*U*) = {*x*, *z*}, and for any other *S*, *C*(*S*) = *S*. That is the choice function determined by the pair of orderings *x* ≻ *y* ≻ *z* and 
-*z* ≻ *y* ≻ *x*. This satisfies α, δ and Aiz, but not β or γ. And it isn't binary. *B*(*C*) is the universal relation *R*, since whenever *S* is a pair set, *C*(*S*) = *S*.
+If *C* is determined by a set of orders in this way, it is said to be **pseudorationalizable**. These choice functions are not always binary. Consider one simple example, where *U* is {*x*, *y*, *z*}, *C*(*U*) = {*x*, *z*}, and for any other *S*, *C*(*S*) = *S*. That is the choice function determined by the pair of orderings *x* > *y* > *z* and 
+*z* > *y* > *x*. This satisfies α, δ and Aiz, but not β or γ. And it isn't binary. *B*(*C*) is the universal relation *R*, since whenever *S* is a pair set, *C*(*S*) = *S*.
 
-The approach discussed here is obviously similar to what is called the "multi-utility" approach to representing incomplete preferences (@EvrenOk2011). In this approach we find a set of utility functions and say *xRy* iff *u*(*x*) ≿ *u*(*y*) for all *u* in the set.
+The approach discussed here is obviously similar to what is called the "multi-utility" approach to representing incomplete preferences (@EvrenOk2011). In this approach we find a set of utility functions and say *xRy* iff *u*(*x*) ⩾ *u*(*y*) for all *u* in the set.
 
 I'm going to argue over subsequent sections that this is a coherent choice function, and hence not all coherent choice functions are binary.
 
@@ -402,7 +375,7 @@ A very simple model for these intuitions is that Pierre's situation is surprisin
 
 It is easy enough to reject the third intuition. Perhaps Pierre could rationally, as @Chang2024 puts it, _drift_ into one choice. Perhaps he could adopt one path and sometime later rationally regret his choice, because the other value strikes his later self as more important. Still, if one holds all three intuitions, toy models like @tbl-nice-demon capture a surprising amount of what's going on with Pierre. And those models are incompatible with choiceworthiness being binary.
 
-# β and Incompleteness {#sec-dorr}
+# $\beta$ and Incompleteness {#sec-dorr}
 
 The Pierre case in @sec-sartre is, even without the third intuition, a straightforward counterexample to β. Just to spell it out,
 

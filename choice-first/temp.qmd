@@ -1,0 +1,183 @@
+---
+title: "Hello World"
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+date: today
+image: ../../images/1695247875-crop.jpeg
+draft: false
+citation: false
+bibliography: 
+  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+  - /Users/weath/Documents/quarto-articles/vonbib.yml
+abstract: |
+  There is a natural view of the relationship between preference and choice: an option is choiceworthy if and only if no alternative is strictly preferred to it. I argue against this view on two grounds. First, it makes false predictions about which options are choiceworthy in games and in multi-dimensional choice settings. Second, it conflates two distinct attitudes: choiceworthiness, which is assessed ex ante, and preference, which is assessed ex post. I explore the consequences of rejecting this natural view, including how it simplifies the relationship between game theory and decision theory, and how it complicates debates about what Ruth Chang calls 'parity' between options.
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: article
+    classoption: [11pt, twoside]
+    include-in-header:
+      text: |
+        \usepackage[automark]{scrlayer-scrpage}
+        \clearpairofpagestyles
+        \cehead{
+          October 22, 2025
+          }
+        \cohead{
+          {{< meta title >}}
+          }
+        \ohead{\bfseries \pagemark}
+        \cfoot{}      
+        \usepackage{fontspec}
+        \setmainfont{Palatino}
+        
+        % Geometry setup
+        \usepackage[twoside]{geometry}
+        \geometry{
+          paperwidth=7in,
+          paperheight=10in,
+          top=1in,
+          bottom=1in,
+          inner=0.8in,
+          outer=0.8in,
+          headsep=0.25in,
+          headheight=1in,
+          footskip=0.35in
+        }
+        
+        \usepackage{amsmath}
+        
+        % Section styling
+        \setlength\parindent{0.25in}
+        \setlength{\parskip}{0pt plus 0pt minus 0pt}
+        
+        % Simpler microtype for XeLaTeX
+        \usepackage{microtype}
+---
+
+Subjective decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, at least implicitly, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
+
+I'm going to argue against this for two reasons. First, preferences, being binary comparisons, don't provide a rich enough base to ground all the norms. Sometimes decision theorists need to take as primitive comparisons the chooser (hereafter, Chooser) makes between larger sets of options. Second, preference is an ex post notion, in a sense to be made clearer starting in @sec-multieq, while choiceworthiness is an ex ante notion. And ex ante norms are not grounded in ex post ones.
+
+# Choice and Choiceworthiness {#sec-choice}
+
+Choice gets less attention in philosophical decision theory than one might expect. The focus is usually on either value (e.g., this has value 17 and that has value 12) or preference (e.g., this is preferable to that). Norms on choice are almost an afterthought in standard presentations. After a long discussion of values, preferences, or both, the typical theorist breezily says that the norm is to choose the most valuable or most preferred option.
+
+There is a long tradition in economics, going back to Paul @Samuelson1938 and Herman @Chernoff1954, of taking choice to be primary. Some of this literature rested on largely behaviourist or positivist assumptions. It was better to theorise with and about choice because it was observable, unlike preferences or values. The picture was not dissimilar to this recently expressed view:
+
+> Standard economics does not address mental processes and, as a result, economic abstractions are typically not appropriate for describing them. [@GulPesendorfer2008 24]
+
+That's not going to be my approach here. I'm going to start not with observable choice dispositions, like the economists, or with choice frequencies, as psychologists like R. Dunacn @Luce1959 do, but with judgments about choiceworthiness. In familiar terminology^[See, for instance, @sep-preferences, where I learned about the Gul and Pesendorfer quote.], I'm taking a mentalist approach not a behaviourist approach. Much of the formal work on choice theory has been done by theorists from the behaviourist side, and I'll be inevitably drawing from their work. But the most important source I'll be using is someone much more sympathetic to mentalism: Amartya Sen. In particular, I'll draw heavily on his "Collective Choice and Social Welfare" [@Sen1970sec], and also on the literature that grew out of that book.
+
+I'm not going to take a stance on the metaphysics of choiceworthiness judgments. I'll sometimes talk as if they are beliefs. However, if someone wanted to maintain a sharp belief-desire split and hold that choiceworthiness involves an interplay of the two (like preference), I wouldn't object. The real assumption is that the mental state being ascribed in choiceworthiness ascriptions is the same kind of state as that being ascribed in preference ascriptions. The biggest difference between choice and preference is that choiceworthiness is a relation to an arbitrarily sized set of options, while preference is a relation to a pair of options.
+
+# Values First? {#sec-values}
+
+Both to clarify what kind of question I'm asking, and to set aside one kind of answer, I'm going to start looking not at preferences or choices, but at numerical values. At first glance, it might seem that many decision theorists take values to ground the other norms. One should prefer the more valuable. So we get theorists discussing Newcomb's Problem largely by offering theories about the value of uncertain outcomes (like taking both boxes) in terms of the values and probabilities of those outcomes.
+
+On second glance, though, there are at least four reasons it is implausible that values are really what ground the other attitudes.
+
+First, it's surprising to have a numerical measure like this not have a unit. We'll sometimes say things like this outcome has value 17 _utils_, but this is a placeholder, not a real unit like kilograms or volts. This is related to the second reason.
+
+The orthodox view is that these values are only defined up to a positive affine transformation. If it's appropriate to represent Chooser with value function *v*, it's appropriate to represent them with any value function *f* where *f*(*o*) = *av*(*o*) + *b*, for positive *a*. Why is this transformation allowed? Because all the values are doing is reflecting Chooser's preferences over outcomes and lotteries, and this transformation doesn't change those preferences. In other words, the transformation is allowed, and the definedness claim is true, because values are grounded in comparatives.
+
+Third, it's not at all obvious why values should be anything like numbers. Indeed, the thought that they should be numbers starts causing problems when we get to various puzzles about infinite goods.^[See, e.g., @Nover2004, or @GoodmanLederemanArXiV.] Why should values have the topology of the reals rather than any number of other possible topologies? Why aren't they, for example, quintuples of rational numbers ordered lexicographically? If one takes preferences to be primary, and generates utility functions via representation theorems, as in @RamseyTruthProb or @vNM1944yaml, there is a reason for why values should be numbers. But if values are primitive, it seems like an unanswered and I'd say unanswerable question.
+
+Finally, there is something very strange about the idea of values that are not in any way comparative. How valuable something is just seems like it should be a notion that reflects the value of alternatives to it.
+
+The argument of this section will not be, I suspect, particularly contentious. It's a widespread view, if often implicit, that that values, and norms on values, are ultimately grounded in comparatives. What is going to be contentious is the claim that preferences can't do the job, and judgments of, and norms about, choiceworthiness ultimately ground both values and preferences.
+
+# Coherence {#sec-coherence}
+
+There is one other striking thing about the picture we get in @vNM1944yaml, and which is still I think broadly endorsed by contemporary decision theorists. The aim is to put norms on preference, and hence on values and choices. But these norms are almost always defined in terms of other preferences. For example, if one strictly prefers *x* to *y*, and *y* to *z*, one should prefer *x* to *z*. It is strange to talk about grounding the normative facts about preference when other preferences play such a crucial role. It looks like the grounding relation will be at least cyclic, and possibly intransitive.
+
+If there's a puzzle about this apparent circularity, there are two (related) ways out. One is to take the view, which perhaps Hume held, that the only constraints on preference are coherence constraints. Another is to say that while there might be some non-coherence constraints on preference, e.g., it is in fact wrong to prefer the world's destruction to one's finger getting scratched, these are part of a separate subject to decision theory. The result is the same: decision theory largely is about what it takes for various preferences to cohere with one another.
+
+I don't particularly agree with this picture, but I'm going to accept half of it for the purposes of this paper. That is, I'll assume it's not the role of decision theory to criticise the person who prefers the destruction of the world to the scratching of their finger. That person either violates no norms, or violates a different kind of norm to the norms of decision theory. Decision theory, on the latter view, takes Chooser's preferences over ends as given and judges Chooser on how well their instrumental preferences serve these preferences over ends.
+
+I'll argue that even if decision theory is about coherence, it should be about coherence between choiceworthiness judgments. So the big question is not whether preferences should satisfy transitivity or independence, but whether their choiceworthiness judgments should satisfy conditions like those described in @sec-properties. As we'll see, the questions about which conditions are genuine coherence constraints on choiceworthiness are tied up with the metaphysical question about the priority of preferences and choices.
+
+# Sen on Preference {#sec-sen}
+
+The main binary relation Sen uses, which he denotes *R*, is such that *xRy* means that Chooser either prefers *x* to *y*, or is indifferent between *x* and *y*. The first disjunct obtains if ¬*yRx*, the second disjunct obtains if *yRx*. (As he sometimes puts it, these are the symmetric and asymmetric parts of the relation.) We'll write these two disjuncts as *xPy* and *xIy*. Formally, that is, they can be defined in terms of *R* in (@RtoP) and (@RtoI). (Throughout, I'm leaving off wide scope universal quantifiers over free variables.)
+
+(@RtoP) *xPy* ↔︎ (*xRy* ∧ ¬*yRx*)
+(@RtoI) *xIy* ↔︎ (*xRy* ∧ *yRx*)
+
+It is important that indifference not be understood as equality. It is not assumed that *I* is transitive; indeed Sen makes great use of models where it is not. If we take transitivity to be part of the definition of equality, it is misleading to gloss *xRy* as that *x* is greater than **or equal** to *y* (for Chooser). For this reason I won't use ⩾ to denote it, since that is most naturally read as that *x* is better than or equal to *y*.^[Indeed, I'll use *x* ⩾ *y* to explicitly mean that *x* is better than or equal to *y*, where equality is understood in the sense of the next paragraph.]
+
+A more common way of doing things in contemporary philosophy is to start with *P* and a fourth relation *E*, where *xEy* means that *x* and *y* are equally good. On this picture, both (@RtoP) and (@RtoI) are true, but the explanatory direction in both cases is right-to-left. So *xRy* just is ¬*yPx*, and then *xIy* is still defined via (@RtoI). On the version Sen uses, it's a little trickier to define *E*, but (@EtoR) looks like a plausible conjecture.
+
+(@EtoR) *xEy* ↔︎ [(*xRz* ↔︎ *yRz*) ∧ (*zRx* ↔︎ *zRy*)]
+
+That is, two options are equally good iff they are substitutable in other preference relations. Given all these results, we can show that the following claims are all tightly connected.
+
+(@Tri) *xPy* ∨ *xEy* ∨ *yPx*
+(@PItrans) (*xPy* ∧ *yIz*) → *xPz*
+(@IItrans) (*xIy* ∧ *yIz*) → *xIz*
+
+\(@Tri\) is what Ruth @Chang2017 calls the trichotomy thesis. (@PItrans) is what Sen calls PI-transitivity, and (@IItrans) is what he calls II-transitivity. 
+
+Sen makes very few assumptions about *R*, but it will simplify our discussion to start introducing some assumptions here.^[He makes few assumptions because he was interested in exploring what assumptions about preference are crucial to the impossibility theorem that @Arrow1951 derives. He initially noticed that without (@IItrans), Arrow's theorem didn't go through. This turned out to be less significant than it seemed, because Allan @Gibbard2014 proved that a very similar theorem can be proven even without (@IItrans). See @Sen1969 for the original optimism that this might lead to an interesting way out of the Arrovian results, and @Sen1970sec for a more pessimistic assessment in light of Gibbard's result. Sen reports that Gibbard originally proved his result in a term paper for a seminar at Harvard in 1969 that he co-taught with Arrow and Rawls. Much of what I'm saying in this paper can be connected in various ways to the literature on Arrow's impossibility theorem, but I won't draw out those connections here.] We'll assume that *R* is reflexive, everything is at least as good as itself, and that *P* is transitive. @Sen1970sec [66] notes that if *P* is transitive and *R* is 'complete' in the sense that *xRy* ∨ *yRx* holds for arbitrary *x* and *y*, then (@PItrans) and (@IItrans) are equivalent. It's also easy to show that given (@EtoR) plus these assumptions, (@Tri) and (@IItrans) are equivalent.^[Proof: Assume (@Tri) is false. So the right hand side of (@EtoR) is false. Without much loss of generality, assume that *xRz* ∧ ¬*yRz*; the other cases all go much the same way. So all the disjuncts are false. From ¬*xPy* and ¬*yPx* we get *yRx* ∧ *xRy*, i.e., *xIy*. And *xRz* implies *zIx*. So we have a counterexample to II-transitivity, since *zIx* and *xIy*, but since ¬*yRz*, *yIz* is false. So if (@Tri) is false, (@IItrans) is false. In the other direction, assume we have a counterexample to (@IItrans), i.e., *xIy* and *yIz* but not *xIz*. From *xIy* we immediately get that the two outer disjuncts of (@Tri) are false. From *yIz* we get *yRz* and *zRy*. So if *xEy*, (@EtoR) implies that *xRz* and *zRx*, i.e., *xIz*. But we assumed that ¬*xIz*. So all three disjuntcs of (@Tri) are false. That is, if (@IItrans) fails, so does (@Tri), completing the proof that they are equivalent.]
+
+What should we call the principle (@Tri)? The terminology around here gets potentially confusing. If we define *x* ⩾ *y* to just mean the disjunction *xPy* ∨ *xEy*, and assume that *E* is symmetric, then (@Tri) is equivalent to *x* ⩾ *y* ∨ *y* ⩾ *x*. That's what @Gustafsson2025 calls *completeness*, and I feel that's often what philosophers understand by 'completeness'. In his economic work, @Sen1970sec uses the term 'completeness' for a slightly different property of preference relations, namely *xRy* ∨ *yRx*. In both cases the claim is that some preference relation is guaranteed to hold in one direction or other. The issue is whether that relation is the disjunction of *P* and *E*, or the disjunction of *P* and *I*.
+
+Both of these notions are useful to have. There has been a huge amount of literature on (@Tri), i.e., *x* ⩾ *y* ∨ *y* ⩾ *x*, less so on *xRy* ∨ *yRx*. But the latter is useful because various interesting possibilities open up both in social choice theory, and in the relationship between preference and choice, if it is dropped.^[On the latter, see @Bradley2015.]
+
+While (@Tri) is widely discussed in philosophy, it isn't often discussed as such in the economics literature. That literature does contain several works discussing (@IItrans), starting with important works by Wallace E. Armstrong [-@Armstrong1939; -@Armstrong1948; -@Armstrong1950]. In most of those works it is assumed that *P* is transitive and *xRy* ∨ *yRx*, so (@Tri) and (@IItrans) are equivalent. But the different focus leads to more terminological confusion.
+
+More generally, I find using 'completeness' to denote either *x* ⩾ *y* ∨ *y* ⩾ *x* or *xRy* ∨ *yRx* potentially confusing, since in either case it is easy to mistakenly believe the author is talking about the other property. So I'll follow @Chang2017 and say that relations satisfying (@Tri) are *trichotomous*, and use *definedness* for *xRy* ∨ *yRx*.
+
+# Properties of Choice Functions {#sec-properties}
+
+In philosophy we're sufficiently familiar with possible properties of preference relations, e.g., that they are transitive, reflexive, acyclic, etc, that these terms don't need to be defined. We're mostly less familiar with properties of choice functions. A choice function takes a set of options as input, and returns a non-empty subset of that set as output. The elements of the output are the choiceworthy members of the original set. So *C*({*a*, *b*, *c*, *d*}) = {*a*, *c*} means that if Chooser has to pick from *a*, *b*, *c* and *d*, then *a* and *c* are choiceworthy, and *b* and *d* are not.
+
+I'll start by laying six properties that choice functions may have which will be important in what follows. The first four are discussed in some detail by @Sen1970sec, and I'll use his terminology for them. The fifth is due to @Aizerman1981, and is usually named after Aizerman. The sixth is discussed by @Blair1976.
+
+Property α
+:    (*x* ∈ *C*(*S*) ∧ *x* ∈ *T* ∧ *T* ⊆ *S*) → *x* ∈ *C*(*T*)
+
+That is, if *x* is choiceworthy in a larger set, then it is choiceworthy in any smaller set it is a member of. This is sometimes called the *Chernoff condition*, after Herman @Chernoff1954, and sometimes called *contraction consistency*.
+
+Property β
+:    (*x* ∈ *C*(*T*) ∧ *y* ∈ *C*(*T*) ∧ *T* ⊆ *S*) → (*x* ∈ *C*(*S*) ↔ *y* ∈ *C*(*S*))
+
+That is, if *x* and *y* are both choiceworthy in a smaller set, then in any larger set they are either both choiceworthy or neither is. Intuitively, if *x* and *y* are ever both choiceworthy, then anything better than *x* is also better than *y*.
+
+Property γ
+:    (*x* ∈ *C*(*S*) ∧ *x* ∈ *C*(*T*)) → (*x* ∈ *C*(*S* ∪ *T*))
+
+That is, if *x* is choiceworthy in two sets, it is choiceworthy in their union. This is sometimes called *expansion*, e.g., by Hervé @Moulin1985.
+
+Property δ
+:    (*x* ∈ *C*(*T*) ∧ *y* ∈ *C*(*T*) ∧ *T* ⊆ *S*) → ({*y*} ≠ *C*(*S*))
+
+This is a weakening of β. It says that if *x* and *y* are both choiceworthy in the smaller set, then after options are added, it can't be that only one of them is the only choiceworthy option remaining. If *x* is not choiceworthy in the larger set, that's because some other option, not *y*, is chosen in place of it.
+
+Property Aiz
+:    (*C*(*S*) ⊆ *T* ∧ *T* ⊆ *S*) → *C*(*T*) ⊆ *C*(*S*)
+
+That is, if the smaller set contains all of the choiceworthy members of the larger set, then no option is choiceworthy in the smaller set but not the larger set. If *x* is an unchoiceworthy member of *S*, then it can only become choiceworthy by deleting choiceworthy members of *S*, not other unchoiceworthy ones..
+
+Path Independence
+:    *C*(*S* ∪ *T*) = *C*(*C*(*S*) ∪ *C*(*T*))
+
+The same options are choiceworthy from a union of two sets as are choiceworthy from the union of the choiceworthy members of those sets. This is a sort of independence of irrelevant alternatives principle; the availability or otherwise of unchoiceworthy members of *S* and *T* doesn't affect what should be chosen from *S* ∪ *T*. 
+
+I'll describe the effects of these properties in more detail in subsequent sections.
+
+# Property $\alpha$ {#sec-alpha}
+
+This is the most commonly used constraint on choice functions, and it does seem intuitive. If *x* is choiceworthy from a larger set, deleting unchosen options shouldn't make it unchoiceworthy. @Sen1970sec [323-326] discusses two possible counterexamples.
+
+One is where the presence of options on the menu gives Chooser relevant information. If the only two options are tea with a particular friend or staying home, Chooser will take tea. But if the option of cocaine with that friend is added, Chooser will stay home. The natural thing to say here is that when one gets new information, *C* changes, so there isn't really a single *C* here which violates α.^[For a quick argument for that, if Chooser learns the only options are tea and staying home because the friend has just run out of cocaine, they might still stay home.]
+
+The more interesting case is where the value Chooser puts on options is dependent on what options are available. So imagine Chooser prefers more cake to less, but does not want to take the last slice. If the available options are zero slices or one slice of cake, Chooser will take zero. But if two slices of cake is an option, Chooser will take one, again violating α.
+
+This is a trickier case, and the natural thing to say is that Chooser doesn't really have the same options in the two cases. Taking the last slice of cake isn't the same thing as taking one slice when two are available. But this move has costs. In particular, it makes it hard to say that *C* should be defined for any set of options. It doesn't clearly make sense to ask Chooser to pick between *taking one slice, which is the last*, and *taking three slices when five are available*.
+
+Still, I'm going to set those issues aside and assume, like most theorists do, that α is a constraint on coherent choice functions, and that choice functions are defined over arbitrary sets of options.
