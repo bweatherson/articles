@@ -297,7 +297,7 @@ In the monetary economies we live in, very little trade involves barter. Most tr
 
 #  Degenerate Games {#sec-games}
 
-Say a two-player game is **degenerate** iff the payoffs to one of the players are constant in all outcomes of the game. For convenience, say Column is the player with a constant outcome. So @tbl-upmid, @tbl-middown and @tbl-allthree are degenerate games.
+Say a two-player game is **degenerate** iff the payoffs to one of the players are constant in all outcomes of the game. For convenience, assume Column is the player with constant payoffs. So @tbl-upmid, @tbl-middown and @tbl-allthree are degenerate games.
 
 |          |   Left   |  Right   |
 |---------:|:--------:|:--------:|
@@ -328,11 +328,11 @@ Start with the following two assumptions, which seem fairly plausible for games 
 
 In degenerate games, these necessary and sufficient conditions for choiceworthiness coincide, but in general they are rather different.^[Since rationalizability is between these notions, it also coincides with them for degenerate games.]
 
-In @tbl-upmid and @tbl-middown, both options are choiceworthy by this standard. The Nash equilibria of @tbl-upmid are Up-Left and Middle-Right, while the Nash equilibria of @tbl-middown are Middle-Left and Down-Right. So each option is choiceworthy for each player in each game. But in @tbl-allthree, the only choiceworthy options for Row are Up and Down. Whatever probability Row assigns to Left/Right, Middle will not maximize expected utility. So this is a counterexample to γ. Middle is choiceworthy from {Up, Middle} and from {Middle, Down}, but not from their union.
+In @tbl-upmid and @tbl-middown, both options are choiceworthy by this standard. The Nash equilibria of @tbl-upmid are Up-Left and Middle-Right, while the Nash equilibria of @tbl-middown are Middle-Left and Down-Right. So each option is choiceworthy for each player in each game. But in @tbl-allthree, the only choiceworthy options for Row are Up and Down. Whatever probability Row assigns to Left or Right, Middle will not maximize expected utility. So this is a counterexample to γ. Middle is choiceworthy from {Up, Middle} and from {Middle, Down}, but not from their union.
 
 It follows immediately from Lemma 3 in @Pearce1984 that in degenerate games, a choice satisfies those conditions for being choiceworthy iff it is not strictly dominated, where this includes being dominated by mixed strategies. (In @tbl-allthree, Middle is strictly dominated by the 50/50 mixture of Up and Down.) This means that the choices will satisfy Path Independence. An option is not dominated by the options in *S* ∪ *T* iff it is not dominated by the undominated options in *S* ∪ *T*, i.e., by the options in *C*(*S*) ∪ *C*(*T*). So removing options that are not choiceworthy in *S* and *T* from the union doesn't change what is undominated, i.e., choiceworthy.
 
-This last paragraph is the start of a pattern in the examples that follow. Although I'll be arguing against γ, I won't be arguing against Aiz/Path Independence. I'm not going to offer anything like a conclusive argument for Aiz, but the pattern suggests that it is the right constraint to add to α to be a fundamental constraint on coherent choiceworthiness.
+This last paragraph is the start of a pattern in the examples that follow. Although I'll be arguing against γ, I won't be arguing against Aiz/Path Independence. I'm not going to offer anything like a conclusive argument for Aiz, but the pattern suggests adding Aiz to α yields the fundamental constraints on coherent choiceworthiness.
 
 # Choice Under Uncertainty {#sec-uncertainty}
 
@@ -340,7 +340,7 @@ This last paragraph is the start of a pattern in the examples that follow. Altho
 
 The best approach, in my opinion, is to treat these choices like degenerate games. Indeed, degenerate games are really a paradigm of choice under ignorance; Row has no reason to assign any particular probability to Column's choice. Further, what the game theory textbooks say about degenerate games seems fairly plausible; any undominated option is choiceworthy. The same goes for choices under ignorance; any undominated option is choiceworthy.
 
-If that's right, then the three examples from @sec-games can be repurposed as examples of choice under uncertainty, replacing Left and Right with *p* and ¬*p*, and the same analysis will hold. Again γ will fail, because Middle is choiceworthy when there is one other option, but not when there are two. So there's no binary comparison of Middle with the other two options that explains the facts about what is choiceworthy in the three cases.
+If that's right, then the three examples from @sec-games can be repurposed as examples of choice under ignorance, replacing Left and Right with *p* and ¬*p*, and the same analysis will hold. Again γ will fail, because Middle is choiceworthy when there is one other option, but not when there are two. So there's no binary comparison of Middle with the other two options that explains the facts about what is choiceworthy in the three cases.
 
 # Multiple Equilibria {#sec-multieq}
 
@@ -365,7 +365,7 @@ Now add a third option, Exit, which has a guaranteed return of 1. So the game ta
 
 : Second version of Nice Demon {#tbl-nice-demon-exit}
 
-In @tbl-nice-demon-exit, Exit is not choiceworthy. Whatever credences Chooser has about what Demon has done, it is better in expectation to choose one of Up or Down. But if either Up or Down were unavailable, Exit would be a permissible choice, given the earlier assumption that any self-verifying choice in cases like @tbl-nice-demon is choiceworthy. So like in @sec-games and @sec-uncertainty, we have a counterexample to γ.
+In @tbl-nice-demon-exit, Exit is not choiceworthy. Whatever credences Chooser has about what Demon has done, it is better in expectation to choose one of Up or Down. But if either Up or Down were unavailable, Exit would be a permissible choice. This follows from the earlier assumption that any self-verifying choice in cases like @tbl-nice-demon is choiceworthy. So like in @sec-games and @sec-uncertainty, we have a counterexample to γ.
 
 There is an important general lesson from this case. What makes an option choiceworthy in cases like this is that it is utility maximizing _once it is chosen_. We'll turn next to a more dramatic illustration of this point.
 
@@ -393,11 +393,11 @@ This is the deepest reason why *C* = *B*(*R*) must be wrong; *C* and *R* are fun
 
 # Multiple Attributes and Decisiveness {#sec-sartre}
 
-@Sartre1946 has a famous example of a young man, we'll call him Pierre, caught between two imperatives. The actual example Sartre gives is complicated in interesting ways, but we'll work with a very simple version of the story. Pierre lives in occupied France during WWII, and feels torn between his duty to care for his ailing mother, and his duty to fight for his occupied country. What should he do?
+@Sartre1946 has a famous example of a young man (we'll call him Pierre) caught between two imperatives. The actual example Sartre gives is complicated in interesting ways, but we'll work with a very simple version of the story. Pierre lives in occupied France during WWII, and feels torn between his duty to care for his ailing mother, and his duty to fight for his occupied country. What should he do?
 
-The case is horribly underdescribed, but the following verdicts have seemed plausible to many people. First, Pierre can rationally, and morally, choose either option. Caring for his mother and fighting Nazis are both noble goals, and it's fine to pursue either. Second, and this follows from the first and the fact that the case is underdescribed, the options are not equally good. After all, a small improvement to either would not break a tie between them. 
+The case is extremely underdescribed, but the following verdicts have seemed plausible to many people. First, Pierre can rationally, and morally, choose either option. Caring for his mother and fighting Nazis are both noble goals, and it's fine to pursue either. Second, and this follows from the first and the fact that the case is underdescribed, the options are not equally good. After all, a small improvement to either would not break a tie between them. 
 
-A third intuition is more contentious, but perhaps plausible: there is something wrong about Pierre going back and forth between the two choices; he should make a choice and stick to it. On this view, there is something intrinsically good about settling on a choice and sticking to it. What makes this intuition less than fully clear is that in any practical version of the case, it will be very bad for Pierre to oscillate between the two views. He could spend the whole war travelling between England and France as he changes his mind on where he should be, and that would be bad. The intuition I have in mind is that there is something good about taking a stance and committing to it, even outside of the practical costs of changing one's mind.^[As @Moss2015 points out, it is less clear this is intrinsically bad if there is more time between the reconsiderations; it makes more sense to change one's mind than to rapidly flip-flop. Conversely, if Pierre resembles the young Thomas Schelling (as discussed by @Holton1999), firmly committing to one plan and then another over the course of successive nights, he's doing something wrong even if it has no practical downsides.]
+A third intuition is more contentious, but perhaps plausible: there is something wrong about Pierre going back and forth between the two choices; he should make a choice and stick to it. On this view, there is something intrinsically good about settling on a choice and sticking to it. What makes this intuition less than fully clear is that oscillation would be practically bad in any realistic version of the case. He could spend the whole war travelling between England and France as he changes his mind on where he should be, and that would be bad. The intuition I have in mind is that there is something good about taking a stance and committing to it, even outside of the practical costs of changing one's mind.^[As @Moss2015 points out, it is less clear this is intrinsically bad if there is more time between the reconsiderations; it makes more sense to change one's mind than to rapidly flip-flop. Conversely, if Pierre resembles the young Thomas Schelling (as discussed by @Holton1999), firmly committing to one plan and then another over the course of successive nights, he's doing something wrong even if it has no practical downsides.]
 
 A very simple model for these intuitions is that Pierre's situation is surprisingly like the person playing @tbl-nice-demon. There are two options here, and either is acceptable, but once one is chosen, it becomes the preferred one. There are two good values here, caring for family and caring for country, and Pierre's fundamental choice is to adopt one of these as his value. As @Chang2024 puts it, he chooses to put 'his whole self' behind one of those values. Once that choice is made, his preferences and his actions follow naturally.
 
@@ -413,11 +413,11 @@ The Pierre case in @sec-sartre is, even without the third intuition, a straightf
 
 If the choices are *x* and *y*, either is acceptable. If the choices are *x*, *y* and *z*, *x* alone is unchoiceworthy. So β fails.
 
-This is the Small Improvement argument, and it is often thought to be an argument against completeness, i.e., (@Tri). The point of this section is to say why the small improvement argument against (@Tri) might fail, even if the small improvement argument against β works.
+This is the Small Improvement argument, and it is often thought to be an argument against completeness, i.e., (@Tri). The point of this section is to explain why the argument against (@Tri) might fail, even though the argument against β succeeds.
 
-Imagine someone was convinced by the arguments in @DorrEtAl2023 that (@Tri) must be true. Their arguments turn on semantic properties of comparatives; since *R* is a comparative, they say it must be trichotomous since all comparatives are trichotomous.^[For what it's worth, I think this argument fails because of the case of 'stronger' in logic. They address this case, but I don't think their response works. But it would be a huge digression to follow that thread through.] Now it would be very strange if the semantics of comparatives in natural language entailed that some intuitions about three-way choice had to be false. And in fact these claims about semantics are consistent with β failing in cases like Pierre's.^[I'm focussing here on the argument in @DorrEtAl2023, but a similar response works if someone is convinced of (@Tri) by the argument in @Broome1997.]
+Imagine someone were convinced by the arguments in @DorrEtAl2023 that (@Tri) must be true. Their arguments turn on semantic properties of comparatives; they claim that since *R* is a comparative, it must be trichotomous, as all comparatives are.^[For what it's worth, I think this argument fails because of the case of 'stronger' in logic. They address this case, but I don't think their response works. But it would be a huge digression to follow that thread through.] Now it would be very strange if the semantics of comparatives in natural language entailed that some intuitions about three-way choice had to be false. And in fact these claims about semantics are consistent with β failing in cases like Pierre's.^[I'm focussing here on the argument in @DorrEtAl2023, but a similar response works if someone is convinced of (@Tri) by the argument in @Broome1997.]
 
-The following view is coherent, and its coherence shows that Dorr et al's view of comparatives does not entail β.
+The following view is coherent, and its coherence shows that Dorr et al.'s view of comparatives does not entail β.
 
 - β fails in cases like Pierre's.
 - An option is choiceworthy for Pierre iff no option is *determinately* preferred to it.
