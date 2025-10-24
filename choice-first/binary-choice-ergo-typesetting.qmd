@@ -205,27 +205,27 @@ When *R* satisfies (i)-(iii), I'll follow @Luce1956 and call it a *semiorder*. W
 
 With these seven assumptions on board, it's easy to state what it is for a choice function to be binary.
 
-First, we'll define an inversion function *B* (for binary) that maps preference relations to choice functions, and vice-versa. Both of these are sets of ordered pairs, and we'll define the ordered pairs directly. I'll assume that there is a universe *U* of options, and every option and set of options is drawn from it. 
+First, we'll define an inversion function *B* (for binary) that maps preference relations to choice functions, and vice-versa. Both are sets of ordered pairs, which we'll define directly. I'll assume that there is a universe *U* of options and every option and set of options is drawn from it. 
 
 If the input to *B* is a preference relation *R*:
 
 (@IRtoC) *B*(*R*) = {⟨*S*, *x*⟩: ∀*y*(*y* ∈ *S* → *xRy*)}
 
-That is, *B*(*R*) is the choice function which for any set *S* selects what Sen calls 'maximal' members, those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given *R* is a semiorder.]
+That is, *B*(*R*) is the choice function that, for any set *S*, selects what Sen calls 'maximal' members—those members to which nothing is strictly preferred.^[@Hansson2009 calls this the 'liberal maximisation' rule. He contrasts it with five other rules, which are distinct in general but equivalent given *R* is a semiorder.]
 
 If the input to *B* is a choice function *C*:
 
 (@ICtoR) *B*(*C*) = {⟨*x*, *y*⟩: *x* ∈ *C*({*x*, *y*})}
 
-That is, *B*(*C*) is the preference relation which says that in any choices from pair sets, an element is chosen only if it is at least as good as the other member. @Sen1970sec [319] calls this the 'base relation' as opposed to a more complicated 'revealed preference relation', and notes that the two are equivalent given α. Since we're assuming α, we'll use the simpler version.
+That is, *B*(*C*) is the preference relation stating that in pairwise choices, an element is preferred only if it could be chosen from the pair. @Sen1970sec [319] calls these functions 'basic binary', but the distinction marked by 'basic' doesn't matter given that *R* is a semiorder and α holds. Since we're assuming α, we'll use the simpler version.
 
 A choice function *C* is **binary** iff (@Bindef) holds:^[Sen calls these functions 'basic binary', but the distinction he's drawing attention to by adding 'basic' doesn't make a difference given *R* is a semiorder and α.]
 
 (@Bindef) *C* = *B*(*B*(*C*))
 
-That is, if you convert *C* into a preference relation, and back into a choice function, you get the same thing back.
+Converting *C* into a preference relation and back yields the same function. This will fail if the part of *C* which concerns choice from menus with three or more members contains extra information than just the restriction of *C* to pair sets.
 
-The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints are that if *C* and *R* are an agent's choice function and preference relation, then *C* = *B*(*R*), and *R* = *B*(*C*). 
+The core claim of this paper is that there are coherent choice functions which are not binary. A related claim is that a plausible pair of coherence constraints that you can state using *B* do not in fact hold. The constraints require that *C* = *B*(*R*) and *R* = *B*(*C*). 
 
 # Property β
 
@@ -235,10 +235,10 @@ If we start with choice functions, the definition of *E* in (@EtoR) is too simpl
 
 That is, *x* and *y* are equal iff one is never chosen when the other is not.^[Without α, this is too weak, since it doesn't entail that *x* and *y* are intersubstitutable in general. But we won't worry about that.] Given this notion of equality, there is an intuitive gloss on β: Two options are both choiceworthy iff they are equal.^[This gloss also assumes α.]
 
-If choice functions are grounded in numerical values, then β holds almost automatically. Assume there is some function *v* from options to numbers, and *o* is choiceworthy iff *v*(*o*) is maximal. Then if *x* and *y* are both choiceworthy, they must have the same value, so in any set they will either both be choiceworthy (if no alternative is more valuable), or neither will be (if some alternative is more valuable).
+If choice functions are grounded in numerical values, then β follows naturally. Assume there is some function *v* from options to numbers, and *o* is choiceworthy iff *v*(*o*) is maximal. Then if *x* and *y* are both choiceworthy, they must have the same value. In any set, they will either both be choiceworthy (if no alternative is more valuable) or neither will be (if some alternative is more valuable).
 
-More generally, given the assumptions from @sec-assumptions, *C* satisfies β iff *B*(*C*) is trichotomous, which is equivalent to *B*(*C*) satisfying II-transitivity. Unsurprisingly, the two historically significant cases of intuitive counterexamples to II-transitivity also generate intuitive counterexamples to β.
- 
+More generally, given the assumptions from @sec-assumptions, *C* satisfies β iff *B*(*C*) is trichotomous. This is equivalent to *B*(*C*) satisfying II-transitivity. Unsurprisingly, the two historically significant cases of intuitive counterexamples to II-transitivity also generate intuitive counterexamples to β.
+
 The first example involves distinct but indistinguishable options.^[The idea that humans can't distinguish similar options is important in @Fechner1860, a work which is discussed in @sep-fechner. The earliest connection I've found between this and indifference being intransitive is in @Armstrong1939. Armstrong's example is rather confusing; the one I'll use here is based on @Luce1956.] Assume that Chooser prefers more sugar in their coffee to less, but can only tell two options apart if they differ by 10 grains of sugar or more. Now consider these three options:
 
 > *x* = Coffee with 100 grains of sugar.    
@@ -247,9 +247,9 @@ The first example involves distinct but indistinguishable options.^[The idea tha
 
 This is said to be a counterexample to II-transitivity because Chooser is indifferent between *x* and *y*, and between *y* and *z*, but strictly prefers *z* to *x*. It's also a counterexample to β. Chooser would choose either from *x* and *y*, but when *z* is added, *y* is still choiceworthy but *x* is not.
 
-This example was historically important, but it's not discussed that much in the contemporary philosophical literature. It could be because philosophers were convinced by the argument by Delia Graff @Fara2001 that phenomenal indistinguishability is in fact transitive. But it did get widely discussed in economics, especially once it started being discussed by Luce [-@Luce1956; -@Luce1959], who used similar examples to argue that preferences form a semiorder.
+This example was historically important, but it's rarely discussed in the contemporary philosophical literature. It could be because philosophers were convinced by the argument by Delia Graff @Fara2001 that phenomenal indistinguishability is in fact transitive. But it was widely discussed in economics, especially after Luce [-@Luce1956; -@Luce1959] used similar examples to argue that preferences form a semiorder
 
-The cases that were more important in the philosophical literature are what @Chang1997 calls 'small improvement' cases. The earliest case I know of fitting this form is from @LuceRaiffa1957.^[I haven't found a case like this in Luce's sole-authored works, and indeed @Debreu1960 notes that a related case raises problems for one of the central assumptions of @Luce1959.]  In their notation, *P*(*x*,*y*) represents the probability that Chooser will select *x* when *x* and *y* are both available.
+The cases that were more important in the philosophical literature are what @Chang1997 calls 'small improvement' cases. The earliest example of this form I know is from @LuceRaiffa1957.^[I haven't found a case like this in Luce's sole-authored works, and indeed @Debreu1960 notes that a related case raises problems for one of the central assumptions of @Luce1959.]  In their notation, *P*(*x*,*y*) represents the probability that Chooser will select *x* when *x* and *y* are both available.
 
 > Suppose that *a* and *b* are two alternatives of roughly comparable value to some person, e.g., trips from New York City to Paris and to Rome. Let *c* be alternative a plus $20 and *d* be alternative *b* plus $20. Clearly, in general *P*(*a*, *c*) = 0 and *P*(*b*, *d*) = 0. It also seems perfectly plausible that for some people *P*(*b*, *c*) > 0 and *P*(*a*, *d*) > 0, in which event *a* and *b* are not comparable, and so axiom 2 \[i.e., (@Tri)\] is violated. [@LuceRaiffa1957 375]
 
@@ -263,11 +263,11 @@ Assume *R* does not satisfy trichotomy, but is a semiorder, and *C* = *B*(*R*). 
 
 The reason γ holds when *R* is a semiorder and *C* = *B*(*R*) is instructive. If *x* is choiceworthy among *S*, then nothing in *S* is better than *x*. Similarly, if *x* is choiceworthy among *T*, then nothing in *T* is better than *x*. So nothing in *S* ∪ *T* is better than *x*. So *x* is choiceworthy among *S* ∪ *T*.
 
-Conversely, if there are cases where *C* should not satisfy γ, then we'll have an argument that *C* should not be based in some semiorder *R*. Showing that there are such cases will be one of the main tasks of the rest of this paper.
+Conversely, if there are cases where *C* should not satisfy γ, then we'll have an argument that *C* should not be grounded in some semiorder *R*. Showing that there are such cases will be one of the main tasks of the rest of this paper.
 
 We had two kinds of counterexamples to β, but only one of them will be relevant here. I don't think there are any intuitive counterexamples to γ that start with Fechner-style reflections on the intransitivity of indifference. But there are going to be variations on the bicycle and bell example that generate intuitive counterexamples to γ. We'll come back to these in @sec-badcomp.
 
-It is common to say that when *C* = *B*(*R*) for some semiorder *R*, that *C* is **rationalizable**, and when *R* is a partial order, that *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-games, it conflicts with the notion of a choice being *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
+It is common to say that when *C* = *B*(*R*) for some semiorder *R*, *C* is **rationalizable**, and when *R* is a partial order, *C* is **rationalizable by a partial order**. I find this terminology tendentious - why should semiorders be the only things that can make *C* rational? And as we'll see in @sec-games, it conflicts with the notion of a choice being *rationalizable* in game theory. But it's a common enough terminology that I wanted to mention it here.
 
 # Aizerman's Property {#sec-aiz}
 
