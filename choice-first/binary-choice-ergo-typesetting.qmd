@@ -438,7 +438,7 @@ When I say this is coherent, I don't mean to half-heartedly say that it is corre
 
 My version of the Pierre example was very simple, but it allows for some interesting complications. As stated, you might think Pierre isn't thinking through his choices well enough. He should join the local resistance, so he can stay close enough to his mother to help, while also fighting the Nazis.
 
-But maybe that's a terrible option. We can easily imagine that the resistance is either so useless that it does practically nothing, or so good at recruiting that it has little useful work. It's just as easy to imagine that it creates busywork that dramatically reduces how much he can care for his mother, while not doing much to help the war effort. At risk of trivialising the issue, we can imagine that Pierre's options look like this, where the two columns represent how much each option respects/promotes the relevant value.
+But maybe that's a terrible option. We can easily imagine that the resistance is either so useless that it does practically nothing, or so good at recruiting that it's overstaffed and has little useful work for new members. It's just as easy to imagine that it creates busywork that dramatically reduces how much he can care for his mother, while not doing much to help the war effort. At risk of trivializing the issue, we can imagine that Pierre's options look like this, where the two columns represent how much each option respects or promotes the relevant value.
 
 |                    |  Caring value    |  Fighting value  |
 |-------------------:|:----------------:|:----------------:|
@@ -454,13 +454,13 @@ Intuitively, if these are Pierre's options he should not join the resistance; it
 
 > **Promise**: Pierre's brother Jean is fighting the Nazis. Pierre has promised Jean that if Jean is killed, Pierre will take up the fight in some way. Sadly, Jean is killed, and Pierre regards this promise as binding. Now his only options are to join the resistance, or join the Free French.
 
-In either case, joining the resistance seems choiceworthy. In both cases, it is the option that does best of the remaining choices on one of the criteria. Pierre could decide he endorses that criterion as his own, and acts accordingly. So the resistance is choiceworthy amongst either pair of options, but not amongst their union.
+In either case, joining the resistance seems choiceworthy. In both cases, it is the option that performs best among the remaining choices on at least one of the criteria. Pierre could decide he endorses that criterion as his own, and acts accordingly. So the resistance is choiceworthy amongst either pair of options, but not amongst their union.
 
 # Levi and Sen {#sec-levisen}
 
-In _Hard Choices_, Isaac @Levi1986 defended a view where the choiceworthy options are only those that maximize value on some resolution of the incompleteness in the agent's values. (He doesn't use this language, but so far this is similar to the multi-utility approach discussed in @sec-aiz.) Levi also had views about what further constraints there should be on choice, so he did not defend the view I've been discussing where any option that is maximal on any resolution is choiceworthy. But his views are still relevant here, because this requirement that a choice be maximal on a resolution meant that he was committed to γ failing, and choices not being binary.
+In _Hard Choices_, Isaac @Levi1986 defended a view where the choiceworthy options are only those that maximize value on some resolution of the incompleteness in the agent's values. (He doesn't use this language, but so far this is similar to the multi-utility approach discussed in @sec-aiz.) Levi also had views about what further constraints there should be on choice. So he did not defend the view I've been discussing, where any option that is maximal on any resolution is choiceworthy. But his views are still relevant here, because this requirement that a choice be maximal on a resolution meant that he was committed to γ failing, and choices not being binary.
 
-A central example which he uses, and which @Sen2004 picks up on, involves an executive looking to hire a secretary. I'll follow Sen and call the executive Ms. Jones.^[I've also changed the secretaries' names.] She is looking for a secretary with good typing skills and good stenography skills. (This is the 1980s.) We'll conceive of these skills, a bit arbitrarily, as distinct values. There are three candidates: Jack, Danny, and Luke, and their value on each measure is given in @tbl-secretaries. (I've slightly adjusted the numbers to match the earlier examples.)
+A central example he uses, and which @Sen2004 picks up on, involves an executive looking to hire a secretary. I'll follow Sen and call the executive Ms. Jones.^[I've also changed the secretaries' names.] She is looking for a secretary with good typing skills and good stenography skills. (This is the 1980s.) We'll conceive of these skills, a bit arbitrarily, as distinct values. There are three candidates: Jack, Danny, and Luke, and their value on each measure is given in @tbl-secretaries. (I've slightly adjusted the numbers to match the earlier examples.)
 
 |        |  Typing Skill  |  Stenography Skill  |
 |-------:|:--------------:|:-------------------:|
@@ -470,7 +470,7 @@ A central example which he uses, and which @Sen2004 picks up on, involves an exe
 
 : Three candidates for a secretarial position {#tbl-secretaries}
 
-Levi argues that if the numbers are like this, and Danny is barely better than the worst of the other two on each metric, he is not choiceworthy. That's true even though he might be choiceworthy if one or the other candidates was unavailable.
+Levi argues that if the numbers are like this, and Danny is barely better than the worst of the other two on each metric, he is not choiceworthy. That's true even though he might be choiceworthy if one or the other candidates were unavailable.
 
 Sen argues that the right choice theory in this case should be "inarticulate", and say that any of the three is choiceworthy. He responds to the intuition Levi presents with a dilemma. 
 
@@ -490,9 +490,9 @@ Unidimensional Expectations (UE)
 :     \newline   *L*⟨*x*~1~, *y*⟩⟨*x*~2~, *y*⟩ = ⟨(*x*~1~ + x~2~)/2, *y*⟩
 :    *L*⟨*x*, *y*~1~⟩⟨*x*, *y*~2~⟩ = ⟨*x*, (*y*~1~ + *y*~2~)/2⟩
 
-That is, the value of a lottery where the possible outcomes agree on one dimension also has the same value on that dimension, and has the expected value of the other dimension. If the lottery does not involve value conflict, old-fashioned expected value maximisation is the way to go.
+That is, if a lottery's possible outcomes agree on one dimension, the lottery also has that same value on that dimension, and has the expected value on the other dimension. If the lottery does not involve value conflict, old-fashioned expected value maximisation is the way to go.
 
-This is enough to rule out the example Sen has in mind on the first horn, where a secretary with skill 1 on either dimension is more than half as valuable as a secretary with skill 10. But it's not enough to say that Ms. Jones should not hire Danny. Unidimensional Expectations is consistent with one resolution of his indeterminate value being that the value of ⟨*x*,*y*⟩ is *xy*. If that's a permissible resolution, then there will be a resolution on which Danny is maximally valuable. But there are further principles that do rule out Danny. The most intuitive argument I know uses the following.
+This is enough to rule out the example Sen has in mind on the first horn, where a secretary with skill 1 on either dimension is more than half as valuable as a secretary with skill 10. But it's not enough to say that Ms. Jones should not hire Danny. Unidimensional Expectations is consistent with one resolution of his indeterminate value being that the value of ⟨*x*, *y*⟩ is *xy*. If that's a permissible resolution, then there will be a resolution on which Danny is maximally valuable. But there are further principles that do rule out Danny. The most intuitive argument I know uses the following.
 
 Substitution of Identicals (SI) 
 :    If *x* = *y*, then *Lxz* = *Lyz* and *Lzx* = *Lzy*.
@@ -522,7 +522,7 @@ Substitution of Identicals follows naturally from the idea that the outcomes are
 
 To complete the argument, we need two plausible principles. First, *x* is not choiceworthy from *S* when *x* is not choiceworthy from the set consisting of *x* and *Lyz*, for *y*, *z* in *S*. Second, *x* is not choiceworthy from *S* when an option that is strictly better on every dimension is in *S*.
 
-There are several assumptions here, and any one of them could be the subject of a whole paper. But they each seem very plausible, and they show how we can ground the intuition that the multi-utility approach is on the right track, and sometimes an option is not choiceworthy because it is close to the worst option on every dimension we care about.
+There are several assumptions here, and any one of them could be the subject of a whole paper. But they each seem very plausible. They show how we can ground the intuition that the multi-utility approach is on the right track: sometimes an option is not choiceworthy because it is close to the worst option on every dimension we care about.
 
 # Negative Dominance {#sec-negdom}
 
@@ -554,7 +554,7 @@ But there are more complicated cases where Lederman's challenge of how to proper
 
 : Four programmers, and their skills {#tbl-programmers}
 
-When the menu consists of any set of the programmers, all the options are choiceworthy. But Ms. Jones strictly prefers *L*(Jane)(Dolly) to *L*(Lily)(Suzy), since the former lottery is better in expectation on all four dimensions. Lederman is right that this needs to be explained, that it should be explained in terms of evaluative features of the prizes (i.e., the programmers), and if the explanation uses expected value, we should explain why expected value matters. No explanation in terms of the choiceworthiness of some options will work to explain why one lottery is strictly better than another.
+When the menu consists of any set of the programmers, all the options are choiceworthy. But Ms. Jones strictly prefers *L*(Jane)(Dolly) to *L*(Lily)(Suzy), since the former lottery is better in expectation on all four dimensions. Lederman is right that this needs to be explained, that it should be explained in terms of evaluative features of the prizes (i.e., the programmers). If the explanation uses expected value, we should explain why expected value matters. No explanation in terms of the choiceworthiness of some options will work to explain why one lottery is strictly better than another.
 
 The fact to be explained is that when *L*(Jane)(Dolly) and *L*(Lily)(Suzy) are available, only the former is choiceworthy. Here's how I explain it:
 
@@ -589,9 +589,9 @@ The position set out in the last two paragraphs is not a compulsory consequence 
 
 # Conclusion {#sec-conclusion}
 
-This paper has been ultimately about the grounding of facts about rational choice. I've been mostly concerned to argue against a popular, if largely implicit, view: rational choice is grounded in rational preference. If Chooser wants a holiday, and is choosing where to go, which destinations are rationally choiceworthy is grounded in Chooser's (rational) preferences over pairs of choices. I've rejected this primarily for two reasons:
+This paper has ultimately been about the grounding of facts about rational choice. I've been mostly concerned to argue against a popular, if largely implicit, view: rational choice is grounded in rational preference. If Chooser wants a holiday, and is choosing where to go, which destinations are rationally choiceworthy is grounded in Chooser's (rational) preferences over pairs of choices. I've rejected this primarily for two reasons:
 
-1. As argued in @sec-multieq and @sec-mixed, choiceworthiness is an ex ante concept, and preference is an ex post concept, and hence choiceworthiness is analytically prior to preference, so should not be grounded in preference.
+1. As argued in @sec-multieq and @sec-mixed, choiceworthiness is an ex ante concept while preference is an ex post concept. Hence choiceworthiness is analytically prior to preference and should not be grounded in it.
 2. Any choice function that violates γ cannot be generated from a preference relation, and there are many reasons for endorsing choice functions which violate γ.
 
 If rational choiceworthiness is not grounded in preferences, what is it grounded in? There are two natural options here.
