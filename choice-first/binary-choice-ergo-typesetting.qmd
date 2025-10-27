@@ -5,7 +5,7 @@ abstract: |
 execute:
   echo: false
   warning: false
-date: October 23, 2025
+date: October 27, 2025
 bibliography: 
  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
  - /Users/weath/Documents/quarto-articles/vonbib.yml
@@ -59,7 +59,7 @@ format:
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
           \usepackage[lines=2]{lettrine}
-          \cehead{EWIP Draft}
+          \cehead{Draft of October 27, 2025}
 ---
 
 \lettrine{S}{ubjective} decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, often implicit, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
