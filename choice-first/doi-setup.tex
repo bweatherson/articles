@@ -1,0 +1,15 @@
+% Allow DOIs and URLs to break at appropriate points
+\usepackage{url}
+\usepackage{xurl}
+
+% Define break points for URLs/DOIs
+\def\UrlBreaks{\do\.\do\-\do\/\do\:\do\=\do\?\do\&\do\_}
+\def\UrlBigBreaks{\do\:\do\/}
+
+% Make slashes in particular allow breaks
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+% Ensure doi: prefix stays with the DOI
+\DeclareUrlCommand\DOIurl{\def\UrlLeft{doi: }\def\UrlRight{}}

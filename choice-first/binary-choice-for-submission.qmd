@@ -9,7 +9,7 @@ date: October 27, 2025
 bibliography: 
  - /Users/weath/Documents/quarto-articles/brian-quarto.bib
  - /Users/weath/Documents/quarto-articles/vonbib.yml
-csl: apa.csl
+csl: wiley.csl
 number-sections: true
 keep-tex: true
 author:
@@ -52,10 +52,12 @@ format:
     colorlinks: true
     linestretch: 1
     link-citations: true
-    output-file: "Are Choices Binary"
+    link-bibliography: false
+    output-file: "Are Choices Binary - Submission Version"
     include-in-header:
       - maketitle.tex
       - body-style.tex
+      - doi-setup-aggressive.tex
       - text: |
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
@@ -63,7 +65,7 @@ format:
           \cehead{Draft of October 27, 2025}
 ---
 
-\lettrine{S}{ubjective} decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, often implicit, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
+Subjective decision theory concerns norms about three concepts: values of options, preferences between pairs of options, and choices out of sets of options. A common assumption, often implicit, is that norms about preferences are prior to norms on values and choices. One way to put this assumption, following Amartya @Sen1970sec, is that choice functions are *binary*; they are grounded in binary relations of preference and indifference.
 
 I'm going to argue against this for two reasons. First, preferences, being binary comparisons, don't provide a rich enough base to ground all the norms. Sometimes decision theorists need to take as primitive comparisons the chooser (hereafter, Chooser) makes between larger sets of options. Second, preference is an ex post notion, in a sense to be made clearer starting in @sec-multieq, while choiceworthiness is an ex ante notion. And ex ante norms are not grounded in ex post ones.
 
