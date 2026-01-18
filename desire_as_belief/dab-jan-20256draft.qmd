@@ -1,0 +1,186 @@
+---
+title: "Anti-Anti-Desire-As-Belief"
+abstract: |
+  David Lewis put forward a decision theoretic argument against there being a tight connection between desires and beliefs about the good. I argue that his argument fails twice over. It makes inconsistent background assumptions about his opponents' views, and it over-generates so broadly that if it worked, it would also rule out some standard economic models. I end with a puzzle that arises from the response to Lewis. If one responds to moral uncertainty by saying one should maximise expected moral value, how does one treat cases where one's action is evidence for or against the goodness of different actions?
+date: November 2024
+bibliography: /Users/weath/Documents/quarto-articles/brian-quarto.bib
+number-sections: true
+author:
+  - name: Anon
+format:
+    html: default
+    docx:
+      reference-doc: my-template.docx
+    pdf: 
+      geometry: "left=1.5in,right=1.5in,top=1.78in,bottom=1.78in"
+      mathfont: EB Garamond Math
+      mainfont: EB Garamond Math
+      sansfont: EB Garamond SemiBold
+      mainfontoptions: 
+        - ItalicFont=EB Garamond Italic
+        - BoldFont=EB Garamond SemiBold
+      fontsize: 12pt
+      linkcolor: black
+      urlcolor: black
+      colorlinks: false
+      linestretch: 1.75
+      link-citations: true
+      output-file: "Anti-Anti-Desire-As-Belief Revised Version"
+      include-in-header:
+        text: |
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+---
+
+# Lewis's Argument {#sec-lewis}
+
+David Lewis [-@Lewis1988;-@Lewis1996] has an argument against the view that desires can be reduced to beliefs. I'm going to respond on behalf of the Desire-as-Belief (hereafter, DAB) thesis. In particular, I'm going to offer two responses. The responses themselves will not be particularly original; one is due to Huw @Price1989, and the other to Jessica @Collins2015. What will I hope be original is showing how they fit together. I'll argue that given the other assumptions Lewis makes, the DAB theorist has independent reason to reject one or other of the premises Lewis offers.
+
+I'll start with a presentation of Lewis's argument, shorn of what seem to me to be extraneous details. This will look a little different to Lewis's own presentation, but all the premises here are ones he uses, and its gets to the conclusion he wants, so it seems to be a fair representation.^[I'm drawing here on presentations of the argument by @Collins2015, @Hajek2015, and @Nissan-Rozen2015-NISATR.]
+
+Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. They are 'small worlds' in the sense of @Savage1954, not possible worlds in the sense of @Lewis1986a. For the most part they are more coarse-grained than the concrete worlds of _Plurality_, but in one respect they are more fine-grained: they might differ from each other purely in normative features.^[This is a consequence of the point @Chalmers2011b makes that it is epistemic, not metaphysical, possibility that matters here, plus the assumption that our characters might be normatively uncertain.]
+
+For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is desirable.^[It's more common here to let Å be that A is good, but I want to separate questions about the desire-belief relationship from questions about moral motivation, so my characters will be motivated to do something just to the extent they believe it desirable, leaving it as a further question whether all and only good things are desirable.] Let V be an agent's value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V~A~ and Pr~A~ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion. (Later I'll also write Pr(*w*) for the probability of Pr({*w*}); again it shouldn't result in confusion.)
+
+Lewis's argument against DAB uses six assumptions. In these assumptions B is an arbitrary proposition, and A is an arbitrary *descriptive* proposition. 
+
+Binary Desirability
+:    All worlds are either desirable or undesirable. If *w* is desirable, then V(*w*) = 1, and otherwise V(*w*) = 0.
+
+Equation
+:    Given **Binary Desirability**, the correct way to represent DAB is V(A) = Pr(Å).
+
+Additivity
+:    V(A) = Σ~*w*~V(*w*)Pr(*w* | A)
+
+Worldly Invariance
+:    V~A~(*w*) = V(*w*)
+
+Restricted Conditionalisation
+:    Pr~A~(B) = Pr(B | A)
+
+Possible Independence
+:    For some Å, Pr(Å) $\neq$ Pr(Å | A)
+
+
+The first assumption is obviously absurd, but it is useful for setting out the argument. In any case, if the last five assumptions are true, then they should be consistent with **Binary Desirability**. Given those assumptions, here is Lewis's argument. By **Possible Independence** there is an Å such that Pr(Å) $\neq$ Pr(Å | A). But given the other assumptions we can reason as follows.
+
+|   |           |              |
+|--:|:----------|:-------------|
+| Pr(Å) | = V(A) | (**Binary Desirability** + **Equation**) |
+|       | = Σ~*w*~V(*w*) Pr(*w* \| A) | (**Additivity**) |
+|       | = Σ~*w*~V~A~(*w*) Pr(*w* \| A) | (**Worldly Invariance**) |
+|       | = Σ~*w*~V~A~(*w*) Pr~A~(*w* \| A) | (**Restricted Conditionalisation**) |
+|       | = V~A~(A) | (**Additivity**, applied to updated values) |
+|       | = Pr~A~(Å) | (**Equation**, again after updating) |
+|       | = Pr(Å \| A) | (**Restriced Conditionalisation**) |
+
+And the last line contradicts our assumption. So not all six of these assumptions can be correct, if DAB is true. Since Lewis thinks they are all correct, he concludes DAB is false.
+
+As I said, this presentation doesn't look a lot like Lewis's argument. Most notably, **Possible Independence** isn't an assumption for Lewis, it is something he derives from yet further premises. Much of the 1988 paper is devoted to spelling out the absurd consequences of denying **Possible Independence**. These arguments haven't convinced everyone. They assume that conditionalisation is the right way to update on any new information, descriptive or normative. If normative propositions are centered worlds, as the picture in @Lewis1989b suggests, that seems like the wrong way to update. If the picture of self-locating belief that @Lewis1979b offers is correct, we can't update our beliefs about the time by conditionalisation when the alarm clock goes off.^[The point that conditionalisation isn't the right way to update beliefs with centered worlds contents, and this raises a problem for Lewis, is made by Graham @Oddie1994.]
+
+But **Possible Independence** is surely true. Assume that A is a proposition about someone, call him Peter, might do. And assume that we desire that the morally good thing is done, that we don't know whether A is good or not, but we are very confidence in Peter's moral judgment. If Peter does A, that's good evidence A is good. That all seems coherent, which is enough to support **Possible Independence**.
+
+While unrestricted conditionalisation is questionable, **Restricted Conditionalisation** seems fairly secure. In some presentations of the argument, Lewis uses a version of invariance that says the value of any proposition does not change on learning A. This is questionable, but **Worldly Invariance** seems fairly secure. It's just the view that in a decision tree, the value of a terminal node doesn't depend on where we are in the tree. That's normally taken for granted in formal models of dynamic choice, and I think rightly so.
+
+If we treat **Binary Desirability** as a harmless simplification, that means the only substantive assumptions left are **Equation** and **Additivity**. Given those, the argument against DAB goes through. I'm going to argue that anyone sympathetic to DAB has independent reason to reject one or other of those claims. Part of the argument that this is an _independent_ reason is that different sympathisers will reject one rather than the other. To show this, I'll start with a short story.
+
+# Auntie and Auntie {#sec-auntie}
+
+Our heroes are two anti-Humeans, called Auntie E and Auntie C, who both endorse a version of DAB. Both of them are aunts of Peter, the moral exemplar from @sec-lewis. Both Aunties E and Auntie C think that if Peter does something, it's very likely to be the right thing to do. Indeed, they are fairly deferential to Peter in this respect; if Peter does something they thought was wrong, they take that as some (strong but inconclusive) reason to change their belief about the morality of the action. They are both moralists, and think something is desirable iff it is good.
+
+Let A be the Proposition that Peter does some action *a*, and Å that it is deisrable/good. Like Lewis does with **Binary Desirability**, I'll make a simplifying assumption: it's common knowledge that not doing *a* is good iff doing *a* is not good. That means ~Å can be read as either of the epistemically equivalent propositions _a is not good_ and _not a is good_. 
+
+Before Peter acts, both Auntie's have the same credal distribution, satisfying these constraints.
+
+- C(Å | A) = 0.8
+- C(~Å | ~A) = 0.9
+- C(A) = 0.7
+
+@tbl-credence shows the credence each Auntie has in each of the four possibilities from crossing A with Å.
+
+|    |   Å    |    ¬Å    |
+|---:|:------:|:--------:|
+| A  |   0.56 |   0.14   |
+| ¬A |   0.03 |   0.27   |
+
+: Auntie's credence that Peter will do A, and that it will be right. {#tbl-credence}
+
+At this point there is a puzzle we can generate using just **Equation** and **Additivity**. I'll assume that V(A∧Å) = V(¬A∧¬Å) = 1, while V(A∧¬Å) = V(¬A∧Å) = 0, and that these four combinations are worlds for the purpose of **Additivity**. By **Equation**, V(A) = 0.59 > 0.41 = V(¬A). On the other hand, **Additivity** gives the opposite ranking. (In this little proof I'll suppress conjunctions, so AÅ is short for A∧Å.)
+
+Spelling out **Addition**, we get V(A) = V(AÅ)Pr(AÅ|A) + V(A¬Å)Pr(A¬Å|A) + V(¬AÅ)Pr(¬AÅ|A) + V(¬A¬Å)Pr(¬A¬Å|A). The last three terms all contain a 0, since V(A¬Å) and Pr(¬A|A) are 0. Since V(AÅ) = 1, and Pr(AÅ|A) = Pr(Å|A), this reduces to V(A) = Pr(Å|A). A similar argument shows that **Addition** entails that V(¬A) = Pr(¬Å|¬A). So we have V(A) = Pr(Å|A) = 0.8 < 0.9 = Pr(¬Å|¬A) = V(¬A). In other words, given our assumptions about Aunties' credences, we have both V(A) > V(¬A) and vice versa.
+
+One could take this to be a simpler argument than Lewis's for the same conclusion. Desire-as-belief leads to contradiction, even without **Worldly Invariance** or **Restricted Conditionalisation**. As long as the Peter case is possible, and it certainly looks possible, **Equation** and **Additivity** suffice for a contradiction. If the desire-as-belief theorist is committed to **Equation** and **Additivity**, they are refuted, unless they can somehow show the Peter case to be incoherent.
+
+I'm going to argue that would be too quick. This case is not an argument against desire-as-belief; it is a reason to reject the conjunction of **Equation** and **Additivity**. The argument is that there are two coherent ways for someone broadly sympathetic to Desire-as-belief to think about the Peter example. One of them rejects **Equation**; the other rejects **Additivity**.
+
+Auntie E represents the first strategy. She says a thorough-going evidential decision theorist. For her, the value of an arbitrary action *x* is given by **Auntie E's Value**. In this formula, where X is the proposition that *x* is performed, and G*x* is the proposition that doing *x* is good.
+
+Auntie E's Value
+: V(*x*) = Pr(G*x* | X)
+
+That is, she looks at Peter's options, and hopes that he does the one that she is most confident is good, conditional on Peter doing it. That means she hopes Peter does not do *a*, since then she'll have credence 0.9 that Peter has done the right thing. If Peter does *a*, she'll only have credence 0.8 that he'll have done the right thing, which isn't as good. This means that she has to (and does) give up **Equation**, since it implies that it is better for Peter to do *a*.
+
+Auntie C endorses a version of causal decision theory, though as we'll see a more radical one than the one supported by David @Lewis1981bn.^[Here I'm following Collins, who notes that it is odd that Lewis takes **Additivity** for granted, since it goes more naturally with evidential decision theory.] In particular, Auntie's values are given by **Auntie C's Value**. In the formula, Pr^*x*^ be the result of _imaging_ the probability function Pr on the proposition *x* is performed. Auntie C believes changing the moral facts is a bigger change to the world than changing any descriptive facts, so imaging always moves credences up or down in @tbl-credence, never left or right.^[Recall here that the worlds are epistemic possibilities, not metaphysical ones, so it makes sense to talk about merely changing the moral facts.]
+
+Auntie C's Value
+:    V(*x*) = Pr^X^(G*x*)
+
+This resembles equation (11) in "Causal Decision Theory". Indeed, after the first character, it just is the special case of that equation where the only possible values are 1 and 0. But the first character matters. Lewis is presenting a theory of usefulness, not of value. His formula is meant to measure the thing that a rational actor maximises. It is not measuring the thing an altruistic friend hopes is maximised. We'll come back to this point in @sec-auntie-c. For now, I just want to note the formal similarities to Lewis's own theory.
+
+Using this formula, Auntie C hopes that Peter does *a*. So she has do, and does, give up **Additivity**, since it implies that is better for Peter to not do *a*.
+
+The next step is to argue that both Aunties are really desire-as-belief theorists, so it isn't true that all desire-as-belief theorists have to accept **Equation** and **Additivity**.^[I actually hold something stronger, namely that no desire-as-belief theorist should accept both principles, but here I'll just argue that it isn't compulsory to accept both.]
+
+# DAB and EDT {#sec-auntie-e}
+
+Let's start with Auntie E. She rejects **Equation**. The relationship between desire and belief is not V(A) = Pr(Å), but V(A) = Pr(Å | A). Lewis is aware of this response, it's developed by @Price1989, and his response is that this isn't a form of desire as _belief_. His thought, and this comes out a little more clearly in a recently published letter than in the papers [@Lewis-McDermott-06121993], is that belief isn't load-bearing in Auntie E's view.
+
+Everyone agrees that beliefs play a role in instrumental desires. If desires to take a pill because one believes it will cure one's disease, that desire will go away if one loses either the belief that it's a cure, or the belief that one is diseased. Lewis notes that Auntie E is committed to the existence of a proposition D consisting of all and only the desirable worlds, and to the claim that by necessity any agent with desires will desire it. Moreover, he argues, on Auntie E's view this is the only non-instrumental desire an agent has. Beliefs don't affect non-instrumental desires on this view, since everyone has the same non-instrumental desires. They just affect instrumental desires. But Humeans and anti-Humeans agree about the connection between belief and non-instrumental desires.
+
+I'll offer three replies on Auntie E's behalf. I'm not defending her view in general; I'm not an evidential decision theorist. I'm just defending the claim that this is a kind of desire as beleif.
+
+First, the simplifying assumption **Binary Desirability** looks less benign here. The construction of the necessarily desired proposition D requires this assumption. If some worlds are more desirable than others there are still preferences that Auntie E thinks are necessary (i.e., that a more desirable world is preferred to a less desirable one), but no desires.
+
+Second, the necessity claim Auntie E seems committed to looks less worrying once remember what kinds of things worlds are in this context. They are the elements of the contents of attitudes. That is, on Lewis's view, they are centered worlds. Auntie E's view is really that by necessity an agent desires that one of the centered worlds found desirable by the current center, i.e., that very agent, is actualised. That is, agents desire what they believe desirable. That's not a surprising necessity claim; it's the essence of the view Lewis is arguing against.
+
+@Lewis1996 argues that this view is unHumean in an important way. Hume says that any desire can be rational; that's what we take from the quip that it is not contrary to reason to, for example, prefer to the destruction of the world to a scratch? On Auntie E's view one cannot but desire A↔︎Å.^[Lewis goes on to argue that there is a sense in which this is Auntie E's only intrinsic desire.] This doesn't sound like Auntie E is respecting Hume's dictum. But note that Hume's example concerns desires concerning descriptive propositions. Auntie E's view puts no constraints whatsoever on descriptive desires. If she wants to desire the destruction of the world she is free to; she just has to come to believe this is good. This might not be much of an imposition; having that belief might be constituted by the functional states that Lewis associates with the desire for the destruction.^[There is much more to say here of course; the point here is to flag the possibility that Lewis's rejoinder to Price presupposes that they have a common theory of belief, and differ on how desire relates to it. That presupposition might fail, especially with respect to beliefs like _That is good_.]
+ 
+So I think EDT offers a way out of Lewis's argument. That's not totally surprising; it's not Lewis's view. Things are trickier with Auntie C.
+
+# DAB and CDT {#sec-auntie-c}
+
+Auntie C says that the misstep in Lewis's argument is **Additivity**. Following Collins, she says that this is something that only an adherent of EDT should accept. She thinks **Additivity** obviously fails because in Peter's case, it makes sense to hope that he does the thing that's got a 59% chance of being good, not the thing that's got a 41% chance, but She's mostly mystified about why Lewis, famously an enemy of EDT, would have accepted it in the first place.
+
+In the second DAB paper, Lewis has a response to this. Oddly, it's in a parenthetical paragraph. After describing an action that's essentially two-boxing in Newcomb's problem, he writes
+
+> Should you take that actions?---Yes ... Do you desire to perform it?---No ... [O]ur topic here is not choiceworthiness but desire ... [so] we adopt an "evidential" conception of expected value ... Choiceworthiness is governed by a different "causal" conception. [@Lewis1996 303]
+
+So Lewis thinks that Auntie C is confusing the two notions, and that she only rejects **Additivity** because of this confusion. But there's something important that can be said on Auntie C's behalf.
+
+In the first DAB paper, Lewis sets out the notion of desire that he thinks is at issue. There, he is most concerned to distinguish it from a notion that is intuitively used in actions taken from duty. We might intuitively say that we did X from duty, though we desired to do Y. Lewis resists; he thinks that in any such case we also desire X. As he puts it,
+
+> We are within our rights to construe 'desire' inclusively, to cover the entire range of states that move us. [@Lewis1988 323]
+
+This isn't an optional move on Lewis's part. If he doesn't make this move, the Humean picture of action he wants to defend fails immediately.
+
+Now Auntie C says that if we're modelling "the entire range of states that move us", and we are, as Lewis recommends, moved to take two boxes in Newcomb's Problem, we really better not insist that our model satisfies **Additivity**. We'd be left saying that the two-boxer acts against all desire, merely motivated by the duty to do what's rational. This would be a violation of Lewis's Humeanism. It would also be phenomenologically implausible. The two-boxer isn't moved by duty, but by the desire for the extra $1000. So for both theoretical and phenomenological reasons, we need a notion of desire that violates **Additivity**.
+
+Indeed, she insists that it isn't just in first-personal cases like Newcomb's Problem that **Additivity** fails. Imagine that Peter faces the choice in @tbl-peter-second, where the values in the box now represent the moral value of the choice, and Auntie C thinks Peter choosing Up is excellent evidence for Left, while his choosing Down is excellent evidence for Right.
+
+|     | Left |  Right |
+|----:|:----:|:------:|
+| Up  |  3   |    0   |
+| Down | 5   |    1   |
+
+: Peter's second choice {#tbl-peter-second}
+
+The first quote of Lewis's suggests that both Auntie's should desire that Peter choose Up, since that will be evidence that an outcome of value 3 will obtain. But it seems coherent to hope that he chooses Down. Several of the arguments for two-boxing seem replicable here. It's weird to hope that Peter chooses Down conditional on Left, and hope he chooses Down conditional on Right, and unconditionally hope that he chooses Up.
+
+This is not to deny that there is a theoretical role for something like news-value. @Joyce1999 makes extensive use of that notion in developing a causal decision theory. It's just that in the context of defending Humeanism about action, two-boxers like Lewis can't equate news-value with desirability. So **Addition** has to fail, since as Lewis agrees, **Addition** entails that desirability goes with news value.
+
+# Conclusion {#sec-conclusion}
+
+Any defender of DAB has to pick whether to take Auntie E's side or Auntie C's side in the original question about Peter. Whichever side they pick, they will have an independent reason to reject one of the premises Lewis puts forward in his argument against their view. So they have independent reason to reject Lewis's argument.
+
+I've been stressing _independent_ here because it's not news that any defender of DAB has to reject some premise of Lewis's argument. That follows from the fact that his argument is valid! For the response to be more than table-thumping, the proponent of DAB has to say which premise they reject, and why it is reasonable to reject it. The point of the examples involving Peter is to identify the premise in question, which will differ between different proponents, and say what that reason is. In the second DAB paper, Lewis offers responses to each of these reasons, and in the last two sections I've gone over why those responses don't work. It's somewhat ironic that in each case my analysis has rested in part on the view that Lewis's response is inconsistent with what he says elsewhere: about the role of possible worlds in philosophy in @sec-auntie-e, and about the role of desire in producing action in @sec-auntie-c. I'll leave to another day whether someone who was willing to abandon large parts of the Lewisian framework might be able to rescue his argument against DAB.
