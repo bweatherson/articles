@@ -150,37 +150,27 @@ So I think EDT offers a way out of Lewis's argument. That's not totally surprisi
 
 # DAB and CDT {#sec-auntie-c}
 
-Auntie C says that the misstep in Lewis's argument is **Additivity**. Following Collins, she says that this is something that only an adherent of EDT should accept. She thinks **Additivity** obviously fails because in Peter's case, it makes sense to hope that he does the thing that's got a 59% chance of being good, not the thing that's got a 41% chance, but She's mostly mystified about why Lewis, famously an enemy of EDT, would have accepted it in the first place.
+Auntie C says that the misstep in Lewis's argument is **Additivity**. Following Collins, she says that this is something that only an adherent of EDT should accept. She thinks **Additivity** obviously fails because in Peter's case; it makes sense to hope that he does the thing that's got a 59% chance of being good, not the thing that's got a 41% chance of being good. Isn't this, she thinks, just what a causal decision theorist like Lewis should have thought all along?
 
 In the second DAB paper, Lewis has a response to this. Oddly, it's in a parenthetical paragraph. After describing an action that's essentially two-boxing in Newcomb's problem, he writes
 
 > Should you take that actions?---Yes ... Do you desire to perform it?---No ... [O]ur topic here is not choiceworthiness but desire ... [so] we adopt an "evidential" conception of expected value ... Choiceworthiness is governed by a different "causal" conception. [@Lewis1996 303]
 
-So Lewis thinks that Auntie C is confusing the two notions, and that she only rejects **Additivity** because of this confusion. But there's something important that can be said on Auntie C's behalf.
+So Lewis thinks that Auntie C is confusing the two notions, and that she only rejects **Additivity** because of this confusion. To respond on Auntie C's behalf, let's break up four things Lewis might mean here.
 
-In the first DAB paper, Lewis sets out the notion of desire that he thinks is at issue. There, he is most concerned to distinguish it from a notion that is intuitively used in actions taken from duty. We might intuitively say that we did X from duty, though we desired to do Y. Lewis resists; he thinks that in any such case we also desire X. As he puts it,
+1. There are multiple distinct concepts relating to pro-attitudes, including choiceworthiness, what we might call wishworthiness (like I wish I were a one-boxer), preference, and many others.
+2. At least one of these notions is measured by evidential expected value.
+3. _Desire_ picks out one of those notions so measured.
+4. The anti-Humean only succeeds if they show that this notion, _desire_ goes with belief.
 
-> We are within our rights to construe 'desire' inclusively, to cover the entire range of states that move us. [@Lewis1988 323]
+Clearly, 1 is true. Lewis can define 'Humean' how he likes, but it seems to me that there is a good sense in which 4 is just as clearly false. If any pro-attitude is conceptually tied to belief, that seems like an anti-Humean view.^[Note that Hume's famous quote about finger scratching concerns neither desire nor choiceworthiness, but preference.] Still, let's go along with Lewis for now; we can just take him to stipulate what 'Humean' means here.
 
-This isn't an optional move on Lewis's part. If he doesn't make this move, the Humean picture of action he wants to defend fails immediately.
+Auntie C does not need to reject 2. She might reject it; I think there is some interest in a 'mad dog' causalism that rejects all use of evidential value. But arguing for that would take us far afield.^[In particular, we'd have to respond to the many ways in which Jim Joyce [-@Joyce1999; -@Joyce2026], no friend of evidential _decision_ theory, has made use of evidential value.] So let's assume that 2 is true, and that some evidential notion that is important in philosophical psychology. Still, Auntie C is justified in rejecting 3.
 
-Now Auntie C says that if we're modelling "the entire range of states that move us", and we are, as Lewis recommends, moved to take two boxes in Newcomb's Problem, we really better not insist that our model satisfies **Additivity**. We'd be left saying that the two-boxer acts against all desire, merely motivated by the duty to do what's rational. This would be a violation of Lewis's Humeanism. It would also be phenomenologically implausible. The two-boxer isn't moved by duty, but by the desire for the extra $1000. So for both theoretical and phenomenological reasons, we need a notion of desire that violates **Additivity**.
-
-Indeed, she insists that it isn't just in first-personal cases like Newcomb's Problem that **Additivity** fails. Imagine that Peter faces the choice in @tbl-peter-second, where the values in the box now represent the moral value of the choice, and Auntie C thinks Peter choosing Up is excellent evidence for Left, while his choosing Down is excellent evidence for Right.
-
-|     | Left |  Right |
-|----:|:----:|:------:|
-| Up  |  3   |    0   |
-| Down | 5   |    1   |
-
-: Peter's second choice {#tbl-peter-second}
-
-The first quote of Lewis's suggests that both Auntie's should desire that Peter choose Up, since that will be evidence that an outcome of value 3 will obtain. But it seems coherent to hope that he chooses Down. Several of the arguments for two-boxing seem replicable here. It's weird to hope that Peter chooses Down conditional on Left, and hope he chooses Down conditional on Right, and unconditionally hope that he chooses Up.
-
-This is not to deny that there is a theoretical role for something like news-value. @Joyce1999 makes extensive use of that notion in developing a causal decision theory. It's just that in the context of defending Humeanism about action, two-boxers like Lewis can't equate news-value with desirability. So **Addition** has to fail, since as Lewis agrees, **Addition** entails that desirability goes with news value.
+The reason is that desire seems closely tied to intention via principles of means-end coherence. In Newcomb's Problem, Lewis holds that V(one-box) is high but I should two-box. If V measures desire, this generates a puzzle about means-end coherence. I desire that I one-box; I believe I'll one-box just in case I choose to one-box; yet I don't choose to one-box. This seems incoherent; it violates the fundamental principle of instrumental rationality. Now maybe _desire_ is ambiguous, and Lewis is right that there's a disambiguation that follows V, and which hence isn't relevant to means-end coherence. But all Auntie C needs is that some plausible notion of desire is relevant to means-end coherence. Once that's true, and she's a two-boxer, she has reason to think that **Addition** doesn't apply to it. 
 
 # Conclusion {#sec-conclusion}
 
 Any defender of DAB has to pick whether to take Auntie E's side or Auntie C's side in the original question about Peter. Whichever side they pick, they will have an independent reason to reject one of the premises Lewis puts forward in his argument against their view. So they have independent reason to reject Lewis's argument.
 
-I've been stressing _independent_ here because it's not news that any defender of DAB has to reject some premise of Lewis's argument. That follows from the fact that his argument is valid! For the response to be more than table-thumping, the proponent of DAB has to say which premise they reject, and why it is reasonable to reject it. The point of the examples involving Peter is to identify the premise in question, which will differ between different proponents, and say what that reason is. In the second DAB paper, Lewis offers responses to each of these reasons, and in the last two sections I've gone over why those responses don't work. It's somewhat ironic that in each case my analysis has rested in part on the view that Lewis's response is inconsistent with what he says elsewhere: about the role of possible worlds in philosophy in @sec-auntie-e, and about the role of desire in producing action in @sec-auntie-c. I'll leave to another day whether someone who was willing to abandon large parts of the Lewisian framework might be able to rescue his argument against DAB.
+I've been stressing _independent_ here because it's not news that any defender of DAB has to reject some premise of Lewis's argument. That follows from the fact that his argument is valid! For the response to be more than table-thumping, the proponent of DAB has to say which premise they reject, and why it is reasonable to reject it. The point of the examples involving Peter is to identify the premise in question, which will differ between different proponents, and say what that reason is. In the second DAB paper, Lewis offers responses to each of these reasons, and in the last two sections I've gone over why those responses don't work. I'll leave to another day which of the Auntie's has a better response; the point of this paper is that anyone who was sympathetic to DAB will have been sympathetic to one of the Auntie's, and hence will have a response to Lewis.
