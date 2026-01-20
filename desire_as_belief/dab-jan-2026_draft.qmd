@@ -25,7 +25,7 @@ format:
       colorlinks: false
       linestretch: 1.75
       link-citations: true
-      output-file: "Anti-Anti-Desire-As-Belief Revised Version"
+      output-file: "Anti-Anti-Desire-As-Belief January 2026 Version"
       include-in-header:
         text: |
           \setlength\heavyrulewidth{0ex}
@@ -40,7 +40,7 @@ I'll start with a presentation of Lewis's argument, shorn of what seem to me to 
 
 Assume that we have a finite set of worlds. We will use *w* as a variable over worlds. A world, in this sense, is a specification of the truth value of all the truth-apt things that are relevant to a particular decision. They are 'small worlds' in the sense of @Savage1954, not possible worlds in the sense of @Lewis1986a. For the most part they are more coarse-grained than the concrete worlds of _On the Plurality of Worlds_, but in one respect they are more fine-grained: they might differ from each other purely in normative features.^[This is a consequence of the point @Chalmers2011b makes that it is epistemic, not metaphysical, possibility that matters here, plus the assumption that our characters might be normatively uncertain.]
 
-For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is desirable.^[It's more common here to let Å be that A is good, but I want to separate questions about the desire-belief relationship from questions about moral motivation, so my characters will be motivated to do something just to the extent they believe it desirable, leaving it as a further question whether all and only good things are desirable.] Let V be an agent's value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V¬A~ and Pr¬A~ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion. (Later I'll also write Pr(*w*) for the probability of Pr({*w*}); again it shouldn't result in confusion.)
+For any descriptive proposition A, assume there is a distinct proposition Å, meaning that A is desirable.^[It's more common here to let Å be that A is good, but I want to separate questions about the desire-belief relationship from questions about moral motivation, so my characters will be motivated to do something just to the extent they believe it desirable, leaving it as a further question whether all and only good things are desirable.] Let V be an agent's value function, and Pr their credence function, with subscripts representing what those functions are like after updating. So V~A~ and Pr~A~ are the values of the value and credence functions after updating on A. Strictly speaking given how I've set this up, it is sets of worlds not individual worlds that get values. But I'll sometimes write V(*w*) when strictly it should be V({*w*}); I don't think this can lead to any confusion. (Later I'll also write Pr(*w*) for the probability of Pr({*w*}); again it shouldn't result in confusion.)
 
 Lewis's argument against DAB uses six assumptions. In these assumptions B is an arbitrary proposition, and A is an arbitrary *descriptive* proposition. 
 
@@ -54,10 +54,10 @@ Additivity
 :    V(A) = Σ~*w*~V(*w*)Pr(*w* | A)
 
 Worldly Invariance
-:    V¬A~(*w*) = V(*w*)
+:    V~A~(*w*) = V(*w*)
 
 Restricted Conditionalisation
-:    Pr¬A~(B) = Pr(B | A)
+:    Pr~A~(B) = Pr(B | A)
 
 Possible Dependence
 :    For some Å, Pr(Å) $\neq$ Pr(Å | A)
