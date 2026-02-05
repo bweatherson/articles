@@ -24,6 +24,7 @@ format:
     fig-format: png
     fig-width: 10
     fig-height: 7
+    embed-resources: true
   docx:
     reference-doc: ../my-template.docx
   pdf: 
