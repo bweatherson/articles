@@ -1,0 +1,77 @@
+# Introduction
+
+Use stories as the way in
+Note there is a connection to sets of worlds
+We'll first do some propositional modal logic, then quantifiers, then applications
+Go over the big points, including persistence
+
+
+# Modal Definability
+
+State three conditions on R
+Holliday objects these are too strong, note the powerset possibilization issue
+He works with 'full possibility frames' which satisfy weaker conditions
+Shows that can define a novel logic; can Humberstone frames?
+Answer, yes if we allow infinitary disjunction
+And, unlike in full possibility frames, doing so doesn't immediately create problems classically
+Then go over proof
+
+# Quantifiers and Expressive Power
+
+Start with the point about Holmes's cousins
+    There's something we can say in metalanguage not in object language
+Go over the options for \forall
+None of them are precisely what we want, but still, it works
+    For the same reason infinitary disjunction works
+    
+# Applications
+
+## Fiction
+
+Can have a world of a story (like the belief world)
+Don't need Lewis type operators, which generate slightly odd ambiguities
+Also have a neater account of sequels
+
+## Vagueness
+
+Like supervaluationism, but without the need for precisifications
+Also has a response to the mad-dog supervaluationism that Lewis (1993) worries about
+Lacks some expressive capacities; like Fine can't say of a case that it's borderline
+
+## Metaphysical Vagueness
+
+Doesn't presuppose that the vagueness is exclusively in the representations
+That goes back to Russell, but it's always been a bit tricky to make sense of
+Need to say something about the metaphysics of representations that works
+See Barnes & Williams for current-ish refs
+Evans's argument against vague identity
+Lewis's interpretation that this is because has to be metalinguistic
+Humberstone frames approach - there is no way of stating indeterminate in the object language
+But this is not because all indeterminacy is meta-linguistic
+
+## Conditional Excluded Middle
+
+Maybe look up in the Connectives
+Also note Cariani and Goldstein (2020)
+Intuition one: inferences support CEM
+Intuition two: no nearest world
+Synthesis: There is a nearest *possibility*, it has multiple refinements
+
+## Identity of Indiscernibles
+
+Goodman's argument that CEM implies that the spheres are not qualitatively identical
+If the nearest possibility is unrefined, this doesn't look like it goes through
+Arguably, the solution here is that counterfactual properties are not qualitative?
+
+## Contingentism and Neccessitism
+
+Huge topic, can't do justice here
+But note that there is an interesting compromise position
+Fixed domain models usually say that it's a requirement that every name get a referent in every world
+Our requirement is that every name gets a referent in some refinement of every possibility
+That suffices for classical first order logic
+You get the boxes and quantifiers statement of necessitism
+But you also have possibilities where some things are not in the domain, which is what the contingentist wanted
+It's just like, as with the modal realist, ordinary quantification has to be understood as restricted
+It's classical logic without classical semantics
+Will this work? Who knows! But it's good to have options
