@@ -1,0 +1,100 @@
+---
+title: "Humberstone on Possibility Frames"
+abstract: |
+  Insert abstract here
+date: Feb 11 2026
+draft: false
+execute:
+  echo: false
+  warning: false
+author:
+  - name: Brian Weatherson 
+    url: http://brian.weatherson.org
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu
+    orcid_id: 0000-0002-0830-141X
+categories:
+  - logic
+  - metaphysics
+bibliography: 
+ - /Users/weath/Documents/quarto-articles/brian-quarto.bib
+format:
+  html:
+    fig-format: png
+    fig-width: 10
+    fig-height: 7
+    embed-resources: true
+  pdf: 
+    documentclass: article
+    classoption: twoside
+    keep-tex: true
+    geometry:
+      - paperheight=10in,
+      - paperwidth=7in,
+      - top=1in
+      - bottom=1in
+      - inner=0.8in
+      - outer=0.8in
+      - headsep=0.25in
+      - headheight=1in
+      - footskip=0.35in
+    pdf-engine: xelatex
+    mathfont: EB Garamond Math
+    mainfont: EB Garamond Math
+    sansfont: EB Garamond SemiBold
+    mainfontoptions: 
+      - ItalicFont=EB Garamond Italic
+      - BoldFont=EB Garamond SemiBold
+    fontsize: 10.5pt
+    linkcolor: blue
+    urlcolor: blue
+    colorlinks: true
+    linestretch: 1
+    link-citations: true
+    link-bibliography: false
+    output-file: "Humberstone on Possibility Frames"
+    include-in-header:
+      - maketitle.tex
+      - body-style.tex
+      - doi-setup-aggressive.tex
+      - text: |
+          \newcommand{\nmodels}{\mathrel{\ooalign{$\models$\cr\raisebox{-0.001ex}{\hss$\mkern-1mu/\hss$}\cr}}}
+          \setlength\heavyrulewidth{0ex}
+          \setlength\lightrulewidth{0ex}
+          \usepackage[lines=2]{lettrine}
+          \cehead{Draft of February 11, 2026}
+nocite: |
+  @Humberstone1981a
+---
+
+In his 1981 paper, "From Worlds to Possibilities", Lloyd Humberstone shows a way to do modal logic without the apparatus of possible worlds. Instead of worlds he uses _possibilities_, which may, unlike worlds, be incomplete. The non-modal parts of the view are discussed again in section 6.44 of _The Connectives_, though the differences between the view there and the 1981 view are largely presentational. In this paper I'll set out this _possibility frame_ approach to modal logic, make some notes about its logic, and end with a survey of the many possible applications it has.
+
+Mathematically, possibilities are just points in a model, just like possible worlds are points in different kinds of models. But it helps to have a mental picture of what kind of thing they are. In "From Worlds to Possibilities", Humberstone notes that one picture you could have is that they are sets of possible worlds. This isn't a terrible picture, but it's not perfect for a couple of reasons. For one thing, as Humberstone notes, part of the point of developing possibilities is to do without the machinery of possible worlds. Understanding possibilities as sets of possible worlds wouldn't help with that project. For another, as Wesley @Holliday2025 [271-2] notes, the natural way to generate modal accessibility relations on sets of worlds from accessibility on the worlds themselves doesn't always work the way Humberstone wants accessibility to work. So let's start with a different picture.
+
+Possibilities, as I'll think of them, are _stories_. To make things concrete, let's focus on a particular story: _A Study in Scarlet_ (@ConanDoyle1995), the story where Sherlock Holmes was introduced. That story settles some questions, both explicitly, e.g., that Holmes is a detective, and implicitly, e.g., that Holmes has never set foot on the moon. But it leaves several other questions open, e.g., how many (first) cousins Holmes has. It's not that _A Study in Scarlet_ is a story. It has proper parts which are stories. The first chapter is a story, one which tells of the first meeting between Holmes and Watson. And arguably it is a proper part of larger story, made up of all of Conan Doyle's stories of Holmes and Watson. When a story $x$ is a proper part of story $y$, what that means is that everything settled in $x$ is still true in $y$, and more things besides are settled. When this happens, we'll call $y$ a proper _refinement_ of $x$. For most purposes it will be more convenient to use the more general notion of _refinement_, where each story counts as an improper refinement of itself.
+
+Following Humberstone, I'll write $x \leqslant y$ to mean that $y$ is a refinement of $x$. As he notes, this notation can be confusing if one things of $x$ and $y$ as sets, because in that case the refinement will typically be _smaller_.^[@Holliday2025 writes $y \sqsubseteq x$ when $y$ is a refinement of $x$, mirroring this way of thinking about possibilities.] But if we think of possibilities as stories, the notation becomes more intuitive. We have $x \leqslant y$ when $y$ is created by adding new content to $x$. Keeping with this theme, I'll typically model stories not as worlds, but as finite sequences. (In the main example in @sec-proof, they will be sequences of 0s and 1s.) In these models, $x \leqslant y$ means that $x$ is an initial segment of $y$.
+
+# Formal Structure
+
+To start with, assume we're working in a simple language that just has a countable set $\mathcal{P}$ countable infinity of propositional variables, and three connectives: $\neg$, $\wedge$ and $\vee$. We have a set of possibilities $R$, and a transitive refinement relation $\geqslant$ on them. The following rules show how to build what I'll call a _Humberstone possibility model_ on $\langle R, \leqslant \rangle$. (I'll call this a _possibility frame_ in most contexts, but a _Humberstone frame_ when I'm comparing it to similar structures, especially in the context of discussing @Holliday2025.)
+
+A Humberstone possibility model $\mathcal{M}$ is a triple $\langle R, \leqslant, V \rangle$, where $V$ is a function from $\mathcal{P}$ to $R$, intuitively saying where each atomic proposition is true, satisfying these two constraints:
+
+- For all $x$, if $x \in V(p)$ and $y \geqslant x$, then $y \in V(p)$. Intuitively, truth for atomics is **persistent** across refinements.
+- For all $x$, if $\forall y \geqslant x \exists z \geqslant y: z \in V(p)$, then $x \in V(p)$. This is what @Humberstone2011 [900] calls **refinability**, and it means that $p$ only fails to be true at $x$ if there is some refinement of $x$ where it is settled as being untrue.
+
+Given these constraints, Humberstone suggests the following theory of truth at a possibility for all sentences in this language.
+
+\begin{align*}
+[\text{Vbls}] \quad & \mathcal{M} \models_x p_i \text{ iff } x \in V(p_i); \\
+[\neg] \quad & \mathcal{M} \models_x \neg A \text{ iff } \forall y \geqslant x, \, \mathcal{M} \nmodels_y  A; \\
+[\wedge] \quad & \mathcal{M} \models_x A \wedge B \text{ iff } \mathcal{M} \models_x A \text{ and } \mathcal{M} \models_x B; \\
+[\vee] \quad & \mathcal{M} \models_x A \vee B \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \, \mathcal{M} \models_z A \text{ or } \mathcal{M} \models_z B.
+\end{align*}
+
+
+
+In the models Humberstone develops, there are two important binary relations between points. One is the familiar accessibility relation $R$, where $xRy$ means roughly that $y$ is possible from $x$. The other is a new *refinement* relation $\geqslant$, where $y \geqslant x$ means that $y$ is a refinement of $x$. If we think of the possibilities $x$ and $y$ as _stories_, which settle some things but leave others out, then $y \geqslant x$ means that you can create the story $y$ by starting with $x$ and adding some things, but subtracting nothing. Humberstone puts some fairly tight constraints both on $\geqslant$ itself, and on the interaction between $\geqslant$ and $R$, and between $\geqslant$ and the valuation function $V$, with the result that despite the incompleteness in the worlds, we get back classical modal logic(s).
+
+Recently, Wesley @Holliday2025 has published a massive study of the possibilities approach to modal logic. His approach differs from Humberstone's in some respects. For one thing, he discusses multi-modal logics, which Humberstone did not. (Though it isn't hard to generalise to them.) More importantly, he prefers slightly weaker constraints $\geqslant$. He calls frames satisfy Humberstone's original constraints _Humberstone frames_, and frames that satisfy his weaker conditions _full possibility frames_. Using an ingenious construction, he shows that there is a class of full possibility frames which determines a logic that cannot be determined by any class of Kripke frames. But the construction does not satisfy the more demanding constraints on Humberstone frames, and he leaves it as an open question whether there is a class of Humberstone frames 

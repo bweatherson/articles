@@ -1,0 +1,130 @@
+% Body text and heading styles mimicking Ergo class
+% Add this to your Quarto YAML with:
+% format:
+%   pdf:
+%     include-in-header:
+%       - body-style.tex
+
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\cehead{
+  {{< meta author >}}
+  }
+\cohead{
+  {{< meta title >}}
+  }
+\ohead{\bfseries \pagemark}
+\cfoot{}
+
+\makeatletter
+
+% Paragraph indentation and spacing
+\setlength{\parindent}{.25in}
+\setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Section numbering with periods and spacing
+\renewcommand*{\@seccntformat}[1]{%
+  \csname the#1\endcsname.$\:$%
+}
+
+% Section styles (matching Ergo)
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-4.6ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex}%                      % space after
+  {\normalfont\Large\bfseries}}            % Large, bold
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-2.3ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex \@minus 0ex}%         % space after
+  {\normalfont\large\itshape}}             % large, italic
+
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-2.3ex \@plus 0ex \@minus 0ex}%        % space before
+  {2.3ex \@plus 0ex \@minus 0ex}%         % space after
+  {\normalfont\large}}                     % large, normal
+
+% Font sizes (matching Ergo)
+\renewcommand\normalsize{\@setfontsize\normalsize{10.5pt}{14pt}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{9pt}{11.5pt}}
+\renewcommand\small{\@setfontsize\small{9pt}{13pt}}
+\renewcommand\large{\@setfontsize\large{11.5pt}{12pt}}
+\renewcommand\Large{\@setfontsize\Large{12pt}{14pt}}
+
+% Quotation and quote environments with Ergo spacing
+\renewenvironment{quotation}
+  {\list{}{
+    \setlength{\listparindent}{.25in}%
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+    \setlength{\parsep}{0in plus 0in minus 0in}
+    \item\relax
+    \let\item\relax}
+  }
+  {\endlist}
+
+\renewenvironment{quote}
+  {\vskip 5pt%
+   \list{}{
+    \setlength{\listparindent}{.25in}
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+    \setlength{\parsep}{0in plus 0in minus 0in}
+    }
+    \item\relax
+    \let\item\relax}
+  {\endlist\vskip 5pt}
+
+% Footnote rule styling
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width 1in height .4pt
+  \kern 2.5pt
+}
+
+% Non-superscript numerals for footnote text numbering
+\renewcommand\@makefntext[1]{%
+  \parindent .25in%
+  \@thefnmark.~#1}%
+
+% Figure and table captions with period separator
+\renewcommand\@makecaption[2]{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1. #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1. #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+% Enumerate environment with extra vertical space
+\let\oldenumerate\enumerate
+\let\endoldenumerate\endenumerate
+\renewenvironment{enumerate}
+  {\vskip 5pt\oldenumerate}
+  {\endoldenumerate\vskip 5pt}
+
+\let\olddescription\description
+\let\endolddescription\enddescription
+\renewenvironment{description}
+  {\vskip 5pt\olddescription}
+  {\endolddescription\vskip 5pt}
+
+\let\olditemize\itemize
+\let\endolditemize\enditemize
+\renewenvironment{itemize}
+  {\vskip 5pt\olditemize}
+  {\endolditemize\vskip 5pt}
+
+\newcommand*\NoIndentAfterEnv[1]{%
+  \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+\NoIndentAfterEnv{itemize}
+\NoIndentAfterEnv{enumerate}
+\NoIndentAfterEnv{description}
+\NoIndentAfterEnv{quote}
+\NoIndentAfterEnv{equation}
+\NoIndentAfterEnv{longtable}
+
+\makeatother

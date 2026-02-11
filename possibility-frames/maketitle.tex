@@ -1,0 +1,56 @@
+% Custom title page mimicking Ergo class style
+% Add this to your Quarto YAML with:
+% format:
+%   pdf:
+%     include-in-header:
+%       - maketitle.tex
+
+\makeatletter
+
+% Redefine \maketitle to match Ergo style
+\renewcommand\maketitle{
+  \begingroup
+  \setlength{\parskip}{0pt plus 0pt minus 0pt}
+  \long\def\@makefntext##1{\parindent 1em\noindent
+          \hb@xt@1.8em{%
+             \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+  \newpage
+  \null
+  \noindent{}\begin{minipage}[l]{4in}
+    \vskip 53.3pt plus 0pt minus 0pt
+    {\LARGE \textsc{\@title}\par}% Title in large small caps
+    \vskip 15pt plus 0pt minus 0pt
+    {\Huge\MakeUppercase{\@author}\par}% Author in huge uppercase
+    \vskip 5pt plus 0pt minus 0pt
+    {\normalsize\textit{University of Michigan}\par}% Date in normal size italics (or affiliation)
+  \end{minipage}
+  \vskip 12pt plus 0pt minus 0pt
+  \thispagestyle{plain}
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\@thanks\@empty
+  \global\let\@date\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+
+% Redefine abstract to match Ergo style with margins
+\renewenvironment{abstract}
+ {\list{}{
+    \setlength{\leftmargin}{.25in}
+    \setlength{\rightmargin}{\leftmargin}
+  }
+  \item\relax
+  \small}
+ {\vskip -3pt plus 0pt minus 0pt\null\endlist}
+
+% Font size adjustments to match Ergo
+\renewcommand\normalsize{\@setfontsize\normalsize{10.5pt}{14pt}}
+\renewcommand\small{\@setfontsize\small{9pt}{13pt}}
+\renewcommand\LARGE{\@setfontsize\LARGE{18pt}{22pt}}
+\renewcommand\Huge{\@setfontsize\Huge{9.5pt}{13.5pt}}
+
+\makeatother
