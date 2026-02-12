@@ -59,6 +59,8 @@ format:
       - doi-setup-aggressive.tex
       - text: |
           \newcommand{\nmodels}{\mathrel{\ooalign{$\models$\cr\raisebox{-0.001ex}{\hss$\mkern-1mu/\hss$}\cr}}}
+          \newcommand{\llbracket}{[\![}
+          \newcommand{\rrbracket}{]\!]}
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
           \usepackage[lines=2]{lettrine}
@@ -77,9 +79,9 @@ Following Humberstone, I'll write $x \leqslant y$ to mean that $y$ is a refineme
 
 # Formal Structure
 
-To start with, assume we're working in a simple language that just has a countable set $\mathcal{P}$ countable infinity of propositional variables, and three connectives: $\neg$, $\wedge$ and $\vee$. We have a set of possibilities $R$, and a transitive refinement relation $\geqslant$ on them. The following rules show how to build what I'll call a _Humberstone possibility model_ on $\langle R, \leqslant \rangle$. (I'll call this a _possibility frame_ in most contexts, but a _Humberstone frame_ when I'm comparing it to similar structures, especially in the context of discussing @Holliday2025.)
+To start with, assume we're working in a simple language that just has a countable set $\mathcal{P}$ countable infinity of propositional variables, and three connectives: $\neg$, $\wedge$ and $\vee$. We have a set of possibilities $W$, and a transitive refinement relation $\geqslant$ on them. The following rules show how to build what I'll call a _Humberstone possibility model_ on $\langle W, \leqslant \rangle$. (I'll call this a _possibility frame_ in most contexts, but a _Humberstone frame_ when I'm comparing it to similar structures, especially in the context of discussing @Holliday2025.)
 
-A Humberstone possibility model $\mathcal{M}$ is a triple $\langle R, \leqslant, V \rangle$, where $V$ is a function from $\mathcal{P}$ to $R$, intuitively saying where each atomic proposition is true, satisfying these two constraints:
+A Humberstone possibility model $\mathcal{M}$ is a triple $\langle W, \leqslant, V \rangle$, where $V$ is a function from $\mathcal{P}$ to $W$, intuitively saying where each atomic proposition is true, satisfying these two constraints:
 
 - For all $x$, if $x \in V(p)$ and $y \geqslant x$, then $y \in V(p)$. Intuitively, truth for atomics is **persistent** across refinements.
 - For all $x$, if $\forall y \geqslant x \exists z \geqslant y: z \in V(p)$, then $x \in V(p)$. This is what @Humberstone2011 [900] calls **refinability**, and it means that $p$ only fails to be true at $x$ if there is some refinement of $x$ where it is settled as being untrue.
@@ -93,18 +95,84 @@ Given these constraints, Humberstone suggests the following theory of truth at a
 [\vee] \quad & \mathcal{M} \models_x A \vee B \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \, \mathcal{M} \models_z A \text{ or } \mathcal{M} \models_z B.
 \end{align*}
 
-Given these definitions, it's possible to prove three things. First, every sentence in the language is persistent. If $\mathcal{M} \models_x A$ and $x \leqslant y$, then $\mathcal{M} \models_x A$. For any sentence, truth is always preserved when moving to a refinement. Second, refinability holds for all sentences in the language. This is, as Humberstone notes, easier to state using this definition of $\neg$. It now becomes the claim, for arbitrary $A$, that if $\mathcal{M} \nmodels_x A$, there is some refinement $y$ of $x$ such that $\mathcal{M} \models_y \neg A$. Third, for any set of sentences $\Gamma$ and sentence $A$, the truth at a point of all sentences in $\Gamma$ guarantees the truth of $A$ iff the sequent $\Gamma \vdash A$ is valid in classical propositional logic.
-
-#### Fix \vdash in the paragraph above, and \Vee in the paragraph below
+Given these definitions, it's possible to prove three things. First, every sentence in the language is persistent. If $\mathcal{M} \models_x A$ and $x \leqslant y$, then $\mathcal{M} \models_x A$. For any sentence, truth is always preserved when moving to a refinement. Second, refinability holds for all sentences in the language. This is, as Humberstone notes, easier to state using this definition of $\neg$. It now becomes the claim, for arbitrary $A$, that if $\mathcal{M} \nmodels_x A$, there is some refinement $y$ of $x$ such that $\mathcal{M} \models_y \neg A$. Third, for any set of sentences $\Gamma$ and sentence $A$, the truth at a point of all sentences in $\Gamma$ guarantees the truth of $A$ iff the sequent $\Gamma$ entails $A$ in classical propositional logic. 
 
 In this paper, I'm going to discuss three extensions of this language. I'll introduce them in reverse order of how much they are discussed in Humberstone, starting with one he does not discuss at all: infinitary disjunction.
 
-We'll add to the language a new symbol $\Vee$, which forms a new sentence out of any countable set of sentences not containing $\Vee$. Intuitively, it is true when one of the sentences in the set is true. More formally, its definition of truth at a possibility is:
+We'll add to the language a new symbol $\bigvee$, which forms a new sentence out of any countable set of sentences not containing $\bigvee$. Intuitively, it is true when one of the sentences in the set is true. More formally, its definition of truth at a possibility is:
 
 \begin{align*}
-[\Vee] \quad & \mathcal{M} \models_x \Vee ({A_1, A_2, \dots})  \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \, for some $i$ \mathcal{M} \models_z A_i.
+[\bigvee] \quad & \mathcal{M} \models_x \bigvee ({A_1, A_2, \dots})  \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \,\text{ for some } i \, \mathcal{M} \models_z A_i.
 \end{align*}
 
-Again, it's fairly simple to show that this addition to the language will preserve persistence and refinability. But while this is simple, it is significant, because things could easily have been otherwise. In the less restrictive system that @Holliday2025 develops, the proof of persistence makes crucial use of the finitude of the language. (The key point is the move on **line 684**, where he ... [say something here about why.]) 
+Again, it's fairly simple to show that this addition to the language will preserve persistence and refinability. But while this is simple, it is significant, because things could easily have been otherwise.
 
-The second extension will be to add quantifiers, following a suggestion in @Humberstone1981 [xxxx]. Assume, as usual, that the language has a stock of names $c_1, \dots$, and for each $n$, a stock of $n$ place predicates $F^n_1, F^n_2, \dots$. A _first-order (Humberstone) possibility frame_ is a quadruple $\langle R, \leqslant, D, V$, where intuitively $D$ tells us the domain of 
+The second extension will be to add quantifiers, following a suggestion in @Humberstone1981a [xxxx]. Assume, as usual, that the language has a stock of names $c_1, \dots$, and for each $n$, a stock of $n$-place predicates $F^n_1, F^n_2, \dots$. A _first-order (Humberstone) possibility model_ is a structure $\langle W, \leqslant, D, V \rangle$, where $D$ assigns a non-empty domain of objects to each point, and $V$ interprets the non-logical vocabulary. More precisely:
+
+- $D$ is a function assigning to each $x \in W$ a non-empty set $D(x)$, the **domain** at $x$.
+- $V$ assigns to each name $c_i$ and each $x \in W$ either a designated element $V(c_i, x) \in D(x)$, or is undefined at $x$.
+- $V$ assigns to each $n$-place predicate $F^n_j$ and each $x \in W$ a set $V(F^n_j, x) \subseteq D(x)^n$, the **extension** of $F^n_j$ at $x$.
+
+These must satisfy the following constraints:
+
+Domain monotonicity
+:    If $x \leqslant y$, then $D(x) \subseteq D(y)$.
+
+Name coverage
+:    For each name $c_i$ and each $x \in W$, there exists some $y \geqslant x$ such that $V(c_i, y)$ is defined.
+
+Persistence for names
+:    If $V(c_i, x)$ is defined and $x \leqslant y$, then $V(c_i, y)$ is defined and $V(c_i, y) = V(c_i, x)$.
+
+Persistence for predicate extensions
+:    If $\langle o_1, \dots, o_n \rangle \in V(F^n_j, x)$ and $x \leqslant y$, then $\langle o_1, \dots, o_n \rangle \in V(F^n_j, y)$.
+
+Refinability for predicate extensions
+:    If $\langle o_1, \dots, o_n \rangle \notin V(F^n_j, x)$, then there exists some $y \geqslant x$ such that for all $z \geqslant y$, $\langle o_1, \dots, o_n \rangle \notin V(F^n_j, z)$.
+
+Given a model and a variable assignment $g$ mapping variables to objects, truth at a point is defined as follows. Write $g[v/o]$ for the assignment that maps variable $v$ to object $o$ and otherwise agrees with $g$. For a term $t$, write $\llbracket t \rrbracket^{g,x}$ for the denotation of $t$ under $g$ at $x$: for a variable $v$ this is $g(v)$, and for a name $c_i$ this is $V(c_i, x)$ when defined, and undefined otherwise.
+
+\begin{align*}
+[=] \quad & \mathcal{M}, g \models_x t_1 = t_2 \text{ iff } \forall y \geqslant x \, \exists z \geqslant y : \llbracket t_1 \rrbracket^{g,z} \text{ and } \llbracket t_2 \rrbracket^{g,z} \text{ are both defined and equal}; \\
+[F^n] \quad & \mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n) \text{ iff } \forall y \geqslant x \, \exists z \geqslant y : \langle \llbracket t_1 \rrbracket^{g,z}, \dots, \llbracket t_n \rrbracket^{g,z} \rangle \in V(F^n_j, z); \\
+[\forall] \quad & \mathcal{M}, g \models_x \forall v \, A \text{ iff } \forall y \geqslant x \, \forall o \in D(y) : \mathcal{M}, g[v/o] \models_y A; \\
+[\exists] \quad & \mathcal{M}, g \models_x \exists v \, A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists o \in D(z) : \mathcal{M}, g[v/o] \models_z A.
+\end{align*}
+
+The Boolean connectives are handled exactly as in the propositional case.
+
+The $\forall\exists$ pattern in the atomic clauses is necessary to ensure that persistence and refinability hold for all sentences, including atomic ones. Consider $c_i = c_i$: if a name has no denotation at $x$ but acquires one at some refinement, then a simple "check the denotation at $x$" condition would leave $c_i = c_i$ neither true nor false at $x$, and no refinement of $x$ could settle it as false either, violating refinability. The $\forall\exists$ condition handles this correctly: $c_i = c_i$ is true at $x$ whenever $c_i$ is covered at $x$ (i.e., every refinement has a further refinement where $c_i$ gets a referent), since once $c_i$ gets a referent $o$, persistence of names ensures $o = o$ at all further refinements.
+
+The atomic clauses simplify when names are fully defined. If $t_1$ and $t_2$ are variables, or names that already have denotations at $x$, then by persistence of names and predicate extensions the $\forall\exists$ quantifier prefix collapses: $\mathcal{M}, g \models_x t_1 = t_2$ iff $\llbracket t_1 \rrbracket^{g,x} = \llbracket t_2 \rrbracket^{g,x}$, and $\mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n)$ iff $\langle \llbracket t_1 \rrbracket^{g,x}, \dots, \llbracket t_n \rrbracket^{g,x} \rangle \in V(F^n_j, x)$. The more complex clauses above are needed only to handle the case where some name occurring in the formula lacks a denotation at $x$ but is guaranteed to acquire one.
+
+This is a possibilist treatment of the universal quantifier, in contrast to the actualist quantifiers discussed in @HarrisonTrainor2019. I'll return in @sec-quant to the reasons we are best off using possibilist quantifiers, and the difficulties this raises for talking about just what's true in a possibility.
+
+The third extension will be the introduction of modal operators. Here I'll follow @Humberstone1981a very closely, save just that I'll have a plurality of modal operators rather than just one. So I'll use these structures to define (as @Holliday2025 does) multi-modal logics. But I'll follow Humberstone, and not Holliday, in defining modal operators in terms of accessibility relations that satisfy these three conditions:
+
+For each modal operator, we have a binary relation $R_i$ on $W$. Not every such relation is admissible: to ensure that the resulting truth conditions respect persistence and refinability, each $R_i$ must satisfy the following three constraints.
+
+**UpR** (accessibility propagates to refinements of the source).
+:    If $x \leqslant x'$ and $x' R_i y$, then $x R_i y$.
+
+**RDown** (accessibility extends to refinements of the target).
+:    If $x R_i y$ and $y \leqslant y'$, then $x R_i y'$.
+
+**RRefPlusPlus** (accessibility can be stabilized).
+:    If $x R_i y$, then there exists $x' \geqslant x$ such that for all $x'' \geqslant x'$, $x'' R_i y$.
+
+The first condition says that if a refinement of $x$ can access $y$, then $x$ itself can already access $y$: accessibility is not something that can be lost by adding detail to the source. The second says that if $x$ accesses $y$, it also accesses every refinement of $y$: the target can always be made more specific. The third says that whenever $x$ accesses $y$, there is some refinement of $x$ from which the accessibility to $y$ is locked in — it cannot be undone by any further refinement.
+
+Given these constraints, the truth conditions for the box and diamond operators are:
+
+\begin{align*}
+[\Box_i] \quad & \mathcal{M} \models_x \Box_i A \text{ iff } \forall y \, (x R_i y \Rightarrow \mathcal{M} \models_y A); \\
+[\Diamond_i] \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists w \, (z R_i w \text{ and } \mathcal{M} \models_w A).
+\end{align*}
+
+The box clause is the standard one: $\Box_i A$ is true at $x$ iff $A$ is true at every $R_i$-accessible point. The diamond is defined as $\neg\Box_i\neg A$, which by the definition of $\neg$ unfolds to the $\forall\exists$ condition above: $\Diamond_i A$ is true at $x$ iff no refinement of $x$ can permanently rule out there being an accessible point where $A$ holds. Equivalently, every refinement of $x$ has a further refinement that accesses some point where $A$ is true.
+
+The three constraints on $R_i$ are precisely what is needed to verify that persistence and refinability hold for $\Box_i A$ and $\Diamond_i A$ whenever they hold for $A$. UpR ensures persistence for $\Box_i$: if $\Box_i A$ is true at $x$ and $x \leqslant x'$, then any $y$ accessible from $x'$ is also accessible from $x$ by UpR, so $A$ is true there. RDown and RRefPlusPlus together ensure that refinability holds: RDown prevents $\Diamond_i A$ from being trivially irrefutable by guaranteeing that accessibility targets can always be refined, while RRefPlusPlus ensures that box-accessibility can be settled definitively.
+
+::: {.content-visible unless-format="html"}
+## References {-}
+:::
