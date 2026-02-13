@@ -183,10 +183,57 @@ The answer is that, if all sentences are persistent and refinable, then $R_i$ wi
 
 In the next section I'll discuss what logics can be defined using frames that satisfy all of these conditions.
 
-# Logics Definable on Humberstone Frames
+# Logics Determinable on Humberstone Frames {#sec-proof}
+
+@Holliday2025 raises an interesting question. As well as the familiar Kripke frames most commonly used as a semantics for modal logic, and the Humberstone frames defined above, he introduces a class of 'full possibility' frames, which weaken some of Humberstone's constraints. It won't matter here exactly what these weakenings are, but what does matter is that he shows that using these weakened frames, we can determine logics which are not determinable on any class of Kripke frames. To state this more precisely, for any class of frames $\mathsf{F}$, let $\mathrm{L}(\mathsf{F})$ be the set of sentences true at all points in all models definable some member of $\mathsf{F}$. Then let $\mathrm{ML}(\mathsf{F})$ be the set $\{\mathrm{L}(\mathsf{X}) : \mathsf{X} \subseteq \mathsf{F}\}$. That is $\mathrm{ML}(\mathsf{F})$ will be the class of logics which can be determined using just $\mathsf{F}$.
+
+If we let $\mathsf{K}$ denote the class of Kripke frames, and $mathsf{FP}$ denote the class of full possibility frames, Holliday constructs a very clever argument to show that 
 
 
 
+Since every Kripke frame is a Humberstone frame and every Humberstone frame is a full possibility frame, we have
+
+$$\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP}),$$
+
+where $\mathsf{K}$ is the class of Kripke frames, $\mathsf{H}$ is the class of Humberstone frames, $\mathsf{FP}$ is the class of full possibility frames, and $\mathrm{ML}(\mathsf{F})$ denotes the set of modal formulas valid over every frame in the class $\mathsf{F}$—the modal logic determined by that class. We know that at least one of these inclusions is strict—but which one?
+
+We will not answer Holliday's question exactly as posed. But we can answer a closely related question. If we expand the language to include infinitary disjunction $\bigvee$, then the first inclusion is strict: there are logics definable on Humberstone frames that are not definable on Kripke frames. We will show this by constructing a single Humberstone frame that, in the infinitary language, defines a logic with no Kripke equivalent.
+
+## The Frame
+
+The frame is built from two copies of the set of finite binary sequences—sequences of 0s and 1s of any finite length, including the empty sequence. We call one copy the **left-handed** sequences and the other the **right-handed** sequences. We write $x^L$ for the left-handed copy of a sequence $x$ and $x^R$ for the right-handed copy.
+
+The refinement relation is: $x \leqslant y$ iff $x$ and $y$ have the same handedness and $x$ is an initial segment of $y$. So within each copy the frame is just the binary tree ordered by extension, and no left-handed sequence refines a right-handed sequence or vice versa.
+
+## The Accessibility Relations
+
+We define two infinite families of accessibility relations. As we go, we verify that each relation satisfies the three Humberstone constraints **UpR**, **RDown**, and **RRef++**.
+
+**The left-to-right relations.** For each $k \geqslant 0$, define $R^\rightarrow_k$ by: $x R^\rightarrow_k y$ iff $x$ is left-handed, $y$ is right-handed, $y$ has length at least $k$, and either $x$ is an initial segment of $y$, or the first $k$ elements of $x$ are an initial segment of $y$.
+
+The special case $k = 0$ is simply: $x$ is left-handed and $y$ is right-handed (the length condition and the initial-segment disjunction are trivially satisfied).
+
+It helps to picture $R^\rightarrow_k$ as follows. Each of the two sets of sequences forms a binary tree in the usual way. Imagine bridges connecting left-handed nodes to right-handed nodes whenever the two nodes carry the same sequence of length exactly $k$. Then $x R^\rightarrow_k y$ holds precisely when there is a top-to-bottom path in the left tree starting at $x$, crossing one of these bridges, and then continuing along (and possibly beyond) $y$ in the right tree.
+
+We verify the three constraints for $R^\rightarrow_k$.
+
+- **UpR**: Suppose $x \leqslant x'$ and $x' R^\rightarrow_k y$. Then $x$ and $x'$ are both left-handed and $x$ is an initial segment of $x'$. Since $x'$ is an initial segment of $y$ or its first $k$ elements are an initial segment of $y$, the same holds for $x$ (being a shorter initial segment of $x'$). So $x R^\rightarrow_k y$.
+
+- **RDown**: Suppose $x R^\rightarrow_k y$ and $y \leqslant y'$. Then $y'$ is right-handed and is a refinement (extension) of $y$, so $y'$ has length at least $k$, and $x$ is still an initial segment of $y'$ or its first $k$ elements are still an initial segment of $y'$. So $x R^\rightarrow_k y'$.
+
+- **RRef++**: Suppose $x R^\rightarrow_k y$. Let $x'$ be the left-handed sequence consisting of the first $k$ elements of $x$ (or all of $x$ if $|x| < k$). Then $x \leqslant x'$ and for every $x'' \geqslant x'$, the first $k$ elements of $x''$ are an initial segment of $y$ (since $x'$ is an initial segment of $x''$ and the first $k$ elements of $x'$ are the first $k$ elements of $x$, which by hypothesis form an initial segment of $y$). Hence $x'' R^\rightarrow_k y$ for all $x'' \geqslant x'$.
+
+**The right-to-left relations.** For each $k > 0$, define $R^\leftarrow_k$ by: $x R^\leftarrow_k y$ iff $x$ is right-handed, $x$ does not have a $0$ in its $k$-th position (either because $x$ has length less than $k$, or because it has a $1$ in position $k$), and $y$ is left-handed.
+
+We verify the three constraints for $R^\leftarrow_k$.
+
+- **UpR**: Suppose $x \leqslant x'$ and $x' R^\leftarrow_k y$. Then $x$ and $x'$ are both right-handed and $x$ is an initial segment of $x'$. Since $x'$ does not have a $0$ in position $k$, either $|x'| < k$ or position $k$ of $x'$ is $1$. If $|x'| < k$ then also $|x| < k$, so $x$ does not have a $0$ in position $k$. If position $k$ of $x'$ is $1$, then since $x$ is an initial segment of $x'$, either $|x| < k$ or position $k$ of $x$ is also $1$. In either case $x$ does not have a $0$ in position $k$, so $x R^\leftarrow_k y$.
+
+- **RDown**: Suppose $x R^\leftarrow_k y$ and $y \leqslant y'$. Then $y'$ is left-handed, and the condition on $x$ is unchanged. So $x R^\leftarrow_k y'$.
+
+- **RRef++**: Suppose $x R^\leftarrow_k y$. We need some $x' \geqslant x$ such that for all $x'' \geqslant x'$, $x'' R^\leftarrow_k y$. Take $x' = x$. For any $x'' \geqslant x'$, $x''$ is right-handed and $x'$ is an initial segment of $x''$. Since $x'$ does not have a $0$ in position $k$, neither does $x''$ (if $|x'| \geqslant k$ then position $k$ of $x''$ equals position $k$ of $x'$, which is $1$; if $|x'| < k$ then either $|x''| < k$ also, or position $k$ of $x''$ is some bit which has nothing to do with $x'$—but wait, $x'$ is an initial segment of $x''$, so if $|x''| \geqslant k > |x'|$, position $k$ of $x''$ is freely determined and may be $0$).
+
+  To handle this correctly, take $x'$ to be the left-handed sequence obtained by extending $x$ to length $k$ with $1$s if $|x| < k$ (i.e., append $1$s until we reach length $k$, keeping $x$'s bits for the first $|x|$ positions). Then for all $x'' \geqslant x'$, $x''$ has length at least $k$ and its $k$-th element is $1$ (since $x'$ is an initial segment of $x''$ and the $k$-th element of $x'$ is $1$). So $x'' R^\leftarrow_k y$ for all $x'' \geqslant x'$. This establishes **RRef++**.
 
 
 ::: {.content-visible unless-format="html"}

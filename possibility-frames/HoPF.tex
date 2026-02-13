@@ -470,26 +470,26 @@ refinement will typically be \emph{smaller}.\footnote{Holliday
 notation becomes more intuitive. We have \(x \leqslant y\) when \(y\) is
 created by adding new content to \(x\). Keeping with this theme, I'll
 typically model stories not as worlds, but as finite sequences. (In the
-main example in \textbf{?@sec-proof}, they will be sequences of 0s and
-1s.) In these models, \(x \leqslant y\) means that \(x\) is an initial
-segment of \(y\).
+main example in Section~\ref{sec-proof}, they will be sequences of 0s
+and 1s.) In these models, \(x \leqslant y\) means that \(x\) is an
+initial segment of \(y\).
 
 \section{Formal Structure}\label{formal-structure}
 
 To start with, assume we're working in a simple language that just has a
 countable set \(\mathcal{P}\) countable infinity of propositional
 variables, and three connectives: \(\neg\), \(\wedge\) and \(\vee\). We
-have a set of possibilities \(R\), and a transitive refinement relation
+have a set of possibilities \(W\), and a transitive refinement relation
 \(\geqslant\) on them. The following rules show how to build what I'll
 call a \emph{Humberstone possibility model} on
-\(\langle R, \leqslant \rangle\). (I'll call this a \emph{possibility
+\(\langle W, \leqslant \rangle\). (I'll call this a \emph{possibility
 frame} in most contexts, but a \emph{Humberstone frame} when I'm
 comparing it to similar structures, especially in the context of
 discussing Holliday (\citeproc{ref-Holliday2025}{2025}).)
 
 A Humberstone possibility model \(\mathcal{M}\) is a triple
-\(\langle R, \leqslant, V \rangle\), where \(V\) is a function from
-\(\mathcal{P}\) to \(R\), intuitively saying where each atomic
+\(\langle W, \leqslant, V \rangle\), where \(V\) is a function from
+\(\mathcal{P}\) to \(W\), intuitively saying where each atomic
 proposition is true, satisfying these two constraints:
 
 \begin{itemize}
@@ -555,21 +555,21 @@ in Humberstone (\citeproc{ref-Humberstone1981a}{1981}, xxxx). Assume, as
 usual, that the language has a stock of names \(c_1, \dots\), and for
 each \(n\), a stock of \(n\)-place predicates \(F^n_1, F^n_2, \dots\). A
 \emph{first-order (Humberstone) possibility model} is a structure
-\(\langle R, \leqslant, D, V \rangle\), where \(D\) assigns a non-empty
+\(\langle W, \leqslant, D, V \rangle\), where \(D\) assigns a non-empty
 domain of objects to each point, and \(V\) interprets the non-logical
 vocabulary. More precisely:
 
 \begin{itemize}
 \tightlist
 \item
-  \(D\) is a function assigning to each \(x \in R\) a non-empty set
+  \(D\) is a function assigning to each \(x \in W\) a non-empty set
   \(D(x)\), the \textbf{domain} at \(x\).
 \item
-  \(V\) assigns to each name \(c_i\) and each \(x \in R\) either a
+  \(V\) assigns to each name \(c_i\) and each \(x \in W\) either a
   designated element \(V(c_i, x) \in D(x)\), or is undefined at \(x\).
 \item
   \(V\) assigns to each \(n\)-place predicate \(F^n_j\) and each
-  \(x \in R\) a set \(V(F^n_j, x) \subseteq D(x)^n\), the
+  \(x \in W\) a set \(V(F^n_j, x) \subseteq D(x)^n\), the
   \textbf{extension} of \(F^n_j\) at \(x\).
 \end{itemize}
 
@@ -580,7 +580,7 @@ These must satisfy the following constraints:
 \item[Domain monotonicity]
 If \(x \leqslant y\), then \(D(x) \subseteq D(y)\).
 \item[Name coverage]
-For each name \(c_i\) and each \(x \in R\), there exists some
+For each name \(c_i\) and each \(x \in W\), there exists some
 \(y \geqslant x\) such that \(V(c_i, y)\) is defined.
 \item[Persistence for names]
 If \(V(c_i, x)\) is defined and \(x \leqslant y\), then \(V(c_i, y)\) is
@@ -637,6 +637,283 @@ and \(\mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n)\) iff
 The more complex clauses above are needed only to handle the case where
 some name occurring in the formula lacks a denotation at \(x\) but is
 guaranteed to acquire one.
+
+This is a possibilist treatment of the universal quantifier, in contrast
+to the actualist quantifiers discussed in
+(\citeproc{ref-HarrisonTrainor2019}{\textbf{HarrisonTrainor2019?}}).
+I'll return in \textbf{?@sec-quant} to the reasons we are best off using
+possibilist quantifiers, and the difficulties this raises for talking
+about just what's true in a possibility.
+
+The third extension will be the introduction of modal operators. Here
+I'll follow Humberstone (\citeproc{ref-Humberstone1981a}{1981}) very
+closely, save just that I'll have a plurality of modal operators rather
+than just one. So I'll use these structures to define (as Holliday
+(\citeproc{ref-Holliday2025}{2025}) does) multi-modal logics. But I'll
+follow Humberstone, and not Holliday, in defining modal operators in
+terms of accessibility relations \(R_i\) satisfying these three
+conditions\footnote{I'm using the names for these that Holliday uses,
+  which are more evocative than Humberstone's original names.}:
+
+\begin{description}
+\tightlist
+\item[\textbf{UpR}:]
+If \(x \leqslant x'\) and \(x' R_i y\), then \(x R_i y\).
+\item[\textbf{RDown}:]
+If \(x R_i y\) and \(y \leqslant y'\), then \(x R_i y'\).
+\item[\textbf{RRef++}:]
+If \(x R_i y\), then there exists \(x' \geqslant x\) such that for all
+\(x'' \geqslant x'\), \(x'' R_i y\).
+\end{description}
+
+\textbf{UpR} says that if a refinement of \(x\) can access \(y\), then
+\(x\) itself can already access \(y\): accessibility is not something
+that can be gained by adding detail to the source. \textbf{RDown} is a
+converse of this; it says that accessibility cannot be gained by adding
+detail to the target. \textbf{RRef++} says that if \(x\) can access
+\(y\), there is some refinement \(x'\) of \(x\) where it is settled that
+\(x'\) can access \emph{y}. This last access can't be overturned by
+further refinement of \(x'\).
+
+Given these constraints, the truth conditions for the box and diamond
+operators are:
+
+\begin{align*}
+[\Box_i] \quad & \mathcal{M} \models_x \Box_i A \text{ iff } \forall y \, (x R_i y \Rightarrow \mathcal{M} \models_y A); \\
+[\Diamond_i] \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists w \, (z R_i w \text{ and } \mathcal{M} \models_w A).
+\end{align*}
+
+The clause for \(\Box\) is the standard one: \(\Box_i A\) is true at
+\(x\) iff \(A\) is true at every \(R_i\)-accessible possibility.
+Officially, Humberstone treats \(\Diamond\) as a defined connective,
+\(\Diamond_i A\) just means \(\neg \Box_i \neg A\). I've spelled out
+what that means using the truth condition for \(\neg\). It says that no
+refinement of \(x\) can permanently rule out there being an accessible
+point where \(A\) holds. Equivalently, every refinement of \(x\) has a
+further (possibly improper) refinement that accesses some point where
+\(A\) is true.
+
+Why should we impose these constraints? It is not hard to show that they
+guarantee that persistence and refinability hold for sentences generated
+using these new modal connectives. At least, it isn't hard as long as we
+remember that \(\Diamond\) is being treated as defined, so the only new
+step in the inductive proofs involves \(\Box\). And \textbf{UpR}
+guarantees persistence for \(\Box\) sentences, while \textbf{RRef++}
+guarantees refinability.
+
+But this is overkill. As Humberstone points out, we haven't used
+\textbf{RDown} in the proof, so this doesn't explain why we'd impose
+\textbf{RDown}. As Holliday points out {[}note to Claude, we need page
+number for this{]} \textbf{UpR} is stronger than we need for
+persistence. We could weaken it by making greater use of the fact that
+\(A\) is persistent. All we need is that if \(x \leqslant x'\) and
+\(xRy\) then there is some \(z \geqslant y\) such that \(xRy\). That
+will guarantee the key fact if \(x'\) can access a world where \(A\),
+then so can \(x\).
+
+So we need other arguments for these constraints other than their role
+in ensuring persistence and refinability. Humberstone offers two other
+arguments here. One anticipates the multi-modal setting that is being
+used here. It's that if we want to use this system for tense logic, then
+we want \(R_i^{-1}\) to satisfy all the constraints, so if we impose
+\textbf{UpR}, we should also impose \textbf{RDown}. This isn't
+convincing on its own though. For one thing, as already noted, we might
+not need \textbf{UpR}. For another, by these lights we should worry that
+the system is incomplete because we haven't put in a converse of
+\textbf{RRef++}.
+
+The argument that Humberstone spends more time on, and which I think is
+more compelling, comes from rethinking the relationship between \(R_i\)
+and \(\Box_i\). It's very tempting to read those truth conditions as
+being explanatory from right-to-left. On this way of thinking, facts
+about which \(\Box_i\) sentences are true at a point are grounded in
+which non-modal sentences are true and which \(R_i\) relations obtain.
+But while this is tempting, it isn't compulsory.
+
+We could instead take the modal facts as given, and ask what
+accessibility relations must obtain to be consistent with them. The
+process here is familiar from the construction of canonical models. We
+take the sets of consistent sentences as given, and say \(s_1R_is_2\)
+iff whenever \(\Box_i A \in s_1\), then \(A \in s_2\). Humberstone's
+approach is, I think, similar. Start with the idea that some sentences
+are true in some model \(\mathcal{M}\) at possibilities \(x\) and \(y\),
+say \(xR_iy\) iff \(\mathcal{M} \models_y A\) whenever
+\(\mathcal{M} \models_x \Box_i A\), and ask what constraints \(R_i\)
+will thereby satisfy.
+
+The answer is that, if all sentences are persistent and refinable, then
+\(R_i\) will satisfy these three constraints. If
+\(\mathcal{M} \models_y A\) whenever
+\(\mathcal{M} \models_x' \Box_i A\), then by the persistence of
+\(\Box_i\), we know that \(\mathcal{M} \models_y A\) whenever
+\(\mathcal{M} \models_x \Box_i A\). A similar argument, using the
+persistence of \(A\), justifies \textbf{RDown}. Finally, \textbf{RRef++}
+follows from the fact that \(\Box_i A\) is refinable. If \(\Box_i A\) is
+not true at \(x\), that means that it is determinately not true at some
+refinement. So if \(\mathcal{M} \nmodels_x A\), there must be some
+refinement \(x'\) such that for all further refinements \(x''\),
+\(\mathcal{M} \nmodels_x'' A\). If \(\mathcal{M} \nmodels_x \Box_i A\),
+then there must be some possibility \(y\) such that \(xR_iy\) and
+\(\mathcal{M} \nmodels_y A\). So as long as \(x''R_iy\), refinability
+will be satisfied. I don't see how to prove there isn't a weaker
+condition that would also work, it's possible we could use the
+refinability of A to find some weaker condition, but I don't quite see
+how that would work. So I think \textbf{RRef++} also follows from this
+way of thinking about accessibility.
+
+In the next section I'll discuss what logics can be defined using frames
+that satisfy all of these conditions.
+
+\section{Logics Determinable on Humberstone Frames}\label{sec-proof}
+
+Holliday (\citeproc{ref-Holliday2025}{2025}) raises an interesting
+question. As well as the familiar Kripke frames most commonly used as a
+semantics for modal logic, and the Humberstone frames defined above, he
+introduces a class of `full possibility' frames, which weaken some of
+Humberstone's constraints. It won't matter here exactly what these
+weakenings are, but what does matter is that he shows that using these
+weakened frames, we can determine logics which are not determinable on
+any class of Kripke frames. To state this more precisely, for any class
+of frames \(\mathsf{F}\), let \(\mathrm{L}(\$\mathsf{F})\) be the set of
+sentences true at all points in all models definable some member of
+\(\mathsf{F}\). Then let \(\mathrm{ML}(\mathsf{F})\) be the set
+\(\{\mathrm{L}(\mathsf{X}) : \mathsf{X} \subseteq \mathsf{F}\}\)
+
+Since every Kripke frame is a Humberstone frame and every Humberstone
+frame is a full possibility frame, we have
+
+\[\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP}),\]
+
+where \(\mathsf{K}\) is the class of Kripke frames, \(\mathsf{H}\) is
+the class of Humberstone frames, \(\mathsf{FP}\) is the class of full
+possibility frames, and \(\mathrm{ML}(\mathsf{F})\) denotes the set of
+modal formulas valid over every frame in the class \(\mathsf{F}\)---the
+modal logic determined by that class. We know that at least one of these
+inclusions is strict---but which one?
+
+We will not answer Holliday's question exactly as posed. But we can
+answer a closely related question. If we expand the language to include
+infinitary disjunction \(\bigvee\), then the first inclusion is strict:
+there are logics definable on Humberstone frames that are not definable
+on Kripke frames. We will show this by constructing a single Humberstone
+frame that, in the infinitary language, defines a logic with no Kripke
+equivalent.
+
+\subsection{The Frame}\label{the-frame}
+
+The frame is built from two copies of the set of finite binary
+sequences---sequences of 0s and 1s of any finite length, including the
+empty sequence. We call one copy the \textbf{left-handed} sequences and
+the other the \textbf{right-handed} sequences. We write \(x^L\) for the
+left-handed copy of a sequence \(x\) and \(x^R\) for the right-handed
+copy.
+
+The refinement relation is: \(x \leqslant y\) iff \(x\) and \(y\) have
+the same handedness and \(x\) is an initial segment of \(y\). So within
+each copy the frame is just the binary tree ordered by extension, and no
+left-handed sequence refines a right-handed sequence or vice versa.
+
+\subsection{The Accessibility
+Relations}\label{the-accessibility-relations}
+
+We define two infinite families of accessibility relations. As we go, we
+verify that each relation satisfies the three Humberstone constraints
+\textbf{UpR}, \textbf{RDown}, and \textbf{RRef++}.
+
+\textbf{The left-to-right relations.} For each \(k \geqslant 0\), define
+\(R^\rightarrow_k\) by: \(x R^\rightarrow_k y\) iff \(x\) is
+left-handed, \(y\) is right-handed, \(y\) has length at least \(k\), and
+either \(x\) is an initial segment of \(y\), or the first \(k\) elements
+of \(x\) are an initial segment of \(y\).
+
+The special case \(k = 0\) is simply: \(x\) is left-handed and \(y\) is
+right-handed (the length condition and the initial-segment disjunction
+are trivially satisfied).
+
+It helps to picture \(R^\rightarrow_k\) as follows. Each of the two sets
+of sequences forms a binary tree in the usual way. Imagine bridges
+connecting left-handed nodes to right-handed nodes whenever the two
+nodes carry the same sequence of length exactly \(k\). Then
+\(x R^\rightarrow_k y\) holds precisely when there is a top-to-bottom
+path in the left tree starting at \(x\), crossing one of these bridges,
+and then continuing along (and possibly beyond) \(y\) in the right tree.
+
+We verify the three constraints for \(R^\rightarrow_k\).
+
+\begin{itemize}
+\item
+  \textbf{UpR}: Suppose \(x \leqslant x'\) and \(x' R^\rightarrow_k y\).
+  Then \(x\) and \(x'\) are both left-handed and \(x\) is an initial
+  segment of \(x'\). Since \(x'\) is an initial segment of \(y\) or its
+  first \(k\) elements are an initial segment of \(y\), the same holds
+  for \(x\) (being a shorter initial segment of \(x'\)). So
+  \(x R^\rightarrow_k y\).
+\item
+  \textbf{RDown}: Suppose \(x R^\rightarrow_k y\) and
+  \(y \leqslant y'\). Then \(y'\) is right-handed and is a refinement
+  (extension) of \(y\), so \(y'\) has length at least \(k\), and \(x\)
+  is still an initial segment of \(y'\) or its first \(k\) elements are
+  still an initial segment of \(y'\). So \(x R^\rightarrow_k y'\).
+\item
+  \textbf{RRef++}: Suppose \(x R^\rightarrow_k y\). Let \(x'\) be the
+  left-handed sequence consisting of the first \(k\) elements of \(x\)
+  (or all of \(x\) if \(|x| < k\)). Then \(x \leqslant x'\) and for
+  every \(x'' \geqslant x'\), the first \(k\) elements of \(x''\) are an
+  initial segment of \(y\) (since \(x'\) is an initial segment of
+  \(x''\) and the first \(k\) elements of \(x'\) are the first \(k\)
+  elements of \(x\), which by hypothesis form an initial segment of
+  \(y\)). Hence \(x'' R^\rightarrow_k y\) for all \(x'' \geqslant x'\).
+\end{itemize}
+
+\textbf{The right-to-left relations.} For each \(k > 0\), define
+\(R^\leftarrow_k\) by: \(x R^\leftarrow_k y\) iff \(x\) is right-handed,
+\(x\) does not have a \(0\) in its \(k\)-th position (either because
+\(x\) has length less than \(k\), or because it has a \(1\) in position
+\(k\)), and \(y\) is left-handed.
+
+We verify the three constraints for \(R^\leftarrow_k\).
+
+\begin{itemize}
+\item
+  \textbf{UpR}: Suppose \(x \leqslant x'\) and \(x' R^\leftarrow_k y\).
+  Then \(x\) and \(x'\) are both right-handed and \(x\) is an initial
+  segment of \(x'\). Since \(x'\) does not have a \(0\) in position
+  \(k\), either \(|x'| < k\) or position \(k\) of \(x'\) is \(1\). If
+  \(|x'| < k\) then also \(|x| < k\), so \(x\) does not have a \(0\) in
+  position \(k\). If position \(k\) of \(x'\) is \(1\), then since \(x\)
+  is an initial segment of \(x'\), either \(|x| < k\) or position \(k\)
+  of \(x\) is also \(1\). In either case \(x\) does not have a \(0\) in
+  position \(k\), so \(x R^\leftarrow_k y\).
+\item
+  \textbf{RDown}: Suppose \(x R^\leftarrow_k y\) and \(y \leqslant y'\).
+  Then \(y'\) is left-handed, and the condition on \(x\) is unchanged.
+  So \(x R^\leftarrow_k y'\).
+\item
+  \textbf{RRef++}: Suppose \(x R^\leftarrow_k y\). We need some
+  \(x' \geqslant x\) such that for all \(x'' \geqslant x'\),
+  \(x'' R^\leftarrow_k y\). Take \(x' = x\). For any
+  \(x'' \geqslant x'\), \(x''\) is right-handed and \(x'\) is an initial
+  segment of \(x''\). Since \(x'\) does not have a \(0\) in position
+  \(k\), neither does \(x''\) (if \(|x'| \geqslant k\) then position
+  \(k\) of \(x''\) equals position \(k\) of \(x'\), which is \(1\); if
+  \(|x'| < k\) then either \(|x''| < k\) also, or position \(k\) of
+  \(x''\) is some bit which has nothing to do with \(x'\)---but wait,
+  \(x'\) is an initial segment of \(x''\), so if
+  \(|x''| \geqslant k > |x'|\), position \(k\) of \(x''\) is freely
+  determined and may be \(0\)).
+
+  To handle this correctly, take \(x'\) to be the left-handed sequence
+  obtained by extending \(x\) to length \(k\) with \(1\)s if \(|x| < k\)
+  (i.e., append \(1\)s until we reach length \(k\), keeping \(x\)'s bits
+  for the first \(|x|\) positions). Then for all \(x'' \geqslant x'\),
+  \(x''\) has length at least \(k\) and its \(k\)-th element is \(1\)
+  (since \(x'\) is an initial segment of \(x''\) and the \(k\)-th
+  element of \(x'\) is \(1\)). So \(x'' R^\leftarrow_k y\) for all
+  \(x'' \geqslant x'\). This establishes \textbf{RRef++}.
+\end{itemize}
+
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
