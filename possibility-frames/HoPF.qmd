@@ -147,20 +147,18 @@ The atomic clauses simplify when names are fully defined. If $t_1$ and $t_2$ are
 
 This is a possibilist treatment of the universal quantifier, in contrast to the actualist quantifiers discussed in @HarrisonTrainor2019. I'll return in @sec-quant to the reasons we are best off using possibilist quantifiers, and the difficulties this raises for talking about just what's true in a possibility.
 
-The third extension will be the introduction of modal operators. Here I'll follow @Humberstone1981a very closely, save just that I'll have a plurality of modal operators rather than just one. So I'll use these structures to define (as @Holliday2025 does) multi-modal logics. But I'll follow Humberstone, and not Holliday, in defining modal operators in terms of accessibility relations that satisfy these three conditions:
+The third extension will be the introduction of modal operators. Here I'll follow @Humberstone1981a very closely, save just that I'll have a plurality of modal operators rather than just one. So I'll use these structures to define (as @Holliday2025 does) multi-modal logics. But I'll follow Humberstone, and not Holliday, in defining modal operators in terms of accessibility relations $R_i$ satisfying these three conditions^[I'm using the names for these that Holliday uses, which are more evocative than Humberstone's original names.]:
 
-For each modal operator, we have a binary relation $R_i$ on $W$. Not every such relation is admissible: to ensure that the resulting truth conditions respect persistence and refinability, each $R_i$ must satisfy the following three constraints.
-
-**UpR** (accessibility propagates to refinements of the source).
+**UpR**:
 :    If $x \leqslant x'$ and $x' R_i y$, then $x R_i y$.
 
-**RDown** (accessibility extends to refinements of the target).
+**RDown**:
 :    If $x R_i y$ and $y \leqslant y'$, then $x R_i y'$.
 
-**RRefPlusPlus** (accessibility can be stabilized).
+**RRef++**:
 :    If $x R_i y$, then there exists $x' \geqslant x$ such that for all $x'' \geqslant x'$, $x'' R_i y$.
 
-The first condition says that if a refinement of $x$ can access $y$, then $x$ itself can already access $y$: accessibility is not something that can be lost by adding detail to the source. The second says that if $x$ accesses $y$, it also accesses every refinement of $y$: the target can always be made more specific. The third says that whenever $x$ accesses $y$, there is some refinement of $x$ from which the accessibility to $y$ is locked in — it cannot be undone by any further refinement.
+**UpR** says that if a refinement of $x$ can access $y$, then $x$ itself can already access $y$: accessibility is not something that can be gained by adding detail to the source. **RDown** is a converse of this; it says that accessibility cannot be gained by adding detail to the target. **RRef++** says that if $x$ can access $y$, there is some refinement $x'$ of $x$ where it is settled that $x'$ can access *y*. This last access can't be overturned by further refinement of $x'$.
 
 Given these constraints, the truth conditions for the box and diamond operators are:
 
@@ -169,9 +167,27 @@ Given these constraints, the truth conditions for the box and diamond operators 
 [\Diamond_i] \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists w \, (z R_i w \text{ and } \mathcal{M} \models_w A).
 \end{align*}
 
-The box clause is the standard one: $\Box_i A$ is true at $x$ iff $A$ is true at every $R_i$-accessible point. The diamond is defined as $\neg\Box_i\neg A$, which by the definition of $\neg$ unfolds to the $\forall\exists$ condition above: $\Diamond_i A$ is true at $x$ iff no refinement of $x$ can permanently rule out there being an accessible point where $A$ holds. Equivalently, every refinement of $x$ has a further refinement that accesses some point where $A$ is true.
+The clause for $\Box$ is the standard one: $\Box_i A$ is true at $x$ iff $A$ is true at every $R_i$-accessible possibility. Officially, Humberstone treats $\Diamond$ as a defined connective, $\Diamond_i A$ just means $\neg \Box_i \neg A$. I've spelled out what that means using the truth condition for $\neg$. It says that no refinement of $x$ can permanently rule out there being an accessible point where $A$ holds. Equivalently, every refinement of $x$ has a further (possibly improper) refinement that accesses some point where $A$ is true.
 
-The three constraints on $R_i$ are precisely what is needed to verify that persistence and refinability hold for $\Box_i A$ and $\Diamond_i A$ whenever they hold for $A$. UpR ensures persistence for $\Box_i$: if $\Box_i A$ is true at $x$ and $x \leqslant x'$, then any $y$ accessible from $x'$ is also accessible from $x$ by UpR, so $A$ is true there. RDown and RRefPlusPlus together ensure that refinability holds: RDown prevents $\Diamond_i A$ from being trivially irrefutable by guaranteeing that accessibility targets can always be refined, while RRefPlusPlus ensures that box-accessibility can be settled definitively.
+Why should we impose these constraints? It is not hard to show that they guarantee that persistence and refinability hold for sentences generated using these new modal connectives. At least, it isn't hard as long as we remember that $\Diamond$ is being treated as defined, so the only new step in the inductive proofs involves $\Box$. And **UpR** guarantees persistence for $\Box$ sentences, while **RRef++** guarantees refinability.
+
+But this is overkill. As Humberstone points out, we haven't used **RDown** in the proof, so this doesn't explain why we'd impose **RDown**. As Holliday points out [note to Claude, we need page number for this] **UpR** is stronger than we need for persistence. We could weaken it by making greater use of the fact that $A$ is persistent. All we need is that if $x \leqslant x'$ and $xRy$ then there is some $z \geqslant y$ such that $xRy$. That will guarantee the key fact if $x'$ can access a world where $A$, then so can $x$.
+
+So we need other arguments for these constraints other than their role in ensuring persistence and refinability. Humberstone offers two other arguments here. One anticipates the multi-modal setting that is being used here. It's that if we want to use this system for tense logic, then we want $R_i^{-1}$ to satisfy all the constraints, so if we impose **UpR**, we should also impose **RDown**. This isn't convincing on its own though. For one thing, as already noted, we might not need **UpR**. For another, by these lights we should worry that the system is incomplete because we haven't put in a converse of **RRef++**.
+
+The argument that Humberstone spends more time on, and which I think is more compelling, comes from rethinking the relationship between $R_i$ and $\Box_i$. It's very tempting to read those truth conditions as being explanatory from right-to-left. On this way of thinking, facts about which $\Box_i$ sentences are true at a point are grounded in which non-modal sentences are true and which $R_i$ relations obtain. But while this is tempting, it isn't compulsory. 
+
+We could instead take the modal facts as given, and ask what accessibility relations must obtain to be consistent with them. The process here is familiar from the construction of canonical models. We take the sets of consistent sentences as given, and say $s_1R_is_2$ iff whenever $\Box_i A \in s_1$, then $A \in s_2$. Humberstone's approach is, I think, similar. Start with the idea that some sentences are true in some model $\mathcal{M}$ at possibilities $x$ and $y$, say $xR_iy$ iff $\mathcal{M} \models_y A$ whenever $\mathcal{M} \models_x \Box_i A$, and ask what constraints $R_i$ will thereby satisfy.
+
+The answer is that, if all sentences are persistent and refinable, then $R_i$ will satisfy these three constraints. If $\mathcal{M} \models_y A$ whenever $\mathcal{M} \models_x' \Box_i A$, then by the persistence of $\Box_i$, we know that $\mathcal{M} \models_y A$ whenever $\mathcal{M} \models_x \Box_i A$. A similar argument, using the persistence of $A$, justifies **RDown**. Finally, **RRef++** follows from the fact that $\Box_i A$ is refinable. If $\Box_i A$ is not true at $x$, that means that it is determinately not true at some refinement. So if $\mathcal{M} \nmodels_x A$, there must be some refinement $x'$ such that for all further refinements $x''$, $\mathcal{M} \nmodels_x'' A$. If $\mathcal{M} \nmodels_x \Box_i A$, then there must be some possibility $y$ such that $xR_iy$ and $\mathcal{M} \nmodels_y A$. So as long as $x''R_iy$, refinability will be satisfied. I don't see how to prove there isn't a weaker condition that would also work, it's possible we could use the refinability of A to find some weaker condition, but I don't quite see how that would work. So I think **RRef++** also follows from this way of thinking about accessibility.
+
+In the next section I'll discuss what logics can be defined using frames that satisfy all of these conditions.
+
+# Logics Definable on Humberstone Frames
+
+
+
+
 
 ::: {.content-visible unless-format="html"}
 ## References {-}
