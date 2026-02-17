@@ -1,0 +1,11 @@
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+        \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+  html:
+    mathjax:
+      tex:
+        macros:
+          boxright: "\\mathrel{\\Box\\!\\!\\rightarrow}"
