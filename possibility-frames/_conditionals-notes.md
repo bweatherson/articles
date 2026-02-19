@@ -51,5 +51,44 @@ Disjunction
 
 Then both (@firstkgods) and (@latergods) seem like they should be true.
 
-(@firstkgods) If the man 
+(@firstkgods) If the man had entered the room, and been killed by one of God_1_ through God_*k*+1_, he wouldn't have been killed by God_*k*_ (because God_*k*+1_ would have killed him first).
+(@latergods) If the man had entered the room, and not been killed by one of God_1_ through God_*k*+1_, he wouldn't have been killed by God_*k*_.
 
+Putting these together using **Disjunction**, we get the following sentence. It's a mouthful, but it's important to spell it out for what comes next.
+
+(@longnotk) If either the man had entered the room, and been killed by one of God_1_ through God_*k*+1_, or he had entered the room, and not been killed by one of God_1_ through God_*k*+1_, he wouldn't have been killed by God_*k*_.
+
+To finish off the paradox, let's add a new principle **Antecedent Substitution**.
+
+Antecedent Substitution
+:    If $A$ and $B$ are provably equivalent in classical logic, and $A \boxright C$ is true, so is $B \boxright C$.
+
+Then using **Antecedent Substitution** we can get from (@longnotk) to (@shortnotk).
+
+(@shortnotk) If the man had entered the room, he would not have been killed by God_*k*_.
+
+And since *k* is arbitrary in (@shortnotk), we can derive (@lewisgodparticular), without any appeal to the metaphysics of counterfactuals. It looks like our only options, short of abandoning classical logic, are to give up one **Infinite Conjunction**, **Disjunction**, or **Antecedent Substitution**. In Fine's original discussion of the paradox he introduces several more principles that could in theory be given up, but Brian @Embry2014 convincingly argues that really it has to be one of these three that go, and I'm following his lead.
+
+If these are the three options, it isn't obvious which one to take. All three paths forward have their proponents, or at least are consequences of otherwise plausible views. I've already noted that @Lewis1973a is committed to rejecting **Infinite Conjunction**, because he does not endorse the Limit Assumption. This does not look great; it's crucial to reasoning with counterfactuals that if some things would each be true were $A$ the case, then were $A$ the case they would each be true.
+
+@Fine2012a recommends giving up **Antecedent Substitution**. He develops a theory of conditionals that doesn't use possible worlds, but instead uses incomplete states. These are not entirely unlike Humberstone's possibilities, but the resulting theory is quite different. I suspect the key distinction, the one that drives all of the rest of the results, is that Fine takes disjunctions to be true at a state only if a disjunct is true at that state. Anyway, Fine thinks that the misstep in the trilemma above is the derivation of (@shortnotk) from (@longnotk). That step requires substituting $A$ for $(A \wedge B) \vee (A \wedge \neg B)$ in an antecedent, which Fine takes to be illegitimate.
+
+There are a couple of reasons to be unhappy with this way of getting out of the problem. One is that this did not feel like the most controversial step when we were developing the problem. But a bigger one is that Fine's resolution of the trilemma ends up endorsing not just **Disjunction**, but also its converse. This is the principle that @Humberstone2011 [10xx] calls *Conv. Subj. Dilemma*, the key being that from $(A \vee B) \boxright C)$ one can infer $A \boxright C$. The criticisms of Fine in @Embry2014 largely centre on this aspect of Fine's view, and its consequences. But the key problems with the principle are already pretty clear in @Humberstone2011 [10xx-10xy]. So I think we shouldn't go that way.
+
+So that leaves **Disjunction**. This is the step that Andrew @Bacon2023 rejects, and it's what I'll reject as well. I think there are two key reasons to worry about giving up **Disjunction**, and they are pretty hard worries to address in the possible worlds framework. But they both seem more or less manageable in the possibilities framework.
+
+The first worry is that without **Disjunction**, we have to give up the idea that the selection function *f* is in any sense a measure of similarity, or really any kind of nearness. Here is how Bacon puts it,
+
+[Insert quote]
+
+Now for Bacon, this isn't a worry, because he thinks there are independent reasons to reject the picture of similarity or nearness as being foundational to counterfactuals. I don't find those reasons convincing, and basically agree with the response to them that @Fine2023 gives. But it's not just critics of **Disjunction** who connect it to the similarity picture. The same connection is drawn by Humberstone, who does endorse **Disjunction**.
+
+[Insert quote]
+
+I think this connection, drawn by Humberstone and then again by Bacon, is entirely correct if, *but only if*, we're working in a possible worlds framework. If we're in a possibilities framework, it doesn't look right. It could be that the nearest possibility in which $A \vee B$ is not identical to either the nearest possibility in which $A$, or the nearest possibility in which $B$, but is instead a coarsening of one of those possibilities. 
+
+How could **Disjunction** fail on the possible worlds picture? We must fail to have the nearest $A \vee B$-world be a $C$-world. But that's impossible if the nearest $A$-world is a $C$-world, and the nearest $B$-world is a $C$-world, and all $A \vee B$-worlds are $A$-worlds or $B$-worlds. On the possibilities picture, that last clause fails. It might be that the nearest possibility which makes $A \vee B$ true does not make either $A$ true or $B$ true, it just guarantees that sequence of refinements will eventually make one or the other true. Also note that we don't require that the nearest $A \vee B$ possibility makes $\neg C$ true; it could be that **Disjunction** fails because both $C$ and $\neg C$ are true at different refinements of the nearest $A \vee B$ possibility.
+
+That's what happens with our man who wisely doesn't enter the room. What's the nearest possibility in which he does enter the room? It's the incomplete possibility where he is killed by one of the gods. For each *i, j: i > j*, the possibility where he is killed by God_*i*_ is closer than the one where he is killed by God_*j*_. But the indeterminate possibility where he is killed, but the possibility does not specify which god he is killed by, is closer to actuality than any complete possibility which specifies the homicidal divinity.
+
+So rejecting **Disjunction** is compatible with the similarity approach to counterfactuals, as long as we use possibilities. The other worry with rejecting disjunction, one @Fine2023 stresses in his response to Bacon, is that we use **Disjunction** a lot in ordinary counterfactual reasoning. We should be cautious about giving it up. Of course, there are plenty of rules that we use in ordinary reasoning that work in all but a few edge cases. If we could show that **Disjunction** was truth-preserving in all but some rare exception cases, we could justify 
