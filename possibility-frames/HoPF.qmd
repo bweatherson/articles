@@ -2,7 +2,7 @@
 title: "Humberstone on Possibility Frames"
 abstract: |
   Insert abstract here
-date: Feb 19 2026
+date: Feb 22 2026
 number-sections: true
 draft: false
 execute:
@@ -65,7 +65,7 @@ format:
           \setlength\heavyrulewidth{0ex}
           \setlength\lightrulewidth{0ex}
           \usepackage[lines=2]{lettrine}
-          \cehead{Draft of February 11, 2026}
+          \cehead{Draft of February 22, 2026}
           \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
           \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
 nocite: |
@@ -212,7 +212,7 @@ In the next section I'll discuss what logics can be defined using frames that sa
 
 If we let $\mathsf{K}$ denote the class of Kripke frames, and $\mathsf{FP}$ denote the class of full possibility frames, @Holliday2025 [§2.5] constructs a very clever argument to show that $\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})$. But, if we let $\mathsf{H}$ denote the class of Humberstone frames, he notes that while the fact that every Kripke frame is a Humberstone frame and every Humberstone frame is a full possibility frame, $\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP})$, and while $\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})$ implies that one of those inclusions is strict, it isn't clear which one. He leaves the question of which one it is, and of course it could be both, as an open question.
 
-I don't have an answer to that question as asked, since it is asked about languages with sentences with finite lengths. I do have a proof that if we allow infinite disjunction, as discussed above, then $\mathrm{ML}(\mathsf{K}) \neq \mathrm{ML}(\mathsf{K})$. If we expand the language like that, at least the first inequality is strict. I will show this by constructing a single Humberstone frame that, in the infinitary language, defines a logic with no Kripke equivalent. The construction will follow Holliday's construction very closely, but differ just enough to ensure compliance with Humberstone's conditions.
+I don't have an answer to that question as asked, since it is asked about languages with sentences with finite lengths. I do have a proof that if we allow infinite disjunction, as discussed above, then $\mathrm{ML}(\mathsf{H}) \neq \mathrm{ML}(\mathsf{K})$. If we expand the language like that, at least the first inequality is strict. I will show this by constructing a single Humberstone frame that, in the infinitary language, defines a logic with no Kripke equivalent. The construction will follow Holliday's construction very closely, but differ just enough to ensure compliance with Humberstone's conditions.
 
 ## The Frame {-}
 
@@ -220,9 +220,9 @@ The frame is built from two copies of the set of finite binary sequences—seque
 
 ## The Accessibility Relations  {-}
 
-Next I'll define an accessibility relation and a separate infinite family of accessibility relations. The single relation, which I'll write $R^{\rightarrow}$ is such that $xR^{\rightarrow}y$ iff $x$ is left-handed and $y$ is right-handed. The family of relations, each of which I'll write as $R^{\rightarrow}_i$, for $i \in \mathbb{N}$, is such that $xR^{\leftarrow}_iy$ iff $x$ is right-handed, $x$ does not have a $0$ in its $i$-th position (either because $x$ has length less than $i$, or because it has a $1$ in position $i$), and $y$ is left-handed.
+Next I'll define an accessibility relation and a separate infinite family of accessibility relations. The single relation, which I'll write $R^{\rightarrow}$ is such that $xR^{\rightarrow}y$ iff $x$ is left-handed and $y$ is right-handed. The family of relations, each of which I'll write as $R^{\leftarrow}_i$, for $i \in \mathbb{N}$, is such that $xR^{\leftarrow}_iy$ iff $x$ is right-handed, $x$ does not have a $0$ in its $i$-th position (either because $x$ has length less than $i$, or because it has a $1$ in position $i$), and $y$ is left-handed.
 
-That $R^{\rightarrow}$ satisfies **UpR**, **RDown**, and **RRef++** is obvious. It is also obvious that for each $i$, $R^{\rightarrow}_i$ satisfies **UpR** and **RDown**. It's only a little harder to show that it satisfies **RRef++**. Assume $xR^{\rightarrow}_iy$. So $x$ is right-handed, and $y$ is left-handed. If $x$ is of length at least $i$, then $x$ itself can be the refinement such that every further refinement can access $y$. If $x$'s length is less than $i$, extend $x$ with enough 1s to create a sequence of length $i$. The result will be a refinement such that every refinement can access $y$, as required.
+That $R^{\rightarrow}$ satisfies **UpR**, **RDown**, and **RRef++** is obvious. It is also obvious that for each $i$, $R^{\leftarrow}_i$ satisfies **UpR** and **RDown**. It's only a little harder to show that it satisfies **RRef++**. Assume $xR^{\leftarrow}_iy$. So $x$ is right-handed, and $y$ is left-handed. If $x$ is of length at least $i$, then $x$ itself can be the refinement such that every further refinement can access $y$. If $x$'s length is less than $i$, extend $x$ with enough 1s to create a sequence of length $i$. The result will be a refinement such that every refinement can access $y$, as required.
 
 ## The Example {-}
 
@@ -258,9 +258,9 @@ Now consider the cases where there are points $y$ such that $xR^{\rightarrow}y$ 
 
 The second point, that $\neg \Diamond^{rightarrow} p$ is not true on all models on the frame, is trivial, since that will fail at some left-handed points whenever $p$ is true at some right-handed point.
 
-For the third point, we follow Holliday's argument particularly closely. Consider any class of Kripke frames such that $\neg \Diamond^{rightarrow} p$ is not valid on that class. Look at the class of models of those frames where $p$ is true at exactly one world. For any disjunct of the right-hand disjunct of (\ref{Splitting}) to be true at a point, it must access a world where $p$ is true that's a dead-end with respect to $R^{\leftarrow}_i$, and a world where $p$ is true that's not a dead-end with respect to $R^{\leftarrow}_i$. That's impossible if $p$ is true at just one world. So throughout this class of models, that right-hand disjunct of (\ref{Splitting}) will be false. But if $\neg \Diamond^{rightarrow} p$ is not valid on the frame, there will also be points in this class of models where $\Diamond^{rightarrow} p$ is true. So the disjunction will not be false somewhere, and hence not valid on the frame.
+For the third point, we follow Holliday's argument particularly closely. Consider any class of Kripke frames such that $\neg \Diamond^{\rightarrow} p$ is not valid on that class. Look at the class of models of those frames where $p$ is true at exactly one world. For any disjunct of the right-hand disjunct of (\ref{Splitting}) to be true at a point, it must access a world where $p$ is true that's a dead-end with respect to $R^{\leftarrow}_i$, and a world where $p$ is true that's not a dead-end with respect to $R^{\leftarrow}_i$. That's impossible if $p$ is true at just one world. So throughout this class of models, that right-hand disjunct of (\ref{Splitting}) will be false. But if $\neg \Diamond^{\rightarrow} p$ is not valid on the frame, there will also be points in this class of models where $\Diamond^{\rightarrow} p$ is true. So the disjunction will not be false somewhere, and hence not valid on the frame.
 
-Putting these together, the sentences valid 
+Putting these together, there is no class of Kripke frames which validate exactly those the sentences valid on this particular Humberstone frame. So $\mathrm{ML}(\mathsf{K}) \neq \mathrm{ML}(\mathsf{H})$, and hence $\mathrm{ML}(\mathsf{H}) \subsetneq \mathrm{ML}(\mathsf{K})$.
 
 # Quantifiers and Necessitism {#sec-quant}
 
@@ -268,7 +268,7 @@ Putting these together, the sentences valid
 
 The only discussion of possibilities (as opposed to worlds) in *The Connectives* is in the chapter on disjunction. But there are several potential connections to conditionals, and in this section I'll go over a couple of them.
 
-One connection concerns Conditional Excluded Middle (as discussed on pages 1008-1013 of *The Connectives*), and more generally the relationship between $A > (B v C)$ and $(A \boxright B) \vee (A \boxright C)$. On a Stalnaker-Lewis style approach to conditionals, these are equivalent iff there is a nearest possible world in which $A$ is true, for any possble $A$. It is natural to think about whether that is true in largely metaphysical terms, asking whether there really is guaranteed to be a single nearest world where $A$ is true. And as @Lewis1973a argued, it is natural to answer that question negatively.
+One connection concerns Conditional Excluded Middle (as discussed on pages 1008-1013 of *The Connectives*), and more generally the relationship between $A > (B \vee C)$ and $(A \boxright B) \vee (A \boxright C)$. On a Stalnaker-Lewis style approach to conditionals, these are equivalent iff there is a nearest possible world in which $A$ is true, for any possble $A$. It is natural to think about whether that is true in largely metaphysical terms, asking whether there really is guaranteed to be a single nearest world where $A$ is true. And as @Lewis1973a argued, it is natural to answer that question negatively.
 
 To take one striking example of that, consider the discussion by Jeremy @Goodmanms of the example, originally due to Max @Black1952a, of the two spheres alone in space. Black says that the spheres are really two, so this is a counterexample to the Principle of Identity of Indiscernibles. Let's assume, for now, that Black is right, and we can call one sphere $a$ and the other sphere $b$. Goodman asks what we should say about the counterfactual possibility that one of the spheres is heavier. On Lewis's picture, rejecting Conditional Excluded Middle, both (@goodmana) and (@goodmanb) are false.
 
@@ -315,7 +315,7 @@ Infinite Conjunction
 Without the Limit Assumption, Lewis's semantics would endorse **Infinite Conjunction**. But it would also have a problem. Which of the gods would kill the man? Any choice seems not only arbitrary, but mistaken. Let's spell this out a bit more carefully. Fine's way of spelling out the paradox makes heavy use of a principle he calls **Disjunction**. (This is called **Subj. Dilemma** by @Humberstone2011 [1015].)
 
 Disjunction
-:    If $A \boxright C$ and $B \boxright C$ are true, so is $(A \vee B) \boxright C$
+:    If $A \boxright C$ and $B \boxright C$ are true, so is $(A \vee B) \boxright C$.
 
 Then both (@firstkgods) and (@latergods) seem like they should be true.
 
@@ -369,7 +369,7 @@ I've gone over two more uses of the possibilties framework, but there are many m
 
 As I briefly alluded to in @sec-conditionals, possibilities can do a lot of work that philosophers have tried to make supervaluations do. As well as using possibilities instead of supervaluations in preserving Conditional Excluded Middle, it's worth exploring whether they are useful in thinking about vagueness, or about open future.
 
-@Humberstone1981a mentions that possibilities do a better job than possible worlds at making sense of talk about 'belief worlds'. We could say the same thing about the worlds of fiction. David @Lewis1978x ends up treating the operator _In this fiction_ as box-like, because he thinks otherwise we'd have to make arbitrary choices about some details of how the story is to be filled out. Using possibilities here seems smoother. Any (coherent) fiction, I conjecture, picks out a particular possibility. That will always be a less than fully refined possibility, but a possibility nonetheless. On this approach we don't get left with the unfortunate triple, which Lewis is committed to, of it being true in the story that $A \vee B$, but false that it's true in the story that $A$, and false that it's true in the story that $B$. I also think there might be some uses of possibilities in characterising the distinctive relationship between a story and its sequel.
+@Humberstone1981a mentions that possibilities do a better job than possible worlds at making sense of talk about 'belief worlds'. We could say the same thing about the worlds of fiction. David @Lewis1978b ends up treating the operator _In this fiction_ as box-like, because he thinks otherwise we'd have to make arbitrary choices about some details of how the story is to be filled out. Using possibilities here seems smoother. Any (coherent) fiction, I conjecture, picks out a particular possibility. That will always be a less than fully refined possibility, but a possibility nonetheless. On this approach we don't get left with the unfortunate triple, which Lewis is committed to, of it being true in the story that $A \vee B$, but false that it's true in the story that $A$, and false that it's true in the story that $B$. I also think there might be some uses of possibilities in characterising the distinctive relationship between a story and its sequel.
 
 But I'll leave those tasks for another day. The main point of this paper is to remind the reader how many uses Humberstone's notion of a possibility has, and to explore what happens to the logic of possibilities when we add quantifiers or infinitary connectives.
 
