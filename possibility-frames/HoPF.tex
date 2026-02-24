@@ -1009,11 +1009,11 @@ potential connections to conditionals, and in this section I'll go over
 a couple of them.
 
 One connection concerns Conditional Excluded Middle (as discussed on
-pages 1008-1013 of \emph{The Connectives}), and more generally the
-relationship between \(A > (B \vee C)\) and
-\((A \boxright B) \vee (A \boxright C)\). On a Stalnaker-Lewis style
+pages 1008--1013 of \emph{The Connectives}), and more generally the
+relationship between \(A \boxright (B \vee C)\) and
+\((A \boxright B) \vee (A \boxright C)\). On a Stalnaker--Lewis style
 approach to conditionals, these are equivalent iff there is a nearest
-possible world in which \(A\) is true, for any possble \(A\). It is
+possible world in which \(A\) is true, for any possible \(A\). It is
 natural to think about whether that is true in largely metaphysical
 terms, asking whether there really is guaranteed to be a single nearest
 world where \(A\) is true. And as Lewis
@@ -1053,24 +1053,27 @@ One move here, discussed by Humberstone
 (\citeproc{ref-Humberstone2011}{2011, 1011}), is to use supervaluations.
 Perhaps it is in some sense indeterminate whether the world where \(a\)
 is heavier or the world where \(b\) is heavier is more like actuality. A
-related, but I think, preferable, move is to analyse conditionals not in
+related, but I think preferable, move is to analyse conditionals not in
 terms of possible worlds, but in terms of possibilities.
 
 Here is one possible way to analyse conditionals, mixing Stalnaker's
-approach with Humberstone's possibilities. (The particular formulation
-I'm going to use draws heavily on the theory presented by Andrew Bacon
-(\citeproc{ref-Bacon2023}{2023, 382}). The four conditions are directly
-quotes from his paper, though I mean something different by them since
-on my version the variables pick out possibilities not worlds. I'll have
-more to say about Bacon's paper presently.) Extend a possibility model
-\(\langle W, \geqslant, V \rangle\) to a conditional possibility model
+approach with Humberstone's possibilities.\footnote{The particular
+  formulation I'm going to use draws heavily on the theory presented by
+  Andrew Bacon (\citeproc{ref-Bacon2023}{2023, 382}). Three of the four
+  conditions are directly quoted from his paper, though I mean something
+  different by them since on my version the variables pick out
+  possibilities, not worlds. Bacon does not endorse \textbf{AB} in the
+  form shown here; he only endorses a version of it restricted to the
+  case where \(f(B, x) = \emptyset\). I'll have more to say about
+  Bacon's paper presently.} Extend a possibility model
+\(\langle W, \leqslant, V \rangle\) to a conditional possibility model
 by adding a selection function \(f\). This is a function
 \(\mathcal{P}(W) \times W \rightarrow \mathcal{P}(W)\), intuitively
 picking out the `nearest' possibilities to a world where a particular
 proposition is true, satisfying these constraints.\footnote{Humberstone
-  uses \(R\) rather than \emph{f} for the same idea; I'm going to follow
+  uses \(R\) rather than \(f\) for the same idea; I'm going to follow
   Bacon, who in turn follows Stalnaker, to highlight the connection to
-  theories which validate Conditional Excluded Middle.}
+  theories that validate Conditional Excluded Middle.}
 
 \begin{description}
 \tightlist
@@ -1081,29 +1084,29 @@ proposition is true, satisfying these constraints.\footnote{Humberstone
 \item[\textbf{CEM}]
 \(|f(A, x)| \leq 1\)
 \item[\textbf{AB}]
-If \(f(A, x) \subseteq B\) and \(f(B, x) = \emptyset\) then
-\(f(A, x) = \emptyset\)
+If \(f(A, x) \subseteq B\) and \(f(B, x) \subseteq A\), then
+\(f(A, x) = f(B, x)\)
 \end{description}
 
 The cardinality constraint \textbf{CEM} guarantees that Conditional
 Excluded Middle will hold. But we don't have to make invidious choices
 about whether the nearest possibility where one of the spheres is
 heavier makes \(a\) or \(b\) heavier. Rather, we just say that the
-nearest possibility is an unrefined possibility that makes the
-disjunctive proposition \emph{One of them is heavier} true, without
+nearest possibility is an incompletely refined possibility that makes
+the disjunctive proposition \emph{One of them is heavier} true, without
 making either disjunct true. It will have refinements where each is
 true, but the nearest possibility will not validate either disjunct.
 This seems like an intuitive treatment of the case.
 
 Goodman uses this example to argue that Black was incorrect, and the
 spheres are in fact discernible. His argument is that one but not the
-other will have the property of being the one which would be heavier if
+other will have the property of being the one that would be heavier if
 they were different. I don't think this argument goes through on the
 possibilities framework, but settling that would require saying more
-about how higher-order quantification works on the possibilities
+about how higher-order quantification works in the possibilities
 framework, and that would take us too far afield. Instead I'll turn to
-the puzzle that Bacon introduces them to solve. That is a puzzle,
-introduced by Kit Fine (\citeproc{ref-Fine2012a}{2012b},
+the puzzle that Bacon introduces his conditions to solve. That is a
+puzzle, introduced by Kit Fine (\citeproc{ref-Fine2012a}{2012b},
 \citeproc{ref-Fine2012b}{2012a}), which is a counterfactual version of a
 paradox from José Bernadete (\citeproc{ref-Bernadete1964}{1964}).
 
@@ -1111,7 +1114,7 @@ There is a room that is very dangerous to cross. A man is thinking of
 crossing it, but he is warned off when he learns that it contains an
 infinity of gods. God\textsubscript{1} will kill him if he makes it
 half-way across the room. God\textsubscript{2} will kill him if he makes
-it a quarter of the way across, \textsubscript{3} will kill him if he
+it a quarter of the way across. God\textsubscript{3} will kill him if he
 makes it one-eighth of the way across. More generally,
 God\textsubscript{\emph{n}} will kill him if he makes it
 (1/2)\textsuperscript{\emph{n}} of the way across the room. Does he
@@ -1119,8 +1122,8 @@ enter? Of course not; he'd be killed! But who would kill him? Presumably
 not God\textsubscript{1}; how would he make it that far? This
 generalises. God\textsubscript{\emph{n}} can't kill him, because
 God\textsubscript{\emph{n}+1} would already have done the job. So he
-would be killed by the gods, but not by any God. This doesn't sound very
-plausible.
+would be killed by the gods, but not by any particular god. This doesn't
+sound very plausible.
 
 The case looks like the kind that motivated Lewis to reject what he
 called the \emph{Limit Assumption}. This says that if \(A\) is possible,
@@ -1130,9 +1133,9 @@ then relative to any world \(w\) there are some closest worlds where
 adopts the position that we shouldn't impose it in general, but can
 freely talk as if it is true, because it doesn't make a difference to
 the logic. This is right in the context Humberstone is writing in, but
-possibly misleading. The Limit Assumption does make a big difference to
-the logic if we have either quantifiers or infinitary connectives in the
-language. This fact is what Fine's puzzle turns on.
+potentially misleading. The Limit Assumption does make a big difference
+to the logic if we have either quantifiers or infinitary connectives in
+the language. This fact is what Fine's puzzle turns on.
 
 Stated without the Limit Assumption, Lewis's view is that
 \(A \boxright B\) is true at \(w\) if there is some world where \(A\) is
@@ -1164,7 +1167,7 @@ If \(A \boxright C_i\) is true for each \(i\), then
 \(A \boxright (C_1 \wedge C_2 \wedge \dots)\) is true.
 \end{description}
 
-Without the Limit Assumption, Lewis's semantics would endorse
+With the Limit Assumption, Lewis's semantics would endorse
 \textbf{Infinite Conjunction}. But it would also have a problem. Which
 of the gods would kill the man? Any choice seems not only arbitrary, but
 mistaken. Let's spell this out a bit more carefully. Fine's way of
@@ -1212,7 +1215,7 @@ comes next.
   God\textsubscript{\emph{k}}.
 \end{enumerate}
 
-To finish off the paradox, let's add a new principle \textbf{Antecedent
+To finish off the paradox, let's add a new principle, \textbf{Antecedent
 Substitution}.
 
 \begin{description}
@@ -1235,13 +1238,13 @@ Then using \textbf{Antecedent Substitution} we can get from (7) to (8).
 
 And since \emph{k} is arbitrary in (8), we can derive (4), without any
 appeal to the metaphysics of counterfactuals. It looks like our only
-options, short of abandoning classical logic, are to give up one
+options, short of abandoning classical logic, are to give up one of
 \textbf{Infinite Conjunction}, \textbf{Disjunction}, or
 \textbf{Antecedent Substitution}. In Fine's original discussion of the
 paradox he introduces several more principles that could in theory be
 given up, but Brian Embry (\citeproc{ref-Embry2014}{2014}) convincingly
-argues that really it has to be one of these three that go, and I'm
-following his lead.
+argues that really it has to be one of these three, and I'm following
+his lead.
 
 If these are the three options, it isn't obvious which one to take. All
 three paths forward have their proponents, or at least are consequences
@@ -1271,7 +1274,7 @@ is that Fine's resolution of the trilemma ends up endorsing not just
 \textbf{Disjunction}, but also its converse. This is the principle that
 Humberstone (\citeproc{ref-Humberstone2011}{2011, 1016}) calls
 \emph{Conv. Subj. Dilemma}, the key being that from
-\((A \vee B) \boxright C)\) one can infer \(A \boxright C\). The
+\((A \vee B) \boxright C\) one can infer \(A \boxright C\). The
 criticisms of Fine in Embry (\citeproc{ref-Embry2014}{2014}) largely
 centre on this aspect of Fine's view, and its consequences. But the key
 problems with the principle are already pretty clear in Humberstone
@@ -1286,9 +1289,8 @@ possible worlds framework. But they both seem more or less manageable in
 the possibilities framework.
 
 The first worry is that without \textbf{Disjunction}, we have to give up
-the idea that the selection function \emph{f} is in any sense a measure
-of similarity, or really any kind of nearness. Here is how Bacon puts
-it,
+the idea that the selection function \(f\) is in any sense a measure of
+similarity, or really any kind of nearness. Here is how Bacon puts it:
 
 \begin{quote}
 The second consideration in favour of \textbf{Disjunction} is that its
@@ -1312,54 +1314,56 @@ relations, we should expect that the nearest \(A \vee B\)-world will be
 either the nearest \(A\)-world or the nearest \(B\)-world
 (\citeproc{ref-Humberstone2011}{Humberstone 2011, 1015}). He then argues
 more formally that if the set of nearest \(A\)-worlds is generated by an
-underlying three place similarity relation \(S_wxy\), meaning \(x\) is
-at least as similar to \(w\) as \(y\) is, and if for any \(w, S_w\) is a
-total preorder on worlds, then \textbf{Disjunction} is guaranteed to
-hold (\citeproc{ref-Humberstone2011}{Humberstone 2011, 1025--26}).
+underlying three-place similarity relation \(S_wxy\), meaning \(x\) is
+at least as similar to \(w\) as \(y\) is, and if for any \(w\), \(S_w\)
+is a total preorder on worlds, then \textbf{Disjunction} is guaranteed
+to hold (\citeproc{ref-Humberstone2011}{Humberstone 2011, 1025--26}).
 
 That argument seems irrefutable if, \emph{but only if}, we're working in
 a possible worlds framework. If we're in a possibilities framework, it
 doesn't look right. It could be that the nearest possibility in which
-\(A \vee B\) is not identical to either the nearest possibility in which
-\(A\), or the nearest possibility in which \(B\), but is instead a
-coarsening of one of those possibilities.
+\(A \vee B\) is true is not identical to either the nearest possibility
+in which \(A\) is true or the nearest possibility in which \(B\) is
+true, but is instead a coarsening of one of those possibilities.
 
-How could \textbf{Disjunction} fail on the possible worlds picture? We
-must fail to have the nearest \(A \vee B\)-world be a \(C\)-world. But
-that's impossible if the nearest \(A\)-world is a \(C\)-world, and the
-nearest \(B\)-world is a \(C\)-world, and all \(A \vee B\)-worlds are
-\(A\)-worlds or \(B\)-worlds. On the possibilities picture, that last
-clause fails. It might be that the nearest possibility which makes
-\(A \vee B\) true does not make either \(A\) true or \(B\) true, it just
-guarantees that sequence of refinements will eventually make one or the
-other true. Also note that we don't require that the nearest
-\(A \vee B\) possibility makes \(\neg C\) true; it could be that
-\textbf{Disjunction} fails because both \(C\) and \(\neg C\) are true at
-different refinements of the nearest \(A \vee B\) possibility.
+How could \textbf{Disjunction} fail on the possibilities picture? We
+must fail to have the nearest \(A \vee B\)-possibility be a
+\(C\)-possibility. But that's impossible if the nearest
+\(A\)-possibility is a \(C\)-possibility, and the nearest
+\(B\)-possibility is a \(C\)-possibility, and all
+\(A \vee B\)-possibilities are \(A\)-possibilities or
+\(B\)-possibilities. On the possibilities picture, that last clause
+fails. It might be that the nearest possibility that makes \(A \vee B\)
+true does not make either \(A\) true or \(B\) true; it just guarantees
+that a sequence of refinements will eventually make one or the other
+true. Also note that we don't require that the nearest \(A \vee B\)
+possibility makes \(\neg C\) true; it could be that \textbf{Disjunction}
+fails because \(C\) is true at some refinements of the nearest
+\(A \vee B\) possibility and \(\neg C\) is true at others.
 
 That's what happens with our man who wisely doesn't enter the room.
 What's the nearest possibility in which he does enter the room? It's the
 incomplete possibility where he is killed by one of the gods. For each
-\emph{i, j: i \textgreater{} j}, the possibility where he is killed by
-God\textsubscript{\emph{i}} is closer than the one where he is killed by
-God\textsubscript{\emph{j}}. But the indeterminate possibility where he
-is killed, but the possibility does not specify which god he is killed
-by, is closer to actuality than any complete possibility which specifies
-the homicidal divinity.
+\emph{i}, \emph{j} with \emph{i} \textgreater{} \emph{j}, the
+possibility where he is killed by God\textsubscript{\emph{i}} is closer
+than the one where he is killed by God\textsubscript{\emph{j}}. But the
+indeterminate possibility where he is killed, without specifying which
+god kills him, is closer to actuality than any complete possibility that
+specifies the homicidal divinity.
 
 So rejecting \textbf{Disjunction} is compatible with the similarity
 approach to counterfactuals, as long as we use possibilities. The other
-worry with rejecting disjunction, one Fine
+worry about rejecting \textbf{Disjunction}, one Fine
 (\citeproc{ref-Fine2023}{2023}) stresses in his response to Bacon, is
 that we use \textbf{Disjunction} a lot in ordinary counterfactual
 reasoning. We should be cautious about giving it up. Of course, there
 are plenty of rules that we use in ordinary reasoning that work in all
 but a few edge cases. If we could show that \textbf{Disjunction} was
-truth-preserving in all but some rare exception cases, we could justify
-using it as a rule of inference. After all, we don't think that the
-failure of Axiom V in full generality means that it's always a mistake
-to infer from the existence of some things to the existence of a set
-containing all and only them.
+truth-preserving in all but some rare exceptional cases, we could
+justify using it as a rule of inference. After all, we don't think that
+the failure of Axiom V in full generality means that it's always a
+mistake to infer from the existence of some things to the existence of a
+set containing all and only them.
 
 As Fine stresses, it's hard to see how on Bacon's view
 \textbf{Disjunction} would even count as typically fine. The reason
@@ -1368,7 +1372,7 @@ generalises to more humdrum uses.
 
 But that's not true for the possibilities model. You need to have some
 very unusual relationships between Humberstone's family of similarity
-relations \(S_w\) and \(\geqslant\) in order for \textbf{Disjunction} to
+relations \(S_w\) and \(\leqslant\) in order for \textbf{Disjunction} to
 fail. For one thing, you need the nearest possibility \(x\) where
 \(A \vee B\) holds to be an incomplete possibility where neither \(A\)
 nor \(B\) holds. Clearly \(x\) has to have refinements where \(A\) is
@@ -1385,16 +1389,15 @@ that we are usually happy using it in everyday inferences.
 
 \section{Conclusion}\label{sec-conclusion}
 
-I've gone over two more uses of the possibilties framework, but there
-are many more things that we could imagine using it for. I'll end by
-briefly mentioning two of them.
+I've gone over two uses of the possibilities framework, but there are
+many more things we could imagine using it for. I'll end by briefly
+mentioning two of them.
 
-As I briefly alluded to in Section~\ref{sec-conditionals}, possibilities
-can do a lot of work that philosophers have tried to make
-supervaluations do. As well as using possibilities instead of
-supervaluations in preserving Conditional Excluded Middle, it's worth
-exploring whether they are useful in thinking about vagueness, or about
-open future.
+As I alluded to in Section~\ref{sec-conditionals}, possibilities can do
+a lot of work that philosophers have tried to make supervaluations do.
+As well as using possibilities instead of supervaluations in preserving
+Conditional Excluded Middle, it's worth exploring whether they are
+useful in thinking about vagueness, or about the open future.
 
 Humberstone (\citeproc{ref-Humberstone1981a}{1981}) mentions that
 possibilities do a better job than possible worlds at making sense of
@@ -1403,14 +1406,17 @@ of fiction. David Lewis (\citeproc{ref-Lewis1978b}{1978}) ends up
 treating the operator \emph{In this fiction} as box-like, because he
 thinks otherwise we'd have to make arbitrary choices about some details
 of how the story is to be filled out. Using possibilities here seems
-smoother. Any (coherent) fiction, I conjecture, picks out a particular
+smoother. Any coherent fiction, I conjecture, picks out a particular
 possibility. That will always be a less than fully refined possibility,
 but a possibility nonetheless. On this approach we don't get left with
-the unfortunate triple, which Lewis is committed to, of it being true in
-the story that \(A \vee B\), but false that it's true in the story that
-\(A\), and false that it's true in the story that \(B\). I also think
-there might be some uses of possibilities in characterising the
-distinctive relationship between a story and its sequel.
+the unfortunate triple, to which Lewis is committed, of its being true
+in the story that \(A \vee B\), but false that it's true in the story
+that \(A\), and false that it's true in the story that \(B\). I also
+think there might be some uses of possibilities in characterising the
+distinctive relationship between a story and its sequel. That a sequel
+is a refinement of the original story might do a better job of capturing
+some features of this relationship than anything we can do in a worlds
+framework.
 
 But I'll leave those tasks for another day. The main point of this paper
 is to remind the reader how many uses Humberstone's notion of a
