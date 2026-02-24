@@ -116,7 +116,7 @@ Again, it's fairly simple to show that this addition to the language will preser
 
 ## Quantifiers {-}
 
-The second extension will be to add quantifiers, following a suggestion in @Humberstone1981a [xxxx]. Assume, as usual, that the language has a stock of names $c_1, \dots$, and for each $n$, a stock of $n$-place predicates $F^n_1, F^n_2, \dots$. A _first-order (Humberstone) possibility model_ is a structure $\langle W, \leqslant, D, V \rangle$, where $D$ assigns a non-empty domain of objects to each point, and $V$ interprets the non-logical vocabulary. More precisely:
+The second extension will be to add quantifiers, following a suggestion in @Humberstone1981a [331]. Assume, as usual, that the language has a stock of names $c_1, \dots$, and for each $n$, a stock of $n$-place predicates $F^n_1, F^n_2, \dots$. A _first-order (Humberstone) possibility model_ is a structure $\langle W, \leqslant, D, V \rangle$, where $D$ assigns a non-empty domain of objects to each point, and $V$ interprets the non-logical vocabulary. More precisely:
 
 - $D$ is a function assigning to each $x \in W$ a non-empty set $D(x)$, the **domain** at $x$.
 - $V$ assigns to each name $c_i$ and each $x \in W$ either a designated element $V(c_i, x) \in D(x)$, or is undefined at $x$.
