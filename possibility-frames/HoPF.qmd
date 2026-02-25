@@ -264,6 +264,47 @@ Putting these together, there is no class of Kripke frames that validates exactl
 
 # Quantifiers and Necessitism {#sec-quant}
 
+There are two distinctive features of the way that I introduced quantifiers in @sec-formal. First, I introduced the universal quantifier as basic, and simply defined $\exists$ as $\neg \forall \neg$. Second, I introduced the universal quantifier as _possibilist_, at least in the sense that it ranges over all objects in a possibility and all its refinements. As I noted, there is a passing remark in "From Worlds to Possibilities" where Humberstone suggests that is how he would do it. It's worth going over why this ends up being the best way to do things.
+
+The aim here, as it was in @sec-formal, was to keep classical logic while still using things, like incomplete possibilities, which are usually taken to be incompatible with classical logic. But in this section the primary contrast is not with non-classical propositional logics, but with free logics. In classical logic, this argument looks fairly compelling.
+
+\begin{align*}
+1. && a = a && \text{=Intro} \\
+2. && \exists x(x = a) && \exists\text{-Introduction} \\
+3. && \Box \exists x(x = a) && \text{Necessitation} \\
+4. && \forall y \Box \exists x(x = y) && \forall-\text{Introduction}
+5. && \Box \forall y \Box \exists x(x = y) && \text{Necessitation}
+\end{align*}
+
+That is, for every thing, necessarily every object is such that necessarily, something is identical to it. If we are working in a possible worlds framework, and assume that the modal logic we're using is at least as strong as **KTB**, that just about implies that all worlds have the same domain. Strictly speaking, it's consistent with there being worlds with distinct domains which are not connected by the ancestral of $R$, but any world that could be relevant to the truth of any sentence, must have the same domain.
+
+In the possibilities framework, we have a bit more flexibility while still making claims like $\Box \forall y \Box \exists x(x = y)$ come out true. One option would be to say that all refinements, and indeed all accessible possibilities, have the same domain, and have quantifiers just range over objects within a possibility. This would be a nice way to handle quantifiers, but having all possibilities have the same domain would be seriously unintuitive. Some stories have more characters than others. In the story that consists of one proposition, Romeo loves Juliet, it feels like the domain should just consist of *Romeo and Juliet*. On the other hand, since we want $\exists x(x = a)$ to be a logical truth, we can’t have the domain of the quantifier range just over Romeo and Juliet.
+
+We could try to say that because that’s an existential quantifier, perhaps it’s still okay to have the only things in the domain be Romeo and Juliet. Perhaps as long as the existential quantifier is witnessed by something in a later refinement, we can have small domains. In the propositional case, conjunctions depend for their truth just on the truth value of their conjuncts at that possibility, while disjunctions also depend on refinements. By analogy, you might hope for universal quantifiers to depend only on what happens at a possibility, even if existential quantifiers also depend on refinements.
+
+But there is still a problem. If the domain is just Romeo and Juliet, and universal quantifiers only range over the domain of that possibility, then the sentence $\forall x(x = \mathit{Romeo} \vee x = \mathit{Juliet})$ would come out true. But since $\mathit{Mercutio} = \mathit{Mercutio}$ is a logical truth, we would then get that Mercutio is identical to Romeo or Mercutio is identical to Juliet. And we don’t want that, because there are clearly refinements of our simple story where Mercutio is neither Romeo nor Juliet. Shakespeare’s play is one such refinement.
+
+So it looks like we are forced to say that quantifiers range over future refinements as well as the actual possibility. Is there any way to talk about what’s just true in the possibility? @HarrisonTrainor2019 suggests that we can do this by adding a special predicate $E$ for "exists" which is satisfied at a world by all and only the things in the world's domain. Then if we wanted to say that everything in the possibility is $F$, we could just say $\forall x(Ex \rightarrow Fx)$. That’s on the right track, but it can’t be right as it stands. The problem is that we want all our predicates to be persistent and refinable for the logic to work. A special predicate $E$ that only applies to Romeo and Juliet in the simple story would not be refinable. Since $\exists x(x = \mathit{Mercutio})$ is a logical truth, we can't have any possibility where it is determinately false that Mercutio satisfies $E$. So he will actually satisfy $E$, defeating the point of introducing the predicate.
+
+A better option is to use some kind of demonstrative. There are two possibilities here. One is that we might introduce a new plural referring term $\mathbf{U}$. Imagine introducing this while waving your arms around and saying that it refers to us. The thought is that $\mathbf{U}x$ does not mean that $x$ exists, but rather that $x$ is one of us. If Romeo and Juliet were to introduce $\mathbf{U}$ that way in their possibility, then the thing they say by uttering "Mercutio is not one of us" would be true. Now that wouldn't be the same thing we would say by uttering "Mercutio is not one of us", but 
+
+
+
+
+
+
+
+
+the claim that Mercutio is one of us, as they say it, would be false. And this is not a failure of refinement. The demonstrative is a kind of designator that picks out the things in that possibility, and picks them out no matter which later possibility you go into. What’s needed for persistence is that the content of the claim keeps its truth value, even if the words used to introduce that claim would pick out a sentence with a different truth value in a different possibility.
+
+It might be more intuitive, rather than having this special plural demonstrative $\mathbf{U}$, to instead introduce a name for the world—call it $\mathbf{a}$. Then we could have a restricted quantifier that said everything that is in $\mathbf{a}$ is $F$, meaning intuitively that everything in the domain is $F$. Again $\mathbf{a}$ has to be treated as a rigidly referring name, so if we say that everything in the world is $F$, that’s true even in later refinements that include things that aren’t $F$. As with the idea that we could introduce a demonstrative for "us," the important thing for the logic is that the content is persistent and refinable, and this can be true even if the character is not.
+
+Once we understand restricted quantification in this way, the possibilities framework has interesting interactions with recent debates about necessitism. Following @Williamson2013, a lot of people have become interested in the idea that everything exists necessarily. One really quick argument for that claim is the argument given above. We can prove in classical logic that, as a matter of necessity, everything must exist—that is, everything exists necessarily. On the face of it, this is a quite implausible principle. Some things that don’t actually exist, like Romeo, Juliet, Sherlock Holmes, and Dr Watson, could have existed.
+
+In the possibilities framework, this objection is easy to handle. What’s intuitively true is that the fictional characters are not one of us—they are not in the world. If ordinary quantifiers range over things that are one of us, or things that are in the world, then we can explain why it is intuitive to say that in a more abstract sense, relevant to the unrestricted existential quantifier, Romeo, Juliet, Holmes, and Watson all exist.
+
+Alternatively, I might use this kind of framework to argue against necessitism. Here’s a really quick argument for necessitism. Classical logic is the logic to use. S5 is the right modal logic to use. Within classical S5, we can prove that everything necessarily exists. In the possible worlds framework, the only way to have that come out right is to have a constant domain semantics.
+
 # Conditionals {#sec-conditionals}
 
 The only discussion of possibilities (as opposed to worlds) in *The Connectives* is in the chapter on disjunction. But there are several potential connections to conditionals, and in this section I'll go over a couple of them.
