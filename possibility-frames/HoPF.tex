@@ -350,7 +350,7 @@ SemiBold]{EB Garamond Math}
 \setlength\heavyrulewidth{0ex}
 \setlength\lightrulewidth{0ex}
 \usepackage[lines=2]{lettrine}
-\cehead{Draft of February 23, 2026}
+\cehead{Draft of February 27, 2026}
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
 \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
 \makeatletter
@@ -410,7 +410,7 @@ SemiBold]{EB Garamond Math}
 
 \title{Humberstone on Possibility Frames}
 \author{Brian Weatherson}
-\date{2026-02-23}
+\date{2026-02-27}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -452,7 +452,7 @@ the way Humberstone wants accessibility to work. So let's start with a
 different picture.
 
 Possibilities, as I'll think of them, are \emph{stories}. To make things
-concrete, let's focus on a particular story: \emph{A Study in Scarlet}
+concrete, I'll start with a particular story: \emph{A Study in Scarlet}
 (Conan Doyle (\citeproc{ref-ConanDoyle1995}{1995})), the story in which
 Sherlock Holmes was introduced. That story settles some questions, both
 explicitly, e.g., that Holmes is a detective, and implicitly, e.g., that
@@ -494,10 +494,11 @@ connectives: \(\neg\), \(\wedge\), and \(\vee\). We have a set of
 possibilities \(W\), and a transitive refinement relation \(\leqslant\)
 on them. The following rules show how to build what I'll call a
 \emph{Humberstone possibility model} on
-\(\langle W, \leqslant \rangle\). (I'll call this a \emph{possibility
-frame} in most contexts, but a \emph{Humberstone frame} when I'm
-comparing it to similar structures, especially in the context of
-discussing Holliday (\citeproc{ref-Holliday2025}{2025}).)
+\(\langle W, \leqslant \rangle\). (I'll call
+\(\langle W, \leqslant \rangle\) a \emph{possibility frame} in most
+contexts, but a \emph{Humberstone frame} when I'm comparing it to
+similar structures, especially in the context of discussing Holliday
+(\citeproc{ref-Holliday2025}{2025}).)
 
 A Humberstone possibility model \(\mathcal{M}\) is a triple
 \(\langle W, \leqslant, V \rangle\), where \(V\) is a function from
@@ -538,13 +539,13 @@ every sentence in the language is persistent. If
 \(\mathcal{M} \models_y A\). For any sentence, truth is always preserved
 when moving to a refinement. Second, refinability holds for all
 sentences in the language. This is, as Humberstone notes, easier to
-state using this definition of \(\neg\). It now becomes the claim, for
-arbitrary \(A\), that if \(\mathcal{M} \nmodels_x A\), there is some
-refinement \(y\) of \(x\) such that \(\mathcal{M} \models_y \neg A\).
-Third, for any set of sentences \(\Gamma\) and sentence \(A\), the truth
-at a point of all sentences in \(\Gamma\) guarantees the truth of \(A\)
-iff the sequent \(\Gamma\) entails \(A\) in classical propositional
-logic.
+state using {[}\(\neg\){]}. Once we've added negation to the language,
+refinement becomes the claim that, for any \(A\), if
+\(\mathcal{M} \nmodels_x A\), there is some refinement \(y\) of \(x\)
+such that \(\mathcal{M} \models_y \neg A\). Third, for any set of
+sentences \(\Gamma\) and sentence \(A\), the truth at a point of all
+sentences in \(\Gamma\) guarantees the truth of \(A\) iff the sequent
+\(\Gamma\) entails \(A\) in classical propositional logic.
 
 In this paper, I'm going to discuss three extensions of this language.
 I'll introduce them in reverse order of how much they are discussed in
@@ -572,7 +573,7 @@ is significant, because things could easily have been otherwise.
 \addcontentsline{toc}{subsection}{Quantifiers}
 
 The second extension will be to add quantifiers, following a suggestion
-in Humberstone (\citeproc{ref-Humberstone1981a}{1981}, xxxx). Assume, as
+in Humberstone (\citeproc{ref-Humberstone1981a}{1981, 331}). Assume, as
 usual, that the language has a stock of names \(c_1, \dots\), and for
 each \(n\), a stock of \(n\)-place predicates \(F^n_1, F^n_2, \dots\). A
 \emph{first-order (Humberstone) possibility model} is a structure
@@ -621,8 +622,8 @@ objects, truth at a point is defined as follows. Write \(g[v/o]\) for
 the assignment that maps variable \(v\) to object \(o\) and otherwise
 agrees with \(g\). For a term \(t\), write
 \(\llbracket t \rrbracket^{g,x}\) for the denotation of \(t\) under
-\(g\) at \(x\): for a variable \(v\) this is \(g(v)\), and for a name
-\(c_i\) this is \(V(c_i, x)\) when defined, and undefined otherwise.
+\(g\) at \(x\). This will not always be defined, e.g., when the term is
+a name that only gets defined at subsequent refinements.
 
 \begin{align*}
 [=] \quad & \mathcal{M}, g \models_x t_1 = t_2 \text{ iff } \forall y \geqslant x \, \exists z \geqslant y : \llbracket t_1 \rrbracket^{g,z} \text{ and } \llbracket t_2 \rrbracket^{g,z} \text{ are both defined and equal}; \\
@@ -631,25 +632,33 @@ agrees with \(g\). For a term \(t\), write
 [\exists] \quad & \mathcal{M}, g \models_x \exists v \, A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists o \in D(z) : \mathcal{M}, g[v/o] \models_z A.
 \end{align*}
 
-The Boolean connectives are handled exactly as in the propositional
-case.
+The propositional connectives are handled exactly as before.
 
-The \(\forall\exists\) pattern in the atomic clauses is necessary to
-ensure that persistence and refinability hold for all sentences,
-including atomic ones. Consider \(c_i = c_i\): if a name has no
-denotation at \(x\) but acquires one at some refinement, then a simple
-``check the denotation at \(x\)'' condition would leave \(c_i = c_i\)
-neither true nor false at \(x\), and no refinement of \(x\) could settle
-it as false either, violating refinability. The \(\forall\exists\)
-condition handles this correctly: \(c_i = c_i\) is true at \(x\)
-whenever \(c_i\) is covered at \(x\) (i.e., every refinement has a
-further refinement where \(c_i\) gets a referent), since once \(c_i\)
-gets a referent \(o\), persistence of names ensures \(o = o\) at all
-further refinements.
+The surprising thing here is the \(\forall\exists\) pattern in clauses
+for identity and for non-logical predicates. We need to write the clause
+that way, rather than just saying for example that \(Fa\) is true at
+\(x\) if
+\(\llbracket a \rrbracket^{g,x} \in \llbracket F \rrbracket^{g,x}\), for
+two related reasons. First, we're in classical logic, so for any name
+\(c\) we want \(c=c\) to come out true, even when \(c\) lacks a
+denotation at \(x\). Second, we want \(\forall y: Fy\) to entail \(Fc\).
+So if \(\forall y: Fy\) is true at \(x\), we need \(Fc\) to be true at
+\(x\) even when \(c\) lacks a denotation.
 
-The atomic clauses simplify when names are fully defined. If \(t_1\) and
-\(t_2\) are variables, or names that already have denotations at \(x\),
-then by persistence of names and predicate extensions the
+The underlying problem here is that it's impossible to have an
+equivalent of the refinability condition for names. It seems reasonable
+to have a name, say `Holmes', which picks out a particular individual,
+say Holmes, at all refinements where Holmes is in the domain. But we
+don't want that to imply that Holmes is already in the domain. So even
+if `Holmes' will never denote something other than Holmes, it's not
+already true that it denotes Holmes. The complications in the above
+clauses are downstream of the fact that denotation does not satisfy
+refinability in just that way.
+
+In the special case where every name already has a denotation at \(x\),
+the atomic clauses simplify in just the way you would hope. If \(t_1\)
+and \(t_2\) are variables, or names that already have denotations at
+\(x\), then by persistence of names and predicate extensions the
 \(\forall\exists\) quantifier prefix collapses:
 \(\mathcal{M}, g \models_x t_1 = t_2\) iff
 \(\llbracket t_1 \rrbracket^{g,x} = \llbracket t_2 \rrbracket^{g,x}\),
@@ -754,7 +763,7 @@ sentences, while \textbf{RRef++} guarantees refinability.
 
 But this is overkill. As Humberstone points out, we haven't used
 \textbf{RDown} in the proof, so this doesn't explain why we'd impose
-\textbf{RDown}. As Holliday (\citeproc{ref-Holliday2025}{2025, 62})
+\textbf{RDown}. Holliday (\citeproc{ref-Holliday2025}{2025, 62}) further
 points out \textbf{UpR} is stronger than we need for persistence. We
 could weaken it by making greater use of the fact that \(A\) is
 persistent. All we need is that if \(x \leqslant x'\) and \(xRy\) then
@@ -784,26 +793,30 @@ But while this is tempting, it isn't compulsory.
 
 We could instead take the modal facts as given, and ask what
 accessibility relations must obtain to be consistent with them. The
-process here is familiar from the construction of canonical models. We
-take the sets of consistent sentences as given, and say \(s_1R_is_2\)
+process here is going to resemble the construction of canonical models.
+We take the sets of consistent sentences as given, and say \(s_1R_is_2\)
 iff whenever \(\Box_i A \in s_1\), then \(A \in s_2\). Humberstone's
-approach is similar. Start with the idea that some sentences are true in
-some model \(\mathcal{M}\) at possibilities \(x\) and \(y\), say
-\(xR_iy\) iff \(\mathcal{M} \models_y A\) whenever
-\(\mathcal{M} \models_x \Box_i A\), and ask what constraints \(R_i\)
-will thereby satisfy.
+defence of the constraints takes a similar path. Imagine that instead of
+using the recursive clauses for the definition of modal truths, we
+simply have a frame \(\langle W, \leqslant \rangle\) and a stipulated
+assignment of truths at each point in \(W\). These assignments will be
+presumed to satisfy persistence and refinability. Now say that \(xR_iy\)
+iff \(\mathcal{M} \models_y A\) whenever
+\(\mathcal{M} \models_x \Box_i A\). Given those assumptions, what
+conditions must \(R_i\) satisfy?
 
-The answer is that, if all sentences are persistent and refinable, then
-\(R_i\) will satisfy these three constraints. If
+The answer is that then \(R_i\) will satisfy these three constraints:
+\textbf{UpR}, \textbf{RDown} and \textbf{RRef++}. If
 \(\mathcal{M} \models_y A\) whenever
 \(\mathcal{M} \models_x' \Box_i A\), then by the persistence of
 \(\Box_i\), we know that \(\mathcal{M} \models_y A\) whenever
-\(\mathcal{M} \models_x \Box_i A\). A similar argument, using the
-persistence of \(A\), justifies \textbf{RDown}. Finally, \textbf{RRef++}
-follows from the fact that \(\Box_i A\) is refinable. If \(\Box_i A\) is
-not true at \(x\), that means that it is determinately not true at some
-refinement. So if \(\mathcal{M} \nmodels_x A\), there must be some
-refinement \(x'\) such that for all further refinements \(x''\),
+\(\mathcal{M} \models_x \Box_i A\), so \textbf{UpR} holds. A similar
+argument, using the persistence of \(A\), justifies \textbf{RDown}.
+Finally, \textbf{RRef++} follows from the fact that \(\Box_i A\) is
+refinable. If \(\Box_i A\) is not true at \(x\), that means that it is
+determinately not true at some refinement. So if
+\(\mathcal{M} \nmodels_x A\), there must be some refinement \(x'\) such
+that for all further refinements \(x''\),
 \(\mathcal{M} \nmodels_x'' A\). If \(\mathcal{M} \nmodels_x \Box_i A\),
 then there must be some possibility \(y\) such that \(xR_iy\) and
 \(\mathcal{M} \nmodels_y A\). So as long as \(x''R_iy\), refinability
@@ -823,8 +836,8 @@ interesting question. As well as the familiar Kripke frames most
 commonly used as a semantics for modal logic, and the Humberstone frames
 defined above, he introduces a class of `full possibility' frames, which
 weaken some of Humberstone's constraints. It won't matter here exactly
-what these weakenings are, but what does matter is that he shows that
-using these weakened frames, we can determine logics that are not
+what these weakenings are, but what does matter is that using these
+weakened frames, Holliday shows how to determine logics that are not
 determinable on any class of Kripke frames. To state this more
 precisely, for any class of frames \(\mathsf{F}\), let
 \(\mathrm{L}(\mathsf{F})\) be the set of sentences true at all points in
@@ -838,12 +851,12 @@ If we let \(\mathsf{K}\) denote the class of Kripke frames, and
 \(\mathsf{FP}\) denote the class of full possibility frames, Holliday
 (\citeproc{ref-Holliday2025}{2025, sec. 2.5}) constructs a very clever
 argument to show that
-\(\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})\). But if
-we let \(\mathsf{H}\) denote the class of Humberstone frames, it follows
+\(\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})\). If we
+let \(\mathsf{H}\) denote the class of Humberstone frames, it follows
 from the fact that every Kripke frame is a Humberstone frame and every
 Humberstone frame is a full possibility frame that
 \(\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP})\).
-And while
+The fact that
 \(\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})\) implies
 that at least one of those inclusions is strict, it isn't clear which
 one. He leaves the question of which one it is as an open question.
@@ -852,11 +865,12 @@ I don't have an answer to that question as asked, since it is asked
 about languages whose sentences have finite length. I do have a proof
 that if we allow infinite disjunction, as discussed above, then
 \(\mathrm{ML}(\mathsf{H}) \neq \mathrm{ML}(\mathsf{K})\). If we expand
-the language like that, at least the first inclusion is strict. I will
-show this by constructing a single Humberstone frame that, in the
-infinitary language, defines a logic with no Kripke equivalent. The
-construction will follow Holliday's very closely, but differ just enough
-to ensure compliance with Humberstone's conditions.
+the language by allowing infinite disjunctions, at least the first
+inclusion is strict. I will show this by constructing a single
+Humberstone frame that, in the infinitary language, defines a logic with
+no Kripke equivalent. The construction will follow Holliday's very
+closely, but differ just enough to ensure compliance with Humberstone's
+conditions.
 
 \subsection*{The Frame}\label{the-frame}
 \addcontentsline{toc}{subsection}{The Frame}
@@ -946,26 +960,26 @@ disjunct is true.
 
 Now consider the case where \(x\) is left-handed, and there are
 right-handed points such that \(p\) is true at \(y\). Here it will be
-helpful to write a right-handed point \(y\) as \(s_y^R\). Among those
-\(s_y^R\) at which \(p\) is true, consider the ones where \(|s_y^R|\),
-the length of \(s_y^R\), is minimal. There must be some such points,
-since sequence lengths are non-negative integers and \(p\) is true at
-some accessible right-handed point. Let \(i = |s_y^R| + 1\). Let
-\(s_y^R \oplus \langle 0 \rangle\) and
-\(s_y^R \oplus \langle 1 \rangle\) be the right-handed sequences
+helpful to denote a right-handed point \(y\) as \(s_y^R\). Among those
+\(s_y^R\) at which \(p\) is true, consider the ones where \(|s_y|\), the
+length of \(s_y\), is minimal. There must be some such points, since
+sequence lengths are non-negative integers and \(p\) is true at some
+accessible right-handed point. Let \(i = |s_y=| + 1\). Let
+\(s_y^R \oplus \langle 0 \rangle^R\) and
+\(s_y^R \oplus \langle 1 \rangle^R\) be the right-handed sequences
 generated by adding either a 0 or a 1, respectively, to \(s_y^R\). Since
 \(p\) is true at \(s_y^R\) and truth is persistent, \(p\) will be true
-at both \(s_y^R \oplus \langle 0 \rangle\) and
-\(s_y^R \oplus \langle 1 \rangle\). Since
-\(s_y^R \oplus \langle 0 \rangle\) has a 0 at its \(i\)th position, it
+at both \(s_y^R \oplus \langle 0 \rangle^R\) and
+\(s_y^R \oplus \langle 1 \rangle^R\). Since
+\(s_y^R \oplus \langle 0 \rangle^R\) has a 0 at its \(i\)th position, it
 is a dead-end with respect to \(R^{\leftarrow}_i\). So
 \(\neg \Diamond_i^{\leftarrow} \mathsf{T}\) is true there. So since
-\(x\) is left-handed, and \(s_y^R\oplus \langle 0 \rangle\) is
+\(x\) is left-handed, and \(s_y^R\oplus \langle 0 \rangle^R\) is
 right-handed,
 \(\Diamond^{\rightarrow} p \wedge \neg \Diamond_i^{\leftarrow} \mathsf{T}\)
 is true at \(x\). A similar argument shows that
 \(p \wedge \Diamond_i^{\leftarrow} \mathsf{T}\) is true at
-\(s_y^R\oplus \langle 1 \rangle\), so
+\(s_y^R\oplus \langle 1 \rangle^R\), so
 \(\Diamond^{\rightarrow}(p \wedge \Diamond_i^{\leftarrow} \mathsf{T})\)
 is true at \(x\). And that implies that the \(i\)th disjunct of the
 right-hand disjunction of (\ref{Splitting}) is true at \(x\), as
@@ -1000,6 +1014,242 @@ frame. So \(\mathrm{ML}(\mathsf{K}) \neq \mathrm{ML}(\mathsf{H})\), and
 hence \(\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{H})\).
 
 \section{Quantifiers and Necessitism}\label{sec-quant}
+
+There are two distinctive features of the way that I introduced
+quantifiers in Section~\ref{sec-formal}. First, I introduced the
+universal quantifier as basic, and simply defined \(\exists\) as
+\(\neg \forall \neg\). Second, I introduced the universal quantifier as
+\emph{possibilist}, at least in the sense that it ranges over all
+objects in a possibility and all its refinements. As I noted, there is a
+passing remark in ``From Worlds to Possibilities'' where Humberstone
+suggests that is how he would do it. It's worth going over why this ends
+up being the best way to do things.
+
+The aim here, as it was in Section~\ref{sec-formal}, was to keep
+classical logic while still using things, like incomplete possibilities,
+which are usually taken to be incompatible with classical logic. But in
+this section the primary contrast is not with non-classical
+propositional logics, but with free logics. In classical logic, this
+argument looks fairly compelling, as long as the modal logic we're using
+is normal.
+
+\begin{align*}
+1. && a = a && \text{=Intro} \\
+2. && \exists x(x = a) && \exists\text{-Introduction} \\
+3. && \Box \exists x(x = a) && \text{Necessitation} \\
+4. && \forall y \Box \exists x(x = y) && \forall-\text{Introduction} \\
+5. && \Box \forall y \Box \exists x(x = y) && \text{Necessitation}
+\end{align*}
+
+That is, necessarily every object is such that necessarily, something is
+identical to it. If we are working in a possible worlds framework, and
+assume that the modal logic we're using is at least as strong as
+\textbf{KTB}, that just about implies that all worlds have the same
+domain. Strictly speaking, it's consistent with there being worlds with
+distinct domains which are not connected by the ancestral of \(R\), but
+any world that could be relevant to the truth of any sentence at \(w\)
+must have the same domain as \(w\).
+
+In the possibilities framework, we have a bit more flexibility while
+still making claims like \(\Box \forall y \Box \exists x(x = y)\) come
+out true. We could go for a constant domain semantics, as in the
+possible worlds picture. The upside of the constant domain semantics is
+that our quantifiers could be `actualist'. We could say that
+\(\forall x: \Phi x\) is true at a point, relative to an assignment
+\(g\), iff \(\Phi a\) is true at \(g[x/o]\) for any \(o\) in the domain.
+That is more intuitive than the possibilist clause I've endorsed for
+\(\forall\).
+
+The reason I've endorsed this less intuitive clause is that having
+constant domains does not feel like it matches the spirit of the
+possibilities framework. Some stories have more characters than others.
+In the story that consists of one proposition, \emph{Romeo loves
+Juliet}, it feels like the domain should just consist of Romeo and
+Juliet. But now we face a challenge. If the quantifiers range just over
+the things in that possibility, we can't have \(\exists x(x = a)\) be a
+logical truth in that to be a logical truth, we can't have the domain of
+the quantifier range just over Romeo and Juliet.
+
+That doesn't quite settle things though. In the propositional case, we
+made the truth value for conjunctions depend only on what was true at
+that possibility, while the truth value for disjunctions depended on
+later refinements. Perhaps we try a parallel move here, and have the
+truth of a universally quantified statement range over only things in
+that possibility, while existentially quantified statements range over
+more things.
+
+That won't work though. If the domain of
+\(\langle \textit{Romeo loves Juliet}\rangle\) is just Romeo and Juliet,
+and universal quantifiers only range over the domain of that
+possibility, then the sentence
+\(\forall x(x = \mathit{Romeo} \vee x = \mathit{Juliet})\) would come
+out true. But since \(\mathit{Mercutio} = \mathit{Mercutio}\) is a
+logical truth, we would then get that Mercutio is identical to Romeo or
+Mercutio is identical to Juliet. We don't want that, because there are
+clearly refinements of our simple story where Mercutio is neither Romeo
+nor Juliet. Shakespeare's play is one such refinement.
+
+So it looks like we are forced to say that quantifiers range over future
+refinements as well as the actual possibility. Still, we want a way to
+be able to say, within a possibility, that all the \(F\)'s in that
+possibility are \(G\). We can't say that with
+\(\forall x(Fx \rightarrow Gx)\), since there might be a counterexample
+of an \(F\) in a later refinement which is not \(G\). Is there any way
+to talk about what's just true in the possibility?
+
+Harrison-Trainor (\citeproc{ref-HarrisonTrainor2019}{2019}) suggests
+that we can do this by adding a special predicate \(E\) for ``exists''
+which is satisfied at a world by all and only the things in the world's
+domain. Then we could say what we wanted as
+\(\forall x ((Fx \wedge Ex) \rightarrow Gx)\).
+
+That's on the right track, but it can't be right as it stands. The
+problem is that we want all our predicates to be persistent and
+refinable, or the logic won't work. A special predicate \(E\) is
+satisfied only by Romeo and Juliet in
+\(\langle \textit{Romeo loves Juliet}\rangle\) would not comply with
+refinability. For any object (other than Romeo and Juliet), we want them
+to not be \(E\). But there is no later world where there is some name
+\(c\) for them, and \(\neg Ec\) is true. So by refinability, all objects
+are \(E\), defeating the point of the proposal.
+
+I think this is just a terminological issue though. The key thing is to
+not use a predicate here, but a \emph{demonstrative}. There are two ways
+we could do this.
+
+First, we might introduce a new plural referring term \(\mathbf{U}\),
+short for \emph{Us}, which picks out everything in our possibility.
+Imagine introducing \(\mathbf{U}\) while waving your arms around and
+saying that it refers to us. The thought is that \(\mathbf{U}x\) does
+not mean that \(x\) exists, but rather that \(x\) is one of us. If Romeo
+and Juliet were to introduce \(\mathbf{U}\) that way in their
+possibility, then the thing they say by uttering ``Mercutio is not one
+of us'' would be true. Plausibly, though this depends what the ontology
+of fictional characters is, we also say something true by saying
+``Mercutio is not one of us.''
+
+There is a slightly more complicated, but I suspect ultimately more
+natural, way to get the same result. Let's introduce a new name @ for
+the actual possibility. As with \(\mathbf{U}\), it is important that
+this is a directly referring expression. It is indexical, in the way
+that `actually' is in two-dimensional semantics (Davies and Humberstone
+(\citeproc{ref-Davies1980}{1980})). Then we introduce a special new
+two-place predicate \(I\), meaning `in'. Using those we can say that all
+actual \(F\)'s are \(G\)'s by saying
+\(\forall x((Fx \wedge Ix@) \rightarrow Gx)\). The move here is parallel
+to what modal realists have to do to understand ordinary, world-bound,
+quantification.
+
+There is one odd thing about either of these moves. They both involve
+indexicals. So one might expect that there will be a distinction between
+the proposition that these utterances express, and the `diagonal'
+proposition consisting of those possibilities that make true the
+proposition the utterance would express there. In the possibilities
+framework, there can't be these diagonal propositions. The problem is
+just the one we ran into when we tried to do actualist quantification.
+We can certainly find a set of possibilities where the content the
+utterance would have if uttered there is true there. But that set will
+typically not be a proposition because it won't satisfy persistence or
+refinability. In general, one complication of the possibilities
+framework is that we cannot find a proposition for arbitrary sets of
+possibilities, and that is what causes the non-existence of the diagonal
+proposition here.
+
+Once we understand world-bound quantification using one or other of
+these indexicals, the possibilities framework turns out to have some
+interesting interactions with recent debates about necessitism.
+Following Williamson (\citeproc{ref-Williamson2013}{2013}), there has
+been a resurgence of attention in the idea that everything exists
+necessarily. Here is a very quick argument for necessitism.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The right logic for quantified modal logic is a normal modal logic
+  with classical first-order logic.
+\item
+  So it is a logical truth that
+  \(\Box \forall y \Box \exists x(x = y)\).
+\item
+  The right modal logic is not just normal, it is at least as strong as
+  \textbf{KTB}.
+\item
+  In the possible worlds framework, the only way to have
+  \(\Box \forall y \Box \exists x(x = y)\) and for the modal logic to be
+  as strong as \textbf{KTB} is for the domain to be constant across all
+  worlds connected by the ancestral of \(R\).
+\item
+  So the domain of all these \(R\)-connected worlds is constant, i.e.,
+  necessitism is true.
+\end{enumerate}
+
+Here's a tempting, but I suspect ultimately mistaken, way to respond to
+this argument. The possibilities framework shows that the move from step
+4 to step 5 is right. In the the possible worlds framework, it's true
+that we need a constant domain to validate these logical truths. But we
+don't need a constant domain in the possibilities framework to make
+\(\Box \forall y \Box \exists x(x = y)\) come out true. So if that's the
+master argument for necessitism, the possibilities framework provides
+one with tools to resist it.
+
+This seems too quick to me for three reasons. One is that a theory which
+separates domains of possibilities from the truth conditions for the
+quantifiers as dramatically as this theory does is not likely to be
+particularly convincing to necessitists. That's not worrying on it's
+own; lots of good arguments aren't convincing to theorists committed to
+the other side. The other two concerns, however, are more pressing.
+
+So the second worry is that this is far from the only argument for
+necessitism. Several of the more pressing arguments involve
+\emph{second-order} modal logic. I haven't even tried to formulate
+second-order logic in the possibilities framework, and until that's
+done, it's impossible to respond to these arguments. And the third worry
+is that plenty of necessitists do not think that that necessitism has
+anything to do with constant domains. Here is how Williamson introduces
+the view.
+
+\begin{quote}
+Call the proposition that it is necessary what there is necessitism, and
+its negation contingentism. In slightly less compressed form,
+necessitism says that necessarily everything is necessarily something;
+still more long-windedly: it is necessary that everything is such that
+it is necessary that something is identical with it. In a slogan:
+ontology is necessary. Contingentism denies that necessarily everything
+is necessarily something. In a slogan: ontology is contingent.
+(\citeproc{ref-Williamson2013}{Williamson 2013, 2})
+\end{quote}
+
+On Williamson's own account, necessitism looks like what we get to in
+step 3 of the little argument. The distinction between the worlds
+framework and the possibilities framework only becomes relevant after
+the game is already over.
+
+A better use of the possibilities framework might not be to reject
+necessitism, but to explain away some of its counterintuitive
+consequences. Surely, say the contingentists, some things might not have
+been, and other things that are might not have been. In the
+possibilities framework, we have a way of accommodating these
+intuitions.
+
+There is some good sense in which possible beings, like Holmes, are not
+actual. They are not in the actual world. At least, necessitism does not
+entail that they are in the actual world. Holmes is not one of us.
+Conversely, the Holmes stories may well be possible (provided we fix
+where Watson's war wound is), and I'm not in them. It's true that the
+sentence \(\exists x (x = \textit{Brian})\) is true in the Holmes
+stories, but surprisingly that can be true without me being in the
+Holmes stories.
+
+So once we understand quantifiers and indexicals in the possibilities
+framework the right way, we can say things that are very close to
+contingentism without actually giving up necessitism. I suspect the best
+way to interpret that is as good news for a kind of necessitism, one
+that is willing to concede that there is something to contingentist
+intuitions. Whether that kind of slightly qualified necessitism is
+viable will depend on further questions, in particular concerning how to
+do second order quantification in the possibilities framework, but it
+seems worth investigating.
 
 \section{Conditionals}\label{sec-conditionals}
 
@@ -1104,11 +1354,13 @@ other will have the property of being the one that would be heavier if
 they were different. I don't think this argument goes through on the
 possibilities framework, but settling that would require saying more
 about how higher-order quantification works in the possibilities
-framework, and that would take us too far afield. Instead I'll turn to
-the puzzle that Bacon introduces his conditions to solve. That is a
-puzzle, introduced by Kit Fine (\citeproc{ref-Fine2012a}{2012b},
-\citeproc{ref-Fine2012b}{2012a}), which is a counterfactual version of a
-paradox from José Bernadete (\citeproc{ref-Bernadete1964}{1964}).
+framework, as noted in Section~\ref{sec-quant}, I'm leaving questions
+about higher-order logic for another day. Instead I'll turn to a puzzle
+that Bacon aimed to solve in the paper I just mentioned. That puzzle
+starts with an example from José Bernadete
+(\citeproc{ref-Bernadete1964}{1964}), and Kit Fine
+(\citeproc{ref-Fine2012b}{2012a}, \citeproc{ref-Fine2012a}{2012b})
+developed into a deep challenge to several theories of counterfactuals.
 
 There is a room that is very dangerous to cross. A man is thinking of
 crossing it, but he is warned off when he learns that it contains an
@@ -1452,6 +1704,11 @@ Heresies.''} \emph{Philosophy and Phenomenological Research} 101 (2):
 Conan Doyle, Arthur. 1995. \emph{A Study in Scarlet}. Urbana, Illinois:
 Project Gutenberg.
 
+\bibitem[\citeproctext]{ref-Davies1980}
+Davies, Martin, and I. L. Humberstone. 1980. {``Two Notions of
+Necessity.''} \emph{Philosophical Studies} 38 (1): 1--30.
+https://doi.org/10.1007/bf00354523.
+
 \bibitem[\citeproctext]{ref-Embry2014}
 Embry, Brian. 2014. {``Counterfactuals Without Possible Worlds? A
 Difficulty for Fine?s Exact Semantics for Counterfactuals.''}
@@ -1505,6 +1762,12 @@ Publishers.
 \bibitem[\citeproctext]{ref-Lewis1978b}
 ---------. 1978. {``Truth in Fiction.''} \emph{American Philosophical
 Quarterly} 15 (1): 37--46.
+
+\bibitem[\citeproctext]{ref-Williamson2013}
+Williamson, Timothy. 2013. {``How Deep Is the Distinction Between a
+Priori and a Posteriori Knowledge.''} In \emph{The a Priori in
+Philosophy}, edited by Albert Casullo and Joshua C. Thurow, 291--312.
+Oxford: Oxford University Press.
 
 \end{CSLReferences}
 
