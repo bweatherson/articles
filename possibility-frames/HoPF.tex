@@ -350,9 +350,11 @@ SemiBold]{EB Garamond Math}
 \setlength\heavyrulewidth{0ex}
 \setlength\lightrulewidth{0ex}
 \usepackage[lines=2]{lettrine}
-\cehead{Draft of February 28, 2026}
+\cehead{Draft of March 1, 2026}
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
 \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\usepackage{etoolbox}
+\AtBeginEnvironment{description}{\raggedright}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -410,7 +412,7 @@ SemiBold]{EB Garamond Math}
 
 \title{Humberstone on Possibility Frames}
 \author{Brian Weatherson}
-\date{2026-02-28}
+\date{2026-03-01}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -430,11 +432,10 @@ In his 1981 paper ``From Worlds to Possibilities'', Lloyd Humberstone
 shows a way to do modal logic without the apparatus of possible worlds.
 Instead of worlds he uses \emph{possibilities}, which may, unlike
 worlds, be incomplete. The non-modal parts of the view are discussed
-again in section 6.44 of \emph{The Connectives}, though the differences
-between the view there and the 1981 view are largely presentational. In
-this paper I'll set out this \emph{possibility frame} approach to modal
-logic, make some notes about its logic, and end with a survey of its
-possible applications.
+again in section 6.44 of \emph{The Connectives}, with some small
+presentational differences. In this paper I'll set out this
+\emph{possibility frame} approach, make some notes about its logic, and
+end with a survey of its possible applications.
 
 Mathematically, possibilities are points in a model, like possible
 worlds are points in different kinds of models. But it helps to have a
@@ -470,9 +471,10 @@ convenient to use the more general notion of \emph{refinement}, where
 each story counts as an improper refinement of itself.
 
 Following Humberstone, I'll write \(x \leqslant y\) to mean that \(y\)
-is a refinement of \(x\). As he notes, this notation can be confusing if
-one thinks of \(x\) and \(y\) as sets, because in that case the
-refinement will typically be \emph{smaller}.\footnote{Holliday
+is a refinement of \(x\).\footnote{\(y \geqslant x\) will just mean the
+  same thing as \(x \leqslant y\).} As he notes, this notation can be
+confusing if one thinks of \(x\) and \(y\) as sets, because in that case
+the refinement will typically be \emph{smaller}.\footnote{Holliday
   (\citeproc{ref-Holliday2025}{2025}) writes \(y \sqsubseteq x\) when
   \(y\) is a refinement of \(x\), mirroring this way of thinking about
   possibilities.} But if we think of possibilities as stories, the
@@ -494,14 +496,14 @@ connectives: \(\neg\), \(\wedge\), and \(\vee\). We have a set of
 possibilities \(W\), and a reflexive and transitive refinement relation
 \(\leqslant\) on them. The following rules show how to build what I'll
 call a \emph{Humberstone possibility model} on
-\(\langle W, \leqslant \rangle\). (I'll call
-\(\langle W, \leqslant \rangle\) a \emph{possibility frame} in most
+\mbox{$\langle W, \leqslant \rangle$}. (I'll call
+\mbox{$\langle W, \leqslant \rangle$} a \emph{possibility frame} in most
 contexts, but a \emph{Humberstone frame} when I'm comparing it to
 similar structures, especially in the context of discussing Holliday
 (\citeproc{ref-Holliday2025}{2025}).)
 
 A Humberstone possibility model \(\mathcal{M}\) is a triple
-\(\langle W, \leqslant, V \rangle\), where \(V\) is a function from
+\mbox{$\langle W, \leqslant, V \rangle$}, where \(V\) is a function from
 \(\mathcal{P}\) to \(\wp(W)\), intuitively saying where each atomic
 proposition is true, satisfying these two constraints:
 
@@ -513,7 +515,7 @@ proposition is true, satisfying these two constraints:
   across refinements.
 \item
   For all \(x\), if
-  \(\forall y \geqslant x \exists z \geqslant y: z \in V(p)\), then
+  \(\forall y \geqslant x\;\, \exists z \geqslant y: z \in V(p)\), then
   \(x \in V(p)\). This is what Humberstone
   (\citeproc{ref-Humberstone2011}{2011, 900}) calls
   \textbf{refinability}, and it means that \(p\) only fails to be true
@@ -530,7 +532,7 @@ truth at a possibility for all sentences in this language. (We'll treat
 [\text{Vbls}] \quad & \mathcal{M} \models_x p_i \text{ iff } x \in V(p_i); \\
 [\neg] \quad & \mathcal{M} \models_x \neg A \text{ iff } \forall y \geqslant x, \, \mathcal{M} \nmodels_y  A; \\
 [\wedge] \quad & \mathcal{M} \models_x A \wedge B \text{ iff } \mathcal{M} \models_x A \text{ and } \mathcal{M} \models_x B; \\
-[\vee] \quad & \mathcal{M} \models_x A \vee B \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \, \mathcal{M} \models_z A \text{ or } \mathcal{M} \models_z B.
+[\vee] \quad & \mathcal{M} \models_x A \vee B \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y : \mathcal{M} \models_z A \text{ or } \mathcal{M} \models_z B.
 \end{align*}
 
 Given these definitions, it's possible to prove three things. First,
@@ -562,7 +564,7 @@ set is true. More formally, its truth at a possibility is defined as
 follows:
 
 \begin{align*}
-[\bigvee] \quad & \mathcal{M} \models_x \bigvee ({A_1, A_2, \dots})  \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, : \,\text{ for some } i \, \mathcal{M} \models_z A_i.
+[\bigvee] \quad & \mathcal{M} \models_x \bigvee ({A_1, A_2, \dots})  \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y :\text{ for some } i \, \mathcal{M} \models_z A_i.
 \end{align*}
 
 Again, it's fairly simple to show that this addition to the language
@@ -577,9 +579,9 @@ in Humberstone (\citeproc{ref-Humberstone1981a}{1981, 331}). Assume, as
 usual, that the language has a stock of names \(c_1, \dots\), and for
 each \(n\), a stock of \(n\)-place predicates \(F^n_1, F^n_2, \dots\). A
 \emph{first-order (Humberstone) possibility model} is a structure
-\(\langle W, \leqslant, D, V \rangle\), where \(D\) assigns a non-empty
-domain of objects to each point, and \(V\) interprets the non-logical
-vocabulary. More precisely:
+\mbox{$\langle W, \leqslant, D, V \rangle$}, where \(D\) assigns a
+non-empty domain of objects to each point, and \(V\) interprets the
+non-logical vocabulary. More precisely:
 
 \begin{itemize}
 \tightlist
@@ -608,13 +610,13 @@ For each name \(c_i\) and each \(x \in W\), there exists some
 If \(V(c_i, x)\) is defined and \(x \leqslant y\), then \(V(c_i, y)\) is
 defined and \(V(c_i, y) = V(c_i, x)\).
 \item[Persistence for predicate extensions]
-If \(\langle o_1, \dots, o_n \rangle \in V(F^n_j, x)\) and
+If \mbox{$\langle o_1, \dots, o_n \rangle \in V(F^n_j, x)$} and
 \(x \leqslant y\), then
-\(\langle o_1, \dots, o_n \rangle \in V(F^n_j, y)\).
+\mbox{$\langle o_1, \dots, o_n \rangle \in V(F^n_j, y)$}.
 \item[Refinability for predicate extensions]
-If \(\langle o_1, \dots, o_n \rangle \notin V(F^n_j, x)\), then there
-exists some \(y \geqslant x\) such that for all \(z \geqslant y\),
-\(\langle o_1, \dots, o_n \rangle \notin V(F^n_j, z)\).
+If \mbox{$\langle o_1, \dots, o_n \rangle \notin V(F^n_j, x)$}, then
+there exists some \(y \geqslant x\) such that for all \(z \geqslant y\),
+\mbox{$\langle o_1, \dots, o_n \rangle \notin V(F^n_j, z)$}.
 \end{description}
 
 Given a model and a variable assignment \(g\) mapping variables to
@@ -626,10 +628,10 @@ agrees with \(g\). For a term \(t\), write
 a name that only gets defined at subsequent refinements.
 
 \begin{align*}
-[=] \quad & \mathcal{M}, g \models_x t_1 = t_2 \text{ iff } \forall y \geqslant x \, \exists z \geqslant y : \llbracket t_1 \rrbracket^{g,z} \text{ and } \llbracket t_2 \rrbracket^{g,z} \text{ are both defined and equal}; \\
-[F^n] \quad & \mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n) \text{ iff } \forall y \geqslant x \, \exists z \geqslant y : \langle \llbracket t_1 \rrbracket^{g,z}, \dots, \llbracket t_n \rrbracket^{g,z} \rangle \in V(F^n_j, z); \\
+[=] \quad & \mathcal{M}, g \models_x t_1 = t_2 \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y : \llbracket t_1 \rrbracket^{g,z} \text{ and } \llbracket t_2 \rrbracket^{g,z} \text{ are both defined and equal}; \\
+[F^n] \quad & \mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n) \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y : \langle \llbracket t_1 \rrbracket^{g,z}, \dots, \llbracket t_n \rrbracket^{g,z} \rangle \in V(F^n_j, z); \\
 [\forall] \quad & \mathcal{M}, g \models_x \forall v \, A \text{ iff } \forall y \geqslant x \, \forall o \in D(y) : \mathcal{M}, g[v/o] \models_y A; \\
-[\exists] \quad & \mathcal{M}, g \models_x \exists v \, A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists o \in D(z) : \mathcal{M}, g[v/o] \models_z A.
+[\exists] \quad & \mathcal{M}, g \models_x \exists v \, A \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y \, \exists o \in D(z) : \mathcal{M}, g[v/o] \models_z A.
 \end{align*}
 
 The propositional connectives are handled exactly as before.
@@ -656,14 +658,14 @@ clauses are downstream of the fact that denotation does not satisfy
 refinability in just that way.
 
 In the special case where every name already has a denotation at \(x\),
-the atomic clauses simplify in just the way you would hope. If \(t_1\)
-and \(t_2\) are variables, or names that already have denotations at
-\(x\), then by persistence of names and predicate extensions the
-\(\forall\exists\) quantifier prefix collapses:
+the atomic clauses simplify in just the way you would hope. If
+\(t_1, \dots, t_n\) are variables, or names that already have
+denotations at \(x\), then by persistence of names and predicate
+extensions the \(\forall\exists\) quantifier prefix collapses:
 \(\mathcal{M}, g \models_x t_1 = t_2\) iff
 \(\llbracket t_1 \rrbracket^{g,x} = \llbracket t_2 \rrbracket^{g,x}\),
 and \(\mathcal{M}, g \models_x F^n_j(t_1, \dots, t_n)\) iff
-\(\langle \llbracket t_1 \rrbracket^{g,x}, \dots, \llbracket t_n \rrbracket^{g,x} \rangle \in V(F^n_j, x)\).
+\mbox{$\langle \llbracket t_1 \rrbracket^{g,x}, \dots, \llbracket t_n \rrbracket^{g,x} \rangle \in V(F^n_j, x)$}.
 The more complex clauses above are needed only to handle the case where
 some name occurring in the formula lacks a denotation at \(x\) but is
 guaranteed to acquire one.
@@ -726,7 +728,7 @@ this is equivalent to the more familiar
 {[}\(\Diamond_i\){]}\textsubscript{Simple}.
 
 \begin{align*}
-[\Diamond_i]_{\text{Official}} \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \forall y \geqslant x \, \exists z \geqslant y \, \exists w \, (z R_i w \text{ and } \mathcal{M} \models_w A). \\
+[\Diamond_i]_{\text{Official}} \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \forall y \geqslant x \;\, \exists z \geqslant y \, \exists w \, (z R_i w \text{ and } \mathcal{M} \models_w A). \\
 [\Diamond_i]_{\text{Simple}} \quad & \mathcal{M} \models_x \Diamond_i A \text{ iff } \exists y \, (x R_i y \text{ and } \mathcal{M} \models_y A);
 \end{align*}
 
@@ -785,11 +787,11 @@ put in a converse of \textbf{RRef++}.
 
 The argument that Humberstone spends more time on, and which I think is
 more compelling, comes from rethinking the relationship between \(R_i\)
-and \(\Box_i\). It's very tempting to read those truth conditions as
-being explanatory from right-to-left. On this way of thinking, facts
-about which \(\Box_i\) sentences are true at a point are grounded in
-which non-modal sentences are true and which \(R_i\) relations obtain.
-But while this is tempting, it isn't compulsory.
+and \(\Box_i\). It's very tempting to read the truth condition for
+\(\Box_i\) as being explanatory from right-to-left. On this way of
+thinking, facts about which \(\Box_i\) sentences are true at a point are
+grounded in which non-modal sentences are true and which \(R_i\)
+relations obtain. But while this is tempting, it isn't compulsory.
 
 We could instead take the modal facts as given, and ask what
 accessibility relations must obtain to be consistent with them. The
@@ -798,10 +800,10 @@ We take the sets of consistent sentences as given, and say \(s_1R_is_2\)
 iff whenever \(\Box_i A \in s_1\), then \(A \in s_2\). Humberstone's
 defence of the constraints takes a similar path. Imagine that instead of
 using the recursive clauses for the definition of modal truths, we
-simply have a frame \(\langle W, \leqslant \rangle\) and a stipulated
-assignment of truths at each point in \(W\). These assignments will be
-presumed to satisfy persistence and refinability. Now say that \(xR_iy\)
-iff \(\mathcal{M} \models_y A\) whenever
+simply have a frame \mbox{$\langle W, \leqslant \rangle$} and a
+stipulated assignment of truths at each point in \(W\). These
+assignments will be presumed to satisfy persistence and refinability.
+Now say that \(xR_iy\) iff \(\mathcal{M} \models_y A\) whenever
 \(\mathcal{M} \models_x \Box_i A\). Given those assumptions, what
 conditions must \(R_i\) satisfy?
 
@@ -843,8 +845,8 @@ precisely, for any class of frames \(\mathsf{F}\), let
 \(\mathrm{L}(\mathsf{F})\) be the set of sentences true at all points in
 all models definable on some member of \(\mathsf{F}\). Then let
 \(\mathrm{ML}(\mathsf{F})\) be the set
-\(\{\mathrm{L}(\mathsf{X}) : \mathsf{X} \subseteq \mathsf{F}\}\). That
-is, \(\mathrm{ML}(\mathsf{F})\) is the class of logics that can be
+\mbox{$\{\mathrm{L}(\mathsf{X}) : \mathsf{X} \subseteq \mathsf{F}\}$}.
+That is, \(\mathrm{ML}(\mathsf{F})\) is the class of logics that can be
 determined using just \(\mathsf{F}\).
 
 If we let \(\mathsf{K}\) denote the class of Kripke frames, and
@@ -855,7 +857,7 @@ argument to show that
 let \(\mathsf{H}\) denote the class of Humberstone frames, it follows
 from the fact that every Kripke frame is a Humberstone frame and every
 Humberstone frame is a full possibility frame that
-\(\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP})\).
+\mbox{$\mathrm{ML}(\mathsf{K}) \subseteq \mathrm{ML}(\mathsf{H}) \subseteq \mathrm{ML}(\mathsf{FP})$}.
 The fact that
 \(\mathrm{ML}(\mathsf{K}) \subsetneq \mathrm{ML}(\mathsf{FP})\) implies
 that at least one of those inclusions is strict, it isn't clear which
@@ -875,13 +877,13 @@ conditions.
 \subsection*{The Frame}\label{the-frame}
 \addcontentsline{toc}{subsection}{The Frame}
 
-The frame is built from two copies of the set of finite binary sequences
---- sequences of 0s and 1s of any finite length, including the empty
-sequence. Call one copy the \textbf{left-handed} sequences and the other
-the \textbf{right-handed} sequences. The refinement relation is:
-\(x \leqslant y\) iff \(x\) and \(y\) have the same handedness and \(x\)
-is an initial segment of \(y\). So within each copy the frame is just
-the binary tree ordered by extension, and no left-handed sequence
+The frame is built from two copies of the set of finite binary
+sequences, i.e., sequences of 0s and 1s of any finite length, including
+the empty sequence. Call one copy the \textbf{left-handed} sequences and
+the other the \textbf{right-handed} sequences. The refinement relation
+is: \(x \leqslant y\) iff \(x\) and \(y\) have the same handedness and
+\(x\) is an initial segment of \(y\). So within each copy the frame is
+just the binary tree ordered by extension, and no left-handed sequence
 refines a right-handed sequence or vice versa. It will help to have some
 notation for referring to points in this model. When \(s\) is a finite
 binary sequence, I'll write \(s^L\) for the left-handed version of
@@ -891,11 +893,11 @@ binary sequence, I'll write \(s^L\) for the left-handed version of
 Relations}\label{the-accessibility-relations}
 \addcontentsline{toc}{subsection}{The Accessibility Relations}
 
-Next I'll define an accessibility relation and a separate infinite
-family of accessibility relations. The single relation, which I'll write
-\(R^{\rightarrow}\), is such that \(xR^{\rightarrow}y\) iff \(x\) is
-left-handed and \(y\) is right-handed. The family of relations, each
-written \(R^{\leftarrow}_i\) for \(i \in \mathbb{N}\), is such that
+I'll define first a single accessibility relation and then a separate
+infinite family of accessibility relations. The single relation, which
+I'll write \(R^{\rightarrow}\), is such that \(xR^{\rightarrow}y\) iff
+\(x\) is left-handed and \(y\) is right-handed. The family of relations,
+each written \(R^{\leftarrow}_i\) for \(i \in \mathbb{N}\), is such that
 \(xR^{\leftarrow}_iy\) iff \(x\) is right-handed, \(x\) does not have a
 \(0\) in its \(i\)-th position (either because \(x\) has length less
 than \(i\), or because it has a \(1\) in position \(i\)), and \(y\) is
@@ -965,21 +967,21 @@ helpful to denote a right-handed point \(y\) as \(s_y^R\). Among those
 length of \(s_y\), is minimal. There must be some such points, since
 sequence lengths are non-negative integers and \(p\) is true at some
 accessible right-handed point. Let \(i = |s_y| + 1\). Let
-\(s_y^R \oplus \langle 0 \rangle^R\) and
-\(s_y^R \oplus \langle 1 \rangle^R\) be the right-handed sequences
+\mbox{$s_y^R \oplus \langle 0 \rangle^R$} and
+\mbox{$s_y^R \oplus \langle 1 \rangle^R$} be the right-handed sequences
 generated by adding either a 0 or a 1, respectively, to \(s_y^R\). Since
 \(p\) is true at \(s_y^R\) and truth is persistent, \(p\) will be true
-at both \(s_y^R \oplus \langle 0 \rangle^R\) and
-\(s_y^R \oplus \langle 1 \rangle^R\). Since
-\(s_y^R \oplus \langle 0 \rangle^R\) has a 0 at its \(i\)th position, it
-is a dead-end with respect to \(R^{\leftarrow}_i\). So
+at both \mbox{$s_y^R \oplus \langle 0 \rangle^R$} and
+\mbox{$s_y^R \oplus \langle 1 \rangle^R$}. Since
+\mbox{$s_y^R \oplus \langle 0 \rangle^R$} has a 0 at its \(i\)th
+position, it is a dead-end with respect to \(R^{\leftarrow}_i\). So
 \(\neg \Diamond_i^{\leftarrow} \mathsf{T}\) is true there. So since
-\(x\) is left-handed, and \(s_y^R\oplus \langle 0 \rangle^R\) is
+\(x\) is left-handed, and \mbox{$s_y^R\oplus \langle 0 \rangle^R$} is
 right-handed,
 \(\Diamond^{\rightarrow} p \wedge \neg \Diamond_i^{\leftarrow} \mathsf{T}\)
 is true at \(x\). A similar argument shows that
 \(p \wedge \Diamond_i^{\leftarrow} \mathsf{T}\) is true at
-\(s_y^R\oplus \langle 1 \rangle^R\), so
+\mbox{$s_y^R\oplus \langle 1 \rangle^R$}, so
 \(\Diamond^{\rightarrow}(p \wedge \Diamond_i^{\leftarrow} \mathsf{T})\)
 is true at \(x\). And that implies that the \(i\)th disjunct of the
 right-hand disjunction of (\ref{Splitting}) is true at \(x\), as
@@ -1028,27 +1030,25 @@ up being the best way to do things.
 The aim here, as it was in Section~\ref{sec-formal}, was to keep
 classical logic while still using things, like incomplete possibilities,
 which are usually taken to be incompatible with classical logic. But in
-this section the primary contrast is not with non-classical
-propositional logics, but with free logics. In classical logic, this
-argument looks fairly compelling, as long as the modal logic we're using
-is normal.
+this section the primary contrast to classical logic is not some
+non-classical propositional logic, but a free logic. In classical logic,
+this argument looks fairly compelling, as long as the modal logic we're
+using is normal.
 
 \begin{align*}
 1. && a = a && \text{=Intro} \\
 2. && \exists x(x = a) && \exists\text{-Introduction} \\
 3. && \Box \exists x(x = a) && \text{Necessitation} \\
-4. && \forall y \Box \exists x(x = y) && \forall-\text{Introduction} \\
+4. && \forall y \Box \exists x(x = y) && \forall\text{-Introduction} \\
 5. && \Box \forall y \Box \exists x(x = y) && \text{Necessitation}
 \end{align*}
 
 That is, necessarily every object is such that necessarily, something is
-identical to it. If we are working in a possible worlds framework, and
-assume that the modal logic we're using is at least as strong as
-\textbf{KTB}, that just about implies that all worlds have the same
-domain. Strictly speaking, it's consistent with there being worlds with
-distinct domains which are not connected by the ancestral of \(R\), but
-any world that could be relevant to the truth of any sentence at \(w\)
-must have the same domain as \(w\).
+identical to it. If we are working in a possible worlds framework and
+our logic is at least as strong as \textbf{KTB}, this implies that any
+two worlds connected by the ancestral of \(R\) must share the same
+domain. So all worlds that could be relevant to the truth of any
+sentence at \(w\) have the same domain as \(w\).
 
 In the possibilities framework, we have a bit more flexibility while
 still making claims like \(\Box \forall y \Box \exists x(x = y)\) come
@@ -1067,8 +1067,8 @@ In the story that consists of one proposition, \emph{Romeo loves
 Juliet}, it feels like the domain should just consist of Romeo and
 Juliet. But now we face a challenge. If the quantifiers range just over
 the things in that possibility, we can't have \(\exists x(x = a)\) be a
-logical truth in that to be a logical truth, we can't have the domain of
-the quantifier range just over Romeo and Juliet.
+logical truth in that to be a logical truth, it seems like the domain of
+the quantifier can't range just over Romeo and Juliet.
 
 That doesn't quite settle things though. In the propositional case, we
 made the truth value for conjunctions depend only on what was true at
@@ -1079,15 +1079,15 @@ that possibility, while existentially quantified statements range over
 more things.
 
 That won't work though. If the domain of
-\(\langle \textit{Romeo loves Juliet}\rangle\) is just Romeo and Juliet,
-and universal quantifiers only range over the domain of that
+\mbox{$\langle \textit{Romeo loves Juliet}\rangle$} is just Romeo and
+Juliet, and universal quantifiers only range over the domain of that
 possibility, then the sentence
 \(\forall x(x = \mathit{Romeo} \vee x = \mathit{Juliet})\) would come
-out true. But since \(\mathit{Mercutio} = \mathit{Mercutio}\) is a
-logical truth, we would then get that Mercutio is identical to Romeo or
-Mercutio is identical to Juliet. We don't want that, because there are
-clearly refinements of our simple story where Mercutio is neither Romeo
-nor Juliet. Shakespeare's play is one such refinement.
+out true. But by \$\forall\text{-Elimitation}, we would then get that
+Mercutio is identical to Romeo or Mercutio is identical to Juliet. We
+don't want that, because there are clearly refinements of our simple
+story where Mercutio is neither Romeo nor Juliet. Shakespeare's play is
+one such refinement.
 
 So it looks like we are forced to say that quantifiers range over future
 refinements as well as the actual possibility. Still, we want a way to
@@ -1107,11 +1107,11 @@ That's on the right track, but it can't be right as it stands. The
 problem is that we want all our predicates to be persistent and
 refinable, or the logic won't work. A special predicate \(E\) is
 satisfied only by Romeo and Juliet in
-\(\langle \textit{Romeo loves Juliet}\rangle\) would not comply with
-refinability. For any object (other than Romeo and Juliet), we want them
-to not be \(E\). But there is no later world where there is some name
-\(c\) for them, and \(\neg Ec\) is true. So by refinability, all objects
-are \(E\), defeating the point of the proposal.
+\mbox{$\langle \textit{Romeo loves Juliet}\rangle$} would not comply
+with refinability. For any object (other than Romeo and Juliet), we want
+them to not be \(E\). But there is no later world where there is some
+name \(c\) for them, and \(\neg Ec\) is true. So by refinability, all
+objects are \(E\), defeating the point of the proposal.
 
 I think this is just a terminological issue though. The key thing is to
 not use a predicate here, but a \emph{demonstrative}. There are two ways
@@ -1122,11 +1122,10 @@ short for \emph{Us}, which picks out everything in our possibility.
 Imagine introducing \(\mathbf{U}\) while waving your arms around and
 saying that it refers to us. The thought is that \(\mathbf{U}x\) does
 not mean that \(x\) exists, but rather that \(x\) is one of us. If Romeo
-and Juliet were to introduce \(\mathbf{U}\) that way in their
-possibility, then the thing they say by uttering ``Mercutio is not one
-of us'' would be true. Plausibly, though this depends what the ontology
-of fictional characters is, we also say something true by saying
-``Mercutio is not one of us.''
+or Juliet were to introduce \(\mathbf{U}\) that way, then the thing they
+say by uttering ``Holmes is not one of us'' would be true. Plausibly,
+though this depends what the ontology of fictional characters is, we
+also say something true by saying ``Holmes is not one of us.''
 
 There is a slightly more complicated, but I suspect ultimately more
 natural, way to get the same result. Let's introduce a new name @ for
@@ -1186,10 +1185,10 @@ necessarily. Here is a very quick argument for necessitism.
 
 Here's a tempting, but I suspect ultimately mistaken, way to respond to
 this argument. The possibilities framework shows that the move from step
-4 to step 5 is right. In the the possible worlds framework, it's true
+4 to step 5 is wrong. In the the possible worlds framework, it's true
 that we need a constant domain to validate these logical truths. But we
 don't need a constant domain in the possibilities framework to make
-\(\Box \forall y \Box \exists x(x = y)\) come out true. So if that's the
+\(\Box \forall y \Box exists x(x = y)\) come out true. So if that's the
 master argument for necessitism, the possibilities framework provides
 one with tools to resist it.
 
@@ -1230,7 +1229,7 @@ necessitism, but to explain away some of its counterintuitive
 consequences. Surely, say the contingentists, some things might not have
 been, and other things that are might not have been. In the
 possibilities framework, we have a way of accommodating these
-intuitions.
+intuitions, even while endorsing necessitism.
 
 There is some good sense in which possible beings, like Holmes, are not
 actual. They are not in the actual world. At least, necessitism does not
@@ -1247,9 +1246,9 @@ contingentism without actually giving up necessitism. I suspect the best
 way to interpret that is as good news for a kind of necessitism, one
 that is willing to concede that there is something to contingentist
 intuitions. Whether that kind of slightly qualified necessitism is
-viable will depend on further questions, in particular concerning how to
-do second order quantification in the possibilities framework, but it
-seems worth investigating.
+viable will depend on further questions, in particular questions
+concerning how to do second order quantification in the possibilities
+framework, but it seems worth investigating.
 
 \section{Conditionals}\label{sec-conditionals}
 
@@ -1303,8 +1302,8 @@ One move here, discussed by Humberstone
 (\citeproc{ref-Humberstone2011}{2011, 1011}), is to use supervaluations.
 Perhaps it is in some sense indeterminate whether the world where \(a\)
 is heavier or the world where \(b\) is heavier is more like actuality. A
-related, but I think preferable, move is to analyse conditionals not in
-terms of possible worlds, but in terms of possibilities.
+better move is to analyse conditionals not in terms of possible worlds,
+but in terms of possibilities.
 
 Here is one possible way to analyse conditionals, mixing Stalnaker's
 approach with Humberstone's possibilities.\footnote{The particular
@@ -1316,8 +1315,8 @@ approach with Humberstone's possibilities.\footnote{The particular
   form shown here; he only endorses a version of it restricted to the
   case where \(f(B, x) = \emptyset\). I'll have more to say about
   Bacon's paper presently.} Extend a possibility model
-\(\langle W, \leqslant, V \rangle\) to a conditional possibility model
-by adding a selection function \(f\). This is a function
+\mbox{$\langle W, \leqslant, V \rangle$} to a conditional possibility
+model by adding a selection function \(f\). This is a function
 \(\mathcal{P}(W) \times W \rightarrow \mathcal{P}(W)\), intuitively
 picking out the `nearest' possibilities to a world where a particular
 proposition is true, satisfying these constraints.\footnote{Humberstone
@@ -1354,11 +1353,11 @@ other will have the property of being the one that would be heavier if
 they were different. I don't think this argument goes through on the
 possibilities framework, but settling that would require saying more
 about how higher-order quantification works in the possibilities
-framework, as noted in Section~\ref{sec-quant}, I'm leaving questions
+framework. As noted in Section~\ref{sec-quant}, I'm leaving questions
 about higher-order logic for another day. Instead I'll turn to a puzzle
 that Bacon aimed to solve in the paper I just mentioned. That puzzle
 starts with an example from José Bernadete
-(\citeproc{ref-Bernadete1964}{1964}), and Kit Fine
+(\citeproc{ref-Bernadete1964}{1964}), which Kit Fine
 (\citeproc{ref-Fine2012b}{2012a}, \citeproc{ref-Fine2012a}{2012b})
 developed into a deep challenge to several theories of counterfactuals.
 
@@ -1387,7 +1386,11 @@ freely talk as if it is true, because it doesn't make a difference to
 the logic. This is right in the context Humberstone is writing in, but
 potentially misleading. The Limit Assumption does make a big difference
 to the logic if we have either quantifiers or infinitary connectives in
-the language. This fact is what Fine's puzzle turns on.
+the language.\footnote{If we assume a constant domain, then whether
+  \(A \boxright \forall x: \phi(x)\) and
+  \(\forall x: A \boxright \phi(x)\) are equivalent depends on whether
+  we adopt the Limit Assumption.} This fact is what Fine's puzzle turns
+on.
 
 Stated without the Limit Assumption, Lewis's view is that
 \(A \boxright B\) is true at \(w\) if there is some world where \(A\) is
@@ -1424,7 +1427,7 @@ With the Limit Assumption, Lewis's semantics would endorse
 of the gods would kill the man? Any choice seems not only arbitrary, but
 mistaken. Let's spell this out a bit more carefully. Fine's way of
 spelling out the paradox makes heavy use of a principle he calls
-\textbf{Disjunction}. (This is called \textbf{Subj. Dilemma} by
+\textbf{Disjunction}. (This is called \emph{Subj. Dilemma} by
 Humberstone (\citeproc{ref-Humberstone2011}{2011, 1015}).)
 
 \begin{description}
@@ -1442,13 +1445,13 @@ Then both (5) and (6) seem like they should be true.
 \tightlist
 \item
   If the man had entered the room, and been killed by one of
-  God\textsubscript{1} through God\textsubscript{\emph{k}+1}, he
-  wouldn't have been killed by God\textsubscript{\emph{k}} (because
-  God\textsubscript{\emph{k}+1} would have killed him first).
+  God\textsubscript{1} through God\textsubscript{2k}, he wouldn't have
+  been killed by God\textsubscript{\emph{k}} (because
+  God\textsubscript{2k} would have killed him first).
 \item
   If the man had entered the room, and not been killed by one of
-  God\textsubscript{1} through God\textsubscript{\emph{k}+1}, he
-  wouldn't have been killed by God\textsubscript{\emph{k}}.
+  God\textsubscript{1} through God\textsubscript{2k}, he wouldn't have
+  been killed by God\textsubscript{\emph{k}}.
 \end{enumerate}
 
 Putting these together using \textbf{Disjunction}, we get the following
@@ -1461,9 +1464,9 @@ comes next.
 \tightlist
 \item
   If either the man had entered the room, and been killed by one of
-  God\textsubscript{1} through God\textsubscript{\emph{k}+1}, or he had
-  entered the room, and not been killed by one of God\textsubscript{1}
-  through God\textsubscript{\emph{k}+1}, he wouldn't have been killed by
+  God\textsubscript{1} through God\textsubscript{2k}, or he had entered
+  the room, and not been killed by one of God\textsubscript{1} through
+  God\textsubscript{2k}, he wouldn't have been killed by
   God\textsubscript{\emph{k}}.
 \end{enumerate}
 
@@ -1530,10 +1533,10 @@ Humberstone (\citeproc{ref-Humberstone2011}{2011, 1016}) calls
 criticisms of Fine in Embry (\citeproc{ref-Embry2014}{2014}) largely
 centre on this aspect of Fine's view, and its consequences. But the key
 problems with the principle are already pretty clear in Humberstone
-(\citeproc{ref-Humberstone2011}{2011, 1016--22}). So I think we
-shouldn't go that way.
+(\citeproc{ref-Humberstone2011}{2011, 1016--22}). So I won't go that
+way.
 
-So that leaves \textbf{Disjunction}. This is the step that Andrew Bacon
+That leaves \textbf{Disjunction}. This is the step that Andrew Bacon
 (\citeproc{ref-Bacon2023}{2023}) rejects, and it's what I'll reject as
 well. I think there are two key reasons to worry about giving up
 \textbf{Disjunction}, and they are pretty hard worries to address in the
@@ -1623,18 +1626,18 @@ Bacon says that it fails in the paradoxical case from Bernadete
 generalises to more humdrum uses.
 
 But that's not true for the possibilities model. You need to have some
-very unusual relationships between Humberstone's family of similarity
-relations \(S_w\) and \(\leqslant\) in order for \textbf{Disjunction} to
-fail. For one thing, you need the nearest possibility \(x\) where
-\(A \vee B\) holds to be an incomplete possibility where neither \(A\)
-nor \(B\) holds. Clearly \(x\) has to have refinements where \(A\) is
-true, and refinements where \(B\) is true. To get a \textbf{Disjunction}
-failure, you need one of the refinements of \(x\) where one of the
-disjuncts is true to not be (a refinement of) the closest possibility to
-actuality where that disjunct obtains. I can't construct an intuitive
-case where that happens that doesn't involve infinite sequences like in
-Bernadete's case, though I also don't have a proof that no such case can
-be constructed. This is all far from conclusive, but it seems plausible
+very unusual relationships between the family of similarity relations
+\(S_w\) and \(\leqslant\) in order for \textbf{Disjunction} to fail. For
+one thing, you need the nearest possibility \(x\) where \(A \vee B\)
+holds to be an incomplete possibility where neither \(A\) nor \(B\)
+holds. Clearly \(x\) has to have refinements where \(A\) is true, and
+refinements where \(B\) is true. To get a \textbf{Disjunction} failure,
+you need one of the refinements of \(x\) where one of the disjuncts is
+true to not be (a refinement of) the closest possibility to actuality
+where that disjunct obtains. I can't construct an intuitive case where
+that happens that doesn't involve infinite sequences like in Bernadete's
+case, though I also don't have a proof that no such case can be
+constructed. This is all far from conclusive, but it seems plausible
 that on the possibilities model, failures of \textbf{Disjunction} will
 be rare. And that would be enough to explain the fact Fine appeals to,
 that we are usually happy using it in everyday inferences.
